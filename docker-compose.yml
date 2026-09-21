@@ -1,0 +1,14 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: acdc-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - acdc_mongo_data:/data/db
+      - .:/dumps:ro
+
+volumes:
+  acdc_mongo_data:
+    name: acdc_mongo_data
