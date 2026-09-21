@@ -30,3 +30,30 @@ Inspeção com `find DUP RTE -size +50M` confirmou 8 arquivos gigantes.
 Criar o `.gitignore` completo na raiz do workspace.
 
 ---
+
+## CHECKPOINT-002
+
+Timestamp: 2026-09-20 22:27:00 -03:00
+
+Phase: IMPLEMENTATION
+
+State: AFTER_ACTION
+
+### Action
+Criação do `.gitignore` completo, inicialização do repositório Git (`git init -b main`), staging de 60 arquivos limpos e criação do commit inicial.
+
+### Relevant Files
+- `.gitignore`
+- Repositório Git local (`.git/`)
+
+### Finding / Result
+Commit inicial `0a7c5d9` gerado com sucesso contendo todo o frontend, backend, documentação, scripts e arquitetura de memória, excluindo com perfeição os 2.3GB de dumps do MongoDB em `DUP/` e `RTE/`, `node_modules/`, `dist/` e logs.
+
+### Validation
+`git log -n 1` e `git status` confirmam árvore limpa na branch `main`.
+
+### Next Safe Action
+Solicitar a URL do repositório remoto para adicionar o remote origin e executar `git push -u origin main`.
+
+---
+
