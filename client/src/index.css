@@ -869,6 +869,24 @@ select:focus {
   gap: 4px;
 }
 
+.okta-gateway-pill {
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+  font-size: 0.76rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: all 0.2s ease;
+}
+
+.okta-gateway-pill:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
 .auth-sso-dot {
   width: 6px;
   height: 6px;

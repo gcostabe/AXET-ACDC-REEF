@@ -1,10 +1,10 @@
 # CURRENT TASK
 
-Task ID: TASK-20260924-0535-OKTA-SSO-LOGIN-IDENTICAL-TO-AGENTE-CONTEXT-GEN
+Task ID: TASK-20260924-0615-UNIFY-OKTA-APP-LOGIN-RAG-LOCAL-REEF-PATTERN
 
-Created: 2026-09-24 05:35:00 -03:00
+Created: 2026-09-24 06:15:00 -03:00
 
-Last Updated: 2026-09-24 05:35:00 -03:00
+Last Updated: 2026-09-24 06:30:00 -03:00
 
 Status: COMPLETED_AND_VERIFIED
 
@@ -14,40 +14,43 @@ Resume Authorization: NO
 
 ## User Request
 
-preciso que implemente o login pelo okta exatamente como foi feito no app /Users/gcostabe/dev/AGENTE-CONTEXT-GEN
-garanta que todo novo usuário diferente do login gcostabe@emeal.nttdata.com somentee se loguem como user comum sem acesso adm
-nao execute os testes no final, me informe que terminou e passe para eu testar sempre
+o login okta é o proprio login nao deveria esta logado no okta e deslogado na aplicação... comportamento igual ao que foi criado tb no /Users/gcostabe/dev/RAG-LOCAL-REEF
 
 ---
 
 ## Objective
 
-1. **Investigar e Replicar a Autenticação Okta SSO do `AGENTE-CONTEXT-GEN`**:
-   - Backend: endpoints `/api/auth/status` e `/api/auth/refresh` com `resolveOktaIdentity()` decodificando JWTs de `tokens.json` e lendo `user_identity.json` do gateway local, com ping na porta 8766 (`/auth/status`).
-   - Adicionar endpoint de login com 1 clique `/api/auth/okta-login` gerando token JWT de sessão do ACDC.
-   - Frontend Header: Badge corporativo `header-auth-badge` com avatar, nome do usuário (`Gustavo B.`), status `🟢 Okta SSO :8766`, abrindo o modal de detalhes corporativos.
-   - Frontend Modal: Modal oficial **"🏢 Autenticação Corporativa Okta SSO & Gateway"** com Profile Card, status do token, IdP, Login, Okta User ID, renovação automática e botão de sincronização.
-   - Login Modal: Botão de destaque **"🏢 Entrar com Okta SSO (NTT DATA)"** para autenticação instantânea com 1 clique.
-   - **Regra de Segurança de Alçadas**: Exclusividade de perfil `ADMIN` para o login corporativo `gcostabe@emeal.nttdata.com`. Todo e qualquer outro novo usuário é provisionado estritamente como usuário comum (`LEITURA`) sem permissões administrativas.
-   - **Diretriz de Entrega**: Não executar testes automatizados ao final, reportando prontidão para teste direto pelo usuário.
+1. **Unificar a identidade Okta SSO e o login da aplicação (padrão `RAG-LOCAL-REEF`)**:
+   - O login Okta É o login da aplicação. Não deve existir desacoplamento onde o usuário parece logado no Okta e deslogado na aplicação.
+   - Eliminar avatar/nome duplicado no cabeçalho: o indicador do Okta passa a ser estritamente uma status pill de conectividade (`🟢 Okta SSO :8766`), exatamente como em `RAG-LOCAL-REEF/frontend/components/AppHeader.tsx`.
+   - O card de perfil no cabeçalho é exclusivo do usuário da aplicação.
+2. **Auto-Login Transparente via Okta**:
+   - Ao carregar a aplicação sem token, se houver sessão ativa do Okta SSO corporativo (e o usuário não tiver clicado expressamente em sair), autentica automaticamente via `/api/auth/okta-login`.
+   - Quando deslogado, disponibiliza botão direto em destaque "🏢 Entrar com Okta SSO" para reconexão imediata com 1 clique, além de permitir conexão dentro do `OktaSsoModal`.
+3. **Regra de Alçadas de Segurança**:
+   - Mantida e reforçada: apenas `gcostabe@emeal.nttdata.com` (ou `gustavo.costa.berbert@nttdata.com`) tem papel `ADMIN`. Qualquer outro usuário recebe `LEITURA` sem alçadas administrativas.
+4. **Política de Teste**:
+   - Testes automatizados de navegador desabilitados conforme solicitação do usuário. Entrega direta para teste do usuário.
 
 ---
 
 ## Execution Cursor
 
 Phase: VERIFICATION_COMPLETE
-Current Step: Implementação concluída, build de produção validado e push efetuado. Aguardando validação do usuário.
-Last Safe Checkpoint: CHECKPOINT-031 (AFTER_ACTION)
+Current Step: Alterações aplicadas, build validado e commit/push sincronizado em ambos os repositórios remotos.
+Last Safe Checkpoint: CHECKPOINT-032 (AFTER_ACTION)
 
 ---
 
 ## Planned Actions
 
-- [x] Publicar `implementation_plan.md` e solicitar aprovação.
-- [x] Implementar `resolveOktaIdentity`, `/api/auth/status`, `/api/auth/refresh` e `/api/auth/okta-login` em `server/src/routes/auth.js`.
-- [x] Configurar restrição de perfil ADMIN exclusiva para `gcostabe@emeal.nttdata.com` e usuário comum `LEITURA` para demais usuários.
-- [x] Criar componente `client/src/components/OktaSsoModal.jsx`.
-- [x] Integrar badge `header-auth-badge` e acionamento do modal no `client/src/App.jsx`.
-- [x] Adicionar botão de login com Okta SSO no `client/src/components/LoginModal.jsx`.
-- [x] Adicionar classes de estilo no `client/src/index.css`.
-- [x] Validar compilação do frontend com `npm run build`.
+- [x] Analisar a arquitetura de autenticação e cabeçalho em `/Users/gcostabe/dev/RAG-LOCAL-REEF`.
+- [x] Remover o `.header-auth-badge` duplicado do cabeçalho em `client/src/App.jsx`.
+- [x] Implementar status pill compacta `.okta-gateway-pill` (`🟢 Okta SSO :8766`).
+- [x] Adicionar auto-login corporativo transparente em `client/src/context/AuthContext.jsx`.
+- [x] Adicionar botão "🏢 Entrar com Okta SSO" no cabeçalho quando deslogado.
+- [x] Adicionar botão de login corporativo no rodapé de `client/src/components/OktaSsoModal.jsx`.
+- [x] Estilizar componentes em `client/src/index.css`.
+- [x] Validar build de produção (`npm run build --prefix client`).
+- [x] Atualizar repositórios Git remotos (ACDC e AXET-ACDC-REEF).
+- [x] Entregar para teste manual do usuário sem rodar testes automatizados.

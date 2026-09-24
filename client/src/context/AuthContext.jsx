@@ -31,10 +31,31 @@ export function AuthProvider({ children }) {
     } else {
       localStorage.removeItem('acdc_auth_token');
       localStorage.removeItem('acdc_auth_user');
+
+      // Se não há token e o usuário não clicou explicitamente em logout,
+      // autentica automaticamente usando a sessão ativa do Okta SSO corporativo!
+      if (sessionStorage.getItem('acdc_manual_logout') !== 'true') {
+        fetch('/api/auth/status')
+          .then(res => res.json())
+          .then(statusData => {
+            if (statusData && statusData.authenticated && statusData.user) {
+              fetch('/api/auth/okta-login', { method: 'POST' })
+                .then(res => res.json())
+                .then(loginData => {
+                  if (loginData.token && loginData.user) {
+                    login(loginData.token, loginData.user);
+                  }
+                })
+                .catch(console.error);
+            }
+          })
+          .catch(() => {});
+      }
     }
   }, [token]);
 
   const login = (newToken, newUser) => {
+    sessionStorage.removeItem('acdc_manual_logout');
     setToken(newToken);
     setUser(newUser);
     localStorage.setItem('acdc_auth_token', newToken);
@@ -43,6 +64,7 @@ export function AuthProvider({ children }) {
   };
 
   const logout = () => {
+    sessionStorage.setItem('acdc_manual_logout', 'true');
     setToken(null);
     setUser(null);
     localStorage.removeItem('acdc_auth_token');

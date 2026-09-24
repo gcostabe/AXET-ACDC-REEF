@@ -1135,6 +1135,43 @@ Implementação da autenticação e login corporativo via Okta SSO idêntico ao 
 ### Next Safe Action
 Informar ao usuário a conclusão das implementações e disponibilizar para seus testes.
 
+---
+
+## CHECKPOINT-032 | 2026-09-24 06:30:00 -03:00
+
+Phase: VERIFICATION
+
+State: AFTER_ACTION
+
+### Action
+Unificação completa do login Okta SSO com a sessão da aplicação, adotando fielmente a arquitetura e comportamento do `/Users/gcostabe/dev/RAG-LOCAL-REEF`.
+1. Remoção do `.header-auth-badge` duplicado que exibia avatar e nome ao lado do perfil da aplicação.
+2. Substituição pelo status pill compacto `.okta-gateway-pill` (`🟢 Okta SSO :8766`), que indica a saúde da conexão e abre o modal corporativo ao ser clicado.
+3. Auto-login transparente no `AuthContext.jsx`: quando a aplicação carrega sem token, verifica se há sessão ativa no Okta SSO corporativo e autentica automaticamente o usuário com perfil e alçadas provisionadas.
+4. Caso o usuário faça logout manual, é exibido no cabeçalho o botão direto "🏢 Entrar com Okta SSO" para reconexão em 1 clique, além do botão de conexão dentro do `OktaSsoModal.jsx`.
+5. Regra de segurança preservada: apenas `gcostabe@emeal.nttdata.com` recebe alçada `ADMIN`; qualquer outro login corporativo recebe estritamente perfil de usuário comum `LEITURA`.
+
+### Relevant Files
+- `client/src/App.jsx` [MODIFIED]
+- `client/src/components/OktaSsoModal.jsx` [MODIFIED]
+- `client/src/context/AuthContext.jsx` [MODIFIED]
+- `client/src/index.css` [MODIFIED]
+- `.agent/current_task.md` [MODIFIED]
+- `.agent/execution_journal.md` [MODIFIED]
+
+### Finding / Result
+- Não há mais desacoplamento ou inconsistência visual de "logado no Okta e deslogado na aplicação" nem duplicidade de avatares/nomes no cabeçalho.
+- O login Okta agora é o próprio mecanismo de autenticação primário e integrado do ACDC Cockpit.
+
+### Validation
+- Build de produção (`npm run build --prefix client`) executado com sucesso e zero erros (227ms).
+- Endpoint `/api/auth/status` e `/api/auth/okta-login` testados via curl no backend retornando com perfeição.
+- Diretriz respeitada: sem execução de testes automatizados de browser no final.
+
+### Next Safe Action
+Sincronizar commits nos repositórios remotos e reportar ao usuário para seu teste manual.
+
+
 
 
 

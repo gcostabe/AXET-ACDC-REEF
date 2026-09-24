@@ -101,6 +101,23 @@ function MainApp() {
     }
   }, [user]);
 
+  const [oktaLoggingIn, setOktaLoggingIn] = useState(false);
+
+  const handleOktaLogin = async () => {
+    setOktaLoggingIn(true);
+    try {
+      const res = await fetch('/api/auth/okta-login', { method: 'POST' });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Falha ao autenticar com Okta SSO.');
+      login(data.token, data.user);
+      setShowOktaModal(false);
+    } catch (err) {
+      console.error('Error logging in via Okta:', err);
+    } finally {
+      setOktaLoggingIn(false);
+    }
+  };
+
   return (
     <div className="app-container">
       <LoginModal />
@@ -108,6 +125,8 @@ function MainApp() {
         isOpen={showOktaModal}
         onClose={() => setShowOktaModal(false)}
         authData={oktaAuth}
+        currentUser={user}
+        onOktaLogin={handleOktaLogin}
         onRefresh={handleRefreshOkta}
       />
 
@@ -157,38 +176,35 @@ function MainApp() {
             )}
           </div>
 
-          {/* Indicador de Sessão Okta SSO & Gateway */}
-          {oktaAuth?.user && (
-            <div
-              className="header-auth-badge"
-              id="header-auth-badge"
-              onClick={() => setShowOktaModal(true)}
-              title="Sessão Okta SSO (NTT DATA) via API Gateway :8766. Clique para ver detalhes."
-            >
-              <div className="auth-user-avatar" id="header-auth-avatar">
-                {(() => {
-                  const words = (oktaAuth.user.name || '').split(' ').filter(Boolean);
-                  return words.length > 1
-                    ? (words[0][0] + words[words.length - 1][0]).toUpperCase()
-                    : (words[0] ? words[0].slice(0, 2).toUpperCase() : 'GB');
-                })()}
-              </div>
-              <div className="auth-user-info">
-                <span className="auth-user-name" id="header-auth-name">
-                  {oktaAuth.user.firstName ? `${oktaAuth.user.firstName} B.` : (oktaAuth.user.name || 'Gustavo B.')}
-                </span>
-                <span className="auth-sso-status">
-                  <span
-                    className="auth-sso-dot"
-                    style={{
-                      background: oktaAuth.gateway?.gateway8766Online || oktaAuth.gateway?.status === 'connected' ? '#10b981' : '#eab308'
-                    }}
-                  ></span>
-                  Okta SSO :8766
-                </span>
-              </div>
-            </div>
-          )}
+          {/* Status Pill do Okta SSO & Gateway (:8766) - Idêntico ao RAG-LOCAL-REEF */}
+          <div
+            className="status-pill okta-gateway-pill"
+            onClick={() => setShowOktaModal(true)}
+            title={
+              oktaAuth?.authenticated
+                ? `Okta SSO Conectado • ${Math.round((oktaAuth.gateway?.remainingSeconds || 0) / 60)} min restantes • Ver detalhes da sessão corporativa`
+                : 'Okta SSO • Clique para detalhes e conexão'
+            }
+            style={{
+              cursor: 'pointer',
+              background: oktaAuth?.authenticated ? 'rgba(16, 185, 129, 0.08)' : 'rgba(239, 68, 68, 0.08)',
+              borderColor: oktaAuth?.authenticated ? 'rgba(16, 185, 129, 0.3)' : 'rgba(239, 68, 68, 0.3)',
+              color: oktaAuth?.authenticated ? '#059669' : '#ef4444',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.45rem',
+              transition: 'all 0.2s ease'
+            }}
+          >
+            <span
+              className="pulse-dot"
+              style={{
+                background: oktaAuth?.authenticated ? '#10b981' : '#ef4444',
+                boxShadow: oktaAuth?.authenticated ? '0 0 6px rgba(16, 185, 129, 0.6)' : 'none'
+              }}
+            ></span>
+            <span>Okta SSO :8766</span>
+          </div>
 
           <button
             className="pagination-btn"
@@ -227,16 +243,43 @@ function MainApp() {
               </button>
             </div>
           ) : (
-            <button
-              className="pagination-btn btn-primary"
-              onClick={() => setShowLoginModal(true)}
-              style={{
-                fontWeight: 600,
-                padding: '0.45rem 1rem'
-              }}
-            >
-              <LogIn size={15} /> Entrar / Solicitar Acesso
-            </button>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              {oktaAuth?.authenticated ? (
+                <button
+                  className="pagination-btn"
+                  onClick={handleOktaLogin}
+                  disabled={oktaLoggingIn}
+                  title="Conectar com sua sessão corporativa OneNTT Okta ativa"
+                  style={{
+                    background: 'linear-gradient(135deg, #0072BC, #0284c7)',
+                    color: '#ffffff',
+                    border: 'none',
+                    fontWeight: 600,
+                    padding: '0.45rem 0.9rem',
+                    boxShadow: '0 2px 8px rgba(0, 114, 188, 0.25)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.45rem',
+                    fontSize: '0.8rem'
+                  }}
+                >
+                  <ShieldCheck size={14} />
+                  <span>{oktaLoggingIn ? 'Autenticando...' : 'Entrar com Okta SSO'}</span>
+                </button>
+              ) : null}
+              <button
+                className="pagination-btn btn-primary"
+                onClick={() => setShowLoginModal(true)}
+                style={{
+                  fontWeight: 600,
+                  padding: '0.45rem 0.85rem',
+                  fontSize: '0.8rem'
+                }}
+              >
+                <LogIn size={14} />
+                <span>{oktaAuth?.authenticated ? 'Outro Acesso' : 'Entrar / Solicitar Acesso'}</span>
+              </button>
+            </div>
           )}
         </div>
       </header>

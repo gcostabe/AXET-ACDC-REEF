@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { X, RefreshCw, CheckCircle2, ShieldCheck, Zap } from 'lucide-react';
+import { X, RefreshCw, CheckCircle2, ShieldCheck, Zap, LogIn } from 'lucide-react';
 
-export default function OktaSsoModal({ isOpen, onClose, authData, onRefresh }) {
+export default function OktaSsoModal({ isOpen, onClose, authData, onRefresh, currentUser, onOktaLogin }) {
   const [refreshing, setRefreshing] = useState(false);
+  const [loggingIn, setLoggingIn] = useState(false);
   const [refreshedSuccess, setRefreshedSuccess] = useState(false);
 
   if (!isOpen) return null;
@@ -189,6 +190,32 @@ export default function OktaSsoModal({ isOpen, onClose, authData, onRefresh }) {
             borderTop: '1px solid var(--border)'
           }}
         >
+          {!currentUser && authData?.authenticated && (
+            <button
+              className="pagination-btn"
+              onClick={async () => {
+                setLoggingIn(true);
+                try {
+                  if (onOktaLogin) await onOktaLogin();
+                } finally {
+                  setLoggingIn(false);
+                }
+              }}
+              disabled={loggingIn}
+              style={{
+                background: 'linear-gradient(135deg, #0072BC, #0284c7)',
+                color: '#fff',
+                border: 'none',
+                fontWeight: 600,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+            >
+              <LogIn size={14} />
+              <span>{loggingIn ? 'Autenticando...' : `Conectar como ${user.name || 'Usuário Okta'}`}</span>
+            </button>
+          )}
           <button
             className="pagination-btn"
             onClick={handleRefresh}
