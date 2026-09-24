@@ -16,6 +16,7 @@ import AdminTab from './components/AdminTab';
 import LoginModal from './components/LoginModal';
 import ChatBotWidget from './components/ChatBotWidget';
 import OktaSsoModal from './components/OktaSsoModal';
+import LoginPage from './components/LoginPage';
 
 function MainApp() {
   const { user, login, logout, canAccessTab, setShowLoginModal } = useAuth();
@@ -117,6 +118,15 @@ function MainApp() {
       setOktaLoggingIn(false);
     }
   };
+
+  if (!user) {
+    return (
+      <LoginPage
+        oktaAuth={oktaAuth}
+        onRefreshOkta={handleRefreshOkta}
+      />
+    );
+  }
 
   return (
     <div className="app-container">

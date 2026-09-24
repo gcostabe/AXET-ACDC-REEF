@@ -1230,6 +1230,41 @@ State: AFTER_ACTION
 ### Next Safe Action
 Sincronizar commit com ambos os repositórios Git remotos e reportar ao usuário para validação manual.
 
+---
+
+## CHECKPOINT-035 | 2026-09-24 06:52:00 -03:00
+
+Phase: REFINEMENT
+
+State: AFTER_ACTION
+
+### Action
+Criação e exibição da tela dedicada de autenticação em tela cheia (`LoginPage.jsx`) para usuários deslogados, eliminando a exibição do dashboard/cabeçalho quando não autenticado, com estética corporativa inspirada no `RAG-LOCAL-REEF` e adaptada aos padrões e identidade do `ACDC Explorer • MAPFRE Seguros`:
+1. Fundo corporativo escuro `#080d1a` com iluminação ambiente e gradientes radiais.
+2. Cabeçalho da marca com logo NTT DATA em caixa com glassmorphism, título ACDC Explorer e subtítulo do DUP & RTE.
+3. Botão primário em gradiente OneNTT: "Entrar com SSO Okta (OneNTT)" para autenticação em 1 clique via token ou abertura do modal de ativação de dispositivo.
+4. Divisor com "ou credenciais locais" e formulário para e-mail e senha com ícones dedicados e botão "Entrar com Senha Local".
+5. Alternância fluida para "Solicitar cadastro" permitindo submeter solicitações de novo acesso com departamento e justificativa.
+6. Renderização condicional em `App.jsx`: se `!user`, exibe a `LoginPage`; ao logar, apresenta o Cockpit completo.
+
+### Relevant Files
+- `client/src/components/LoginPage.jsx` [CREATED]
+- `client/src/App.jsx` [MODIFIED]
+- `client/src/index.css` [MODIFIED]
+- `.agent/current_task.md` [MODIFIED]
+- `.agent/execution_journal.md` [MODIFIED]
+
+### Finding / Result
+Usuários não autenticados agora encontram uma tela de login de padrão empresarial sem vazamento do dashboard ou controles internos, com opção primária de SSO Okta e credenciais locais.
+
+### Validation
+- `npm run build --prefix client` concluído com sucesso e zero erros (211ms).
+- Respeitada a regra de não executar testes automatizados ao final.
+
+### Next Safe Action
+Sincronizar commit com ambos os repositórios Git remotos e convidar o usuário para testar no navegador.
+
+
 
 
 
