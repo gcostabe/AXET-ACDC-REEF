@@ -269,14 +269,6 @@ export default function LoginPage({ oktaAuth, onRefreshOkta }) {
               </p>
             )}
           </div>
-
-          {/* Admin Tip */}
-          {!isRegister && (
-            <div className="admin-hint-box">
-              <span>Admin padrão: </span>
-              <strong>admin@acdc.mapfre</strong> / senha: <strong>admin123</strong>
-            </div>
-          )}
         </div>
 
         {/* Brand Footer */}

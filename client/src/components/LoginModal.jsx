@@ -346,13 +346,6 @@ export default function LoginModal() {
             </p>
           )}
         </div>
-
-        {/* Tip for Admin quick test */}
-        {!isRegister && (
-          <div style={{ marginTop: '0.75rem', background: 'rgba(59, 130, 246, 0.08)', borderRadius: 'var(--radius-sm)', padding: '0.5rem', textAlign: 'center', fontSize: '0.72rem', color: 'var(--text-muted)' }}>
-            Admin padrão: <strong style={{ color: '#93c5fd' }}>admin@acdc.mapfre</strong> / senha: <strong style={{ color: '#93c5fd' }}>admin123</strong>
-          </div>
-        )}
       </div>
     </div>
   );

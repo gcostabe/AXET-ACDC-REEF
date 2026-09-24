@@ -1,10 +1,10 @@
 # CURRENT TASK
 
-Task ID: TASK-20260924-0650-DEDICATED-LOGIN-PAGE-FOR-UNAUTHENTICATED-USERS
+Task ID: TASK-20260924-0715-REMOVE-DEFAULT-ADMIN-ENFORCE-OKTA-ROOT-ADMIN
 
-Created: 2026-09-24 06:50:00 -03:00
+Created: 2026-09-24 07:15:00 -03:00
 
-Last Updated: 2026-09-24 06:50:00 -03:00
+Last Updated: 2026-09-24 07:15:00 -03:00
 
 Status: COMPLETED_AND_VERIFIED
 
@@ -14,42 +14,42 @@ Resume Authorization: NO
 
 ## User Request
 
-ao inves de apresentar a tela principal para o usuario deslogado apresente uma tela simliar a esta, mas com os padroes deste app
+remova esta senha e este login , mantenha como adm quando logado via okta o gcostabe@emeal.nttdata.com
 
 ---
 
 ## Objective
 
-1. **Tela de Autenticação Dedicada para Usuários Deslogados (`LoginPage.jsx`)**:
-   - Para qualquer usuário não autenticado (`!user`), em vez de exibir a tela principal com dashboard, abas e cabeçalho, apresentar uma tela de login dedicada e elegante inspirada no padrão do `RAG-LOCAL-REEF`, adaptada com a identidade e padrões do `ACDC Explorer • MAPFRE Seguros`.
-   - Card centralizado sobre fundo corporativo escuro (`#080d1a`) com ambient glows.
-   - Logo NTT DATA e títulos corporativos da plataforma ACDC.
-   - Botão de destaque primário: **"Entrar com SSO Okta (OneNTT)"** com 1 clique (e abertura do modal de ativação quando aplicável).
-   - Divisor "ou credenciais locais".
-   - Formulário com ícones para E-mail Corporativo e Senha local.
-   - Alternância fluida para **"Solicitar cadastro"** (Nome, Departamento, Email, Senha, Justificativa de Acesso) e botão de envio de solicitação.
-   - Dica administrativa padrão: `admin@acdc.mapfre / admin123`.
-2. **Transição Transparente**:
-   - Assim que o usuário se autentica (via Okta SSO ou credencial local), o Cockpit principal é renderizado com todas as abas e recursos habilitados de acordo com seu perfil.
-   - Ao clicar em "Sair da Conta", o usuário retorna imediatamente para esta tela de login.
-3. **Política de Testes**:
-   - Não executar testes automatizados no navegador. Entregar diretamente ao usuário para teste.
+1. **Remoção de Credenciais e Dicas Padrão**:
+   - Remover os blocos de dica e credenciais de teste (`admin@acdc.mapfre / admin123`) em `client/src/components/LoginPage.jsx` e `client/src/components/LoginModal.jsx`.
+2. **Limpeza no Backend e Banco de Dados**:
+   - Substituir `seedAdminUser()` por `cleanupLegacyAdmin()` em `server/src/routes/auth.js`, expurgando qualquer registro de `admin@acdc.mapfre` de `ACDC_USERS`.
+   - Atualizar chamadas em `server/src/index.js` e `server/src/db.js`.
+3. **Exclusividade de Administrador via Okta**:
+   - Assegurar que estritamente `gcostabe@emeal.nttdata.com` (e `gustavo.costa.berbert@nttdata.com`) tenha a role `ADMIN`.
+   - Qualquer outro usuário logado via Okta ou registrado localmente recebe perfil restrito comum (`LEITURA` ou `ATUARIO` pendente) sem acesso a rotas administrativas ou edição.
+4. **Verificação e Entrega**:
+   - Validar build limpo do frontend (`npm run build --prefix client`).
+   - Sincronizar commits nos dois remotes Git (`origin`).
+   - Respeitar a regra: **NÃO executar testes automatizados no final**, entregar ao usuário para teste.
 
 ---
 
 ## Execution Cursor
 
 Phase: VERIFICATION_COMPLETE
-Current Step: Componente criado, estilos injetados, condicional configurado, build testado e repositórios Git sincronizados.
-Last Safe Checkpoint: CHECKPOINT-035 (AFTER_ACTION)
+Current Step: Limpeza concluída, build validado e repositórios sincronizados.
+Last Safe Checkpoint: CHECKPOINT-036 (AFTER_ACTION)
 
 ---
 
 ## Planned Actions
 
-- [x] Criar componente dedicado `client/src/components/LoginPage.jsx`.
-- [x] Injetar estilos de ponta em `client/src/index.css` (`.login-page-container`, `.login-card`, `.okta-sso-btn`, etc.).
-- [x] Atualizar `client/src/App.jsx` para renderizar `LoginPage` quando `!user`.
-- [x] Validar build de produção (`npm run build --prefix client`).
-- [x] Sincronizar commits nos repositórios remotos.
-- [x] Reportar ao usuário para teste manual.
+- [x] Remover dica visual em `client/src/components/LoginPage.jsx`.
+- [x] Remover dica visual em `client/src/components/LoginModal.jsx`.
+- [x] Substituir `seedAdminUser` por `cleanupLegacyAdmin` em `server/src/routes/auth.js`.
+- [x] Atualizar `server/src/index.js` e `server/src/db.js` para chamar `cleanupLegacyAdmin`.
+- [x] Executar limpeza direta no MongoDB para remover `admin@acdc.mapfre`.
+- [x] Executar build do client (`npm run build --prefix client`).
+- [x] Commit e push para os dois repositórios remotos.
+- [x] Reportar conclusão ao usuário.

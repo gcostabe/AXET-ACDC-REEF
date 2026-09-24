@@ -299,34 +299,19 @@ router.post('/okta-login', async (req, res) => {
   }
 });
 
-// Seed default admin if not existing
-export async function seedAdminUser() {
+// Cleanup legacy seeded admin user if existing
+export async function cleanupLegacyAdmin() {
   try {
     const col = getUsersCollection();
-    const admin = await col.findOne({ email: 'admin@acdc.mapfre' });
-    if (!admin) {
-      const passwordHash = await bcrypt.hash('admin123', 10);
-      await col.insertOne({
-        name: 'Administrador do Sistema',
-        email: 'admin@acdc.mapfre',
-        passwordHash,
-        role: 'ADMIN',
-        status: 'APPROVED',
-        department: 'Tecnologia & Atuária',
-        permissions: {
-          allowedTabs: ['overview', 'products', 'packages', 'rules', 'rating', 'audit', 'explorer', 'users'],
-          canEdit: { rating: true, rules: true, products: true, explorer: true }
-        },
-        createdAt: new Date(),
-        approvedAt: new Date(),
-        approvedBy: 'SYSTEM_BOOTSTRAP'
-      });
-      console.log('Seeded default admin: admin@acdc.mapfre / admin123');
+    const result = await col.deleteMany({ email: 'admin@acdc.mapfre' });
+    if (result.deletedCount > 0) {
+      console.log(`🧹 Removido(s) ${result.deletedCount} usuário(s) legado(s) de credenciais fixas (admin@acdc.mapfre).`);
     }
   } catch (err) {
-    console.error('Error seeding admin user:', err);
+    console.error('Error cleaning up legacy admin user:', err);
   }
 }
+export const seedAdminUser = cleanupLegacyAdmin;
 
 // POST /api/auth/login
 router.post('/login', async (req, res) => {

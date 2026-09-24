@@ -180,12 +180,12 @@ export async function switchEnvironment(envId) {
   updateEnvironmentStatus(envId, 'OK', { latencyMs: testRes.latencyMs });
   console.log(`🔄 Ambiente alternado com sucesso para [${targetEnv.name}] (${maskMongoUri(targetEnv.uri)})`);
 
-  // 4. Garante existência do usuário administrador padrão no novo banco
+  // 4. Garante limpeza de credenciais legadas no novo banco
   try {
-    const { seedAdminUser } = await import('./routes/auth.js');
-    await seedAdminUser();
+    const { cleanupLegacyAdmin } = await import('./routes/auth.js');
+    await cleanupLegacyAdmin();
   } catch (seedErr) {
-    console.warn('Aviso ao inicializar admin no novo ambiente:', seedErr.message);
+    console.warn('Aviso ao executar limpeza de credenciais no novo ambiente:', seedErr.message);
   }
 
   // 5. Atualiza índice vetorial RAG em background

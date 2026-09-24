@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { connectDB } from './db.js';
 import { authenticateToken } from './middleware/auth.js';
-import authRoutes, { seedAdminUser } from './routes/auth.js';
+import authRoutes, { cleanupLegacyAdmin } from './routes/auth.js';
 import overviewRoutes from './routes/overview.js';
 import dupRoutes from './routes/dup.js';
 import rteRoutes from './routes/rte.js';
@@ -40,7 +40,7 @@ app.get('/health', (req, res) => {
 async function start() {
   try {
     await connectDB();
-    await seedAdminUser();
+    await cleanupLegacyAdmin();
     
     // Asynchronously initialize and index RAG Knowledge Base from MongoDB
     import('./services/ragService.js').then(({ buildAndIndexRag }) => {

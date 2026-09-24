@@ -1264,13 +1264,39 @@ Usuários não autenticados agora encontram uma tela de login de padrão empresa
 ### Next Safe Action
 Sincronizar commit com ambos os repositórios Git remotos e convidar o usuário para testar no navegador.
 
+---
 
+## CHECKPOINT-036 | 2026-09-24 07:22:00 -03:00
 
+Phase: REFINEMENT
 
+State: AFTER_ACTION
 
+### Action
+Remoção completa das credenciais fixas e dicas de login padrão (`admin@acdc.mapfre` / `admin123`) e garantia estrita de exclusividade administrativa para `gcostabe@emeal.nttdata.com`:
+1. Removido o bloco visual de dica de admin padrão em `client/src/components/LoginPage.jsx`.
+2. Removido o bloco visual de dica de teste rápido de admin em `client/src/components/LoginModal.jsx`.
+3. Em `server/src/routes/auth.js`, substituído `seedAdminUser()` por `cleanupLegacyAdmin()`, expurgando qualquer registro de `admin@acdc.mapfre` do banco `ACDC_USERS`.
+4. Atualizados `server/src/index.js` e `server/src/db.js` para invocar `cleanupLegacyAdmin()` tanto na inicialização quanto em trocas de ambiente MongoDB.
+5. Verificado que a lógica em `okta-login` mantém estritamente `gcostabe@emeal.nttdata.com` (e `gustavo.costa.berbert@nttdata.com`) com alçada `ADMIN`, enquanto qualquer outro usuário autenticado via Okta SSO é configurado como usuário comum (`LEITURA`) sem permissões administrativas.
+6. Executada remoção direta no MongoDB local confirmando 0 registros de credenciais legadas.
 
+### Relevant Files
+- `client/src/components/LoginPage.jsx` [MODIFIED]
+- `client/src/components/LoginModal.jsx` [MODIFIED]
+- `server/src/routes/auth.js` [MODIFIED]
+- `server/src/index.js` [MODIFIED]
+- `server/src/db.js` [MODIFIED]
+- `.agent/current_task.md` [MODIFIED]
+- `.agent/execution_journal.md` [MODIFIED]
 
+### Finding / Result
+Nenhuma credencial padrão fica visível na interface de login nem é gerada no banco de dados. O único administrador é o usuário corporativo Okta `gcostabe@emeal.nttdata.com`.
 
+### Validation
+- Execução direta com MongoDB validou 0 usuários `admin@acdc.mapfre` e existência exclusiva do usuário Okta com role `ADMIN`.
+- `npm run build --prefix client` concluído com sucesso e 0 erros.
+- Respeitada a regra de NÃO rodar testes de navegador automatizados no final.
 
-
-
+### Next Safe Action
+Comitar alterações no Git, sincronizar com ambos os repositórios remotos e notificar o usuário para teste manual.
