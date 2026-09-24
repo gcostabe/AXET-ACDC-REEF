@@ -168,10 +168,6 @@ A plataforma adota controle de acesso baseado em papéis (**RBAC**):
 | **ESCRITA** | Consulta completa, edição de fórmulas atuariais, alteração de regras de risco e pacotes de cobertura. |
 | **LEITURA** | Consulta ao catálogo, motor de tarifação, visualização de regras, explorador de dados e uso do chatbot Copilot. |
 
-### Usuário Padrão de Inicialização (Seed Automático):
-* **E-mail:** `admin@acdc.mapfre`
-* **Senha:** `admin123`
-* **Perfil:** `ADMIN`
 
 ---
 
