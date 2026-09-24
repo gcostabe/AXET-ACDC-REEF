@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { getDupDb, getRteDb, getConnectionStatus } from '../db.js';
+import { getUnifiedProductsCatalog } from './dup.js';
 
 const router = Router();
 
@@ -30,7 +31,8 @@ router.get('/stats', async (req, res) => {
 
     // Quick insights
     const countries = await dupDb.collection('COUNTRY_CONFIGURATION').find({}).toArray();
-    const productsCount = await dupDb.collection('PRODUCTS').countDocuments();
+    const unifiedProducts = await getUnifiedProductsCatalog().catch(() => []);
+    const productsCount = unifiedProducts.length || await dupDb.collection('PRODUCTS').countDocuments();
     const rulesCount = await dupDb.collection('RULES').countDocuments();
     const rsRulesCount = await dupDb.collection('RS-RULES').countDocuments();
     const rsActionsConditionsCount = await dupDb.collection('RS-RULES-ACTIONS-CONDITIONS').countDocuments();

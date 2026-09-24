@@ -89,154 +89,156 @@ const KNOWN_COMPANY_NAMES = {
   155: 'MAPFRE VIDA S.A.'
 };
 
+// Exported Unified Products Catalog Engine
+export async function getUnifiedProductsCatalog() {
+  const now = Date.now();
+
+  if (catalogCache && (now - lastCacheTime < CATALOG_CACHE_TTL_MS)) {
+    return catalogCache;
+  }
+
+  const dupDb = getDupDb();
+  const rteDb = getRteDb();
+
+  // 1. Fetch base products from MongoDB PRODUCTS (read-only)
+  const baseProducts = await dupDb.collection('PRODUCTS').find({}).toArray();
+
+  // 2. Discover all active products and their coverages from COVERAGE-PACKAGE-DEFINITION (RTE)
+  const rtePackageAgg = await rteDb.collection('COVERAGE-PACKAGE-DEFINITION').aggregate([
+    { $unwind: '$coverages' },
+    {
+      $group: {
+        _id: { product: '$product', coverageId: '$coverages.coverageId' },
+        companyId: { $first: '$companyId' },
+        branchId: { $first: '$branchId' }
+      }
+    },
+    {
+      $group: {
+        _id: '$_id.product',
+        companyId: { $first: '$companyId' },
+        branchId: { $first: '$branchId' },
+        coverages: { $addToSet: '$_id.coverageId' }
+      }
+    }
+  ]).toArray();
+
+  const rteProductMap = new Map();
+  rtePackageAgg.forEach(p => {
+    if (p._id && p._id > 0 && p._id !== 99999) {
+      rteProductMap.set(Number(p._id), {
+        productCode: Number(p._id),
+        companyId: Number(p.companyId) || 15,
+        branchId: Number(p.branchId) || 421,
+        coverageIds: (p.coverages || []).sort((a, b) => a - b)
+      });
+    }
+  });
+
+  // 3. Process & enrich base products
+  const processedProductCodes = new Set();
+  const enrichedBaseProducts = baseProducts.map(p => {
+    const prodCode = Number(p.productCode);
+    processedProductCodes.add(prodCode);
+
+    // Normalize legacy concatenated branch/company codes if detected
+    let branchCode = p.branchCode;
+    let legacyBranchCode = undefined;
+    if (branchCode === 42111 || (branchCode > 1000 && String(branchCode).startsWith('421'))) {
+      legacyBranchCode = branchCode;
+      branchCode = 421;
+    }
+
+    let companyCode = p.companyCode;
+    let legacyCompanyCode = undefined;
+    if (companyCode === 151 || (companyCode > 100 && String(companyCode).startsWith('15'))) {
+      legacyCompanyCode = companyCode;
+      companyCode = 15;
+    }
+
+    // Branch and company names
+    const branchName = (branchCode === 421) ? 'PLURIANUAL RENOVÁVEL (VIDA)' : (p.branchName || KNOWN_BRANCH_NAMES[branchCode] || 'GERAL');
+    const companyName = (companyCode === 15) ? 'MAPFRE BRASIL' : (p.companyName || KNOWN_COMPANY_NAMES[companyCode] || 'MAPFRE SEGUROS');
+
+    // Check if RTE packages have active coverages for this product
+    let coverages = Array.isArray(p.coverages) ? [...p.coverages] : [];
+    const rteInfo = rteProductMap.get(prodCode);
+
+    if (rteInfo && rteInfo.coverageIds.length > 0) {
+      if (coverages.length < rteInfo.coverageIds.length || prodCode === 42101) {
+        const existingCoverageMap = new Map(coverages.map(c => [c.coverageCode, c.coverageName]));
+        coverages = rteInfo.coverageIds.map(cid => ({
+          coverageCode: cid,
+          coverageName: existingCoverageMap.get(cid) || VIDA_COVERAGE_NAMES[cid] || `Cobertura ${cid}`
+        }));
+      }
+    }
+
+    return {
+      ...p,
+      branchCode,
+      branchName,
+      companyCode,
+      companyName,
+      legacyBranchCode: legacyBranchCode || p.legacyBranchCode,
+      legacyCompanyCode: legacyCompanyCode || p.legacyCompanyCode,
+      coverages,
+      source: (rteInfo || prodCode === 42101) ? 'ACDC_OPERATIONAL' : (p.source || 'CATALOG')
+    };
+  });
+
+  // 4. Dynamically synthesize any product from RTE that does NOT exist in PRODUCTS
+  const synthesizedProducts = [];
+  for (const [prodCode, rteInfo] of rteProductMap.entries()) {
+    if (!processedProductCodes.has(prodCode)) {
+      const branchCode = (rteInfo.branchId === 400 && prodCode >= 42100 && prodCode < 43000) ? 421 : rteInfo.branchId;
+      const companyCode = (rteInfo.companyId === 155 || rteInfo.companyId === 151) ? 15 : rteInfo.companyId;
+
+      const branchName = KNOWN_BRANCH_NAMES[branchCode] || `RAMO ${branchCode}`;
+      const companyName = KNOWN_COMPANY_NAMES[companyCode] || `MAPFRE (${companyCode})`;
+      const productName = KNOWN_PRODUCT_NAMES[prodCode] || `PRODUTO ${prodCode}`;
+
+      const coverages = rteInfo.coverageIds.map(cid => ({
+        coverageCode: cid,
+        coverageName: VIDA_COVERAGE_NAMES[cid] || `Cobertura ${cid}`
+      }));
+
+      synthesizedProducts.push({
+        _id: `BRA-${companyCode}-${branchCode}-${prodCode}`,
+        countryCode: 'BRA',
+        companyCode,
+        companyName,
+        branchCode,
+        branchName,
+        productCode: prodCode,
+        productName,
+        riskPrimeCalc: true,
+        source: 'ACDC_OPERATIONAL',
+        coverages,
+        _class: 'com.mapfre.tron.rating.core.model.peca.ProductCatalog'
+      });
+    }
+  }
+
+  const unifiedProducts = [...enrichedBaseProducts, ...synthesizedProducts];
+
+  // Sort stably by branchCode, then productCode
+  unifiedProducts.sort((a, b) => {
+    if (a.branchCode !== b.branchCode) return (a.branchCode || 0) - (b.branchCode || 0);
+    return (a.productCode || 0) - (b.productCode || 0);
+  });
+
+  // Store in memory cache
+  catalogCache = unifiedProducts;
+  lastCacheTime = now;
+  return unifiedProducts;
+}
+
 // GET /api/dup/products (Generic Auto-Discovery Engine)
 router.get('/products', async (req, res) => {
   try {
     const { country, branch, company } = req.query;
-    const now = Date.now();
-
-    let unifiedProducts;
-
-    if (catalogCache && (now - lastCacheTime < CATALOG_CACHE_TTL_MS)) {
-      unifiedProducts = catalogCache;
-    } else {
-      const dupDb = getDupDb();
-      const rteDb = getRteDb();
-
-      // 1. Fetch base products from MongoDB PRODUCTS (read-only)
-      const baseProducts = await dupDb.collection('PRODUCTS').find({}).toArray();
-
-      // 2. Discover all active products and their coverages from COVERAGE-PACKAGE-DEFINITION (RTE)
-      const rtePackageAgg = await rteDb.collection('COVERAGE-PACKAGE-DEFINITION').aggregate([
-        { $unwind: '$coverages' },
-        {
-          $group: {
-            _id: { product: '$product', coverageId: '$coverages.coverageId' },
-            companyId: { $first: '$companyId' },
-            branchId: { $first: '$branchId' }
-          }
-        },
-        {
-          $group: {
-            _id: '$_id.product',
-            companyId: { $first: '$companyId' },
-            branchId: { $first: '$branchId' },
-            coverages: { $addToSet: '$_id.coverageId' }
-          }
-        }
-      ]).toArray();
-
-      const rteProductMap = new Map();
-      rtePackageAgg.forEach(p => {
-        if (p._id && p._id > 0 && p._id !== 99999) {
-          rteProductMap.set(Number(p._id), {
-            productCode: Number(p._id),
-            companyId: Number(p.companyId) || 15,
-            branchId: Number(p.branchId) || 421,
-            coverageIds: (p.coverages || []).sort((a, b) => a - b)
-          });
-        }
-      });
-
-      // 3. Process & enrich base products
-      const processedProductCodes = new Set();
-      const enrichedBaseProducts = baseProducts.map(p => {
-        const prodCode = Number(p.productCode);
-        processedProductCodes.add(prodCode);
-
-        // Normalize legacy concatenated branch/company codes if detected
-        let branchCode = p.branchCode;
-        let legacyBranchCode = undefined;
-        if (branchCode === 42111 || (branchCode > 1000 && String(branchCode).startsWith('421'))) {
-          legacyBranchCode = branchCode;
-          branchCode = 421;
-        }
-
-        let companyCode = p.companyCode;
-        let legacyCompanyCode = undefined;
-        if (companyCode === 151 || (companyCode > 100 && String(companyCode).startsWith('15'))) {
-          legacyCompanyCode = companyCode;
-          companyCode = 15;
-        }
-
-        // Branch and company names
-        const branchName = (branchCode === 421) ? 'PLURIANUAL RENOVÁVEL (VIDA)' : (p.branchName || KNOWN_BRANCH_NAMES[branchCode] || 'GERAL');
-        const companyName = (companyCode === 15) ? 'MAPFRE BRASIL' : (p.companyName || KNOWN_COMPANY_NAMES[companyCode] || 'MAPFRE SEGUROS');
-
-        // Check if RTE packages have active coverages for this product
-        let coverages = Array.isArray(p.coverages) ? [...p.coverages] : [];
-        const rteInfo = rteProductMap.get(prodCode);
-
-        if (rteInfo && rteInfo.coverageIds.length > 0) {
-          // If product in PRODUCTS has fewer coverages than RTE (e.g. 42101 had only 1), enrich with all RTE coverages
-          if (coverages.length < rteInfo.coverageIds.length || prodCode === 42101) {
-            const existingCoverageMap = new Map(coverages.map(c => [c.coverageCode, c.coverageName]));
-            coverages = rteInfo.coverageIds.map(cid => ({
-              coverageCode: cid,
-              coverageName: existingCoverageMap.get(cid) || VIDA_COVERAGE_NAMES[cid] || `Cobertura ${cid}`
-            }));
-          }
-        }
-
-        return {
-          ...p,
-          branchCode,
-          branchName,
-          companyCode,
-          companyName,
-          legacyBranchCode: legacyBranchCode || p.legacyBranchCode,
-          legacyCompanyCode: legacyCompanyCode || p.legacyCompanyCode,
-          coverages,
-          source: (rteInfo || prodCode === 42101) ? 'ACDC_OPERATIONAL' : (p.source || 'CATALOG')
-        };
-      });
-
-      // 4. Dynamically synthesize any product from RTE that does NOT exist in PRODUCTS
-      const synthesizedProducts = [];
-      for (const [prodCode, rteInfo] of rteProductMap.entries()) {
-        if (!processedProductCodes.has(prodCode)) {
-          // Only synthesize valid operational products
-          const branchCode = (rteInfo.branchId === 400 && prodCode >= 42100 && prodCode < 43000) ? 421 : rteInfo.branchId;
-          const companyCode = (rteInfo.companyId === 155 || rteInfo.companyId === 151) ? 15 : rteInfo.companyId;
-
-          const branchName = KNOWN_BRANCH_NAMES[branchCode] || `RAMO ${branchCode}`;
-          const companyName = KNOWN_COMPANY_NAMES[companyCode] || `MAPFRE (${companyCode})`;
-          const productName = KNOWN_PRODUCT_NAMES[prodCode] || `PRODUTO ${prodCode}`;
-
-          const coverages = rteInfo.coverageIds.map(cid => ({
-            coverageCode: cid,
-            coverageName: VIDA_COVERAGE_NAMES[cid] || `Cobertura ${cid}`
-          }));
-
-          synthesizedProducts.push({
-            _id: `BRA-${companyCode}-${branchCode}-${prodCode}`,
-            countryCode: 'BRA',
-            companyCode,
-            companyName,
-            branchCode,
-            branchName,
-            productCode: prodCode,
-            productName,
-            riskPrimeCalc: true,
-            source: 'ACDC_OPERATIONAL',
-            coverages,
-            _class: 'com.mapfre.tron.rating.core.model.peca.ProductCatalog'
-          });
-        }
-      }
-
-      unifiedProducts = [...enrichedBaseProducts, ...synthesizedProducts];
-
-      // Sort stably by branchCode, then productCode
-      unifiedProducts.sort((a, b) => {
-        if (a.branchCode !== b.branchCode) return (a.branchCode || 0) - (b.branchCode || 0);
-        return (a.productCode || 0) - (b.productCode || 0);
-      });
-
-      // Store in memory cache
-      catalogCache = unifiedProducts;
-      lastCacheTime = now;
-    }
+    const unifiedProducts = await getUnifiedProductsCatalog();
 
     // 5. Apply query filters dynamically
     let filtered = unifiedProducts;

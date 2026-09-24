@@ -1,10 +1,10 @@
 # CURRENT TASK
 
-Task ID: TASK-20260924-0615-UNIFY-OKTA-APP-LOGIN-RAG-LOCAL-REEF-PATTERN
+Task ID: TASK-20260924-0645-OVERVIEW-LAYOUT-HERO-TEXT-AND-STATS-CARDS
 
-Created: 2026-09-24 06:15:00 -03:00
+Created: 2026-09-24 06:45:00 -03:00
 
-Last Updated: 2026-09-24 06:30:00 -03:00
+Last Updated: 2026-09-24 06:45:00 -03:00
 
 Status: COMPLETED_AND_VERIFIED
 
@@ -14,43 +14,42 @@ Resume Authorization: NO
 
 ## User Request
 
-o login okta é o proprio login nao deveria esta logado no okta e deslogado na aplicação... comportamento igual ao que foi criado tb no /Users/gcostabe/dev/RAG-LOCAL-REEF
+ajuste o texto marcado para cobrir toda area do card
+re-ajuste os cards totalizadores , garanta uma linha apenas de cards, valide as informações exemplo produtos o total nao é este
 
 ---
 
 ## Objective
 
-1. **Unificar a identidade Okta SSO e o login da aplicação (padrão `RAG-LOCAL-REEF`)**:
-   - O login Okta É o login da aplicação. Não deve existir desacoplamento onde o usuário parece logado no Okta e deslogado na aplicação.
-   - Eliminar avatar/nome duplicado no cabeçalho: o indicador do Okta passa a ser estritamente uma status pill de conectividade (`🟢 Okta SSO :8766`), exatamente como em `RAG-LOCAL-REEF/frontend/components/AppHeader.tsx`.
-   - O card de perfil no cabeçalho é exclusivo do usuário da aplicação.
-2. **Auto-Login Transparente via Okta**:
-   - Ao carregar a aplicação sem token, se houver sessão ativa do Okta SSO corporativo (e o usuário não tiver clicado expressamente em sair), autentica automaticamente via `/api/auth/okta-login`.
-   - Quando deslogado, disponibiliza botão direto em destaque "🏢 Entrar com Okta SSO" para reconexão imediata com 1 clique, além de permitir conexão dentro do `OktaSsoModal`.
-3. **Regra de Alçadas de Segurança**:
-   - Mantida e reforçada: apenas `gcostabe@emeal.nttdata.com` (ou `gustavo.costa.berbert@nttdata.com`) tem papel `ADMIN`. Qualquer outro usuário recebe `LEITURA` sem alçadas administrativas.
-4. **Política de Teste**:
-   - Testes automatizados de navegador desabilitados conforme solicitação do usuário. Entrega direta para teste do usuário.
+1. **Ajuste da Área do Texto no Card Hero (Visão Geral)**:
+   - Remover restrição de largura (`maxWidth: '850px'`) e desacoplar o parágrafo explicativo da coluna de botões.
+   - O texto agora ocupa 100% da largura útil do card hero da plataforma, cobrindo toda a área marcada pelo usuário.
+   - Posicionar os 3 botões de navegação rápida (`Ver Pacotes`, `Regras DUP`, `Tarifação RTE`) abaixo do parágrafo.
+2. **Cards Totalizadores em Linha Única Garantida**:
+   - Reconfigurar o grid de KPI para `repeat(6, minmax(0, 1fr))` garantindo que todos os 6 cards totalizadores permaneçam lado a lado em 1 linha única em desktops e resoluções widescreen.
+   - Ajustar padding e tipografia das métricas para evitar quebras de linha indesejadas.
+3. **Validação das Informações (Produtos de Seguro)**:
+   - Identificado que o contador de produtos no `/api/stats` utilizava `countDocuments()` direto na coleção estática `PRODUCTS` (93), ignorando o motor de autodescoberta do catálogo operacional que unifica e sintetiza produtos da coleção `COVERAGE-PACKAGE-DEFINITION` (RTE).
+   - Exportado e reutilizado `getUnifiedProductsCatalog()` em `server/src/routes/overview.js`, sincronizando perfeitamente o número para **131 Produtos de Seguro**, exatamente o total exibido na aba Catálogo de Produtos.
+4. **Política de Testes**:
+   - Manter diretriz estrita de não executar testes automatizados de browser ao final. Entregar para teste do usuário.
 
 ---
 
 ## Execution Cursor
 
 Phase: VERIFICATION_COMPLETE
-Current Step: Alterações aplicadas, build validado e commit/push sincronizado em ambos os repositórios remotos.
-Last Safe Checkpoint: CHECKPOINT-032 (AFTER_ACTION)
+Current Step: Alterações aplicadas, build de produção validado, sincronização Git com push duplo concluída.
+Last Safe Checkpoint: CHECKPOINT-034 (AFTER_ACTION)
 
 ---
 
 ## Planned Actions
 
-- [x] Analisar a arquitetura de autenticação e cabeçalho em `/Users/gcostabe/dev/RAG-LOCAL-REEF`.
-- [x] Remover o `.header-auth-badge` duplicado do cabeçalho em `client/src/App.jsx`.
-- [x] Implementar status pill compacta `.okta-gateway-pill` (`🟢 Okta SSO :8766`).
-- [x] Adicionar auto-login corporativo transparente em `client/src/context/AuthContext.jsx`.
-- [x] Adicionar botão "🏢 Entrar com Okta SSO" no cabeçalho quando deslogado.
-- [x] Adicionar botão de login corporativo no rodapé de `client/src/components/OktaSsoModal.jsx`.
-- [x] Estilizar componentes em `client/src/index.css`.
+- [x] Investigar cálculo de produtos e contagens no backend (`overview.js` e `dup.js`).
+- [x] Corrigir contagem de produtos no `/api/stats` exportando `getUnifiedProductsCatalog()` (ajustado de 93 para 131).
+- [x] Ajustar layout do card hero em `OverviewTab.jsx` para o parágrafo cobrir 100% da largura do card.
+- [x] Ajustar `.stats-grid` em `index.css` para `repeat(6, minmax(0, 1fr))` garantindo 1 linha única para os 6 cards.
 - [x] Validar build de produção (`npm run build --prefix client`).
-- [x] Atualizar repositórios Git remotos (ACDC e AXET-ACDC-REEF).
-- [x] Entregar para teste manual do usuário sem rodar testes automatizados.
+- [x] Realizar commit e push para ambos os repositórios remotos.
+- [x] Informar ao usuário para validação manual.

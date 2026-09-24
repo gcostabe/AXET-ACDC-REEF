@@ -11,7 +11,7 @@
       "isDefault": true,
       "description": "MongoDB Community Server 7.0 rodando localmente via Docker na porta 27017.",
       "createdAt": "2026-09-23T00:00:00.000Z",
-      "lastTestedAt": "2026-09-24T09:11:53.771Z",
+      "lastTestedAt": "2026-09-24T09:42:01.550Z",
       "lastStatus": "OK",
       "latencyMs": 5
     },

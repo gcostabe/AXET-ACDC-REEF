@@ -1196,6 +1196,41 @@ Quando o usuário não está autenticado, o cabeçalho fica completamente limpo 
 ### Next Safe Action
 Sincronizar commit com ambos os repositórios Git remotos e entregar para validação manual do usuário.
 
+---
+
+## CHECKPOINT-034 | 2026-09-24 06:45:00 -03:00
+
+Phase: REFINEMENT
+
+State: AFTER_ACTION
+
+### Action
+1. Ajuste do texto descritivo no Card Hero da Visão Geral (`OverviewTab.jsx`): remoção do limite de 850px e reorganização do layout em fluxo vertical, permitindo que o parágrafo explicativo se estenda por 100% da largura útil do card (cobrindo toda a área marcada), com os botões de ação rápida alinhados abaixo do texto.
+2. Re-ajuste dos cards totalizadores (`index.css`): alteração do `.stats-grid` de `repeat(auto-fit, minmax(240px, 1fr))` para `repeat(6, minmax(0, 1fr))` em desktops (com breakpoints responsivos em 1280px e 768px), garantindo rigorosamente que todos os 6 cards totalizadores fiquem em uma linha única.
+3. Validação e correção dos dados de Produtos (`overview.js` e `dup.js`): o totalizador anterior utilizava `countDocuments()` apenas da coleção crua `PRODUCTS` (93 registros), ignorando os produtos operacionais descobertos a partir dos pacotes RTE (`COVERAGE-PACKAGE-DEFINITION`). O endpoint `/api/stats` agora utiliza `getUnifiedProductsCatalog()`, reportando fielmente **131 Produtos de Seguro**, exatamente o total exibido no Catálogo de Produtos.
+
+### Relevant Files
+- `client/src/components/OverviewTab.jsx` [MODIFIED]
+- `client/src/index.css` [MODIFIED]
+- `server/src/routes/dup.js` [MODIFIED]
+- `server/src/routes/overview.js` [MODIFIED]
+- `.agent/current_task.md` [MODIFIED]
+- `.agent/execution_journal.md` [MODIFIED]
+
+### Finding / Result
+- O texto do Card Hero ocupa toda a extensão horizontal do card.
+- Os 6 cards de KPI ficam alinhados em 1 linha única sem quebras órfãs.
+- O contador de Produtos de Seguro está 100% calibrado em 131 produtos, consistente com o catálogo operacional.
+
+### Validation
+- `npm run build --prefix client` concluído com sucesso e zero erros (190ms).
+- `/api/stats` verificado via curl retornando `products: 131`.
+- Diretriz respeitada: sem execução de testes automatizados ao final.
+
+### Next Safe Action
+Sincronizar commit com ambos os repositórios Git remotos e reportar ao usuário para validação manual.
+
+
 
 
 

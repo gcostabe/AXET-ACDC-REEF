@@ -18,23 +18,24 @@ export default function OverviewTab({ stats, onSelectTab }) {
           boxShadow: '0 4px 14px -3px rgba(0, 102, 255, 0.08)'
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.45rem' }}>
-              <span className="badge badge-blue">Ambiente {environment}</span>
-              <span className="badge badge-emerald">
-                {stats.activeEnvironment?.name ? `MongoDB: ${stats.activeEnvironment.name} (${stats.activeEnvironment.type === 'local' ? 'Docker' : 'Remoto'})` : 'MongoDB 7.0 Ativo'}
-              </span>
-              <span className="badge badge-purple">Activo Digital de Cálculo</span>
-            </div>
-            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.65rem', fontWeight: 800, color: 'var(--text-main)', letterSpacing: '-0.02em' }}>
-              Plataforma ACDC • MAPFRE Seguros
-            </h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', maxWidth: '850px', marginTop: '0.45rem', lineHeight: '1.5' }}>
-              Ecossistema corporativo integrando o <strong>Data Update Process (DUP)</strong> — seleção e aceitação de riscos em 11 passos de workflow — e o <strong>Rating Engine (RTE)</strong> — motor atuarial de tarifação, pacotes de cobertura e conceitos de desglose. Mais de 1,4 milhão de registros estruturados para consulta atuarial e auditoria.
-            </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', width: '100%' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
+            <span className="badge badge-blue">Ambiente {environment}</span>
+            <span className="badge badge-emerald">
+              {stats.activeEnvironment?.name ? `MongoDB: ${stats.activeEnvironment.name} (${stats.activeEnvironment.type === 'local' ? 'Docker' : 'Remoto'})` : 'MongoDB 7.0 Ativo'}
+            </span>
+            <span className="badge badge-purple">Activo Digital de Cálculo</span>
           </div>
-          <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
+
+          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.65rem', fontWeight: 800, color: 'var(--text-main)', letterSpacing: '-0.02em', margin: 0 }}>
+            Plataforma ACDC • MAPFRE Seguros
+          </h2>
+
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', width: '100%', maxWidth: '100%', margin: 0, lineHeight: '1.6' }}>
+            Ecossistema corporativo integrando o <strong>Data Update Process (DUP)</strong> — seleção e aceitação de riscos em 11 passos de workflow — e o <strong>Rating Engine (RTE)</strong> — motor atuarial de tarifação, pacotes de cobertura e conceitos de desglose. Mais de 1,4 milhão de registros estruturados para consulta atuarial e auditoria.
+          </p>
+
+          <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap', paddingTop: '0.35rem' }}>
             <button className="pagination-btn" onClick={() => onSelectTab('packages')}>
               <Package size={15} style={{ color: '#7c3aed' }} /> Ver Pacotes ({keyMetrics.coveragePackages || 759})
             </button>
@@ -105,7 +106,7 @@ export default function OverviewTab({ stats, onSelectTab }) {
             <Layers size={24} />
           </div>
           <div className="stat-info">
-            <span className="stat-value">{keyMetrics.products || 28}</span>
+            <span className="stat-value">{keyMetrics.products || 131}</span>
             <span className="stat-label">Produtos de Seguro</span>
           </div>
         </div>
