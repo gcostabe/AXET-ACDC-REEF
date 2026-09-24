@@ -15,15 +15,18 @@ import DataExplorerTab from './components/DataExplorerTab';
 import AdminTab from './components/AdminTab';
 import LoginModal from './components/LoginModal';
 import ChatBotWidget from './components/ChatBotWidget';
+import OktaSsoModal from './components/OktaSsoModal';
 
 function MainApp() {
-  const { user, logout, canAccessTab, setShowLoginModal } = useAuth();
+  const { user, login, logout, canAccessTab, setShowLoginModal } = useAuth();
   const [activeTab, setActiveTab] = useState('overview');
   const [adminSubTab, setAdminSubTab] = useState('users');
   const [stats, setStats] = useState(null);
   const [loadingStats, setLoadingStats] = useState(true);
   const [pendingUsersCount, setPendingUsersCount] = useState(0);
   const [theme, setTheme] = useState(() => localStorage.getItem('acdc_theme') || 'light');
+  const [oktaAuth, setOktaAuth] = useState(null);
+  const [showOktaModal, setShowOktaModal] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
@@ -48,8 +51,33 @@ function MainApp() {
       });
   };
 
+  const fetchOktaStatus = async () => {
+    try {
+      const res = await fetch('/api/auth/status');
+      if (res.ok) {
+        const data = await res.json();
+        setOktaAuth(data);
+      }
+    } catch (err) {
+      console.error('Error loading Okta status:', err);
+    }
+  };
+
+  const handleRefreshOkta = async () => {
+    try {
+      const res = await fetch('/api/auth/refresh', { method: 'POST' });
+      if (res.ok) {
+        const data = await res.json();
+        setOktaAuth(data);
+      }
+    } catch (err) {
+      console.error('Error refreshing Okta session:', err);
+    }
+  };
+
   useEffect(() => {
     fetchStats();
+    fetchOktaStatus();
   }, []);
 
   // If user is admin, check pending requests
@@ -76,6 +104,12 @@ function MainApp() {
   return (
     <div className="app-container">
       <LoginModal />
+      <OktaSsoModal
+        isOpen={showOktaModal}
+        onClose={() => setShowOktaModal(false)}
+        authData={oktaAuth}
+        onRefresh={handleRefreshOkta}
+      />
 
       {/* Header */}
       <header className="app-header">
@@ -122,6 +156,39 @@ function MainApp() {
               'MongoDB 7.0 Ativo'
             )}
           </div>
+
+          {/* Indicador de Sessão Okta SSO & Gateway */}
+          {oktaAuth?.user && (
+            <div
+              className="header-auth-badge"
+              id="header-auth-badge"
+              onClick={() => setShowOktaModal(true)}
+              title="Sessão Okta SSO (NTT DATA) via API Gateway :8766. Clique para ver detalhes."
+            >
+              <div className="auth-user-avatar" id="header-auth-avatar">
+                {(() => {
+                  const words = (oktaAuth.user.name || '').split(' ').filter(Boolean);
+                  return words.length > 1
+                    ? (words[0][0] + words[words.length - 1][0]).toUpperCase()
+                    : (words[0] ? words[0].slice(0, 2).toUpperCase() : 'GB');
+                })()}
+              </div>
+              <div className="auth-user-info">
+                <span className="auth-user-name" id="header-auth-name">
+                  {oktaAuth.user.firstName ? `${oktaAuth.user.firstName} B.` : (oktaAuth.user.name || 'Gustavo B.')}
+                </span>
+                <span className="auth-sso-status">
+                  <span
+                    className="auth-sso-dot"
+                    style={{
+                      background: oktaAuth.gateway?.gateway8766Online || oktaAuth.gateway?.status === 'connected' ? '#10b981' : '#eab308'
+                    }}
+                  ></span>
+                  Okta SSO :8766
+                </span>
+              </div>
+            </div>
+          )}
 
           <button
             className="pagination-btn"

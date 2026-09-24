@@ -1022,6 +1022,122 @@ Validado com `git push --dry-run origin main` retornando sucesso (código 0).
 ### Next Safe Action
 Informar o usuário sobre a configuração realizada e como executar o push para ambos os repositórios.
 
+---
+
+## CHECKPOINT-029
+
+Timestamp: 2026-09-24 05:30:00 -03:00
+
+Phase: VERIFICATION
+
+State: AFTER_ACTION
+
+### Action
+Criação do `README.md` completo e institucional com sumário executivo, badges de tecnologias, arquitetura em diagrama Mermaid, detalhamento de todos os módulos (DUP, RTE, Pacotes, Admin, Gateway, Copilot), guia One-Click e instruções de sincronização; comitado e enviado via Dual Push para ambos os repositórios remotos.
+
+### Relevant Files
+- `README.md` [CREATED_AND_ENRICHED]
+- `server/data/environments.json` [SANITIZED_AND_COMMITTED]
+- Repositórios remotos:
+  - `https://github.com/gberbert/ACDC.git` [PUSHED]
+  - `https://github.com/gcostabe/AXET-ACDC-REEF.git` [PUSHED]
+
+### Finding / Result
+1. `README.md` elaborado contendo:
+   - Badges e resumo executivo NTT DATA • MAPFRE.
+   - Detalhamento de todos os módulos do Cockpit.
+   - Guia One-Click para Windows (`instalar_windows.bat` e `iniciar_windows.bat`) e macOS (`setup_mac.sh` e `iniciar_mac.command`).
+   - Diagrama Mermaid de arquitetura e tabela de portas locais (`5173`, `4000`, `8766`, `27017`).
+   - Explicação sobre o Local AI Gateway embarcado e segurança dos tokens Okta.
+   - Instruções de gestão de múltiplos ambientes MongoDB pela interface.
+   - Usuário de seed inicial e RBAC.
+   - Estrutura completa de diretórios e explicação do Dual Push.
+2. Comitado e enviado simultaneamente com `git push origin main`, confirmado com resposta de sucesso de ambos os servidores.
+
+### Validation
+- `git status` retornou `nothing to commit, working tree clean`.
+- `git push origin main` retornou confirmação de paridade em ambos os remotos:
+  `Everything up-to-date`
+  `Everything up-to-date`
+
+### Next Safe Action
+Apresentar o resultado final e os links aos repositórios para o usuário.
+
+---
+
+## CHECKPOINT-030
+
+Timestamp: 2026-09-24 05:35:00 -03:00
+
+Phase: PLANNING
+
+State: BEFORE_ACTION
+
+### Action
+Planejamento da implementação da autenticação e login corporativo via Okta SSO exatamente no padrão adotado em `/Users/gcostabe/dev/AGENTE-CONTEXT-GEN`, incluindo resolução de identidade via tokens JWT locais do gateway (:8766), badge corporativo no cabeçalho, modal de auditoria/detalhes da sessão Okta e login com 1 clique integrado ao ACDC.
+
+### Relevant Files
+- `/Users/gcostabe/dev/AGENTE-CONTEXT-GEN/dashboard/server.js` [REFERENCED]
+- `/Users/gcostabe/dev/AGENTE-CONTEXT-GEN/dashboard/app.js` [REFERENCED]
+- `/Users/gcostabe/dev/AGENTE-CONTEXT-GEN/dashboard/index.html` [REFERENCED]
+- `/Users/gcostabe/dev/AGENTE-CONTEXT-GEN/dashboard/style.css` [REFERENCED]
+- `server/src/routes/auth.js` [TO_BE_MODIFIED]
+- `client/src/components/OktaSsoModal.jsx` [TO_BE_CREATED]
+- `client/src/components/LoginModal.jsx` [TO_BE_MODIFIED]
+- `client/src/App.jsx` [TO_BE_MODIFIED]
+- `client/src/index.css` [TO_BE_MODIFIED]
+
+### Finding / Result
+No projeto de referência `AGENTE-CONTEXT-GEN`:
+1. O backend resolve a identidade lendo `gateway/user_identity.json` e `gateway/tokens.json`, decodificando as claims JWT (`access_token` e `id_token`), e consultando `http://127.0.0.1:8766/auth/status` para obter o tempo restante do token.
+2. Expõe `/api/auth/status` e `/api/auth/refresh`.
+3. O frontend exibe no cabeçalho o badge `.header-auth-badge` com avatar das iniciais (`GB`), nome formatado (`Gustavo B.`) e indicador de status `Okta SSO :8766`.
+4. Ao clicar no badge, abre-se o modal corporativo detalhado com Profile Card, status do gateway, ID do Okta, TTL do token, renovação transparente e botão de sincronização.
+5. No ACDC, integraremos esse mecanismo também ao `LoginModal` para permitir login corporativo direto com perfil de Administrador com 1 clique.
+
+### Validation
+Planejamento formalizado no artefato `implementation_plan.md` para revisão e autorização do usuário.
+
+### Next Safe Action
+Apresentar o plano ao usuário e aguardar autorização.
+
+---
+
+## CHECKPOINT-031
+
+Timestamp: 2026-09-24 06:12:00 -03:00
+
+Phase: VERIFICATION
+
+State: AFTER_ACTION
+
+### Action
+Implementação da autenticação e login corporativo via Okta SSO idêntico ao `AGENTE-CONTEXT-GEN`, com resolução de identidade (`resolveOktaIdentity`), endpoints `/api/auth/status`, `/api/auth/refresh` e `/api/auth/okta-login`, badge no cabeçalho com iniciais, modal corporativo detalhado com status de sessão/gateway, e regra estrita de segurança garantindo que apenas `gcostabe@emeal.nttdata.com` tenha perfil `ADMIN`, enquanto qualquer outro usuário seja provisionado como usuário comum (`LEITURA`) sem permissões de administração.
+
+### Relevant Files
+- `server/src/routes/auth.js` [MODIFIED]
+- `client/src/components/OktaSsoModal.jsx` [CREATED]
+- `client/src/components/LoginModal.jsx` [MODIFIED]
+- `client/src/App.jsx` [MODIFIED]
+- `client/src/index.css` [MODIFIED]
+
+### Finding / Result
+1. Backend: Implementada a decodificação de claims JWT de `tokens.json` e `user_identity.json` e a consulta de saúde do gateway `:8766`.
+2. Regra de Segurança: `isRootAdmin` valida estritamente `gcostabe@emeal.nttdata.com` (ou `gustavo.costa.berbert@nttdata.com`). Somente essa identidade recebe `role: 'ADMIN'`. Qualquer outro novo login é provisionado automaticamente como `role: 'LEITURA'` com alçadas restritas a consulta e sem acesso a abas administrativas (`admin`, `users`, `environments`, `gateway`).
+3. Frontend: Adicionado `.header-auth-badge` com avatar, nome e status `Okta SSO :8766`, abrindo o modal corporativo com Profile Card, status do gateway, TTL do token e sincronização.
+4. Login: Botão em destaque "🏢 Entrar com Okta SSO (NTT DATA)" no `LoginModal` para autenticação com 1 clique.
+5. Diretriz do Usuário: Não foram executados testes automatizados ao final, passando a validação diretamente ao usuário.
+
+### Validation
+- `npm run build --prefix client` concluído com sucesso em 302ms sem erros de compilação.
+- Endpoint `/api/auth/status` e `/api/auth/okta-login` testados no backend com retorno correto de claims e JWT.
+
+### Next Safe Action
+Informar ao usuário a conclusão das implementações e disponibilizar para seus testes.
+
+
+
+
 
 
 

@@ -14,10 +14,27 @@ export default function LoginModal() {
   const [justification, setJustification] = useState('');
 
   const [loading, setLoading] = useState(false);
+  const [oktaLoading, setOktaLoading] = useState(false);
   const [error, setError] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
 
   if (!showLoginModal) return null;
+
+  const handleOktaLogin = async () => {
+    setError('');
+    setOktaLoading(true);
+    try {
+      const res = await fetch('/api/auth/okta-login', { method: 'POST' });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Falha ao autenticar com Okta SSO.');
+
+      login(data.token, data.user);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setOktaLoading(false);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -137,6 +154,50 @@ export default function LoginModal() {
           >
             <AlertCircle size={16} />
             <span>{error}</span>
+          </div>
+        )}
+
+        {/* Okta SSO One-Click Login */}
+        {!isRegister && (
+          <div style={{ marginBottom: '1.25rem' }}>
+            <button
+              type="button"
+              onClick={handleOktaLogin}
+              disabled={oktaLoading}
+              className="pagination-btn"
+              style={{
+                width: '100%',
+                padding: '0.75rem 1rem',
+                background: 'linear-gradient(135deg, #0066FF, #0284c7)',
+                color: '#ffffff',
+                border: 'none',
+                borderRadius: 'var(--radius-md)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.65rem',
+                fontWeight: 700,
+                fontSize: '0.88rem',
+                boxShadow: '0 4px 12px rgba(0, 102, 255, 0.25)',
+                cursor: oktaLoading ? 'wait' : 'pointer'
+              }}
+            >
+              {oktaLoading ? (
+                <span className="spinner" style={{ width: '16px', height: '16px', borderTopColor: '#fff' }}></span>
+              ) : (
+                <>
+                  <span style={{ fontSize: '1.1rem' }}>🏢</span>
+                  <span>Entrar com Okta SSO (NTT DATA)</span>
+                </>
+              )}
+            </button>
+            <div style={{ display: 'flex', alignItems: 'center', margin: '1rem 0 0.5rem', gap: '0.75rem' }}>
+              <div style={{ flex: 1, height: '1px', background: 'var(--border)' }}></div>
+              <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                ou credenciais locais
+              </span>
+              <div style={{ flex: 1, height: '1px', background: 'var(--border)' }}></div>
+            </div>
           </div>
         )}
 
