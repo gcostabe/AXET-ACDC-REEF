@@ -1171,6 +1171,32 @@ Unificação completa do login Okta SSO com a sessão da aplicação, adotando f
 ### Next Safe Action
 Sincronizar commits nos repositórios remotos e reportar ao usuário para seu teste manual.
 
+---
+
+## CHECKPOINT-033 | 2026-09-24 06:34:00 -03:00
+
+Phase: REFINEMENT
+
+State: AFTER_ACTION
+
+### Action
+Ocultação condicional das status pills do MongoDB (`Local (Docker)`) e do Okta SSO Gateway (`Okta SSO :8766`) no cabeçalho quando o usuário estiver deslogado, exibindo-as exclusivamente para usuários autenticados (`user && ...`).
+
+### Relevant Files
+- `client/src/App.jsx` [MODIFIED]
+- `.agent/execution_journal.md` [MODIFIED]
+
+### Finding / Result
+Quando o usuário não está autenticado, o cabeçalho fica completamente limpo de indicadores internos de infraestrutura (MongoDB e porta 8766 do Gateway), exibindo unicamente os controles de tema, recarga e os botões de ação de login ("Entrar com Okta SSO" / "Entrar / Solicitar Acesso"). Ao autenticar, as status pills tornam-se visíveis no cabeçalho.
+
+### Validation
+- `npm run build --prefix client` concluído com sucesso e zero erros (234ms).
+- Sem execução de testes automatizados ao final, respeitando a diretriz do usuário.
+
+### Next Safe Action
+Sincronizar commit com ambos os repositórios Git remotos e entregar para validação manual do usuário.
+
+
 
 
 

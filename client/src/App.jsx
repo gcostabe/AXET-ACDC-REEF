@@ -149,62 +149,67 @@ function MainApp() {
 
         {/* User Auth & Theme Section in Header */}
         <div className="header-status">
-          <div 
-            className="status-pill"
-            style={{ 
-              cursor: user?.role === 'ADMIN' ? 'pointer' : 'default',
-              transition: 'all 0.2s ease'
-            }}
-            onClick={() => {
-              if (user?.role === 'ADMIN') {
-                setAdminSubTab('environments');
-                setActiveTab('admin');
-              }
-            }}
-            title={user?.role === 'ADMIN' ? 'Clique para gerenciar ambientes e conexões MongoDB' : 'Status do MongoDB'}
-          >
-            <span className={`pulse-dot ${stats?.connectionStatus === 'ERROR' ? 'error' : ''}`}></span>
-            {stats?.activeEnvironment?.name ? (
-              <span>
-                {stats.activeEnvironment.name}{' '}
-                <span style={{ opacity: 0.8, fontSize: '0.72rem', fontWeight: 600 }}>
-                  ({stats.activeEnvironment.type === 'local' ? 'Docker' : 'Remoto'})
-                </span>
-              </span>
-            ) : (
-              'MongoDB 7.0 Ativo'
-            )}
-          </div>
+          {/* Status Pills do MongoDB e Okta SSO Gateway exibidos exclusivamente quando logado */}
+          {user && (
+            <>
+              <div 
+                className="status-pill"
+                style={{ 
+                  cursor: user?.role === 'ADMIN' ? 'pointer' : 'default',
+                  transition: 'all 0.2s ease'
+                }}
+                onClick={() => {
+                  if (user?.role === 'ADMIN') {
+                    setAdminSubTab('environments');
+                    setActiveTab('admin');
+                  }
+                }}
+                title={user?.role === 'ADMIN' ? 'Clique para gerenciar ambientes e conexões MongoDB' : 'Status do MongoDB'}
+              >
+                <span className={`pulse-dot ${stats?.connectionStatus === 'ERROR' ? 'error' : ''}`}></span>
+                {stats?.activeEnvironment?.name ? (
+                  <span>
+                    {stats.activeEnvironment.name}{' '}
+                    <span style={{ opacity: 0.8, fontSize: '0.72rem', fontWeight: 600 }}>
+                      ({stats.activeEnvironment.type === 'local' ? 'Docker' : 'Remoto'})
+                    </span>
+                  </span>
+                ) : (
+                  'MongoDB 7.0 Ativo'
+                )}
+              </div>
 
-          {/* Status Pill do Okta SSO & Gateway (:8766) - Idêntico ao RAG-LOCAL-REEF */}
-          <div
-            className="status-pill okta-gateway-pill"
-            onClick={() => setShowOktaModal(true)}
-            title={
-              oktaAuth?.authenticated
-                ? `Okta SSO Conectado • ${Math.round((oktaAuth.gateway?.remainingSeconds || 0) / 60)} min restantes • Ver detalhes da sessão corporativa`
-                : 'Okta SSO • Clique para detalhes e conexão'
-            }
-            style={{
-              cursor: 'pointer',
-              background: oktaAuth?.authenticated ? 'rgba(16, 185, 129, 0.08)' : 'rgba(239, 68, 68, 0.08)',
-              borderColor: oktaAuth?.authenticated ? 'rgba(16, 185, 129, 0.3)' : 'rgba(239, 68, 68, 0.3)',
-              color: oktaAuth?.authenticated ? '#059669' : '#ef4444',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.45rem',
-              transition: 'all 0.2s ease'
-            }}
-          >
-            <span
-              className="pulse-dot"
-              style={{
-                background: oktaAuth?.authenticated ? '#10b981' : '#ef4444',
-                boxShadow: oktaAuth?.authenticated ? '0 0 6px rgba(16, 185, 129, 0.6)' : 'none'
-              }}
-            ></span>
-            <span>Okta SSO :8766</span>
-          </div>
+              {/* Status Pill do Okta SSO & Gateway (:8766) - Idêntico ao RAG-LOCAL-REEF */}
+              <div
+                className="status-pill okta-gateway-pill"
+                onClick={() => setShowOktaModal(true)}
+                title={
+                  oktaAuth?.authenticated
+                    ? `Okta SSO Conectado • ${Math.round((oktaAuth.gateway?.remainingSeconds || 0) / 60)} min restantes • Ver detalhes da sessão corporativa`
+                    : 'Okta SSO • Clique para detalhes e conexão'
+                }
+                style={{
+                  cursor: 'pointer',
+                  background: oktaAuth?.authenticated ? 'rgba(16, 185, 129, 0.08)' : 'rgba(239, 68, 68, 0.08)',
+                  borderColor: oktaAuth?.authenticated ? 'rgba(16, 185, 129, 0.3)' : 'rgba(239, 68, 68, 0.3)',
+                  color: oktaAuth?.authenticated ? '#059669' : '#ef4444',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                <span
+                  className="pulse-dot"
+                  style={{
+                    background: oktaAuth?.authenticated ? '#10b981' : '#ef4444',
+                    boxShadow: oktaAuth?.authenticated ? '0 0 6px rgba(16, 185, 129, 0.6)' : 'none'
+                  }}
+                ></span>
+                <span>Okta SSO :8766</span>
+              </div>
+            </>
+          )}
 
           <button
             className="pagination-btn"
