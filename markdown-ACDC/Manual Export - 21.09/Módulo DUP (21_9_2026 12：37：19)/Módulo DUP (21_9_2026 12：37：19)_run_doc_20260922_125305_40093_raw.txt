@@ -1,0 +1,64 @@
+# Módulo DUP
+
+Módulo DUP
+
+
+
+
+# [REEF-ACDC Backend](https://reef.acdc-dev.es.emea.aws.mapfre.net/acdc/docs-portal/index.html)
+
+* **Inicio**
+  + [Documentación general](#/README "Documentación general")* **ACDC — Módulo principal**
+    + [Endpoints Online](#/ACDC/ENDPOINTS_ONLINE "Endpoints Online")+ [Orquestador Batch](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR "Orquestador Batch")+ [Cotizaciones](#/ACDC/COTIZACIONES "Cotizaciones")+ [Clientes externos](#/ACDC/EXTERNAL_CLIENTS "Clientes externos")+ [Auditoría](#/ACDC/AUDIT "Auditoría")+ [Seguridad](#/ACDC/SECURITY "Seguridad")* **DUP — Motor de reglas**
+      + [DUP Engine](#/DUP/DUP_ENGINE "DUP Engine")+ [Módulo DUP](#/DUP/README_DUP_MODULE "Módulo DUP")
+          - [Descripción real del módulo](#/DUP/README_DUP_MODULE?id=descripci%c3%b3n-real-del-m%c3%b3dulo "Descripción real del módulo")- [Flujo funcional](#/DUP/README_DUP_MODULE?id=flujo-funcional "Flujo funcional")- [Datos y facts](#/DUP/README_DUP_MODULE?id=datos-y-facts "Datos y facts")- [Acciones soportadas](#/DUP/README_DUP_MODULE?id=acciones-soportadas "Acciones soportadas")- [Selección de reglas y especificidad](#/DUP/README_DUP_MODULE?id=selecci%c3%b3n-de-reglas-y-especificidad "Selección de reglas y especificidad")- [Póliza grupo](#/DUP/README_DUP_MODULE?id=p%c3%b3liza-grupo "Póliza grupo")- [Documentación relacionada](#/DUP/README_DUP_MODULE?id=documentaci%c3%b3n-relacionada "Documentación relacionada")* **Módulos**
+        + [Cálculo de Módulos](#/MODULOS/MODULES_SERVICE "Cálculo de Módulos")* **RTE — Tarificación**
+          + [Configuración de tarifas](#/RTE/RTE_TARIFF_CONFIGURATION "Configuración de tarifas")
+
+# [REEF ACDC - DUP module (`reef-acdc-dup`)](#/DUP/README_DUP_MODULE?id=reef-acdc-dup-module-reef-acdc-dup)
+
+## [Descripción real del módulo](#/DUP/README_DUP_MODULE?id=descripci%c3%b3n-real-del-m%c3%b3dulo)
+
+`reef-acdc-dup` implementa el motor interno de selección/evaluación de reglas DUP usado por `reef-acdc-back`. No es un módulo JPA/PostgreSQL ni contiene entidades ficticias tipo `DupEntity`/`RuleEntity`: las reglas se consultan en MongoDB y se procesan en memoria.
+
+Piezas principales:
+
+* `RiskSelectionService` / `RiskSelectionServiceImpl`: punto de entrada del motor.* `RiskSelectionProcessorRequest`: request normalizada que llega al motor.* `PolicySelectionData`: wrapper de datos de póliza actual y póliza anterior.* Repositorios MongoDB: reglas en `RS-RULES-ACTIONS-CONDITIONS` y constantes en `CONSTANT-DEFINITION`.* Evaluadores de reglas V1/V2 y resolución de constantes bajo demanda.
+
+## [Flujo funcional](#/DUP/README_DUP_MODULE?id=flujo-funcional)
+
+1. `reef-acdc-back` transforma el polizón (`OPlyPlyCDto`) a `RiskSelectionProcessorRequest`.- El request incluye metadatos (`productId`, `executionType`, `processTypeId`, `processStep`, `processStepMenuOption`, `processStepOption`, país, compañía, ramo, etc.) y los datos de póliza (`currentPolicyData`, opcionalmente `previousPolicyData`).- `RiskSelectionServiceImpl` busca reglas candidatas en MongoDB, construye facts y evalúa condiciones.- Las acciones de reglas aplicadas se devuelven en `RiskSelectionResponse.appliedRules` para que el backend aplique asignaciones, validaciones, controles técnicos, exclusiones o reprocesos.
+
+## [Datos y facts](#/DUP/README_DUP_MODULE?id=datos-y-facts)
+
+`PolicySelectionData` agrupa:
+
+* `fixedData`: datos fijos de póliza, incluyendo `policyNumber`, `clientPolicy`, `contractNumber`, `groupPolicyNumber`, canales y niveles.* `variableData`: atributos dinámicos.* `insured`: datos del asegurado.* `coverages`: mapa de coberturas.* `participants`: tomador, beneficiarios y otros participantes.
+
+Si llega póliza anterior (`prevOPlyPlyC`), se publica con prefijo `prev.` al inicio del fact: `prev.fixedValues.*`, `prev.variableData.*`, `prev.insured.*`, `prev.coverages.*`, `prev.participants.*`.
+
+## [Acciones soportadas](#/DUP/README_DUP_MODULE?id=acciones-soportadas)
+
+El enum `TechnicalControlTypeEnum` reconoce: `TEMP`, `Rechazo`, `Revisión`, `Requisito`, `Documento`, `Cuestionario`, `Tarifa`, `Aviso`, `Asignacion`, `Documentacion`, `Auditoria`, `Prima minima`, `Exclusion` y `Reproceso`.
+
+Impacto general:
+
+* asignar/calcular valores (`TEMP`, `Asignacion`),* devolver avisos o controles (`Aviso`, `Auditoria`, `Documentacion`),* requerir revisión, documentos, requisitos o cuestionarios,* bloquear/rechazar cuando aplique,* soportar renovaciones excluidas o decisiones de reproceso (`Exclusion`, `Reproceso`).
+
+## [Selección de reglas y especificidad](#/DUP/README_DUP_MODULE?id=selecci%c3%b3n-de-reglas-y-especificidad)
+
+Las reglas candidatas se filtran por compañía, ramo, producto (`productId` o wildcard `99999`), `executionType`, `processTypeId` (`99` por defecto), paso/opciones DUP, cobertura, campo de proceso, `active = "Y"` y vigencia (`expiry_date >= operationDate`).
+
+Además se consideran datos fijos si están presentes: `policyNumber`, `clientPolicy`, `contractNumber`, `groupPolicyNumber`, tercero, canales (`channel1..3`) y niveles (`level1..3`), admitiendo valor exacto o `null` en la regla. El documento incluye `disabled_date`; en el código actual no se aprecia filtro explícito por `disabledDate` en el repositorio custom.
+
+La prioridad se calcula por modo:
+
+* Prevalidación: posición de `processField` en `processFields`.* Resto: severidad de acción (`TEMP`, `Rechazo`, `Revisión`, requisitos/documentos/cuestionarios/tarifa, otros) y factores de especificidad.
+
+## [Póliza grupo](#/DUP/README_DUP_MODULE?id=p%c3%b3liza-grupo)
+
+El dato `OPlyGniS.gppVal` se mapea a `groupPolicyNumber`. Permite seleccionar reglas específicas de póliza grupo y alimentar facts `fixedValues.groupPolicyNumber`.
+
+## [Documentación relacionada](#/DUP/README_DUP_MODULE?id=documentaci%c3%b3n-relacionada)
+
+* [DUP\_ENGINE.md](#/./DUP_ENGINE): pasos `DupStepEnum`, `StageEnum`, mapeos completos y ejemplos de facts.* [ENDPOINTS\_ONLINE.md](#/../ACDC/ENDPOINTS_ONLINE): invocación online mediante `operationInfo.onlineStage`.

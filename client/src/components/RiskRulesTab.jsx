@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { ShieldCheck, Search, ChevronLeft, ChevronRight, AlertTriangle, Fingerprint, Lock, PlusCircle, X, Save, Plus, Trash2, Edit3, Check } from 'lucide-react';
+import { ShieldCheck, Search, ChevronLeft, ChevronRight, AlertTriangle, Fingerprint, Lock, PlusCircle, X, Save, Plus, Trash2, Edit3, Check, Eye, Layers, Info, LayoutGrid, List, ArrowRight, Filter } from 'lucide-react';
 
 export default function RiskRulesTab() {
   const { token, user, canEditScreen, setShowLoginModal } = useAuth();
-  const [subTab, setSubTab] = useState('business-rules'); // default to business rules or 'rs-rules'
-  
-  // RS-Rules state
+  const [subTab, setSubTab] = useState('actions-conditions'); // default to DUP master rules
+
+  // DUP Master Rules (RS-RULES-ACTIONS-CONDITIONS - 101k+ rules)
+  const [dupRules, setDupRules] = useState([]);
+  const [dupTotal, setDupTotal] = useState(0);
+  const [dupPage, setDupPage] = useState(1);
+  const [dupTotalPages, setDupTotalPages] = useState(1);
+  const [dupStep, setDupStep] = useState('ALL');
+  const [dupActionType, setDupActionType] = useState('ALL');
+  const [dupSearch, setDupSearch] = useState('');
+  const [loadingDup, setLoadingDup] = useState(false);
+  const [selectedDupRule, setSelectedDupRule] = useState(null);
+  const [dupViewMode, setDupViewMode] = useState('cards'); // 'cards' | 'table'
+
+  // RS-Rules state (Metadata)
   const [rsRules, setRsRules] = useState([]);
   const [rsTotal, setRsTotal] = useState(0);
   const [rsPage, setRsPage] = useState(1);
@@ -97,8 +109,32 @@ export default function RiskRulesTab() {
       });
   };
 
+  const fetchDupRules = (p = 1, step = 'ALL', actionType = 'ALL', search = '') => {
+    setLoadingDup(true);
+    let url = `/api/dup/rules-actions-conditions?page=${p}&limit=12`;
+    if (step !== 'ALL') url += `&step=${step}`;
+    if (actionType !== 'ALL') url += `&actionType=${encodeURIComponent(actionType)}`;
+    if (search.trim()) url += `&search=${encodeURIComponent(search.trim())}`;
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        setDupRules(data.rules || []);
+        setDupTotal(data.total || 0);
+        setDupPage(data.page || 1);
+        setDupTotalPages(data.totalPages || 1);
+        setLoadingDup(false);
+      })
+      .catch(err => {
+        console.error('Error fetching DUP rules:', err);
+        setLoadingDup(false);
+      });
+  };
+
   useEffect(() => {
-    if (subTab === 'business-rules') {
+    if (subTab === 'actions-conditions') {
+      fetchDupRules(dupPage, dupStep, dupActionType, dupSearch);
+    } else if (subTab === 'business-rules') {
       fetchBusinessRules();
     } else if (subTab === 'rs-rules') {
       fetchRsRules(rsPage, rsSearch);
@@ -115,7 +151,7 @@ export default function RiskRulesTab() {
           setLoadingTriangulation(false);
         });
     }
-  }, [subTab, rsPage]);
+  }, [subTab, dupPage, dupStep, dupActionType, rsPage]);
 
   const handleAddCondition = () => {
     setConditions([
@@ -363,18 +399,24 @@ export default function RiskRulesTab() {
 
         {/* Action Buttons & Sub-tabs */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
             <button
-              className={`pagination-btn ${subTab === 'business-rules' ? 'active' : ''}`}
-              onClick={() => setSubTab('business-rules')}
+              className={`pagination-btn ${subTab === 'actions-conditions' ? 'active' : ''}`}
+              onClick={() => setSubTab('actions-conditions')}
             >
-              Regras de Negócio & Desconto ({businessRules.length})
+              <ShieldCheck size={14} /> Regras DUP: Ações & Condições ({dupTotal > 0 ? dupTotal.toLocaleString() : '101k+'})
             </button>
             <button
               className={`pagination-btn ${subTab === 'rs-rules' ? 'active' : ''}`}
               onClick={() => setSubTab('rs-rules')}
             >
-              Regras de Seleção ({rsTotal > 0 ? rsTotal.toLocaleString() : '50k+'})
+              Process Rules & Metadados ({rsTotal > 0 ? rsTotal.toLocaleString() : '50k+'})
+            </button>
+            <button
+              className={`pagination-btn ${subTab === 'business-rules' ? 'active' : ''}`}
+              onClick={() => setSubTab('business-rules')}
+            >
+              Regras Legadas ({businessRules.length})
             </button>
             <button
               className={`pagination-btn ${subTab === 'triangulation' ? 'active' : ''}`}
@@ -405,6 +447,508 @@ export default function RiskRulesTab() {
           )}
         </div>
       </div>
+
+      {/* SUBTAB 0: DUP MASTER RULES (RS-RULES-ACTIONS-CONDITIONS) */}
+      {subTab === 'actions-conditions' && (
+        <div>
+          {/* Filters Bar (Standardized with search-input-wrapper) */}
+          <div className="card filter-bar" style={{ padding: '0.9rem 1.25rem', marginBottom: '1.25rem' }}>
+            <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap', alignItems: 'center', width: '100%' }}>
+              {/* Process Step Filter */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-secondary)' }}>Passo:</span>
+                <select
+                  className="select-field"
+                  style={{ minWidth: '190px' }}
+                  value={dupStep}
+                  onChange={(e) => { setDupStep(e.target.value); setDupPage(1); }}
+                >
+                  <option value="ALL">Todos os Passos (1-11)</option>
+                  <option value="1">Passo 1: FIXED_DATA (Dados Fixos)</option>
+                  <option value="2">Passo 2: VARIABLE_DATA_POLICY (Variáveis Política)</option>
+                  <option value="3">Passo 3: BENEFICIARY (Beneficiários)</option>
+                  <option value="4">Passo 4: VARIABLE_DATA_RISK (Variáveis Risco)</option>
+                  <option value="5">Passo 5: OBJETO_ASEGURADO (Objeto Segurado)</option>
+                  <option value="6">Passo 6: COVERAGE (Coberturas & Capitais)</option>
+                  <option value="8">Passo 8: CONTROLS (Controles Finais)</option>
+                  <option value="9">Passo 9: DOCUMENTOS (Validação Documentos)</option>
+                </select>
+              </div>
+
+              {/* Action Type Filter */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-secondary)' }}>Ação:</span>
+                <select
+                  className="select-field"
+                  style={{ minWidth: '150px' }}
+                  value={dupActionType}
+                  onChange={(e) => { setDupActionType(e.target.value); setDupPage(1); }}
+                >
+                  <option value="ALL">Todas as Ações</option>
+                  <option value="Asignacion">Asignacion (Atribuição)</option>
+                  <option value="Auditoria">Auditoria (Alerta)</option>
+                  <option value="Cuestionario">Cuestionario</option>
+                  <option value="Documentacion">Documentacion</option>
+                  <option value="Prima minima">Prima minima</option>
+                  <option value="Rechazo">Rechazo (Bloqueio)</option>
+                  <option value="Tarifa">Tarifa (Extraprêmio)</option>
+                </select>
+              </div>
+
+              {/* Search text in standard .search-input-wrapper */}
+              <div className="search-input-wrapper" style={{ flex: 1, minWidth: '240px' }}>
+                <Search size={15} className="search-icon" />
+                <input
+                  type="text"
+                  placeholder="Buscar por ID, nome da regra ou fator (ex: insured.age)..."
+                  value={dupSearch}
+                  onChange={(e) => setDupSearch(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      setDupPage(1);
+                      fetchDupRules(1, dupStep, dupActionType, dupSearch);
+                    }
+                  }}
+                />
+                {dupSearch && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDupSearch('');
+                      setDupPage(1);
+                      fetchDupRules(1, dupStep, dupActionType, '');
+                    }}
+                    style={{
+                      position: 'absolute',
+                      right: '8px',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      color: 'var(--text-muted)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      padding: 0
+                    }}
+                    title="Limpar pesquisa"
+                  >
+                    <X size={13} />
+                  </button>
+                )}
+              </div>
+
+              <button
+                type="button"
+                className="pagination-btn btn-primary"
+                onClick={() => { setDupPage(1); fetchDupRules(1, dupStep, dupActionType, dupSearch); }}
+              >
+                Filtrar
+              </button>
+              
+              {(dupSearch || dupStep !== 'ALL' || dupActionType !== 'ALL') && (
+                <button
+                  type="button"
+                  className="pagination-btn btn-ghost"
+                  onClick={() => {
+                    setDupStep('ALL');
+                    setDupActionType('ALL');
+                    setDupSearch('');
+                    setDupPage(1);
+                    fetchDupRules(1, 'ALL', 'ALL', '');
+                  }}
+                >
+                  Limpar Filtros
+                </button>
+              )}
+
+              {/* View Switcher: Cards vs Table */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '3px', background: 'var(--bg-surface)', padding: '3px', borderRadius: '8px', border: '1px solid var(--border)', marginLeft: 'auto' }}>
+                <button
+                  type="button"
+                  onClick={() => setDupViewMode('cards')}
+                  className={`pagination-btn ${dupViewMode === 'cards' ? 'active' : ''}`}
+                  style={{
+                    padding: '0.3rem 0.65rem',
+                    fontSize: '0.76rem',
+                    border: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    borderRadius: '6px'
+                  }}
+                  title="Visualização moderna em Cards Clicáveis"
+                >
+                  <LayoutGrid size={13} /> Cards
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setDupViewMode('table')}
+                  className={`pagination-btn ${dupViewMode === 'table' ? 'active' : ''}`}
+                  style={{
+                    padding: '0.3rem 0.65rem',
+                    fontSize: '0.76rem',
+                    border: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    borderRadius: '6px'
+                  }}
+                  title="Visualização tabular compacta"
+                >
+                  <List size={13} /> Tabela
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* DUP Rules Content Container */}
+          <div className="card" style={{ padding: '0', overflow: 'hidden' }}>
+            {loadingDup ? (
+              <div className="loading-state" style={{ padding: '4rem 1rem' }}>
+                <div className="spinner"></div>
+                <span>Carregando regras DUP do banco de subscrição...</span>
+              </div>
+            ) : dupRules.length === 0 ? (
+              <div className="empty-state" style={{ padding: '4rem 1rem' }}>
+                <ShieldCheck size={40} style={{ color: 'var(--text-muted)', marginBottom: '1rem' }} />
+                <p>Nenhuma regra DUP encontrada com os filtros selecionados.</p>
+              </div>
+            ) : dupViewMode === 'cards' ? (
+              /* MODERN CLICKABLE CARDS VIEW (Clean, unpolluted, readable) */
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '1rem', padding: '1.25rem' }}>
+                {dupRules.map((rule) => {
+                  const isRechazo = Array.isArray(rule.actions) && rule.actions.some(a => a.type === 'Rechazo');
+                  const isTarifa = Array.isArray(rule.actions) && rule.actions.some(a => a.type === 'Tarifa');
+                  const actionMsg = Array.isArray(rule.actions) && rule.actions.find(a => a.message)?.message;
+
+                  return (
+                    <div
+                      key={rule._id}
+                      className="card"
+                      onClick={() => setSelectedDupRule(rule)}
+                      style={{
+                        cursor: 'pointer',
+                        padding: '1.15rem',
+                        background: 'var(--bg-surface)',
+                        border: '1px solid var(--border)',
+                        borderRadius: '10px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        transition: 'all 0.18s ease',
+                        boxShadow: '0 1px 3px rgba(0,0,0,0.04)'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = 'var(--primary)';
+                        e.currentTarget.style.boxShadow = '0 6px 18px rgba(0, 102, 255, 0.12)';
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = 'var(--border)';
+                        e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.04)';
+                        e.currentTarget.style.transform = 'translateY(0)';
+                      }}
+                    >
+                      {/* Card Content Top */}
+                      <div>
+                        {/* Header Badges */}
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px', marginBottom: '0.65rem', flexWrap: 'wrap' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '5px', flexWrap: 'wrap' }}>
+                            <span className="badge badge-purple" style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)', padding: '2px 6px' }}>
+                              ID #{rule.rule_id}
+                            </span>
+                            <span className={`badge ${rule.process_step === 4 ? 'badge-blue' : rule.process_step === 6 ? 'badge-purple' : rule.process_step === 8 ? 'badge-amber' : 'badge-neutral'}`} style={{ fontSize: '0.7rem' }}>
+                              {rule.stepLabel || `Passo ${rule.process_step}`}
+                            </span>
+                            {Array.isArray(rule.actions) && rule.actions.map((act, aIdx) => (
+                              <span
+                                key={aIdx}
+                                className={`badge ${act.type === 'Rechazo' ? 'badge-rose' : act.type === 'Tarifa' ? 'badge-purple' : act.type === 'Asignacion' ? 'badge-blue' : 'badge-amber'}`}
+                                style={{ fontSize: '0.7rem' }}
+                              >
+                                {act.type}
+                              </span>
+                            ))}
+                          </div>
+
+                          <span className={`badge ${rule.active === 'Y' ? 'badge-emerald' : 'badge-gray'}`} style={{ fontSize: '0.68rem', padding: '2px 6px' }}>
+                            {rule.active === 'Y' ? 'Ativa' : 'Inativa'}
+                          </span>
+                        </div>
+
+                        {/* Rule Name Title */}
+                        <h4 style={{
+                          fontSize: '0.94rem',
+                          fontWeight: 700,
+                          color: 'var(--text-main)',
+                          margin: '0 0 0.55rem 0',
+                          lineHeight: 1.4,
+                          letterSpacing: '-0.2px'
+                        }}>
+                          {rule.rule_name || `Regra #${rule.rule_id}`}
+                        </h4>
+
+                        {/* Scope Tags (Product, Branch, Coverage) */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '0.65rem', flexWrap: 'wrap' }}>
+                          <span className="badge badge-blue" style={{ fontSize: '0.72rem' }}>
+                            Prod {rule.product}
+                          </span>
+                          <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>
+                            Ramo {rule.branch}
+                          </span>
+                          {rule.coverage && (
+                            <span className="badge badge-purple" style={{ fontSize: '0.72rem' }}>
+                              Cob #{rule.coverage}
+                            </span>
+                          )}
+                          {rule.process_field && (
+                            <span className="badge badge-cyan" style={{ fontSize: '0.7rem', fontFamily: 'var(--font-mono)' }}>
+                              {rule.process_field}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Conditions Summary */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap', marginBottom: '0.65rem' }}>
+                          <span className="badge badge-amber" style={{ fontSize: '0.72rem', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                            <Filter size={11} /> {rule.conditionsCount || (Array.isArray(rule.conditions) ? rule.conditions.length : 0)} condições avaliadas
+                          </span>
+
+                          {/* Quick Factor Pills */}
+                          {Array.isArray(rule.conditions) && rule.conditions.slice(0, 2).map((c, cIdx) => (
+                            <span key={cIdx} style={{ fontSize: '0.7rem', fontFamily: 'var(--font-mono)', background: 'var(--bg-card)', border: '1px solid var(--border)', padding: '2px 6px', borderRadius: '4px', color: 'var(--text-secondary)' }}>
+                              {c.factor ? c.factor.split('.').slice(-1)[0] : 'cond'}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* Message Preview if available */}
+                        {actionMsg && (
+                          <p style={{
+                            fontSize: '0.76rem',
+                            color: 'var(--text-secondary)',
+                            margin: '0 0 0.5rem 0',
+                            fontStyle: 'italic',
+                            lineHeight: 1.35,
+                            background: 'var(--bg-card)',
+                            padding: '0.45rem 0.65rem',
+                            borderRadius: '6px',
+                            borderLeft: isRechazo ? '3px solid #f43f5e' : isTarifa ? '3px solid #a855f7' : '3px solid #3b82f6'
+                          }}>
+                            "{actionMsg.length > 85 ? actionMsg.slice(0, 85) + '...' : actionMsg}"
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Card Footer / Affordance */}
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        borderTop: '1px solid var(--border)',
+                        paddingTop: '0.65rem',
+                        marginTop: '0.5rem',
+                        fontSize: '0.74rem',
+                        color: 'var(--text-muted)'
+                      }}>
+                        <span>Criado por: <strong style={{ color: 'var(--text-secondary)' }}>{rule.created_by || 'MAPFRE'}</strong></span>
+                        <span style={{ color: 'var(--primary)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                          Ver detalhes da regra <ArrowRight size={12} />
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              /* TABULAR COMPACT VIEW */
+              <div className="table-responsive">
+                <table className="custom-table">
+                  <thead>
+                    <tr>
+                      <th>ID & Nome da Regra</th>
+                      <th>Passo do Processo (Step)</th>
+                      <th>Produto / Ramo</th>
+                      <th>Ações Geradas</th>
+                      <th>Condições Avaliadas</th>
+                      <th>Status</th>
+                      <th style={{ textAlign: 'right' }}>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {dupRules.map((rule) => (
+                      <tr key={rule._id} className="table-row-hover" onClick={() => setSelectedDupRule(rule)} style={{ cursor: 'pointer' }}>
+                        <td style={{ maxWidth: '320px' }}>
+                          <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <span style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '0.88rem' }}>
+                              {rule.rule_name || `Regra #${rule.rule_id}`}
+                            </span>
+                            <span style={{ fontSize: '0.75rem', color: 'var(--accent-cyan)' }}>
+                              ID: {rule.rule_id}
+                            </span>
+                          </div>
+                        </td>
+                        <td>
+                          <span className={`badge ${rule.process_step === 4 ? 'badge-blue' : rule.process_step === 6 ? 'badge-purple' : rule.process_step === 8 ? 'badge-amber' : 'badge-gray'}`} style={{ fontSize: '0.75rem' }}>
+                            {rule.stepLabel}
+                          </span>
+                        </td>
+                        <td>
+                          <span style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
+                            Prod {rule.product} | Ramo {rule.branch}
+                          </span>
+                        </td>
+                        <td>
+                          <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap' }}>
+                            {Array.isArray(rule.actions) && rule.actions.map((act, aIdx) => (
+                              <span
+                                key={aIdx}
+                                className={`badge ${act.type === 'Rechazo' ? 'badge-rose' : act.type === 'Tarifa' ? 'badge-purple' : act.type === 'Asignacion' ? 'badge-blue' : 'badge-amber'}`}
+                                style={{ fontSize: '0.72rem' }}
+                                title={act.message || act.type}
+                              >
+                                {act.type}
+                              </span>
+                            ))}
+                          </div>
+                        </td>
+                        <td>
+                          <span className="badge badge-neutral" style={{ fontSize: '0.75rem' }}>
+                            {rule.conditionsCount} {rule.conditionsCount === 1 ? 'condição' : 'condições'}
+                          </span>
+                        </td>
+                        <td>
+                          <span className={`badge ${rule.active === 'Y' ? 'badge-emerald' : 'badge-gray'}`} style={{ fontSize: '0.72rem' }}>
+                            {rule.active === 'Y' ? 'Ativa' : 'Inativa'}
+                          </span>
+                        </td>
+                        <td style={{ textAlign: 'right' }}>
+                          <button
+                            className="pagination-btn"
+                            style={{ padding: '0.35rem 0.75rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.8rem' }}
+                            onClick={(e) => { e.stopPropagation(); setSelectedDupRule(rule); }}
+                          >
+                            <Eye size={13} /> Inspecionar
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {/* Pagination */}
+            {!loadingDup && dupTotalPages > 1 && (
+              <div className="pagination-bar" style={{ padding: '1rem', borderTop: '1px solid var(--border)' }}>
+                <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+                  Página {dupPage} de {dupTotalPages} ({dupTotal.toLocaleString()} regras DUP)
+                </span>
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <button
+                    className="pagination-btn"
+                    disabled={dupPage <= 1}
+                    onClick={() => setDupPage(p => Math.max(1, p - 1))}
+                  >
+                    <ChevronLeft size={14} /> Anterior
+                  </button>
+                  <button
+                    className="pagination-btn"
+                    disabled={dupPage >= dupTotalPages}
+                    onClick={() => setDupPage(p => Math.min(dupTotalPages, p + 1))}
+                  >
+                    Próxima <ChevronRight size={14} />
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* DUP Rule Inspection Modal */}
+          {selectedDupRule && (
+            <div className="modal-overlay" onClick={() => setSelectedDupRule(null)}>
+              <div className="modal-content card" style={{ maxWidth: '800px', width: '90%', maxHeight: '90vh', overflowY: 'auto' }} onClick={e => e.stopPropagation()}>
+                <div className="modal-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid var(--border)', paddingBottom: '1rem', marginBottom: '1.5rem' }}>
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.3rem' }}>
+                      <ShieldCheck className="stat-icon blue" style={{ width: '28px', height: '28px', padding: '5px' }} />
+                      <h3 style={{ margin: 0, fontSize: '1.2rem', color: 'var(--text-main)' }}>
+                        {selectedDupRule.rule_name || `Regra DUP #${selectedDupRule.rule_id}`}
+                      </h3>
+                    </div>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                      ID da Regra: {selectedDupRule.rule_id} | {selectedDupRule.stepLabel} | Produto: {selectedDupRule.product} | Ramo: {selectedDupRule.branch}
+                    </span>
+                  </div>
+                  <button className="icon-btn" onClick={() => setSelectedDupRule(null)}>
+                    <X size={18} />
+                  </button>
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                  {/* Actions Section */}
+                  <div>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--accent-purple)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                      <Layers size={16} /> Ações Disparadas ({Array.isArray(selectedDupRule.actions) ? selectedDupRule.actions.length : 0})
+                    </h4>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                      {Array.isArray(selectedDupRule.actions) && selectedDupRule.actions.map((act, aIdx) => (
+                        <div key={aIdx} className="card" style={{ background: 'var(--bg-surface)', padding: '0.85rem' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem' }}>
+                            <span className={`badge ${act.type === 'Rechazo' ? 'badge-rose' : act.type === 'Tarifa' ? 'badge-purple' : 'badge-blue'}`}>
+                              {act.type}
+                            </span>
+                            {act.jumpLevel && (
+                              <span className="badge badge-gray" style={{ fontSize: '0.72rem' }}>
+                                Salto de Nível: {act.jumpLevel}
+                              </span>
+                            )}
+                            {act.value && (
+                              <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+                                Valor: {act.value}
+                              </span>
+                            )}
+                          </div>
+                          <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-main)' }}>
+                            {act.message || 'Sem mensagem cadastrada.'}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Conditions Section */}
+                  <div>
+                    <h4 style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--accent-cyan)', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                      <ShieldCheck size={16} /> Condições de Avaliação ({Array.isArray(selectedDupRule.conditions) ? selectedDupRule.conditions.length : 0})
+                    </h4>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                      {Array.isArray(selectedDupRule.conditions) && selectedDupRule.conditions.map((cond, cIdx) => (
+                        <div key={cIdx} className="card" style={{ background: 'var(--bg-surface)', padding: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                            <code style={{ color: 'var(--primary)', fontSize: '0.82rem', background: 'var(--primary-light)', padding: '0.2rem 0.5rem', borderRadius: '4px', border: '1px solid #bfdbfe' }}>
+                              {cond.factor || cond.processField || 'Campo'}
+                            </code>
+                            <span className="badge badge-purple" style={{ fontSize: '0.75rem' }}>
+                              {cond.operator || 'EQ'}
+                            </span>
+                          </div>
+                          <div style={{ fontSize: '0.85rem', color: 'var(--text-main)', fontWeight: 600 }}>
+                            {cond.value2 !== undefined ? (
+                              <span>Entre {cond.value1} e {cond.value2}</span>
+                            ) : (
+                              <span>{cond.value1 !== undefined ? String(cond.value1) : String(cond.value || '')}</span>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* SUBTAB 1: BUSINESS RULES */}
       {subTab === 'business-rules' && (
@@ -648,37 +1192,16 @@ export default function RiskRulesTab() {
 
       {/* MODAL: NOVA REGRA (MANTER AUDITORIA) */}
       {showNewRuleModal && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            backdropFilter: 'blur(8px)',
-            zIndex: 110,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '1rem'
-          }}
-          onClick={() => setShowNewRuleModal(false)}
-        >
+        <div className="modal-overlay" onClick={() => setShowNewRuleModal(false)}>
           <div
-            className="card"
-            style={{
-              width: '100%',
-              maxWidth: '640px',
-              background: '#0c1220',
-              border: '1px solid var(--border-card)',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 102, 255, 0.25)',
-              maxHeight: '90vh',
-              overflowY: 'auto'
-            }}
+            className="modal-content card"
+            style={{ maxWidth: '640px' }}
             onClick={(e) => e.stopPropagation()}
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid var(--border)', paddingBottom: '0.75rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <PlusCircle size={20} color="var(--primary)" />
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', color: '#fff' }}>
+                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', color: 'var(--text-main)' }}>
                   Cadastrar Nova Regra de Subscrição
                 </h3>
               </div>
@@ -882,37 +1405,16 @@ export default function RiskRulesTab() {
 
       {/* MODAL: EDITAR REGRA DE NEGÓCIO & SUBSCRIÇÃO */}
       {editingBusinessRule && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            backdropFilter: 'blur(8px)',
-            zIndex: 110,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '1rem'
-          }}
-          onClick={() => setEditingBusinessRule(null)}
-        >
+        <div className="modal-overlay" onClick={() => setEditingBusinessRule(null)}>
           <div
-            className="card"
-            style={{
-              width: '100%',
-              maxWidth: '640px',
-              background: '#0c1220',
-              border: '1px solid var(--border-card)',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 102, 255, 0.25)',
-              maxHeight: '90vh',
-              overflowY: 'auto'
-            }}
+            className="modal-content card"
+            style={{ maxWidth: '640px' }}
             onClick={(e) => e.stopPropagation()}
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid var(--border)', paddingBottom: '0.75rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Edit3 size={20} color="var(--primary)" />
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', color: '#fff' }}>
+                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', color: 'var(--text-main)' }}>
                   Editar Regra #{editingBusinessRule._id?._id || editingBusinessRule._id}
                 </h3>
               </div>
@@ -1116,36 +1618,18 @@ export default function RiskRulesTab() {
       {/* MODAL: EDITAR REGRA DE SELEÇÃO (RS-RULES) */}
       {editingRsRule && (
         <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            backdropFilter: 'blur(8px)',
-            zIndex: 110,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '1rem'
-          }}
+          className="modal-overlay"
           onClick={() => setEditingRsRule(null)}
         >
           <div
-            className="card"
-            style={{
-              width: '100%',
-              maxWidth: '640px',
-              background: '#0c1220',
-              border: '1px solid var(--border-card)',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 102, 255, 0.25)',
-              maxHeight: '90vh',
-              overflowY: 'auto'
-            }}
+            className="modal-content card"
+            style={{ maxWidth: '640px', maxHeight: '90vh', overflowY: 'auto' }}
             onClick={(e) => e.stopPropagation()}
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid var(--border)', paddingBottom: '0.75rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Edit3 size={20} color="var(--accent-purple)" />
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', color: '#fff' }}>
+                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', color: 'var(--text-main)' }}>
                   Editar Regra de Seleção #{editingRsRule.rule_id}
                 </h3>
               </div>

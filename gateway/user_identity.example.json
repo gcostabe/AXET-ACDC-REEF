@@ -1,0 +1,11 @@
+{
+  "okta_id": "00u00000000000000000",
+  "axet_user_id": "00000000-0000-0000-0000-000000000000",
+  "email": "seu.email@nttdata.com",
+  "display_name": "Seu Nome Completo",
+  "login": "usuario@emeal.nttdata.com",
+  "projects": [
+    "f8de6928-9f95-43f1-a1bd-410971ec1221"
+  ],
+  "updated_at": 1790000000
+}

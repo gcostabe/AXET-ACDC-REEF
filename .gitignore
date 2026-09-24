@@ -35,6 +35,16 @@ out/
 *.pfx
 secrets/
 
+# AI Gateway & Okta OIDC Credentials
+gateway/tokens.json
+gateway/tokens.json.*
+gateway/tokens.json.lock
+gateway/user_identity.json
+gateway/logs/
+gateway/__pycache__/
+*.pyc
+*.pyo
+
 # ------------------------------------------------------------------------------
 # 4. Large Database Dumps & Local Data (Exceeds GitHub 100MB file limit)
 # ------------------------------------------------------------------------------

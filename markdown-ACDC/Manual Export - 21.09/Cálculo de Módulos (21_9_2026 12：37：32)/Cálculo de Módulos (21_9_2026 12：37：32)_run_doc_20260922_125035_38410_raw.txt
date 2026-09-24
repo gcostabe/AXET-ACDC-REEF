@@ -1,0 +1,1300 @@
+# Cálculo de Módulos
+
+Cálculo de Módulos
+
+
+
+
+# [REEF-ACDC Backend](https://reef.acdc-dev.es.emea.aws.mapfre.net/acdc/docs-portal/index.html)
+
+* **Inicio**
+  + [Documentación general](#/README "Documentación general")* **ACDC — Módulo principal**
+    + [Endpoints Online](#/ACDC/ENDPOINTS_ONLINE "Endpoints Online")+ [Orquestador Batch](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR "Orquestador Batch")+ [Cotizaciones](#/ACDC/COTIZACIONES "Cotizaciones")+ [Clientes externos](#/ACDC/EXTERNAL_CLIENTS "Clientes externos")+ [Auditoría](#/ACDC/AUDIT "Auditoría")+ [Seguridad](#/ACDC/SECURITY "Seguridad")* **DUP — Motor de reglas**
+      + [DUP Engine](#/DUP/DUP_ENGINE "DUP Engine")+ [Módulo DUP](#/DUP/README_DUP_MODULE "Módulo DUP")* **Módulos**
+        + [Cálculo de Módulos](#/MODULOS/MODULES_SERVICE "Cálculo de Módulos")
+          - [Índice](#/MODULOS/MODULES_SERVICE?id=%c3%8dndice "Índice")- [1. ¿Qué es un módulo?](#/MODULOS/MODULES_SERVICE?id=_1-%c2%bfqu%c3%a9-es-un-m%c3%b3dulo "1. ¿Qué es un módulo?")- [2. Cuándo se calcula](#/MODULOS/MODULES_SERVICE?id=_2-cu%c3%a1ndo-se-calcula "2. Cuándo se calcula")- [3. Dos modos de cálculo](#/MODULOS/MODULES_SERVICE?id=_3-dos-modos-de-c%c3%a1lculo "3. Dos modos de cálculo")- [4. Cálculo de módulos por riesgo (`calculateRiskModules`)](#/MODULOS/MODULES_SERVICE?id=_4-c%c3%a1lculo-de-m%c3%b3dulos-por-riesgo-calculateriskmodules "4. Cálculo de módulos por riesgo (calculateRiskModules)")- [5. Ordenación de coberturas](#/MODULOS/MODULES_SERVICE?id=_5-ordenaci%c3%b3n-de-coberturas "5. Ordenación de coberturas")- [6. Errores y casos límite](#/MODULOS/MODULES_SERVICE?id=_6-errores-y-casos-l%c3%admite "6. Errores y casos límite")- [7. Otros métodos del servicio](#/MODULOS/MODULES_SERVICE?id=_7-otros-m%c3%a9todos-del-servicio "7. Otros métodos del servicio")- [8. Estructura de la respuesta del servicio](#/MODULOS/MODULES_SERVICE?id=_8-estructura-de-la-respuesta-del-servicio "8. Estructura de la respuesta del servicio")- [9. Uso de los valores de la respuesta](#/MODULOS/MODULES_SERVICE?id=_9-uso-de-los-valores-de-la-respuesta "9. Uso de los valores de la respuesta")- [10. Validaciones de condiciones](#/MODULOS/MODULES_SERVICE?id=_10-validaciones-de-condiciones "10. Validaciones de condiciones")- [11. Ejemplos de respuesta y validación](#/MODULOS/MODULES_SERVICE?id=_11-ejemplos-de-respuesta-y-validaci%c3%b3n "11. Ejemplos de respuesta y validación")- [12. `getPreviousCoverages` — Fusión de coberturas previas](#/MODULOS/MODULES_SERVICE?id=_12-getpreviouscoverages-fusi%c3%b3n-de-coberturas-previas "12. getPreviousCoverages — Fusión de coberturas previas")- [Operadores soportados en `rules` (COVERAGE-PACKAGE-DEFINITION)](#/MODULOS/MODULES_SERVICE?id=operadores-soportados-en-rules-coverage-package-definition "Operadores soportados en rules (COVERAGE-PACKAGE-DEFINITION)")* **RTE — Tarificación**
+          + [Configuración de tarifas](#/RTE/RTE_TARIFF_CONFIGURATION "Configuración de tarifas")
+
+# [ModulesService — Cálculo de módulos y paquetes de coberturas](#/MODULOS/MODULES_SERVICE?id=modulesservice-c%c3%a1lculo-de-m%c3%b3dulos-y-paquetes-de-coberturas)
+
+> 📚 Parte de la documentación de `REEF-ACDC` · [← Índice general](#/../README)
+
+**Relacionado con:** [ENDPOINT\_BATCH\_ORCHESTATOR.md](#/../ACDC/ENDPOINT_BATCH_ORCHESTATOR) · [EXTERNAL\_CLIENTS.md](#/../ACDC/EXTERNAL_CLIENTS)
+
+---
+
+## [Índice](#/MODULOS/MODULES_SERVICE?id=%c3%8dndice)
+
+1. [¿Qué es un módulo?](#/MODULOS/MODULES_SERVICE?id=1-qu%c3%a9-es-un-m%c3%b3dulo)- [Cuándo se calcula](#/MODULOS/MODULES_SERVICE?id=2-cu%c3%a1ndo-se-calcula)- [Dos modos de cálculo](#/MODULOS/MODULES_SERVICE?id=3-dos-modos-de-c%c3%a1lculo)
+       * [3.1 Con simulación](#/MODULOS/MODULES_SERVICE?id=31-con-simulaci%c3%b3n-num_simulacion-informado)* [3.2 Sin simulación](#/MODULOS/MODULES_SERVICE?id=32-sin-simulaci%c3%b3n-primera-cotizaci%c3%b3n)- [Procesamiento de cada riesgo](#/MODULOS/MODULES_SERVICE?id=4-procesamiento-de-cada-riesgo)- [Ordenación de coberturas](#/MODULOS/MODULES_SERVICE?id=5-ordenaci%c3%b3n-de-coberturas)- [Errores y casos límite](#/MODULOS/MODULES_SERVICE?id=6-errores-y-casos-l%c3%admite)- [Otros métodos del servicio](#/MODULOS/MODULES_SERVICE?id=7-otros-m%c3%a9todos-del-servicio)- [Estructura de la respuesta del servicio](#/MODULOS/MODULES_SERVICE?id=8-estructura-de-la-respuesta-del-servicio)- [Uso de los valores de la respuesta](#/MODULOS/MODULES_SERVICE?id=9-uso-de-los-valores-de-la-respuesta)- [Validaciones de condiciones](#/MODULOS/MODULES_SERVICE?id=10-validaciones-de-condiciones)
+                     * [10.1 Validaciones previas: riesgo y preferencia](#/MODULOS/MODULES_SERVICE?id=101-validaciones-previas-riesgo-y-preferencia)* [10.2 Coberturas obligatorias y cadena de dependencias](#/MODULOS/MODULES_SERVICE?id=102-coberturas-obligatorias-y-cadena-de-dependencias)* [10.3 Validación de franquicias (descuentos)](#/MODULOS/MODULES_SERVICE?id=103-validaci%c3%b3n-de-franquicias-descuentos)* [10.4 Validación de atributos/parámetros](#/MODULOS/MODULES_SERVICE?id=104-validaci%c3%b3n-de-atributospar%c3%a1metros)* [10.5 Validación de importe — árbol de resolución](#/MODULOS/MODULES_SERVICE?id=105-validaci%c3%b3n-de-importe--%c3%a1rbol-de-resoluci%c3%b3n)
+                               + [10.5.A risk[] + maxPct](#/MODULOS/MODULES_SERVICE?id=105a----risk--maxpct-m%c3%a1ximo-porcentual-sobre-otro-riesgo)+ [10.5.B risk[] sin maxPct](#/MODULOS/MODULES_SERVICE?id=105b----risk-sin-maxpct-importe-validado-respecto-a-otro-riesgo)+ [10.5.C coverageRef + maxPct](#/MODULOS/MODULES_SERVICE?id=105c----coverageref--maxpct-m%c3%a1ximo-porcentual-sobre-cobertura-del-mismo-riesgo)+ [10.5.D coverageRef sin maxPct](#/MODULOS/MODULES_SERVICE?id=105d----coverageref-sin-maxpct-cadena-recursiva-de-coberturas)+ [10.5.E Límites directos](#/MODULOS/MODULES_SERVICE?id=105e----l%c3%admites-directos-sin-referencias)* [10.6 Escenarios condicionales](#/MODULOS/MODULES_SERVICE?id=106-escenarios-condicionales)* [10.7 Bloqueo de cobertura (`blocked`)](#/MODULOS/MODULES_SERVICE?id=107-bloqueo-de-cobertura-blocked)- [Ejemplos de respuesta y validación](#/MODULOS/MODULES_SERVICE?id=11-ejemplos-de-respuesta-y-validaci%c3%b3n)- [getPreviousCoverages — Fusión de coberturas previas](#/MODULOS/MODULES_SERVICE?id=12-getpreviouscoverages--fusi%c3%b3n-de-coberturas-previas)
+
+---
+
+## [1. ¿Qué es un módulo?](#/MODULOS/MODULES_SERVICE?id=_1-%c2%bfqu%c3%a9-es-un-m%c3%b3dulo)
+
+Un **módulo** (o **paquete**) es una combinación predefinida de coberturas que el producto ofrece al asegurado. El servicio externo `CalculatePackagesService` es quien conoce qué paquetes son aplicables para una póliza concreta y devuelve las coberturas a añadir en cada caso.
+
+El resultado de `ModulesService.calculateModules()` es una **lista de `OPlyPlyCDto`**, donde cada elemento representa una opción válida de cotización con sus coberturas ya rellenas. Estas opciones son las que después recorren el flujo completo de controles técnicos y tarificación.
+
+---
+
+## [2. Cuándo se calcula](#/MODULOS/MODULES_SERVICE?id=_2-cu%c3%a1ndo-se-calcula)
+
+`ModulesService.calculateModules()` se llama en la **Fase 3** del orquestador, tras todos los controles técnicos de póliza y riesgo y justo antes del bucle de coberturas:
+
+```
+FASE RIESGO (CT x4)
+       │
+       ▼
+ModulesService.calculateModules()   ← aquí
+       │
+       ▼
+BUCLE por cada módulo devuelto → FASE COBERTURA
+```
+
+---
+
+## [3. Dos modos de cálculo](#/MODULOS/MODULES_SERVICE?id=_3-dos-modos-de-c%c3%a1lculo)
+
+La selección del modo es automática: se comprueba si **todos los riesgos** tienen el atributo `NUM_SIMULACION` informado en sus atributos de riesgo.
+
+```
+boolean allRiskHaveSimulation = oPlyPlyCDto.getOPlyRkcCT().stream()
+    .allMatch(risk -> risk.getOPlyRkcC().getOPlyAtcCT().stream()
+        .anyMatch(atr -> "NUM_SIMULACION".equalsIgnoreCase(atr.getOPlyAtcC().getOPlyAtrP().getOPlyAtrS().getFldNam())));
+```
+
+| Condición | Modo |
+| --- | --- |
+| Todos los riesgos tienen `NUM_SIMULACION` | **Con simulación** → 1 resultado |
+| Algún riesgo no tiene `NUM_SIMULACION` | **Sin simulación** → N resultados |
+
+---
+
+### [3.1 Con simulación (`NUM_SIMULACION` informado)](#/MODULOS/MODULES_SERVICE?id=_31-con-simulaci%c3%b3n-num_simulacion-informado)
+
+El usuario ya eligió un paquete concreto en una cotización previa. El atributo `NUM_SIMULACION` de cada riesgo indica el `preferenceId` seleccionado.
+
+**Flujo:**
+
+```
+Para cada riesgo:
+  1. Lee NUM_SIMULACION del atributo del riesgo → preferenceId
+  2. Llama a CalculatePackagesService (POST /calculate-packages)
+     con solo ese riesgo como payload
+  3. Toma la ResponseRisk correspondiente
+  4. Aplica las coberturas del paquete al riesgo
+
+→ Devuelve List con UN ÚNICO OPlyPlyCDto
+```
+
+Si algún riesgo no produce resultado → `AcdcException(PK_PLY_ERR)`.
+
+---
+
+### [3.2 Sin simulación (primera cotización)](#/MODULOS/MODULES_SERVICE?id=_32-sin-simulaci%c3%b3n-primera-cotizaci%c3%b3n)
+
+El sistema descubre todas las combinaciones de paquetes disponibles para la póliza.
+
+**Flujo:**
+
+```
+1. Construye PackagesRequest con TODOS los riesgos
+2. Llama a CalculatePackagesService (POST /calculate-packages)
+   → PackagesResponse { risks: { "1": ResponseRisk, "2": ResponseRisk, ... } }
+3. Extrae todos los preferenceId únicos de la respuesta
+4. Por cada preferenceId:
+   a. Clona el OPlyPlyCDto original
+   b. Para cada riesgo:
+      - Busca el ResponseRisk correspondiente
+      - Aplica las coberturas del paquete para ese preferenceId
+   c. Si todos los riesgos producen resultado → añade a la lista
+   d. Si algún riesgo no aplica → salta esa preferencia (continue pp)
+5. Si la lista final está vacía → PlyValException(PK_PLY_ERR)
+
+→ Devuelve List<OPlyPlyCDto> con N elementos (uno por preferencia válida)
+```
+
+---
+
+## [4. Cálculo de módulos por riesgo (`calculateRiskModules`)](#/MODULOS/MODULES_SERVICE?id=_4-c%c3%a1lculo-de-m%c3%b3dulos-por-riesgo-calculateriskmodules)
+
+El método `calculateRiskModules()` aplica las coberturas de un paquete a un riesgo concreto:
+
+```
+calculateRiskModules(oPlyPlyCDto, plyRisk, packagesRequest, riskPreferenceMap, risksMap, ...)
+       │
+       ├── Obtiene preferenceId para este riesgo desde riskPreferenceMap
+       ├── Obtiene ResponseRisk (de risksMap o llamando a CalculatePackagesService)
+       │
+       ├── Busca la ResponsePreference correspondiente al preferenceId
+       │     └── Si no existe → retorna null (riesgo no aplicable)
+       │
+       ├── ModulesDataFillService.fillModulesData()
+       │     → Rellena los datos del riesgo con los datos del paquete
+       │
+       └── ModulesWithCvcFillService.fillModulesWithCvc()
+             → Rellena las coberturas del riesgo con las coberturas del paquete
+```
+
+**Clases de soporte:**
+
+| Clase | Responsabilidad |
+| --- | --- |
+| `ModulesDataFillService` | Rellena atributos y datos del riesgo a partir de `ResponsePreference` |
+| `ModulesWithCvcFillService` | Construye la lista de `OPlyCvcPC` (coberturas) del riesgo según el paquete |
+
+---
+
+## [5. Ordenación de coberturas](#/MODULOS/MODULES_SERVICE?id=_5-ordenaci%c3%b3n-de-coberturas)
+
+Antes de procesar las coberturas en el flujo DUP (fases PREVIOUS/VALIDATION de cobertura), el orquestador las **ordena de mayor a menor** por `sqnVal` (número de secuencia):
+
+```
+// En ExecuteOrchestratorUsecase.sortCoverages()
+cvr1.OPlyCvcC.OPlyCvrP.OPlyCvrS.sqnVal  ← campo de ordenación
+```
+
+Esto garantiza que las coberturas con mayor secuencia (las más relevantes para el producto) se procesen primero en los controles DUP.
+
+---
+
+## [6. Errores y casos límite](#/MODULOS/MODULES_SERVICE?id=_6-errores-y-casos-l%c3%admite)
+
+| Situación | Excepción lanzada |
+| --- | --- |
+| Módulo con simulación: un riesgo no produce resultado | `AcdcException(PK_PLY_ERR)` |
+| Sin simulación: ninguna preferencia genera póliza válida | `PlyValException(PK_PLY_ERR, plyVal)` |
+| Error al llamar a `CalculatePackagesService` (HTTP 422) | `AcdcException` con el `AcdcError` del servicio externo |
+
+---
+
+## [7. Otros métodos del servicio](#/MODULOS/MODULES_SERVICE?id=_7-otros-m%c3%a9todos-del-servicio)
+
+Además del cálculo del orquestador batch, `ModulesService` expone dos métodos para uso desde el `CoveragePackagesController`:
+
+| Método | Uso | Descripción |
+| --- | --- | --- |
+| `getModules()` | `CoveragePackagesController` | Devuelve `List<OPlyCvcPC>` — las coberturas del primer módulo calculado para un riesgo concreto |
+| `getPreferences()` | `CoveragePackagesController` | Devuelve `List<ResponsePreferences>` — todas las preferencias disponibles llamando a `POST /calculate-preferencesId` |
+| `obtainModules()` | Interno | Llama a `CalculatePackagesService.callObtainPackages()` → `POST /calculate-preferencesId` |
+| `getPreviousCoverages()` | `PreviousCoveragePackagesUsecase` | Fusiona póliza y catálogo, añade coberturas ausentes y recalcula capitales del mismo riesgo definidos por `coverageRef + validPcts` |
+
+---
+
+## [8. Estructura de la respuesta del servicio](#/MODULOS/MODULES_SERVICE?id=_8-estructura-de-la-respuesta-del-servicio)
+
+`CalculatePackagesService` devuelve un `PackagesResponse` con la siguiente jerarquía:
+
+```
+PackagesResponse
+ ├── requestId
+ ├── countryId
+ ├── companyId
+ ├── branchId
+ └── risks: Map<riskVal, ResponseRisk>
+       ├── risk        (id del riesgo)
+       ├── product     (id del producto)
+       └── type: Map<typeId, ResponseRiskType>
+             │   (actualmente solo se usa type = 2, el asegurado)
+             └── preferences: Map<preferenceId, ResponsePreference>
+                   ├── preferenceId    (id del módulo/paquete)
+                   ├── preferenceName  (nombre descriptivo, e.g. "BASICO", "PREMIUM")
+                   └── coverages: Map<coverageId, ResponseCoverage>
+                         ├── coverageId
+                         ├── data: ResponseData
+                         │     ├── mandatory       (cobertura obligatoria)
+                         │     ├── selected        (selección por defecto desde catálogo)
+                         │     ├── blocked         (true = cobertura no editable)
+                         │     ├── currency        (moneda ISO, e.g. 978 = EUR)
+                         │     ├── amount          (importe base)
+                         │     ├── coverageRef     (referencia a otra cobertura para calcular importe)
+                         │     ├── maxPct          (porcentaje máximo permitido sobre coverageRef)
+                         │     ├── maxAmount       (límite máximo permitido)
+                         │     ├── minAmount       (límite mínimo permitido)
+                         │     ├── validAmounts    (lista de importes exactos válidos)
+                         │     ├── validPcts       (porcentajes válidos sobre amount base)
+                         │     ├── risk            (atributos del riesgo de referencia)
+                         │     └── prm             (prima indicativa)
+                         ├── parameters: Map<code, PackagesParameter>
+                         │     ├── code            (nombre del atributo → fldNam)
+                         │     ├── value           (valor por defecto → fldValVal)
+                         │     ├── jump            (true = atributo no modificable)
+                         │     └── validValues     (lista de valores permitidos)
+                         ├── discounts: List<PackagesDiscount>
+                         │     ├── discount        (valor franquicia → dctVal)
+                         │     ├── currency        (moneda franquicia → dctCrnVal)
+                         │     ├── default         (franquicia por defecto)
+                         │     ├── maxValue        (importe máximo → mxmDctVal)
+                         │     └── minValue        (importe mínimo → mnmDctVal)
+                         └── scenarios: List<PackagesScenario>
+                               ├── selector        (condición de activación del escenario)
+                               └── actions         (acciones a validar si el escenario aplica)
+```
+
+---
+
+## [9. Uso de los valores de la respuesta](#/MODULOS/MODULES_SERVICE?id=_9-uso-de-los-valores-de-la-respuesta)
+
+La respuesta del servicio se utiliza de dos formas distintas según si la póliza llega con coberturas ya informadas o no.
+
+### [9.1 Riesgo sin coberturas — relleno desde cero (`ModulesDataFillService`)](#/MODULOS/MODULES_SERVICE?id=_91-riesgo-sin-coberturas-relleno-desde-cero-modulesdatafillservice)
+
+Cuando `OPlyRkcPC` no tiene coberturas (`OPlyCvcCT` vacío), el sistema construye la lista completa a partir del catálogo del módulo:
+
+| Campo de `ResponseData` / `ResponseCoverage` | Campo póliza destino | Descripción |
+| --- | --- | --- |
+| `coverageId` | `OPlyCvrS.cvrVal` | Identificador de la cobertura |
+| `data.currency` | `OPlyCvrS.cplCrnVal` | Moneda del capital |
+| `data.amount` (calculado) | `OPlyCvrS.cplAmn` | Importe final (ver cálculo de importes) |
+| `data.mandatory` | `OPlyCvrS.cvrSlc = "*"` | Si es obligatoria y no estaba → se selecciona |
+| `data.blocked` | `OPlyCvrP.oTrnPrcS.mdf = "N"` (sobre el `oTrnPrcS` existente) | Si `true`, la cobertura se devuelve bloqueada (no editable/no desmarcable en front) |
+| Posición en el bucle | `OPlyCvrS.sqnVal` | Número de secuencia asignado correlativamente |
+| `discounts[default=true]` | `OPlyCvrS.dctVal` / `dctCrnVal` | Franquicia aplicada por defecto |
+| `discounts[default=true].minValue` | `OPlyCvrS.mnmDctVal` | Importe mínimo de la franquicia |
+| `discounts[default=true].maxValue` | `OPlyCvrS.mxmDctVal` | Importe máximo de la franquicia |
+| `parameters[].code` | `OPlyAtcC.fldNam` | Nombre del atributo de cobertura |
+| `parameters[].value` | `OPlyAtcC.fldValVal` | Valor del atributo de cobertura |
+
+**Cálculo del importe (`cplAmn`) — prioridad de resolución:**
+
+```
+1. Si data.risk no está vacío
+   → Busca el riesgo de referencia por sus atributos y toma el cplAmn
+      de la cobertura coverageRef de ese riesgo
+
+2. Si data.validPcts no está vacío y data.amount no es null
+   → cplAmn = data.amount × validPcts[0] / 100  (redondeado HALF_UP, 3 decimales)
+
+3. Si data.coverageRef no es null
+   → Busca la cobertura referenciada en la misma preferencia y toma su amount
+
+4. En otro caso
+   → cplAmn = data.amount (o 0 si es null)
+```
+
+### [9.2 Riesgo con coberturas ya informadas — validación y completado (`ModulesWithCvcFillService`)](#/MODULOS/MODULES_SERVICE?id=_92-riesgo-con-coberturas-ya-informadas-validaci%c3%b3n-y-completado-moduleswithcvcfillservice)
+
+Cuando la póliza ya incluye coberturas, el servicio **no sobreescribe los valores**: valida que las coberturas enviadas por el usuario son compatibles con el módulo seleccionado y lanza excepción si no lo son. Ver sección [10. Validaciones de condiciones](#/MODULOS/MODULES_SERVICE?id=10-validaciones-de-condiciones).
+
+### [9.3 Reordenación de coberturas](#/MODULOS/MODULES_SERVICE?id=_93-reordenaci%c3%b3n-de-coberturas)
+
+Tras el relleno, `reorderCoveragesByModulesOrder` reordena `OPlyCvcCT` para que el orden de las coberturas en la lista coincida con el orden que devuelve el catálogo del módulo (`type=2`, `preferenceId`).
+
+---
+
+## [10. Validaciones de condiciones](#/MODULOS/MODULES_SERVICE?id=_10-validaciones-de-condiciones)
+
+Estas validaciones aplican únicamente cuando la póliza **ya tiene coberturas informadas** (`ModulesWithCvcFillService.validateExistingRiskModules()`). Se ejecutan en secuencia; cualquier fallo lanza `AcdcException(PK_PLY_ERR_VAL)`.
+
+### [Flujo general de validación](#/MODULOS/MODULES_SERVICE?id=flujo-general-de-validaci%c3%b3n)
+
+```
+validateExistingRiskModules(policy, responseRisk, policyProcessedRisk, preferenceId)
+  │
+  ├── [10.1] Riesgo existe en póliza          ─── fallo → lanza excepción inmediata
+  ├── [10.1] Preferencia existe en response   ─── fallo → lanza excepción inmediata
+  ├── [10.2] Coberturas obligatorias + cadena de dependencias
+  └── Por cada cobertura SELECCIONADA en la póliza:
+        ├── [10.3] Descuento (franchise)
+        ├── [10.4] Atributos/parámetros
+        ├── [10.5] Importe ──► árbol de resolución (ver 10.5)
+        └── [10.6] Escenarios condicionales
+  └── [10.7] Aplicar estado bloqueado (post-validación, sin error)
+```
+
+---
+
+### [10.1 Validaciones previas: riesgo y preferencia](#/MODULOS/MODULES_SERVICE?id=_101-validaciones-previas-riesgo-y-preferencia)
+
+Estas dos validaciones son **bloqueantes individuales**: si fallan, se lanza excepción sin continuar.
+
+#### [Riesgo no encontrado en póliza](#/MODULOS/MODULES_SERVICE?id=riesgo-no-encontrado-en-p%c3%b3liza)
+
+El `riskId` del response debe coincidir con el `rskVal` de algún riesgo de la póliza.
+
+```
+// Response indica riesgo 1
+{ "risk": 1, ... }
+
+// Póliza tiene riesgos [1, 2]  → OK
+// Póliza tiene riesgos [2, 3]  → ERROR: riesgo 1 no encontrado
+```
+
+**Error:** `20719` — `error.risk.not.found`
+
+#### [Preferencia no encontrada](#/MODULOS/MODULES_SERVICE?id=preferencia-no-encontrada)
+
+El `preferenceId` solicitado debe existir en alguno de los `ResponseRiskType` del response.
+
+```
+// Se solicita preferenceId = 2
+// Response tiene preferencias [1, 2, 3] → OK
+// Response tiene preferencias [1, 3]    → ERROR
+```
+
+**Error:** `20720` — `error.preference.not.found`
+
+---
+
+### [10.2 Coberturas obligatorias y cadena de dependencias](#/MODULOS/MODULES_SERVICE?id=_102-coberturas-obligatorias-y-cadena-de-dependencias)
+
+Antes de validar importes, se comprueba que las coberturas del módulo están correctamente presentes en la póliza.
+
+#### [10.2.1 Cobertura obligatoria ausente](#/MODULOS/MODULES_SERVICE?id=_1021-cobertura-obligatoria-ausente)
+
+**Regla:** toda cobertura con `data.mandatory = true` debe estar presente y seleccionada en la póliza.
+
+```
+// Configuración del módulo
+{
+  "coverageId": 4003,
+  "data": {
+    "mandatory": true,
+    "currency": 978
+  }
+}
+
+// Póliza envía coberturas: [4006]
+// → ERROR: cobertura obligatoria 4003 no está en riesgo 1
+```
+
+**Error:** `20712` — `error.mandatory.not.selected`
+
+#### [10.2.2 Cadena de dependencias (`coverageRef`)](#/MODULOS/MODULES_SERVICE?id=_1022-cadena-de-dependencias-coverageref)
+
+**Regla:** si una cobertura existe en la póliza y tiene `data.coverageRef` (sin `data.risk`), la cobertura referenciada también debe existir y estar seleccionada en la póliza. La validación es recursiva: si la referenciada también tiene `coverageRef`, se sigue la cadena.
+
+```
+// Configuración del módulo
+{
+  "coverageId": 4006,
+  "data": { "coverageRef": 4003, "validPcts": [50, 100] }
+},
+{
+  "coverageId": 4003,
+  "data": { "validAmounts": [50000, 100000] }
+}
+
+// Póliza envía: [4006] seleccionada, [4003] NO seleccionada
+// → ERROR: cobertura requerida 4003 no está en póliza
+```
+
+**Error:** `20999` — `error.package.require.coverage.not.found`
+
+#### [10.2.3 Referencia cíclica](#/MODULOS/MODULES_SERVICE?id=_1023-referencia-c%c3%adclica)
+
+Si durante la resolución recursiva se detecta una cobertura ya visitada, se aborta.
+
+```
+// Configuración inválida (ciclo):
+{ "coverageId": 4003, "data": { "coverageRef": 4006 } },
+{ "coverageId": 4006, "data": { "coverageRef": 4003 } }
+// → ERROR: referencia circular detectada
+```
+
+**Error:** `20717` — `error.coverage.cross.reference`
+
+---
+
+### [10.3 Validación de franquicias (descuentos)](#/MODULOS/MODULES_SERVICE?id=_103-validaci%c3%b3n-de-franquicias-descuentos)
+
+**Condición de activación:** la cobertura tiene `discounts[]` no vacío en el módulo Y la póliza informa `dctVal`.
+
+**Regla:** el `dctVal` de la póliza debe coincidir con alguno de los valores de `discounts[].discount`.  
+Si coincide, se actualizan automáticamente `mnmDctVal` y `mxmDctVal` en la cobertura de la póliza.
+
+```
+// Configuración del módulo
+{
+  "coverageId": 4003,
+  "discounts": [
+    { "discount": 0,   "currency": 978, "default": true,  "minValue": null, "maxValue": null },
+    { "discount": 500, "currency": 978, "default": false, "minValue": 500,  "maxValue": 500  },
+    { "discount": 1000,"currency": 978, "default": false, "minValue": 1000, "maxValue": 2000 }
+  ]
+}
+
+// Póliza: dctVal = 500  → OK  → se asigna mnmDctVal=500, mxmDctVal=500
+// Póliza: dctVal = 250  → ERROR: 250 no está en [0, 500, 1000]
+// Póliza: dctVal = null → se omite la validación (no se valida si dctVal es null)
+```
+
+**Error:** `20708` — `error.discount.not.found.validation`
+
+---
+
+### [10.4 Validación de atributos/parámetros](#/MODULOS/MODULES_SERVICE?id=_104-validaci%c3%b3n-de-atributospar%c3%a1metros)
+
+**Condición de activación:** la cobertura tiene `parameters{}` no vacío en el módulo.
+
+Los atributos se buscan en la cobertura del riesgo dentro de la póliza (nivel cobertura, `lvlTypVal=3`).  
+Para cada `PackagesParameter` se evalúan dos reglas independientes:
+
+#### [10.4.1 Atributo no modificable (`jump = true`)](#/MODULOS/MODULES_SERVICE?id=_1041-atributo-no-modificable-jump-true)
+
+**Regla:** si `jump = true` y el parámetro tiene `value` definido, el atributo en la póliza debe tener exactamente ese valor.
+
+```
+// Configuración del módulo
+{
+  "coverageId": 4003,
+  "parameters": {
+    "COD_MODALIDAD": {
+      "code": "COD_MODALIDAD",
+      "value": "42101",
+      "jump": true
+    }
+  }
+}
+
+// Póliza: atributo COD_MODALIDAD = "42101" → OK
+// Póliza: atributo COD_MODALIDAD = "42102" → ERROR
+// Póliza: atributo COD_MODALIDAD ausente   → ERROR (valor actual null ≠ "42101")
+```
+
+**Error:** `20706` — `error.attribute.not.modifiable.validation`
+
+#### [10.4.2 Lista de valores válidos (`validValues`)](#/MODULOS/MODULES_SERVICE?id=_1042-lista-de-valores-v%c3%a1lidos-validvalues)
+
+**Regla:** si `validValues` está informado, el valor del atributo en la póliza debe estar en esa lista (comparación case-insensitive).
+
+```
+// Configuración del módulo
+{
+  "coverageId": 4003,
+  "parameters": {
+    "MCA_SEXO": {
+      "code": "MCA_SEXO",
+      "validValues": ["1", "2"]
+    }
+  }
+}
+
+// Póliza: atributo MCA_SEXO = "1" → OK
+// Póliza: atributo MCA_SEXO = "3" → ERROR: 3 no está en [1, 2]
+// Póliza: atributo MCA_SEXO ausente (null) → ERROR: null no está en la lista
+```
+
+**Error:** `20707` — `error.attribute.value.validation`
+> `jump` y `validValues` son independientes: pueden estar ambas en el mismo parámetro y se evalúan por separado acumulando errores.
+
+---
+
+### [10.5 Validación de importe — árbol de resolución](#/MODULOS/MODULES_SERVICE?id=_105-validaci%c3%b3n-de-importe-%c3%a1rbol-de-resoluci%c3%b3n)
+
+Para cada cobertura seleccionada, el sistema determina cómo validar el `cplAmn` de la póliza según los campos del `ResponseData`:
+
+```
+¿Tiene data.risk[] ?
+├── SÍ + data.maxPct definido  → [10.5.A] Máximo porcentual sobre otro riesgo
+├── SÍ, sin maxPct             → [10.5.B] Importe igual/válido respecto a otro riesgo
+└── NO, ¿tiene data.coverageRef?
+    ├── SÍ + data.maxPct       → [10.5.C] Máximo porcentual sobre cobertura del mismo riesgo
+    ├── SÍ, sin maxPct         → [10.5.D] Cadena recursiva de coberturas (con validPcts/validAmounts/amount)
+    └── NO                     → [10.5.E] Límites directos (maxAmount, minAmount, validAmounts, validPcts)
+```
+
+#### [10.5.A — `risk[]` + `maxPct`: máximo porcentual sobre otro riesgo](#/MODULOS/MODULES_SERVICE?id=_105a-risk-maxpct-m%c3%a1ximo-porcentual-sobre-otro-riesgo)
+
+**Lógica:**
+
+1. Busca en `policyProcessedRisk` el riesgo cuyos atributos coincidan con `data.risk`.- De ese riesgo obtiene el `cplAmn` de la cobertura `data.coverageRef` (o la propia si no hay ref).- Calcula `máximo = importe_referencia × maxPct / 100`.- Valida que `cplAmn` de la póliza ≤ máximo.
+
+```
+// Configuración: cobertura 4006 en riesgo 2
+// depende de la cobertura 4003 en el riesgo cuyo COD_MODALIDAD=42101
+{
+  "coverageId": 4006,
+  "data": {
+    "risk": { "COD_MODALIDAD": "42101" },
+    "coverageRef": 4003,
+    "maxPct": 50
+  }
+}
+
+// Riesgo procesado con COD_MODALIDAD=42101 tiene cobertura 4003 con cplAmn=100.000
+// → máximo permitido = 100.000 × 50% = 50.000
+// Póliza: cobertura 4006 cplAmn = 40.000 → OK
+// Póliza: cobertura 4006 cplAmn = 60.000 → ERROR: supera 50.000
+```
+
+**Errores posibles:**
+
+* `20999` — `error.package.require.coverage.not.found` — si no se encuentra el riesgo de referencia* `20714` — `error.max.amount.exceeded` — si el importe supera el máximo
+
+#### [10.5.B — `risk[]` sin `maxPct`: importe validado respecto a otro riesgo](#/MODULOS/MODULES_SERVICE?id=_105b-risk-sin-maxpct-importe-validado-respecto-a-otro-riesgo)
+
+**Lógica:**
+
+1. Busca el riesgo que coincide con `data.risk`.- Toma el `cplAmn` de ese riesgo como `referenceAmount`.- Valida el `cplAmn` de la póliza contra las reglas de límites directos ([10.5.E]), usando `referenceAmount` como base para el cálculo de `validPcts`.
+
+```
+// Configuración: cobertura 4006 debe ser un % del mismo capital del riesgo de referencia
+{
+  "coverageId": 4006,
+  "data": {
+    "risk": { "COD_MODALIDAD": "42101" },
+    "coverageRef": 4003,
+    "validPcts": [50, 100, 150]
+  }
+}
+
+// Riesgo procesado con COD_MODALIDAD=42101 tiene cobertura 4003 con cplAmn=50.000
+// → válidos = [50.000×50%=25.000, 50.000×100%=50.000, 50.000×150%=75.000]
+// Póliza: cobertura 4006 cplAmn = 50.000 → OK
+// Póliza: cobertura 4006 cplAmn = 60.000 → ERROR
+```
+
+> Si no se encuentra el riesgo de referencia, `referenceAmount` = 0.
+
+#### [10.5.C — `coverageRef` + `maxPct`: máximo porcentual sobre cobertura del mismo riesgo](#/MODULOS/MODULES_SERVICE?id=_105c-coverageref-maxpct-m%c3%a1ximo-porcentual-sobre-cobertura-del-mismo-riesgo)
+
+**Lógica:**
+
+1. Busca la cobertura `data.coverageRef` dentro del **mismo riesgo** de la póliza.- Calcula `máximo = cplAmn_referenciada × maxPct / 100`.- Valida que el `cplAmn` de la cobertura actual ≤ máximo.
+
+```
+// Configuración: cobertura 4006 no puede superar el 100% del capital de la cobertura 4003
+{
+  "coverageId": 4006,
+  "data": {
+    "coverageRef": 4003,
+    "maxPct": 100
+  }
+}
+
+// Póliza: cobertura 4003 cplAmn = 50.000
+// → máximo para 4006 = 50.000 × 100% = 50.000
+// Póliza: cobertura 4006 cplAmn = 50.000 → OK
+// Póliza: cobertura 4006 cplAmn = 60.000 → ERROR
+```
+
+**Errores posibles:**
+
+* `20999` — `error.package.require.coverage.not.found` — si la cobertura referenciada no existe o su importe es null* `20714` — `error.max.amount.exceeded` — si el importe supera el máximo
+
+#### [10.5.D — `coverageRef` sin `maxPct`: cadena recursiva de coberturas](#/MODULOS/MODULES_SERVICE?id=_105d-coverageref-sin-maxpct-cadena-recursiva-de-coberturas)
+
+**Lógica recursiva:**
+
+1. Para la cobertura pedida: si no tiene `coverageRef` → valida sus límites directos y devuelve su importe.- Si tiene `coverageRef` → resuelve primero la cobertura referenciada (recursión).- Con el importe resuelto de la base, calcula los importes válidos mediante `validPcts`, `validAmounts` o `amount` (en ese orden de prioridad).- Verifica que el `cplAmn` de la póliza coincida con uno de los válidos.
+
+```
+// Configuración: cadena 4006 → 4003 → (raíz)
+{
+  "coverageId": 4003,
+  "data": {
+    "validAmounts": [50000, 100000]
+  }
+},
+{
+  "coverageId": 4006,
+  "data": {
+    "coverageRef": 4003,
+    "validPcts": [50, 100]
+  }
+}
+
+// Resolución paso a paso:
+// 1. Se evalúa 4006 → tiene coverageRef=4003 → resuelve 4003 primero
+// 2. 4003 no tiene coverageRef → valida límites directos:
+//    Póliza 4003 cplAmn=50.000 → está en validAmounts=[50.000, 100.000] → OK → devuelve 50.000
+// 3. Vuelve a 4006: base=50.000, válidos=[50.000×50%=25.000, 50.000×100%=50.000]
+//    Póliza 4006 cplAmn=25.000 → OK
+//    Póliza 4006 cplAmn=40.000 → ERROR (devuelve null → return false)
+```
+
+**Cadena de 3 niveles:**
+
+```
+{
+  "coverageId": 100,
+  "data": { "amount": 10000 }
+},
+{
+  "coverageId": 200,
+  "data": { "coverageRef": 100, "validPcts": [100, 200] }
+},
+{
+  "coverageId": 300,
+  "data": { "coverageRef": 200, "validPcts": [50] }
+}
+
+// 100: importe fijo 10.000
+// 200: válidos = [10.000, 20.000]  →  póliza 200=10.000 → base para 300
+// 300: válidos = [5.000]           →  póliza 300=5.000 → OK
+```
+
+> Si algún eslabón falla o no está seleccionado, toda la cadena retorna `null` y la validación del importe falla.
+
+#### [10.5.E — Límites directos (sin referencias)](#/MODULOS/MODULES_SERVICE?id=_105e-l%c3%admites-directos-sin-referencias)
+
+Se aplica cuando no hay `risk[]` ni `coverageRef`, o como validación del nodo raíz en la cadena recursiva.  
+**Todos los límites definidos se evalúan**, acumulando errores.
+
+| Campo `data` | Condición de error | Código | Error |
+| --- | --- | --- | --- |
+| `maxAmount` | `cplAmn > maxAmount` | `20714` | `error.max.amount.exceeded` |
+| `minAmount` | `cplAmn < minAmount` | `20715` | `error.min.amount.not.met` |
+| `validAmounts[]` | `cplAmn` no está en la lista | `20713` | `error.amount.mismatch` |
+| `validPcts[]` + base | ningún `base × pct / 100` == `cplAmn` | `20701` | `error.operator.in.validation` |
+
+**Base para `validPcts`:**
+
+* Con referencia a otro riesgo (caso 10.5.B): usa `referenceAmount` del riesgo encontrado.* Sin referencia: usa `data.amount` del package.
+
+```
+// Caso maxAmount + minAmount
+{
+  "coverageId": 4003,
+  "data": {
+    "minAmount": 10000,
+    "maxAmount": 200000
+  }
+}
+// Póliza cplAmn = 5.000  → ERROR: no alcanza el mínimo de 10.000
+// Póliza cplAmn = 50.000 → OK
+// Póliza cplAmn = 250.000→ ERROR: supera el máximo de 200.000
+
+// Caso validAmounts
+{
+  "coverageId": 4003,
+  "data": {
+    "validAmounts": [50000, 100000, 150000]
+  }
+}
+// Póliza cplAmn = 75.000 → ERROR: no está en la lista
+// Póliza cplAmn = 100.000→ OK
+
+// Caso validPcts con amount base fijo
+{
+  "coverageId": 4003,
+  "data": {
+    "amount": 1000,
+    "validPcts": [10, 25, 50]
+  }
+}
+// válidos = [100, 250, 500]
+// Póliza cplAmn = 250 → OK
+// Póliza cplAmn = 300 → ERROR
+
+// Caso validPcts con referencia (10.5.B): base dinámica
+// referenceAmount = 50.000, validPcts = [100, 150]
+// válidos = [50.000, 75.000]
+// Póliza cplAmn = 75.000 → OK
+// Póliza cplAmn = 60.000 → ERROR
+```
+
+> `maxAmount`/`minAmount` y `validAmounts`/`validPcts` pueden coexistir; todos se comprueban acumulando errores.
+
+---
+
+### [10.6 Escenarios condicionales](#/MODULOS/MODULES_SERVICE?id=_106-escenarios-condicionales)
+
+Los escenarios permiten reglas complejas del tipo: **si la cobertura cumple una condición → se aplican acciones de validación sobre otras coberturas**.
+
+#### [10.6.1 Selector — ¿aplica este escenario?](#/MODULOS/MODULES_SERVICE?id=_1061-selector-%c2%bfaplica-este-escenario)
+
+El escenario **solo se evalúa** si **todas** las condiciones del `selector` se cumplen (`AND`). Si no aplica, las acciones se ignoran.
+
+| Campo del selector | Qué evalúa | Ejemplo |
+| --- | --- | --- |
+| `selected` | Si la cobertura está o no seleccionada | `"selected": true` → solo aplica si está marcada |
+| `amount` | Operador sobre `cplAmn` | `{"op": ">=", "values": [50000]}` |
+| `discount` | Operador sobre `dctAmn` | `{"op": "EQ", "values": [10]}` |
+| `parameters[]` | Operador sobre atributo de la cobertura dentro del riesgo | `{"code": "MCA_SEXO", "op": "EQ", "values": ["1"]}` |
+
+```
+// Escenario que solo aplica si la cobertura está seleccionada y su importe >= 50.000
+{
+  "selector": {
+    "selected": true,
+    "amount": { "op": ">=", "values": [50000] }
+  },
+  "actions": [...]
+}
+// cobertura seleccionada, cplAmn=75.000  → selector aplica → se ejecutan acciones
+// cobertura seleccionada, cplAmn=30.000  → selector NO aplica → acciones ignoradas
+// cobertura no seleccionada              → selector NO aplica
+```
+
+#### [10.6.2 Acciones — qué se valida si el escenario aplica](#/MODULOS/MODULES_SERVICE?id=_1062-acciones-qu%c3%a9-se-valida-si-el-escenario-aplica)
+
+Cada acción puede tener un **operador de condición adicional** (`op` + `value`) sobre el importe de la cobertura principal. Solo si ese operador también se cumple (`operationResult = true`) se activa la validación.
+
+| Tipo | Semántica | Condición de error |
+| --- | --- | --- |
+| `X` | La cobertura referenciada **NO** debe estar seleccionada | `isCoverageRefSelected == true && operationResult` |
+| `S` | La cobertura referenciada **SÍ** debe estar seleccionada | `!isCoverageRefSelected || !operationResult` |
+| `M` | Exclusión mutua: la ref no puede coexistir seleccionada | `isCoverageRefSelected == true && operationResult` |
+| `AS` | Al menos una del grupo debe estar seleccionada | ninguna del grupo está seleccionada |
+| `AX` | Ninguna del grupo debe estar seleccionada | alguna del grupo está seleccionada |
+
+```
+// Acción X: si la cobertura 4003 está seleccionada, la 4001 NO puede estarlo
+{
+  "coverageId": 4003,
+  "scenarios": [
+    {
+      "selector": { "selected": true },
+      "actions": [
+        {
+          "coverages": [{ "coverage": 4001, "action": "X" }]
+        }
+      ]
+    }
+  ]
+}
+// Póliza: 4003 seleccionada + 4001 seleccionada → ERROR
+// Póliza: 4003 seleccionada + 4001 NO seleccionada → OK
+
+// Acción S: si 4006 está seleccionada y cplAmn >= 50.000, la 4003 es obligatoria
+{
+  "coverageId": 4006,
+  "scenarios": [
+    {
+      "selector": {
+        "selected": true,
+        "amount": { "op": ">=", "values": [50000] }
+      },
+      "actions": [
+        {
+          "op": ">=",
+          "value": 50000,
+          "coverages": [{ "coverage": 4003, "action": "S" }]
+        }
+      ]
+    }
+  ]
+}
+// Póliza: 4006 seleccionada, cplAmn=75.000, 4003 NO seleccionada → ERROR
+// Póliza: 4006 seleccionada, cplAmn=30.000                       → selector no aplica → OK
+
+// Acción AS: si 4003 está seleccionada, al menos una de [4010, 4011, 4012] debe estarlo
+{
+  "coverageId": 4003,
+  "scenarios": [
+    {
+      "selector": { "selected": true },
+      "actions": [
+        {
+          "coverages": [
+            {
+              "action": "AS",
+              "coverages": [4010, 4011, 4012]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+// Póliza: 4003 seleccionada, ninguna de [4010,4011,4012] seleccionada → ERROR
+// Póliza: 4003 seleccionada, 4011 seleccionada → OK
+
+// Acción AX: si 4003 está seleccionada, ninguna de [4010, 4011] puede estarlo
+{
+  "coverageId": 4003,
+  "scenarios": [
+    {
+      "selector": { "selected": true },
+      "actions": [
+        {
+          "coverages": [
+            {
+              "action": "AX",
+              "coverages": [4010, 4011]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+// Póliza: 4003 seleccionada + 4010 seleccionada → ERROR
+// Póliza: 4003 seleccionada, ninguna de [4010,4011] → OK
+```
+
+**Errores por tipo de acción:**
+
+| Acción | Código | Error |
+| --- | --- | --- |
+| `X` | `20709` | `error.ref.coverage.selected` |
+| `S` | `20710` | `error.ref.coverage.not.selected` |
+| `M` | `20716` | `error.mandatory.ref.coverage` |
+| `AS` | `20721` | `error.ref.coverage.group.not.selected` |
+| `AX` | `20722` | `error.ref.coverage.group.selected` |
+
+#### [10.6.3 Operadores disponibles](#/MODULOS/MODULES_SERVICE?id=_1063-operadores-disponibles)
+
+| Operador | Aplica a | Descripción | Ejemplo |
+| --- | --- | --- | --- |
+| `==` / `=` | Numérico y String | Igual | `cplAmn == 50000` |
+| `!=` / `<>` | Numérico y String | Distinto | `cplAmn != 0` |
+| `>` | Numérico | Mayor que | `cplAmn > 10000` |
+| `<` | Numérico | Menor que | `cplAmn < 100000` |
+| `>=` | Numérico | Mayor o igual | `cplAmn >= 5000` |
+| `<=` | Numérico | Menor o igual | `cplAmn <= 200000` |
+| `IN` | Numérico y String | Está en lista | `MCA_SEXO IN ["1","2"]` |
+| `NOT IN` | Numérico y String | No está en lista | `MCA_SEXO NOT IN ["3"]` |
+| `BETWEEN` | Numérico | Rango cerrado [a, b] | `cplAmn BETWEEN [5000, 50000]` |
+| `NOT BETWEEN` | Numérico | Fuera de rango | `cplAmn NOT BETWEEN [0, 100]` |
+
+> `>`, `<`, `>=`, `<=`, `BETWEEN`, `NOT BETWEEN` solo aplican sobre `BigDecimal`.  
+> `==`, `!=`, `IN`, `NOT IN` también aplican sobre atributos `String` (comparación case-insensitive).
+
+---
+
+### [10.7 Bloqueo de cobertura (`blocked`)](#/MODULOS/MODULES_SERVICE?id=_107-bloqueo-de-cobertura-blocked)
+
+Esta operación se ejecuta **después** de todas las validaciones anteriores y no lanza error. Es una mutación de estado.
+
+**Regla:** las coberturas con `data.blocked = true` en el módulo reciben `oTrnPrcS.mdf = "N"` en la póliza, indicando al frontend que no son editables ni desmarcables. El backend **conserva el `oTrnPrcS` que trae la cobertura** (rowid, `oTrnFldT`, `oTrnErrT`, etc.) y solo modifica `mdf`; únicamente crea el objeto cuando la cobertura no tenía ninguno (cobertura nueva añadida en `/previous`). Sustituir el objeto completo hace que TRON falle al grabar con `VCR-06531: Reference to uninitialized collection` (IRV-24822).
+
+```
+// Configuración del módulo
+{
+  "coverageId": 4003,
+  "data": {
+    "blocked": true
+  }
+}
+// → backend fuerza: cobertura 4003 oTrnPrcS.mdf = "N"
+// → front no permite edición ni desmarcado de la cobertura
+
+// Con blocked = false (o sin el campo):
+// → comportamiento estándar, el front puede editar según el resto de reglas
+```
+
+---
+
+### [Resumen de errores de validación](#/MODULOS/MODULES_SERVICE?id=resumen-de-errores-de-validaci%c3%b3n)
+
+| Código numérico | Property key | Fase | Cuándo se lanza |
+| --- | --- | --- | --- |
+| `20719` | `error.risk.not.found` | 10.1 | Riesgo no existe en póliza |
+| `20720` | `error.preference.not.found` | 10.1 | Preferencia no existe en response |
+| `20712` | `error.mandatory.not.selected` | 10.2 | Cobertura obligatoria ausente en póliza |
+| `20999` | `error.package.require.coverage.not.found` | 10.2 / 10.5.A / 10.5.C | Cobertura/riesgo de referencia no encontrado |
+| `20717` | `error.coverage.cross.reference` | 10.2 | Referencia cíclica entre coberturas |
+| `20259` | `error.coverage.not.found` | 10.5 | Cobertura seleccionada no está en el package |
+| `20708` | `error.discount.not.found.validation` | 10.3 | Descuento no está en la lista permitida |
+| `20706` | `error.attribute.not.modifiable.validation` | 10.4 | Atributo jump con valor diferente al esperado |
+| `20707` | `error.attribute.value.validation` | 10.4 | Atributo con valor fuera de `validValues[]` |
+| `20714` | `error.max.amount.exceeded` | 10.5 | Importe supera el máximo (directo o maxPct) |
+| `20715` | `error.min.amount.not.met` | 10.5 | Importe inferior al mínimo |
+| `20713` | `error.amount.mismatch` | 10.5.E | Importe no está en `validAmounts[]` |
+| `20701` | `error.operator.in.validation` | 10.5.E | Importe no coincide con ningún `validPcts` calculado |
+| `20709` | `error.ref.coverage.selected` | 10.6 | Acción `X`: cobertura ref no debería estar seleccionada |
+| `20710` | `error.ref.coverage.not.selected` | 10.6 | Acción `S`: cobertura ref debería estar seleccionada |
+| `20716` | `error.mandatory.ref.coverage` | 10.6 | Acción `M`: exclusión mutua violada |
+| `20721` | `error.ref.coverage.group.not.selected` | 10.6 | Acción `AS`: ninguna del grupo seleccionada |
+| `20722` | `error.ref.coverage.group.selected` | 10.6 | Acción `AX`: alguna del grupo seleccionada |
+| `INVALID_OPERATOR` | `error.invalid.operator` | 10.6 | Operador de escenario desconocido |
+| `20702` | `error.operator.not.in.validation` | 10.6 | Operador NOT\_IN: valor dentro de lista prohibida |
+| `20703` | `error.operator.between.validation` | 10.6 | Operador BETWEEN: valor fuera del rango |
+| `20704` | `error.operator.not.between.validation` | 10.6 | Operador NOT\_BETWEEN: valor dentro del rango prohibido |
+| `20705` | `error.operator.operator.default.validation` | 10.6 | Operador no cumple condición (caso por defecto) |
+
+---
+
+## [11. Ejemplos de respuesta y validación](#/MODULOS/MODULES_SERVICE?id=_11-ejemplos-de-respuesta-y-validaci%c3%b3n)
+
+### [Ejemplo 1 — Módulo con cobertura obligatoria y validAmounts](#/MODULOS/MODULES_SERVICE?id=ejemplo-1-m%c3%b3dulo-con-cobertura-obligatoria-y-validamounts)
+
+**Respuesta del servicio:**
+
+```
+{
+  "risks": {
+    "1": {
+      "risk": 1,
+      "type": {
+        "2": {
+          "type": 2,
+          "preferences": {
+            "10": {
+              "preferenceId": 10,
+              "preferenceName": "BASICO",
+              "coverages": {
+                "101": {
+                  "coverageId": 101,
+                  "data": {
+                    "mandatory": true,
+                    "currency": 978,
+                    "amount": null,
+                    "validAmounts": [30000.0, 60000.0, 90000.0]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+**Comportamiento:**
+
+* La cobertura `101` es obligatoria → si la póliza no la incluye, error `MANDATORY_NOT_SELECTED`.* Si la póliza la incluye con `cplAmn = 45000` → error `AMOUNT_MISMATCH` (no está en `[30000, 60000, 90000]`).* Si la póliza la incluye con `cplAmn = 60000` → validación OK.
+
+---
+
+### [Ejemplo 2 — Cobertura con referencia porcentual](#/MODULOS/MODULES_SERVICE?id=ejemplo-2-cobertura-con-referencia-porcentual)
+
+**Respuesta del servicio (dos coberturas):**
+
+```
+"101": {
+  "coverageId": 101,
+  "data": { "amount": 100000.0, "validAmounts": [100000.0] }
+},
+"102": {
+  "coverageId": 102,
+  "data": {
+    "coverageRef": 101,
+    "validPcts": [10.0, 20.0, 30.0]
+  }
+}
+```
+
+**Comportamiento:**
+
+* Cobertura `102` toma como base el importe de `101` (100.000).* Importes válidos para `102`: `10.000`, `20.000`, `30.000`.* Si la póliza envía `cplAmn = 15000` en `102` → error.* Si envía `20000` → validación OK.
+
+---
+
+### [Ejemplo 3 — Franquicia obligatoria](#/MODULOS/MODULES_SERVICE?id=ejemplo-3-franquicia-obligatoria)
+
+**Respuesta del servicio:**
+
+```
+"discounts": [
+  { "discount": 0,   "currency": 978, "default": true,  "minValue": null, "maxValue": null },
+  { "discount": 500, "currency": 978, "default": false, "minValue": 500,  "maxValue": 500  }
+]
+```
+
+**Comportamiento:**
+
+* La póliza puede enviar `dctVal = 0` o `dctVal = 500`.* Si envía `dctVal = 250` → error `DISCOUNT_NOT_FOUND`.* Si envía `dctVal = 500` → se asignan automáticamente `mnmDctVal = 500` y `mxmDctVal = 500`.
+
+---
+
+### [Ejemplo 4 — Escenario condicional (exclusión mutua)](#/MODULOS/MODULES_SERVICE?id=ejemplo-4-escenario-condicional-exclusi%c3%b3n-mutua)
+
+**Respuesta del servicio:**
+
+```
+"coverageId": 201,
+"scenarios": [
+  {
+    "selector": { "selected": true },
+    "actions": [
+      {
+        "coverages": [
+          { "coverage": 202, "action": "X" }
+        ]
+      }
+    ]
+  }
+]
+```
+
+**Comportamiento:**
+
+* Si la cobertura `201` **está seleccionada** (`selected = true`), entonces la cobertura `202` **no puede** estar seleccionada (acción `X`).* Si la póliza envía ambas seleccionadas → error `REF_COVERAGE_SELECTED`.
+
+---
+
+### [Ejemplo 5 — Escenario con operador condicional en acción](#/MODULOS/MODULES_SERVICE?id=ejemplo-5-escenario-con-operador-condicional-en-acci%c3%b3n)
+
+**Respuesta del servicio:**
+
+```
+"coverageId": 301,
+"scenarios": [
+  {
+    "selector": {
+      "amount": { "op": ">=", "values": [50000.0] }
+    },
+    "actions": [
+      {
+        "op": ">=",
+        "value": 50000.0,
+        "coverages": [
+          { "coverage": 302, "action": "S" }
+        ]
+      }
+    ]
+  }
+]
+```
+
+**Comportamiento:**
+
+* Si `cplAmn` de `301 >= 50.000` → la cobertura `302` **debe** estar seleccionada (acción `S`).* Si `302` no está seleccionada → error `REF_COVERAGE_NOT_SELECTED`.
+
+---
+
+### [Ejemplo 6 — Atributo no modificable](#/MODULOS/MODULES_SERVICE?id=ejemplo-6-atributo-no-modificable)
+
+**Respuesta del servicio:**
+
+```
+"parameters": {
+  "TIPO_GARANTIA": {
+    "code": "TIPO_GARANTIA",
+    "value": "TOTAL",
+    "jump": true,
+    "validValues": ["TOTAL"]
+  }
+}
+```
+
+**Comportamiento:**
+
+* `jump = true` indica que el atributo no puede ser modificado por el usuario.* Si la póliza envía `TIPO_GARANTIA = PARCIAL` → error `ATTRIBUTE_NOT_MODIFIABLE`.* Si no envía el atributo o envía `TOTAL` → validación OK.
+
+---
+
+## [12. `getPreviousCoverages` — Fusión de coberturas previas](#/MODULOS/MODULES_SERVICE?id=_12-getpreviouscoverages-fusi%c3%b3n-de-coberturas-previas)
+
+### [Propósito](#/MODULOS/MODULES_SERVICE?id=prop%c3%b3sito)
+
+Este método se usa cuando el usuario **ya tiene una póliza con coberturas** y vuelve a solicitar la pantalla de selección de coberturas dentro de un módulo concreto. Devuelve la lista completa, conserva las coberturas independientes, completa las ausentes y recalcula los capitales del mismo riesgo definidos por `coverageRef + validPcts`.
+
+Se invoca desde `PreviousCoveragePackagesUsecase` y es el único método que requiere que `NUM_SIMULACION` esté informado, ya que necesita saber exactamente qué preferencia/módulo fue el seleccionado.
+
+---
+
+### [Flujo completo](#/MODULOS/MODULES_SERVICE?id=flujo-completo)
+
+```
+getPreviousCoverages(oPlyPlyC, query)
+       │
+       ├── 1. Localiza el riesgo en la póliza por riskVal
+       │        └── Si no existe → AcdcException(PK_PLY_ERR)
+       │
+       ├── 2. Lee NUM_SIMULACION del riesgo → preferenceId
+       │
+       ├── 3. Llama a CalculatePackagesService (POST /calculate-packages)
+       │        con solo ese riesgo
+       │
+       ├── 4. Obtiene ResponseRisk del riesgo solicitado
+       │        └── Si no existe → AcdcException(PK_PLY_ERR)
+       │
+       ├── 5. Obtiene ResponsePreference para el preferenceId (type = 2)
+       │        └── Si no existe → AcdcException(PK_PLY_ERR)
+       │
+       ├── 6. Valida que todas las coberturas existentes en la póliza
+       │        están en el catálogo del módulo
+       │        └── Si alguna no existe → AcdcException(PK_PLY_ERR_VAL)
+       │
+       ├── 7. Construye la lista final recorriendo las coberturas del catálogo:
+       │        · Si la cobertura ya existe en la póliza → conserva el objeto
+       │        · Si no existe → la crea con ModulesDataFillService.addCoverageToRisk()
+       │                 · Si además es mandatory → se marca como seleccionada (cvrSlc = "*")
+       │
+       └── 8. Resuelve las cadenas coverageRef + validPcts del mismo riesgo
+                y actualiza el cplAmn de cada cobertura resuelta; una cadena irresoluble
+                deja esa cobertura sin modificar, sin afectar al resto
+```
+
+---
+
+### [Reglas de fusión](#/MODULOS/MODULES_SERVICE?id=reglas-de-fusi%c3%b3n)
+
+| Situación | Comportamiento |
+| --- | --- |
+| Cobertura existe en póliza y está en el catálogo | Se conserva, salvo su `cplAmn` cuando define `coverageRef + validPcts`: se mantiene si ya coincide con un `validPct` de la base resuelta, o se recalcula con el primer `validPct` en caso contrario |
+| Cobertura NO existe en póliza y está en el catálogo | Se crea con los valores por defecto y después se aplica `coverageRef + validPcts`, si corresponde |
+| Cobertura NO existe en póliza, está en catálogo y es `mandatory` | Se crea y se marca seleccionada (`cvrSlc = "*"`) |
+| Cobertura existe en póliza pero **NO** está en el catálogo del módulo | Error `PK_PLY_ERR_VAL` — cobertura no válida para ese módulo |
+
+> El orden de la lista resultado sigue el orden del catálogo del módulo, no el orden original de la póliza.
+
+---
+
+### [Diferencia con `calculateModules`](#/MODULOS/MODULES_SERVICE?id=diferencia-con-calculatemodules)
+
+| Aspecto | `calculateModules` | `getPreviousCoverages` |
+| --- | --- | --- |
+| Entrada | Póliza sin coberturas (o con ellas para validar) | Póliza con coberturas ya elegidas |
+| Salida | `List<OPlyPlyCDto>` (uno por preferencia) | `List<OPlyCvcPC>` (coberturas de un único riesgo) |
+| `NUM_SIMULACION` requerido | Solo en modo con simulación | Siempre obligatorio |
+| Sobreescribe valores de la póliza | No; valida los existentes o rellena desde cero | Solo recalcula capitales derivados por `coverageRef + validPcts`; preserva el resto |
+| Llama al servicio externo | Siempre | Siempre (una llamada por riesgo) |
+
+---
+
+### [Resolución de referencias porcentuales en `/previous`](#/MODULOS/MODULES_SERVICE?id=resoluci%c3%b3n-de-referencias-porcentuales-en-previous)
+
+`getPreviousCoverages` resuelve las cadenas `coverageRef + validPcts` del mismo riesgo con un método privado recursivo, `resolveSameRiskAmount` (en `ModulesServiceImpl`), con una guarda de ciclos (`visitedCoverageIds`) que corta la recursión si una cobertura ya fue visitada en la misma cadena. Para cada cobertura con `coverageRef`, resuelve primero el importe de su base (recursivamente, si la base es a su vez una referencia) y luego conserva el importe informado por el usuario si ya coincide con alguno de los `validPcts` de esa base, o aplica el primer `validPct` en caso contrario, escribiendo el resultado en `cplAmn` después de fusionar póliza y catálogo.
+
+Por ejemplo, `4003.cplAmn = 10000`, `4052.coverageRef = 4003` y `4052.validPcts = [30]` producen `4052.cplAmn = 3000.000` si el usuario no informó `4052` con un importe ya válido (por ejemplo `3000`, que se mantendría tal cual). La base es el capital resuelto de `4003` — el valor del request si el usuario lo envió, o el valor por defecto del módulo si se rellenó automáticamente.
+
+Las cadenas del mismo riesgo se resuelven independientemente del orden del catálogo. Los ciclos, las referencias irresolubles (base sin capital, referencia fuera del catálogo) y las reglas con `data.risk` o `maxPct` no se modifican; la resolución es por cobertura, así que una cadena irresoluble deja solo esa cobertura sin modificar, sin afectar a las demás ni devolver error de validación (no hay 422 por esta causa). `/coverage-packages/calculation` valida los importes recibidos con su propia lógica, independiente de esta, y rechaza los incompatibles en lugar de corregirlos.
+
+---
+
+### [Ejemplo](#/MODULOS/MODULES_SERVICE?id=ejemplo)
+
+**Situación:** módulo `preferenceId = 10` define coberturas `[101, 102, 103]`. La póliza del usuario lleva `[101, 103]`.
+
+```
+Catálogo del módulo       Póliza del usuario        Resultado
+─────────────────────────────────────────────────────────────
+cobertura 101 (mandatory) → existe en póliza       → se mantiene
+cobertura 102 (opcional)  → NO existe en póliza    → se crea con valores por defecto
+cobertura 103 (opcional)  → existe en póliza       → se mantiene
+```
+
+Si el usuario hubiera enviado una cobertura `999` que no existe en el catálogo del módulo `10`, la respuesta sería un error `PK_PLY_ERR_VAL` antes de construir la lista.
+
+---
+
+## [Operadores soportados en `rules` (COVERAGE-PACKAGE-DEFINITION)](#/MODULOS/MODULES_SERVICE?id=operadores-soportados-en-rules-coverage-package-definition)
+
+Las reglas de `COVERAGE-PACKAGE-DEFINITION` se evalúan en `PackagesService` del servicio externo `core_rte_service`.
+
+### [Datos fijos (`fixedValues`)](#/MODULOS/MODULES_SERVICE?id=datos-fijos-fixedvalues)
+
+`PackagesMapper.getDefaultFixedValues()` construye `PackagesRequest.fixedValues` con los datos de cabecera de la póliza. En `core_rte_service` este mapa **no** se publica como facts individuales (llega como un único fact con el mapa completo), por lo que **no puede usarse en condiciones de `rules[]`**. Sus usos reales son:
+
+* **Filtros de consulta MongoDB** al seleccionar documentos de `COVERAGE-PACKAGE-DEFINITION`, solo con los campos cableados en el repositorio del RTE: `thirdPartyCode`, `level1..level3`, `channel1..channel3`, `groupPolicyNumber`, `contractNumber`, `subcontract`, `clientPolicy`, `policyNumber` y `validityDate`.* **Funciones de exclusión de cobertura por edad** (`CoverageAgeCustomExclusionFunctions`), que reciben el mapa completo como parámetro Java.
+
+Contenido del mapa:
+
+**Datos generales de `OPlyGniS`:** `contractNumber`, `subcontract`, `groupPolicyNumber`, `supplementCode`, `supplementSubcode`, `supplementNumber`, `supplementType`, `clientPolicy`, `policyNumber`, `validityDate`, `policyEffectiveDate`, `policyExpirationDate`, `supplementEffectiveDate`, `supplementExpirationDate`, `currency`, `applyProrata`, `applicationNumber`, `supplementApplicationNumber`, `policyDuration`, `paymentModality`, `renovationsNumber`, `applyRegularization`, `regularizationType`, `regularizationPercentage`, `regularizationIndex`, `manualPremium`, `temporalSupplement`, `policyType`, `changeRate`, `sector`, `totalRisk`, `coinsuranceType`, `supplementMotivation`, `sendType`, `manualReinsurance`, `captureThirdLevel`, `reinsuranceType`, `businessType`, `initialQuota` y `declarationPolicy`.
+
+**Datos del primer agente `OPlyInaS`:** `thirdPartyCode`, `level1`, `level2`, `level3`, `channel1`, `channel2`, `channel3` y `commissionTable`.
+
+**Valores generados por ACDC:** `currencyDecimals = "2"` y `enforceDevolution = "S"`.
+
+Las fechas usan formato `yyyyMMdd` y los valores nulos se envían como cadena vacía. El usuario de la póliza (`usrVal`) no viaja en este mapa: en módulos ningún mecanismo consume `fixedValues["user"]`, así que se envía únicamente como `parameters["USR_VAL"]` (ver sección siguiente).
+
+### [Usuario de póliza en reglas de módulos](#/MODULOS/MODULES_SERVICE?id=usuario-de-p%c3%b3liza-en-reglas-de-m%c3%b3dulos)
+
+Los atributos dinámicos de la póliza (`OPlyAtcCT`, pares `fldNam`/`fldValVal`) llegan a `PackagesRequest.parameters` **tal cual**: el nombre del atributo ya viene del polizón en formato de parámetro de regla (p. ej. `NIVEL_CLIENTE`) y no sufre ninguna transformación.
+
+`USR_VAL` es la **única excepción**: no se lee de los atributos generales de la póliza, sino de la cabecera `OPlyGniS` (`usrVal`), y `PackagesMapper` lo transforma expresamente al mismo contrato publicándolo con la clave `USR_VAL`:
+
+```
+OPlyPlyCDto.OPlyGniP.OPlyGniS.usrVal   (cabecera, no OPlyAtcCT)
+    → PackagesRequest.parameters["USR_VAL"]
+    → fact USR_VAL
+```
+
+La regla solo afecta a las definiciones que incluyan explícitamente `USR_VAL`:
+
+```
+{
+  "rules": [
+    {
+      "NIVEL_CLIENTE": "ORO",
+      "USR_VAL": "USUARIO_EJEMPLO"
+    }
+  ]
+}
+```
+
+Si una definición no menciona `USR_VAL`, conserva su comportamiento anterior. Cada elemento de `rules[]` es una alternativa independiente; para exigir el usuario en todas las alternativas debe incluirse en cada una. Como `USR_VAL` se añade después de los atributos dinámicos, el valor de cabecera prevalece si la póliza trae un atributo dinámico cuyo `fldNam` sea literalmente `USR_VAL`. `USUARIO_EJEMPLO` es solo ilustrativo y el dato no representa una identidad autenticada ni debe usarse para autorización.
+
+### [Formatos de regla soportados](#/MODULOS/MODULES_SERVICE?id=formatos-de-regla-soportados)
+
+1. **Escalar vs escalar (igualdad)**
+
+```
+{
+  "type": 2,
+  "channel": "ONLINE"
+}
+```
+
+2. **Lista (rule) vs escalar (fact) — IN**
+
+```
+{
+  "COD_GIRO_NEGOCIO": [74, 75, 105, 119]
+}
+```
+
+3. **Mapa de comparadores numéricos**
+
+```
+{
+  "age": {"mne": 18, "mxe": 65, "neq": 40}
+}
+```
+
+### [Tabla de operadores numéricos](#/MODULOS/MODULES_SERVICE?id=tabla-de-operadores-num%c3%a9ricos)
+
+| Operador | Significado | Ejemplo | Resultado esperado |
+| --- | --- | --- | --- |
+| `mxm` | Menor que (`<`) | `{"age": {"mxm": 65}}` | true si `age < 65` |
+| `mnm` | Mayor que (`>`) | `{"age": {"mnm": 17}}` | true si `age > 17` |
+| `mxe` | Menor o igual (`<=`) | `{"age": {"mxe": 65}}` | true si `age <= 65` |
+| `mne` | Mayor o igual (`>=`) | `{"age": {"mne": 18}}` | true si `age >= 18` |
+| `neq` | Distinto de un valor (`!=`) | `{"age": {"neq": 40}}` | true si `age != 40` |
+| `in` | Pertenece a una lista (IN) | `{"COD_GIRO_NEGOCIO": {"in": [74,75,105,119]}}` | true si el valor está en la lista |
+| `nin` | NOT IN — excluye una lista de valores | `{"COD_GIRO_NEGOCIO": {"nin": [74,75,105,119]}}` | true si el valor no está en la lista |
+
+### [Ejemplos recomendados](#/MODULOS/MODULES_SERVICE?id=ejemplos-recomendados)
+
+Incluir solo giros permitidos:
+
+```
+{
+  "COD_GIRO_NEGOCIO": {"in": [10, 20, 30]}
+}
+```
+
+Incluir giros permitidos dentro de un rango de edad:
+
+```
+{
+  "COD_GIRO_NEGOCIO": {"in": [10, 20, 30]},
+  "age": {"mne": 18, "mxe": 65}
+}
+```
+
+Incluir giros permitidos excluyendo uno concreto (`in` + `nin`):
+
+```
+{
+  "COD_GIRO_NEGOCIO": {"in": [10, 20, 30, 99], "nin": [99]}
+}
+```
+
+Excluir múltiples giros + importes no cero:
+
+```
+{
+  "COD_GIRO_NEGOCIO": {"nin": [74, 75, 105, 119]},
+  "IMP_ASEG_CONTENIDO": {"neq": 0},
+  "IMP_ASEG_EDIFICIO": {"neq": 0},
+  "IMP_ASEG_LUCRO_CESANTE": {"neq": 0}
+}
+```
+
+Rango con exclusión puntual:
+
+```
+{
+  "age": {"mne": 18, "mxe": 65, "neq": 40}
+}
+```
+
+### [Semántica de evaluación](#/MODULOS/MODULES_SERVICE?id=sem%c3%a1ntica-de-evaluaci%c3%b3n)
+
+* Dentro de un mismo objeto de regla, las condiciones se combinan con **AND**.* Cada elemento del array `rules` se registra como una regla independiente.* Si varias reglas aplican a la misma preferencia, el motor para en la primera aplicada (`skipOnFirstAppliedRule=true`).
+
+### [Errores frecuentes de configuración](#/MODULOS/MODULES_SERVICE?id=errores-frecuentes-de-configuraci%c3%b3n)
+
+* Repetir la misma clave en el mismo objeto JSON (ejemplo: varias veces `"COD_GIRO_NEGOCIO"`) no funciona: solo se conserva la última.* Para exclusión múltiple usar `nin`, no múltiples claves duplicadas ni múltiples `neq` con la misma clave en el mismo objeto.* `in` y `nin` se pueden combinar en el mismo objeto: `{"in": [A,B,C], "nin": [C]}` aplica ambas condiciones con AND (el valor debe estar en `in` Y no estar en `nin`).* `in` como comparador (`{"field": {"in": [...]}}`) es equivalente al formato de lista plana (`{"field": [...]}`) pero permite combinarlo con otros operadores numéricos en el mismo objeto.

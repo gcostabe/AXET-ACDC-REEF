@@ -1,0 +1,163 @@
+Hay que bajar, solo los que convocan es los que consiguen bajar.
+Entonces, todas esas tablas que están aquí, es lo que llamamos armado de producto.
+Yo necesito configurar todas estas tablas aquí para poder hacer la abertura de sinistro e expediente.
+Entonces, el sinistro empieza con la causa, entonces va aquí en la primera aba.
+Ah, de causa, sí, es de causa, está.
+Entonces, para abrir un sinistro, yo abro con la causa de abertura de sinistro.
+Dentro de estas aba de causas, aquí tengo diversos tipos, está viendo? Rehabilitación, terminação.
+Y si vas más abajo, hay más cosas, modificaciones expedientes.
+Entonces, aquí son todas las causas que van a estar envolvidas ahí en la tramitación de sinistro.
+Entonces, si quieres abrir, por qué? Ahí vas a las causas de abertura, ahí vas a cerrar.
+Ahí el sistema dice así, está cerrando por qué, y ahí el sistema va a buscar las causas de término de expediente.
+Ahí vas a querer reabrir, ahí el sistema va a las causas de reabertura de expediente, por qué está reabriendo.
+Entonces, dependiendo de los movimientos que haces dentro del sinistro, va a solicitar este tipo de causa aquí.
+Entonces, tiene que estar parametrizado aquí, está.
+Como te dije, es así, causas, consecuencias, expedientes, primero você configura por compañía,
+después asocia al producto, todo lo que estás viendo aquí son relacionados al producto 421, que es lo que estamos haciendo.
+El producto 421, está.
+Entonces, estas son todas las causas, ahí tengo las consecuencias del producto.
+Então, mesma cosa, configura las consecuencias por compañía y depois por producto.
+Ahí, después, eu faço uma asociação, ah, esta causa com essa consequência.
+Então, clica aí na abinha, causas consequências para você ver.
+Ok, y, Claudinha, esta configuración, ela viene previamente antes del sinistro, ¿no?
+No, esta configuración es para você abrir.
+Ah, para yo abrir, ok.
+Si no tiene esta configuración, no abre sinistro.
+Es como si estuviera en la emisión configurando cobertura, por ejemplo, si no tiene cobertura configurada, no abre en una emisión.
+Porque esta demanda va a ser só consulta, ¿no?
+Esta tabela, es que esta masa ya viene pronta para nosotros, ¿no?
+Ya, y lo que que ocurre es, ellos rompieron las historias casi que cada una por una aba.
+Entonces, por eso que va a estar super rompido, ¿no?
+Mmm-hmm, es facilita, ¿no?
+O... o, Nancy, es para que llegueis más para la derecha, por favor.
+Ah, si, ¿aquí? Ah, ¿tá aquí?
+No, va en las otras tablas aquí para la derecha.
+Ah, en tu derecha, ¿tá?
+Todo esto es para llegar a este punto aquí.
+Entendí.
+Entonces, tengo que tener la amarración de las causas, causa consecuencia, causa consecuencia expediente, causa consecuencia expediente y cobertura.
+Creo que hay más una aba para la derecha.
+Mmm-hmm, no, es la última.
+Pensé que no tiene, si, los tres puntillos.
+Ah, opa, opa, ¿tensis?
+Entonces, es llegar a este punto aquí, no es verdad.
+Entonces, causa consecuencia expediente, conceptos de reserva, coberturas y, ¿sabes?
+Mmm-hmm, bueno.
+Entonces, Nancy, es llegar ahí a la final.
+Mmm-hmm.
+Ah, eso aquí.
+Eso aún no es... ¡Exacto, es complicada!
+Pero no es definitivo esto ahí, ¿tá?
+Por ejemplo, las causas, los datos variables, ¿está errado ahí?
+No, sé que los datos, no, no peguei nada aún, ¿no?
+Sí, porque no está ni escrito, ¿tá?
+Es decir, hay algunas cosas muy difíciles.
+Ah, diferentes, sí.
+Ella hizo la emisión, sí, que ya vi que era bien.
+Tiene bastante cosas.
+¡Vale, solo!
+No sé qué es eso, es expediente.
+Ah, ok.
+Y, y, déjame preguntar, Katia, ¿vamos a tener acceso a estos datos de la masa para poder escribir?
+No, ¿vamos a escribir un resultado genérico para después adaptar a la hora de testar?
+¿La tela?
+No, la tela no, ¿no? La tabela, porque va a venir...
+La tabela, son esas, son esas alas.
+Sí, son esas de ahí, ¿no?
+¡Tá, tá, tá, tá! Sí, sí, entendí, desculpa.
+Está, déjame perder que estoy intentando pensar, ¿no?
+Para tirar todas mis dudas ahora de ti.
+Déjame pensar que más que...
+que yo iría precisar.
+Que en su identidad ya va a venir la masa.
+Yo creo que en Fuji, ¿no?
+Como ustedes van a dar la masa, no vamos a necesitar crear nada en la tabela.
+En Fuji, ¿no?
+No, en Fuji, aún así, ¿no?
+¿Vas a poder testar en la tabela?
+Pero así, si no tiene esa asociación, no abre nada en Fuji, ¿vale?
+No, sí, vamos a testar en la base AWS, ¿no?
+Que ustedes van a dar la masa, ¿no?
+Exacto.
+Entonces, no vamos a necesitar nada de frontera.
+No, desculpa.
+Es porque estoy confundida con una otra historia que tuvimos,
+que no podíamos testar en el frontera sinistro, que estaba dando error.
+Es que estoy confundida ahora, ¿no?
+Pero, ¿está bien?
+Como vamos a venir la masa, eso que necesitaba saber,
+para poder, entonces, tendríamos bastantes escenarios,
+tiene bastantes cosas en esta.
+No es tan simple como pensé que iba a ser.
+Entonces, tenemos toda la parte de la compañía para después del producto.
+Es eso, ¿no?
+Sí.
+¿Y hay algún punto de riesgo, Claudín,
+que tú colocas para nosotros, para atentar al mosquito,
+por tu experiencia, en fin?
+No.
+Por el momento, no es el riesgo.
+Por el momento, no es el riesgo.
+Es porque, en realidad, es sólo la pesquisa, ¿no?
+La tabela, ¿no?
+Y ahí, voy a hablar más, ¿está así?
+¿Hay algunas marquinas que están ahí,
+que van a ser alternadas,
+en concreto con la evolución de las historias, ¿no?
+¿Qué marquinas, esas, en amarelo?
+No.
+Es bueno porque es para nosotros colocar como el rastramento,
+porque, digamos así, estamos testando ahora.
+Pero, digamos, en una historia futura,
+va a tener una alteración, puede impactar en esta, ¿no?
+No.
+¿No?
+¿No?
+No.
+Por el momento, lo que tiene que estar ahí son los registros.
+¿Son sólo registros?
+Sólo registros.
+Dejáme volver a la historia de nuevo.
+Te voy a minimizar aquí.
+Déjame cerrar aquí.
+Ok, y puedo basarme por este aspecto asociado al producto, ¿no?
+No tiene ningún select padrón aquí, ¿no?
+Para usar como base, por lo menos, de un ejemplo, ¿no?
+Pero es todo bueno, voy a hablar con los demás.
+Si por nivel...
+nivel compañía, tienes que usar sólo el código 15.
+Si por nivel producto, código 15, código 421.
+Ah, ok.
+Este es solo el primero y este es los dos.
+¿Me ayudó más?
+Sí.
+¿Está bien?
+Está bien.
+No es esto, ya me ayudó.
+¿Y quién es...?
+¿Saben quién es el DEV que está haciendo?
+Me llamo.
+Desculpa, ya puedo testar.
+¿Está bien?
+Está bien.
+Ya sé que puedo llamar si tengo alguna duda.
+¿Puedes?
+Está bien.
+Está bien.
+Prometo que no voy a incomodar mucho.
+Imagina.
+Está bien.
+Muchas gracias, chicas.
+Un buen final de semana para ustedes.
+Gracias por toda ayuda.
+Imagina.
+Chau chau.
+Sí.
+Sí, está bien.
+Me ayudó bastante, ¿verdad?
+Está bien.
+Chau chau, buen final de semana.
+Chau, buen final de semana.
+Gracias, Ju.
+Al fe, gracias a ustedes.
+Chau, gracias.

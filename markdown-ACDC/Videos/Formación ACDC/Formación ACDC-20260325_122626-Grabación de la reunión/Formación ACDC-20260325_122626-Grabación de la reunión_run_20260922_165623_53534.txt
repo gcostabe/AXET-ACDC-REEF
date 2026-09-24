@@ -1,0 +1,567 @@
+¿No habéis conseguido? ¿Qué resuelva el control técnico?
+David, ayer con Manuel podía revisar el paso a paso, a ver qué regla o qué condición
+no hacía, pero si te cumplen tu máquina. Sí, se me cumple, se me cumple. Me traído
+exactamente el mismo registro de integración de Brasil y me lo resuelve. ¿La cachela
+lo habéis limpiado, verdad? Pero no estamos en desarrollo de Brasil. Yo la prueba que
+hago, me traigo el mismo registro de la base de datos, me la he traído local y he lanzado
+exactamente la misma petición y me está devolviendo datos. Parece que es la condición
+lo que no cumple. Y el registro sí lo está trayendo, es decir, los filtros funcionan
+y trae exactamente lo que toca. Es la condición lo que no está evaluando por el tipo de
+mensaje. Sí, porque si no pones ninguna condición no te va a cumplir nada. Es decir, va a evaluar
+las condiciones. Busca el factor. Es decir, busca exactamente el factor este que lo tengamos
+montado en los factores de la regla de IC rule. Sí, puede cambiar el conditions por
+un condition y que valúe el returno uno igual a uno del motor de reglas de la versión
+2, que os explicó Manuel ayer, creo. Pero volviendo a lo que decía Jordan, que por
+al menos esta regla se está ejecutando con esta condición, ¿verdad? Ahora mismo está
+funcionando este pre. Este pre sí. Se enloquea y pone valor. Si esta y si esta condición
+la pegamos en el otro, creo lo que estaba diciendo Jordan. Es lo que hicimos con esto.
+En vez de con la pre la hicimos con la validación. Pero entonces ya vamos a un bal que está
+funcionando, ¿verdad? Que volviendo a eso. Pero, espera, si termino la idea. Ahora mismo
+esto está funcionando. Se coloca el valor 4 a 3 y se bloquea. Si esta condición la pegamos
+en este control técnico. Deberíamos funcionar. Sabemos de la duda de si es la condición.
+¿Cuál tiene usted? La de validación, ¿cierto? La de 3 a 10. ¿Nice? 2 a 10. Esto. Lo que
+hicimos fue que estaba la 10 y la 20. Bueno, la 20 era la de validación. Es que la de
+validación. Pero no vaya a ser que sea un tema aquí el dato. Pero la 20 también sé
+que nos pliega. La que valida el dato. Para poner que la moneda sea 11. Si, estamos hablando
+de la condición. De ser el mismo de la duda. Es por dejar todo como está. O sea, para
+no, es decir, no, aquí todo lo hago, lo pongo otro. O sea, no, dejemos todo como está.
+¿Pero qué? ¿Pero qué? ¿Pero qué?
+Bueno, aquí está. Técnico 100, condición, al del dato vivo de la moneda sea igual a
+11. Entonces, sí, que ya, es decir, dejápenlo más cerca de la presión. Tú comparaste que
+todo lo demás está igual, ¿no? Todo el ámbito. Lo único distinto es...
+Claro, que aquella condición tenía validación, pero parecía un nuevo alubo cuando no existo.
+Está ahorita. Y el proceso está. El proceso es firme. Creo que en aquello tiene campo.
+Pero está aquí también. O sea, este que lo copié. Voy al Jason. Voy al Jason y acá.
+Las condiciones también así y este mucho, ¿no?
+el toro, el nudo, el nudo, el nudo. Esto es para mi tío.
+Y 100% seguro que te tienen que salcar el mensaje ahí, no en esa pantalla.
+Si es de nivel de saltos, si es de nivel de saltos, de saltos finos, no se sienta.
+Dicimación de la victoria. Bueno, también el texto, no, si es de la victoria tal cual.
+Es que ese dicimón se nace en la movimenta femónica.
+Levy, dame un favor. Dime.
+En el tag de la acción se trata de tipo auditorías, o auditoría, o audit...
+Auditoría, auditoría. Es correcta como está ahora.
+Estoy creando una regla aparte con Minumaital para diferenciarla.
+Y una que me ha funcionado a mí también. Con el porcentaje de comisión mayor que uno.
+Pero te ha cambiado la IP pública. Me ha cambiado la IP pública de la misma mandamenada.
+Hay que ver ahí.
+Se va a repetir.
+Se va a decir una sinautomatica IP, entonces lo más seguro es que ahora que te conecto, me cambio la IP.
+No sé, me están acabando las ideas.
+Te conecto a Google Play y lo más seguro es que la IP no es la misma que tenías de...
+Correcto. Hay una lista blanca donde hay que registrar para que puedas hacer Google Play.
+Ay, no me arreste como está.
+No te he entendido que están tan...
+No me he entendido que están tan... No me he entendido que están tan...
+No me he entendido que están tan... No me he entendido que están tan...
+No me he entendido que están tan... No me he entendido que están tan...
+¿Puedes volver a probar?
+No me he entendido que están tan... No me he entendido que están tan...
+No me he entendido que están tan... No me he entendido que están tan...
+¿Alguna regla específica?
+No, con el porcentaje 3 ya está bien. Le he puesto que sea mayor que 1.
+Ahí debería entonces. No.
+A ver.
+David.
+Dime.
+Compartir esta pantalla a ver si tiene que ver esto.
+La definición inicial de arquitectura en ese momento cuando montamos esta historia, ¿vale?
+Y yo estoy viendo que no hay ninguna de auditoría sino de tipo revisión.
+Y entonces ¿será que es la palabra revisión y no auditoría?
+No, sí, es auditoría. De todas formas, sí, la A mayúscula.
+Si el problema es que selección de riesgo se está devolviendo que no aplica ninguna regla.
+Es decir, que recupera reglas y no las aplica.
+Selección de riesgos le da igual el nombrecito que tú pongas ahí.
+Es el sistema de ACDC el que va a pasarte las acciones.
+Selección de riesgos solo mira las condiciones. Lo que hay en acciones le da igual.
+Vale, porque él saca la cadena completa y la evalua.
+Claro, es el ACDC el que obtiene ahí, qué tipo es y hace lo que tenga que hacer.
+Lo único que se me ocurre es que no haya subido bien el valor por defecto del producto.
+Vale, por defecto del producto.
+Sí, sabéis que hemos cambiado esta mañana el producto.
+Ayer nos dijisteis que no era 999, 599 si no que eran 3.
+No, al revés.
+Es decir, estábamos pasando 3 y...
+¿Cuánto es? ¿Cuánto la mayoría que délicas son 5?
+El resto de las evaluaciones está saliendo bien y están con el mío.
+Sí, pues...
+Algo en una escuadera.
+Tú identificaste que de selección sale las reglas y es el motor del activo el que no la está tomando.
+Sí.
+No, o sea, Dub recupera la...
+Esta regla la recupera correcta, pero luego en las condiciones no la está evaluando bien.
+Y...
+Ahora qué?
+No sé por qué.
+Ya voy perdido ya.
+Venga, compañero, un favor, David.
+Es singular o plural la palabra contintión.
+Plural.
+¿Qué pasa?
+Se puede ver las ricas de esa petición.
+Es que a veces nos pasaba en el antiguo, que es la primera vez que nos pasó el antiguo,
+que es el antiguo, que es la primera vez que nos pasó el antiguo,
+que es la primera vez que nos pasó el antiguo.
+Y de esa petición, es que a veces nos pasaba en el antiguo, que si el dato variable no viaja en esas ricas,
+no la encuentran quizá y no lo están echando.
+Os comparto.
+Esta es la petición de hace cinco minutos, ¿vale?
+Bueno, he sacado este, que es este de aquí.
+En el lango HS, 15, 421, 999, selección, todo es correcto.
+Y luego, en variable data, que es de donde estábamos mirando los campos antes,
+el porcentaje de comisión en este caso es tres.
+Yo le he puesto que sea mayor que uno que salte.
+Es decir, esto es correcto.
+Salta en los datos variables.
+Y los datos fijos son todos estos, que también se añaden en las condiciones que necesitamos.
+Acabo de añadir una regla ahora, bueno, de modificar la regla que estaba probando yo para los valores,
+para que sea mayor o igual que uno.
+Es activa y es visible, que es muy importante.
+Así que no debería dar problemas.
+Y lo que os comentaba, así es que yo en local sí me está resolviendo, la misma.
+Y la respuesta, esto es mi local.
+La respuesta de selección de riesgos es esto.
+Reglas aplicadas, en este caso, pues el porcentaje de comisión y las condiciones son estas.
+Así que sí que es exactamente la misma regla y el mismo dato de en colección.
+Claro, pero tú lo estás pasando en la entrada y lo estás pasando en el dato variable.
+Quiero decir, podemos ver en la rico es que está haciendo la aplicación.
+Sí, la rico es que hace la aplicación y se está de aquí.
+Porque igual ahí en esa rico es no está en el dato variable.
+Y esto es lo que entra al ACDF, control técnico.
+Y aquí dentro los datos variables están dentro de atributos.
+Tipo de producto.
+Puedes comer.
+Puedes comer.
+Presupuesto.
+Busca, ¿no?
+Sí, se puede buscar.
+Hola, hola.
+Porcentaje comisión, PCT comisión, ¿no?
+La mano.
+Comentadme qué necesitas y pruebo.
+Entamos ya todos los jugadores.
+Controles técnicos no está resolviendo la regla esta.
+Manuel, a ver.
+No está resolviendo esta regla de aquí, ¿vale?
+Teoría conditions.
+Bueno, ahora está con el fixate value, pero estábamos probando variable data.
+Yo, por ejemplo, si lo cambio aquí que esta es la mía.
+Hemos hecho como 4 o 5 regletes diferentes.
+Si quieres, pásame la petición, David, que tiene que saltar y revisar al local.
+Sí, el local te va a funcionar, eso es lo bueno.
+Es importante.
+Pero tú tienes acceso contra base de datos, pero sí.
+No, no.
+Es que eso es la diferencia.
+Te lo mando, ¿vale? Te mando el...
+Te mando el CURL de selección de riesgos o te mando el general de CDC.
+El BODY, el BODY y la URL de la CDC y yo ya lo...
+El BODY no te lo puedo sacar.
+El BODY se trunca, es demasiado grande.
+Te paso el CURL de selección de riesgos.
+Pero tienes la petición a selección de riesgos, ¿vale?
+Sí, sí, vale.
+Te vas a tener tocando.
+Te vas a tener tocando, ¿verdad?
+Me vale.
+Es más cortita además, nos viene perfectamente.
+A mí me falta eso, Freddy, acceso directo a...
+A la base de datos, conexión directa.
+Sí, pues...
+Estás metido a patas y manos así, con esto deberías detenerlo.
+¿Qué necesitas?
+¿Acceso, David?
+Desde local.
+Sí, pero eso a lo externo se me hace complica.
+Desde lo externo.
+La base de datos de integración dale tu IP pública.
+Bueno, si tenemos un arquitecto, eso ya cambia la historia.
+Sí, estamos todos.
+¿Qué salió?
+Con superpoder, con superpoder.
+Nosotros somos mortales.
+Es integración, ¿no?
+Me dudé en los índices mortales.
+La producción, ¿no?
+Si no me gustan.
+No hay alguna, por favor.
+Ahí te la dejo.
+Vale, gracias.
+¿Has pasado lo que dicen por algún sitio?
+Sí, por chat.
+Ah, y cabe, vale.
+Sí, es pequeñita esta.
+Vale, vale.
+¿No levantó?
+A ver, empecé mío.
+Está pidiendo tierra.
+¿Qué está pilotando?
+¿Toma?
+Sí, pero estoy intentando levantar el micro.
+Tengo el pobre PC.
+He explotado.
+Ya la vez también con los de May.
+Yo creo que presupuesto para algo, podemos jugar así.
+A ver si tiene lo mejor.
+Eso ha tardado un minuto en arrancar el micro.
+A ver.
+Vale, estoy dentro.
+Voy a ver primero que devuelve.
+Y si no vamos depurando, comparto.
+Si quieres presentar...
+Sí, sí.
+Un segundo, voy a ver primero que me retorna.
+Vale, request.
+Sí, me aplica un control técnico, ¿eh?
+Es que, es que...
+Ahí voy.
+La versión...
+La versión que tenés despelada en Brasil...
+Tiene lo último, entiendo.
+Sí.
+Si así lo haces, está devolviendo el control técnico por uno.
+No, pero están ejecutando la llamada.
+Está llegando.
+El micro de HDC está con una configuración muy pobre.
+Media CPU y 2 GB.
+¿No estará haciendo alguna cosa rara?
+A ver.
+Si tienes la petición...
+¿Has visto la respuesta que devolvía?
+David, es que...
+Comparte la pantalla para hoy.
+Comparto yo para ver la auditoría directa, ¿vale?
+La llamada que te he pasado es esta de aquí.
+Vale, que es selección de riesgos.
+Y el responsbo de ir aquí me dice que no.
+Que ha encontrado, pero que no ha aplicado a ninguna.
+Ya.
+Así que, poltergeist...
+Efectivamente.
+Y a ver qué versión tenemos y qué versión hay desplegada en Brasil.
+Que ya me cuesta...
+La que se ha desplagado hasta mañana.
+Es que se ha desplagado hasta mañana, es lo del...
+Que hemos actualizado la compañía por defecto, ¿no?
+El producto por defecto.
+Pues ese que...
+Está atacando por local, ¿no?
+A selección de riesgos.
+Por una IP interna, ¿no?
+Sí, sí, es interna.
+Estías...
+Pero sí que no me la esperaba.
+Así voy, yo he perdido también, Manuel.
+Sí.
+Porque es que si me estás respondiendo, yo estoy literalmente conectado a...
+Con la misma versión.
+Voy a echar un ojo lo que hay en...
+Brasil.
+Echar un ojo, por si acaso.
+A la tarea.
+Para que se desplegara en los años.
+¿Te acuerdas?
+Te acuerdas, sí.
+Contra la...
+No, aquí pueden meter trajas.
+Para que mire, selección de riesgo.
+El servicio tiene la versión...
+Tiene la imagen.
+Pero eso es azure.
+Sí, no, pero sí, mira, estamos...
+Para que...
+Las 2.2.
+51.15.
+Ah, yo voy con la 17.
+Y vamos con la 17.
+En selección de riesgos.
+¿Tú crees que ahí vamos a tener un cambio que apetece a esto?
+Me sorprendería muchísimo.
+No creo, no creo.
+Voy a hacer un desplegue, pero...
+Por el que dirá.
+Pero no debería ser eso.
+Sí, no debería.
+Albert, ¿qué punto de mejora tenemos aquí?
+O sea, lo estoy viendo desde el punto de una implantación.
+Yo estoy en Nicaragua, Costa Rica, el año que viene.
+O este año configurando esta regla.
+Y le pasa algo como eso.
+Estamos solos y no vamos a estar llamándolos a ustedes.
+¿Qué punto de mejora tenemos?
+Para poder trazar y ver dónde se nos está cayendo la cosa.
+Pueden ver qué reglas recupera.
+¿Qué reglas evalúa?
+¿Y qué reglas cumple finalmente?
+Pero sin llamarlos, ahí...
+Ya tendremos que poner algo, sí.
+En la auditoría que estamos registrando podríamos completar para que grabar eso.
+Eso originalmente en el roteiro de cálculo lo teníamos.
+No hay de hecho, originalmente por temas de rendimiento se quitó.
+Porque la parte de selección de riesgos original hacía eso.
+Te mostraba todas las reglas que evalúaba.
+¿Y cuáles finalmente cumplía?
+Y a lo mejor, si yo creo que eso con el problema que se está viendo...
+Se puede activar y desactivar.
+Sí, esta auditoría se activa o desactiva a petición.
+Es por configuración.
+Sí, porque yo, por ejemplo, para los de Búsqueda...
+¿Los de Búsqueda hacen eso?
+Me levantan la aplicación y van depurando.
+Ellos en local, nos están levantando en local.
+Pero si es para ver qué reglas está evaluando,
+de los suyos que en la auditoría, lo dejemos ahí.
+¿Y eso es qué se puede hacer?
+Al que nace en mucha petición.
+Imagínate, yo ya dejé en el lado del mundo.
+Todos los dos compañeros que están al otro lado,
+Manuel y Miguel, lo que tienen que hacer.
+Es importante saber dónde estamos.
+Lo que está haciendo Manuel es fundamental.
+Aunque nosotros hayamos sido los primeros que vamos con esto.
+Tampoco el mantenimiento va a quedar por toda capacidad.
+Entonces, ya se está llevando esto a nivel de nul, ¿vale?
+Para que el activo tenga una administración
+con un soporte más de un proceso de rede.
+Porque ahorita pues ya se están tomando conducimiento como acá.
+Pero el mantenimiento y el soporte,
+y digo que venga aquí para allá, pues obviamente
+nosotros tenemos que seguir con nuestras labores, ¿cierto?
+Y el activo pues pasará a formar parte del mantenimiento.
+Eso lo está llevando a nul, ¿vale?
+Con los directores y tal.
+Todavía es el que se hace, pero si es toda la razón.
+O sea, yo la única petición que te hago,
+y tú sabes mejor que nadie,
+estamos en el país, no estamos en un héroe.
+Que hacemos ahora mismo.
+Llamo las trasas y nos metemos a ver qué pasa.
+Claro, vamos pintando ahí.
+Entonces, eso deberíamos tener esa autonomía.
+Te lo creo que es bueno, sí.
+Entonces, que si en ese log nos empezamos a decir,
+mira, estoy entrando por aquí, bang, bang, bang,
+por los manos penos de la guía, por favor.
+O sea, te quedaste sentando en la recta.
+O sea, que tú estás en la recta, por esto está,
+o sea, que tenemos esto, por eso no es cierto.
+O esta regla, la condición no se cumplió.
+O sea, vamos a ver.
+Claro, por eso si lo que, vamos, yo como lo veo es eso.
+Identifica todos este conjunto de reglas que evaluan, ¿no?
+Y cuáles realmente han cumplido.
+Se han ejecutado realmente.
+Entonces, ¿tiene todo ello?
+Si tienen nuevos datos de entrega, dime.
+Este pasa por hecha, porque estoy viendo las propiedades
+del S3, de esa elección de riesgo.
+Y la base de datos de Mongo sí que pone el nombre,
+pero la URL no lo estoy viendo.
+Y no sé si eso es lo correcto,
+que es que, a lo mejor, no está conectando bien
+contra la base de datos que no hay que defender.
+Eso está muy secreto.
+Vale, vale.
+Ok. Vechele un ojo. Por si acaso, por confirmar.
+Vale, sí, crees.
+Pero, ¿han hecho cambios?
+Nosotros vemos, ¿no? O sea, sin embargo.
+Rico el respons, y lo que, y las llamadas internas,
+así de riesgos, ahí está todo.
+Y vemos que se cumpla, y que no sé.
+Que regla evaluada, por donde pasa.
+Lo que no, no, lo que no se ve es eso.
+La parte interna de, oye, ha recuperado 17 reglas
+y de las 17 reglas cumple 5.
+Vale, se ejecutan realmente 5.
+Eso es lo que no sale en la auditoría a día de hoy.
+Y yo creo que no es muy costoso, y se podría atener,
+y así va toda la información.
+Pero, a lo mismo, ante una casuística,
+en la que no se está devolviendo con el enrero de entorno,
+que tampoco se muy bien por donde,
+por donde el tira, porque sí que el local,
+con esa misma petición, no está funcionando.
+Eso es lo que más me descoloca de todo.
+Pero las versiones son las mismas.
+Tendría dos versiones por debajo.
+Que es casi nada.
+Y, de hecho, yo creo que son para la documentación,
+pero le estoy haciendo el deploy.
+Por igualarla ya al que importe.
+La de Azure había desplegado hacía 6 horas.
+Es decir, cuadra, pues que solo haces ir a mañana, ¿no?
+6 de la mañana, no creo que...
+No, no tiene sentido que sea eso.
+No.
+Vamos, lo estoy estabilizando de todas formas,
+pero creo que vaya por ahí los tiros.
+Las cachés, las cachés.
+¿Tenés cachés al nivel de servicio?
+¿Y luego cachés de bombo?
+La misma está desactivada la caché de las colecciones
+en selección de rego.
+Así que no debería tener ninguna.
+¿Y el A13 de rego también te no tiene?
+La C13 de volver resultados, ¿no?
+Sí, lo que se identifica las reglas.
+Pero lo que está pasando es que la sería en cutica,
+pero luego no se cumplen.
+Las condiciones no hacen que directamente cumplen.
+No se cumplen las condiciones.
+No sé más.
+Aquí tiene que ver algo que no decir
+que esa petición no es la que está cogiendo.
+Así que no tengámoslo de la petición principal
+por el truncado.
+David, ¿qué es esto?
+David, ¿qué es lo que hemos subido hoy?
+Hemos subido el default.
+El default que era el del producto.
+Lo teníamos como tres nueves
+y Jordanis nos comentó ayer que eran cinco,
+así que lo cambiamos.
+Lo del riesgo no lo subimos también,
+pero cuando llegaba a un...
+Sí, pero eso es a nivel de ACDC.
+Eso lo asumí Manuel hace una hora o un mes.
+Y ahora sí vemos la llamada a selección de riesgos.
+Es decir, ahora sí pasa por donde toca.
+Vamos a ver las proporciones.
+A ver si voy a hacer un cambio ahí, pero no debería.
+Eso es lo que hemos quisido.
+Pero quisieron un gran factor.
+David, me ha estado excediendo el tema
+de el FreeDive y de cómo podemos generar
+una microtura para entender de dónde estamos parados.
+Viendo cómo formamos los números de público,
+esas cosas, trazándonos en eso.
+La propuesta es la compañía, el ramo,
+y los tres tipos, ¿no?
+El de Action, Action Number, Process Type.
+¿Cómo es la menina?
+Process Step, Action Menu Number y Action Number.
+Esto es un pas saber.
+Del ramo 421, de Brasil, Ramo 421,
+todos los previos de datos variables despólizados,
+entonces si nosotros filtramos solamente por esa cadena inicial,
+ya me los traería todo.
+Pero eso ya sería una normativa de cada proyecto, ¿no?
+Porque por lo menos ustedes están haciendo...
+con el de tallar de productos, tendrían que tener esa regla,
+pero tallar de productos con la gente relacionada.
+Claro, que cuando no hay esos RulaID,
+o sea, tener alguna nomenclatura,
+que cuando uno ve el RulaID ya uno se ubica.
+Así como ahorita yo veo un número,
+y se lleva hasta el ramo 300 de Paloma.
+Igual que el número de polizas te está diciendo, Action Number.
+También es una parecería, ¿no?
+Eso aquí es lo que... Bueno, estoy aquí y después vemos
+que es lo que está propuesto.
+¿La intensidad que ahora sirve de qué?
+Que si pasa, no pasa.
+Al ser del RulaID,
+tendrías control de la condición, ¿no?
+Sí, por eso tengo que si llegas allá a tu barrio.
+¿Quién tiene el ideal tomador?
+No puedo pasar por ahí, no he echado.
+La rechazo de la obvitoría, ¿sí?
+Obvitoría.
+Obvitoría.
+No estáis compartiendo, ¿no?
+No, está David ahí mirándolo a la parte de donde podemos...
+No, aquí prueban, a ver.
+Algo, algo buena.
+¿Y a qué hora vamos a parar a comer?
+Ya, ya.
+Me decomieron todo lo que era en la mesa.
+Me dejaron nada de él.
+No hay nada de comer aquí, hay que irse a otro lado.
+Ya está levantado.
+Manu, ya está levantado, ¿no?
+Está autorizando el progreso.
+El ECC es lentísimo.
+A nivel de la tarea del ECC ya ha estado.
+Sí, vale, pues ahora saltará.
+Pero sí está autorizando a la 17.
+Probad de nuevo si eso a ver si cambia algo el resultado.
+Ya está.
+Ah, ¿qué estaba buscando en la medida?
+Julian me ha explicado algo ahora que nos viene muy bien.
+De cada regla podemos ver cada uno de los pasos
+que ha ejecutado selección de riesgos.
+En la colección de RSR Request.
+Está en al mismo nivel.
+Toda la vez me he olvidado.
+Ahí está.
+La podéis ver todos, ¿eh?
+Está en RSR Request.
+Cuando llega una llamada, por ejemplo,
+esta es de, me parece que es hace dos minutos.
+Va con una hora de atraso.
+Es una la opción.
+RSR Request lo tiene todos los micros.
+Tienen una petición que coge, captura lo que le ha llegado
+y guarda lo que ha respondido el propio micro,
+que era el sistema antiguo de auditoría.
+Sí, aún así va haciendo paso a paso.
+Ha creado estos factos.
+Y ha aplicado la regla de control técnico, PCT, comisión mayor, 10%.
+Las condiciones, el valor fijo, la curren sí, que sea igual a 11.
+Entonces, eso quiere decir que ha aplicado, ¿no?
+Y factor valúes es igual a fixes valúes, currens, valúe 11.
+O sea que esto y esto es lo mismo.
+Pero luego se te anulo por algún motivo.
+El sistema no lo movida.
+En principio.
+Pero es que aunque lo ponga, porque en la regla solo dices.
+El equal a 11.
+A ver, en la regla...
+Sí, en el final resulta también me da nulo, ¿eh?
+En la respuesta, pero yo creo que no miraba eso.
+¿Qué hace? ¿No miraba eso?
+Es posible que no.
+No, no, o sea, al final, el hace de hacer lo que mira
+es de las que me han llegado, ¿qué acciones hay?
+Las reglas.
+Las acciones las aplica.
+Sí, de las reglas que han llegado, ¿qué acciones tengo que hacer?
+Por eso que supuestamente yo con lo que estoy viendo
+que me está enseñando de Mongo es que Dub lo ha hecho bien.
+No, mira.
+Sí.
+Vuelvo aquí, ya, ya, vuelvo aquí.
+Pero el set final resulta nulo, ¿no?
+Es lo que estás diciendo, ¿no?
+Sí, pero eso nos da lo mismo porque ese campo no lo miramos.
+Bueno, este es de validación de atributos, ¿eh?
+Este está OK.
+Este sí, sí, es OK.
+Voy a mirar uno con...
+que sea el de control técnico.
+1-0-0, David.
+Sí, bueno.
+La Playa de Rul control, eh, pues el Taje de Comvisión.
+Sí, que...
+que en...
+ya, ya le explico yo aquí.
+David, eh...
+Vamos a ir a hacer la...
+Sí.
+Vamos a seguir el plan.
+Una hora ahí y nos vemos en una hora.
+Vale.
+A ver, si podemos lograr, si no lo tenemos,
+vamos a seguir adelante porque pues nada,
+es que terminaré el resto de cosas.
+Y...
+pero si está el tema de que nos lance los CT,
+es que es muy raro.
+Muy raro.
+Nos vemos a las dos.
+¿Tra vez? ¿Puede?
+Perfecto, sí.
+Vale. Pese a las dos.
+Venga.
+Hasta ahora.

@@ -1,0 +1,61 @@
+--- [SLIDE 1 DE 7: Sem Título] ---
+
+* Activo Digital de Cálculo
+* Área Corporativa de Tecnología
+
+--- [SLIDE 2 DE 7: Activo Digital de Cálculo : Agenda] ---
+
+
+--- [SLIDE 3 DE 7: Activo Digital de Cálculo] ---
+
+* Que es el activo digital de calculo
+* Por qué es necesario el activo digital de calculo
+* Principios de arquitectura y diseño
+* Principios de seguridad
+* Módulos que incorpora
+* Plan de desarrollo e implementación
+
+--- [SLIDE 4 DE 7: Sem Título] ---
+
+* 1. Que es el Activo Digital de Cálculo
+* El Activo Digital de Cálculo (ACDC) tiene como objetivo independizar el proceso de análisis técnico y cálculo actuarial de pólizas, permitiendo que todo el proceso se realice directamente desde el activo.
+* Permite entregar una oferta comercial acorde a las definiciones de productos y con las reglas de negocio que defina MAPFRE.
+* Tiene tres módulos: Selección de riesgo,  Reglas de negocio,  Cálculos actuariales
+* Optimiza la eficiencia y precisión en la gestión de pólizas, mejorando la integración con diversas aplicaciones y otras APIs.
+* Facilitando la configuración y parametrización de productos y reglas se hará en el taller de productos.
+* Se ha diseñado con las últimas arquitecturas disponible asegurando el rendimiento optimo  y la independencia de los transaccionales.
+* Tiene una base de datos con toda la parametrización y configuración necesaria para el proceso.
+* Tiene una base de datos de las cotizaciones rápidas, que se pasaran al transaccional cuando se consolide en solicitud, propuesta o póliza.
+* Consultará al taller de productos para obtener la configuración y parametrización necesarias.
+* Las fórmulas no se limitarán a un único lenguaje de programación, se podrán usar los que se consideren más adecuados en cada caso, y, donde sea posible.
+
+--- [SLIDE 5 DE 7: Sem Título] ---
+
+
+--- [SLIDE 6 DE 7: Sem Título] ---
+
+* 2. Por qué es necesario el ACDC
+* Los cálculos actuales en PL/SQL no ofrecen ni la flexibilidad ni el rendimiento suficiente y necesario.
+* Los usuarios de negocio deben tener más control e independencia de TI para la definición de productos, reglas y su mantenimiento.
+* Las reglas de negocio estas codificadas en los programas y son muy difíciles de identificar y modificar, generando muchos efectos colaterales.
+* Se debe poder llamar a los diferentes módulos de forma independiente
+* Deben separarse las reglas de negocio de los cálculos.
+* Las fórmulas de los cálculos actuariales deben estar estructuradas, a base de elementos atómicos que se componen para construirlas.
+* Se deben poder trazar los cálculos intermedios para poner a punto las fórmulas y detectar fallos.
+* Se deben poder utilizar diferentes técnicas actuariales (multivariables, tablas de mortalidad, tablas generacionales u otras)
+* Las fórmulas deben poder programarse en el lenguaje de programación más adecuado en cada caso.
+
+--- [SLIDE 7 DE 7: Sem Título] ---
+
+* 3. Principios de arquitectura y diseño
+* Arquitectura Cloud nativa
+* Orientada a garantizar la seguridad
+* Rendimiento de los cálculos
+* Flexibilidad en la definición de reglas de negocio
+* Facilidad para el mantenimiento de formulas
+* Independencia del transaccional
+* Debe ser utilizado por diferentes sistemas
+* Formulación en diferentes lenguajes de programación
+* Para On line y batch
+* Trazabilidad de los cálculos intermedios de las fórmulas
+* Los datos de configuración de productos se obtendrán de Reef.

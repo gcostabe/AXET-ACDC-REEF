@@ -1,0 +1,578 @@
+# Configuración de tarifas
+
+Configuración de tarifas
+
+
+
+
+# [REEF-ACDC Backend](https://reef.acdc-dev.es.emea.aws.mapfre.net/acdc/docs-portal/index.html)
+
+* **Inicio**
+  + [Documentación general](#/README "Documentación general")* **ACDC — Módulo principal**
+    + [Endpoints Online](#/ACDC/ENDPOINTS_ONLINE "Endpoints Online")+ [Orquestador Batch](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR "Orquestador Batch")+ [Cotizaciones](#/ACDC/COTIZACIONES "Cotizaciones")+ [Clientes externos](#/ACDC/EXTERNAL_CLIENTS "Clientes externos")+ [Auditoría](#/ACDC/AUDIT "Auditoría")+ [Seguridad](#/ACDC/SECURITY "Seguridad")* **DUP — Motor de reglas**
+      + [DUP Engine](#/DUP/DUP_ENGINE "DUP Engine")+ [Módulo DUP](#/DUP/README_DUP_MODULE "Módulo DUP")* **Módulos**
+        + [Cálculo de Módulos](#/MODULOS/MODULES_SERVICE "Cálculo de Módulos")* **RTE — Tarificación**
+          + [Configuración de tarifas](#/RTE/RTE_TARIFF_CONFIGURATION "Configuración de tarifas")
+            - [1. Mapa de colecciones](#/RTE/RTE_TARIFF_CONFIGURATION?id=_1-mapa-de-colecciones "1. Mapa de colecciones")- [2. Concepto de desglose](#/RTE/RTE_TARIFF_CONFIGURATION?id=_2-concepto-de-desglose "2. Concepto de desglose")- [3. Bases de cálculo](#/RTE/RTE_TARIFF_CONFIGURATION?id=_3-bases-de-c%c3%a1lculo "3. Bases de cálculo")- [4. Tipos de cálculo](#/RTE/RTE_TARIFF_CONFIGURATION?id=_4-tipos-de-c%c3%a1lculo "4. Tipos de cálculo")- [5. Relación con `FORMULA-DEFINITION`](#/RTE/RTE_TARIFF_CONFIGURATION?id=_5-relaci%c3%b3n-con-formula-definition "5. Relación con FORMULA-DEFINITION")- [6. Conceptos económicos y acumuladores](#/RTE/RTE_TARIFF_CONFIGURATION?id=_6-conceptos-econ%c3%b3micos-y-acumuladores "6. Conceptos económicos y acumuladores")- [7. Bases técnicas](#/RTE/RTE_TARIFF_CONFIGURATION?id=_7-bases-t%c3%a9cnicas "7. Bases técnicas")- [8. Comprobación y diagnóstico](#/RTE/RTE_TARIFF_CONFIGURATION?id=_8-comprobaci%c3%b3n-y-diagn%c3%b3stico "8. Comprobación y diagnóstico")- [9. Fuentes de verdad](#/RTE/RTE_TARIFF_CONFIGURATION?id=_9-fuentes-de-verdad "9. Fuentes de verdad")
+
+# [Configuración de tarifas RTE](#/RTE/RTE_TARIFF_CONFIGURATION?id=configuraci%c3%b3n-de-tarifas-rte)
+
+> Parte de la documentación de `REEF-ACDC` · [Índice general](#/../README) · [Endpoints de gestión](#/../ACDC/MANAGEMENT_ENDPOINTS)
+
+Esta guía explica cómo el motor RTE convierte la parametrización MongoDB en conceptos de desglose. Cubre las relaciones entre colecciones, las bases y tipos de cálculo, las fórmulas y las bases técnicas.
+
+Los ejemplos marcados como **INT 2026-08-27** son fragmentos recortados de `rte_esp-int`. Los ejemplos marcados como **sintéticos** ilustran comportamiento soportado por código, pero no representan una configuración desplegada. No se deben copiar IDs, fechas ni importes entre productos sin validarlos.
+
+## [1. Mapa de colecciones](#/RTE/RTE_TARIFF_CONFIGURATION?id=_1-mapa-de-colecciones)
+
+| Colección | Responsabilidad | Relación |
+| --- | --- | --- |
+| `BREAKDOWN-CONCEPTS` | Define cada concepto y sus versiones en `fields[]` | Punto de entrada de la configuración |
+| `ECONOMIC-CONCEPTS` | Clasifica el importe y su tratamiento | `fields[].economicConceptId` → `_id` |
+| `FORMULA-DEFINITION` | Guarda la expresión o función de un cálculo por fórmula | `fields[].codFormula` → `brgKeyFomVal`, junto con país y compañía |
+| `CONSTANT-DEFINITION` | Resuelve constantes usadas como `MMATH.f_cte('NOMBRE')` | Consulta opcional desde `FORMULA` y `FORMULA_ACDC` |
+| `TECHNICAL-BASIS` | Agrupa los elementos actuariales de una base | Se selecciona por `codBt`, filtros opcionales y vigencia |
+| `TECHNICAL-BASIS-TABLES` | Guarda las filas versionadas de cada tabla | `commonNwtTechBasis[].tables[].tableCode` → `tableCode`, junto con compañía y vigencia |
+
+Flujo general:
+
+```
+BREAKDOWN-CONCEPTS.fields[]
+  ├─ calculationBaseType ──> PREMIUM | CAPITAL | AGGREGATOR
+  ├─ calculationType ──────> regla de cálculo
+  ├─ economicConceptId ────> ECONOMIC-CONCEPTS._id
+  ├─ accumulatorsNames ────> acumuladores en memoria del suplemento
+  └─ codFormula ───────────> FORMULA-DEFINITION.brgKeyFomVal
+                                └─ details[0].fomValVal
+                                     ├─ expresión matemática
+                                     ├─ MMATH.f_cte(...) ──> CONSTANT-DEFINITION
+                                     └─ FUNC_* ────────────> operación Java
+                                                    ├─ codBt ──> TECHNICAL-BASIS
+                                                    │             ├─ flujo genérico: conditions[] elige tableCode
+                                                    │             └─ riesgo mixto: valida que tableCode esté asociado
+                                                    └─ tableCode ──────────────────> TECHNICAL-BASIS-TABLES
+```
+
+No hay una clave foránea directa entre `BREAKDOWN-CONCEPTS` y `TECHNICAL-BASIS`. Solo las fórmulas u operaciones que necesitan datos actuariales consultan una base técnica.
+
+## [2. Concepto de desglose](#/RTE/RTE_TARIFF_CONFIGURATION?id=_2-concepto-de-desglose)
+
+Ejemplo real recortado de compañía 20003, ramo 118 (**INT 2026-08-27**):
+
+```
+{
+  "country": "ESP",
+  "company": 20003,
+  "branch": 118,
+  "breakdownConcept": 408,
+  "name": "SOBREPRIMA POR PROFESION",
+  "scopeType": "GENERAL",
+  "secondIteration": false,
+  "fields": [
+    {
+      "operationalScope": "GENERAL",
+      "calculationBaseType": "AGGREGATOR",
+      "calculationBaseTypeAggregatorName": "C0",
+      "calculationType": "FORMULA_ACDC",
+      "validityDate": "2024-01-01",
+      "automaticCalculation": false,
+      "applyTemporality": true,
+      "returned": true,
+      "accumulatorsNames": ["P0", "R0", "T0"],
+      "economicConceptId": "6a23371ef0c9a9ff7bd9e7f0",
+      "codFormula": "PRIMAS_RIESGO_MIXTAS"
+    }
+  ]
+}
+```
+
+Campos que controlan el cálculo:
+
+| Campo | Uso |
+| --- | --- |
+| `fields[].validityDate` | RTE conserva la versión más reciente cuya fecha sea menor o igual que la fecha de póliza |
+| `operationalScope` | Las reglas descritas aquí requieren `GENERAL` |
+| `calculationBaseType` | Decide de dónde sale la base numérica |
+| `calculationBaseTypeAggregatorName` | Obligatorio cuando la base es `AGGREGATOR` |
+| `calculationType` | Selecciona una de las siete reglas de cálculo |
+| `calculationRate` | Tasa usada por porcentaje o tanto por mil |
+| `calculationAmount` | Importe usado por fijo o fijo por unidad |
+| `calculationCustomServiceName` | Personalización compilada usada por `OBJECT` |
+| `codFormula` | Clave usada por `FORMULA` y `FORMULA_ACDC` |
+| `automaticCalculation` | Controla si un valor recibido puede actuar como importe o tasa manual; su tratamiento depende del `calculationType` |
+| `applyTemporality` | Indica si las reglas posteriores aplican temporalidad |
+| `accumulatorsNames` | Nombres de acumuladores en los que se suma el resultado |
+| `economicConceptId` | `_id` Mongo del concepto económico |
+
+Si hay varias entradas en `fields[]` con la misma fecha vigente máxima, `getValidField()` rechaza la configuración porque espera exactamente una.
+
+Con `automaticCalculation: false`, un valor manual recibido sustituye el importe para todos los tipos salvo `PERCENTAGE` y `SO_MUCH_PER_THOUSAND`. En esos dos tipos, el valor solo sustituye `calculationRate` cuando el ramo permite tasa manual (`BranchRatingConfig.manualRate=true`) y el concepto no es la prima pura ya calculada por la regla de cobertura; después se ejecuta la fórmula automática con esa tasa. Si no llega un valor manual aplicable, las reglas automáticas siguen activas. Los conceptos económicos de tipo `I` fuerzan cálculo automático.
+
+## [3. Bases de cálculo](#/RTE/RTE_TARIFF_CONFIGURATION?id=_3-bases-de-c%c3%a1lculo)
+
+MongoDB guarda actualmente los nombres del enum. Los códigos `PR`, `CA` y `AGR` existen en el enum para procesos de conversión, pero los ejemplos desplegados usan `PREMIUM`, `CAPITAL` y `AGGREGATOR`.
+
+| `calculationBaseType` | Base utilizada | Campo adicional |
+| --- | --- | --- |
+| `PREMIUM` (`PR`) | Prima pura calculada de la cobertura actual | Ninguno |
+| `CAPITAL` (`CA`) | Capital de la cobertura actual | Ninguno |
+| `AGGREGATOR` (`AGR`) | Valor actual de un acumulador del suplemento | `calculationBaseTypeAggregatorName` |
+
+La base se calcula antes de ejecutar el `calculationType`. Por ejemplo, con base `1000` y tasa `10`, `PERCENTAGE` devuelve `100` y `SO_MUCH_PER_THOUSAND` devuelve `10`.
+
+## [4. Tipos de cálculo](#/RTE/RTE_TARIFF_CONFIGURATION?id=_4-tipos-de-c%c3%a1lculo)
+
+Los fragmentos siguientes pertenecen a un elemento de `fields[]`. Las reglas automáticas requieren `operationalScope: "GENERAL"`, una versión vigente y `isAutomaticCalculated()=true`; ese indicador vale `true` por defecto y el procesamiento manual puede cambiarlo.
+
+### [4.1 `PERCENTAGE` (1)](#/RTE/RTE_TARIFF_CONFIGURATION?id=_41-percentage-1)
+
+Calcula `resultado = base * tasa / 100`. Ejemplo numérico **sintético**; el tipo sí tiene configuraciones en INT:
+
+```
+{
+  "calculationBaseType": "CAPITAL",
+  "calculationType": "PERCENTAGE",
+  "calculationRate": 10,
+  "automaticCalculation": true
+}
+```
+
+Con capital `1000`, el resultado es `100`.
+
+### [4.2 `SO_MUCH_PER_THOUSAND` (2)](#/RTE/RTE_TARIFF_CONFIGURATION?id=_42-so_much_per_thousand-2)
+
+Calcula `resultado = base * tasa / 1000`. Ejemplo **sintético**:
+
+```
+{
+  "calculationBaseType": "CAPITAL",
+  "calculationType": "SO_MUCH_PER_THOUSAND",
+  "calculationRate": 10,
+  "automaticCalculation": true
+}
+```
+
+Con capital `1000`, el resultado es `10`.
+
+### [4.3 `FIXED_AMOUNT` (3)](#/RTE/RTE_TARIFF_CONFIGURATION?id=_43-fixed_amount-3)
+
+Devuelve `calculationAmount`; la base no interviene en la operación final. Ejemplo numérico **sintético**; el tipo sí tiene configuraciones en INT:
+
+```
+{
+  "calculationBaseType": "PREMIUM",
+  "calculationType": "FIXED_AMOUNT",
+  "calculationAmount": 75,
+  "automaticCalculation": true
+}
+```
+
+El resultado es `75` con cualquier base válida.
+
+### [4.4 `FIXED_AMOUNT_PER_UNIT` (4)](#/RTE/RTE_TARIFF_CONFIGURATION?id=_44-fixed_amount_per_unit-4)
+
+Calcula `resultado = base * importePorUnidad`. Ejemplo **sintético**:
+
+```
+{
+  "calculationBaseType": "CAPITAL",
+  "calculationType": "FIXED_AMOUNT_PER_UNIT",
+  "calculationAmount": 0.25,
+  "automaticCalculation": true
+}
+```
+
+Con capital `1000`, el resultado es `250`.
+
+### [4.5 `OBJECT` (5)](#/RTE/RTE_TARIFF_CONFIGURATION?id=_45-object-5)
+
+Delega el cálculo en una personalización Spring compilada. El nombre debe resolver una implementación bajo el dominio `breakdownconcept.calculation`. Ejemplo real recortado (**INT 2026-08-27**):
+
+```
+{
+  "calculationBaseType": "PREMIUM",
+  "calculationType": "OBJECT",
+  "calculationCustomServiceName": "EA_K_231_DES.P_104_DESPESAS_ADMINISTRATIVA",
+  "automaticCalculation": true
+}
+```
+
+El resultado depende de la implementación instalada. Un nombre existente en otro país o producto no vuelve reutilizable esa personalización.
+
+### [4.6 `FORMULA` (6)](#/RTE/RTE_TARIFF_CONFIGURATION?id=_46-formula-6)
+
+Busca una definición y evalúa una expresión con el flujo clásico de sustitución de variables. Ejemplo **sintético**:
+
+```
+{
+  "calculationBaseType": "AGGREGATOR",
+  "calculationBaseTypeAggregatorName": "C0",
+  "calculationType": "FORMULA",
+  "codFormula": "DOC_RECARGO_10",
+  "automaticCalculation": true
+}
+```
+
+La definición asociada sería:
+
+```
+{
+  "cnyVal": "ESP",
+  "cmpVal": 20003,
+  "fomVal": "DOC_RECARGO_10",
+  "molVal": "",
+  "insVal": "",
+  "vldDat": 1782864000000,
+  "fomNam": "Ejemplo documental de recargo",
+  "glbNamRel": "VAL_CAMPO",
+  "brgKeyFomVal": "DOC_RECARGO_10",
+  "dsbRow": "false",
+  "details": [
+    {
+      "sqnVal": 1,
+      "fomRowTypVal": "1",
+      "fomValVal": "[BASE_CALCULO] * 0.10",
+      "glbNamRel": "VAL_CAMPO"
+    }
+  ]
+}
+```
+
+Con `C0 = 1000`, el resultado es `100`.
+
+### [4.7 `FORMULA_ACDC` (7)](#/RTE/RTE_TARIFF_CONFIGURATION?id=_47-formula_acdc-7)
+
+Usa el flujo avanzado, que añade constantes, rutas de factores y operaciones `FUNC_*`. Relación real de ramo 118 (**INT 2026-08-27**):
+
+```
+{
+  "calculationBaseType": "AGGREGATOR",
+  "calculationBaseTypeAggregatorName": "C0",
+  "calculationType": "FORMULA_ACDC",
+  "codFormula": "PRIMAS_RIESGO_MIXTAS",
+  "automaticCalculation": false
+}
+```
+
+```
+{
+  "cnyVal": "ESP",
+  "cmpVal": 20003,
+  "fomVal": "PRIMAS_RIESGO_MIXTAS",
+  "vldDat": 1720742400000,
+  "brgKeyFomVal": "PRIMAS_RIESGO_MIXTAS",
+  "dsbRow": "false",
+  "details": [
+    {
+      "sqnVal": 1,
+      "fomRowTypVal": "1",
+      "fomValVal": "FUNC_PREMIUMS_RISK_MIXED",
+      "glbNamRel": "VAL_CAMPO"
+    }
+  ]
+}
+```
+
+`FUNC_PREMIUMS_RISK_MIXED` está implementada por `FormulaPremiumsRiskMixedModalities` y usa los parámetros del riesgo y de la cobertura para calcular prima pura o sobreprima.
+
+## [5. Relación con `FORMULA-DEFINITION`](#/RTE/RTE_TARIFF_CONFIGURATION?id=_5-relaci%c3%b3n-con-formula-definition)
+
+Las reglas `FORMULA` y `FORMULA_ACDC` ejecutan esta búsqueda exacta:
+
+```
+FORMULA-DEFINITION.cnyVal        = país de la petición
+FORMULA-DEFINITION.cmpVal        = compañía de la petición
+FORMULA-DEFINITION.brgKeyFomVal  = BREAKDOWN-CONCEPTS.fields[].codFormula
+```
+
+El concepto referenciado debe pertenecer al mismo país y compañía que la petición. Si no coincide, existe una referencia cruzada incorrecta aunque el `_id` sea válido.
+
+La expresión que se evalúa es `details[0].fomValVal`.
+
+`dsbRow` no es la expresión. En la ruta actual de tarificación de conceptos de desglose tampoco se usa como filtro. Aunque `FORMULA-DEFINITION` contiene `vldDat`, esas reglas no filtran por fecha; la gestión debe evitar más de una definición para la misma terna `cnyVal + cmpVal + brgKeyFomVal`.
+
+Diferencias prácticas:
+
+| Tipo | Evaluador | Capacidades principales |
+| --- | --- | --- |
+| `FORMULA` | `replaceVariablesForValues()` + MxParser | Variables `[NOMBRE]`, `MMATH.f_cte(...)` y expresión matemática |
+| `FORMULA_ACDC` | `evaluateAcdcFormulaFlow()` + MxParser | Variables de contexto, `MMATH.f_cte(...)`, rutas `{ply...}` y operaciones `FUNC_*` |
+
+Ambos tipos resuelven las constantes escritas como `MMATH.f_cte('NOMBRE')` en `CONSTANT-DEFINITION` por país, compañía, ramo, fecha y los filtros de contexto disponibles. Las rutas de factores y las funciones `FUNC_*` pertenecen al flujo `FORMULA_ACDC`; esas funciones no son documentos Mongo, sino clases Java registradas con `@ReefOperation`.
+
+## [6. Conceptos económicos y acumuladores](#/RTE/RTE_TARIFF_CONFIGURATION?id=_6-conceptos-econ%c3%b3micos-y-acumuladores)
+
+`economicConceptId` se compara con el `_id` Mongo cargado en `EconomicConceptRatingConfig`. No se compara con `code`.
+
+Ejemplo asociado a los conceptos 408 y 409 (**INT 2026-08-27**):
+
+```
+{
+  "_id": "6a23371ef0c9a9ff7bd9e7f0",
+  "country": "ESP",
+  "company": 20003,
+  "code": 11,
+  "name": "SOBREPRIMA",
+  "type": "T",
+  "calculatesInterest": false,
+  "distributedCuotes": true
+}
+```
+
+`accumulatorsNames` contiene destinos en memoria. Tras calcular un concepto, RTE suma el importe a cada acumulador indicado. Si otro concepto usa `calculationBaseType: "AGGREGATOR"`, lee uno de esos valores mediante `calculationBaseTypeAggregatorName`. No existe una colección de acumuladores.
+
+## [7. Bases técnicas](#/RTE/RTE_TARIFF_CONFIGURATION?id=_7-bases-t%c3%a9cnicas)
+
+### [7.1 Entrada desde la tarifa de ramo 118](#/RTE/RTE_TARIFF_CONFIGURATION?id=_71-entrada-desde-la-tarifa-de-ramo-118)
+
+En `FUNC_PREMIUMS_RISK_MIXED`, el código de base técnica procede del atributo de cobertura:
+
+```
+COD_GBT_COBERTURA_<coverageId>
+COD_ID_TARIFA_<PP|PROF|ENF>_<coverageId>
+```
+
+Por ejemplo, para cobertura `307`, la función busca `COD_GBT_COBERTURA_307` para obtener `codBt`. También construye el sufijo de concepto (`PP`, `PROF` o `ENF`) y busca, por ejemplo, `COD_ID_TARIFA_PROF_307` para obtener el `tableCode`. Ninguno de estos valores procede de `codFormula`.
+
+Para tarifas tabuladas o actuariales, el algoritmo carga directamente ese `tableCode`, comprueba que aparezca en alguna referencia de la base indicada por `codBt` y busca la fila por edad, duración y forma de pago. Esta comprobación de pertenencia recorre las referencias de `commonNwtTechBasis` sin evaluar sus `conditions[]`.
+
+### [7.2 Selección genérica de `TECHNICAL-BASIS` y sus referencias](#/RTE/RTE_TARIFF_CONFIGURATION?id=_72-selecci%c3%b3n-gen%c3%a9rica-de-technical-basis-y-sus-referencias)
+
+`PlySubscriptionContextImpl` exige `codBt` a las personalizaciones. El servicio y repositorio internos omiten cualquier filtro nulo, por lo que una llamada directa sin `codBt` no falla de inmediato pero puede devolver la base más reciente que cumpla los demás filtros; para una búsqueda determinista el llamador debe informarlo. Se aceptan filtros adicionales como compañía, ramo, modalidad, cobertura o moneda. Para cada filtro informado, el repositorio admite el valor concreto o `null`, aplica `vldDat <= fechaCalculo` y toma la versión con mayor `vldDat`.
+
+Fragmento real de la base `4481` (**INT 2026-08-27**) que ilustra el resolver genérico; no implica que `FUNC_PREMIUMS_RISK_MIXED` elija la tabla `794` mediante la condición de sexo:
+
+```
+{
+  "cmpVal": 20003,
+  "lobVal": 118,
+  "lngVal": "ES",
+  "dsbRow": "N",
+  "codBt": "4481",
+  "namBt": "BASE_TECNICA_4481",
+  "vldDat": "1970-01-01",
+  "commonNwtTechBasis": [
+    {
+      "nameElem": "frsElmMrl",
+      "tables": [
+        {
+          "tableInfo": "Tabla de mortalidad Femenino",
+          "tableDesc": "TABLA_MORTALIDAD",
+          "tableCode": "794",
+          "conditions": [
+            { "factor": "variableData.MCA_SEXO", "op": "=", "value": "0" }
+          ]
+        },
+        {
+          "tableInfo": "Tabla de mortalidad Masculino",
+          "tableDesc": "TABLA_MORTALIDAD",
+          "tableCode": "794",
+          "conditions": [
+            { "factor": "variableData.MCA_SEXO", "op": "=", "value": "1" }
+          ]
+        }
+      ]
+    },
+    {
+      "nameElem": "Interes",
+      "tables": [
+        {
+          "tableInfo": "Tabla de Interes Tecnico",
+          "tableDesc": "TABLA_INTERES",
+          "tableCode": "T_I_4481",
+          "conditions": []
+        }
+      ]
+    }
+  ]
+}
+```
+
+En el flujo genérico de `TechnicalBasisService`, las condiciones se evalúan en orden y se elige la primera referencia cuyos predicados se cumplen. Una referencia sin condiciones siempre coincide. En el flujo específico de riesgo mixto, el código procede de `COD_ID_TARIFA_*` y las condiciones no participan en esa elección.
+
+Fuentes disponibles para `factor`:
+
+| Prefijo | Origen |
+| --- | --- |
+| `fixedValues.` | Datos generales de póliza y distribución |
+| `variableData.` | Atributos de póliza, riesgo y cobertura |
+| `insured.` | Datos normalizados del asegurado |
+| `flex.` | Valores flexibles suministrados por el llamador |
+
+Operadores admitidos en `conditions[].op`: `EQ`/`=`, `NEQ`/`!=`, `GT`/`>`, `GTE`/`>=`, `LT`/`<`, `LTE`/`<=`, `IN`, `NOT_IN`/`NIN`, `EX`, `NOT_EX`/`NEX` y `BTW`.
+
+### [7.3 Resolución de `TECHNICAL-BASIS-TABLES`](#/RTE/RTE_TARIFF_CONFIGURATION?id=_73-resoluci%c3%b3n-de-technical-basis-tables)
+
+Después de elegir la referencia en el flujo genérico, RTE consulta:
+
+```
+TECHNICAL-BASIS-TABLES.cmpVal    = TECHNICAL-BASIS.cmpVal
+TECHNICAL-BASIS-TABLES.tableCode = referencia.tableCode
+TECHNICAL-BASIS-TABLES.vldDat   <= fechaCalculo
+```
+
+Riesgo mixto usa otra procedencia para dos de esos valores:
+
+```
+TECHNICAL-BASIS-TABLES.cmpVal    = compañía de la petición
+TECHNICAL-BASIS-TABLES.tableCode = COD_ID_TARIFA_<PP|PROF|ENF>_<coverageId>
+TECHNICAL-BASIS-TABLES.vldDat   <= fechaCalculo
+```
+
+La búsqueda de la base que valida la asociación en riesgo mixto recibe `codBt`, cobertura y fecha, pero no compañía. La búsqueda posterior de la tabla sí usa la compañía de la petición. Por tanto, una base genérica con `cmpVal: null` puede ser válida, pero la tabla debe existir en la partición de compañía solicitada.
+
+Toma el documento con mayor `vldDat`. Dentro de cada elemento de `body[]`, toma el `item[]` con mayor `item.vldDat` que no sea posterior a la fecha de cálculo.
+
+Fragmento real de la tabla `794` (**INT 2026-08-27**). Demuestra la relación por `tableCode`, pero no que el concepto 408 consuma siempre esa tabla:
+
+```
+{
+  "cmpVal": 20003,
+  "dsbRow": "N",
+  "vldDat": "1970-01-01",
+  "tableInfo": "Tabla Mortalidad 794",
+  "tableCode": "794",
+  "tableDesc": "TM_794",
+  "body": [
+    {
+      "item": [
+        {
+          "fields": { "age": 0, "mrlVal": 1000000 },
+          "vldDat": "1970-01-01"
+        }
+      ]
+    },
+    {
+      "item": [
+        {
+          "fields": { "age": 1, "mrlVal": 997.996 },
+          "vldDat": "1970-01-01"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Los nombres de `fields` dependen del algoritmo que consume la tabla. En una tabla de mortalidad se usa `mrlVal`; riesgo mixto busca `ageVal`, `durVal`, `methodOfPaymentVal` y `coefficient`; otras tablas pueden usar campos como `PCT_INTERES`, `DURACION` o coeficientes específicos.
+
+## [8. Comprobación y diagnóstico](#/RTE/RTE_TARIFF_CONFIGURATION?id=_8-comprobaci%c3%b3n-y-diagn%c3%b3stico)
+
+Consultas de solo lectura para validar una configuración concreta:
+
+```
+// Sustituir estos valores por los usados en la tarificación investigada.
+const breakdownConceptId = '<breakdownConceptRatingConfigId>';
+const requestCountryId = 'ESP';
+const requestCompanyId = 20003;
+const policyValidityDate = ISODate('2026-08-27T00:00:00Z');
+const technicalCalculationDate = ISODate('2026-08-27T00:00:00Z');
+const coverageId = 307;
+const technicalBasisCode = '4481';
+const riskMixedTableCode = '794';
+
+if (!/^[0-9a-f]{24}$/i.test(breakdownConceptId)) {
+  throw new Error('Informe el _id de BREAKDOWN-CONCEPTS referenciado por la cobertura');
+}
+
+const concept = db.getCollection('BREAKDOWN-CONCEPTS').findOne({
+  _id: ObjectId(breakdownConceptId)
+});
+if (!concept) {
+  throw new Error(`No existe BREAKDOWN-CONCEPTS con _id ${breakdownConceptId}`);
+}
+if (concept.country !== requestCountryId || concept.company !== requestCompanyId) {
+  throw new Error(
+    `El concepto pertenece a ${concept.country}/${concept.company}, ` +
+    `pero la petición usa ${requestCountryId}/${requestCompanyId}`
+  );
+}
+
+const eligibleFields = concept.fields.filter(
+  item => item.validityDate <= policyValidityDate
+);
+if (eligibleFields.length === 0) {
+  throw new Error(`No hay fields[] vigentes a ${policyValidityDate.toISOString()}`);
+}
+
+const latestValidityTime = Math.max(
+  ...eligibleFields.map(item => item.validityDate.getTime())
+);
+const activeFields = eligibleFields.filter(
+  item => item.validityDate.getTime() === latestValidityTime
+);
+if (activeFields.length !== 1) {
+  throw new Error(`Se esperaban 1 fields[] vigente y se encontraron ${activeFields.length}`);
+}
+const field = activeFields[0];
+
+const formulas = db.getCollection('FORMULA-DEFINITION').find({
+  // La regla usa país y compañía de la petición.
+  cnyVal: requestCountryId,
+  cmpVal: requestCompanyId,
+  brgKeyFomVal: field.codFormula
+}).toArray();
+
+// La ruta de tarificación espera una única definición para esta terna.
+if (formulas.length !== 1) {
+  throw new Error(`Se esperaban 1 fórmula y se encontraron ${formulas.length}`);
+}
+
+const economicConcept = db.getCollection('ECONOMIC-CONCEPTS').findOne({
+  _id: ObjectId(field.economicConceptId)
+});
+if (!economicConcept) {
+  throw new Error(`No existe ECONOMIC-CONCEPTS con _id ${field.economicConceptId}`);
+}
+if (economicConcept.country !== requestCountryId ||
+    economicConcept.company !== requestCompanyId) {
+  throw new Error(
+    `El concepto económico pertenece a ${economicConcept.country}/` +
+    `${economicConcept.company}, pero la petición usa ` +
+    `${requestCountryId}/${requestCompanyId}`
+  );
+}
+
+const technicalBasis = db.getCollection('TECHNICAL-BASIS').find({
+  // Reproduce los filtros informados por riesgo mixto: valor solicitado o null.
+  codBt: { $in: [technicalBasisCode, null] },
+  cvrVal: { $in: [coverageId, null] },
+  vldDat: { $lte: technicalCalculationDate }
+}).sort({ vldDat: -1 }).limit(1).next();
+if (!technicalBasis) {
+  throw new Error(`No existe una base vigente para ${technicalBasisCode}`);
+}
+
+db.getCollection('TECHNICAL-BASIS-TABLES').find({
+  // Riesgo mixto usa la compañía de la petición, no technicalBasis.cmpVal.
+  cmpVal: requestCompanyId,
+  tableCode: riskMixedTableCode,
+  vldDat: { $lte: technicalCalculationDate }
+}).sort({ vldDat: -1 }).limit(1).next();
+```
+
+Para reproducir el resolver genérico, partir igualmente del `_id` de concepto referenciado, informar en la consulta de base todos los filtros recibidos y consultar la tabla con `technicalBasis.cmpVal`. Las fechas `policyValidityDate` y `technicalCalculationDate` pueden ser distintas: la primera selecciona `fields[]`; la segunda selecciona la base, la tabla y sus filas.
+
+| Síntoma | Comprobación |
+| --- | --- |
+| Se diagnostica otro concepto con el mismo código | Partir del `_id` de `BREAKDOWN-CONCEPTS` referenciado por la cobertura, no solo de ramo y `breakdownConcept` |
+| La versión diagnosticada no coincide con rating | Usar la fecha de vigencia de póliza para `fields[]` y la fecha efectiva del algoritmo para base y tablas; rechazar empates de vigencia |
+| `Formula not found` | Igualdad exacta de `country/cnyVal`, `company/cmpVal` y `codFormula/brgKeyFomVal` |
+| La fórmula encontrada no es la esperada | Evitar duplicados por la misma terna; la regla de cálculo no filtra `vldDat` |
+| Se evalúa un contenido incorrecto | La expresión está en `details[0].fomValVal`, no en `dsbRow` ni en `fomVal` |
+| Falta una variable `[NOMBRE]` | Confirmar que llega en valores fijos, parámetros de póliza/riesgo/cobertura o variables especiales |
+| No se encuentra la base | Revisar `COD_GBT_COBERTURA_<coverageId>`, `codBt`, fecha y filtros informados |
+| El flujo genérico no selecciona una tabla | Revisar el prefijo de `factor`, el operador, el valor y el orden de `tables[]` |
+| Riesgo mixto no carga la tabla | Revisar `COD\_ID\_TARIFA\_<PP |
+| No se encuentra el documento de tabla | Revisar `cmpVal`, `tableCode` y que exista una versión con `vldDat <= fechaCalculo` |
+| Se usa un importe manual | Revisar el valor recibido y `automaticCalculation`; no aplica a `PERCENTAGE` ni `SO_MUCH_PER_THOUSAND` |
+| Se ignora una tasa manual | Revisar `BranchRatingConfig.manualRate`, el tipo de cálculo y la exclusión de prima pura; los conceptos económicos de tipo `I` fuerzan cálculo automático |
+| Falla el enriquecimiento económico | `economicConceptId` debe ser un `_id` existente de `ECONOMIC-CONCEPTS` |
+
+Para probar la evaluación aislada de una expresión, usar `POST /acdc/api/test-formula-definition` descrito en [Endpoints de gestión](#/../ACDC/MANAGEMENT_ENDPOINTS?id=65-probar-definici%c3%b3n-de-f%c3%b3rmula). Para comprobar el resultado completo en `OPlyBrwPT`, usar los endpoints de tarificación documentados en [Endpoints online](#/../ACDC/ENDPOINTS_ONLINE?id=4-ratingcontroller).
+
+## [9. Fuentes de verdad](#/RTE/RTE_TARIFF_CONFIGURATION?id=_9-fuentes-de-verdad)
+
+* Enum y modelo: `BreakdownConceptCalculationType`, `BreakdownConceptCalculationBaseType`, `BreakdownConceptField`.* Reglas: paquete `rules.annual_amount.breakdownconcept` de `core_rte_service`.* Fórmulas: `BreakdownConceptCalculationFormulaRule`, `BreakdownConceptCalculationFormulaAcdcRule`, `FormulaUtilService`.* Bases: `TechnicalBasisService`, `TechnicalBasisRepositoryCustomImpl`.* Caso ramo 118: `FormulaPremiumsRiskMixedModalities`, `PremiumsRiskMixedCalculationService`.
+
+Si la documentación y esas clases divergen, prevalece el comportamiento comprobado del motor y se debe actualizar esta guía.

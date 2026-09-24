@@ -1,5 +1,5 @@
 import React from 'react';
-import { Database, ShieldCheck, Calculator, Layers, Globe2 } from 'lucide-react';
+import { Database, ShieldCheck, Calculator, Layers, Globe2, Package, Sliders } from 'lucide-react';
 
 export default function OverviewTab({ stats, onSelectTab }) {
   if (!stats) return null;
@@ -8,27 +8,41 @@ export default function OverviewTab({ stats, onSelectTab }) {
 
   return (
     <div className="overview-container">
-      {/* Top Banner with NTT DATA Gradient */}
-      <div className="card" style={{ marginBottom: '2rem', background: 'linear-gradient(135deg, rgba(0, 102, 255, 0.18), rgba(0, 163, 255, 0.08))', borderColor: 'rgba(0, 102, 255, 0.35)' }}>
+      {/* Top Banner with NTT DATA Light Theme Gradient */}
+      <div 
+        className="card" 
+        style={{ 
+          marginBottom: '2rem', 
+          background: 'linear-gradient(135deg, #eff6ff 0%, #f0f9ff 60%, #faf5ff 100%)', 
+          borderColor: '#bfdbfe',
+          boxShadow: '0 4px 14px -3px rgba(0, 102, 255, 0.08)'
+        }}
+      >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.45rem' }}>
               <span className="badge badge-blue">Ambiente {environment}</span>
-              <span className="badge badge-emerald">MongoDB 7.0 Ativo</span>
+              <span className="badge badge-emerald">
+                {stats.activeEnvironment?.name ? `MongoDB: ${stats.activeEnvironment.name} (${stats.activeEnvironment.type === 'local' ? 'Docker' : 'Remoto'})` : 'MongoDB 7.0 Ativo'}
+              </span>
+              <span className="badge badge-purple">Activo Digital de Cálculo</span>
             </div>
-            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.6rem', fontWeight: 700, color: '#fff' }}>
+            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.65rem', fontWeight: 800, color: 'var(--text-main)', letterSpacing: '-0.02em' }}>
               Plataforma ACDC • MAPFRE Seguros
             </h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', maxWidth: '750px', marginTop: '0.4rem' }}>
-              Ecossistema integrado de <strong>Subscrição Dinâmica (DUP)</strong> e <strong>Motor de Tarifação (RTE)</strong> com 51 coleções e mais de 1,4 milhão de registros estruturados para consulta e auditoria.
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', maxWidth: '850px', marginTop: '0.45rem', lineHeight: '1.5' }}>
+              Ecossistema corporativo integrando o <strong>Data Update Process (DUP)</strong> — seleção e aceitação de riscos em 11 passos de workflow — e o <strong>Rating Engine (RTE)</strong> — motor atuarial de tarifação, pacotes de cobertura e conceitos de desglose. Mais de 1,4 milhão de registros estruturados para consulta atuarial e auditoria.
             </p>
           </div>
-          <div style={{ display: 'flex', gap: '0.75rem' }}>
-            <button className="pagination-btn" onClick={() => onSelectTab('products')}>
-              <Layers size={15} /> Ver Produtos
+          <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
+            <button className="pagination-btn" onClick={() => onSelectTab('packages')}>
+              <Package size={15} style={{ color: '#7c3aed' }} /> Ver Pacotes ({keyMetrics.coveragePackages || 759})
+            </button>
+            <button className="pagination-btn" onClick={() => onSelectTab('rules')}>
+              <ShieldCheck size={15} style={{ color: '#0066ff' }} /> Regras DUP (101k)
             </button>
             <button className="pagination-btn btn-primary" onClick={() => onSelectTab('rating')}>
-              <Calculator size={15} /> Fórmulas RTE
+              <Calculator size={15} /> Tarifação RTE
             </button>
           </div>
         </div>
@@ -36,7 +50,7 @@ export default function OverviewTab({ stats, onSelectTab }) {
 
       {/* KPI Cards */}
       <div className="stats-grid">
-        <div className="card stat-card">
+        <div className="card stat-card" style={{ cursor: 'pointer' }} onClick={() => onSelectTab('explorer')}>
           <div className="stat-icon blue">
             <Database size={24} />
           </div>
@@ -46,33 +60,53 @@ export default function OverviewTab({ stats, onSelectTab }) {
           </div>
         </div>
 
-        <div className="card stat-card">
+        <div className="card stat-card" style={{ cursor: 'pointer' }} onClick={() => onSelectTab('rules')}>
           <div className="stat-icon purple">
             <ShieldCheck size={24} />
           </div>
           <div className="stat-info">
-            <span className="stat-value">{keyMetrics.riskSelectionRules.toLocaleString('pt-BR')}</span>
-            <span className="stat-label">Regras de Seleção de Risco (RS)</span>
+            <span className="stat-value">{(keyMetrics.riskActionsConditions || 101250).toLocaleString('pt-BR')}</span>
+            <span className="stat-label">Regras DUP (Ações & Condições)</span>
           </div>
         </div>
 
-        <div className="card stat-card">
+        <div className="card stat-card" style={{ cursor: 'pointer' }} onClick={() => onSelectTab('packages')}>
+          <div className="stat-icon emerald">
+            <Package size={24} />
+          </div>
+          <div className="stat-info">
+            <span className="stat-value">{keyMetrics.coveragePackages || 759}</span>
+            <span className="stat-label">Pacotes & Módulos de Cobertura</span>
+          </div>
+        </div>
+
+        <div className="card stat-card" style={{ cursor: 'pointer' }} onClick={() => onSelectTab('rating')}>
           <div className="stat-icon cyan">
+            <Sliders size={24} />
+          </div>
+          <div className="stat-info">
+            <span className="stat-value">{(keyMetrics.breakdownConcepts || 1270).toLocaleString('pt-BR')}</span>
+            <span className="stat-label">Conceitos de Desglose RTE</span>
+          </div>
+        </div>
+
+        <div className="card stat-card" style={{ cursor: 'pointer' }} onClick={() => onSelectTab('rating')}>
+          <div className="stat-icon amber">
             <Calculator size={24} />
           </div>
           <div className="stat-info">
-            <span className="stat-value">{keyMetrics.ratingFormulas}</span>
+            <span className="stat-value">{keyMetrics.ratingFormulas || 203}</span>
             <span className="stat-label">Fórmulas de Cálculo Atuarial</span>
           </div>
         </div>
 
-        <div className="card stat-card">
-          <div className="stat-icon emerald">
+        <div className="card stat-card" style={{ cursor: 'pointer' }} onClick={() => onSelectTab('products')}>
+          <div className="stat-icon rose">
             <Layers size={24} />
           </div>
           <div className="stat-info">
-            <span className="stat-value">{keyMetrics.products}</span>
-            <span className="stat-label">Produtos de Seguro Cadastrados</span>
+            <span className="stat-value">{keyMetrics.products || 28}</span>
+            <span className="stat-label">Produtos de Seguro</span>
           </div>
         </div>
       </div>
@@ -87,14 +121,14 @@ export default function OverviewTab({ stats, onSelectTab }) {
                 <ShieldCheck size={20} />
               </div>
               <div>
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem' }}>Módulo DUP</h3>
+                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem' }}>Módulo DUP (Data Update Process)</h3>
                 <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{summary.dup.name}</span>
               </div>
             </div>
             <span className="badge badge-blue">{summary.dup.collectionsCount} Coleções</span>
           </div>
           <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
-            Subscrição dinâmica, seleção de risco (Risk Selection), regras de corte/desvio, controle antifraude e tabelas de carga batch legadas do Tronador.
+            Workflow de seleção e aceitação de risco (Risk Selection) executado em 11 etapas sequenciais, 101.250 regras de ações e condições (`RS-RULES-ACTIONS-CONDITIONS`), inspeção de sinistros e histórico de apólices Tronador.
           </p>
           <div style={{ maxHeight: '260px', overflowY: 'auto', border: '1px solid var(--border-card)', borderRadius: 'var(--radius-sm)' }}>
             <table className="data-table">
@@ -124,14 +158,14 @@ export default function OverviewTab({ stats, onSelectTab }) {
                 <Calculator size={20} />
               </div>
               <div>
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem' }}>Módulo RTE</h3>
+                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.15rem' }}>Módulo RTE (Rating Engine)</h3>
                 <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{summary.rte.name}</span>
               </div>
             </div>
             <span className="badge badge-blue">{summary.rte.collectionsCount} Coleções</span>
           </div>
           <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
-            Motor de Tarifação (Tronador Rating Engine), definição de fórmulas atuariais, constantes financeiras, conceitos de bonificação, bases técnicas e fatores de fixação.
+            Motor atuarial de tarifação Tronador, definição de pacotes e módulos de coberturas (`COVERAGE-PACKAGE-DEFINITION`), 1.270 conceitos de cálculo (`BREAKDOWN-CONCEPTS`), 203 fórmulas matemáticas, bases técnicas e fatores de fixação.
           </p>
           <div style={{ maxHeight: '260px', overflowY: 'auto', border: '1px solid var(--border-card)', borderRadius: 'var(--radius-sm)' }}>
             <table className="data-table">

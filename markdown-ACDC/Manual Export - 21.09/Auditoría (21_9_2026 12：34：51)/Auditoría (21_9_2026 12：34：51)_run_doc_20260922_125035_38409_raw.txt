@@ -1,0 +1,369 @@
+# Auditoría
+
+Auditoría
+
+
+
+
+# [REEF-ACDC Backend](https://reef.acdc-dev.es.emea.aws.mapfre.net/acdc/docs-portal/index.html)
+
+* **Inicio**
+  + [Documentación general](#/README "Documentación general")* **ACDC — Módulo principal**
+    + [Endpoints Online](#/ACDC/ENDPOINTS_ONLINE "Endpoints Online")+ [Orquestador Batch](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR "Orquestador Batch")+ [Cotizaciones](#/ACDC/COTIZACIONES "Cotizaciones")+ [Clientes externos](#/ACDC/EXTERNAL_CLIENTS "Clientes externos")+ [Auditoría](#/ACDC/AUDIT "Auditoría")
+              - [Índice](#/ACDC/AUDIT?id=%c3%8dndice "Índice")- [1. Visión general](#/ACDC/AUDIT?id=_1-visi%c3%b3n-general "1. Visión general")- [2. Estrategias de auditoría (`AuditStrategy`)](#/ACDC/AUDIT?id=_2-estrategias-de-auditor%c3%ada-auditstrategy "2. Estrategias de auditoría (AuditStrategy)")- [3. Componentes y flujo de datos](#/ACDC/AUDIT?id=_3-componentes-y-flujo-de-datos "3. Componentes y flujo de datos")- [4. `AuditFilter` — Captura de la request HTTP entrante](#/ACDC/AUDIT?id=_4-auditfilter-captura-de-la-request-http-entrante "4. AuditFilter — Captura de la request HTTP entrante")- [5. `WebClientAuditInterceptor` — Captura de llamadas salientes](#/ACDC/AUDIT?id=_5-webclientauditinterceptor-captura-de-llamadas-salientes "5. WebClientAuditInterceptor — Captura de llamadas salientes")- [6. `AuditContext` — Estado por petición](#/ACDC/AUDIT?id=_6-auditcontext-estado-por-petici%c3%b3n "6. AuditContext — Estado por petición")- [7. `AuditService` — Persistencia asíncrona](#/ACDC/AUDIT?id=_7-auditservice-persistencia-as%c3%adncrona "7. AuditService — Persistencia asíncrona")- [8. Modelo `AuditLog` en MongoDB](#/ACDC/AUDIT?id=_8-modelo-auditlog-en-mongodb "8. Modelo AuditLog en MongoDB")- [9. Circuit Breaker](#/ACDC/AUDIT?id=_9-circuit-breaker "9. Circuit Breaker")- [10. Protección de tamaño (límite 16MB MongoDB)](#/ACDC/AUDIT?id=_10-protecci%c3%b3n-de-tama%c3%b1o-l%c3%admite-16mb-mongodb "10. Protección de tamaño (límite 16MB MongoDB)")- [11. Configuración](#/ACDC/AUDIT?id=_11-configuraci%c3%b3n "11. Configuración")- [12. Exclusiones](#/ACDC/AUDIT?id=_12-exclusiones "12. Exclusiones")+ [Seguridad](#/ACDC/SECURITY "Seguridad")* **DUP — Motor de reglas**
+      + [DUP Engine](#/DUP/DUP_ENGINE "DUP Engine")+ [Módulo DUP](#/DUP/README_DUP_MODULE "Módulo DUP")* **Módulos**
+        + [Cálculo de Módulos](#/MODULOS/MODULES_SERVICE "Cálculo de Módulos")* **RTE — Tarificación**
+          + [Configuración de tarifas](#/RTE/RTE_TARIFF_CONFIGURATION "Configuración de tarifas")
+
+# [Sistema de Auditoría](#/ACDC/AUDIT?id=sistema-de-auditor%c3%ada)
+
+> 📚 Parte de la documentación de `REEF-ACDC` · [← Índice general](#/../README)
+
+**Relacionado con:** [EXTERNAL\_CLIENTS.md](#/EXTERNAL_CLIENTS)
+
+---
+
+## [Índice](#/ACDC/AUDIT?id=%c3%8dndice)
+
+1. [Visión general](#/ACDC/AUDIT?id=1-visi%c3%b3n-general)- [Estrategias de auditoría](#/ACDC/AUDIT?id=2-estrategias-de-auditor%c3%ada-auditstrategy)- [Componentes y flujo de datos](#/ACDC/AUDIT?id=3-componentes-y-flujo-de-datos)- [AuditFilter — Captura de la request HTTP entrante](#/ACDC/AUDIT?id=4-auditfilter--captura-de-la-request-http-entrante)- [WebClientAuditInterceptor — Captura de llamadas salientes](#/ACDC/AUDIT?id=5-webclientauditinterceptor--captura-de-llamadas-salientes)- [AuditContext — Estado por petición](#/ACDC/AUDIT?id=6-auditcontext--estado-por-petici%c3%b3n)- [AuditService — Persistencia asíncrona](#/ACDC/AUDIT?id=7-auditservice--persistencia-as%c3%adncrona)- [Modelo AuditLog en MongoDB](#/ACDC/AUDIT?id=8-modelo-auditlog-en-mongodb)- [Circuit Breaker](#/ACDC/AUDIT?id=9-circuit-breaker)- [Protección de tamaño (límite 16MB MongoDB)](#/ACDC/AUDIT?id=10-protecci%c3%b3n-de-tama%c3%b1o-l%c3%admite-16mb-mongodb)- [Configuración](#/ACDC/AUDIT?id=11-configuraci%c3%b3n)- [Exclusiones](#/ACDC/AUDIT?id=12-exclusiones)
+
+---
+
+## [1. Visión general](#/ACDC/AUDIT?id=_1-visi%c3%b3n-general)
+
+El sistema de auditoría registra de forma **asíncrona y no intrusiva** cada petición HTTP entrante y todas las llamadas WebClient salientes que se realizan durante su procesamiento. El objetivo es tener trazabilidad completa para troubleshooting sin impactar el rendimiento.
+
+```
+Petición HTTP entrante
+        │
+        ▼
+  ┌─────────────┐   inicializa AuditContext (ThreadLocal)
+  │ AuditFilter │   captura URI, método, body request/response
+  └──────┬──────┘
+         │
+         ▼  (cada llamada WebClient)
+  ┌──────────────────────────┐
+  │ WebClientAuditInterceptor │   captura URL, body, status, duración
+  └──────────┬───────────────┘
+             │
+             ▼
+  ┌──────────────────┐
+  │  AuditContext    │   acumula hasta 30 WebClientCallInfo
+  └──────────┬───────┘
+             │ al finalizar la petición HTTP
+             ▼
+  ┌──────────────────┐
+  │  AuditService    │   @Async — no bloquea el hilo principal
+  │  (+ CircuitBreaker)│
+  └──────────┬───────┘
+             │
+             ▼
+  MongoDB: colección audit-request
+```
+
+---
+
+## [2. Estrategias de auditoría (`AuditStrategy`)](#/ACDC/AUDIT?id=_2-estrategias-de-auditor%c3%ada-auditstrategy)
+
+Configurable con `audit.strategy` en `application.yml`. Controla **qué se captura y cuándo**.
+
+### [`NONE` (por defecto)](#/ACDC/AUDIT?id=none-por-defecto)
+
+* No se captura nada.* `AuditFilter` y `WebClientAuditInterceptor` retornan inmediatamente sin hacer nada.* **Cero overhead** en producción si no se necesita auditoría.
+
+### [`ALL`](#/ACDC/AUDIT?id=all)
+
+* Captura **todas** las llamadas WebClient (éxitos y errores).* Captura bodies de request y response de la petición principal.* Captura bodies de request y response de cada llamada WebClient.* Útil para análisis completo y troubleshooting intensivo.
+
+### [`ERROR`](#/ACDC/AUDIT?id=error)
+
+* Captura el endpoint y timestamp de la petición principal siempre.* Solo captura bodies (request/response principal) si hubo algún error.* Solo añade `WebClientCallInfo` para llamadas WebClient que **fallaron** (HTTP 4xx/5xx o excepción de red).* **Ideal para producción**: registra lo necesario para diagnosticar problemas sin llenar MongoDB con datos de éxito.
+
+---
+
+## [3. Componentes y flujo de datos](#/ACDC/AUDIT?id=_3-componentes-y-flujo-de-datos)
+
+| Componente | Tipo | Responsabilidad |
+| --- | --- | --- |
+| `AuditFilter` | `OncePerRequestFilter` @Order(HIGHEST\_PRECEDENCE) | Intercepta requests HTTP. Inicializa `AuditContext`. Captura bodies de entrada/salida. Dispara el guardado al finalizar. |
+| `WebClientAuditInterceptor` | `ExchangeFilterFunction` | Intercepta cada llamada WebClient. Captura URL, request body (del contexto reactor), response body, status y duración. |
+| `AuditContext` | ThreadLocal (vía `AuditContextHolder`) | Almacena el estado de auditoría de la petición actual: metadata + lista de `WebClientCallInfo`. |
+| `AuditService` | `@Service` + `@Async` | Convierte `AuditContext` → `AuditLog`, aplica protección de tamaño y persiste en MongoDB. |
+| `AuditRepository` | Spring Data MongoDB | Interfaz de persistencia para la colección `audit-request`. |
+| `AuditLog` | `@Document` MongoDB | Modelo de datos persistido. |
+
+---
+
+## [4. `AuditFilter` — Captura de la request HTTP entrante](#/ACDC/AUDIT?id=_4-auditfilter-captura-de-la-request-http-entrante)
+
+**Fichero:** `audit/filter/AuditFilter.java`
+
+Envuelve request y response con `ContentCachingRequestWrapper` / `ContentCachingResponseWrapper` para poder leer los bodies más de una vez.
+
+### [Ciclo de vida por petición:](#/ACDC/AUDIT?id=ciclo-de-vida-por-petici%c3%b3n)
+
+```
+1. AuditContextHolder.initialize()
+2. context.requestId = UUID.randomUUID()
+3. context.requestStartTime = LocalDateTime.now()
+4. context.endpoint = request.getRequestURI()
+5. context.httpMethod = request.getMethod()
+
+   → filterChain.doFilter(wrappedRequest, wrappedResponse)  [procesa la petición]
+
+6. responseStatus = wrappedResponse.getStatus()
+7. isError = (status >= 400) || context.hasErrors()
+8. Si shouldCaptureBody(isError):
+     requestBody  = wrappedRequest.getContentAsByteArray()
+     responseBody = wrappedResponse.getContentAsByteArray()
+     (truncados si > maxBodySize caracteres)
+9. context.setResponseStatus(responseStatus)
+10. auditService.saveAsync(context)   ← @Async, no bloquea
+11. wrappedResponse.copyBodyToResponse()  ← importante: restaura el body al cliente
+```
+
+> `shouldCaptureBody(isError)`:
+>
+> * `NONE` → siempre `false`* `ALL` → siempre `true`* `ERROR` → solo si `isError == true`
+
+---
+
+## [5. `WebClientAuditInterceptor` — Captura de llamadas salientes](#/ACDC/AUDIT?id=_5-webclientauditinterceptor-captura-de-llamadas-salientes)
+
+**Fichero:** `audit/interceptor/WebClientAuditInterceptor.java`
+
+Registrado como `ExchangeFilterFunction` en `WebClientConfig`. Se ejecuta para **cada llamada** que hace cualquier cliente WebClient del sistema.
+
+### [Captura del request body](#/ACDC/AUDIT?id=captura-del-request-body)
+
+El body no está directamente disponible en el `ExchangeFilterFunction`. La solución es que cada cliente serializa su payload y lo coloca en el contexto reactor antes del `.block()`:
+
+```
+// En cada cliente externo:
+.contextWrite(ctx -> ctx.put("auditRequestBody", requestBodyJson))
+```
+
+El interceptor lo lee con:
+
+```
+Mono.deferContextual(contextView -> {
+    String requestBody = contextView.getOrDefault("auditRequestBody", "");
+    ...
+})
+```
+
+### [Flujo de captura:](#/ACDC/AUDIT?id=flujo-de-captura)
+
+```
+1. Registra startTime
+2. Extrae serviceName de la URL (ej: "rte-service" de "http://rte-service:8080/...")
+3. Llama al siguiente handler (next.exchange(request))
+4. Captura el response body como String (bodyToMono)
+5. Construye ClientResponse nuevo con el mismo body (para que el cliente lo pueda leer)
+6. Crea WebClientCallInfo con todos los datos
+7. Si shouldAudit(callInfo) → registerAudit(callInfo, contextView)
+     └── AuditContextHolder.getContext().addWebClientCall(callInfo)
+8. En caso de error (onErrorResume):
+     └── Crea WebClientCallInfo con success=false, errorMessage=exception.message
+```
+
+### [`shouldAudit()` según estrategia:](#/ACDC/AUDIT?id=shouldaudit-seg%c3%ban-estrategia)
+
+| Estrategia | ¿Cuándo audita? |
+| --- | --- |
+| `NONE` | Nunca |
+| `ALL` | Siempre |
+| `ERROR` | Solo si `callInfo.success == false` |
+
+---
+
+## [6. `AuditContext` — Estado por petición](#/ACDC/AUDIT?id=_6-auditcontext-estado-por-petici%c3%b3n)
+
+**Fichero:** `audit/context/AuditContext.java`
+
+Almacenado en `AuditContextHolder` (ThreadLocal). Se inicializa al inicio de cada request HTTP y se limpia al finalizar.
+
+```
+AuditContext {
+    requestId         // UUID de la petición
+    requestStartTime  // inicio de la petición
+    endpoint          // URI
+    httpMethod        // GET/POST/...
+    requestBody       // body de la request entrante
+    responseBody      // body de la respuesta
+    responseStatus    // código HTTP de respuesta
+    
+    // Thread-safe (CopyOnWriteArrayList) — máximo 30 entradas
+    List<WebClientCallInfo> webClientCalls
+}
+```
+
+**Métodos calculados:**
+
+| Método | Descripción |
+| --- | --- |
+| `calculateTotalDuration()` | `now() - requestStartTime` en ms |
+| `hasErrors()` | `true` si algún `WebClientCallInfo` tiene `success == false` |
+| `getTotalCalls()` | Tamaño de `webClientCalls` |
+| `getSuccessfulCalls()` | Llamadas con `success == true` |
+| `getFailedCalls()` | Llamadas con `success == false` |
+
+> El límite de 30 llamadas (`MAX_WEBCLIENT_CALLS`) previene consumo excesivo de memoria en peticiones con muchas iteraciones (ej: orquestador con muchos riesgos).
+
+---
+
+## [7. `AuditService` — Persistencia asíncrona](#/ACDC/AUDIT?id=_7-auditservice-persistencia-as%c3%adncrona)
+
+**Fichero:** `audit/service/AuditService.java`
+
+El método `saveAsync()` está anotado con `@Async("auditExecutor")`, lo que significa que se ejecuta en un hilo del pool `auditExecutor` (configurado en `AuditConfig`) sin bloquear el hilo HTTP.
+
+### [Proceso de guardado:](#/ACDC/AUDIT?id=proceso-de-guardado)
+
+```
+saveAsync(AuditContext context)
+   │
+   ├── convertToAuditLog(context)  → AuditLog
+   ├── applyMongoSizeProtection(auditLog)  → ver sección 10
+   │
+   ├── CircuitBreaker.decorateSupplier(circuitBreaker, () -> auditRepository.save(auditLog))
+   │     → si el circuito está OPEN → CallNotPermittedException
+   │           └── log.warn("Audit save skipped (Circuit OPEN)")
+   │     → si OK → guarda en MongoDB
+   │
+   └── log.info("Audit saved - RequestID: ... - Endpoint: ... - TotalCalls: ... - HasErrors: ...")
+```
+
+---
+
+## [8. Modelo `AuditLog` en MongoDB](#/ACDC/AUDIT?id=_8-modelo-auditlog-en-mongodb)
+
+**Colección:** `audit-request`
+
+```
+AuditLog {
+  _id            (ObjectId generado por MongoDB)
+  requestId      @Indexed — UUID de la petición
+  timestamp      @Indexed — fecha/hora de inicio
+  endpoint       @Indexed — URI del endpoint
+  httpMethod     — GET/POST/...
+  requestBody    — body de la request HTTP entrante
+  responseBody   — body de la respuesta HTTP saliente
+  responseStatus — código HTTP
+  
+  webClientCalls: [
+    {
+      serviceName  — nombre del servicio (extraído de la URL)
+      url          — URL completa
+      httpMethod
+      requestBody  — payload enviado al servicio externo
+      responseBody — respuesta del servicio externo
+      statusCode   — código HTTP de la respuesta
+      startTime
+      endTime
+      durationMs
+      success      — boolean
+      errorMessage — solo si success=false
+    }
+  ]
+  
+  totalDurationMs  — duración total de la petición en ms
+  hasErrors        — true si alguna llamada WebClient falló
+  totalCalls       — nº total de llamadas WebClient
+  successfulCalls
+  failedCalls
+  persistedAt      — fecha/hora de escritura en MongoDB
+}
+```
+
+---
+
+## [9. Circuit Breaker](#/ACDC/AUDIT?id=_9-circuit-breaker)
+
+**Fichero:** `config/CircuitBreakerConfiguration.java`
+
+Protege MongoDB de sobrecarga y evita que un fallo en la BD bloquee la aplicación principal.
+
+```
+Configuración del CircuitBreaker "auditCircuitBreaker":
+  failureRateThreshold:          50%   (abre si ≥50% de las llamadas fallan)
+  slidingWindowSize:             10    (ventana de las últimas 10 llamadas)
+  minimumNumberOfCalls:          5     (mínimo para calcular la tasa de fallo)
+  waitDurationInOpenState:       30s   (tiempo en estado OPEN antes de intentar HALF_OPEN)
+  permittedCallsInHalfOpenState: 5     (intentos de prueba en estado HALF_OPEN)
+  autoTransitionHalfOpen:        true  (transición automática OPEN → HALF_OPEN)
+```
+
+### [Estados:](#/ACDC/AUDIT?id=estados)
+
+| Estado | Comportamiento |
+| --- | --- |
+| `CLOSED` | Normal — todas las llamadas a MongoDB se realizan |
+| `OPEN` | MongoDB posiblemente caído — se saltan los guardados, se loguea warning |
+| `HALF_OPEN` | Prueba — permite 5 llamadas para verificar si MongoDB se recuperó |
+
+Los cambios de estado se loguan con `log.warn("Audit Circuit Breaker: X -> Y")`.
+
+---
+
+## [10. Protección de tamaño (límite 16MB MongoDB)](#/ACDC/AUDIT?id=_10-protecci%c3%b3n-de-tama%c3%b1o-l%c3%admite-16mb-mongodb)
+
+MongoDB tiene un límite de 16MB por documento. `AuditService.applyMongoSizeProtection()` aplica un umbral de **14MB** y trunca progresivamente:
+
+```
+estimatedSize = suma de bytes de todos los campos del AuditLog
+
+Si estimatedSize ≤ 14MB → guardar sin cambios
+
+Si estimatedSize > 14MB:
+  PASO 1: Truncar WebClientCallInfo progresivamente de primero a último
+          (se eliminan las llamadas más antiguas, se preservan las más recientes)
+          → recalcular estimatedSize
+
+  PASO 2: Si sigue > 14MB:
+          Para cada WebClientCallInfo con errorMessage no nulo:
+            → requestBody  = "TRUNCATED"
+            → responseBody = "TRUNCATED"
+          → recalcular estimatedSize
+          → log.warn("All WebClient call bodies truncated")
+
+  NOTA: requestBody y responseBody de la petición principal NUNCA se truncan.
+```
+
+---
+
+## [11. Configuración](#/ACDC/AUDIT?id=_11-configuraci%c3%b3n)
+
+```
+# application.yml
+audit:
+  strategy: ALL           # NONE | ALL | ERROR
+
+  filter:
+    enabled: true
+    exclude-patterns: /actuator/**,/swagger-ui/**,/v3/api-docs/**,/favicon.ico
+    max-body-size: 250000 # máx. caracteres del body principal a capturar
+
+  webclient:
+    max-body-size: 5000   # máx. caracteres del body WebClient a capturar
+
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/orc-int}
+```
+
+---
+
+## [12. Exclusiones](#/ACDC/AUDIT?id=_12-exclusiones)
+
+Las siguientes rutas están **excluidas de auditoría** por defecto (configurables):
+
+```
+/actuator/**       — health checks, métricas
+/swagger-ui/**     — documentación OpenAPI
+/v3/api-docs/**    — spec OpenAPI
+/favicon.ico
+```
+
+También se puede deshabilitar completamente con `audit.filter.enabled: false`.

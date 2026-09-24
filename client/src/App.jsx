@@ -1,22 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import { LayoutDashboard, Layers, ShieldCheck, Calculator, History, Database, Sparkles, RefreshCw, UserCheck, Users, LogIn, LogOut, Lock } from 'lucide-react';
+import { 
+  LayoutDashboard, Layers, ShieldCheck, Calculator, History, Database, 
+  Sparkles, RefreshCw, UserCheck, Users, LogIn, LogOut, Lock, Package,
+  Sun, Moon, Settings, Server
+} from 'lucide-react';
 import OverviewTab from './components/OverviewTab';
 import ProductsCatalogTab from './components/ProductsCatalogTab';
+import CoveragePackagesTab from './components/CoveragePackagesTab';
 import RiskRulesTab from './components/RiskRulesTab';
 import RatingEngineTab from './components/RatingEngineTab';
 import AuditTab from './components/AuditTab';
 import DataExplorerTab from './components/DataExplorerTab';
-import UsersManagementTab from './components/UsersManagementTab';
+import AdminTab from './components/AdminTab';
 import LoginModal from './components/LoginModal';
 import ChatBotWidget from './components/ChatBotWidget';
 
 function MainApp() {
   const { user, logout, canAccessTab, setShowLoginModal } = useAuth();
   const [activeTab, setActiveTab] = useState('overview');
+  const [adminSubTab, setAdminSubTab] = useState('users');
   const [stats, setStats] = useState(null);
   const [loadingStats, setLoadingStats] = useState(true);
   const [pendingUsersCount, setPendingUsersCount] = useState(0);
+  const [theme, setTheme] = useState(() => localStorage.getItem('acdc_theme') || 'light');
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    localStorage.setItem('acdc_theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+  };
 
   const fetchStats = () => {
     setLoadingStats(true);
@@ -73,17 +89,48 @@ function MainApp() {
               <span className="brand-badge">MAPFRE • BR-INT</span>
             </div>
             <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-              Dynamic Underwriting (DUP) & Rating Engine (RTE)
+              Activo Digital de Cálculo • Data Update Process (DUP) & Rating Engine (RTE)
             </span>
           </div>
         </div>
 
-        {/* User Auth Section in Header */}
+        {/* User Auth & Theme Section in Header */}
         <div className="header-status">
-          <div className="status-pill">
-            <span className="pulse-dot"></span>
-            MongoDB 7.0 Ativo
+          <div 
+            className="status-pill"
+            style={{ 
+              cursor: user?.role === 'ADMIN' ? 'pointer' : 'default',
+              transition: 'all 0.2s ease'
+            }}
+            onClick={() => {
+              if (user?.role === 'ADMIN') {
+                setAdminSubTab('environments');
+                setActiveTab('admin');
+              }
+            }}
+            title={user?.role === 'ADMIN' ? 'Clique para gerenciar ambientes e conexões MongoDB' : 'Status do MongoDB'}
+          >
+            <span className={`pulse-dot ${stats?.connectionStatus === 'ERROR' ? 'error' : ''}`}></span>
+            {stats?.activeEnvironment?.name ? (
+              <span>
+                {stats.activeEnvironment.name}{' '}
+                <span style={{ opacity: 0.8, fontSize: '0.72rem', fontWeight: 600 }}>
+                  ({stats.activeEnvironment.type === 'local' ? 'Docker' : 'Remoto'})
+                </span>
+              </span>
+            ) : (
+              'MongoDB 7.0 Ativo'
+            )}
           </div>
+
+          <button
+            className="pagination-btn"
+            style={{ padding: '0.4rem 0.65rem' }}
+            onClick={toggleTheme}
+            title={theme === 'light' ? 'Mudar para Tema Escuro' : 'Mudar para Tema Claro'}
+          >
+            {theme === 'light' ? <Moon size={15} /> : <Sun size={15} />}
+          </button>
 
           <button
             className="pagination-btn"
@@ -95,10 +142,10 @@ function MainApp() {
           </button>
 
           {user ? (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', background: 'rgba(255, 255, 255, 0.04)', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-full)', border: '1px solid var(--border)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', background: 'var(--bg-surface)', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-full)', border: '1px solid var(--border)' }}>
               <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'right' }}>
                 <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-main)' }}>{user.name}</span>
-                <span style={{ fontSize: '0.7rem', color: 'var(--accent-cyan)' }}>{user.email}</span>
+                <span style={{ fontSize: '0.7rem', color: 'var(--primary)' }}>{user.email}</span>
               </div>
               <span className={`badge ${user.role === 'ADMIN' ? 'badge-purple' : 'badge-blue'}`} style={{ fontSize: '0.72rem' }}>
                 {user.role}
@@ -107,19 +154,16 @@ function MainApp() {
                 className="pagination-btn"
                 onClick={logout}
                 title="Sair da Conta"
-                style={{ padding: '0.3rem 0.5rem', background: 'rgba(244, 63, 94, 0.15)', borderColor: 'rgba(244, 63, 94, 0.3)', color: 'var(--accent-rose)' }}
+                style={{ padding: '0.3rem 0.5rem', background: '#fff1f2', borderColor: '#fecdd3', color: '#be123c' }}
               >
                 <LogOut size={13} />
               </button>
             </div>
           ) : (
             <button
-              className="pagination-btn"
+              className="pagination-btn btn-primary"
               onClick={() => setShowLoginModal(true)}
               style={{
-                background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
-                color: '#fff',
-                border: 'none',
                 fontWeight: 600,
                 padding: '0.45rem 1rem'
               }}
@@ -147,6 +191,15 @@ function MainApp() {
             onClick={() => setActiveTab('products')}
           >
             <Layers size={16} /> Catálogo de Produtos
+          </button>
+        )}
+
+        {canAccessTab('packages') && (
+          <button
+            className={`tab-btn ${activeTab === 'packages' ? 'active' : ''}`}
+            onClick={() => setActiveTab('packages')}
+          >
+            <Package size={16} /> Pacotes & Módulos
           </button>
         )}
 
@@ -187,13 +240,16 @@ function MainApp() {
           </button>
         )}
 
-        {/* Gestão de Usuários: Somente ADMIN */}
+        {/* Área Administrativa: Somente ADMIN */}
         {user?.role === 'ADMIN' && (
           <button
-            className={`tab-btn ${activeTab === 'users' ? 'active' : ''}`}
-            onClick={() => setActiveTab('users')}
+            className={`tab-btn ${activeTab === 'admin' ? 'active' : ''}`}
+            onClick={() => {
+              setAdminSubTab('users');
+              setActiveTab('admin');
+            }}
           >
-            <Users size={16} /> Gestão de Usuários
+            <Settings size={16} /> Administração
             {pendingUsersCount > 0 && (
               <span
                 style={{
@@ -224,11 +280,20 @@ function MainApp() {
           <>
             {activeTab === 'overview' && <OverviewTab stats={stats} onSelectTab={setActiveTab} />}
             {activeTab === 'products' && <ProductsCatalogTab />}
+            {activeTab === 'packages' && <CoveragePackagesTab />}
             {activeTab === 'rules' && <RiskRulesTab />}
             {activeTab === 'rating' && <RatingEngineTab />}
             {activeTab === 'audit' && <AuditTab />}
             {activeTab === 'explorer' && <DataExplorerTab />}
-            {activeTab === 'users' && <UsersManagementTab />}
+            {activeTab === 'admin' && (
+              <AdminTab
+                defaultSubTab={adminSubTab}
+                pendingUsersCount={pendingUsersCount}
+                onEnvironmentChanged={() => {
+                  fetchStats();
+                }}
+              />
+            )}
           </>
         )}
       </main>

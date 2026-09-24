@@ -9,6 +9,9 @@ import rteRoutes from './routes/rte.js';
 import auditRoutes from './routes/audit.js';
 import explorerRoutes from './routes/explorer.js';
 import chatRoutes from './routes/chat.js';
+import packagesRoutes from './routes/packages.js';
+import environmentsRoutes from './routes/environments.js';
+import aiGatewayRoutes from './routes/aiGateway.js';
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -19,8 +22,11 @@ app.use(authenticateToken);
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/admin/environments', environmentsRoutes);
+app.use('/api/admin/gateway', aiGatewayRoutes);
 app.use('/api', overviewRoutes);
 app.use('/api/dup', dupRoutes);
+app.use('/api/packages', packagesRoutes);
 app.use('/api/rte', rteRoutes);
 app.use('/api/audit', auditRoutes);
 app.use('/api/explorer', explorerRoutes);

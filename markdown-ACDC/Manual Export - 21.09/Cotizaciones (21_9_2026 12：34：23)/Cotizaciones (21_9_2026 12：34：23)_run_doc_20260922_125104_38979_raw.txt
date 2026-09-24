@@ -1,0 +1,123 @@
+# Cotizaciones
+
+Cotizaciones
+
+
+
+
+# [REEF-ACDC Backend](https://reef.acdc-dev.es.emea.aws.mapfre.net/acdc/docs-portal/index.html)
+
+* **Inicio**
+  + [Documentación general](#/README "Documentación general")* **ACDC — Módulo principal**
+    + [Endpoints Online](#/ACDC/ENDPOINTS_ONLINE "Endpoints Online")+ [Orquestador Batch](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR "Orquestador Batch")+ [Cotizaciones](#/ACDC/COTIZACIONES "Cotizaciones")
+          - [1. Objetivo](#/ACDC/COTIZACIONES?id=_1-objetivo "1. Objetivo")- [2. Resolución del `quotationId`](#/ACDC/COTIZACIONES?id=_2-resoluci%c3%b3n-del-quotationid "2. Resolución del quotationId")- [3. Persistencia transaccional](#/ACDC/COTIZACIONES?id=_3-persistencia-transaccional "3. Persistencia transaccional")- [4. Modelo de datos](#/ACDC/COTIZACIONES?id=_4-modelo-de-datos "4. Modelo de datos")- [5. Errores](#/ACDC/COTIZACIONES?id=_5-errores "5. Errores")- [6. Consulta de cotizaciones](#/ACDC/COTIZACIONES?id=_6-consulta-de-cotizaciones "6. Consulta de cotizaciones")+ [Clientes externos](#/ACDC/EXTERNAL_CLIENTS "Clientes externos")+ [Auditoría](#/ACDC/AUDIT "Auditoría")+ [Seguridad](#/ACDC/SECURITY "Seguridad")* **DUP — Motor de reglas**
+      + [DUP Engine](#/DUP/DUP_ENGINE "DUP Engine")+ [Módulo DUP](#/DUP/README_DUP_MODULE "Módulo DUP")* **Módulos**
+        + [Cálculo de Módulos](#/MODULOS/MODULES_SERVICE "Cálculo de Módulos")* **RTE — Tarificación**
+          + [Configuración de tarifas](#/RTE/RTE_TARIFF_CONFIGURATION "Configuración de tarifas")
+
+# [Cotizaciones (Quotation)](#/ACDC/COTIZACIONES?id=cotizaciones-quotation)
+
+> 📚 Parte de la documentación de `REEF-ACDC` · [← Índice general](#/../README)
+
+**Relacionado con:** [ENDPOINT\_BATCH\_ORCHESTATOR.md](#/ENDPOINT_BATCH_ORCHESTATOR) · [ENDPOINTS\_ONLINE.md](#/ENDPOINTS_ONLINE)
+
+---
+
+## [1. Objetivo](#/ACDC/COTIZACIONES?id=_1-objetivo)
+
+El módulo de cotizaciones persiste el resultado del orquestador batch cuando la operación es de cotización:
+
+* `executionType = "7"`* `operation = QUOTE_POLICY`
+
+La persistencia se realiza en MongoDB sobre:
+
+* colección `QUOTATION` (cabecera de cotización)* colección `SIMULATION` (una entrada por simulación recalculada)
+
+---
+
+## [2. Resolución del `quotationId`](#/ACDC/COTIZACIONES?id=_2-resoluci%c3%b3n-del-quotationid)
+
+El `quotationId` se lee del campo `oPlyGniS.qtnVal` de la póliza entrante.
+
+| Situación | Comportamiento |
+| --- | --- |
+| `qtnVal` **ausente** | Nueva cotización: se genera un `quotationId` con la fórmula descrita abajo y se crea el documento `QUOTATION` con `holder`, `oPlyGniS` y `fixedValues` extraídos de la póliza |
+| `qtnVal` **informado y existe** en BD | Recotización: nueva versión de la cotización existente |
+| `qtnVal` **informado pero NO existe** en BD | Error `QTN_NOT_FOUND_ERR (4114)` |
+
+### [Fórmula de generación de `quotationId`](#/ACDC/COTIZACIONES?id=f%c3%b3rmula-de-generaci%c3%b3n-de-quotationid)
+
+`companyId + branchId + productId + yyyyMMddHHmmss + countryId` — sin espacios.
+
+Fuente de los campos: `requestInfo` del orquestador.
+
+Ejemplo: `10120130120260807153045ES`
+
+---
+
+## [3. Persistencia transaccional](#/ACDC/COTIZACIONES?id=_3-persistencia-transaccional)
+
+El método `ExecuteOrchestratorUsecase.executeOrchestration(...)` está marcado con `@Transactional` y usa el bean `MongoTransactionManager` registrado en `MongoConfig`. Requiere una réplica MongoDB o mongos.
+
+### [Orden de guardado](#/ACDC/COTIZACIONES?id=orden-de-guardado)
+
+1. **Guardar simulaciones** (`SIMULATION`) — primero:
+   * Una simulación por cada `PolicyInfoResponse`.* `numSimulation` secuencial (`1..N`).* `version` = `lastVersion + 1` (o `1` si es nueva).* Sin "arrastre": solo se graban las simulaciones recalculadas.- **Actualizar/crear cotización** (`QUOTATION`) — después:
+     * **Nueva cotización**: se crea el documento con `oPlyGniS`, `holder` (`oPlyIneS`) y `fixedValues` (`PackagesMapper.getDefaultFixedValues`).* **Recotización**: solo se actualiza `lastVersion` y `lastUpdateDate`. `oPlyGniS`, `oPlyIneS` y `fixedValues` son **estables** — nunca se refrescan en recotizaciones.
+
+Si falla cualquier guardado se lanza `AcdcException` con código `QTN_PERSISTENCE_ERR (4113)` y la transacción hace rollback.
+
+### [Protección de concurrencia](#/ACDC/COTIZACIONES?id=protecci%c3%b3n-de-concurrencia)
+
+El índice único en `SIMULATION (quotationId, numSimulation, version)` rechaza colisiones. La versión se computa dentro de la transacción (re-lectura de `lastVersion` desde `QUOTATION`) para garantizar que se gana el número correcto si otro request llegó antes.
+
+---
+
+## [4. Modelo de datos](#/ACDC/COTIZACIONES?id=_4-modelo-de-datos)
+
+### [QUOTATION](#/ACDC/COTIZACIONES?id=quotation)
+
+| Campo | Tipo | Descripción |
+| --- | --- | --- |
+| `quotationId` | String | Identificador único |
+| `lastVersion` | Integer | Última versión persistida |
+| `oPlyGniS` | OPlyGniS | Datos generales de la póliza — solo al crear |
+| `oPlyIneS` | OPlyIneS | Tomador (primer interviniente) — solo al crear |
+| `creationDate` | LocalDateTime | Fecha de alta |
+| `lastUpdateDate` | LocalDateTime | Última actualización |
+
+### [SIMULATION](#/ACDC/COTIZACIONES?id=simulation)
+
+| Campo | Tipo | Descripción |
+| --- | --- | --- |
+| `quotationId` | String | Referencia a QUOTATION |
+| `version` | Integer | Versión de la simulación |
+| `numSimulation` | Integer | Número de simulación dentro de la versión |
+| `oPlyPlyC` | OPlyPlyCDto | Póliza calculada completa |
+| `paymentPlans` | List | Planes de pago |
+| `creationDate` | LocalDateTime | Fecha de alta |
+| `lastUpdateDate` | LocalDateTime | Fecha de modificación |
+
+### [Índices MongoDB](#/ACDC/COTIZACIONES?id=%c3%8dndices-mongodb)
+
+| Colección | Índice | Tipo |
+| --- | --- | --- |
+| `QUOTATION` | `quotationId` | Único |
+| `SIMULATION` | `(quotationId, numSimulation, version)` | Único compuesto |
+
+---
+
+## [5. Errores](#/ACDC/COTIZACIONES?id=_5-errores)
+
+| Código | Enum | Descripción |
+| --- | --- | --- |
+| 4113 | `QTN_PERSISTENCE_ERR` | Fallo durante la persistencia |
+| 4114 | `QTN_NOT_FOUND_ERR` | `qtnVal` informado no existe en BD |
+
+---
+
+## [6. Consulta de cotizaciones](#/ACDC/COTIZACIONES?id=_6-consulta-de-cotizaciones)
+
+Endpoint de lectura: `GET /acdc/quotations/{quotationId}?version={n}`
+
+* Si no existe: devuelve `quotationId` y `simulations: []`.* `version` omitido → usa `lastVersion`.* Por cada `numSimulation`, devuelve el documento con la mayor versión ≤ a la solicitada.

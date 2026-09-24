@@ -1,0 +1,1488 @@
+No tenemos tantas cosas ya definidas, tenemos algunas, pero algunas cosas aún no tenemos
+la definición, muchas cosas todavía están en la etapa escrita de las historias de usuario,
+no tenemos muchas cosas y como por ejemplo los datos variables, aún no tenemos informaciones
+de planos de pago, no tenemos las tarifas, que más, no tenemos por ejemplo la numeración
+de la polisa, aún no tenemos eso cerrado, la numeración de presupuesto, entonces hay
+muchas cosas que todavía no están cerradas, lo que sí, por general, pero vamos a entrar
+un poquito en el detalle, lo general, lo que si nosotros tenemos son las coberturas, modalidades
+y algunos rangos de fecha, algunas cosas, en ese sentido que sería lo que nos damos
+a enfocar en este momento, entonces lo que yo puse acá, entonces sería la estructura
+del producto, eso ya estaría como que configurando, entonces la compañía 15, nosotros ya hemos
+configurado todo lo que es la parte de compañía, ahí Francisco Brau nos ha apoyado, incluso
+en general la, en general todo el tema de la compañía 15, entonces todo eso ya está
+generado, él estuvo acá hace un par de semanas, revisamos el tema de la compañía, entonces
+esa parte de la compañía ya estaría como que, como que lista, faltan algunas cosas
+como que algunas traducciones y algunas traducciones de pantalla que aún no están listas y eso
+quedó por parte de él, sí?
+Perfecto, no damos más de eso también por eso, ¿cierto? para ver qué es lo que necesitamos
+y de qué historias pedimos prioridad, porque si ustedes están digamos, acelerando muchas
+cosas, pero de pronto les vuelvan cosas más específicas de la negocio, no hay parametreación
+primero o están enfocando las energías en eso, entonces como vamos a identificar cuáles
+son las que tienen prioridad y qué es lo que necesitamos, como es prioridad para decirles
+del equipo que está haciendo la definición y eso, sí?
+Ya, perfecto, o sea, del tema de la compañía quedó más cosas pendiente por parte de él,
+porque él tiene que como que empezar a hacer las traducciones de las, de lo que es pantalla,
+entonces digamos que de la compañía 15 en ese momento no tenemos ningún pendiente de
+nuestra parte para hacer la configuración, pero sí del lado de él, no sé, no sé,
+ni siquiera se podemos hablar de la configuración de las tablas porque en las tablas estaría
+todo ok, pero sí serían la parte del entorno, como que del entorno para que en la pantalla
+se vean ya lo que está traducido, porque en ese momento está todo en español, entonces
+se tendría ahí un trabajo que hacer por parte de él para que en la pantalla se empiece
+a ver las cosas en portugués, vale, ya aprendo, entonces, o sea, tenemos la estructura, o
+sea, la estructura, entonces, numeración de presupuesto, poli, ese tipo de prima, aún
+no tenemos esa definición, entonces por eso que deje acá de la forma que está aquí
+tengo que cambiar.
+Pero, pues, porque la adopción del tipo de prima, tenemos una tasa que se van a presentar,
+entonces, el tipo de prima automática, cierto?
+Sí, correcto.
+O sea, eso ya lo sabemos, porque sabemos que ahí hay una tasa para las coberturas, ¿no,
+Vinicius?
+Sí, sí, sí.
+Entonces, la prima es de calcular por una automática.
+Automática.
+Listo.
+La numeración, pues, si lo necesitamos, pero tampoco es preocupante, porque tenemos la
+numeración con silla, ramo y consecutivo para hacer las pruebas, los regalos con silla.
+Ya.
+En primer punto, es otro problema, sí, el ramo y el ramo podemos, y un consecutivo
+podemos trabajar.
+Disculpa, Vinic, tengo, tengo una pregunta, pero recuerdo que en la plan intumención
+hace que tenían unas tablas para hacer como un depara de lo que maneja Rift y lo que se
+tienen los demás sistemas de Brasil, eso, eso aplica para el sector y subsector y el
+ramo.
+Sí.
+Porque recuerdo que en Trago se manejaba un subsector diferente, si no estoy mal el 91,
+no me falla la memoria.
+Es el 91, no, no, sí, Gloria, ahí no me acuerdo, no sé bien.
+El 99, porque el ramo era 91, sí, el 91.
+En realidad, yo creo que vamos a seguir la codificación de Rift.
+Ok.
+Y ahí no, no se va a tener problema con la SUSEPI de seguir con esta codificación.
+Entonces, la SUSEPI, no porque tendremos que tener la codificación de sector, cuando
+vamos a enviar para contabilización, ahí sí, tendremos que tener.
+Pero lo que se quedó fue que seguiremos la codificación de Rift.
+Vale, Tadia, gracias por la aclaración.
+Pero, por ejemplo, ahí, cuando estamos comentando sobre la numeración, aquí tenemos que tener,
+por ejemplo, una numeración consecutiva para SUSEPI, o sea, de las pólicas definitivas,
+¿sí? En cuanto estamos ahí como cotización presupuesto, podemos seguir la numeración
+ahí que tenemos el Rift, pero cuando se queda como definitiva, ahí tendríamos que seguir
+una numeración consecutiva que no puede pular.
+¿De acuerdo? Listo, ya centramos aquí lo mismo del ramo y acá, o sea, nosotros hicimos
+una configuración inicial, pero lo mejor, o sea, no sé si, o sea, muchas marcas de
+acá, la verdad, yo no conozco todavía, entonces yo copié de un producto de vida, yo creo
+que de Panamá y repliqué, pero aquí sí tendría que revisar porque ahí no sé todas
+las marcas que significa cada una y que cada una de estas marcas van a corresponder dentro
+de la pólica. Entonces, aquí sí tendríamos que revisar porque yo puse como que algo como
+que de foco, por ejemplo, los nombres de programas, todo eso, entonces eso sí tendría que revisar
+algunas cosas, por ejemplo, código de tratamiento. Por ejemplo, esos nombres de programa y todos
+los podemos quitar porque eso no hemos definido los programas, para que no nos vayan a dar
+errores, a la hora de disfrutar. Ok, ¿podemos quitarlos? Si, si, el nombres de riesgo, si,
+si quieren la publicación. Momentáneamente se puede quitar porque si todavía no existe
+aún en la base de datos aquí de Brasil, ese programa, como tú dices, lo tomaste de otro
+país, nos va a dar problema en la emisión cuando intente buscar el nombre del riesgo.
+Mientras se define cuál va a ser la estructura del nombre del riesgo, o si vamos a tomar
+el nombre del asegurado y tenemos listo ese programa, lo podemos dejar vacío sin problema.
+Ya, perfecto. Ok, entonces aquí sí se tendría que revisar, o sea, porque la verdad no sé
+que la vamos a revisar y está rápido, vaya al inicio, lo revisamos ahí, que vemos rápido. Eso sí, hasta aquí sí, hasta acá sí.
+Muriano es renovable, es así que se va a llamar el nombre del Ramón. No, tío no. Pero no, pero no. Cómo? ¿Cuál? Es? Primero renovable, entonces cláusulas. Sabemos que tiene cláusulas,
+elitadas F, cláusulas, anexos. Entendería que no, bueno, en los productos anteriores no se manejaba cláusulas por el, por el módulo de tronnet, no sé si lo contemplaron manejarlo por el módulo de Rick, si todavía
+no está la definición Bini, podríamos dejar este NN, si aún no se tiene claro esa, esa parte. Eso. Documentos anexos, el Ramón va a tener un documento anexos, no lo sabemos si lo va a tener.
+¿Sería o qué? Por ejemplo, como manejarlas de PSS, vamos a manejarlo, vamos a manejar la movilidad por si algo. Hay Claudia Bini, el sistema permite ingresar información anexa a nivel de
+poliza y a nivel de cobertura. Eso se hace cuando, por necesidad de negocio, necesitan incluir información generalmente muy extensa que los campos de la poliza no alcanzan a atender los datos variables normales, se hace como un anexo.
+Entonces, por ejemplo, las DPS estarían como anexos, sería esto. Si, es posible, se podría manejar como anexo. Vale. Entonces, sí. ¿Y las cláusulas? Serían las cláusulas, serían las condiciones que se tienen, el, si no me falla la memoria, Claudia, en Brasil lo manejan como el conditionado particular.
+De las, de las polizas, que básicamente son todas las reglas y todas las definiciones y declaraciones de lo que va a estar cubierto sobre la poliza.
+Serían texto. Serían texto, sí. Sería, la cláusula generalmente tiene un título, una configuración de que te voy a poner un ejemplo. La cobertura de muerte. La cobertura de muerte puede tener una cláusula que informe al, al tomador de la poliza de que tiene una carencia de tres, creo que es tres años o dos años.
+Por suicidio. Si ocurrió un suicidio antes de esa fecha, no se le va a cubrir. Esa puede ser una cláusula.
+Entonces, esto sí tenemos estas cláusulas, pero ahí, por ejemplo, no podría estar indado variable, porque esto también yo tendría que validar en sinistros. Y si están en cláusulas, ahí no, no podemos validar. Vale. Si tú lo que dices es, bueno, se puede tener la carencia definida del tiempo, pero a nivel de cláusulas puede existir un texto malvado.
+Es más extenso que detalle claramente las restricciones o el alcance como tal de esta carencia. Pero sí, si normalmente el sistema tiene, tiene lo que se llama del lado de RIF, el tiempo de carencia para e aplique o no esa cobertura o esa cláusula.
+Vale. Y generalmente utilizamos el texto de la cláusula para generar el fronteerspicio de la polisa. ¿Es esto? Del certificado de la polisa.
+Sí, generalmente estas cláusulas como tienen un texto más extenso, más detallado, quedan en la impresión de la cátula de la polisa, en el PDF de la polisa.
+Por ejemplo, si. En el anterior producto, Claudia estaba en tronnet, disculpame, te interrumpo, estaba en tronnet, yo entiendo que toda la impresión se hacía por medio del sistema de publishing, sí, y del lado de publishing ya tenían todos esos textos de cláusulas para ingresarlos.
+Esto que yo estaba pensando. Generalmente los productos de RIF lo hacen la impresión. ¿Cómo?
+Se tiene un modelo de impresión en RIF, ahora no sé si, si de pronto aquí ya se contempló, si se va a hacer el modelo de impresión que trae RIF o se va a continuar por medio de publishing.
+Sí, porque si, porque si vamos a utilizar el modelo de impresión de RIF, todos esos textos de cláusulado, de condicionado general que se tienen hoy en este producto en tronnet, tendríamos que traernoslo y ponerlo a nivel de cláusulas en el producto para poder que el modelo de impresión de RIF los presente al momento de llegar a PDF.
+Mesmo que las cláusulas sean iguales para todas las bolisas de este producto.
+Sí, que se puede condicionar que las cláusulas se maestren dependiendo, características de riesgo dependiendo coberturas contratadas, ahí va a presentar unas cláusulas u otras.
+Entonces va a poner un ejemplo, traslado nacional y corpo, que es una cobertura que se tiene en el anterior producto.
+Sí.
+Si existe la cláusula, esa cláusula solo se va a imprimir en el PDF si esa cobertura es contratada, sino la cláusula no se va a mostrar para el usuario.
+Ahí es un ejemplo de cómo funciona el RIF con las cláusulas.
+Entonces creo que sería así, Vini, sé cómo está definido, tendría que ver con Afonso cómo está definido esta parte de impresión, porque realmente es así, Vini, los productos aquí del Brasil, hoy que están en el tron M, usamos el Publishing.
+El Publishing es una herramienta de un tercero que hace las impresiones de Apólisi.
+Entonces por ejemplo, todas las impresiones de Apólisi, segunda vía, quien gira, es el Publishing, no es el otro web.
+Sólo mandamos los datos y se impriman por ejemplo las cláusulas, no precisaría tener aquí, estaría en el Publishing porque estas cláusulas no mudan de Apólisi para Apólisi, nada.
+Ahí tendría que ver con Afonso cómo seguiría, ahí sería, a ver, o anexo, yo entiendo que sí, porque sería DPS de cada risco, este anexo sería por riesgo, ¿certo?
+Sí, podría ser por riesgo.
+Vale, entonces el anexo, yo entiendo que sí, ahora cláusulas no sé, tendría que mirar ahí cómo definir a un.
+Sí, por el momento dejamos así y cualquier cosa cambiamos, voy a validar con unos aquí, con unos chicos acá, como quedó eso.
+Vale, de acuerdo.
+Listo. Projata. Projata, sí. Sí, sí.
+Riesgos, yo entiendo que sí.
+En varios riesgos, sí.
+Perióditos.
+Perióditos, también es cierto, voy a permitir a varios perióditos, o no.
+Sí, porque se puede tener a un año y máximo cinco años.
+Máximos cinco años, ya perfecto.
+Recibo por perióditos, sí, también. Máximos cinco años, sí.
+Cambio a nivel 13, eso no sé qué significa.
+Eso es, podemos implicar la oficina comerciante de la misión, o sea, también tiene una polisa y después de la polida está emitiendo y estar vigente, cambiar la oficina a la que pertenece a la polisa.
+Eso lo hace como para ser descontados y todo eso.
+¿Será que hay eso?
+No sé, creo que no.
+¿Podría discutir eso o cofre?
+Ya voy.
+Déjame lo delitado por el momento, o sea, eso, por arreglar, casi no se utiliza.
+Hay muy pocos productos que hacen eso.
+Así que a nivel 3, listo.
+Dejamos, ¿cómo? Dejamos sí.
+Dejamos, es cierto, de varios, de que pena.
+Sí, desmolo en sí y por ahora.
+Listo.
+Listo.
+Vamos a ir, prácticamente pago en ese, sí, pero sigue.
+Prometo un plan de pago, sí.
+Cambio plan de pago, sí.
+Vamos a poner aquí.
+Manca certificados.
+Eso quiero que es.
+Estoy tan feo, ¿no?
+¿Certificados serían para?
+Eso no lo tenemos muy tarde.
+Vemos lo NN que llevo en los productos que tengo, lo he puesto en NN.
+¿Usted en qué lo ha puesto?
+En NN también.
+Los productos no lo dejamos en NN, por ahora.
+Pero pues no, este queda de lado en nosotros para validarlo.
+Ya, lo he anotado.
+Prometo que es listo.
+Listo, marca rehabilitando NN.
+3CN.
+Comisión 4S, ¿qué sería?
+Con, con, ese es el consejuro.
+Jefe, el consejuro seguido para dejarle las comisiones sin valor.
+Pero permítase hacerlo, este producto no tiene consejuro, ¿cierto?
+Sí.
+¿Va a tener consejuro?
+Yo creo que sí.
+¿Está tanto cedido como acepta? ¿Listo?
+Sí, cedido, aceite.
+Entonces, creo que sí, OVN.
+La marca sumente para que el producto permita de echar en cero a o por sentada comisión.
+¿Qué era comisión en cero?
+Entonces, no sé si es de apoder o no.
+Si algo le ha desambuladita, ¿cierto o qué?
+Yo creo que por en cuanto de echar en NN.
+En NN.
+Mientras, tenemos a definición del consejuro y, si fuera un caso, allí está más configuración de esa tabela.
+Ok.
+365 días.
+¿Y eso? ¿Ese?
+Obliga presupuesto.
+No.
+No.
+Autorizo presupuesto.
+¿Qué sería ese obliga presupuesto?
+Apólicate en que tener una propuesta antes de llevar la misa a OVN.
+Ok.
+Yo creo que va a ser sí eso, pero dejamos así, mientras.
+Nos anteriormente dejábamos él a OVN emitir directamente a polis para hacer testes.
+Y tirar masas también.
+Pero en el futuro, yo creo que va a ser obligatorio.
+¿Listo?
+No podemos controlar el nivel del producto, ¿cierto OVN?
+Depende.
+Ok.
+Sí, podemos controlar el nivel del producto.
+¿Por qué?
+Porque, como falla la Vier, se precisa llegar directo en mis redes definitivas para testes,
+llegar masas para suplementos, y todo más.
+Entonces, por en cuanto podemos dejar en NN, si fuera un caso o un futuro, mudar para ese.
+Ok.
+Ok.
+Autoriza presupuesto.
+Cambia número de polis.
+Cambia número de polis.
+Ya, listo.
+Esa marca.
+Yo creo que sí, no.
+Es para hacer los suplementos de sinistros, ¿no?
+Cabalidad sinistro en suplemento.
+Si no me engañen, es una marca aquí para olhar.
+No permite hacer los suplementos sinistros.
+Sí, es que hay algunas coberturas que tendremos que hacer suplementos.
+Por ejemplo, la cobertura de invalidez o algo así.
+Entonces, el sistema no debe permitir hacer los suplementos sinistros en abierto, es eso, ¿no?
+Ah, vale.
+No es no un coge.
+No sé.
+No en Bechanal, entonces.
+Ok.
+Marca remesa recibo.
+Hizo.
+¿Cómo hago a trabajar eso?
+Ahí de Disney, Claudia, una tuvita.
+Vamos a continuar utilizando un módulo con David Dú Zapi.
+O vamos a mudar para un módulo Dú Rifi.
+Zapi.
+Zapi.
+Zapi.
+Entonces, yo acabo de mostrar el mismo concepto que teníamos en otro web. Que todos los objetivos, en el momento de Michir, están gemesados y van para a Zapi.
+Ahí marcaría que está la remesa.
+Ok.
+Manual de las ideas habilitadas, ¿certo? Para que lo pongan.
+Dechen en.
+Tengo manual.
+Comisión manual.
+En.
+Sí.
+Emisión.
+No.
+No tenemos especies.
+No.
+Emisión.
+Emisión se recibo en.
+Reutiliza presupuesto en.
+Eso es importante. No debe, no debe.
+Reutiliza declaración en.
+Acá aplica.
+¿Qué sería ese?
+Esa es hablación del polis en el momento de.
+No.
+Déjela de porque no sé un barrio.
+Ok.
+El que determina si cuando se anula suplemento se va con el coeficiente de anulación.
+O sea, cambia los tipos de cálculo. Recuerda que cuando no anula un riesgo.
+Puede simplemente calcular de nuevo la prima sinción de riesgo y hallar la diferencia.
+Cierto.
+Que es una de las opciones de cálculo.
+La otra es que si habilitamos esto, el cohes de riesgo lo calcula por el coeficiente de anulación.
+Como si fuera una anulación total, una T.
+Como si fuera una T.
+Déjelo en N y como lo hemos demostrado siempre.
+Sí, sí, creo que es mejor dejarlo en N.
+Porque aquí vamos a tener más de dos, tres riesgos en las polisas.
+Entonces es mejor controlarlo desde el producto.
+Ok.
+Dos N.
+Primas manuales.
+Eso es.
+Tiene tres configuraciones.
+Cuando usted coloca uno.
+Cómo es que se ve.
+Uno es prima manual.
+Quiere decir que manualmente el emisor informa los importes de premio.
+Dos, que es automático.
+Quiere decir que no permite que el emisor ingrese valores.
+Y Tronweth va a trabajar completamente con la tarifa definida, cálculo automático.
+Y tres, quiere decir que puede tener ambos.
+Puede ser manual o puede ser automático.
+¿Qué se ha hecho Colgina?
+Es que todavía no recibimos las historias sobre las tarifas, pero...
+Se puede echar en tres.
+Sí, por ejemplo, se puede echar en tres para tener la configuración y conseguir echar a polices.
+Además, recuerde que la actualización monetaria en el pasado nos apoyamos mucho
+y que se podía echar manualmente para el tema de las ambulaciones de cuerda.
+Sí, que se llenara la abusón con la tarifa.
+De acuerdo, listo.
+El número de agentes.
+Esa cantidad de corretores que permitidos en un producto, más si no cuatro en un sistema.
+¿Para esto sería para cuadro de distribución?
+Sí, sería en el caso tener un corretor principal y más tres corretores, en el caso sea necesario.
+Pero no es obligatorio informar los cuatro, puede ser apenas el principal.
+Ok.
+Eso que está como 9 y 9...
+Estos dos.
+¿Llegamos así?
+Sí, esa cantidad de riscos permitidos.
+Ya.
+El programa de riesgo lo sacamos.
+No notemos.
+Tip formación modalidad.
+Puedes echar renún.
+Otro programa, dejamos sin nada.
+Sí, porque no tenemos dispensación.
+Los atamientos, vida y eso.
+Sí.
+Yo he dicho que no produjo que vos se vio uno en Panamatiña a tratamiento de transporte.
+Sí, transporte, sí es.
+Eso contése porque en Centroamérica los productos de vida en declaraciones.
+Entonces para hacer esas declaraciones, los productos fueron criados con un tratamiento de transporte para hacer las aplicaciones mes a mes.
+Ok.
+Quedó claro.
+Programa de misión sin recibo, dejamos así. Estos estaban todos sin información.
+Sí.
+Sin problema.
+El programa chico eficiente ya no le ha salido, tira a mi.
+¿Lo saco?
+Sí.
+Visto. Acá igual sin nada.
+Tipo de distribución de la comisión.
+Proporcional.
+No, 100% en la primera copa, tenemos proporcionales porque esto se va a mexicar después de esto.
+Sí, con agenciamiento se va a redistribuir.
+Ya, eso estaba sin información, estos dos.
+Sí.
+Estos estaban como N, no sé qué son estos campos.
+Márcamo y Dica. Organizador, asesor. Eso es no caso de Brasil o asesor o agenciador.
+La estamos utilizando o agenciamento como código de asesor.
+Entonces esa marca ahí es para ver si puede ser alterado o código de agenciador a poder ser emitido.
+¿Puedes tener eso en cuenta?
+La comisión de cuota interviniente no.
+Márcame, recalcula comisión.
+Registro ahora.
+Sí.
+Es permítido, tasa manual.
+Ese campo de tasa manual viene, claro, para utilizarlo cuando for prima manual.
+O se puede definir si va a informar manualmente o importe del premio o la tasa.
+Puede tener esas dos opciones, como aquí vamos a tener el producto, va a tener tarifa y va a ser cálculo automático en el futuro.
+Principalmente, puede echar esa marca de tasa manual como N.
+Ok.
+Marca por riesgo Batch.
+No sé.
+Si.
+Marca motivo suplemento.
+Eso es para tener más de un motivo. O sea, puede tener más de un motivo en un momento y va a ser un suplemento.
+Esa marca permite para riesgo.
+¿Tip acceso con?
+Para la encomisión, por no desmoronar uno.
+Si.
+Rechaza, suspende, aplique.
+No, no te vamos a aplicar el caso en este producto, no te puedes echar N.
+Otro programa listo, anulación, suplementos.
+Que sería marca contra el técnico.
+Si, se va a permitir control y técnico en anulación de suplementos.
+No nos sabemos, dejemos en N.
+Esa anulación de suplementos es diferente a anulación de polices.
+Quiera aumentar ese producto, no anulamos suplementos.
+¿Cierto?
+No, no, no teníamos eso en el producto de nuestro web.
+Ok, listo.
+Marca cuenta, 29.02, TMP.
+Esos que tienen en cuenta los años viciestos, o sea, el 29 de febrero.
+Ah, 29 de febrero, ya perfecto.
+Respeta día de vencimiento.
+¿Qué formas en Imaginum Sim?
+Marca anexo, un riesgo de echar en S.
+En S?
+Sim, no caso precisión exhalar, haz de P.S. como anexo.
+Nada, verdad.
+Tu riesgo.
+Esto me roga.
+C.T.
+Emisión cartera en S, Sim.
+El cambio.
+Fecha emisión extandar en N, Sim.
+Eso sería lo mismo, parecido con el otro?
+Sim, sería un tipo de anexo que va a ser incluido, puedes echar en S, Sim.
+No tenemos causiones, están de fondo en N, Sim.
+Marca copia anexos desde presupuesto.
+Ahí Claudia, Vinny, esos anexos que falamos, pueden ser incluidos desde la proposta?
+Sim.
+O va a ser una polícia definitiva.
+Una proposta.
+Una proposta.
+Esta marca aquí tenía que ir en S, para que cuando vire definitiva a police, de echeos anexos que fueron incluidos en la proposta.
+Ok.
+Es rea externo.
+Si aseguró sería externo, entiendo que no.
+Si es nuestro en N.
+Más va a ser externo.
+Más va a ser externo.
+No sé, cuando decimos externo, por ejemplo, todo que se va a R e 21 es externo.
+R e 21?
+Si.
+Acho que R e 21, no.
+Más podemos dejar aquí para confirmarse ahí.
+Visto.
+Claudia, error.
+N.
+N, error, Sim.
+N.
+Multidiómanexo, N, MCA.
+S, I, P, D, N, X, R, N.
+¿Qué es eso?
+¿Cómo?
+Solo por curiosidad.
+Una llave que tiene internamente para unos comportamientos, hermano.
+Recuerdo como se recuerda.
+Es que de unas llaves, ese comportamiento de una forma o no, en las generaciones, en los pares de pago y todo eso.
+Si, miren, estoy ahí en el caso de H&S.
+Tengo que informar un programa para mudar el comportamiento de planos de pagamento, caso se precise.
+Ok, ok, ok.
+Hay una carta que tiene que informar el nombre del programa.
+¿Y eso?
+¿Qué es eso?
+¿Cómo es esa?
+Ok.
+Marca de fraude, antifraude siniestro.
+Ayer, controles técnicos especialmente para H&S, no precisamos.
+Emisión marcas.
+Real seguro que he tenido y ferido.
+No caso.
+Deixar todo ese jeito ya.
+Volvamos aquí.
+Ok, sigue.
+¿Puedo alfer que emisión estándar 3?
+Podemos dejar así.
+La selección de riesgo.
+No, no tenemos el termo para seleccionar riesgos, entonces puede echar en también.
+¿Y eso?
+¿Y eso qué tenemos?
+Eso también.
+Ese o no su producto.
+Creo que ahí ya tenemos la configuración principal del producto.
+Hay que tener algunas dúvidas.
+Mas da para evoluir con eso.
+Perfecto.
+Listo.
+Si vamos a las modalidades, entonces tenemos tres modalidades, que es tradicional.
+Vileche por idade y por planos.
+Les comentaba la última vez que muy probable ustedes habían visto algo de las doensas graves.
+Y efectivamente había una modalidad de doensas graves, pero lo que hicieron fue traer estas coberturas de doensas graves
+y agregarlas dentro del multiplex tradicional.
+Aquí si yo les muestro, por ejemplo, aquí ya tengo las coberturas del multiplex tradicional y aquí están las coberturas de enfermedades graves.
+Y aquí hay para una infantil también, creo que está...
+Plano infantil.
+Sí, plano infantil, así es.
+Entonces lo que hicieron fue eso.
+Entonces las tres modalidades, entonces las puse acá, eso ya está igual configurado.
+Ya hice esa configuración de las modalidades dentro de las tablas.
+Planes de pago, no puse...
+O sea, ni siquiera borré acá lo que tenía porque aún no tenemos eso definido.
+Entonces cuando tengamos eso definido y podemos empezar a rellenar eso, pero voy a dejar así para tener los ejemplos.
+Vale, más para avanzar en la configuración del producto, por lo menos sabemos que se puede emitir a un año, máximo cinco años.
+Entonces podría ser configurado el proyecto inicialmente con el plan de pago anual, que me va a generar una cuota por año,
+como para tener una configuración inicial, que sería el código de plan de pago 3 que tienes ahí.
+Perfecto.
+Ya.
+Ese conseguridad lo vamos a usar.
+Y ya es definir después con el área técnica cuál es otro vamos a utilizar.
+Pero sí inicialmente para tener una configuración y poder emitir un cascarón del producto.
+Podemos utilizar este, el anual.
+Ya. Y aquí te tendría que poner algo. Sería lo mismo.
+Ahí sería configurarle al producto ese plan de pago.
+El código de moneda.
+Ya, el código de plan de pago 3.
+Y plan de pago por defecto.
+Podemos poner que sí o no.
+Sí, podemos dejar que sí.
+Ya en caso tal, ese es el plan de pago que se va a mostrar por default cada que lancemos una emisión,
+aunque el emisor lo puede cambiar, lo puede modificar.
+Solamente es para que se carga automáticamente este.
+Ya que se va a generar 12 cuotas.
+No, este es anual generaría una cuota por año.
+Ya, perfecto. Una cuota, que más tenemos acá.
+Y acá.
+O sea, se puede poner uno solo, una línea. Solos una línea.
+No hay tantos, ni más.
+Entonces sería tres, cuota uno, tip unidad.
+Sería dos.
+Dos.
+¿Qué sería? Tip unidad.
+Sí.
+No van cuchillados con una tabela que vaya a ayudar para tener todos los valores de esa información.
+Ya.
+Más que 10, ahí hay 130 o no.
+Cuando nosotros tenemos dudas de ver los valores que le podemos poner por alguna columna,
+nosotros buscamos qué valores disponibles hay en esta tabela.
+Que es la...
+Que es la...
+La 110031.
+Está ahí.
+Si vos se puede consultar pelo Koji Campo.
+Tip unidad.
+Ahí él va...
+va a mostrar a Subsoil.
+Estaban muchas cosas para lembrar, entonces tenemos que ayudarlos.
+Serían estos, ¿no?
+Hizo 12 meses y día.
+Ah, temprano, ya para Brasil. Hizo 10 meses.
+No tenemos en 2 en meses por en cuanto.
+¿Cómo?
+2.
+2.
+2.
+Perfecto.
+Listo.
+No unidades.
+Llegamos...
+Cuantidades delas.
+Un mes, dos meses, tres meses.
+No anual vamos a tener un comportamiento particular que es que se va a colar cada año.
+Y serían 5 unidades cada año.
+Tenemos que ver esto a futuro, más adelante lo vemos.
+Por el momento dejámoslo en cuanto, jefe.
+Dejámoslo en 1.
+Está porque el plan de pago 3 va a tener 5 cuotas anuales, ¿no?
+Sí.
+¿Cuándo se ha puesto 5 cuotas anuales?
+Creo que vamos a trabajar inicialmente con las mensuales, F, las 60 cuotas mensuales, ¿no?
+Sí.
+Porque se lo va a complicar más por la distribución.
+La distribución, porque no tenemos el tipo de distribución.
+Recuerde que nos tocó hacer algo para que recorre cada año.
+Es que fue allí por 60, ahí.
+Uau de poes.
+El plan de pago lo sería la anual, sino el mensual.
+No, disculpa, por ahí 5.
+Sería una parcelada por año.
+Lo que tenemos que mudar, entao, es el tipo Unidade.
+Después, porque no puede ser mensual, va a tener que ser anual más después.
+¿El anual?
+No, el anual.
+Hay días y meses.
+Entonces, serían meses.
+Serían dos. Ahí está bien.
+Ahí, ahí a mí, sí.
+Ya, nombre de programa.
+No, en cuanto no vamos a hacer programa, ¿no?
+Ya.
+Es PCT impi.
+¿Qué sería esto?
+Ahí sería la...
+Como este es el fraccionamiento del plan de pago,
+estamos diciendo a esta cuota cuál, qué porcentaje le correspondería
+del plan de pago.
+Como sólo vamos a tener una cuota, aquí sería el 100%.
+5 unidades que lo colocamos 7.
+Dejamos 100.
+Bien, correcto.
+Y lo mismo en el porcentaje de comisión.
+Se va a calcular el 100% de la comisión en esta cuota.
+Ok.
+Perfecto.
+Listo.
+Entonces, estas tablas yo no había configurado todavía.
+Entonces, yo las puedo configurar y después les muestro.
+Vale, perfecto.
+Igual, nosotros también vamos a apoyar en el sermado ese prototipo.
+O sea, en el momento en que tengamos acceso a la base de datos,
+nos vamos a conectar, a dejar ese prototipo,
+a avanzar la pantalla,
+con otro por punto y lo dejando puntuando, ¿sí?
+Perfecto.
+Después, yo voy a compartir ese armado en la red,
+porque ahí igual lo que ustedes quieran pueden ir cambiando.
+Sí, dentro del armado.
+El momento en que vayamos configurando el producto pueden hacer cosas.
+Ya, perfecto.
+Vamos a trabajar en equipo estos días para que esto salga...
+La idea también es que nosotros, o sea, de nuestra parte,
+nosotros vayamos igual,
+conociendo, viendo las tablas y cómo se hace la configuración, o sea...
+Eso, por eso.
+Vamos a trabajar juntos y configurar el producto juntos para...
+Perfecto.
+Que con la experiencia.
+Perfecto.
+Terceros.
+Acá, los intervientes aún no...
+O sea, no sé si nosotros ponemos algo fijo acá.
+Sí, en esta tabla, así, en 1801,
+bueno, como mínimo para este producto,
+tendríamos que definir un primer tercero,
+que sería el pagador, el tomador de la poliza,
+y los asegurados.
+Podríamos poner esos dos tipos de terceros habilitados
+para el producto inicialmente.
+Y tendríamos que tener también los beneficiarios.
+¿Y beneficiarios?
+¿Y beneficiarios serán nominados ahí para este producto?
+Entonces sí, tendríamos, de momento, pagador,
+tendríamos beneficiario y tendríamos los asegurados.
+¿Te saben lo del coigo, del beneficiario?
+Entras, voy a ir llenando acá.
+¿Te saben?
+No lembro ahora de cabeza.
+Procuraré el de aquí.
+Y deja el tomador venir.
+¿El tomador es eso, no es?
+¿Pagador?
+Sí.
+Pero él tiene el tipo cero.
+¿Sí?
+¿Sería el risco cero o sería el pagador de la poliza?
+Porque ahora en RIF tiene también esta figura de pagador, ¿no?
+Además del tomador.
+Sí.
+Sí, puede ser que el pagador sea diferente al tomador de la poliza.
+Sí.
+Y ahí tiene más el tomador.
+Que es cero.
+¿Puedes usarlo?
+Sí.
+¿Él está a nivel de la poliza?
+Sí.
+¿Es obligatorio?
+¿Es obligatorio?
+¿El beneficiario es obligatorio, Claudinho?
+No me pregunto si diría así.
+Entonces dice para que va a ser obligatorio.
+Pero no tengo su seguridad, no.
+Podemos dejarlo como un obligatorio.
+Para hacer esto y eso.
+Y en un momento de entregar el producto
+pues va a tener que tener un beneficiario obligatorio
+porque tenemos coberturas y muerte.
+¿Y a quién va a pagar esa cobertura si a peso ha murido?
+¿En cuánto tenéis?
+Porcentaje.
+Un.
+Uno.
+Y eso.
+¿Listo?
+Acá.
+¿Eso sería otra tabla? Sí.
+Sí.
+¿Eso sería otra tabla?
+Esa sería otra.
+Esa es una información real de la tabla 18-01.
+Ah, información real, ¿entendís?
+¿Tiene un código de anterior?
+Es el código.
+Y se coloca el no-team-benef.
+Listo.
+Y estos.
+El nivel de 20-01 y 20-02 también.
+Primero y el último hasta un.
+Y el segundo.
+¿Le has asegurado? No, ¿segurabos dos?
+No, el 0 también es uno.
+Ah, sí, el 0.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Tenemos que definir cuál va a ser la estructura
+en la cual van a ser tirados los programas del producto.
+Sí, mejor no lo tenemos.
+Pero en cuanto?
+En cuanto?
+En cuanto?
+En cuanto?
+En cuanto?
+En cuanto?
+En cuanto?
+En cuanto?
+En cuanto?
+Marca...
+En cuanto?
+En cuanto?
+En cuanto?
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Esa es la tabla 18-02.
+Chau. Chau. Chau.

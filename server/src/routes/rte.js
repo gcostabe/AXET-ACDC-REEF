@@ -685,4 +685,75 @@ router.get('/companies', async (req, res) => {
   }
 });
 
+// GET /api/rte/breakdown-concepts (Catalog of breakdown concepts - 1270 docs)
+router.get('/breakdown-concepts', async (req, res) => {
+  try {
+    const db = getRteDb();
+    const page = Math.max(1, parseInt(req.query.page) || 1);
+    const limit = Math.min(100, Math.max(1, parseInt(req.query.limit) || 20));
+    const { branch, coverage, concept, calculationType, search } = req.query;
+
+    const filter = {};
+    if (branch) filter.branch = Number(branch);
+    if (coverage) filter.coverage = Number(coverage);
+    if (concept) filter.breakdownConcept = Number(concept);
+    if (calculationType && calculationType !== 'ALL') {
+      filter['fields.calculationType'] = calculationType;
+    }
+
+    if (search) {
+      if (!isNaN(search)) {
+        filter.$or = [
+          { breakdownConcept: Number(search) },
+          { branch: Number(search) },
+          { coverage: Number(search) },
+          { name: { $regex: search, $options: 'i' } }
+        ];
+      } else {
+        filter.$or = [
+          { name: { $regex: search, $options: 'i' } },
+          { 'fields.calculationCustomServiceName': { $regex: search, $options: 'i' } }
+        ];
+      }
+    }
+
+    const total = await db.collection('BREAKDOWN-CONCEPTS').countDocuments(filter);
+    const concepts = await db.collection('BREAKDOWN-CONCEPTS')
+      .find(filter)
+      .skip((page - 1) * limit)
+      .limit(limit)
+      .toArray();
+
+    // Enrich with primary calculation type and accumulators
+    const enriched = concepts.map(c => {
+      const activeField = c.fields?.[0] || {};
+      return {
+        ...c,
+        primaryCalculationType: activeField.calculationType || 'N/A',
+        primaryBaseType: activeField.calculationBaseType || 'N/A',
+        accumulators: activeField.accumulatorsNames || [],
+        customService: activeField.calculationCustomServiceName || null
+      };
+    });
+
+    // Fetch distinct branches and calculation types
+    const branches = await db.collection('BREAKDOWN-CONCEPTS').distinct('branch');
+    const calcTypes = await db.collection('BREAKDOWN-CONCEPTS').distinct('fields.calculationType');
+
+    res.json({
+      page,
+      limit,
+      total,
+      totalPages: Math.ceil(total / limit),
+      branches: branches.sort((a, b) => a - b),
+      calculationTypes: calcTypes.filter(Boolean),
+      concepts: enriched
+    });
+  } catch (err) {
+    console.error('Error fetching breakdown concepts:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 export default router;
+

@@ -1,0 +1,137 @@
+Las coberturas del módulo billete de taxa única. Planos. Aquí es solamente visualizar las coberturas y ver si las están disponibles en este módulo.
+Este módulo tiene tres, este aquí tenemos tres módulos, en verdad, debajo de esta modalidad, que es el billete de taxa única.
+Nosotros tenemos tres módulos, que es la protección esencial, protección plus y protección premio.
+Si nosotros ven en la configuración del ACDC, son estos tres. Esta configuración es el 70, que es esencial, el 80, que es el plus y el 90, que es el premio.
+Y nosotros vamos en la configuración de estos tres módulos.
+Voy a pegar todos aquí.
+Esta es la modalidad de tres.
+Entonces, tenemos el 70, que es esencial, tiene el plus y tiene el premio.
+Entonces, el 70, el 80 y el 90.
+Cada uno de estos módulos tiene las coberturas que son específicas de estos módulos.
+Creo que el módulo es nada más que una oferta, que tiene un grupo y características específicas de las coberturas.
+Ok, está bien aquí.
+Estoy explicando, muy superficialmente, técnicamente, cómo fue hecho esta configuración.
+Cómo se reflete en el RIF. Se selecciona el producto, que voy a hacer misión, mantiene la data de vigencia.
+Aquí no lo foco ahora. Coloco el tomador, quien está contratando.
+Voy a colocar el agente.
+Voy a colocar quien es el pagador.
+Tiene aquí información de la Policía, quien no va a cambiar nada ahora.
+El tipo de producto, que son los datos variables, no estábamos validando nada aquí aún.
+¡Más apetito! Sólo un par de veces te preguntaron sobre los datos variables.
+Entonces, por ejemplo, dependiendo de la data variable que haces configurar a nivel de la Policía,
+va a estar aquí, en esta primera tela.
+Entonces, dependiendo de la data variable que has colocado, va a aparecer, dependiendo de el panel que has colocado en la configuración,
+va a aparecer aquí en esta tela.
+En la data variable, tenemos información del tipo de nivel.
+El tipo de nivel 1 es el nivel de la Policía, el nivel 2 es el nivel del Risco, el nivel 3 es el nivel de la cobertura.
+Entonces, aquí defino cuál es el nivel que la data variable será presentada
+y aquí defino cuál es el panel que será mostrado.
+Yo también tengo la lista de paneles.
+Por ejemplo, este panel aquí.
+Vengo aquí, en el panel.
+Aquí tengo el panel, yo muestro cualquier panel.
+Aquí tengo el código del texto del panel, que es 2046.
+Y aquí voy a mostrar cualquier panel, información del Risco, el BR.
+Aquí tengo el nivel 2.
+Voy a tener un panel que va a estar escrito el panel del Risco, información del Risco, que ya verán.
+Entonces, aceito.
+Y le doy el siguiente.
+Aquí tengo información del Risco, información, información del riesgo.
+Entonces, aquí defino cuál es el panel que será mostrado, que será mostrado
+y cuál es el panel y el data variable será presentado.
+De nuevo, código de modalidad.
+Estamos haciendo para 4, 2, 1.
+No, no, nos vamos a hacer para 4, 2, 1, 0, 3.
+Y este data aquí, hablamos que este data variable será presentado en este panel, lo que vamos a hacer es rastrear.
+Está con este código, con este código de texto.
+Tengo información del riesgo y configuré para aparecer en el tipo nivel 2.
+¿Qué? ¿Beleza?
+¿Vo claro?
+¿Beleza?
+¿Beleza?
+Entonces, aceito.
+Voy a colocar aquí el asegurado, que estoy asegurando.
+Sé el titular.
+Aceito.
+Y paso.
+Aquí llegamos a la parte de la emisión, que también tengo algunos datos variables aquí.
+Este es el tipo nivel 2.
+Entonces, dependiendo de la información del riesgo que estoy colocando aquí,
+estas informaciones de los datos variables serán presentadas aquí también.
+Vamos a pegar un ejemplo.
+Vemos aquí, vamos a colocar 4201, actualidad, voy a pagar esto.
+Voy a dejar sólo 3 que estamos haciendo para 3.
+4203, vamos a pegar aquí sexo.
+Debo estar aquí, marca sexo.
+El marca sexo, está en el tipo nivel 2, secuencia 3.
+Entonces, por eso aparece aquí el tercero.
+Y hay algunas informaciones de él aquí.
+Yo tengo de nuevo el panel que está siendo presentado.
+Todo igual lo expliqué de otra vez.
+¿Beleza?
+Aquí tenemos la parte del módulo, que también es un módulo en simulación.
+Este es el módulo.
+El módulo da la variación del módulo.
+Este es el que tengo una configuración de él aquí,
+el ACDC, que es para él pegar el código
+y mostrar las informaciones que yo cadastro aquí en esta lista que acabé de mostrar para ustedes.
+Entonces, si vamos aquí al RIF,
+yo ven para mostrar los módulos.
+Él está mostrando exactamente las informaciones que colocamos aquí.
+Entonces, tengo el 70, el 80 y el 90.
+Porque él muestra solamente estos.
+Porque aquí tengo un grupo de módulos,
+pero aquí tengo algunas condiciones para mostrar este módulo,
+que cuando dice que la modalidad es 4, 2, 1, 0, 3,
+que fue la que seleccionamos atrás.
+Se seleccionamos aquí atrás.
+La modalidad 3.
+Entonces, por eso que él bate en esta condición,
+él dice que estos son los módulos de la modalidad 4, 2, 1, 0, 3.
+Entonces, voy a mostrar solamente estos tres módulos.
+Porque cada uno de ellos tiene esta misma regla.
+Entonces, si ven aquí, seleccionamos el módulo.
+Voy a seleccionar el esencial.
+Selecciono, aceito.
+Voy para el siguiente.
+Esto es un error que estamos tratando con los módulos de España.
+Que a veces él pierde la conexión con el ACDC.
+Ha tenido que cerrar todo.
+Y volví a hacer el comienzo.
+Gente, solo un minuto y ya viene.
+Bien.
+Así es, ¿qué voy a aportar ahí ahora?
+No.
+No.
+No.
+No.
+Y aquí, él mostra el grupo de coberturas que está configurado para este módulo.
+Entonces, tenemos aquí, en el ACDC, este es el módulo.
+Es el módulo 70.
+Tengo estas coberturas aquí configuradas.
+Tengo estas coberturas.
+Cada uno de estas coberturas que ven en la tela es un código de estos aquí.
+Entonces, estas coberturas aquí son las que están presentadas aquí.
+Que es lo que está escrito en la historia del usuario,
+hablando que tiene que presentar estas coberturas.
+Este es el test, es para validar que las coberturas son presentadas para el módulo.
+Perfecto, claro.
+Muchas gracias, Viní.
+Gracias, Viní.
+Los datos del inicio, del correto, el tomador, la gente,
+pueden mantener el mismo para todos los test que vamos a hacer.
+Pueden.
+Bien.
+Para esto aquí del módulo, sí.
+Vamos a tener otra historia, que va a necesitar validar los datos y todo.
+Pero en este momento no necesita.
+Bueno, gracias.
+Era lo que necesitamos saber.
+Me gusta.
+No sé si esto también, Mario,
+que vi alguna cosa de dudas de datos variables.
+No sé si esta repasada en este tema de datos variables
+también te ayuda un poco en lo que estás haciendo ahí.
+Sí y no.
+Porque lo que necesito es saber cuáles datos...
+Ahí si quieres parar la grabación, solo para no pegar.

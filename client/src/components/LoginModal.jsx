@@ -59,40 +59,23 @@ export default function LoginModal() {
   };
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        inset: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.75)',
-        backdropFilter: 'blur(8px)',
-        zIndex: 100,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '1rem'
-      }}
-    >
+    <div className="modal-overlay" onClick={() => setShowLoginModal(false)}>
       <div
-        className="card"
+        className="modal-content card"
         style={{
-          width: '100%',
-          maxWidth: '440px',
-          background: 'rgba(17, 24, 39, 0.95)',
-          border: '1px solid rgba(59, 130, 246, 0.3)',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(59, 130, 246, 0.2)',
-          position: 'relative'
+          maxWidth: '460px',
+          position: 'relative',
+          padding: '2rem'
         }}
+        onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={() => setShowLoginModal(false)}
+          className="icon-btn"
           style={{
             position: 'absolute',
             top: '1rem',
-            right: '1rem',
-            background: 'transparent',
-            border: 'none',
-            color: 'var(--text-muted)',
-            cursor: 'pointer'
+            right: '1rem'
           }}
         >
           <X size={20} />

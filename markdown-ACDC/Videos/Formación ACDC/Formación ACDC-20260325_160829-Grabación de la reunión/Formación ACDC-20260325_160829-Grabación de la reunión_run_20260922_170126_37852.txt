@@ -1,0 +1,914 @@
+y nos vemos en el próximo vídeo. ¡Hasta la próxima!
+.
+¿Cuál es el registro de aplicación?
+¿Cuál es el registro de aplicación?
+¿Cuál es el registro de aplicación?
+¿Cuál es el registro de aplicación?
+¿Cuál es el registro de aplicación?
+¿Cuál es el registro de aplicación?
+¿Cuál es el registro de aplicación?
+¿Cuál es el registro de aplicación?
+¿Cuál es el registro de aplicación?
+¿Cuál es el registro de aplicación?
+¿Cuál es el registro de aplicación?
+Vale, si no lo tengo yo, lo tiene el equipo de informadores.
+Entonces, registro de aplicación.
+Va a empezar el registro de aplicación.
+Vamos por uno y luego.
+Si no nos va las dos dos.
+Cierra ahí.
+Vale, perfecto, muchas gracias.
+¿Listo? Es el 15.
+Esta es el que vamos a ver.
+Como estábamos comentando, va una definición.
+La preferencia que fue la que colocamos allí en el catálogo.
+Los tejos.
+Una baja.
+Una referencias.
+Yo puedo colocar los módulos para las historias que tienes de líneas comerciales.
+Que se van a pitar en Brasil. Seguró líneas en el canal de ventas.
+Una polícia de grupo.
+Una gente.
+Si creí, por ejemplo, si creí, se estaba trabajando con la gente.
+Si creí, tenía una gente.
+Mucha de las reglas estaban solo para esa gente.
+Las reglas que estamos en selección, que sea general.
+Y tenga que especificarse para una gente.
+Lo mismo va a pasar aquí el módulo.
+El módulo va a tener una general.
+Que aplica la definición.
+Y si ya no se consideran para el ciclid, por ejemplo,
+pues los tentan de especificar ahí.
+La misma regla que explicamos a mañana.
+Las condiciones de la más receptiva en la que toma.
+Y empieza a subir de nivel hasta que llega la definición de producto.
+Luego sigue unas reglas.
+Estas reglas que están aquí.
+Son las condiciones que va a evaluar para poder seleccionar ese módulo u otra.
+Entonces, ella hizo un filtro inicial.
+Buscó para una polícia de grupo, para un contrato,
+para una gente, para una oficina, para lo que sea.
+Ya pasó ese filtro.
+Y ya tiene, imagínate que tenemos 50 módulos.
+Y hay 5 para una gente.
+Pues ya eso descartó 45 y dejó 5.
+Pero aún así, el condición es dependiendo si el tropólogo de venta directa
+o está por algún atributo.
+Él va a entrar y va a filtrar por aquí, por algún atributo.
+Una pregunta.
+En caso de que tenga uno general para el producto,
+y tenga uno para la gente,
+cuando le hayas listado un módulo con la gente,
+no muestra el general.
+No muestra el general.
+Porque esa lupita que vas a colocar ahí,
+él va a ejecutar todas estas mismas reglas.
+Pero solamente te va a decir, ah, de todas estas reglas que está aplicando,
+es el 10 y el 30.
+Te muestro solo el catálogo que cumple esas reglas, ¿vale?
+Si tuviese más, pues esa no cumplía.
+Entonces no te la va a mostrar.
+Ese va aquí al activo.
+Desde aquí yo puedo condicionar.
+Condicionar de el módulo, ¿vale?
+Como lo que teníamos,
+que se acuerda que para esas titulas,
+que para esa titulación o para esta,
+de todas esas titulaciones.
+O sea, esto es uno de los pacotes.
+Por eso se llaman ahí.
+Patores pacores.
+Sí, técnicamente sí.
+Y una vez él cumple estas condiciones,
+él dijo, ah, vale, yo valúo estos primeros criterios,
+y luego valúo las reglas,
+y entonces cumplió las reglas.
+Vale, una vez cumple la regla,
+es esta es la salida que nos va a dar módulos.
+¿Vale?
+Como mirando las coberturas.
+Exactamente.
+Eso está mal porque la cobertura no es 4,
+0, 3.
+Así?
+Sí, lo que pasa es que no, o sea,
+eso no está así, porque hay que estar con demás.
+40, ¿no?
+Entonces, aquí están las coberturas.
+Cada cobertura cierra aquí.
+Cada objeto.
+Aquí solo tengo una, ¿no?
+Sí.
+No creo que...
+No, que tiene dos, por ejemplo.
+Vale. Cada uno de estos objetos es una,
+es la cobertura, y dentro de la cobertura
+está sus propias que va a gobernar el módulo.
+Y eso se va a trasladar al proceso
+que me la llamó, ¿vale?
+Imaginemos que esto, Vardi,
+entonces mostrará el tratamiento de capitales,
+sobrevetabilidad,
+valores, control,
+exclusiones.
+Tiene muchas más capacidad, ¿vale?
+Entonces, lo vamos a ir descubriendo, conforme...
+Yo tuve que ir admirando.
+Ya tienen ahí, como se llama,
+lo de la exclusión.
+Entonces, empiezan a jugarse,
+eso obligatorio,
+los valores por default, ¿vale?
+Aquí algo importante, ¿vale?
+Yo aquí en valores por default
+puedo poner un valor...
+Es otro así.
+El valor por default puede depender
+de la cobertura X.
+O el valor por default puede
+depender de un atributo.
+Si yo le vinculé una cobertura,
+le voy también...
+Entonces, vamos a ver...
+Vale, entonces
+el valor por default puede ser
+un valor.
+O dependiendo de otra cobertura
+o de un atributo. El cost es
+un atributo, ¿vale?
+En autos van a usar esto.
+Aquí va a poner el valor
+del atributo de la suma asegurada del vehículo.
+Entonces aquí ponen.
+Hay coberturas que es un porcentaje.
+Entonces, yo puedo ponerle
+de este valor que viene aquí
+un porcentaje
+para que aparezca el valor por default.
+Entonces,
+en vida creo que no tenemos,
+pero bueno, en autos sería aquí poner
+en suma sec.
+Y yo quiero que esta cobertura sea el 20%
+de la suma asegurada del vehículo.
+Entonces, yo puedo poner el 20% de ese dato.
+Entonces, ya estos dos valores
+de valve y coberas no aplican.
+Entonces, simplemente suma sec por 0.2.
+Por 100 años por eso.
+10, 20, 30 por 100.
+¿Qué hago ahora?
+Mi producto se queda a medias.
+Y luego, luego tiene
+unos valores de mínimos y máximos, ¿vale?
+Claro.
+Es decir,
+la suma asegurada
+que quiero trabajar
+va a estar entre estos rangos, ¿vale?
+Entre uno y cinco mil.
+Entre uno y nueve.
+Yo puedo poner aquí
+un valor por defecto de 25.000.
+Pero el sistema cuando esté trabajando
+en la emisión de va a permitir en estos rangos.
+También tengo
+definición de algunos de los atributos
+a nivel de la cobertura como valores
+por default para cargarlos.
+Esto está
+basado para hacer algún tipo
+de ajuste o recargo sobre la tarifa, ¿vale?
+Esto es la versión anterior.
+Vale, esto se mantiene igual.
+Pero ya con el activo digital
+eso ya...
+La funcionalidad no la...
+No sé si la lleguemos a usar
+pero ya la cubrimos contra los calculos
+que hacemos directamente en la tarifa.
+Porque esto le asigna el valor
+apenas cuando entras a cobertura, ¿verdad?
+Mientras
+con el RT
+¿Cuándo calcula
+o cuando estás en los atributos?
+No, esto era porque
+esto era la versión inicial
+para Urbalto, Panamá, etc.
+De hacer el recargo.
+Pero por ejemplo, yo estoy ya
+con todo lo que hemos hecho de selección de riesgos
+que tiene tipo tarifa.
+Si yo tengo un recargo
+que aplica un poco
+que sea por la edad
+entonces cuando encuentre
+que hay una regla de selección de riesgos
+que es de tipo tarifa, del proceso
+pues el va a aplicar esa regla, esa regla
+lo que va a hacer es que va a devolver un dato.
+Hay el recargo, el presentaje, el recargo por edad
+y devuelve ese valor.
+¿Quién va a consumir ese dato?
+La fórmula.
+Es la fórmula cuando vente otra vez
+le va a decir que llega a leer ese dato el porcentaje.
+En la primera vez le llegó, ¿no?
+Porque no voy a doble pasar.
+En la segunda vez que calculó
+y aplicó la regla porque la regla
+es que si me contratas a cobertura
+el capital es 20.000
+y si la prima es de 15.000
+entonces lo voy a recargar tan.
+¿Cierto? En la primera vez no hay primos
+y la segunda vez calcula si tienes
+entonces defino una regla
+una regla es pipotarifa
+para grabar.
+Esa información se la va a pasar en la fórmula
+no es la que va a hacer el camino
+para recargar, ¿vale?
+Cierra ahí los parámetros.
+Esto no es obligato, esto es opcional, ¿vale?
+De cobertura 2.
+Vale, pero aquí le faltan cosas.
+Sí, por ejemplo.
+Presenta las de...
+Porque ahora sí se van a necesitar, ¿verdad?
+No, dentro de un producto tuyo
+407.
+Lo raro es que eso no haya pasado, ¿no?
+Eso no tienes que porilitar, ¿no?
+Igual mañana desde casa
+hay que estar conectado por otro lado.
+Esto.
+Aparte de estas primeras definiciones
+la cobertura, les pega esto
+espero que no te vayas tan lejos todavía.
+Espera, déjame para acá.
+Tengo data, entonces repasemos data.
+Data tengo estas características, ¿vale?
+Tengo los parámetros.
+Los escenarios también son opcionales.
+Digamos que lo principal
+o lo mandatólico, por ejemplo,
+es definir lo que es data.
+Cómo se va a comportar inicialmente la cobertura.
+Y estos otros parámetros y escenarios
+aquí le falta el ejemplo de porcentaje.
+Te buscas uno con porcentaje, ¿vale?
+Estos dos parámetros y escenarios son opcionales.
+Depende de la regla negosa
+de la configuración que se quiera trabajar.
+Entonces
+¿Qué escenarios tengo?
+Aquí empiezan varias cosas.
+Tengo escenarios de
+si es obligatoria
+la cobertura
+esta cobertura es obligatoria
+si he contratado una anterior.
+Esta cobertura es excluyente
+si he contratado una anterior.
+Esta cobertura es excluyente, te siento.
+Hay que ser excluyente la 40 y 19.
+O la 40 y 20.
+No puedo contratar esta cobertura
+si no me contrataba una anterior.
+¿Vale?
+Tiene también una parte
+de escenarios y acciones.
+Por ejemplo
+si la suma de la cobertura
+más esta cobertura
+sumas un comil
+no la puedo contratar.
+Tiene una especie de acumulación
+de capitales en ese momento.
+Entonces
+todos estos escenarios
+son configuraciones.
+Hay documentación con ejemplos.
+Hay ejemplos, hay casi todos.
+¿Vale?
+Vale, aquí
+a este punto
+nos falta
+el evolutivo que se hizo
+y está en el activo digital
+y es que esta evaluación
+que tengo ahora
+es para
+para el mismo riesgo
+donde estoy trabajando.
+O sea, el riesgo donde estoy trabajando
+lleva nuestras coberturas.
+Pero en Brasil necesitamos
+incluir una validación en módulos
+que contraste información
+de lo que estoy trabajando en esas coberturas
+con respecto a otro riesgo anterior.
+Entonces, yo puedo configurar
+estos mismos suda un pelín.
+Yo puedo...
+No, está aquí.
+Debe ser arriba a cobertura.
+Está en coberturas.
+Cuando yo defino la cobertura
+debajo de coberturas
+aparece un identificador del riesgo
+contra cualquier contrastar.
+Entonces, ¿qué va a pasar?
+Tengo que buscar un ejemplo de eso.
+Cuando yo coloco debajo de esto
+el identificador del riesgo
+contra lo que quiero contrastar
+estas reglas
+aplican
+es contra el identificador
+de ese riesgo. Ya no aplica sobre ese mismo riesgo.
+Imagínate que aquí le pongo
+el codparentesco
+y digo el codparentesco es papá.
+¿Vale?
+¿Qué va a hacer el motor del activo digital?
+El motor del activo digital
+va a ir a buscar
+ese dato
+que dice codparentesco papá
+va a identificar
+en la entrada
+que tiene ese momento
+porque tiene que haber llegado
+las coberturas de ese codparentesco papá
+y las va a cruzar
+la definición que está ahí
+de la cobertura que estoy tratando en ese momento.
+Esa esta definición
+va a variarla contra la que está
+en la cobertura
+papá, ¿vale?
+Pero yo le puedo decir, si no me contrata la cobertura
+del papá principal, pues esta no me la puede contratar.
+¿Vale?
+Es el ya evalúa estas coberturas
+pero contra el riesgo que les estoy
+definiendo
+para hacer ese cruce de variaciones
+entre el que estoy contratando
+coberturas del hijo
+pero el hijo tiene dependencia de las coberturas del papá
+¿vale?
+Y eso fue un último que se hizo
+para lo que nos venía de Brasil
+¿vale?
+Yo no la tengo
+en España
+porque en España no tengo multirresco
+¿vale?
+Pero sepa que tú tampoco
+tú no la vas a usar
+y tú tampoco
+pero David
+pero entonces
+si España
+Brasil va a rentar en Polícia
+¿vale?
+Y eso cubrimos ahí
+el que tenemos de onencias graves
+¿te creo que ahí no les va a entrar?
+La cobertura del hijo
+dependerá
+esa regla va a caber aquí
+¿vale?
+y aquí la van a cober cruzar y la van a cober
+para metrizar
+¿vale?
+y se identifica esa manera
+lo importante es que obviamente
+tiene una lógica
+en la implementación de un producto
+primero yo tengo que
+primero yo tengo que pedir
+el papá, la mamá y el hijo
+porque si pido el hijo de primera
+si luego llega el papá por favor
+y lo otro es que esas reglas
+también por riesgo
+y el papá no va a arreglar
+¿no? porque aquí tú le pones
+el investigador de reglas
+entonces tú le hacién el que se llame papá
+¿vale? tú le emparentesco
+algún dato que identifique
+quién es el de los sobre cualquiera
+no puede ser el de los 1, 2 y 3
+porque eso no me identifica quién es el papá
+la mamá, tengo que saber
+exactamente el dato
+sobre cuál el sistema es capaz de identificar
+a qué riesgo corresponde la información
+¿vale?
+y eso también depende que el armado del producto
+esté consistente
+¿sabes?
+porque eso lo vas a dar
+esto tiene que tener un dato
+que diga
+la regla la conozco
+pero sería bueno como tener un ejemplo
+de cuál el campo que usted dice
+cómo se escribe
+el campo es el coparentesco
+entonces si tu dato se llama coparentesco
+y el valor del papá es 1
+pues si aquí le vas a poner coparentesco 1
+entonces esta regla
+estoy tratando aquí contra quién va a trazar
+para que le diga el papá
+y no puede usar sin señal de alguien
+no le tiene que decir
+porque yo no lo sé
+el buscan todos los niños
+¿cuáles serían los niños?
+ese entidad
+va a tener que ser único
+con ese valor
+y es que el coparentesco tiene que ser un atributo
+porque yo lo que tengo es tipo el acto
+un atributo, si, tiene que ser un atributo
+para que él sepa a dónde tiene que ir la relación
+¿vale?
+importante es que dentro del policía
+se puede identificar a cuál
+tengo que ir a cruzar esta configuración
+ahí
+vale, se entiende que
+condicionas de aquí ya sea el otro río
+pero si también
+necesito condiciones
+de su
+de su mismo
+riesgo, es decir
+bueno, de que dos coberturas
+como ahorita sean excluyentes
+en el riesgo donde estoy parado
+pero el papá por ejemplo no tiene esas coberturas
+o sea, ¿puedo formular también
+en el propio riesgo o es
+de momento?
+le pones aquí y se va a trazar con nosotros
+bien, entonces
+la idea es que ahora
+con esta configuración
+podamos llegar a modo
+¿vale?
+lo que hicimos
+¿te tiraste la lista
+de módulos
+del dato variable?
+no, eso es lo primero que tengo que hacer
+porque está muy duro
+porque la idea es que
+él
+conecte la lista para que él venga aquí
+y aparezca en 10
+con el nombre que le pusiste por acá
+de modo
+y luego pasemos a coberturas
+en coberturas
+para que desplegar a una con el capital
+que se definió aquí
+y la regla
+o sea, todo esto ha cambiado ¿no?
+creí desde la primera versión
+digamos que tú tienes el 80% de la sostenibilidad
+la regla se ha cambiado
+porque es que yo siempre tengo muchos problemas
+para determinar qué módulo me tiene que salir
+porque no tenemos un normo
+no tenemos un...
+para formar las reglas
+dependiendo del campo de fit
+este campo es
+un ejemplo que la pasó de hecho
+también en Maudíes
+si el país es distinto de Paris
+no hay un distinto
+ah, tú hiciste el operador
+los operadores de las reglas están muy vetados
+sí
+hemos tenido que duplicar tanto de módulos
+simplemente porque el operador
+no nos permitía
+hacer las reglas
+entonces ahí sí que os pido que la regla
+sea un poco abierta
+y que podamos poner todo
+los operadores no hay problema
+es que yo por ejemplo
+he tenido que duplicar módulos
+simplemente por decir
+llégame desde el giro de negocio
+imaginaros, tengo mil giro de negocio
+y me dicen, con este giro de negocio quiero este
+pero como no tengo ni nada distinto era
+desde cero hasta ese número
+un uno, desde ese número hasta pie
+no sólo otros los operadores
+que también permitan la evaluación
+de las competencias
+esa parte sin eso
+eso sí que le echaron falta
+porque esa misión fue para selección
+por esa misión
+pero aquí
+inicialmente meter un operador
+más uno de esos no tiene tanto problema
+pero para cambiarle
+la forma de que valoramos todo
+porque la pobre
+está teniendo
+con el país
+pero me hubiera hecho algo
+pues es que
+es verdad que ahí no se hemos dado cuenta
+que es que faltan operadores
+los operadores
+se abrió una persona
+pues abrir todos, abrir todos los que podáis
+porque
+lo que sí costaría más
+meterle
+los ex-irrus que está hablando mano
+que eso tiene más inteligencia
+bueno pues pero con que lo amplíais
+es que creo que había cuatro o cinco
+está alín el igual
+y el
+lo que es que me ha dado a mí también
+no sólo a quien no dárselo
+no sólo a los que podemos
+dárselo
+y ya lo tenemos
+el campo ya más con modulo
+va directamente con el nombre
+o sea, nos interviene el nombre del campo
+no, el nombre del campo no
+pone así la imagen que puso
+esa es, la estoy poniendo acá
+presenta
+presenta con parque
+parte pantalla
+no lo llamaba
+¿qué tarea me vas al picar que he escuchado algo por ahí?
+todavía no
+vale vale
+lo que me están comentando es que vamos a necesitar
+hacia los operadores en modulo
+que hay muy poquitos
+probado
+bueno, los que había originalmente
+todo ese micro tal cual del PL
+si, si, pero creo que
+vamos ante a los
+más se pueden poner más, se puede
+¿y por qué no ponemos a los mismos que tenemos
+que hay catalogo que tendemos para selección
+de operadores
+habrá que evaluarlo porque
+me parece que al final lo que está haciendo es
+sobre todo
+son condiciones, si, se pueden
+hacer
+mira, mira lo que nos dice eso
+se puede añadir alguno, puede ser
+ahora lo miro
+con el distinto me vale por ahora
+evaluadlo sin maldices, vale
+y lo vamos metiendo como tarea
+ok
+dentro de tus 20 prioridades
+que tienes
+solo son 20, no pasa nada
+lo despliegué
+para los controles técnicos
+o lo puedes hacer tú
+lo estamos mirando, a ver si puedo
+desplegar la pipeline en azure
+que es de donde sacamos luego la etiqueta
+para desplegar en
+yo creo que es esa variable
+no he trazado y tengo el correo
+que remitimos un correo con la caducidad hace
+más de un mes
+sí quedando, acaba de saltar el mismo error
+entonces
+a ver
+no lo estará cogiendo
+de los secretos de Jenkins
+era como estaba originalmente
+yo creo que está todo definido en el groovy
+de la pipeline, eso es lo que me ha dicho Luis
+así que espero que no
+tengo que salir ahora, mándame
+toda la traza, vale
+ok
+mándame toda la traza, a ver si
+porque así lo he explicado es el service principal
+a ver si es que hay otro por ahí
+ahora te la mando
+vale, gracias
+es que hay un pcpd secrets
+storage account
+hay cuatro pasos
+y a nivel de contrat
+es que no puedo entrar en Mongo, pero a nivel de contrat
+también se puede filtrar, es que no te acuerdas
+sí, pero no lo estaba haciendo bien
+no te acuerdas que eso te lo comuniqué
+tuve que meter al final un dato variable
+porque no me estaba filtrando
+pero no era por contratera, por otra cosa
+por contratera, si eso funciona
+como hace varias variables
+o sea como filtra
+como era
+el primero va a las referencias
+el filtra por las referencias
+luego se va a las reglas
+pero dentro de las reglas no podía meter el contrato
+para que lo quiera si ya pudiera ser viva filtrada
+es que arriba no filtraba por contrato
+había un problema con el contrato
+que yo he tenido que meter
+un dato variable aparte
+porque no me lo filtraba
+mirarlo
+es que ahora no me conecta a Mongo
+si no lo he aprobado yo con mi contrato
+mañana arrieso y desde casa así
+si, entonces desde casa me manda
+si
+si no tiene que ser
+no me conecto de aquí
+no sé si tendré un dato variable
+si no
+no sé cuánto dato
+te caducaba los dos gigas
+por eso te pongo
+por eso te pongo
+por eso te pongo
+para
+para
+para
+para que te perdiera la capitalización
+que te vien
+vale, cuál es el programa
+de mañana porque no te hay que llegar
+a la salida
+para que te toques la salida
+para que te tomes la salida
+para reservar el seguida
+cada animación se debe hacer
+la adquisición de el semestre
+esto no es que lo quiera que te pase lo bien
+no, es que lo hace
+viendo luz para que te pides
+realmente lo haré de ahí
+en el píter
+yo pensaba que era como al
+un resuelvo
+y me dudaba por ahí
+me empezaron de los cúdulos
+que estaba en Maguapuacula
+David tiene que gustar lo que está ahí en el
+en la parte de
+Maguapuacula
+como pido aquí
+a veces hay Maguapuacula
+la DNA tenía que salir de aquí
+no te voy a coger a mí
+puedes enseñarme la DNA en un momento
+otra cosa
+no, pero muy bien se ha luchado
+y es que hay que poner
+a la modalidad
+en autos
+que si no pone a la modalidad
+por la modalidad ya estoy llegando
+no, la modalidad hay que evitar
+la has puesto
+¿que modalidad le pusiste grabando?
+421
+ah, ¿que modalidad?
+15, 421
+4201
+¿que producto?
+4211
+¿que producto? 4201
+¿compañé de cerca?
+4201
+¿compañé de 15?
+no, no encontró
+a ver, 15, 421
+8 de aliviestra
+ah, ruz
+¿quien ruz?
+ah, te amas por la que una marca
+que no tenemos ondatoria
+ah, pincha y cambia
+pincha y ruz
+te pinchan y no me despielan
+no, porque estaba así
+yo creo que es por
+el producto
+o sea, yo pondría 999
+no, no, no, no, ya hay 999
+es por modalidad
+el producto está modalidad ya, ¿no?
+pincha y ruz, es que hay que meter
+los segundos en el vídeo
+la respuesta
+es por 8 de aliviestra
+¿verdad?
+yo 500, 999
+ah, dame un dato variable
+¿a nivel de riesgo?
+con modalidad
+la misma o con un dato
+con modalidad y igual a 4211
+si, es por la que hace
+variable data
+con modalidad
+eco
+aquí
+puede volver a ejecutar por eso
+a un poco pero que se demora
+no, no, esto es la ejecución pura de servicio
+se puede ser la primera vez
+eso es una de las que ejecuten
+¿quieto?
+no, con modalidad
+hay, tomamos a un error
+error
+a ver, si, error
+durante la validación de modos
+es dentro de
+ya la pusiste
+a ver, pincha otra vez
+hay, pincha ya
+dice
+en código 4, 421
+error durante la validación de modos
+no, a ver, presenta ahí
+que correspondes
+la 421
+si
+código 421
+si, están todos ahí, si que están bien numerados
+en
+va
+a ver
+no, no
+la otra opción
+ya, ¿cómo?
+ya, ya hemos salido
+ya hemos salido
+ya hemos podido ponerles técnicos
+daus, suláx, todo
+y no hemos grabado
+no, ahí no hemos grabado
+que no, que no Manuel
+seguimos igual
+que, ya me hablan de opción
+a Manuel
+no, Manuel es un Alberto
+es una solución, si Alberto me encuentre
+la solución es que me solucione
+eso, para que te encarguen
+para que les queden los fundamentales
+¿que vas a hacer?
+para que te encarguen
+No, no, no, no, no, no, no, no, no.
+Contrías, español.
+Sí, o ver alguna cosa.
+ESP.
+Ah, sí, de verdad.
+¿Qué contríe es?
+¿Cómo?
+¿Qué la contríe es?
+ESP será solo.
+¿Cómo?
+Será ESP solo, ¿no?
+No, porque está en Brasil.
+Ah.
+Es verdad.
+¿Qué contríe es?
+Eh, David.
+¿Tú sabes qué contríe hay 10 que le está llegando a módulos?
+ESP.
+Ah, ponle ESP.
+Eso está mal.
+Le está llegando, ¿eh? Pero otra cosa es que sea correcto.
+No, está mal.
+Vamos a ajustarlo, ¿vale?
+No, yo no lo tengo.
+David, no aquí.
+Una vez hemos visto estos productos, ¿cierto?
+Esencialmente que vivimos ahorita en las pantallas arriba.
+No, no tengo...
+Hay lo que me termine porque no lo hay.
+Es decir, el análisis del móvil.
+Es decir, el análisis del móvil.
+Es sólo formalidad para que la apariencia no sea exagerada.
+Ella les cobra.
+A ver, ¿cómo está?
+Pues yo, el NACON, en el país, yo ponía ESP solo.
+David, no ponía 3, solo ponía ESP.
+Se está llegando ESP.
+No, no.
+¿Puedes probar otra vez?
+Ven.
+Verá lo que dice.
+Es quedó. No responde.
+No.
+No.
+Están bien.
+Están bien.
+Están bien.
+Toda se roba.
+Están bien.
+¿Verdad?
+¿El invento es indefinido?
+Están bien.
+¿Y si no le ponemos producto?
+No, no.
+Están bien.
+Puedes ver si que error no está dando.
+Está dando error dentro de módulos.
+Estoy intentando mirar
+que hay configurado la base de datos.
+Y por eso no...
+Porque parece que algo
+falte ahí.
+No, no.
+No.
+No.
+No.
+No.
+No.
+No.
+No.
+No, no, no, no, no, no, no.
+Muy bien, sí, sí.
+Muy bien, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí.
+Sí, sí, sí, sí, sí, sí, sí, sí.
+Bien, muy bien, muy bien.
+Me expliqué en qué funciona la operativa tienen.
+Sí, sí, sí, sí, sí, sí, sí, sí.
+Perfecto, listo, sin problema.
+La última llamada es que no tiene nada que aplicar.
+Sí, sí, sí, sí, sí, sí, sí, sí, sí.
+El copy.
+La polícia está ahí, si acuerpo.
+Bien, bien, bien, bien, bien, bien, bien, bien, bien, bien, bien, bien, bien.
+Ah, está llegando Benetica la modula.
+Claro, por eso en el módulo tienes que poner nueve, nueve, nueve.
+Es lo que me ha pasado a mí.
+Sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí, sí.
+No creo porque igual se queda.
+No, ya es, van más de dos segundos, no responde.
+El que va al banco tiene el segundo.
+¿Tierro?
+Ah, nadie, te demora mucho y retornan a los dos.
+Un ensayín definido, no tiene detalle.
+Cuarenta y nueve.
+Seguían derro.
+Estoy levantando así, se puede depurar.
+Sí.
+Un tres.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.
+Un tres y ocho.

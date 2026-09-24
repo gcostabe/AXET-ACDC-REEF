@@ -1,0 +1,2651 @@
+vale este vamos a retomar ok y vamos a hacer ahora con otra cobertura pero ya sin suscripciones
+un cálculo normalito vale entonces David va a preparar el que cobertura es?
+la 21.59 que está por aquí abajo vale ahí está
+y vamos a quitar todos estos conceptos de los el olor o lo debo así
+igual no está haciendo nada entonces vas a colocar ahí al azul
+ahí está la fórmula cs vale fórmula cs es un cálculo type y que va a aplicar la fórmula que
+está aquí la que dice diarias de interceso y para la sesión por no sé qué vale y entonces
+donde está esa fórmula entonces vamos a ir a fórmula
+izquierda el catálogo el catálogo de fórmulas
+fórmula de finicia eso es, fincha y busca ir a fórmula
+me acuerdo que teníamos en el truco al acar o así vale esta la fórmula de
+información y aquí está la fórmula y esto cuando se puso solo eso ayer
+entonces que está haciendo referencias haciendo referencias los datos va a
+coger ese dato pues los datos y va a ser una multiplicación
+esto ya está esto es así de sencillo o de complejos como perrán o vale porque esto es llavo
+fórmula llava como las cosas dentro de estas comillas
+si ustedes han trabajado con esta la leyenda para rellenar este registro o bueno o objeto
+como lo damos me llama la atención que la clave de la fórmula es un texto o sea
+realmente es un texto podemos poner lo que queramos no o sea la la llave es la
+que es un texto en este caso hay como tres nombres que es lo mismo pero no
+sé diferenciar entre la fórmula el nombre y la llave es lo
+nombre es que camin poco aquí ya no son ahí puedo no poner la descripción que es
+importante compañeros con la otra fíjela
+y lo que digo lo que digo es que aquí hay que hacer un catálogo de fórmulas
+definirlas para que pues tengan alguna lógica es una definición y la clase que
+pone abajo que es el que dice en la que está abajo esa que está señalando la
+línea de abajo la última la que es a la antigua es una tarea de esprim eso no tiene
+la relación que tiene en java en la programación con esta
+esa es la misma sonera tú lo que vas a definir para en el clas es ese hasta
+cual como está ahí es que qué pasa sobre vuelvo y ahorita lo estamos haciendo
+así porque no está el taller en el taller tú vas a definir un código de
+fórmula con la fecha validez y la forma de
+calcular es más y ya a través del taller te va cara que va a crear fórmulas
+esta fórmula lo puedo crear en el taller exactamente eso es en nuestro
+objetivo que sea ahí y realmente donde tú quieres que implementa la fórmula es
+como con los datos de entrada que costen que información tiene entonces ya la
+vas a ver es y aquí es donde vamos a poner una fórmula
+aquí en clas un botón opres con tu tronco con tu rating con tu pr y por
+model aquí entonces hay ahí en esa en esa línea en ese form hay que ahí van a
+tener todos los datos que tengan en ese momento vales de la polsas
+pues hace referencia a un dato fijo a un variable si imagínate que tú ya tienes
+una cobertura que está aquí el cálculo no entonces la cortura calculó la
+cobertura 2 viene y calcula como ya consumir la uno pues inclusive también
+podría tener referencia del cálculo anterior hecho anteriormente con
+ya sea con las acumuladores ahí sí de toda la estructura que ya no conocen
+o usar algún dato hacer el dedo del riesgo de la polsas para hacer calculó y
+puede ser darro que dice
+valor introducido no va a haber que dejar el cambio
+está diciendo el cálculo porque se nos está haciendo bien el cálculo
+es que no la contrato no creo que
+a recalcular
+en un raíz en fórmulas de ese está nudo no la está encontrando
+david estás por ahí
+no me preocupa eso que si yo no lo si yo no contrato la cobertura hay que ponerla
+contratada eso depende de modus modulo puede dar una
+pedefinición de cobertura si yo como usuario decir no está no y quitarlo
+si no la pones no calcula no pero me recusaba pero si no calcula si no la
+pongo la mano el error me dice que no puede ser cero
+como si obligara a tener importe la cobertura porque viene capital
+time out saber time out opa quitar esto no no digas que la por la
+cobertura tenga importe aunque no la contrata
+cobertura es dale calcular otra vez
+está un segundo
+por una cdc cual está hablando por una cdc
+david hola un fa
+va a presentar aquí a ver si podemos pillar
+dando un error no si entonces
+esta ya no va contra suscripciones vale esta es una fórmula normal
+tengo la red tengo esta
+por mis premios y
+esta me está dando un error de 4.20
+vale me está diciendo
+la configuración de la de la cobertura está con fórmula cdc no el tipo de cálculo
+si vale y el fombal de ese tipo de cálculo cuál es
+no se le hacen ese en branco no si company 15
+y en con esa ya está es la misma
+vale la primera creo que es la cero no que número es las 7
+esta no se cuenta que no es
+vale aquí falta el fombal y cual un campo que se llama
+no puedes pasar por sí lo tengo que buscar exactamente
+no perderá esto
+y yo creo que sí lo estoy mirando en código a ver qué busca a nivel de fields
+justo debajo de name por ejemplo donde donde quieras de a este a este nivel si no
+es si no es el cot fórmula pero es que estoy buscándolo
+y ese perro porque no se va
+listo que más con eso no sabía lo busca esto lo busca en fórmula definition que
+es la es la otra fórmula definition
+y aquí está vale no es fombal es brg k fombal no ya está está es así debería
+coincidir la el fombal debe coincidir con el brg k fombal la línea 10 tiene que
+coincidirse streng no o sea bueno si con eso sí este este con el
+aquí está time y fombal vale y el cot fórmula tiene no ya vi que está
+diferente aquí y el diario no pero si el nombre nos da igual
+la forma es con el que está el identificador de la fórmula
+más que espera que tengo que copiar
+si es fombal y el cot fórmula por lo también por si acaso es que en un
+sitio coge el fombal y el cot fórmula estoy buscando a ver cuál cuál es de los
+dos a este nivel y en la 40 lo mismo
+es el mismo y éste está igual
+pues así debería encontrarlo
+no sé miramos el log
+es el cot fórmula no es el fombal vale el acabo de encontrar pero es estar igual
+así que no no sé
+y es la configuración de la fórmula que que que operación hay
+fórmula definición compadre 15
+está esta y mp diaria 21 59 y no diaria 21 59 claro y sé dónde lo saca
+son datos que vienen de riesgo aquí hay que ponerle variable data
+estos datos son variables si son variables de si son variables de la
+poliza sí variable data punto y eso variable data punta está citando tu
+variable data dentro de los corchetes si no no te hay en el mapa de variables no
+te lo va a encontrar en el mapa de variables no te lo va a encontrar
+variable data punto eso y ahora el otro lado
+variable variable te faltó una te faltó nada
+este sí es sensible a todo eso
+vale vuelve y testa
+nada de perro sacame los logs por favor y muy comparto
+y aquí
+y en último el último sí el respos si mira
+la invocación target excepción vale un segundo que buscaba esa excepción
+yo creo que nos resuelve las variables
+miramos que le entra
+y
+como se llama el dato no un diario no sé qué en un diario y es un diario y y me pedía ya
+dar la mix en el canal no a los no diarios
+tiene 10 y el otro polis
+y mp diaria y está y viene 200 200 vale a los datos están entrando
+son variables de datos variables
+vamos a descartar una cosa como como es el tipo de fórmula antiguo
+cambiado el fórmula cdc por fórmula sólo que es la antigua la que ya iba antes
+acá en si hay en el lugar de fórmula cdc ponen fórmula con esa hace el mismo
+match todo es igual simplemente cambia el tipo de la forma de hacer el cálculo
+ya está
+vale pues volver a volver a lanzar es como que está fallando al coger las
+instancias creo
+tu pantalla es
+no toma este fórmula
+qué tipo de error da ahora frebí 422 si el y el detalle bueno
+cobre por el bloque en este tipo de náhuatl en el último no si
+el mismo punto
+es que se invoca y son target exception no sé qué es anual a mal lisa en el
+retengue los lisa en el
+por el prem calculación aquí están los coberas por prem fórmula coberas por
+prem calculación transforma pero está diciendo que no se lo encontrará
+y vamos a hacer un descarte el fórmula definition
+en en detalles
+y cambiamos el la fórmula pon el fón va va va al pon un valor así pon un 10
+ahí sin corchetes ni nada es que es que no sé si es por
+los corchetes pueden afectar no los corchetes los limpiamos los limpiamos
+antes de devaluar la fórmula
+así sí y eso es un estrés sí sí es un estrés sí sí
+ya está así vale lancemos ahora
+y no hay nada que te inicio
+se fue cero otra penasia de cincandes cincandes y de fórmula
+y está dando nulo
+que es el mismo tipo de error eso me está me molesta un poco
+hacemos el nombre que tiene acentos y caracteres especiales el de la forma
+puede ser aunque lo haces como comentaba sonia por por un estrés tal vez muy
+largo ese fórmula y pudiera ser un número inclusive la línea 10 sí la línea
+10 pone ahí pon un
+sí el que lo que tú quieras
+por accidente
+vale y ahora copia esto mismo y las torturas llamas de hija
+para el que más tengo que cambiar no copias esto mismo y lo pones en en las
+en las branches en la colección y ese fombal no da igual en el fomain no hace
+nada no los usa es que no no le está identificando qué fórmula es la que
+tiene que ejecutar si parece parece eso pero no sé si es por march entonces la
+tengo aquí y lanza y actualiza y lanzamos y mientras mientras mira mira
+tú el fórmula de finición exacto mira el fórmula de finición
+vale esto se sp es compañía está bien fecha de validez confiamos en que sea
+buena bueno se está hecho y es pongo la misma del objeto
+si no la sé
+ojo que no fecha de esto está en no en principio busca por cn ibal cmp val y
+brg que hay fombal así que no no hace falta no hace falta modificar la no no
+está mirando fechos no no
+ya falla
+de nuevo
+igual el mismo rocpecin por coras por premios fórmula 2 puntos no
+que no le está llegando la fórmula que tiene que ejecutar es que
+para mi en el cogex por el premio fórmula rule en el java 74 si
+ya no está leyendo de la estamos con la cobertura 2150 no la 2150 no es de tipo
+fórmula y aquí
+y cómo sabemos si por lo menos el nombre o esto se verá buscarla a la fórmula
+de pino porque si es que aquí no está siendo más o sea quien la consulta le
+decimos ok por la vez pero no está llegando o sea no aquí es donde se está
+quedando entiendo yo que no está encontrando está bien inscrito
+y aquí no se va a proponer pongo aquí lo mismo con lo mismo si quieres pero no
+ese valor creo que no lo usan ese es sólo para para conceptos de desglosé
+que perdido estoy haciendo la misma prueba en lo cal a ver si me devuelve el error vale
+la secuencia no utilizáis el s cuen eval que empieza a 0 en la fórmula
+y se cuene a la que está 0 a ver fórmula de finición
+no
+obtenemos toda la todo el documento de la de la fórmula
+toda la información y con eso para que la número 9
+no lo sé a ponerla todo esto y
+este es el no vale y este es un vale
+no me voy a hacer esto
+, pero no me lo actualice este p.
+el segundo
+aquí no lo actualizo
+ahora otra vez la verdad
+y me muero a ver que es, ok, y me muero
+y el s en el s o es
+s p verdad
+y eso fue en el fórmula de finición porque donde miro s p en el ladillo
+y si es que la fecha no la mira es que no la mira
+a otro punto de mejora
+y de hecho en el listado la fórmula puede cambiar y perdí siempre coge la
+posición la primera posición al último registro que se ha añadido para hacer cálculos
+ya tengo levantado mi local voy a ver si puedo depurar esa parte vale con con con un caso
+exactamente igual fórmula bueno lo estoy probando con una fórmula cdc pero es lo mismo
+aquí no sabemos quién llega ni qué concepto es así que concepto está
+. no está bien en 1959 cuando hay conservar un csis.
+yo quiero que haya un null pointer en donde muestra muestra el lock sí la entrada la entrada
+al rt y a ver esto es una esto es un sólo tiene un polizón no no está en los dos
+sí un polizón yo creo que tiene que ser un null pointer el recoil body no recuerdos
+que añadimos añadimos que pudiera usar el polizón antiguo y nuevo y yo creo que es un
+null pointer ahí en la línea 74 cuando está planando los ratos y yo creo que es un null
+pointer ahí justo ahí. estoy lleno yo estoy lleno yo. para arreglarlo
+a lo mejor hay que poner un en la petición hay que añadirle cosas pero no si no lo subo ahora el fix
+que pasa que sólo tengo en el...
+la cortura en la 401 es la principal.
+la verdad es cierto la otra cortura. 401 es porque a través de aquí 401.
+esta bien la verdad en el local de la ranch.
+421 cobras 401 de la 401 existe y existe aunque yo la quité pero en el producto no tenemos
+digo la quitamos de 403 del módulo.
+referencia 23 es que yo creo que Vinny está por allá cacharriendo.
+referencia 23 está permitiendo con la 10. es Vinny que está cacharriendo.
+no soy yo por si acaso.
+referencia 23 pero estamos limitando con la 10. arreglo y despliego unos 15 20
+minutos a la entre todo y qué vas a hacer?
+pues mirar que no sea nulo la cobertura o sea el polizón actual para cuando no sea
+porque esto lo tuvimos que arreglar para suplementos y cuando lo probamos pues lo
+probaríamos solo para suplementos.
+. yo tengo una asesión de ahorita. tenemos por favor. voy. voy a evitar una hora. vea que estará lo lea. esto. da vida arregla porque no va a explicar lo que va a hacer. dice.
+referencia 23 porque intenta grabar cuando la cobertura está seleccionada.
+o sea contra la y le quito la marca, lo pito en la prima y le doy el calcular pero no le
+va a grabar la cobertura pero está intentando grabarle cuando tiene que grabar el malo es nulo.
+lo que estás viendo todas las coberturas que tú no ves en el panel con las que
+quieres gestionar. no yo puedo tener un módulo que me diga menos coberturas que
+puedo tener pero el siguiente pues no pero ésta no si puedes contratarla o
+sería un módulo diferente. el módulo te dice las posibles coberturas que
+puedes contratar. no solo las que obligatoriamente tiene que contratar. pero
+juega con todas las coberturas. pero es que yo tengo yo yo puedo tener una cobertura
+obligatoria, una cobertura estudiante o tener una cobertura que no viene contratada y
+puedo contratar. o sea que en tratar entre el módulo como descontratada y la puedo
+contratar puedo tener una que viene contratada en este módulo y el flexible
+que me la descontrate. en ese momento cuando yo descontrato la cobertura y le doy
+y le doy calcular la derrot porque se intenta lograrlo y no tiene importe pero como la
+descontraté no me generé importe. pero no le está dando la derrot, no le está dando a to'
+la prima de ser mayor que cero, la descontraté, la deselección, en ese momento ya no debería lanzar
+programas de cálculo para coberturas.
+que la cobertura no está contratada, no va a quitar el capitán. esta cobertura no debería
+lanzar calcular y debería funcionar. pero está lanzando cálculo y es inundado para grabar
+y me dice la prima debe ser mayor que cero.
+esta cobertura no es obligatoria en el módulo.
+pero eso es una validación que estará devolviendo a cdb.
+pero que le está dando la prima de que cero, desglosa tiene errores.
+esa no creo, que le devuelvo a cdb, desglosa tiene errores, el de muerte, premio, vcr, 2005,
+anual, valor introducido, no valito. es la que está contratada, es la que está contratada.
+porque pone muerte que es una cobertura. esa, la de arriba, la que no debería salir.
+el orden es ahí esta otra vez que no es porque está llamando, o sea lo que está fallando, lo que
+está fallando es lo que está fallando ahora mismo.
+calcula todas yo creo no no no no no en la producción no no pero no salga algunos
+llaman así de citar para todas aunque no se marcaba ahí en el contratada
+la marca la selección la tiene en cuenta antes de porque el error que está dando
+ahí es que no se está dando ahora no es eso
+está dando el error en la cobertura que no tiene marcada
+es correcto y eso pero no es activo de citar es entonces
+es lo que ya voy a ver ahora mismo pero que es una variación
+tiene que estar en los locks pero pero mandase se llama se mandan todas se
+mandan todas las frutas no digo que la mejor frontal ya ve que el cheque no está no lo mandan
+no se pilla el error porque aquí no parece que a cosa le podéis volver a dar
+a todos yamos 5600
+. Puedes hacerse y no vea que esté dando error. Pero es de la suamorida. Vicencia.
+Cómo está definida la cobertura. Tiene un cuanto que hay. Obligatoria, no. No, cálculo.
+Como lo sé hemos dejado todas. No, no. Estaban dos por doscientos las ganas.
+Sí, sí, sí. Cálculó bien tanto la muerte como la otra viene que imprimió. La otra
+viene que imprimió, viene con cero. Esta igual se la llevan las 40 en las tres.
+No será la definición dar el. Este como obligatoria. Sí, sí. No cogeron las áreas
+más calentas. El gobierno modo de esto. Vamos a ver.
+Lo sé la con la otra. Haciendo nuestra definición de cobertura.
+Bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno,
+bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno,
+bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno,
+bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno,
+bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno,
+bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno,
+bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno,
+bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno,
+bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno,
+bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno,
+bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno,
+bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno, bueno,
+¿Cómo están estas cálidas?
+Es que la de arriba da error porque no tiene importe.
+Pero está bien, ya nada más de calcular.
+Si, la de arriba está marcada.
+No, la de arriba está marcada y no está teniendo el importe.
+Como no tiene importe, da el programa abajo.
+A ver, el activo aquí viendo la frasa, sí calculó. Yo veo aquí la salida.
+De muerte bien, o sea, porque esta puertura está funcionando bien.
+Pero ¿por qué no ha puesto el importe ahí?
+No sé, pero...
+Aquí yo veo que tiene AMON.
+Están doscientos en el activo, no, él no está en el activo.
+¿No está el problema de la privacidad?
+No, de una validad, tiene un nivel DT.
+¿Dónde al más? A ver si se ve ahí en el error.
+A ver, hay unos logs DT, a ver si aparece más que tal.
+A ver qué dice. A ver si aparece más al campo.
+Si vengo acá.
+¿Me dice qué?
+1568.
+El demisión de puertas.
+No tendremos ningún mapearraje por ahí.
+Si vengo acá, no tengo que estar. Ya está, que esté dando lo pura.
+¿A dónde está el membro?
+¿A 15?
+¿Al otro de los?
+Bueno, puede ser eso también.
+Ya está la cobertura en branch.
+Cuando le has dado la cobertura.
+Aquí la cobertura, pesta, le quitamos lo...
+¿No lo vas a calcular?
+Lo sé si empezamos a mirar.
+Como está 7, lo seguiré todo.
+Hacemos uno para el cálculo y otra para lo que sonos formularios.
+Deja el armado igualito como este.
+Quítala de allá y quítala el armado para que lo a ver si es por eso.
+¿Las concepciones de bloce?
+Sí, solo tiene el primo, el acento centro.
+Es uno de llamadas, pero lo ha hecho.
+Una llamada con la de Lutus y luego otra llamada con el cálculo.
+Y el del cálculo uno, el que le devuelve correctamente,
+con el centro se llama el calcular del decorre, el valide y decorre.
+Y la base de datos, ahí es el que está.
+Ya tengo acceso a base de datos, podré hechos un cable más rápido ahora.
+Ay, no.
+¿Por qué es dar por fácil, eh?
+¿Pero me lo está que va a dar aquí?
+Ay, no, no, no, no.
+¿Puedo hacer la sección?
+Ya está.
+¿Para qué lo puedes cambiar en vivo, no?
+¿Para qué lo puedes eliminar directamente acá, si es usted?
+Sí.
+¿Por qué te dice que el problema?
+Es que el cálculo, el que está ahora, el del mar, el pudo,
+por lo que ocurre. El Mongo no está en la tocacesia.
+Seguramente no.
+Pero además no hay.
+No.
+¿Para qué?
+No, no, no, no, no, no, no, no, no, no, no, no.
+No, no, no, no, no, no, no.
+No, no, no, no, no, no, no, no, no, no.
+No, no, no, no, no, no.
+No.
+No, no, no, no, no, no.
+No, no, no, no, no.
+No, no, no, no, no, no, no, no, no.
+No.
+No.
+No, no, no, no, no, no, no, no, no, no.
+No.
+No.
+No.
+No.
+No.
+No.
+No.
+De todos modos, podéis poner otra vez el error en el que da la pantalla, por fin.
+Y ahí estáis mirando el primero con el segundo.
+El segundo tiene pinta de que le está viniendo los importes de las primas vacías, con lo cual da casque, pero eso es lo que le está viniendo del ACDC.
+Y el primero, es como si a lo mejor del ACDC le viene contratado, pero luego le está viniendo los valores base, sí o puede ser, porque en pantalla parece descontratado, pero...
+¿Cuál es la marca de contratado, Felix, que lo vemos con el...
+Es el EC, puede ser.
+A ver, porque al final, a la hora de invocar en ese punto a la parte del lift core, la parte de coberturas y de gloses que se le está pasando es lo que le viene del activo.
+Con lo cual, tal cual le viene del activo en los objetos, es lo que le está pasando por ahí.
+Y hace las validaciones propias del producto, de tal manera que algo debe ser que le está viniendo, que no le está gustando.
+¿Cómo me has dicho la marca, perdón a mí?
+Es el EC, puede ser, es algo de, no sé si es MCASLC o...
+Esa es la de selección, la de seleccionada, ¿no?
+La de ser, sí.
+A ver si me ocurro eso.
+Alberto, ¿te pasó la imagen a desplegar en Brasil, de la corrección del RT?
+Alberto.
+¿Qué?
+¿Qué?
+¿Qué?
+¿Qué?
+Tiene todo el sentido, ¿no? Porque si está calculando, es porque alguien está diciendo que es obligatorio.
+Tengo la respuesta de no irnos, un segundo.
+¿Qué?
+Algo extraño pasa porque a ver, según veo en el error en la traza, ¿no?
+Se supone que para que llegue al paso 1568, que es donde ejecuta el emitir de glóceo de cálculo base manual no prima,
+para un concepto de glóceo que no oprima tarifa,
+antes tienes que evaluar en el 1559 que esté contratada.
+Vamos, que esté seleccionada, o esa cobertura, o la selección, o la selección anterior.
+Si no, no debería entrar en ese punto.
+Bueno, ¿cuál es como si desde el objeto que se le... Vamos, que obtiene la información desde el ACDC, en algún momento les estuviera viniendo el SLC como si?
+Ya se vuelve un poco loco, claro.
+Bueno, ya se ha vuelto.
+Bueno, ya se ha vuelto.
+Bueno, ya se ha vuelto.
+Bueno, ya se ha vuelto.
+Bueno, ya se ha vuelto.
+Bueno, ya se ha vuelto.
+Bueno, ya se ha vuelto.
+Bueno, ya se ha vuelto.
+Voy a compartir, Feliz, mira lo que devuelve.
+Este es el Dyson de respuesta.
+Bueno, y la parte no funcional es donde debería de venir, aquí en los FLDT, ¿no?
+No, me parece que... Espera, mira a ver lo que le viene a las propiedades del objeto de cobertura.
+Este es una de YASNO, la cobertura 21.59.
+Ahí no tenéis el SLC, ¿vale?
+Está aquí un poquito más abajo, está aquí un poquito más abajo.
+Eso estaba buscando yo también.
+Esta es la del SLC.
+Requerida o no modificable si, visible si.
+Esto que era el pan OPN.
+Panela opciones.
+¿Quién es? A lo anterior, el querido...
+Esa es, con el culo no lo sé.
+Ahora lo busco, ¿no?
+Y la otra cobertura, que era la 40...
+¿Dónde está el 29? La última 59.
+La 29.59 se no tiene nada.
+Está con el vacío.
+Están mirando con el vacío.
+Mira ahí, para, para, ahí, abre, ahí.
+Cv, SLC, está con el asteroides. No es lo que estaba buscando yo. Esa es como si estuviera seleccionada, la de muerte, ¿no?
+Mira a ver la otra.
+A 4.003, ¿no? Espera a ver si puedo quitar todo.
+No, a ver si se queda solo escapar.
+Es que viene seleccionada. Con el asterisco es que estaba seleccionada, ¿no?
+Sí.
+Pues le está llegando que tiene que estar seleccionada de nada.
+Pero no es la otra donde está el problema.
+La 29.59 se llega a entrar.
+Un momento, un momento, que lo comprimo todo y así lo vemos, lo demostro.
+Ahí no viene la propiedad o no la veo.
+No está, el primero no está.
+En esta primera cobertura la veo la llamada, ¿vale? Pero en esta primera no está.
+Que es en la 21.59.
+Sin embargo, en la segunda sí que está.
+Pues por qué no está llegando o vamos a ver si nosotros lo estamos enviando o no.
+Aunque sea, aunque venga vacía, ¿no? Pero no soy yo que venga.
+Sí, sí, sí, sí.
+Es el la recuesta.
+De todos modos acabo de escribir en el chat el paquete donde se supone que da el cash que este, que estamos viendo, ¿vale?
+Ahí se supone que, bueno, si entra porque las propiedades del activo lo dicen, es donde parece que da el fallo ese de la cobertura.
+No el de la contratada, estamos hablando desde la otra.
+Aquí el seleccionado llega como nulo para la 21.59.
+La respuesta no está.
+Y la respuesta no está.
+Y la otra sin embargo, este...
+Y aquí si querría.
+David.
+No sé si está malo.
+David, está viendo un problema en el tratamiento de la propiedad de VRSLC, ¿vale?
+Cuando corre el envío al nulo ese dato, ¿vale?
+La respuesta lo está eliminando.
+¿Te acuerdas la marca de selección de las coberturas?
+Sí, ¿en qué endpoint es?
+En este caso en el de calcular.
+TRT, ¿verdad?
+Sí, pero lo que estamos viendo es el calcular de FRC.
+Ya hay una llamada primero a los módulos para validar el módulo y luego ya la llamada al RP.
+Lo que no sé es cuál de los dos es el que lo está eliminando en la marca.
+Eso sí que lo tengo aquí también.
+Pues creo que es el propio CDC, el que no mapea...
+Hay que ser algo entre módulos. Yo creo que tiene que ser la gestión de la respuesta de módulos.
+A ver, el CDC le pasa al tarificador, al RTL, le pasa el polizón entero.
+No filtra nada ahí, ¿vale?
+Y el RTL, el tarificador, para hacer sus cálculos, transforma al objeto que había en su momento.
+Esa transformación es verdad que el mapeo, si la cobertura no está seleccionada, es decir, está marcada a nulo o no está marcada, no la trata, no la mira.
+No sé si necesitamos que sí la mire.
+No, no, lo que tiene que hacer es devolverla, es que no la devuelve. El objeto de respuesta de esa cobertura no tiene ese abrimuto.
+Voy a verlo, porque en principio lo que haces es no devolverla, o sea, no tratarla, pero la respuesta del RTE es el polizón que le entra con los cambios aplicados.
+Es decir, que sí debería tenerla marcada, pero bueno, le echo un ojo.
+¿Cómo le llega el CDC?
+Esto es lo que le llega el CDC, nulo.
+Es que nulo es nulo, o sea, nulo.
+¿Está llegando por la... ¿estaba nulo?
+Si, sí, sí, pero lo debería devolver, nulo. Si es una cobertura que no tiene que...
+Contratar.
+...entratar.
+¿Pero mape?
+Lo digo por Gaby.
+Sí, sí.
+Son dos mapers, uno que el polizón lo convierte a objeto RTE, y otro que el objeto RTE lo convierte a objeto polizón,
+pero es un merch, digamos, o sea, pilla el objeto polizón que había en la entrada y la actualiza en los campos que toquen.
+Es lo que estoy...
+Lo que está diciendo.
+Que haya un mape que elimina todos los apretuntos lunes, para que el mensaje fuese más corto, ¿no?
+A ver si ese es el problema. Está eliminando ese apretunto.
+Es que a lo mejor el frontal ya no anda nulo, nulo.
+Pero la cobertura la tenemos.
+La cobertura sí la devuelve, lo único que no marca es la... o sea, no devuelve la marca.
+Ese atributo es el que no devuelve.
+No es que tiene el asterisco o tiene el asterisco.
+Sí, es que tiene el asterisco o no tiene el asterisco.
+O asterisco o nada, ¿no?
+O asterisco o nada, exacto.
+Pero nada. Puede ser vacío.
+Puede ser vacío.
+Si el problema es que los mapes de Jason, los nulos, un Jason a nulos como quita de etiqueta.
+Ah, bueno, quizás como...
+Nosotros seguro que devuelvemos.
+Los campos nulos no los pasamos, seguramente.
+Está.
+Porque es eso.
+Que esa marca es así o un asterisco o algo.
+Creo que se puede configurar en el mapa, a ver que no los eliminen.
+Bueno, no puedo poner un default.
+A ver, que de todos modos tampoco entiendo porque dentro del código
+se está metiendo como si estuviera seleccionada cuando se supone que desde el objeto
+no le está viniendo esa propiedad o le viene vacía.
+Eso sería interesante poner a lo mejor una traza y saber por qué se mete en ese punto.
+No, es desde la CF, dices.
+No, no, bueno, en este caso sería desde PL.
+No, es que la CF sí que ignora las que no tengan la marca con el asterisco.
+O sea, no trabaja sobre ellas, digamos.
+Pero mantiene lo que ya hay.
+Pero si quien está llegando el CVR es el ECNUL, no la mapea.
+Lo que estoy mostrando es la respuesta del servicio de base de datos, ¿vale?
+La salida del orquestador TVN que es el que ha dado el error, ¿vale?
+Y justo para esa cobertura, ¿vale?
+Que es esta primera, ¿vale?
+Que existe el error y no se puede realizar el cambio.
+La interesa hospitala por accidente.
+Esta es la marca que está un poquito más abajo.
+Existe la propiedad pero está nula.
+Sí, sí, está como nula.
+O sea, representado aquí de dimisión y no la cobertura no está obligatoria para que relance.
+Entonces...
+Pero eso no es salida, ¿no?
+Pero cuando da un error que devuelve el objeto, ¿verdad?
+No lo está generando.
+El objeto que está en el PL no está generando un objeto.
+Igual lo que alguien tiene.
+Si de todas maneras puedo ver la llamada anterior que es la entrada.
+Aquí por delante está el actual, ¿vale?
+La forma en la que se me recordó más.
+¿Vale? Enter a lo CTHTV.
+Entonces, la cobertura...
+¿Vale? Bajamos más abajo para PSC.
+Aquí CURS, la cobertura 29.59.
+Y el CURSL viene nulo.
+Teóricamente, si viene nulo,
+al nivel de definición del producto no tendría que hacer nada con ella, ¿no?
+No, por lo menos no meterse en el punto este que se supone que da el error, ¿no?
+No se debería meter, porque justo hay una condición previa antes.
+Bueno, si queréis os comparto de un momento.
+Perdón, Alberto.
+Te dobo un poquito.
+Voy a pintar acá atrás a mirar si está llegando más cara al PL.
+A ver, se supone, ¿no?
+Por lo que estamos viendo aquí, que esto da en el 15.68 y luego en el 206, ¿no?
+El 15.68 se supone que es este punto.
+Ah, justo ahí estoy.
+Va por una trasa ahí en esa línea 15.73, pintando la selección.
+Bueno, sí, aquí si quieres en el 15.58,
+porque aquí se os dais cuenta de una condición,
+dice si verificar cobertura, cálcula de glos,
+y verificar información general, tipo polisa, cálcula de prima.
+Ya tengo el objeto, ahí ya tengo el objeto con la marca, vean.
+Tengo ese objeto, que el que os pinta, el CBRVAL y el CBRANSE.
+Espera, felicitaciones ahí.
+¿Puedes entrar en un SVD, porfa?
+Porque le está llegando el número A.
+En el GDF le dice VRE, VREF.
+Es esa cualidad siempre, el concepto de desglos.
+Sí, sí, bien me he metido.
+¿Y qué es lo que hace ahí?
+Nada, o sea, comproba que cuando sea, sí,
+es decir, cuando sea esterisco, entonces le pone true,
+pero de manera que cuando no le viene nada,
+debería ser false, que es el de por defecto.
+Por eso me choca, que algo está pasando ahí un poco extraño, ¿no?
+No tiene ningún sentido.
+No, no.
+Siendo además ese es el punto donde parece que,
+porque claro, este luego invoca aquí,
+que es el que bifurca por primer manual y el error,
+se va por aquí por el 206, hemos visto por aquí, ¿no?
+Sí.
+Se va aquí por el 206, ¿no?
+Aquí.
+Al cual es como si en ese objeto, en algún punto,
+lo pusiera como seleccionado.
+Pero no me acaba de cuadrar.
+Que, visto al código, lo que hacéis una,
+igual digamos lo que le está viniendo por parámetro.
+El cobertura completo conjunto.
+Los elementos que recoger y ahí evaluó a la propiedad.
+Claro, se mete aquí cuando en realidad no debería meterse.
+Esto es para un concepto de Glossy que no es prima tarifa,
+ya los de prima tarifa digamos que ya los ha recorrido.
+Aquí se está metiendo ya en el bucle del ordeno prima, ¿vale?
+Ahí solo entró, o sea, pero es que ahí entró solo con la cobertura 43.
+Ahí es el punto.
+Y con la marca Asteriskos a la 21.59 no están entrando ahí.
+Esa es la contratada la que está dando el error.
+Sí, de la traza de adentro.
+Y solo me pintó la 43 como contratada.
+Realmente creo que la colección de errores ya viene llena.
+Y cuando llega ahí, ahí tiene la variación
+y siempre valía la colección si hay error, valiente.
+Ahora lo que estoy viendo acá.
+Comparte tú si quieres.
+Yo me he puesto a la estraza.
+No, pero lo puse a la estraza ahí.
+No está cayendo acá, se está dando el error.
+Ah, sí, se va por ahí, ¿no?
+Generando error en la cobertura que comentas que es la que está contratada.
+Exacto, sí, porque la traza lo que pintó fue que estuve en la traza.
+Cobertura 43 marca Asteriskos.
+Y ahí ya falla.
+Y aquí ya, de aquí, salí a esta excepción.
+Claro, lo que lo comentaba, claro, habrá que meterse dentro de ese, ¿no?
+A ver en qué punto podría estar el error.
+Ahí tiene que ir por el primero, por el 15744 ese, porque es prima manual, ¿no?
+Sí.
+Porque ese luego se va por el general error en la 206, ¿no?
+En la línea 206.
+Pero ahí dentro algo está haciendo con respecto a lo que le está viniendo,
+que no le está gustando.
+Lo que no acaba de entender muy bien, entonces, es porque está en el mensaje de error,
+que aparece en pantalla, vale, aparece para el de muerte, que es el de contratada,
+pero para el otro está mostrando como que... como que hay error,
+cuando quizá no lo hay.
+No me acaba de cuadrar tampoco.
+Aquí va a intentar calcular.
+No, se supone que va, con lo que le viene, va a intentar respetar,
+porque esto estamos en la... emitir de Glossemannual base conjunto.
+Por aquí debe tener la en que abajo.
+Digamos que va a ser una especie de volcado de lo que... cuando una prima tarifa...
+Sí, está aquí, lo que quiero ver.
+Está variable.
+Está variable donde está acá arriba.
+Aquí se está entrando ya con error, porque puede ser que ya viene con el error.
+Aquí está como parámetro de entrada también.
+Bien, bien, y acá, para una trasa.
+Si ya... te voy a comentar que si ya tienes el enable previamente, ya ahí no hace falta.
+Ah, bueno, lo que pasa es que lo habilitas y deshabilitas, ok, ok.
+Yo sé, pero hago eso.
+Aquí cada maestrillo tiene su librillo allí, sin problema.
+Todos los caminos conducen al mismo sitio.
+Sí, yo para que no me pinten las trazas mías, siempre hago eso.
+Sí, sí, a veces depende de la gente que esté tocando.
+En Centroamérica somos muchos, entonces.
+Por eso, que muchas veces te encuentras con trazas que no son tuyas o desaparecen las que crees que has creado,
+dices, joder, ¿dónde están mis trazas?
+No sé.
+Ya viene con errores.
+La colección de errores.
+Espera, en acá abajo va a ser el loop.
+En aquí abajo va a estar haciendo el loop.
+Ya viene con errores.
+Aquí lo que haces.
+¿No acabo de entenderte cuando dices que viene con errores?
+Vaya, esta es una colección de errores, cierto.
+Entonces, aquí van apilando los errores.
+Parece que anteriormente no lo estaba viendo.
+No, pero...
+Sí, bueno, pero los errores están en el count en esta parte del objeto proceso,
+pero me parece que tú has hecho el count del VRWPT,
+que son los conceptos de glosses que le están viniendo, ¿no?
+No, no, yo hice el count de...
+¿Cuál fue?
+Ah, sí fue eso.
+Ya es lo que me equivoqué, sí, señor.
+No, no, no te pujaste, no pasas nada.
+No te preocupes, ya vamos con lo visto yo mal.
+Ah, sí.
+Mira, o sea, ahí me consta como que van dos conceptos de glosses.
+Se supone que los va a recordar.
+Y va a, digamos, registrar lo que le está viniendo del ACDC,
+lo que tiene ahí cargado, ¿no?
+Lo digo por si a lo mejor quieres poner más traza por...
+poco por debajo, más adelante, a ver si el problema está...
+o no, tiene que estar más adelante, seguro, pero...
+Porque, por ejemplo, esto sí se supone que no son primas manuales.
+Esto no es prima tarifa.
+Dentro del paso 2.90, o sea, en la línea...
+Aparte de la línea 34-34, ahí hace cosillas.
+Ahí a lo mejor en alguna invocación es donde se está produciendo el grosor.
+No lo sé, estoy hablando en voz alta suponiendo,
+pero porque luego el punto donde se supone que quiere crear el de gloss en trabajo
+es la línea 38-22.
+Aquí lo que está haciendo es...
+No sé si lo está pilando sobre ese, lo está pilando sobre el de...
+Sobre este, sí.
+Aquí es delante del error.
+Aquí es delante del error.
+Hay un error.
+Está con el error.
+Pero esto es...
+Lo que ha cambiado, ¿dónde?
+Esa es...
+La pilar del error es el P.A.
+No, acá abajo directamente.
+No hay otro que pide error y está entrando acá.
+Vamos a ver qué internamente es esto también.
+No hay otra.
+No hay ningún de esos...
+¿No lo sé? ¿O qué?
+Sí.
+¿Vas a ver datos o...?
+Sí, sí, sí. ¿Cuáles son los datos?
+¿Vas a ver datos? ¿Sí?
+De esta nos libramos de momento.
+Es de la hice esa.
+¿Está hecho? Ok.
+Es que...
+Uno de esos datos lo del...
+La cobertura es la que no la descontácte y no está este error en encontrar, ¿sí?
+Está viniendo al paquete.
+Acá.
+¿Quién era ese error?
+¿Cierto?
+Vamos a ver el contexto.
+La verdad es que ese error lo está generando...
+Acá.
+Ajá.
+¿Quién le pongo?
+Cierto.
+Si lo hace es que no hay un error.
+Sí.
+Aquí lo que hicimos fue mirar que cobertura estaba entrando...
+y marcas, y que marcas crean.
+¿Cuál era el problema?
+¿La va nuevo?
+¿La 1.59?
+La 1.43.
+¿La 1.40?
+O sea, aquí está entrando a la traza.
+La 1.43.
+De momento tengo esa traza, ¿cierto?
+¿Y le llega con capital y le llega con todo eso?
+Pues por el momento no le pinté el...
+¿No pintar el capital?
+Ahí es el objeto cobertura, ¿cierto?
+Ahí está el objeto cobertura.
+¿Pintar el capital?
+Ahí se va a tratar.
+¿Y las primas?
+¿Qué tal?
+Es el AMN...
+¿Por qué falla así?
+La primera la tiene.
+¿Te recuerda el nombre?
+¿Cuál es el objeto?
+¿Cuál es la suma segura?
+¿CPLAMN o algo de eso?
+¿Algo así?
+Sí, sí existe, vamos.
+O en dos unen CPLAMN.
+Los dos, porque como estamos arrancando,
+todos los proyectos que ya recolumnos tienen.
+Los que tienen TPLAMN, existe.
+Y el NRCPLAMN también.
+Estamos buscando que es la criolano-meclatura.
+Eso ya no se pregunta.
+De todo modo quizás más que el capital,
+lo mejor el problema viene por las primas.
+¿Por las primas dices tú?
+Sí, porque el fallo es dentro del emitir desglos
+y el cálculo base manual no prima.
+¿NNAMN, no sé si?
+NRV se predice cierto.
+Quiero decir que a lo mejor,
+en el punto donde estabas poniendo antes las trazas,
+yo pondría pero un poquito más para abajo.
+A ver, en qué punto podés donde...
+A ver, que está bien que pongas esta, déjala.
+¿La cuarenta del otro?
+Dime.
+La cuarenta del otro es...
+Una, otra.
+¿Era que salió?
+Esto es lo que llega a la base de otros.
+Están muy bastantes acá.
+Si, pero ahí, si bajas un poquito más...
+Empiezan y...
+Vamos a estar...
+A ver, es la cuarenta.
+Pero es...
+El capital AMAU, 10.500.
+En dos meses, 10.500.
+Perdón.
+Y por más tiene que tener las primas.
+Y a la...
+10.500.
+Mira, a partir de...
+A ver, un poco más...
+Mira, a partir de ahí,
+a partir de la línea 3434,
+que se supone que entra por...
+Conceptos de deglose,
+que no es prima tarifa,
+por ahí si quieres puedes empezar a poner alguna traza.
+A ver, si entra por ahí.
+Sí, a ver, entrar por ahí,
+yo creo que tiene que entrar,
+porque no es pronto en el cual donde se está produciendo el error,
+que es la línea 300 antes,
+donde has puesto la traza.
+Esos son los conceptos de deglose,
+que no son prima tarifa.
+Pérez está nulo.
+Le está llegando nulo.
+Pero no entiendo si en la escena...
+No viene a hacer el error.
+Sí, qué raro.
+Está llegando uno de los cuatro.
+Estos son valores, ¿no?
+Ah, sí, pero...
+Esa es la cuarenta o tres.
+La cuarenta o tres.
+Las obligatorias por otra bien, ¿no?
+Pero no, porque viene bien de la...
+O sea, viene bien.
+Lo hicimos la asignación,
+porque esto hicimos una asignación directa, ¿no?
+Pero eso pone RNS, ¿no?
+No es como la seguro que eso es.
+Ah, sí, esa no son.
+Va, va, no, esa no son.
+Está... el CPL AMAUN,
+es el capital, ¿no?
+Sí. El suplemento.
+El CPL AMAUN, el CPL TXT,
+son valores.
+Eso sí, y baja,
+¿tú lo pusiste?
+500.
+El resto está todos vacíos.
+3.800, pero no la previo.
+Es la que no está ahí.
+Es el carter.
+En donde viene...
+En esta pie, en este...
+En la opción de colecturas,
+de o en otro...
+Que mirá el de...
+El de de glosses, mirá, a ver.
+A ver.
+Este, ¿qué es ese?
+Es premio.
+Premio.
+Eso viene de acero.
+Ahí está el AMN.
+Vea, eh...
+Es el AMAUN.
+Eso viene de acero.
+Es el NRN, ¿no?
+Es claramente muy raro,
+porque cuando yo...
+Le pregunto, ¿no está funcionando con HDS?
+Yo puedo hacer una colectura en las otras.
+No hay más problemas.
+Claro, ahí los conceptos de glosses vienen a cero
+y por eso darle el olor de abajo.
+Claro, la colectura obligatoria.
+Esa cuarenta, los tres, sí es obligatoria.
+Sí.
+Mira, los tres son aquí, cuarenta, cero, cero.
+Claro, si le viene...
+Si le viene vacío, claro, casca.
+Pero podemos ver...
+La SDS...
+A ver, la salida que viene del activo digital
+es esa, ¿no?
+Esto es...
+Y lo que viene de la SDS
+es para pillarlo
+porque tiene que ir con las primas.
+O no.
+O no, sí.
+Seguramente, ¿no?
+¿Y cuál de las salidas quieres?
+Yo creo que...
+La de la salida del servicio completo.
+A ver...
+La primera es...
+Acabo de volver de...
+De por un café.
+¿Esta parte me toca?
+Sí.
+Es que he visto PLSQL
+y digo, es momento de ir al café.
+No, la verdad es que estamos viendo
+es que a la base de datos
+la prima le llega a nulo.
+Entonces, esa colectura ya viene a calcular.
+Queremos ver el por qué.
+La salida del activo
+que viene para la cuarenta cero
+es la misma.
+Es para cogear.
+Sí, sí.
+Por eso digo que yo no lo sé.
+Sí, por eso vamos a ver
+la salida exactamente.
+Entonces...
+Toda la salida de cobertura.
+¿Dónde está?
+Compañía.
+Oye, aquí me doblé.
+Perverme.
+Vale.
+Perfecto.
+Vamos a la segunda.
+Vale, perfecto.
+Vamos a la segunda.
+¿Dónde está la cuarenta?
+Cuarenta cero tres.
+Cero tres, aquí un poquito más abajo.
+Hay.
+Cuarenta cero tres.
+Vale.
+Acruz.
+Acruz.
+Acruz.
+Acruz.
+Ahora.
+Se viene a cero.
+La primera.
+¿Qué concepto es el uno?
+El uno.
+¿Qué diferencia entre este aquí y este acá?
+Este y este ¿cuál es?
+Esto es cero.
+No hay fin.
+¿Y este acá qué es?
+No, porque me tiene que estar bien.
+Porque mete dos, es los.
+Sí.
+Pero todo está cero.
+Primera.
+Primera tarifa, pero el segundo es como si le viniera el concepto cero.
+Algo raro aquí.
+CNCVAL cero.
+Algo en favor.
+¿Quién está controlando?
+La cobertura 4.22. La esa nueva que metimos.
+La misma.
+La misma.
+Esto estaba funcionando hace dos horas.
+Sí, lo único que se hizo fue colocar la cobertura nueva.
+¡Ay, qué bonita esta historia!
+¿Quieres que despliegamos la otra imagen?
+La de fórmula.
+¡Ah, vale, sí!
+Con eso también hay reservamos.
+Mientras aquí mi amigo quita la...
+Y volvemos a mirar porque...
+Ya la quise.
+¡Echa!
+Ahí no pasa nada.
+Presenta.
+El concepto económico cero no sé cuál es.
+Estaba mirando también la misma salida.
+Es que eso está acá.
+Aquí echamos para atrás.
+Vamos a dejar solo las que funcionaba.
+Tiene que funcionar porque...
+Tiene que funcionar.
+¿Qué pasa?
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+¿Qué pasa?
+Tiene que funcionar.
+¡Ah, sí!
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+Vale.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+Tiene que funcionar.
+¿Qué pasa?
+¿te tengo la grabación? pues nada

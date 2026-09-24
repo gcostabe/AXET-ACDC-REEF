@@ -1,0 +1,2355 @@
+Finalmente oculta el programa que paramente está en la tabla.
+El origen del error puede ser acá, el PLE, PLE, GEN y CUETEREN.
+Entonces, y una qüestor.
+Y ahora, vamos a ver si hay una qüestor.
+Es que nos vea haya duración pago primer mediante objeto dinámico.
+O por una trasa aquí para sacar en la pila de llamado, para ver quién está llamando esto.
+Y dentro de este bloque de código, nosotros colocamos nuestras trasas de parámetros y queremos y ve otra trasas de comentario.
+Entonces, estas trasas quedan más en la tabla cuando lo ejecutamos.
+Pero hay dos tipos de trasas, estas las que utilizan en el esquema PTD otro en 2000, ¿cierto?
+Ya estas trasas, ustedes ya tienen como que, no sé, un bloque ahí con todas las trasas que ustedes pueden ejecutar o igual las sabes todas de cabeza.
+Yo ya lo voy a pasar con todos, ¿eh?
+Las tenemos configuradas para que se cargan automáticamente al escribir un comando en el PL.
+Este en el PL le puede configurar aquí en preferencias, le enseño también, no sé si ya lo tiene, sino para que acá en editor, usted puede definir aquí un auto-replace.
+Si, perfecto, si.
+Yo por ejemplo acá, escribo SFD2 y así pues subiendo más rápido.
+Entonces yo colocó en la tabla, le colocó CN y el número era Polis, ¿sí?
+Mmm, si, perfecto.
+Entonces la verdad también tenemos las trasas, las tenemos con pocas palabras.
+Existe las trasas tipo tron, ¿cierto?
+Para tron, 2000 y las trasas para neutron.
+Todos que ustedes que tienen nomenclatura como en inglés y rara son neutron, ¿cierto?
+Entonces tenemos para habitar las trasas en este esquema, tenemos trasas para colocar parámetros, ahí colocamos el nombre del parámetro y la variable del parámetro para que no la muestre.
+Nosotros hay comentarios y tenemos la sentencia para deshabilitar las trasas y no le pinta más trasas de las son, o sea, siempre habilitamos, ponemos la creamos y deshabilitamos para que nos muestre nuestras trasas.
+No le pinta más trasas de los otros mismos del equipo, ¿cierto? Cien neutron son estas.
+Así, listo.
+Y la tabla donde se consultan es esta.
+Aquí usted la da acá el resultado de todas las trasas que se generan cuando decutan proceso.
+Las trasas que utilizo mucho también que son, aquí, son estas.
+Me ayudan a encontrar los errores, al detalle del error y la pila de llamadas, o lo que hay acá también para pasársela.
+En la dos. Vale.
+Ya vamos a mirar cómo se utiliza.
+¿Tú lo tienes que ver? No. Sí.
+Perfecto.
+Y ahora, ¿cuál tú vas a ejecutar ahí?
+Entonces, ¿qué lo sé? Como en este paquete usted puede ver que tiene estructura NWTBL, o sea, es de neutron, ¿cierto?
+Entonces, ese parámetro está llegando nulo, por lo que veo, ¿cierto? Te voy a hacer aquí una traza, tengo mis atajos, aquí ahí están los paró también para que usted los vaya configurando.
+Vamos a colocar aquí este, a ver, que me muestre este valor, a ver si es verdad que está llegando nulo.
+Y además de eso, voy a utilizar también esta de CalStack para ver quién está llamando esto. Este CalStack me vuelve como toda la pila de llamados.
+Ok. Está casi. Entonces.
+Y la mueve el objeto.
+Y usted va a ejecutar de nuevo ese paquete. O sea, ese paquete que le dio el error, le deja a ejecutarlo de nuevo, dale ahí otra vez, acepta.
+No idea, tengo que salir. Debe salirse.
+Entonces, haga el error, le va a pasar por ahí ahí y me va a pintar a mis atrás en esa tabla.
+¿Ustedes pusieron acá ese otro ramo?
+Sí. Yo lo puse para hacer un compare de los dos. Sólo me traje una tabla para hacer el comparativo.
+Terminó aquí a hacer comparativo y la quito. Volvieron a incluir el nombre del riesgo. El programa del nombre del riesgo.
+Porque aquí estoy comparando la tabla mil ochocientos de estos dos productos y si ya veo que está llamando al asignando un riesgo del doscientos.
+Después de que no encuentran el objeto o algo, no mirar si es eso como tal. Cuando llega el error es que también es bueno que Vinicius vea cómo se pone las frases.
+Sí, claro. Porque estoy viendo yo diferente. Ese programa y el programa es coeficiente.
+El de coeficiente creo que va a ser duro porque dice haya la duración de pago en el aspecto dinámico.
+¿Listo? Vale, lo voy a quitar. Todavía no voy a dar cómid. Tire la trasa ahí.
+Listo, ya hay error. Sí, error. Entonces, claro, yo vengo a hacer esa tabla y si vemos acá, podemos tronar.
+Es con tu usuario, ¿no? Porque es porque está mi usuario. Ah, sí. Es toda la razón.
+Es como que no los atamos. No hay cual tan poco malo.
+Listo, ya estoy. Estoy terminando acá.
+¿Qué fue que encontraste, Dani? ¿Cómo para saber?
+Se encontré diferencias. El nombre, el riesgo y el de coeficiente. Que el ramo con el que estoy comparando no tiene. Tiene ese campo vacío.
+Pero va a ser coeficiente. Entonces, lo quité. Estoy terminando de comparar la tabla para hacer el cómit y alcanzar otra prueba.
+Ya, y este coeficiente sería como... ¿Qué está configurado en el producto que no está configurado en el otro?
+Cueficiente es el que determina cuántos días tiene y como este producto es prorata, ¿cierto? El base de la cálculo es el año.
+Entonces, el coeficiente si la polícia tiene un año es uno, por así decirlo, ¿cierto?
+Entonces, si la polícia dura seis meses, entonces el mira, bueno, el coeficiente con el que yo voy a calcular es 0,5.
+Porque cuando se calculan las primas, ellas dan el valor anual.
+Y después de eso se le aplica un coeficiente. Ese coeficiente que se le aplica es el valor relacionado a la vigencia de la polícia.
+Perfecto. Y estaba como una S.
+Tenía un programa específico de Honduras que estaba llamando, entonces posiblemente estaba dando lío eso.
+Ya lo quité. Ya lo quité y ya hice el cómit.
+Ojo el programa que daba un entonces.
+Ya también ya la borré acá.
+Ah, listo, tenemos que probar de nuevo.
+Vamos a quitar esa estrada de acá porque parece que no es acá.
+Si funciona, ya borro el otro ramo que parece ahí.
+¿Ya puedo probar o no?
+Sí, prueba de nuevo.
+Ya puedes probar, Vinny, por favor.
+Sí, ahora yo comparto, para que ustedes puedan ver.
+¡Suscríbete!
+Gracias por ver el vídeo.
+¡Suscríbete!
+¡Suscríbete!
+¡Suscríbete!
+No dice eso.
+Voy a tocar entre mí la cama y la estacha. Voy a apuntar no a tan de errores.
+No contamos dónde es.
+Ya me estoy haciendo algo.
+¡Suscríbete!
+Por tu pantalla, Vinny.
+Vamos a ver qué nos dice acá.
+Este es el programa donde digamos que está el error, ¿cierto?
+Está llegando uno, que danza el dinámico.
+El error del dinámico llega y le da error.
+Es el viernes.
+¿Cuál es el error?
+Sí.
+¡Suscríbete!
+Por tu pantalla, Vinny.
+Vamos a ver qué nos dice acá.
+Este es el programa donde digo que está el error, ¿cierto?
+Está llegando uno, que danza el dinámico.
+El error del dinámico llega y le da error.
+Es el viernes y lo está ejecutando.
+Está el de la mil doscientos diez.
+Voy a ver esto.
+Está todo el día aquí.
+La mil doscientos diez.
+En la mil doscientos diez nosotros encontramos.
+Era el error que estaba aquí, ¿se acuerda?
+Sí.
+Yo tenía esto mil doscientos diez.
+Las aquí danza el dinámico y le caía.
+¿Qué nos dice?
+Que la mil doscientos diez lo está ejecutando
+desde esta mil trescientos cinco, ¿cierto?
+Sí.
+Vamos a mirar a la mil trescientos cinco.
+¿Qué es?
+Veamos la mil trescientos cinco.
+Y dice que es esto acá.
+O sea, aquí es donde lo están llamando.
+Y por duración de pago primas rangos,
+y por duración de pago primas rangos.
+Duración de prima.
+Y por duración de pago primas alcanzada.
+Es de vida.
+Es una particularidad de vida.
+Bueno, aquí está una validación.
+Que dependiendo del tipo de duración de pago de la prima,
+si es de la alcanzada,
+si es diferencia en días y la automática,
+si es la misma duración de seguros y rangos.
+Y si no viene y lanza un programa específico.
+El que está intentando lanzar.
+Que es lo que no tenemos.
+¿Cierto?
+Este programa aquí ya está llegando este dato,
+ya está llegando Nullo.
+¿Cierto?
+¿Por qué?
+Entonces tenemos dos datos
+que ya tenemos que tener en cuenta.
+¿Qué es el tipo?
+¿Qué es este?
+No es.
+¿Qué es este acá?
+¿Qué es el tipo?
+Y el programa que es este.
+Dependiendo del tipo que está llegando,
+él lanza una cosa a la otra.
+Y aquí no se ha llegado ninguno,
+se va por el programa.
+¿Cierto?
+Y no se ha llegado un tipo,
+no se ha llegado el programa.
+Aquí podríamos pintar la trasa
+para ver qué tipo de que está llegando.
+¿Cierto?
+¿Cierto?
+¿Cierto?
+¿Cierto?
+¿Cierto?
+¿Cierto?
+¿Cierto?
+¿Cierto?
+¿Cierto?
+¿Cierto?
+¿Qué quiere pintar para hacer?
+¿Cierto?
+¿Cierto?
+¿Cierto?
+¿Cierto?
+¿Cierto?
+¿Cierto?
+¿Cierto?
+¿Cierto?
+¿No mantan las variables?
+Sí, miren la configuración del suyo
+en la colciada 2, por ejemplo.
+No estoy en la colciada 2,
+no he traído una información.
+No me traigo.
+Claro, si hubieran traído los usuarios,
+nosotros estaríamos habilitados, ¿no?
+No, también lo tengo de eso.
+No necesitaría más para pintar la trasa.
+Nada más, sí.
+Bueno, aquí tengo la trasa, pero entonces acá
+nos dice también que acá más arriba
+tenemos el back trace, ¿sí?
+Desde donde salió el error.
+Y esto nos ha dado un poquito más de información
+y lo está diciendo que en la 1398
+de este paquete.
+¿Cierto?
+Vamos a ver qué hace este paquete.
+¿Cierto?
+Duración de pago prima, ¿dónde salí eso?
+¿Listo?
+Y aquí hay dos,
+con los que no.
+Bueno, no sé si lo traerá
+del coeficiente inventario
+de la 2150.
+¿Por qué justo ese coeficiente
+inventario, la cobertura
+que estaba parametrizada, no lo tenía?
+Dice que es el coeficiente del coste administrativo
+de la cobertura.
+No, no hay nada que diga por la duración
+de pago primas.
+Le busco porque no veo.
+Es que ya la compare
+con otras
+con otras configuraciones de cobertura
+y no hay nada más diferente.
+Aquí dice, asignan variados valores siguientes
+a la propiedad de los efectivos de información general.
+Años de duración, mes de duración,
+días de duración, duración de pago primas
+y más y más renovaciones.
+La operación es alguna de las siguientes
+nuevas producciones de correo y suplementos.
+Pero de dónde saca la información.
+La me pregunta.
+A ver qué tabla es.
+¿Pero dónde está?
+No, la 2150 no la veo.
+Es decir,
+si está llegando algo como que nulo
+en algo que tenga
+relación con prima,
+o sea, nosotros no hemos configurado
+nada, por ejemplo,
+de las tarifas,
+conceptos económicos,
+esas cosas de
+pago, esas cosas,
+nosotros no hemos configurado nada.
+No sé si puedes tener alguna relación
+ahí con eso.
+O sea, es que
+se vayó ayer puso aquí,
+no calculaba tarifa ni nada de eso.
+Y tenemos aquí, es lo que vamos a hacer.
+Aquí no dice, es el parámetro que nosotros
+tenemos, ¿cierto?
+Dice que esta viene de este
+de este
+de este p, o sea, cuando es un p
+es una matriz unimensional,
+o sea, es como un vector, ¿cierto?
+Cuando es un pt es como una tabla
+en memoria.
+Es decir, este es un irdireccional
+y el pt es una colección.
+Una colección de
+de milas, por así decirlo.
+Entonces aquí dice que este
+que este los atacando y de dónde sale
+este man.
+Vamos a ver dónde sale este man.
+De acá.
+Definición de desglosos, jefe.
+¿Está haciendo un problema de desglosis?
+¿Estás diciendo que está hablando de desglosos?
+Dice que este, este lo está
+lo está sacando de este programa, ¿cierto?
+Dice que desconsulta la definición
+de desglosos.
+Y acá está viniendo a, con este pegón.
+Entonces, vamos a ver ¿qué tal la está
+consultando?
+Revisemos a ver por qué solo
+desglose, solo se habilitó la prima.
+Pero bueno, voy a comparar aquí.
+Comparar la prima mientras tanto,
+eso sí.
+Comparar con otra, la configuración
+de otro producto.
+Es el dice que es en el TG-003
+donde está previendo
+la información. ¿Qué es este acá?
+¿Qué es este que hace?
+¿Está pensado?
+A dos mil trescientos ciento dos, jefe.
+¿Le suena la tabla?
+Sí señor.
+¿Qué tenemos en la tabla?
+En esa tabla
+dos mil trescientos ciento dos
+se tiene.
+Es la tabla de ramo, modalidad
+y cobertura.
+Claro, esta escola la está pidiendo, vea.
+¿Qué cosas?
+¿Qué datos?
+¿Por qué?
+Como no son obligatorios,
+la mayoría están nulos.
+¿Cómo es la tabla en el 480?
+No es que tiene.
+Acá.
+¿Qué progressión de la prima?
+¿Será este uno?
+Es posible.
+¿Qué tienen de nosotros?
+Creo que está vacío.
+Claro jefe, es que aquí tenemos la plada mínima,
+la máxima, nuestra tabla de vida.
+Pero todo esto está com opcional.
+Entonces copia un registro
+del 481 a la
+15 porfa.
+Ya que tiene la consulta
+le cambiamos los códigos nada más.
+Te voy a eliminar este código que había acá en la 15.
+Lo que no le did, error de llave.
+Se trae ese.
+¿Lo voy a eliminar?
+Sí, el segundo, lo voy a eliminar.
+Listo ya.
+Este error vinicio es otra particularidad de vida,
+porque esa tabla es de vida.
+Pero así de cómo encontramos
+un problema.
+Sí, sí, sí, yo le sigo.
+¿Vale? ¿Cualquier cosa nos pregunta?
+No, no, yo sigo.
+Sí, sí, sí.
+421 o la cobertura de ve.
+La modalidad 421-01
+cobertura 40-03
+la de muerte, la que tenemos configurada
+de momento.
+mínima 18
+era mínima
+4 años, ¿cierto?
+máxima 70 por el momento.
+Se convirtió en molesta.
+Desclusión
+75
+la prima-1
+lo que va a hacer eso.
+Si puedo decir seguro
+años mínimos de duración
+años mínimos de pago de prima
+meses, días
+solo está hasta cobertura habilitada
+de ve.
+Sí, de momento solo está habilitada
+para hacer las pruebas de emisión.
+En función de la emisión habilitamos las demás.
+421-01
+421-01
+421-01
+421-01
+421-01
+421-01
+421-01
+421-01
+421-01
+421-01
+421-01
+Las cadenas, en vaca traducción, es traducción.
+Las cadenas, en vaca traducción, es traducción.
+Las cadenas, en vaca traducción, es traducción.
+Las cadenas, en vaca traducción, es traducción.
+Las cadenas, en vaca traducción, es traducción.
+Las cadenas, en vaca traducción, es traducción.
+Las cadenas, en vaca traducción, es traducción.
+Las cadenas, en vaca traducción, es traducción.
+Las cadenas, en vaca traducción, es traducción.
+Las cadenas, en vaca traducción, es traducción.
+Las cadenas, en vaca traducción, es traducción.
+Las cadenas, en vaca traducción, es traducción.
+Las cadenas, en vaca traducción, es traducción.
+Las cadenas, en vaca traducción, es traducción.
+Las cadenas, en vaca traducción, es traducción.
+Subtítulos realizados por la comunidad de Amara.org
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+Perfecto.
+Muchas gracias.
+Vale, de nada.
+Gracias.
+Gracias.
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+Sí, y la 142 ya tiene eso.
+Sí, ya.
+La 1342 ya tiene ese...
+Con ese cuadro.
+Con el cuadro de comisión cero
+y con el tratamiento de vida.
+Ya está.
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es lo que leemos?
+¿Qué es ssk?
+¿Qué es ssk?
+485
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+475
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssk?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+¿Qué es ssks?
+está recibiendo los parámetros de arriba y está retornando ese último parámetro abajo que usted tiene seleccionado, ¿cierto?
+Esa es el procedimiento. Ese de arriba. Ese procedimiento. El procedimiento. El BLP, LJ, NQA, que está en la línea 25. Ese de ahí. Ese procedimiento. Eso. Vamos a ver.
+¿Lo copio y lo uso acá? Exacto.
+Es esto.
+¿Por qué hay como tres?
+El TRN.
+TRN.
+Sí, siempre cuando se llama el nombre es así, tal cual le pone un que un bajo TRN y ese va a ser.
+O sea, el BTC TRN o el solo TRN.
+El TRN solo. Si dijera BTC, pues ya saben que es BTC. El TRN solo.
+Y esto vamos a hacer el procedimiento. PMNR.
+PMNR, acá.
+Está por defecto.
+Ese que verifica los festos.
+Verifica la definición.
+Esto ahora gente.
+¿En quién usted dije B?
+Esto está malo el tercer nivel.
+¿Y qué le está recono?
+Vamos a probar las trasas.
+¿Qué paquetes? BLN, QTRN, va a ponerla.
+¿Tú vas a ponerla ahí?
+Porque tengo que ir batado.
+¿Cómo es las pintas?
+No me pinto atrás, me parece muy raro eso.
+¿Qué pasa?
+No, no, no, no, no, no, no, no, no, no.
+¿Qué pasa?
+Te voy a mostrar acá.
+Lo que me hago aquí es, cuánto sea aquí, 1, 2, 3, 4, 5, 6 parámetros.
+Te pongo 1, 2, 3, 4, 5, 6 trasas.
+Sabidito.
+Y esto es mi bloque de trasas.
+Vengo, topió esto aquí.
+Acá.
+Te voy a cumplir el paquete, ¿cierto?
+¿Este lo llamas de dónde?
+Voy a llamar al paquete que llamaba este, Vinicius.
+Se llamaba, estoy buscando acá.
+Se llamaba N, o sea, N, espera, espera, espera.
+¿Qué fue el segundo que vimos?
+A P, te lo voy a mandar acá en el chat.
+Le voy a mandar los dos.
+Lo pezó.
+Cuando voy a guardar.
+No he encontrado el texto, no he encontrado la descripción.
+No he encontrado el texto, no he encontrado la descripción.
+No he encontrado el texto, no he encontrado la descripción.
+No he encontrado el texto, no he encontrado la descripción.
+Voy a cortar de nuevo, Vinicius, a ver si nos guarda las trasas.
+No he encontrado el texto, no he encontrado la descripción.
+Hola, tengamos las trasas.
+No está pintando trasas.
+Qué raro.
+¿Quiere que yo haga desde cero o no?
+Sí, para hacer la prueba.
+Pero estamos sin trasas, Sebe, ¿por qué?
+¿A quién le preguntamos qué?
+Estoy comparando acá con otras instancias.
+No he encontrado el texto, no he encontrado la descripción.
+Esto está llegando nulo.
+Esto llega nulo, no parámetro.
+El luchón no respondió nada sobre la tabla.
+Esto le llega el nombre del gestor.
+Está llegando nulo, por eso es.
+¿El qué?
+El tibal, el tibgestor.
+El gestor, o sea el texto.
+No, me mando la 50-2200, ¿es la que oímos no?
+Sí, es la que he oído.
+Ejecutado.
+Vamos a ver.
+No tenemos todas en este ambiente.
+¿Quién le podemos preguntar, jefe?
+Está pensando, está comparando tablas.
+Vamos a ver.
+Vamos a ver.
+Vamos a ver.
+Entrada, está muy difícil de encontrar errores.
+O sea, 2 cosas, Braume contestó y me dijo que el usuario trpbr lo crea infra.
+Entonces le voy a preguntar acá a Fabio, eso me quedó con eso.
+Y lo otro, la traza, eso sería, ¿quién podría validar eso para nosotros?
+Porque entiendo que está sin traza en el intructor, ¿no, cierto?
+Sí, no se han habilitado las trazas.
+Pregúntele, ahora voy a ir y diga de que las trazas no están funcionando,
+que las colocamos y no salen en la tabla.
+¿Quién sabe por qué puede ser?
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+Ya le pregunte a Brau de las trazas también.
+Vale, bien y gracias.
+¿Qué nos va a estar pasando?
+Vean ahí el error, viniste un pantallazo de él.
+Sí.
+No tiene lo que ha hecho registrar.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+No sé.
+¿Qué? ¿Cuál cosa de la gente pongo acá? Pone el uno, vine. ¿Cuál cosa de la gente uno?
+Sin querer le irte y quiera la lupita. ¿Uno? Uno, sí.
+Pone el uno existente.
+¿Me trajo este? ¿Puede ser? Uno, uno, uno.
+¿Sí?
+¿Qué?
+¿Cuál que te trajo ahí?
+Pone el uno.
+¿Qué haces esto para generar trazas si no tengas lo global y aquí Diego la tiene?
+¿Por qué? ¿Por qué? Yo no. Yo acabé de mirar mi usuario, tampoco la tengo. Yo puedo poner trazas en Guatemala y Salvador.
+¿Lucho las tiene?
+Lucho las tiene. Bueno, pásese esa variable a ver si no imprime trazas con eso.
+Ah, no. Es que el de Diego, de 8, ¿cierto?
+8, no es 8, es 1.
+Mira el correo del.
+Es un usuario que tenga, que más cosas tenga, vamos a ver y lo ponemos en otros.
+Mismo problema.
+Mismo error.
+¿Es que vas a generar trazas porque en efecto están en N también?
+No intentaré ahorita las trazas, bien, ¿sí? Sí, pero aquí encontré una cosa.
+Entonces, va a pasarme esta global para mi usuario entonces, ¿me ha bien? ¿Cierto?
+Sí, que está poniendo las trazas. Es generar trazas. Eso es. Por ejemplo, yo tengo aquí con mi Ricardo, todo tipo de tablas, ¿no?
+Si quieres intentar con mi usuario, no sé lo mejor.
+¿Cuál es su job? Me, no, vamos a ver, ¿qué suyo también? ¿Qué tiene?
+No, también está, los de nosotros han creado todos iguales.
+Vamos por el pantalla.
+Yo creo que es el defecto, jefe, el defecto está con trazas en N.
+Voy a mirar esa en otras compañías, a ver cómo está.
+Sí, porque yo tengo que ir por compañía 15.
+No, pero en la compañía 2, el defecto está en N.
+Yo sé cómo están las compañías 2 que pueden hacer trazas allá.
+No, igual.
+En la compañía 7 si está la defecto en N. Se podría probar pasando la S, con user defecto.
+O sea, que la parlo otra vez, o le pongo esta variable a mi usuario listo.
+Las dos.
+Esto entonces aquí.
+Estamos listos como tiene que ser.
+Luego le va a pasar a mí.
+Va a poner a mí, y a ustedes de una vez también.
+Ah, lo copió.
+Tiene cuando te debas ir al morzar, puedes salir sin problemas.
+Nos quedamos aquí revisando este error.
+No, sin problemas.
+O sea, desde la casa más tranquilo.
+Había uno automática.
+N, F, C, G, L.
+V, M, N, N.
+E, C, V, C, 15 listo.
+Y vamos también al defecto.
+Ahí está, ¿no?
+Lo pasé.
+Y ahí defecto automático, defecto automático genera trazos.
+Bueno, no lo hacía, va a decir la genera. Se acute de nuevo ahí de la otra vez, en el botón de la pantalla.
+Listo.
+Listo, está listo, ¿eh? En el chat.
+Ah, esto no es.
+Si no recurre desde cero.
+Si no recurre desde cero.
+Esta no lo recomienda, cada cierto E, ¿verdad, las otras?
+¿Cuáles las de MPR?
+No, las T, E.
+En ese nivel, no creo, lo dudo.
+Cuando dices que vas a comprar un objeto pronto desde la misión. Si no, esto se puede acá.
+No, no deja.
+Oh, mira, este paquete va a ver qué hace.
+S, P, M.
+Yo no.
+No.
+Sí, que me va, va a lidiar esto para insertarla, ¿si ve? ¿Qué hace esto?
+Todo.
+¿Qué?
+Esto se va.
+Esto que es, G, B, T, V, G, E, N, D, B, y esto es donde sale.
+Listo, he acutado otra vez.
+Vamos a mirar.
+No.
+Pero, mira, tu, tu usuario no habías podido, o sea, no estás distinto de la trasa, no es de, bien, no sé qué, uno.
+También este, la que yo te hizo por atrás.
+Es, porque yo me, o sea, puedes armar, pero yo vi tu que pusiste uno, ¿no? David, no sé qué uno.
+Oye, este, y la trasa es.
+No, pero el usuario que pusiste en la tabla de trazas.
+Ah, sí, pero no, no tiene nada que ver.
+No, nada que ver.
+Podríamos hacerlo, hacer la prueba, ¿si? David, uno.
+Intenta el nuevo, te lo traes a aceptar.
+Pero yo, pero yo cumplí el paquete.
+Ya.
+Listo, ya.
+Listo.
+Ah, ahora sí, va a ser eso, tiene que ver con el usuario de.
+Con el mismo nombre de usuario registrado.
+Claro, tenemos esto lleno de globales, vea.
+Más personas pensando.
+Bienvenido, aunque bueno, ese es un comportamiento raro aquí en Brasil, porque los demás países no nos obliga a utilizar el nombre.
+La trasa es igual al nombre del usuario.
+Espera, mire, es que esto no estaba aquí ya.
+También porque no está muy raro.
+Espera, espera, espera, no, no, no, sí.
+Esos, esos, esos antiguos, mirele la fecha.
+10, 20, 25.
+Parece que no va a ser.
+Ya, puede ser que no.
+Ya, entiendo, es como esas antiguas.
+Sí, como me copiaron la base de datos.
+Mmm-hmm.
+Ve a todas las que hay.
+Mmm.
+Ah, vea.
+156,000 listas.
+Vea, 156,000 listas.
+La tabla de tasas deberíamos borrarla toda, ¿no?
+Sí, sería bueno.
+Este vacía, porque si no la consultas, embora más.
+Dele el nuevo, Vinicius, por favor.
+¿Para qué está cayendo la vida trasas aquí, por ahí, por algo?
+Esto.
+Ay, no creo que la haya generado.
+Vamos a poner una excepción a estos programas a ver si está pasando algo, eh.
+Ah, pero igual como me depongo, no sé cómo lo pinto.
+Si no hay trasas, pues.
+A ver.
+¿Hasta así, así?
+No, está así, así.
+No, no, no.
+Está bien, ni para habilitar viene.
+Crea esto, ¿cierto?
+Y la de Andrew.
+Aquí está Vinicius, normal.
+Pues le pone esto.
+Un like.
+Un like.
+Un like.
+Un like.
+Un like.
+Un like.
+Un like.
+Un like.
+Un like.
+Un like.
+Un like.
+Un like.
+Un like.
+Un like.
+La trago la stagiana, Gato, es fx.
+Para que todo lo troca.
+Si se trajeron todas a abajo.
+Esa información va a surar los otros países.
+¡Suscríbete!
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+Esa tabla de una vez.
+Un momento, ¿cuánto es una llamada?
+No.
+Acorda.
+¿Te acontró un kit?
+No, acá le.
+¿Qué tal?
+Le va a ir.
+¿Qué tal?
+¡Listo!
+¡Pasía!
+¡Totalmente!
+Ya usted se le esmainaje.
+Esos datos están demorando mucho.
+Bueno, entonces,
+¿a lo hicimos esto?
+¿Habliste la generación de trazas?
+Tiene.
+¡Viene aquí!
+¡Taca estos datos!
+Y carga hasta globales.
+Es que...
+No va a volver con las trazas.
+Se llama sincerta directo y ya debe.
+Las trazas.
+¿Sincerta directo a la tabla?
+No.
+Podría ser.
+Sería o sea, comentáis de...
+Estos programas.
+Para aceptar el GVIDN en el level, como queramos usar la clave otra vez, a comentar esto.
+Vamos a ver si así le da, la ganas.
+Sentamos el nuevo inicio, por favor.
+Se salió, o sea, dándole aceptar, salió el problema, lo hago otra vez de cero.
+Está rara esta vuelta, no sé cuándo estoy rejando estas tablas de agentes al que veo raro.
+Descartemos que se da la parte de la parte de la que se va a hacer.
+Descartemos que sea la fevalidez de la 113.42 que esté dando algún lío.
+Intento una emisión con el código de agentes 12.72, viene, por favor.
+Ya lo dobro y si acá en tablas sí, las tablas lo veo bien.
+¿Te dejó avanzar con esa emisión?
+Sí.
+Vale.
+Bueno, ya lo sé.
+Miso problema.
+La gente sí lo veo bien configurado.
+Sí, ¿te has generado otra vez ahora?
+¿Cómo la habilitó?
+No puedes cremarnos mías, es que extensión 2 desde que lo se, por lo independiente de
+alguien que sí tiene trazas.
+¿Cómo así?
+Veas tú no es mío, el narcotizador.
+Pero eso que recha tiene y es de más vací, tiene razón.
+Extensión 2.
+Si es una de las víctimas trazas.
+Lo voy a sacar como está.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+No lo sé, lo voy a sacar primero el tema de las trazas.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Lo voy a sacar primero el tema de las trazas, porque sin trazas vamos a estar en bala.
+Todos en todos los países tienen solo que esto, el automático, el cotxe y ya, ¿no más?
+Todos los usuarios vean, ¿sí ven?
+La mil ochocientos nueve dos nada raro.
+Estás sin frontal también estamos en bala, ahora nos volvímos a robir.
+Está así.
+En tu aparte esta sea automática, cotxe, cotxe, cotxe en tu aparte.
+Tiene solo raro.
+¿Qué?
+¿Qué?
+¿Qué?
+Es que miré que esto está en defecto y lo otro está en automática.
+¿Dale primero el defecto?
+Allá va todo eso.
+¿O qué otro registro está en defecto?
+También.
+¿Cómo probamos Pailano?
+No intenté habilitar el tronco y no, no, no me funcionó.
+No lo abre.
+El pegó el link del TSNS, ahora sí le he entrado.
+¿Cómo?
+El pegó el link del TSNS, ahora sí le he entrado.
+¿Cómo?
+¿Cómo, cómo?
+Intento pegar el link del TSNS.
+¿Qué tiene allá, por ejemplo, Panamá? Le puse el link de Fuji de Brasil.
+Pero nada.
+¿Y Lucho dice que es configuración de compañía?
+¿Y Lucho dice que es una configuración de compañía o algo?
+No, no, no, no, no.
+¿Qué tiene allá?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?
+¿Y Lucho dice que es configuración de compañía o algo?

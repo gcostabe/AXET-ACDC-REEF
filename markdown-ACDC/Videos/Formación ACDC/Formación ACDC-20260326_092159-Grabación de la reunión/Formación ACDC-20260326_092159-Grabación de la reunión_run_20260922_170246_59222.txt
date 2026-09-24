@@ -1,0 +1,1227 @@
+tenemos unos temas que están revisando el equipo nautilus entonces están ahí pero qué pasa porque no
+llegamos a nautilus vale ahí vamos mientras que sea el resuelve eso vamos a ir preparando
+el proceso de lo que es el cálculo dentro del rt y como este proyecto pues tenemos para ahora sí
+va a ser de vida entonces vamos a hacer el trabajo que hicimos inicialmente en unas coberturas que
+es de ahorro que es la de muerte que tiene componente de ahorro igual como lo hemos hecho para
+spanish vale para repetirse la funcionalidad de las inscripciones vale entonces a pedirle favor a
+buscar que conoce y domina bien ese punto que vamos a verlo en vivo en directo vamos a copiar
+preparando todo pero lo vamos paso a paso a explicarnos que uno de los componentes y lo vamos
+a tener ahí este cálculo es uno de los que se puede hacer en el rt por el que tenemos el cálculo
+de toda la vida es ir a una configuración al aceato es el cálculo de la fórmula
+o el cálculo de una fórmula ya es lo que nosotros aquí vamos a trabajar o el cálculo de
+la variación la diferencia entre definir un cálculo de fórmula que ese cálculo no queda
+grabado en la base de datos de este caso de rt o de la base de datos de ahora consiste que corresponde sino
+que queda dentro del catálogo de formulación que va a tener el artículo digital en la gran
+información y yo hago una fórmula como la que explicamos ayer de tomar un dato a ver y multiplicarlo
+por una taza y me queda en el ámbito de esa fórmula la fórmula queda registrada en como
+registro más en la base de datos y esa va al producto al país y el problema el punto es que
+cuando tenemos fórmulas de maquillado complejas con lo que se va a tener para Brasil y para
+los que tenemos para España es que escribimos un código completo porque sobre todo en vida
+la formulación va con talla de fórmulas, entonces entrar a una rama de producto y cada
+fórmula va a buscar si tengo esa formulación cada fórmula llama otra llama otra y es un
+compendio fórmula es que a la final la runda de todo eso en la prima y a otra mitad es ese
+cuando se trabaja con esa estructura de fórmulas esos ya no quedan en la base, quedan dentro de
+el activo del rt no hay que empezar a alinear porque querías que trabajen con ese tipo de
+fórmulas, vale, ese problema, bueno, ese problema, esta formulación. Esto que está
+presentando David en la pantalla son ejemplos que se han hecho, son ejemplos que cuando llegue a
+la parte de los atributos del riesgo,
+ah, sube un pelo, que se ha hecho ahí, ya trae datos y ve, ya trae entre inscripciones,
+esto ya son reglas que se están aplicando, hay precios que se han hecho en el atributo,
+vale, de modo. Miremos por ejemplo David la de ocupación,
+la de ocupación tiene una condición, evalúa que si le damos a David a tal, la acción que
+va a hacer es que va a ponerle en el valor, el valor y la descripción si ves, esto ya también se
+manejó. Si queremos para ahí podemos hacer lo de las no funcionales, que son los motos,
+bloquearla, paquetecer toque, obligatoria, vale, entonces ya se vuelve la configuración y pues
+ya está, entonces a partir de aquí es empezar a mirar y trazar. ¿Cuáles reglas? Todas esas
+seis mil que hablábamos ayer, empiezan a ocupar, se empiezan a ocupar. Yo sugiero que antes de que
+se metan así pues tal vez también, dependiendo su alcance, le lleva, sobre todo para que la
+cuando estén parametrizando esto dentro de selección de riesgos, que no es una visión 360 de las
+reglas y no quedan reglas que se de pronto llegue aquí, me dice que es uno y luego va a ayudar
+a que cambia 2, pues se dan 2 dentro de la interpretación. Es ese análisis que son de esas
+seis mil, no sé cuántas corresponden al tributo, sé que empezar a validar, garantizar que hay
+una información de esa ley y tratarse de implicarlas. Ya viene un análisis puro y duro de cómo
+estructurar de la mejor manera posible esas reglas dentro del sistema. Entonces, por darle un
+banda de la sobresurría, todas las de atributos pueden tirar para. Yo tengo mis datos de todas
+las reglas, de las estadas que son reglas de concurso. Si crees lo que nos presentaba Pepe,
+y a veces ellos no te permiten acudir, pero de verdad no va a ser eso. Bueno, es que no lo
+arraignan, la última semana no va a estar pero lo arraignan. ¿Qué pasa? Entonces,
+estas tierras reglas que queremos, vas a arrupar. ¿Cuáles son de los datos de ponza?
+¿Y cuáles aplican a cada dato? ¿Puede poner todas las condiciones en la misma regla?
+¿Cuáles serían previos, no? Validaciones, separar y irlas separando, sí. Pero en la
+tarde, no, no pudiéramos ver cuando trabajemos sobre el producto, se pudieran ver esa historia.
+Sí, o más tarde, pero que sepan que ese trabajo ya, esa línea de trabajo ya la pueden
+hacer ya con el proyecto, ya no es démono, ya saliendo todas esas capacidades para atributos,
+¿vale? Conforme vayamos mirando, oye, el control ex técnico va a mirar mis controles,
+pero lo que sea atributos, coherentes. Y que sepan que también tenemos lo que ha explicado
+a man de las diferentes, las tres son man de hablar una condición, una simple, una ver
+uno, ver dos y las complejas, ¿vale? Las complejas es ya código llave, ¿vale? Porque
+necesita hacer cosas, porque necesita tomar información, no vale meterla aquí una anunor,
+una yodo igual, porque pues no, pero que sepan que tenemos ese código llave, ese también
+va, o sea, esa es las fórmulas que yo me compartí, lo limpiaba, que son de...
+Eso que va a poder eslarar.
+Que las que sepan se van contra la disparcia, esa información...
+Todo lo que es código va al catalogo ya de LRT. He necesitado crear que en LRT, ¿no?
+Porque va a crear como fórmula.
+Esa también va a crear, no va a crear en la base de datos, sino va a crear en el catalogo
+de formulación de LRT. Es lo que estamos hablando con Alberto, que va a definir bien para que
+todo sepa como tiene que ir a exceder, donde excedes, que todo se acredita, porque esa va
+a quedar en la parte adecuada.
+¿Cómo usarlas? O sea, ¿cómo usarla?
+No, es que es real. Y entonces es que se untura en las rutas donde se va a crear por país.
+Ah, pero de ésta, que están empaquetadas, ¿no? Yo pensaba que era, no, de esta tercera
+opción donde ahí colocas código llavas, esas no se guardan en ningún lado, precisamente
+ahí, ¿no? O sea, esa queda ahí, en la regla.
+La que se hace con llavas, ¿no? O sea, la que se hace, la escribes ahí en el mismo
+momento.
+Las que ven en codificado llevan también una exposición, ¿no? Para poder ser pues unidas
+desde MxPars y esas deberían estar en el catálogo general, ¿vale? Van a estar catalogados
+como que son de España o son TRN, que podrían ser utilizadas por todo el mundo o solo para
+un país en contra.
+Ok.
+Por ejemplo, tiene que gobernares tiempo de modificarlas de TRN y tiempo de modificarlas
+de cada uno de los países si vamos a preguntir que todo el mundo puede tocar todas o no,
+vamos a hacer bien.
+Eso hay que ver. Bueno, porque eso pasa ahorita con, con Uruguay o con Panamá y nada, el
+catálogo de fórmulas que está en el PEL, o sea, las fórmulas que están definidas.
+Claro, porque es que es una...
+Nadie lo toca, ¿pero tú tienes posibilidad de tocar?
+Sí, sí, claro, claro. Exactamente. Exactamente.
+Eso es lo que nos toca crear bien el modelo de gobierno porque cambia también esa forma
+de hacer.
+La ventaja de las fórmulas, sobre todo las de vida, es que una vez las validas las testan
+eso.
+Lo digo porque las fórmulas, las fórmulas que estamos trabajando originalmente llevan
+33 años funcionando, 33. Tufriendo un pequeño ajuste en el 2014, pero esas fórmulas maus
+están hechas en roca, tal, funcionan y ha pasado las diferentes legislaciones que han
+llegado y funcionan. Eso garantiza que una vez uno deja bien estructural a la fórmula
+de la valida de tax, una fórmula que lo cambia algo tan radical, alguna legislación, no
+se van a afectar. Bien, compañeros, pues entonces a Afonso, perdona, este, hay que
+abrir esa línea de trabajo. No sé quién va a trabajar ahí, cómo se van a organizar,
+pero esa línea se puede enterar aquí. No haga nada aquí antes de enrolarlo a la regla,
+porque si no ver aquí si estás en solapa con otra va a ser imposible en este momento.
+Sí, es que ahora tenemos, nos tiene una dividida en la historia, las que nosotros sabemos que
+dependen de la fecha de nacimiento, entre escuelas de nacimiento resta la fecha de defecto a la
+edad de esa regla que te estuvimos aplicando. Sí, las que... las tienen que trazar contra
+la historia, porque si no, esa trazabilidad se va a perder, claro, usted tiene que trazar
+contra la historia de estar en directo de ese histórico. Pero en mi suficiencia, levanten
+todo lo que pongan antes de irse a meter aquí, porque allá nos pasó como compañero que
+nos metimos a hacer algunas reglas y después una se rompaban, toca otra vez a revisar,
+aquí te pongan, luego con las experiencias vividas con Jordan, que le tocó bastas de
+estar solapando, aquí le pongan, porque a veces en el mismo excel nos habían pasado
+los definiciones, en el mismo excel, pero en el mismo excel es la definición en dar regla a uno,
+se son las cosas con las reglas sin cuenta, y eso no sé, hay cuántas vueltas. Es por ahora,
+como esto va a ser manual, porque no va a llegar todavía el taller de productos,
+si la idea todavía no va a demorar un tiempo para que llegue, hay que hacer ese control. Bien,
+después de tener capacidad de atributos, vamos a empezar a mirar. Me dice David que la parte
+de novolos ya la desencontró por el problema, es por la fecha, entonces parece ser que esa
+fecha, no sé qué fecha había que estar diciendo que era una fecha negativa, la del número de uno de
+dos, está ahí, está ahí, esto que al tirar es con la fecha, ahí está David.
+Hola buenos días, ¿habéis probado con lo del negativo ese? Vale. No, ¿qué hay que hacer?
+Explicanos que hay que hacer como por entender el contexto. Lo que vi es que el negativo es la
+fecha de validez, la fecha en la que se creó el módulo, la preferencia, tiene que ser menor a la
+fecha de validez de la creación del polizón. Como la fecha de validez del polizón es de 1899,
+nunca estaba obteniendo ese módulo, así que hay dos opciones, o en configuración de módulos,
+se le pone una fecha, pues no sé, el año 1000 y se prueba.
+¿Cambien es la fecha? La fecha es la de creation date si quieres en módulos, no creo que. No sé
+cuál es el nombre. O validez y date. Pon 1800 ahí. Es que no sé por qué la entrada del polizón
+hemos visto que es negativa. Es que me han creado la fecha ahí en el cabello nosotros. Yo sé por qué
+dicen así, por la migración, pero ese tema hay que mirar siempre así, vamos a tener migración.
+Pero sobre el mismo producto que hemos creado, vamos a tener migración al futuro,
+o va a ser otro producto de los otros. De los productos que no migren,
+pongamos una fecha más reciente del 2000, ¿verdad? Es que de 1900 eso es que va a entrar, ¿vale?
+Entonces, vamos a la prueba. La prueba de este, para dar las coberturas, el estado.
+Vamos a las coberturas. Primero que lleguemos a las coberturas. Ahí ya lo puedes pasar.
+Todavía no.
+Paca es definición. Paca es 9. A ver, el Paca es 9, también ponle qué fecha tiene ese, el 15.
+¿Qué compañía es, las 15? Sí, lo ideal sería subir el polizón.
+¿Y qué fecha viene del polizón? 1899. Es que eso es lo que me está matando,
+no sé de dónde viene esa fecha. Está definido con esa fecha. Me imagino. El 900 está definido.
+La compañía es la 15, ¿no? Me hemos quedado. Sí, pero tener cuidado. Hola, ¿me oís?
+Es que creo que estaba cambiando la 15, pero sobre mi producto. Porque yo estoy filtrando por
+el 421 MSI, saliendo a las otras fechas. Una cosilla que ha hecho un cambio más funcionado.
+La preferencia 10 sí que la estaba pillando, entonces cambia la petición que usase la
+preferencia 10 con la fecha de validez a positivo y sí que me encuentre resultados ya módulos.
+Así que me devuelvo un paquete ya con una cobertura. Es que tengo aquí, ¿qué hacen?
+Lo dejamos todos. Antalizar la fecha de validez del producto. Sí, es posible hacerlo a la inversa,
+es decir, subir la fecha de validez del producto en lugar de bajar las estas. Sí, yo soy de acuerdo,
+esto no tiene sentido ponerla. Es que ahí vamos a picando piedra. Sí, con eso de la validez,
+si cambiáis la preferencia de la 23 a la 10, debería dar algún resultado ya.
+Pero vamos a preparar todos esos productos, como van a estar los que tienen la fecha de validez.
+En segundo, quedamos actualizando esa fecha para que no nos depó de actualizar.
+Estás actualizando, pero no más, fedi. La fecha de validez del producto.
+En la tabla directamente. Sí, la del ramo.
+Y, David, me puedes decir con qué persona has dado de alta la poliza,
+porque con la otra me sigue dando error de la frecha. No sé si habéis cambiado la persona para la poliza.
+¿Persona? El interviniente que está dando de alta la poliza, a mí me sigue. ¿La habéis cambiado de ayer?
+No, yo estoy utilizando el mismo. Y por qué a mí me sale error en la fecha de nacimiento.
+Ah, porque asignamos un balde faul directamente en la tabla mientras se soluciona ese problema.
+Ay, si es que no me avisais, David, es que me cambié las cosas y no me avisais.
+Es lo que hicimos ya a cantar de nosotros para poder avanzar.
+No sé si usted gana la fecha en la tabla, en la tabla, en la fecha.
+Es el EPC, ese EPC, el formato de Units, es el 1 de enero de 1970. Estas son positivos.
+Está bueno porque están mismo ascendentos ahí. Porque el pensionista de 50 años todavía llegó a ser perfecta. No, para fechar.
+Por eso no te estoy entendiendo. Es un EPC muy antiguo, es un EPC muy antiguo.
+Es un EPC muy antiguo, es un EPC muy antiguo.
+No, para indicar esto es un EPC muy antiguo.
+No, para indicar esto es un EPC muy antiguo.
+Para indicar esto es un EPC muy antiguo, es un EPC muy antiguo.
+Para indicar esto es un EPC muy antiguo.
+Pero a mí no, a mí no, a mí no.
+Para indicar esto es un EPC muy antiguo.
+Es un EPC muy antiguo, es un EPC muy antiguo.
+Es un EPC muy antiguo, es un EPC muy antiguo.
+Es un EPC muy antiguo, es un EPC muy antiguo.
+Es un EPC muy antiguo, es un EPC muy antiguo.
+Esa implementación se hace en la parte del core de la CDC
+y la necesitamos desplegar a Brasil, para que haya Brasil.
+Vale, eso lo vamos a hacer ahorita, para que sepan que vamos a hacer eso.
+Vale, Manuel no ha salido a la Reunión de Mind.
+Pero la idea es eso, que cuando esté, pues se genera versión
+para que se sube a Brasil.
+Vale.
+Esa es la tema de...
+Aún no tenemos todos los ejemplos,
+que lo hace o que, cómo se hace.
+Lo que vamos a hacer es hacer un cascarón.
+Fijo, devuelve mil, capitán dos mil,
+va a hacer técnica 500, está fijo.
+Vale.
+Entonces, cuando ya tengan toda la formulación,
+hay que estructurallo, como se van a crear las fórmulas,
+donde se anaracra, que es lo que queremos que vean.
+Las de ahorro, que muestran y no se quedó a corto.
+Por ahí tendrán un taller de formulación dentro del gramo.
+Y las de arriesgo, pues ahí vemos si las podemos meter
+dentro del catálogo de fórmulas normalitas.
+O también tiene un componente de fórmulas llevadas.
+Lo que se van a llevar de esta sesión es...
+Les llamamos una prueba que ni siquiera es un...
+El ducto preparado para que, ya cuando sea la fórmula cambia,
+ya donde hace cálculo pongan,
+pero ya todas las conexiones están hechas.
+Entonces, trabajos necesitan del equipo factorial, ¿vale?
+Yo no sé quién del equipo factorial lo apoya.
+¿No es el mismo?
+Sí, claro.
+Porque ahora, por mi opinión que estará...
+Que estará...
+Que estará aradada por Hugo con las características,
+eso lo imaginó que les llegará a ustedes en algún momento
+de cómo se calcula la fórmula de cada uno de los cortos.
+Justo ayer daba y dice...
+Había una historia que estaba rechazando.
+Justo había uno de los cálculos de la prima.
+Pero lo llevaba a un checkpoint.
+No lo habí.
+Sí, creo que está la historia ya.
+De vez en vez de cargar el entorno.
+Lo que hay que ver, perdona, es si lo que definieron
+como fórmula encaja en lo que ya tenemos de Panamá.
+O sea, encajan en el diccionario de fórmulas que ya tenemos.
+Lo que pasa es que, claro, esa formulación
+hay que cogerla si se anda hasta arriba.
+Claro, claro, pero es mucho más fácil.
+Sí, claro, la fórmula es pegueña,
+es cogerla y transformarla allá y eso.
+Le dices al día que te lo pongas y te lo deje...
+A la día de Oscar.
+Bueno.
+Entonces vamos a poner el trabajo en guía,
+vamos a hacer el pecho de las fórmulas,
+a ver si hay uno en el catálogo.
+Y después a ver que vamos a ver.
+Sí, si quieres.
+Si consiguen la historia.
+Yo le puedo hacer un vistazo.
+Yo más o menos sé cuáles son estas pequeñas funciones
+que componen la fórmula grande.
+De repente, la fórmula grande, la compuesta.
+No la tenemos.
+Pero sí, todas las pequeñas fórmulas que intervienen.
+Dentro de todo un proyecto así como era así.
+Lo primero pues es una...
+La primera fase es el estructural.
+El estructural no sabe de qué se compone,
+las intervenciones, las herramientías,
+el armado del siniestro,
+todas las propiedades.
+¿Cierto?
+Los flujos que va a tener.
+Es lo primero.
+Te diría que sin meterse a...
+a reglas de negocio, esto,
+pero sí tener el producto estructural.
+Que no es la operativa, sino que el código funciona.
+Ojalá pueden hacer unas cosas en total.
+En el software del flux.
+Para el mito, la fórmula, los suplementos,
+voy a la implementación, el movimiento,
+que el pulo generó el sistema.
+Que tengamos ese flux por lo menos para que todas las piezas
+son de la manera en la que lo pueden vivir.
+Se me va a sacar la emisión, siniestros, pagos.
+Otro, porque este es un gran de todo esto.
+Pero tiene que haber...
+Y una vez ya por lo menos de la capa C,
+se meten con todas las condiciones
+que van a aplicar tanto la emisión
+y sus instrumentos en la parte de la capa de siniestro.
+En todos los 20.000 procesos más que hay en Brasil.
+Porque muchas de las operaciones son planos.
+Y una vez tenga integrado más,
+por si tienen la capa ya para hacer
+procesos de...
+contra el frontal del corredor o la aplicación.
+De si crees, por todas esas operaciones,
+porque ya tienen la capa C.
+Y...
+a veces el lefante tiene que partir de cruz.
+Porque es que hay muchas cosas.
+Para que empiecen las operaciones.
+Y una línea de trabajo independiente
+es el calculo.
+Y esa tiene que ser independiente.
+Van armando el producto, pero hay otra línea independiente.
+Porque son muchas cosas las que tenemos ahí.
+¿Estamos esperando o no?
+Llevo la mitad de las tablas.
+Es que hay muchas fatales como es validez.
+Entonces dejamos todos unos con el dormir.
+Porque se llama la alta el producto para...
+para RTE.
+Bueno, entonces, mientras David termina...
+voy a explicar lo que viene ahorita a nivel del calculo.
+Ya porque ya sabiendo que el...
+El tu pari...
+El proceso, el óptimo.
+¿Sólo una cosa, Vaviara?
+¿Qué fecha lo estás cambiando?
+Primero enero el 2000.
+¿Del 2000?
+Sí.
+Entonces, mientras David termina hacer ese trabajo,
+vamos a explicar lo que viene ahora.
+Cuando se vean los múdulos,
+que son las coberturas con sus capitales y eso,
+la siguiente fase es darle calcular.
+¿Verdad?
+El calculo va a ir a...
+como explicaba, feliz en su momento.
+Va con el botón, va a ir a la fluididad.
+Va a recibir la información de entrada
+que tiene en ese momento.
+Y se va a ir a...
+Entonces, le va a llegar toda la información del poliso
+con lo que tiene en este momento.
+¿Verdad?
+¿Para qué?
+Para que las fórmulas o que...
+como es simple mental, el calculo sepa que tiene que hacer.
+Para hacer eso,
+se divide en dos tipos de...
+hablando de vida, se divide en dos tipos de coberturas.
+Coberturas que tienen componentes de ahorro
+y las coberturas que son de río.
+Las coberturas que tienen componentes de ahorro
+se ha creado una nueva marca,
+la marca de suscripción.
+¿Vale?
+¿Por qué te escribí otra vez?
+La marca de suscripción lo que va a hacer
+es que va a trabajar
+con el dentro del RT
+con un nuevo componente
+que es el botón de suscripción.
+Aplicar bien qué es esa parte.
+Veo cómo es tocando.
+¿Verdad?
+Vamos a ver...
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+No.
+Acá se van a cocorr.
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+¿Verdad?
+Ya no quiere 6-3.
+4-0-0, busco.
+No, pero mírame, es que es ese roso.
+A ver ahí la pantalla.
+A tributros el té, a ver qué está dando.
+No, es absoluto.
+¿Dónde estás?
+¿Dónde estás?
+La tres, y ya se como era el de lo que no estaba dando aquí.
+Que no sabemos qué era.
+A ver, para verlo, nos conectamos a WS.
+Vamos a CloudWatch de esa tarea y se ve todo.
+Es que tener acceso, deberías tener acceso a las cuentas de WS.
+Eso también es importante.
+Aquí volamos a Cieles.
+Porque hay un error, pues se ve ahí, pero no sabemos exactamente...
+No tiene nadie en el producto que esté lanzando un CT en la base de datos.
+No tiene esa tarea de productos.
+Nos conectamos.
+Esto de la vida.
+Vida Brasil.
+Vida Brasil, es la de San Juanito.
+¿Este es el año?
+No, esto es WS directamente.
+Al servicio de CSS Fargate identificamos la tarea con los registros.
+Desde ahí nos vamos a CloudWatch y nos vamos a ver todos los.
+En este caso queremos ver, para ver el detalle que le está llegando de error a vez.
+Esa dos, ¿cuál es la base de datos o cuál?
+Las dos opciones que respondemos.
+Llegamos a los servicios, identificamos el servicio de WS.
+Las opciones que estás haciendo son de los com.
+Cuántas que tiene WS.
+Mucha servicio.
+Y desde aquí nos vamos a CloudWatch.
+Bueno, se está perdiendo todo eso.
+Ahora le tore el p3 por aquí en el lugar de la casa.
+¿Pero yo me he perdido y estoy acá?
+Sí.
+¿Pero acumpecamos desde el cerro?
+No, no, no, no.
+Haciendo lo notaremos.
+Esto es muy simple.
+Ah, bueno, eso me enseña eso.
+La cuenta de WS cada entorno, como si yo empecemos,
+firme en alguna cuenta.
+En la parte correo, ¿eh?
+Estamos viendo ahora mismo la parte correo.
+En el entorno de desarrollo entramos en el entorno de desarrollo.
+Todos los micros los desplegamos en servicios de SS Fargate.
+En la pregunta, CloudWatch y estos dos son cuentos.
+Son servicios, dentro de WS, ¿vale?
+Dentro de WS.
+Entonces, los normales nos vamos al SS, ¿vale?
+Vamos a identificar las tareas que ejecutan
+ese componente de correos por el que queremos ver los logs, ¿vale?
+Y luego iremos a CloudWatch a ver los logs.
+En producción, lo tendremos dentro de Daena, todo, ¿vale?
+No, la idea es falta acceder aquí.
+Podréis acceder, ¿vale?
+Pero si no, en Daena salen los logs directamente.
+Vuelcan, lo que vemos aquí en CloudWatch, lo volcamos a ver.
+Vale, entonces, a nivel de servicios, identificarnos en VD, ¿vale?
+Hay una parte de tareas, identificamos la tarea que están ejecutiendo actualmente.
+Y esto, ya tiene el linkado, los logs, ¿vale?
+Esto ya son manías, ¿no?
+Se puede ver aquí directamente entre fiestros.
+Aquí los cambios te los va poniendo en la pila, ¿no?
+Lo van pindo arriba y en CloudWatch por lo que es en el...
+A forma tradicional, ¿no?
+Lo último está abajo del toro, vamos a estudiar cada uno.
+Y dentro de CloudWatch, incluso, ¿cómo puedes activar el pre y para ver el tiempo real, los logs?
+Y todo, esto ya cada uno, como quiera buscarlo.
+¿Vale?
+Entonces, ¿cómo ponemos...
+Si podemos filtrar, si hay...
+¿Vale?
+Sí, no sé.
+Las demandas, en el que los servicios están,
+si están en X-Ray o solamente, ¿voy a ver eso en Daena?
+Las llamadas.
+Sí, las llamadas.
+Si están en X-Ray o en X-Ray,
+es el servicio de CloudWatch.
+¿Pero para ver que entrar a la salida tiene cada uno de horas o...
+¿Cómo?
+¿Cómo se pasa la información que hay en X-Ray?
+Es decir, en una fila, en el que hay dentro de ahí,
+en la base de datos...
+Y en vez, no lo tienes seguro.
+Porque eso es lo que te traza al estar mostrado,
+a la salida.
+¿Y otro?
+No lo he visto, no lo sé.
+El servicio de la demanda, si no.
+El servicio principal, el estudio de minutos.
+No sé si tenemos un momento para ver.
+No sé si hay una solución.
+Porque ahí estamos tratando la salida.
+Sí, esto es toda la trampa de...
+de orquestación de V.
+Aquí vamos a ver todas las demandas.
+Esa es la lista.
+En este caso, es que han registrado el Request and Response.
+Aquí podemos ver todo.
+Hay diferentes niveles de traza.
+Incluso, a través del actuato,
+podemos cambiar el nivel de traza.
+Ahora mismo, creo que está lindo.
+Pero podemos decirle, oye,
+modo debut, con nivel 3.
+Podemos llegar hasta el nivel más bajo
+para el único que esto genera.
+Un montón de...
+Vamos.
+Puedes tener cuidado.
+Me voy a pegar al final del todo.
+Si no, voy a volver atrás.
+Y se quiere lo que dice el vivo.
+Me voy al final del todo.
+Me vuelves a dar para reproducir el error y así no.
+Por si haces un favor, en realidad...
+Al ver al reproducir el error, así vemos.
+Aquí en adelante.
+Y vamos a ser claramente...
+Esa caída en el botón.
+Tienes de aparecer alguna especie.
+¿Tus trazas aquí son estas?
+¿Y eso qué es? El polisón.
+Sí, los llamamos que está haciendo.
+Está haciendo básicamente una auditoría o un...
+O ver los blocs que están ejecutando en cada servicio.
+Son unos datos tan grandes.
+Sí.
+Para terminar la línea plana.
+Sí, como lo tengo puesto, que es a que...
+No lo agrupe, por eso...
+Se ve bien.
+Dependiendo de lo que busquemos, se ve bien.
+No.
+Esa no es.
+No, no, si tiene que salir una pila.
+Si ha habido error, tiene que salir una pila de error.
+Mira.
+Aquí se ha visto, ¿vale?
+Ahí está.
+El proceso previo es atributo, de atributos, ¿no?
+No todos los atributos, no, para la realidad.
+Hacen de atributos, se están rellegando.
+Hacen de igualidad de error.
+Código 40-90.
+En los peleas desde el componente,
+bodidu, validad, las validetas.
+Es difícil mirar, ¿eh?
+Esto es lo que...
+Esto mismo, es lo que se ve también en la auditoría de ACDC.
+Cuando accedemos a la base de datos.
+Eso.
+Aquí directamente.
+Tú el aceptar funciona, ¿no?
+O fue en el siguiente?
+En el siguiente.
+Por eso es un par de raro que aparezca.
+Haberían los propios de datos variantes de cobertura.
+Lo igual, si solo vamos a tener uno.
+¿Qué estará dando el error?
+¿Qué ha sido esto, esto previo de atributos?
+Aquí en la unidad, pues, esto fue el timestamp.
+Sí, sí, está ordenado en Forteimestán.
+Unicos por ver si ha sido en enlace de atributos previos.
+¿Cuál ha sido?
+Hemos dicho que el error lo ha dado en el previo de atributos.
+Esto es de las 9.10.
+Esto es de las 9.14.
+Sí, 14.
+Policidad.
+Policidad.
+¿Qué son los atributos?
+Policidad.
+¿Qué es ese?
+Es el complejo de atributos.
+Así se llama.
+Policidad.
+¿Qué son los atributos?
+No.
+No.
+No.
+No.
+No.
+No.
+No me interesa ver a mis votos que yo pensé que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no volviste a decir que no vol
+Pero todavía está en el estado de menoso, ¿no?
+No está mal.
+Aquí sí, mira.
+Por ahí sí.
+Por ahí sí.
+David.
+Estás por ahí.
+Por ahí sí.
+Y esto a su vez, si has dado a tu,
+tu tienes tu propia auditoría también.
+B, C, E, E, D.
+Aquí ya había también la auditoría.
+Ya no sabía.
+No puede echar a nada.
+Porque está dando el respuesta es cobera spreaders.
+Por ahí en el previo.
+Como si fuera de tributos.
+Pero la cobertura tiene el tributo...
+Hay una cobertura que tiene tributo,
+pero lo debería llamar.
+No lo es a 40, lo que queremos allá, ¿no?
+Sí.
+Esa no tiene tributo.
+Muy bien.
+Hola.
+Hola, David.
+¿Y si llamamos a la que tiene?
+Por favor.
+Ahora, si llamamos en...
+Nos está dando ahora lo siguiente.
+No, no, nos pillamos.
+Nada más, creo que...
+Por favor.
+Sí.
+Ahora nos está dando un error aquí en el previo.
+Dentro del activo digital.
+Sí.
+¿A qué nivel?
+A nivel cobertura, ¿vale?
+Y cobertura, os falta los tributos de la cobertura.
+Esa es la validación.
+El Not All Required Fields
+quiere decir que falta algo.
+O PLI ATC.
+No hay atributos de cobertura.
+Qué validar.
+Está vacío el atributo.
+Si una cobertura no tiene atributos, ¿qué pasa?
+Pues que no hay que validar atributos, ¿no?
+No hay que llamar a previos.
+Pero el montaje de cobertura es llamado sí o sí para...
+Pero una pregunta.
+¿Esta cobertura no tiene atributos?
+¿Hay a paso módulos o no paso módulos?
+Hay a paso módulos.
+Entiendo que sí.
+Entonces, módulos dicen listo.
+Las coberturas que va a rescatar es tantas coberturas.
+En este caso, solo hay una que es la 40-03.
+Esa 40-03 no tiene atributos.
+No tiene atributos.
+No tiene atributos.
+Entonces, si no tiene atributos,
+no debería llamar el previo de atributos, ¿no?
+No debería.
+No debería.
+No debería.
+Para ahora no lo sé.
+Pero vamos...
+Lo digo para ajustarlo, porque...
+Pero eso no lo puedo ajustar.
+No lo puedo ajustar yo, Freddy.
+Esto no se va antes de la CVF.
+Esta invocación no tiene que hacerse.
+¿Por qué? Yo puedo tener coberturas,
+unas con los altos atributos y otras que no.
+¿Entonces qué previo? ¿Entonces qué atributos validas?
+David, si no llega eso, podemos hacer un cambio en el código
+en que literalmente, si no vienen atributos, no hacen nada.
+Devuelve vacío y punto, porque no estás validando nada.
+Vale, eso es una validación de la request, simplemente.
+O sea, que eso se puede quitar...
+Es una chorra.
+Dame un segundo, créanle un atributo a esa cobertura.
+Ponle edad de permanece.
+Vale, si, tendríamos que hacer ese ajustillo,
+porque si no viene el objeto de atributo que vive para esa cobertura,
+pues que lo devuelva.
+Vamos a ajustar al producto para meterle un atributo a esa cobertura
+y para que no apague, ¿ok?
+Vale, de todas formas, para nosotros sí que, como había muchos casos,
+que había fallos, que simplemente, como no cargaban los atributos,
+estaban enviando lo mal y ellos entendían que simplemente
+continuaba el flujo sin hacer ninguna operación, pues dijimos,
+mira, no tenéis que mandarlo a atributos y que al menos hubiese uno.
+No sabemos que hubiese esa posibilidad, pero lo cambiamos sin problemas.
+Vale, la metemos ahí y nosotros ajustamos acá para continuar.
+Ok.
+Punto de mejora.
+Sí, esto lo añado ahora en un momento, eso no hay problema.
+Gracias, listo.
+Si nos fallan otras más, les volvemos a llamar por el oratorio.
+Ok.
+Ya luego, cuando tengáis un rato, Freddy y Alberto,
+con el tema esto de España, de la parte de seguridad, hablamos,
+porque sí que necesita un poco de coke para abordar una estrategia.
+Luego, cuando tengáis un ratillo.
+Vale, vale.
+Gracias.
+Ok, te lo voy.
+Ahora.
+Gracias.
+Gracias a la compañía también, creo que no está todo sencillo.
+David, ¿estás en entonces incluyendo un atributo de cobertura?
+En la cuarenta o tres, sonia, sí.
+Vale, si me le puede pasar ahora para ponerme un titulio.
+Vale, gracias.
+En la cuarenta y mil veinte, ya está para el timni del tres,
+para la cuarenta o tres.
+Vale.
+Gracias.
+¿Para si vas a venir a España a ponerte malo?
+No.
+Espírate, esto es cambio de temperatura.
+Ahora sí, las caps.
+A ver, a ver, a ver, a ver, a ver, a ver, a ver.
+A ver, a ver, a ver, a ver, a ver.
+A ver, a ver, a ver, a ver, a ver, a ver, a ver.
+A ver, a ver, a ver, a ver, a ver, a ver, a ver, a ver, a ver.
+A ver, a ver, a ver, a ver, a ver, a ver, a ver, a ver, a ver.
+A ver, a ver, a ver, a ver, a ver, a ver, a ver, a ver.
+A ver, a ver, a ver, a ver, a ver, a ver.
+A ver, a ver, a ver, a ver, a ver, a ver, a ver, a ver, a ver.
+A mí el inglés americano se me da mal.
+Le entendí a la que hablaba, estaba en Londres, pero que estaba allá como si era un textano, pero no le entendía. Me da mal estar este que me traducía aquí abajo y te enteras.
+Bueno, pero presentaba un prequeremos ver. Sí, pues tenía que primero me disminucionar y apreciar, pero es nuevo, me devuelvo. Ah, vuelvo a la ser.
+O me devuelvo aquí a Tributos, cuando aquí lo que hacíamos, no lo podíamos unir a este botón y a cada barro.
+Ya no vendemos sino que traerá coberturas con el valor que teníamos allá de capital.
+Bueno, le vamos a jugar a otro. Pongo otra cobertura.
+Me acuerdas que tú tenías 30 coberturas y la hicimos ahora ya no, que es lo que escribía Fels en la presentación de esto, que ya, aunque el producto tenga 35 coberturas,
+yo solamente presento las coberturas que están asociadas dentro del activo digital en la parte de modus.
+Eso que flexibilidad tiene pues un montón, porque ya simplemente el producto y la configuración de las coberturas es dependiendo del negocio.
+Un security para seguir los estudios que trabajan o un canal de ventas, siempre por el panel corredor.
+Voy a poner esta porque, o sea, dependiendo del producto actual de C, así que no la somos seguras y podemos ver el ejercicio.
+Ah, de PON, PON. PON3.
+Ah, de PON3.
+Ah, ya, bueno, sí.
+Con la otra, en la que tienes el capital, con eso nos vale.
+Entonces ese mandejo también va a ir a pasar con las historias.
+Si tienes un producto que tiene así 100% de las coberturas.
+Entonces vas a encontrar historias que, perdiendo en el corredor, si van a entrar por security.
+¿Qué transparsegros tienen allá, Oliva?
+Ahora, para mí es un security.
+Y dependiendo del canal, si va por el canal de ellos, por la mafre, todo eso se puede configurar.
+Y se puede configurar los capitales, los límites, los valores dentro del modus.
+Ahí esas historias a nivel de configuración ya también las pueden empezar atrás.
+Con eso nos quedan son las reclas a nivel de cobertura que vamos a ver.
+Entonces, ya tienes trabajo de atributo y ahora con los módulos de la configuración de la forma
+que presento las carnes, ¿vale?
+Empieza por la moda sencilla.
+Empieza por las de papá.
+Pero las de papá ya están.
+Y solo hay dedos para papá porque es solo pues con eso.
+Luego vas incrementando para aquí.
+Y así vengo a la aplicación dentro del trabajo que vas a hacer.
+De esas 50 historias que tiene para configurar los módulos, pues empiezo cuando el riesgo es uno solo.
+Entonces, ya para que tú puedas ir entregando cosas.
+Luego vas a hacer otras historias en tiempo donde es prindoso, tres, con el papá, la mamá.
+Y vas preparando eso.
+Y así te da tiempo de dividir.
+Puedes hacerlo sin valvo, es cierto, en su posibilidad.
+Vamos a que hagamos la frecuencia.
+De momento.
+¿Esa depende de un tutorial?
+Tengo datos variables que son de cobertura que asignan las cosas.
+O sea, dependiendo de esos datos variables,
+la cantidad de días por el valor de la cobertura hospitalización.
+Tiene un valor de importe diario y un valor de cantidad de días.
+¿Este vas a hacer esto?
+¿Aquí?
+No, pero ahí no.
+¿No tengo datos variables todavía?
+No, claro, pero ahí le asignan un valor por defecto que va a ser.
+No, que lo tire del andato ya.
+No, porque el patato no existe todavía.
+Pero no es que le estaba hecho.
+¿Esta es la cobertura dentro de la cobertura?
+Sí, y no está.
+¿No lo tienes armado?
+¿No es de la que tú tienes ahí, hermano?
+No está.
+O sea, no tengo un pre para el definido.
+Vale, pero el dato tiene así.
+Vale, pues vamos por parte.
+¿Esta es la cobertura que depende?
+El capital depende de ese dato.
+No, para él eso tiene internos.
+No.
+Aquí me imagino que el dato es el resultado
+que tiene el capital en el capital.
+La suma segura es el resultado multiplicado de los datos variables.
+Vas a tener un dato variable donde tengas el capital.
+El resultado.
+Vale, tienes días por tasa.
+Y tiene otro dato que tiene el capital.
+Una pregunta.
+No se puede calcular.
+Él entra con una suma segurada por defecto.
+No es que aquí no hay defecto.
+Es más, va a tirar de un dato un determinado.
+Llega con esos 105.000.
+Que de momento es número de días,
+105 días por mil, por ejemplo.
+Que van a hacer datos que van a llegar a la cobertura.
+Cuando calcule, dependiendo de lo que la persona meta
+en los atributos de cobertura,
+cuando calcule, te recalcule la suma segura.
+Esa es la fórmula.
+O no es más de la cobertura también.
+O sea, no se puede calcular.
+Como primer precio, yo lo hago.
+Tú tienes dos datos.
+Cantidades ya no es por 10.
+Entonces, vamos a hacer el ejemplo de cómo sería eso.
+Para calcular el capital.
+En un producto de autos, el capital depende del valor del vehículo.
+¿Sí o no?
+Sí, pero es el valor del vehículo.
+Es tú, previamente, identificas que es el vehículo,
+marca el modelo, no sé qué, y tienes un valor de capital.
+¿Ese valor dónde está?
+Está en nivel de capital.
+Es un dato variable.
+Exacto.
+Es cuando el dato variable del capital ya viene calculado.
+Ya lo tengo.
+Pues, y no tengo que hacer ninguna romperación.
+Lo pongo como referencia aquí.
+Entonces, aquí le digo el valso modelo y le digo el 100%
+del valso modelo es el capital de esta cobertura.
+Porque el dato ya viene calculado.
+El valor del vehículo.
+Pero en este caso, David tiene que hacer una operación.
+Tiene que tener dos datos, ¿cierto?
+De cobertura.
+De cobertura para poder dar el capital.
+En ese caso, ese cálculo ya no queda en nuestro producto.
+Pero vamos a pasar aquí en este calculado a la cobertura.
+Entonces, lo que vamos a hacer es que la cobertura lo calcule.
+¿Vale?
+En el predio de la cobertura, por ejemplo.
+Exacto.
+Pero cuando llame al activo digital, le va a entrar y sus dos datos
+va a coger ese valor capital, se lo pone el capital y salió.
+¿Vale?
+Ya no lo haces ahí en una pregunta, ¿vale?
+Eso lo vas a hacer dentro del cálculo.
+Entonces, quito aquí ese valor por efecto y nos vamos a ver.
+Si lo muestran, solo por ver y ya se muestra.
+No, en este caso, déjale ese valor.
+Y luego cuando el cálculo va a entrar y sus dos datos,
+tú vas a coger ese valor, lo multiplicas y ese es lo que le pones.
+Si le pones otro capital para ver ese antipunto,
+para que no se enduende la cobertura.
+Pero hay valores que ya vienen calculados.
+Pues, tomes ese valor, muestraselos, tomo como referencia y ya lo pongo.
+Pero si es un cálculo, lo vamos a dar al cálculo.
+¿No es un cálculo?
+No, es un cálculo de referencia.
+¿Cuántas también?
+Porque nos traje un café, ¿ok?
+Y ahí por ahí.
+¿Qué pone?
+¡Vaya!
+¡Vaya!
+Es muy grande.
+¿Qué?
+Es muy grande, digo.
+¿Qué tenemos con eso?
+Tiene mala leche a tanto.
+Ahí no sale la lupa.
+¿Me petea tributo otra?
+Ah.
+Lo que estoy viendo es que no tiene Primares.
+Ah, hay que ponerle Primares, ¿vale?
+A todos los productos ya.
+Todas, todas, todas son delante.
+Todas, el producto cuando trabaja con el cri digital,
+es como si fuera un producto a Primares y sus manos, ¿vale?
+Todos.
+Pero un famo que se echa para atrás.
+¿Y tú no habías ajustado los tributos?
+Para mostrar en las descripciones.
+Sí.
+¿Y qué pasó?
+Vamos a refrescar.
+Esto es raro.
+Eso es...
+¡Oh!
+Nadie dijo nada.
+No le ha dado una buena idea.
+Desesperanza.
+Por favor.
+¿Qué pasó?
+¿Qué pasó?
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?
+No sé.
+¿Qué pasó?

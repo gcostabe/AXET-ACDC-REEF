@@ -1,0 +1,955 @@
+Los 1 son todo lo que es polisa, todo lo que está en nivel de polisa, los 2 son los que están en nivel de riesgo.
+Las coberturas también pueden tener ratos variables.
+Y el nivel 3, con esto de minima que un nivel 3 es la toria que va a pertencer a una cobertura,
+entonces tenemos que informar el código de la cobertura que pertenece, ¿sí?
+Perfecto. Y estos 5 son listas de valores.
+Ahora, vamos más adelante, esas son un poco complejas, pero son ratos variables como un poco un sirio del pueblo,
+decir que si tengo, estoy asegurando una casa y tengo un dato variable que dice electrodomésticos,
+entonces yo le digo 10 electrodomésticos, tengo 10, y en mes pido una pantalla para que yo liste todos los electrodomésticos que tengo.
+Esos electrodomésticos que usted lista y que usted graba, quedan almacenados en datos variables tipo listas, estos 5, el tipo 5, ¿yo?
+Más o menos ponemos un señal y así.
+El seco es el consecutivo en su nivel, o sea, en su nivel, el consecutivo por ejemplo aquí está 2, 3, 4, 5 en el nivel 2,
+pero cada nivel tiene su tipo consecutivo.
+Codicampo, este es el marca enabilitado, este es el marca visible, podemos tener datos variables que no sean visibles en las pantallas, ¿sí?
+Ok, ¿sí?
+Entonces acá se configura eso. Obligatorios, si son obligatorios o no, si usted no colocan un dato variable y es obligatorio,
+pues le dice que es obligatorio, que valía si no es nul y si no es un dato variable, moralidad.
+Ahora lo marcamos acá, que sé que está en la primera pantalla de riesgo. Ok. Listo. Este marca cálculo, lo que lo determina es si el dato variable
+es un factor de cálculo, es decir, si al modificar este dato, cambia el valor de la polícia.
+Por ejemplo, en los productos de vida, nosotros la edad es un dato que puede cambiar el valor de la tarifa, ¿cierto?
+No es lo mismo que un dato de la polícia por una persona de 20 años que pone una de 450. Así tengan las mismas condiciones de empleo,
+de sexo y todo eso. Entonces, al usted modificar aquí la vida, la edad real, este, y tener esta marca cálculo en ESE,
+lo que hace es tarificar de nuevo, o sea, lanzar de nuevo la tarifa, o sea, el cálculo para ver el cambio, ¿sí?
+Entonces, cuando usted hace todo el dato variable, le dice que la marca cálculo es en ESE, entonces, al momento, usted es en un endoso, un suplemento,
+y usted modifica ese dato variable, el hace cálculo de nuevo, porque sabe que eso va a tener un impacto sobre el valor de la polícia.
+Perfecto. Super claro. Este marca presupuesto es si el dato variable va a aparecer también en la pantalla de presupuesto de propuestas.
+Ok. ¿Listo? Listo. Si se muestra un producto de siniestros.
+Esto es un valor único. Esto no lo utilizamos nosotros regularmente, pero esto es si en otra polícia del mismo ramo no puede existir
+una datoria o le con el mismo valor. O sea, esto lo puede utilizar en pre-proven las policias de autos.
+El número de chasis no puede estar digamos en dos polisas, diferente, ¿cierto? Por así decir. Natoria o el número de chasis, pero esto no lo utilizamos regularmente.
+¿Está más marca inspecciones? ¿Para qué, jefe? ¿Está recuerda?
+No, ya no la tengo en mente. Vinny, disculpa, ¿me compartes por favor el link de RIF, del frontal?
+Sí. Soy de alta, jefe. Puedo mirar, a ver si se deja dar de alta desde acá.
+Ahí te mandé. Gracias, Vinny.
+Nada. Ah, si es diferente, vea, es bra.
+Sí, es muy diferente.
+Listo, estos datos, como lo digo, no se utilizan mucho, ¿cierto?
+Aquí lo más importante, está más adelante, que es por ejemplo el nombre y el programa precampo,
+entonces aquí vemos que tenemos un programa el cual va a determinar cuál es el valor por defecto que puede tener el datoria o le.
+¿Cierto? De manera dinámica.
+O tenemos la columna para definir de manera fija. Cierto.
+Ya, porque puede ser que a depender de alguna condición, no sé, a depender de una condición de los datos que yo, no sé, a lo mejor puse.
+En las pantallas anteriores me va a poner un valor fin.
+Uno u otro, perfecto.
+Y esto de aquí, también podemos tener programas de ayudas. Esto ya es la moneda que estamos configurando, como se programatrizan y qué tipos hay, ¿cierto?
+Pero cuando no le da, se acuerda que la lupita que aparece al lado de los datos,
+y usted le da para ver la lista de opciones que tienen ese dato, aquí se configuran estas columnas.
+En el programa ayuda, no está al lado de la conversión, ya solo veremos ahorita más adelante lo que estamos configurando.
+Este es el panel que aparece, no sé a qué, cuando el frontal están como por secciones bravas que le dicen ustedes.
+¿Sechones qué?
+Los datos en el frontal, usted ve que están como separados por unos recuadros, ¿cierto? Con sus nombres, con los títulos, con los grandes.
+Y esos son estos paneles, el código del panel que nosotros seleccionemos.
+Esos son nuestras tablas que llevamos a ver también.
+Entonces nosotros tenemos lo más importante aquí, sobre todo, es el programa de pre y el programa de validación.
+Nosotros tenemos un programa de pre, campo, ¿cierto?
+Tenemos un programa para validar el campo.
+Es este acá, un pereje-campo.
+Este ya es, hacer validaciones, después de que la persona colocar el dato, el ya lanzaste programa y valida.
+Puede valiar entre una lista de opciones, si está, valiar límites, cantidad de cosas, ¿cierto?
+Que no tenga larga la de negocio.
+Perfecto, súper claro.
+Una visión general de esta tabla.
+Igual ahorita que empezemos a trabajar con otros variables, pues lo va a ver más bien, ¿cierto?
+Perfecto, sí.
+¡Listo!
+Esto se aprende es haciendo, esto es mucha cosa.
+Sí.
+¡Listo! Entonces yo quiero ver a los paneles, ¿cierto?
+¡Paneles, paneles!
+¿Cuál es la tabla de los paneles, E.B.?
+¿Los variables, los dinámicas?
+¡Los paneles, paneles!
+¡Ah, lo acá está! ¿Qué ha hecho de paneles?
+Ya lo encontró, ¿vale?
+No me está dejando acceder al aplicativo, estoy aquí hablando con Fabio para que me dé el acceso
+y ya con el acceso mío ejecutó la copiausuario del suyo.
+¡Súper!
+A ver si estos paneles existen acá, ¿ya?
+Sí.
+Lo uno es que usted está solo acá, en este ambiente, ¿cierto?
+¿No está?
+Sí, estamos como cuatro o cinco compañías trabajando en las mismas datos, entonces esta base de datos es rápida, E.B., ¿no?
+Sí.
+¿Tienes toda la base para ti solo, Vinny?
+Sí, va a ser así, como Brasil va a ser una base de datos exclusiva, para decir...
+Exacto, está trabajando, pero sabros usted porque a nosotros nos toca UF.
+Sí, me lo imagino.
+¿Cuántos somos E.B.? Yo creo que más de 100, pero no estamos trabajando en las bases de datos, ¿no?
+Yo creo, creo que sí.
+¿Y cuántas compañías son?
+El Salvador...
+Panamá, Guatemala...
+Son cinco compañías de momento.
+Estos dos paneles están acá, vamos a ver los textos.
+Ya sé que si pasaron los paneles los textos, E.B.
+Si los pasaron, ¿ok?
+Sí, sí.
+Porque la otra, no sé si puede hacer el cache de Fuji, voy a preguntar aquí.
+Y dos.
+Un, dos, tres.
+Tenemos tres diferentes.
+Y falta un texto.
+Y tengo un, dos, tres, cuatro paneles.
+¿Y cuántos tengo acá?
+Diferentes.
+Tengo uno, dos, tres, cuatro paneles.
+¿Y cuántos tengo acá?
+Diferentes.
+Tengo uno, dos, tres, cuatro.
+Los paneles están y faltan unos textos.
+Uno, dos, seis, son...
+La para estas tablas, para que las tenga por ahí.
+Y niches.
+Están los paneles.
+Están el voluntad.
+Esos como subconjuntos que hay ahí.
+Ya.
+¿Pero estaría bien de la forma que está?
+Creo que nos faltan dos textos, que nos estoy viendo acá.
+Tenemos paneles y texto, E.B.
+¿Puede ser eso, no?
+¿Qué textos tenemos acá?
+Tenemos.
+20, 46.
+Ah, bueno.
+¿Una vez?
+Tenemos 20, 46.
+¿Cómo?
+22, 0, 8.
+30, 24.
+Y 30, 21.
+Es todos los cuatro textos que necesitamos.
+Me faltan 32.
+30, 21, ¿no?
+Este texto 30...
+Están haciendo las cosas más.
+De razón, así no van a encontrar nada.
+Están buscando con otra compañía.
+Ah, no, ahí están, veálos.
+Están, no, están, están súper.
+Pero vea lo que decimos. Aquí hay muchos textos que no están en código.
+Entonces, pero no lo levanta, E.B.
+¿Un que código más está lanzando eso con BR, con español?
+Ah, no, todo está con español, ¿cierto? Inicios.
+Debería decirte.
+Todo está en español.
+Espera un segundo.
+Nos damos cuenta de eso.
+Eso aquí está, Melo.
+Va a ahorrar background e intentar, en nuevo,
+si le he cargado todos los variables de español.
+Volve a background.
+Intentemos, de nuevo, si los cargaré.
+Luego, aquí, estas curas bien.
+Mira, verí, si no,
+miremos las globales de la excesión.
+Ahí acabé de enviar el script al chat.
+Y miremos qué vemos raro, los globales de excesión.
+Ah, sí.
+Comparte a pantalla, Inicio.
+Por favor.
+O sea.
+¿Va a tener el espiráquilista?
+No.
+Debería estar acá, ¿no? Después de...
+Sí.
+Esa que, por favor, Rey,
+no vemos bien, ¿de cómo es acá el código?
+Es por...
+Sí, abre, por favor, el inspeccionar
+la herramienta de desarrolladores.
+Clic derecho.
+¿Y cuál?
+Ahí, sobre la pantalla.
+Clic derecho, inspeccionar.
+Pero, ¿cuál quiere inspeccionar?
+Network.
+Siguiente, la dereita.
+Acá.
+Esa, en reyes.
+Ahora, clica en uno, dos paneles.
+Beleza. Ahora, clica en el servicio de asesión.
+No, final.
+Y, al final, tienes el X, T, Y, B.
+T, Y, D.
+Y, por favor, con ese código
+podemos consultar las globales de la excesión
+que está ejecutando el sistema en el momento.
+Local en el chat.
+Yo pego ahí.
+Ahí, con ese script que envíe en un chat
+y posee
+insert ese código y con eso
+puedo hablar de las globales.
+Con el idioma, así ya se ve.
+Y, con el idioma, es.
+Perdiendo que con español.
+Ok.
+Puedo instalar, así, a ver la modalidad
+más genérica.
+La línea del web.
+Pega en código.
+Viní.
+No.
+Habíamos borrado ese programa
+de coeficiente, jefe.
+Sí.
+Pero está ejecutando.
+Pero no hay problema.
+¿Cuál es el output?
+Nada, es el output.
+Y eso.
+Y tenes lo de ahí.
+No.
+Mira, no cosa.
+Esto lo intité sacarlo.
+Como me habían dicho y no me dejan.
+No puede ser nulo.
+¿No puede ser nulo?
+Perficiente de cobertura.
+No puede quedar sin programa.
+Vale, pero entonces ese
+igual es decor.
+¿Cuánto de cobertura?
+No, jefe, eso no es decor.
+Esto es un hn.
+¿Cuál estoy usando?
+Pero de aquí, ¿qué información
+tienen que sacar de aquí?
+Vamos a ver qué idioma,
+con qué idioma se está emitiendo.
+Y arriba en el código de idioma,
+ya vemos que está, o sea,
+que se coge el...
+Ah, es que outputa
+uno de...
+de producto, jefe, siempre.
+Vale.
+Listo, ya.
+Vale, vamos en su momento.
+Para ahorita necesitamos que nos caiga el dato variable.
+Ya no lo está haciendo.
+Interesante esto.
+Sí.
+Sí, este es una de las herramientas
+que nosotros usamos para hacer seguimiento
+cuando tenemos errores.
+Lo que es eso, las trazas,
+no sé si ustedes le explicaron también
+de las trazas, Vinicius.
+O sea, ya he escuchado,
+pero nunca lo he ejecutado.
+Y esto es otra cosa que nos apuntamos
+para ir para enseñarle en estos días
+o yo a utilizar las trazas.
+Perfecto.
+La tabla de errores
+y a utilizar estas cosas,
+todas estas herramientas, porque cuando tenga problemas
+es lo que lo haga.
+Perfecto.
+O sea, me acabamos de estudiar,
+empecemos ya programar,
+vemos cómo funcionan las trazas.
+Perfecto.
+Y qué tipo de trazas hay, porque hay varias trazas.
+Sí, me parece súper.
+¿Qué se ve? ¿Por dónde buscamos esta vaina?
+¿Va a deshabilitar y bajar solo el tipo de producto?
+¿Y qué modo se va a deshabilitar, si?
+Jefe.
+A ver si, pronto es por la marco
+que está molestando.
+¿Vas a deshabilitar todo eso?
+Lo voy a dar al tipo de producto.
+Gusta, o sea, tú sí a gusto.
+Sí, eso le trabaja bien.
+En la otra,
+primero no demora todo
+de inicios,
+y le matan la sesión,
+todos.
+La tortura.
+¿Cómo?
+En Centroamérica,
+en la base de datos,
+la gente con las tablas no las libera,
+le matan a usted la sesión
+cuando está haciendo algo.
+Mira,
+eso pasa
+acá con la gente que ocupa,
+o sea, porque igual nosotros
+ya hemos empezado
+a darle soporte a Uruguay
+y a
+Panamá.
+Entonces, eso a veces sucede porque hay muchas personas
+que están trabajando sobre, por ejemplo, Baru
+y Leguil
+en torno de Uruguay.
+Entonces, muchas veces... Panamá también.
+Panamá también, sí.
+Pero Panamá está sobre la base de Centroamérica.
+¿Tiene acceso a la base? Sí.
+Mira, tenemos esto.
+Baru,
+Panamá,
+de esta,
+y tenemos a Uruguay también.
+Qué bueno.
+Entonces,
+la gente que da soporte
+a estos dos países y a veces
+reclaman de esto.
+Empecemos de nuevo,
+de mi tío, quité todo lo de
+datos verdaderriés que decimos solo de la polisa.
+O sea, entremos en el que se va
+y la polisa aparezca.
+Ya puedes, ¿sí?
+Sí.
+¿Pero ya debería aparecer acá, o no?
+Sí, debería aparecer.
+No está apareciendo atributos.
+O sea, para allá hay otra base
+de atributos de polisa.
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+Bueno,
+¿qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+Pero,
+¿qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+Está bien, no.
+Ya Fabio me está ayudando a revisar.
+Yo estoy aquí revisando coberturas.
+No sé si te voy a dar
+un poco de suerte.
+No, no.
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+¿Qué tal?
+Ay, qué venus
+que hay un código de instalación
+MHN. ¿Puede ser eso, jefe?
+¿Nos paneles?
+Entonces, sí.
+Es posible.
+Están dando lidosos paneles.
+¿Qué?
+Tenemos, o sea,
+un código de instalación de algunos
+está en MHN.
+O sea, Honduras.
+Y el código de instalación que teníamos
+en los globales es BCR, ¿cierto?
+Sí.
+Describe.
+La clave de MHN
+o BCR, jefe.
+Demos las BCR.
+Si se está trabajando el sistema
+con instalación BCR,
+demos lo BCR.
+¿Cierto? Que eso lo que mostró
+que yo creo que ahora lo tengo.
+Con instalación
+cod instalación.
+Sí, BCR.
+BCR, ¿no?
+Sí.
+Hola, Ana, Tabela,
+y...
+en este script, si voy
+a ver para usted en el chat,
+para que vea lo que me refiero de inicio.
+Ok.
+Eso no es verdad.
+Aquí.
+Y mi bolsa ya tenía configurado
+una cobertura en un producto, ¿ne?
+Ah, cobertura Jim Orchi.
+Sí.
+Beleza.
+Ah, no es en esta, en esta,
+en este script.
+Oh, está aquí, oh.
+Tengo todas estas aquí.
+Y voy a executar con esto aquí.
+Sí, eso ya está en un nivel da...
+la compañía.
+No, eso es un coditesto
+de errores, de errós.
+Las coberturas
+son A12050.
+Es la...
+la habla de coberturas por compañía
+y la A12050
+la habla de coberturas
+a nivel de ramo.
+Ah, ese MHD.
+El coinstallación.
+Y eso.
+Y el de nos en Brasil es...
+BCR.
+Ah, BCR.
+BCR.
+Mmm.
+Pero voy a cambiarlo, ¿sí?
+Ok.
+Luego se me doy los panes también.
+Donde más vamos a tener ese error.
+Y yo traeré el siguiente.
+Y aquí en este...
+Vinny, David.
+Esto es validando las coberturas.
+Coliando
+que todo esté ya certo para que
+amarco el producto
+no de errores.
+Ok.
+Claro, y...
+y dos...
+Se me va a dar todo eso.
+Y aquí...
+Esto...
+colapsado en...
+este...
+MHD.
+MHD.
+MHD.
+Acá.
+Con la instalación de MHD.
+MHD.
+BCR.
+Ah.
+Puede ser también la fecvalidez.
+Las coberturas tienen 2021.
+Voy a pasarlo para 1900.
+¿Verdad?
+Ah, eso.
+Y el ramo, ¿cómo está?
+Todo.
+Es prácticamente...
+MHD.
+MHD.
+MHD.
+Vamos a ver.
+Vamos a ver.
+Esto de feborrogram.
+Mire cuánto que ve.
+Borre ahí y...
+y pruebe mientras yo miro acá otra estabilidad.
+Intenta de nuevo, Vinicius.
+Enfrontar.
+Hay lo que dice, voy a cambiar
+eso que estaba en MHN y TN,
+a BCR, ¿sí?
+Ya.
+Es la instalación que tenemos nosotros.
+Ya, ya.
+Ya, ya, ya. Visto, ¿vale?
+El canal nos da todo el variado de eso, ¿verdad?
+Que llegamos hasta ahí hoy.
+Eso tarda mucho veces.
+Ya lo añamos.
+Ah, sí, tributos cuáliza.
+Por fin.
+Maravil, ya.
+Esto, he colocado un número de cualquiera, no hay problema.
+¿Cómo fue la misión normal?
+¿Cómo venía eso?
+Ahora...
+No sé si cambiaron algo en la moneda, ¿verdad?
+No.
+Mira.
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?
+¿Dónde le dieron?

@@ -20,6 +20,19 @@ export default function RatingEngineTab() {
   const [conceptsData, setConceptsData] = useState(null);
   const [loadingConcepts, setLoadingConcepts] = useState(false);
 
+  // Breakdown Concepts state (1270 docs)
+  const [breakdownData, setBreakdownData] = useState([]);
+  const [loadingBreakdown, setLoadingBreakdown] = useState(false);
+  const [breakdownPage, setBreakdownPage] = useState(1);
+  const [breakdownTotalPages, setBreakdownTotalPages] = useState(1);
+  const [breakdownTotal, setBreakdownTotal] = useState(0);
+  const [breakdownSearch, setBreakdownSearch] = useState('');
+  const [breakdownBranch, setBreakdownBranch] = useState('ALL');
+  const [breakdownCalcType, setBreakdownCalcType] = useState('ALL');
+  const [breakdownBranches, setBreakdownBranches] = useState([]);
+  const [breakdownCalcTypes, setBreakdownCalcTypes] = useState([]);
+  const [selectedBreakdown, setSelectedBreakdown] = useState(null);
+
   // Technical basis state
   const [techBasisData, setTechBasisData] = useState(null);
   const [loadingTechBasis, setLoadingTechBasis] = useState(false);
@@ -557,9 +570,35 @@ export default function RatingEngineTab() {
     setTimeout(() => setDictCopiedId(null), 1800);
   };
 
+  const fetchBreakdown = (p = 1, b = 'ALL', ct = 'ALL', s = '') => {
+    setLoadingBreakdown(true);
+    let url = `/api/rte/breakdown-concepts?page=${p}&limit=12`;
+    if (b !== 'ALL') url += `&branch=${b}`;
+    if (ct !== 'ALL') url += `&calculationType=${ct}`;
+    if (s.trim()) url += `&search=${encodeURIComponent(s.trim())}`;
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        setBreakdownData(data.concepts || []);
+        setBreakdownTotal(data.total || 0);
+        setBreakdownPage(data.page || 1);
+        setBreakdownTotalPages(data.totalPages || 1);
+        if (data.branches && breakdownBranches.length === 0) setBreakdownBranches(data.branches);
+        if (data.calculationTypes && breakdownCalcTypes.length === 0) setBreakdownCalcTypes(data.calculationTypes);
+        setLoadingBreakdown(false);
+      })
+      .catch(err => {
+        console.error('Error fetching breakdown concepts:', err);
+        setLoadingBreakdown(false);
+      });
+  };
+
   useEffect(() => {
     if (subTab === 'formulas') {
       fetchFormulas();
+    } else if (subTab === 'breakdown') {
+      fetchBreakdown(breakdownPage, breakdownBranch, breakdownCalcType, breakdownSearch);
     } else if (subTab === 'concepts' && !conceptsData) {
       setLoadingConcepts(true);
       fetch('/api/rte/concepts')
@@ -585,7 +624,7 @@ export default function RatingEngineTab() {
           setLoadingTechBasis(false);
         });
     }
-  }, [subTab]);
+  }, [subTab, breakdownPage, breakdownBranch, breakdownCalcType]);
 
   const handleOpenEdit = (f) => {
     if (!user) {
@@ -769,6 +808,13 @@ export default function RatingEngineTab() {
             <FileCode2 size={14} /> Fórmulas ({formulas.length > 0 ? formulas.length : '203'})
           </button>
           <button
+            className={`pagination-btn ${subTab === 'breakdown' ? 'active' : ''}`}
+            style={subTab === 'breakdown' ? { background: 'rgba(6, 182, 212, 0.25)', borderColor: 'var(--accent-cyan)' } : {}}
+            onClick={() => setSubTab('breakdown')}
+          >
+            <Sliders size={14} /> Conceitos de Desglose ({breakdownTotal > 0 ? breakdownTotal.toLocaleString() : '1.270'})
+          </button>
+          <button
             className={`pagination-btn ${subTab === 'concepts' ? 'active' : ''}`}
             style={subTab === 'concepts' ? { background: 'rgba(6, 182, 212, 0.25)', borderColor: 'var(--accent-cyan)' } : {}}
             onClick={() => setSubTab('concepts')}
@@ -884,6 +930,259 @@ export default function RatingEngineTab() {
         </div>
       )}
 
+      {/* SUBTAB: BREAKDOWN CONCEPTS (BREAKDOWN-CONCEPTS - 1270 docs) */}
+      {subTab === 'breakdown' && (
+        <div>
+          {/* Filter Bar */}
+          <div className="filter-bar card" style={{ padding: '0.85rem 1.25rem', marginBottom: '1.25rem' }}>
+            <div className="search-input-wrapper">
+              <Search size={16} className="search-icon" />
+              <input
+                type="text"
+                placeholder="Buscar por conceito, nome ou serviço customizado..."
+                value={breakdownSearch}
+                onChange={e => setBreakdownSearch(e.target.value)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter') {
+                    fetchBreakdown(1, breakdownBranch, breakdownCalcType, breakdownSearch);
+                  }
+                }}
+              />
+            </div>
+
+            <div className="filter-group">
+              <select
+                value={breakdownBranch}
+                onChange={e => {
+                  setBreakdownBranch(e.target.value);
+                  fetchBreakdown(1, e.target.value, breakdownCalcType, breakdownSearch);
+                }}
+              >
+                <option value="ALL">Todos os Ramos ({breakdownBranches.length})</option>
+                {breakdownBranches.map(b => (
+                  <option key={b} value={b}>Ramo {b}</option>
+                ))}
+              </select>
+
+              <select
+                value={breakdownCalcType}
+                onChange={e => {
+                  setBreakdownCalcType(e.target.value);
+                  fetchBreakdown(1, breakdownBranch, e.target.value, breakdownSearch);
+                }}
+              >
+                <option value="ALL">Todos os Tipos de Cálculo</option>
+                {breakdownCalcTypes.map(ct => (
+                  <option key={ct} value={ct}>{ct}</option>
+                ))}
+              </select>
+
+              <button
+                type="button"
+                className="btn-secondary"
+                style={{ padding: '0.45rem 0.85rem', fontSize: '0.8rem' }}
+                onClick={() => fetchBreakdown(1, breakdownBranch, breakdownCalcType, breakdownSearch)}
+              >
+                Filtrar
+              </button>
+
+              {(breakdownSearch || breakdownBranch !== 'ALL' || breakdownCalcType !== 'ALL') && (
+                <button
+                  type="button"
+                  className="btn-ghost"
+                  style={{ padding: '0.45rem 0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}
+                  onClick={() => {
+                    setBreakdownSearch('');
+                    setBreakdownBranch('ALL');
+                    setBreakdownCalcType('ALL');
+                    fetchBreakdown(1, 'ALL', 'ALL', '');
+                  }}
+                >
+                  Limpar
+                </button>
+              )}
+            </div>
+
+            <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>
+              Total: <strong style={{ color: 'var(--accent-cyan)' }}>{breakdownTotal.toLocaleString()}</strong> conceitos
+            </div>
+          </div>
+
+          {/* Table Content */}
+          {loadingBreakdown ? (
+            <div className="loading-state">
+              <div className="spinner"></div>
+              <span>Carregando conceitos de desglose...</span>
+            </div>
+          ) : breakdownData.length === 0 ? (
+            <div className="card empty-state" style={{ textAlign: 'center', padding: '3rem 1.5rem' }}>
+              <Layers size={36} style={{ color: 'var(--text-muted)', margin: '0 auto 0.75rem auto' }} />
+              <p style={{ margin: '0 0 0.5rem 0', fontWeight: '500' }}>Nenhum conceito de desglose encontrado</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: 0 }}>
+                Tente ajustar os filtros por ramo ou tipo de cálculo.
+              </p>
+            </div>
+          ) : (
+            <div className="card" style={{ padding: '0', overflow: 'hidden' }}>
+              <div className="data-table-container">
+                <table className="data-table">
+                  <thead>
+                    <tr>
+                      <th style={{ width: '130px' }}>Ramo / Cob</th>
+                      <th>Conceito / Nome</th>
+                      <th>Tipo de Cálculo</th>
+                      <th>Base de Cálculo</th>
+                      <th>Acumuladores</th>
+                      <th>Serviço Customizado</th>
+                      <th style={{ textAlign: 'center', width: '90px' }}>Ação</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {breakdownData.map((c, idx) => (
+                      <tr key={c._id || idx}>
+                        <td>
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                            <span className="badge badge-neutral" style={{ fontSize: '0.72rem', alignSelf: 'flex-start' }}>
+                              Ramo {c.branch}
+                            </span>
+                            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                              Cob: {c.coverage}
+                            </span>
+                          </div>
+                        </td>
+                        <td>
+                          <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <span style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '0.88rem' }}>
+                              #{c.concept} {c.name ? `— ${c.name}` : ''}
+                            </span>
+                            {c.description && c.description !== c.name && (
+                              <span style={{ fontSize: '0.76rem', color: 'var(--text-muted)', marginTop: '2px' }}>
+                                {c.description}
+                              </span>
+                            )}
+                          </div>
+                        </td>
+                        <td>
+                          <span
+                            className="badge"
+                            style={{
+                              fontSize: '0.75rem',
+                              background:
+                                c.primaryCalculationType === 'FORMULA_ACDC'
+                                  ? 'rgba(6, 182, 212, 0.15)'
+                                  : c.primaryCalculationType === 'FIXED_AMOUNT'
+                                  ? 'rgba(16, 185, 129, 0.15)'
+                                  : c.primaryCalculationType === 'PERCENTAGE'
+                                  ? 'rgba(168, 85, 247, 0.15)'
+                                  : 'rgba(245, 158, 11, 0.15)',
+                              color:
+                                c.primaryCalculationType === 'FORMULA_ACDC'
+                                  ? '#22d3ee'
+                                  : c.primaryCalculationType === 'FIXED_AMOUNT'
+                                  ? '#34d399'
+                                  : c.primaryCalculationType === 'PERCENTAGE'
+                                  ? '#c084fc'
+                                  : '#fbbf24',
+                              border: '1px solid currentColor'
+                            }}
+                          >
+                            {c.primaryCalculationType || 'N/A'}
+                          </span>
+                        </td>
+                        <td style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+                          {c.primaryBaseType || '-'}
+                        </td>
+                        <td>
+                          <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+                            {c.accumulators && c.accumulators.length > 0 ? (
+                              c.accumulators.map((acc, aIdx) => (
+                                <span
+                                  key={aIdx}
+                                  className="badge"
+                                  style={{
+                                    fontSize: '0.7rem',
+                                    padding: '1px 5px',
+                                    background: 'rgba(99, 102, 241, 0.12)',
+                                    color: '#818cf8',
+                                    border: '1px solid rgba(99, 102, 241, 0.25)'
+                                  }}
+                                >
+                                  {acc}
+                                </span>
+                              ))
+                            ) : (
+                              <span style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>-</span>
+                            )}
+                          </div>
+                        </td>
+                        <td style={{ fontSize: '0.8rem', color: c.customService ? 'var(--accent-cyan)' : 'var(--text-muted)' }}>
+                          {c.customService || '-'}
+                        </td>
+                        <td style={{ textAlign: 'center' }}>
+                          <button
+                            type="button"
+                            className="btn-ghost"
+                            style={{ padding: '0.25rem 0.5rem', fontSize: '0.75rem', color: '#60a5fa' }}
+                            onClick={() => setSelectedBreakdown(c)}
+                            title="Inspecionar detalhes do conceito"
+                          >
+                            <Info size={14} />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Pagination */}
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '0.85rem 1.25rem',
+                  borderTop: '1px solid var(--border)',
+                  fontSize: '0.85rem',
+                  color: 'var(--text-muted)'
+                }}
+              >
+                <div>
+                  Página <strong style={{ color: 'var(--text-main)' }}>{breakdownPage}</strong> de{' '}
+                  <strong style={{ color: 'var(--text-main)' }}>{breakdownTotalPages}</strong> ({breakdownTotal.toLocaleString()} conceitos)
+                </div>
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <button
+                    type="button"
+                    className="pagination-btn"
+                    disabled={breakdownPage <= 1}
+                    onClick={() => {
+                      const prev = breakdownPage - 1;
+                      setBreakdownPage(prev);
+                      fetchBreakdown(prev, breakdownBranch, breakdownCalcType, breakdownSearch);
+                    }}
+                  >
+                    Anterior
+                  </button>
+                  <button
+                    type="button"
+                    className="pagination-btn"
+                    disabled={breakdownPage >= breakdownTotalPages}
+                    onClick={() => {
+                      const next = breakdownPage + 1;
+                      setBreakdownPage(next);
+                      fetchBreakdown(next, breakdownBranch, breakdownCalcType, breakdownSearch);
+                    }}
+                  >
+                    Próxima
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* SUBTAB 2: ECONOMIC CONCEPTS */}
       {subTab === 'concepts' && (
         <div>
@@ -971,28 +1270,11 @@ export default function RatingEngineTab() {
 
       {/* EDIT FORMULA MODAL WITH DRAG & DROP TOOLBOX */}
       {editingFormula && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.85)',
-            backdropFilter: 'blur(10px)',
-            zIndex: 100,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '1rem'
-          }}
-          onClick={() => setEditingFormula(null)}
-        >
+        <div className="modal-overlay" onClick={() => setEditingFormula(null)}>
           <div
-            className="card"
+            className="modal-content card"
             style={{
-              width: '100%',
               maxWidth: '1280px',
-              background: '#0c1220',
-              border: '1px solid var(--border-card)',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 102, 255, 0.25)',
               maxHeight: '92vh',
               overflowY: 'auto'
             }}
@@ -1005,11 +1287,11 @@ export default function RatingEngineTab() {
                   <Edit3 size={18} />
                 </div>
                 <div>
-                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', color: '#fff' }}>
+                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', color: 'var(--text-main)', fontWeight: 700 }}>
                     Editar Cálculo Atuarial
                   </h3>
                   <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-                    Código da Fórmula: <strong>{editingFormula.fomVal}</strong> • Cia #{editingFormula.cmpVal} • País: {editingFormula.cnyVal || 'GLOBAL'}
+                    Código da Fórmula: <strong style={{ color: 'var(--primary)' }}>{editingFormula.fomVal}</strong> • Cia #{editingFormula.cmpVal} • País: {editingFormula.cnyVal || 'GLOBAL'}
                   </span>
                 </div>
               </div>
@@ -1017,14 +1299,14 @@ export default function RatingEngineTab() {
                 <button
                   type="button"
                   className="pagination-btn"
-                  style={{ background: 'rgba(0, 102, 255, 0.15)', borderColor: 'var(--primary)', color: '#60a5fa', fontSize: '0.78rem' }}
+                  style={{ background: 'var(--primary-subtle, #eff6ff)', border: '1px solid #bfdbfe', color: 'var(--primary, #0066ff)', fontWeight: 600, fontSize: '0.78rem' }}
                   onClick={() => setShowDictionaryModal(true)}
                 >
                   <BookOpen size={14} /> Ver Dicionário Completo
                 </button>
                 <button
                   onClick={() => setEditingFormula(null)}
-                  style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
+                  style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', padding: '4px' }}
                 >
                   <X size={20} />
                 </button>
@@ -1033,7 +1315,7 @@ export default function RatingEngineTab() {
 
             {/* Success message */}
             {saveSuccessMsg && (
-              <div style={{ background: 'rgba(16, 185, 129, 0.15)', border: '1px solid var(--accent-emerald)', padding: '0.75rem', borderRadius: 'var(--radius-sm)', color: 'var(--accent-emerald)', fontSize: '0.85rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div style={{ background: '#ecfdf5', border: '1px solid #a7f3d0', padding: '0.75rem', borderRadius: 'var(--radius-sm)', color: '#047857', fontSize: '0.85rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <CheckCircle2 size={16} />
                 <span>{saveSuccessMsg}</span>
               </div>
@@ -1041,7 +1323,7 @@ export default function RatingEngineTab() {
 
             {/* Error message */}
             {saveErrorMsg && (
-              <div style={{ background: 'rgba(244, 63, 94, 0.15)', border: '1px solid var(--accent-rose)', padding: '0.75rem', borderRadius: 'var(--radius-sm)', color: 'var(--accent-rose)', fontSize: '0.85rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div style={{ background: '#fff1f2', border: '1px solid #fecdd3', padding: '0.75rem', borderRadius: 'var(--radius-sm)', color: '#be123c', fontSize: '0.85rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <XCircle size={16} />
                 <span>{saveErrorMsg}</span>
               </div>
@@ -1074,25 +1356,27 @@ export default function RatingEngineTab() {
                       <label style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
                         Expressão Matemática de Cálculo:
                       </label>
-                      <span style={{ fontSize: '0.72rem', padding: '2px 8px', borderRadius: '4px', background: 'rgba(0, 102, 255, 0.15)', color: '#60a5fa', fontWeight: 600 }}>
+                      <span style={{ fontSize: '0.72rem', padding: '2px 8px', borderRadius: '4px', background: 'var(--primary-subtle, #eff6ff)', color: 'var(--primary, #0066ff)', fontWeight: 600, border: '1px solid #bfdbfe' }}>
                         {formulaSegments.filter(s => s.kind === 'object').length} {formulaSegments.filter(s => s.kind === 'object').length === 1 ? 'objeto' : 'objetos'}
                       </span>
                     </div>
 
                     {/* View Mode Switcher */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: '#0c1220', padding: '2px', borderRadius: '6px', border: '1px solid var(--border-card)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: 'var(--bg-surface, #f1f5f9)', padding: '3px', borderRadius: '8px', border: '1px solid var(--border, #e2e8f0)' }}>
                       <button
                         type="button"
                         onClick={() => setEditorViewMode('visual')}
                         style={{
-                          padding: '2px 8px',
+                          padding: '3px 9px',
                           fontSize: '0.72rem',
                           fontWeight: 600,
-                          borderRadius: '4px',
+                          borderRadius: '6px',
                           border: 'none',
                           cursor: 'pointer',
-                          background: editorViewMode === 'visual' ? '#0066FF' : 'transparent',
-                          color: editorViewMode === 'visual' ? '#FFFFFF' : 'var(--text-muted)'
+                          background: editorViewMode === 'visual' ? 'var(--primary, #0066ff)' : 'transparent',
+                          color: editorViewMode === 'visual' ? '#FFFFFF' : 'var(--text-secondary, #475569)',
+                          boxShadow: editorViewMode === 'visual' ? '0 1px 3px rgba(0, 102, 255, 0.25)' : 'none',
+                          transition: 'all 0.15s ease'
                         }}
                       >
                         🧩 Construtor Visual de Objetos
@@ -1101,14 +1385,16 @@ export default function RatingEngineTab() {
                         type="button"
                         onClick={() => setEditorViewMode('code')}
                         style={{
-                          padding: '2px 8px',
+                          padding: '3px 9px',
                           fontSize: '0.72rem',
                           fontWeight: 600,
-                          borderRadius: '4px',
+                          borderRadius: '6px',
                           border: 'none',
                           cursor: 'pointer',
-                          background: editorViewMode === 'code' ? '#0066FF' : 'transparent',
-                          color: editorViewMode === 'code' ? '#FFFFFF' : 'var(--text-muted)'
+                          background: editorViewMode === 'code' ? 'var(--primary, #0066ff)' : 'transparent',
+                          color: editorViewMode === 'code' ? '#FFFFFF' : 'var(--text-secondary, #475569)',
+                          boxShadow: editorViewMode === 'code' ? '0 1px 3px rgba(0, 102, 255, 0.25)' : 'none',
+                          transition: 'all 0.15s ease'
                         }}
                       >
                         📝 Modo Texto Livre
@@ -1128,15 +1414,15 @@ export default function RatingEngineTab() {
                         maxHeight: '280px',
                         overflowY: 'auto',
                         borderRadius: 'var(--radius-sm)',
-                        border: isDraggingOver ? '2px dashed #0066FF' : '1px solid var(--border-card)',
-                        background: isDraggingOver ? 'rgba(0, 102, 255, 0.08)' : '#070b14',
+                        border: isDraggingOver ? '2px dashed #0066FF' : '1px solid var(--border)',
+                        background: isDraggingOver ? 'var(--primary-light)' : 'var(--bg-surface)',
                         padding: '0.75rem',
                         display: 'flex',
                         flexWrap: 'wrap',
                         alignContent: 'flex-start',
                         alignItems: 'center',
                         gap: '6px',
-                        boxShadow: isDraggingOver ? '0 0 20px rgba(0, 102, 255, 0.4)' : 'none',
+                        boxShadow: isDraggingOver ? '0 0 16px rgba(0, 102, 255, 0.25)' : 'none',
                         transition: 'all 0.15s ease'
                       }}
                     >
@@ -1155,7 +1441,7 @@ export default function RatingEngineTab() {
                                 style={{
                                   display: 'inline-flex',
                                   alignItems: 'center',
-                                  margin: '0 1px'
+                                  margin: '0 2px'
                                 }}
                               >
                                 <input
@@ -1166,11 +1452,11 @@ export default function RatingEngineTab() {
                                   style={{
                                     background: 'transparent',
                                     border: 'none',
-                                    borderBottom: '1px dashed rgba(255, 255, 255, 0.35)',
-                                    color: '#f1f5f9',
+                                    borderBottom: '1.5px dashed #cbd5e1',
+                                    color: 'var(--text-main, #0f172a)',
                                     fontFamily: 'var(--font-mono)',
-                                    fontSize: '1rem',
-                                    fontWeight: 600,
+                                    fontSize: '1.1rem',
+                                    fontWeight: 700,
                                     width: `${Math.max(seg.value.length * 15 + 28, 42)}px`,
                                     padding: '2px 6px',
                                     textAlign: 'center',
@@ -1180,13 +1466,13 @@ export default function RatingEngineTab() {
                                     transition: 'all 0.15s ease'
                                   }}
                                   onFocus={(e) => {
-                                    e.target.style.borderBottom = '1px solid var(--accent-cyan)';
-                                    e.target.style.color = '#38bdf8';
-                                    e.target.style.background = 'rgba(6, 182, 212, 0.08)';
+                                    e.target.style.borderBottom = '2px solid var(--primary, #0066ff)';
+                                    e.target.style.color = 'var(--primary, #0066ff)';
+                                    e.target.style.background = 'var(--primary-subtle, #eff6ff)';
                                   }}
                                   onBlur={(e) => {
-                                    e.target.style.borderBottom = '1px dashed rgba(255, 255, 255, 0.25)';
-                                    e.target.style.color = '#f1f5f9';
+                                    e.target.style.borderBottom = '1.5px dashed #cbd5e1';
+                                    e.target.style.color = 'var(--text-main, #0f172a)';
                                     e.target.style.background = 'transparent';
                                   }}
                                 />
@@ -1211,35 +1497,36 @@ export default function RatingEngineTab() {
                                   display: 'inline-flex',
                                   alignItems: 'center',
                                   gap: '5px',
-                                  padding: '0.28rem 0.6rem',
-                                  background: 'rgba(192, 132, 252, 0.14)',
-                                  border: `1px solid ${isTargetedOver ? '#0066FF' : 'rgba(192, 132, 252, 0.45)'}`,
+                                  padding: '0.3rem 0.65rem',
+                                  background: '#f3e8ff',
+                                  border: `1.5px solid ${isTargetedOver ? 'var(--primary, #0066ff)' : '#d8b4fe'}`,
                                   borderRadius: '6px',
-                                  color: '#c084fc',
+                                  color: '#7e22ce',
                                   fontFamily: 'var(--font-mono)',
                                   fontSize: '0.82rem',
                                   fontWeight: 600,
                                   cursor: 'grab',
                                   opacity: isBeingDragged ? 0.35 : 1,
                                   transform: isTargetedOver ? 'scale(1.05)' : 'scale(1)',
-                                  boxShadow: isTargetedOver ? '0 0 12px rgba(0, 102, 255, 0.6)' : '0 2px 4px rgba(0,0,0,0.2)',
+                                  boxShadow: isTargetedOver ? '0 0 12px rgba(0, 102, 255, 0.4)' : '0 1px 3px rgba(0,0,0,0.06)',
                                   transition: 'all 0.12s ease',
                                   userSelect: 'none'
                                 }}
                               >
-                                <GripVertical size={11} style={{ opacity: 0.6, cursor: 'grab', flexShrink: 0 }} />
+                                <GripVertical size={11} style={{ opacity: 0.6, cursor: 'grab', flexShrink: 0, color: '#7e22ce' }} />
                                 <span style={{
                                   fontSize: '0.62rem',
                                   padding: '1px 4px',
                                   borderRadius: '3px',
-                                  background: 'rgba(0,0,0,0.3)',
-                                  color: '#c084fc',
+                                  background: '#e9d5ff',
+                                  color: '#6b21a8',
+                                  fontWeight: 700,
                                   letterSpacing: '0.3px',
                                   textTransform: 'uppercase'
                                 }}>
                                   VAR
                                 </span>
-                                <span>{seg.name}</span>
+                                <span style={{ color: '#6b21a8', fontWeight: 700 }}>{seg.name}</span>
                                 <button
                                   type="button"
                                   onClick={(e) => {
@@ -1250,8 +1537,7 @@ export default function RatingEngineTab() {
                                   style={{
                                     background: 'none',
                                     border: 'none',
-                                    color: '#c084fc',
-                                    opacity: 0.7,
+                                    color: '#7e22ce',
                                     cursor: 'pointer',
                                     padding: '1px',
                                     display: 'flex',
@@ -1259,7 +1545,7 @@ export default function RatingEngineTab() {
                                     marginLeft: '2px'
                                   }}
                                   onMouseEnter={(e) => { e.currentTarget.style.color = '#ef4444'; }}
-                                  onMouseLeave={(e) => { e.currentTarget.style.color = '#c084fc'; }}
+                                  onMouseLeave={(e) => { e.currentTarget.style.color = '#7e22ce'; }}
                                 >
                                   <X size={12} />
                                 </button>
@@ -1286,25 +1572,25 @@ export default function RatingEngineTab() {
                                   display: 'inline-flex',
                                   alignItems: 'center',
                                   gap: '6px',
-                                  padding: '0.3rem 0.65rem',
-                                  background: isFuncDropTarget ? 'rgba(52, 211, 153, 0.25)' : 'rgba(52, 211, 153, 0.12)',
-                                  border: `1.5px ${isFuncDropTarget ? 'dashed #34d399' : 'solid rgba(52, 211, 153, 0.45)'}`,
+                                  padding: '0.32rem 0.7rem',
+                                  background: isFuncDropTarget ? '#d1fae5' : '#ecfdf5',
+                                  border: `1.5px ${isFuncDropTarget ? 'dashed #10b981' : 'solid #a7f3d0'}`,
                                   borderRadius: '8px',
-                                  boxShadow: isFuncDropTarget ? '0 0 20px rgba(52, 211, 153, 0.6)' : isTargetedOver ? '0 0 12px rgba(0, 102, 255, 0.5)' : '0 2px 4px rgba(0,0,0,0.2)',
+                                  boxShadow: isFuncDropTarget ? '0 0 16px rgba(16, 185, 129, 0.4)' : isTargetedOver ? '0 0 12px rgba(0, 102, 255, 0.4)' : '0 1px 3px rgba(0,0,0,0.06)',
                                   transform: isFuncDropTarget ? 'scale(1.03)' : isTargetedOver ? 'scale(1.05)' : 'scale(1)',
                                   opacity: isBeingDragged ? 0.35 : 1,
                                   transition: 'all 0.15s ease',
                                   userSelect: 'none'
                                 }}
                               >
-                                <GripVertical size={11} style={{ opacity: 0.6, cursor: 'grab', flexShrink: 0, color: '#34d399' }} />
+                                <GripVertical size={11} style={{ opacity: 0.7, cursor: 'grab', flexShrink: 0, color: '#047857' }} />
                                 
                                 <span style={{
                                   fontSize: '0.62rem',
                                   padding: '1px 4px',
                                   borderRadius: '3px',
-                                  background: 'rgba(52, 211, 153, 0.25)',
-                                  color: '#34d399',
+                                  background: '#d1fae5',
+                                  color: '#065f46',
                                   fontWeight: 700,
                                   letterSpacing: '0.3px',
                                   textTransform: 'uppercase'
@@ -1313,15 +1599,15 @@ export default function RatingEngineTab() {
                                 </span>
 
                                 <span style={{
-                                  color: '#34d399',
+                                  color: '#047857',
                                   fontFamily: 'var(--font-mono)',
-                                  fontSize: '0.84rem',
-                                  fontWeight: 600
+                                  fontSize: '0.86rem',
+                                  fontWeight: 700
                                 }}>
                                   {seg.funcName}
                                 </span>
 
-                                <span style={{ color: '#6ee7b7', fontFamily: 'var(--font-mono)', fontSize: '0.95rem', fontWeight: 700 }}>(</span>
+                                <span style={{ color: '#047857', fontFamily: 'var(--font-mono)', fontSize: '0.95rem', fontWeight: 700 }}>(</span>
 
                                 {/* Inner Slot: Holds Constant or Variable */}
                                 {seg.innerItem && seg.innerItem.name ? (
@@ -1332,9 +1618,9 @@ export default function RatingEngineTab() {
                                       gap: '4px',
                                       padding: '0.18rem 0.5rem',
                                       borderRadius: '5px',
-                                      background: seg.innerItem.type === 'constant' ? 'rgba(96, 165, 250, 0.2)' : 'rgba(192, 132, 252, 0.2)',
-                                      border: `1px solid ${seg.innerItem.type === 'constant' ? 'rgba(96, 165, 250, 0.55)' : 'rgba(192, 132, 252, 0.55)'}`,
-                                      color: seg.innerItem.type === 'constant' ? '#93c5fd' : '#e9d5ff',
+                                      background: seg.innerItem.type === 'constant' ? '#eff6ff' : '#f3e8ff',
+                                      border: `1px solid ${seg.innerItem.type === 'constant' ? '#bfdbfe' : '#d8b4fe'}`,
+                                      color: seg.innerItem.type === 'constant' ? '#1d4ed8' : '#7e22ce',
                                       fontSize: '0.78rem',
                                       fontFamily: 'var(--font-mono)',
                                       fontWeight: 600
@@ -1344,14 +1630,15 @@ export default function RatingEngineTab() {
                                       fontSize: '0.58rem',
                                       padding: '0 3px',
                                       borderRadius: '2px',
-                                      background: 'rgba(0,0,0,0.35)',
-                                      color: seg.innerItem.type === 'constant' ? '#60a5fa' : '#c084fc'
+                                      background: seg.innerItem.type === 'constant' ? '#dbeafe' : '#e9d5ff',
+                                      color: seg.innerItem.type === 'constant' ? '#1e40af' : '#6b21a8',
+                                      fontWeight: 700
                                     }}>
                                       {seg.innerItem.type === 'constant' ? 'CTE' : 'VAR'}
                                     </span>
-                                    <span>{seg.innerItem.name}</span>
+                                    <span style={{ fontWeight: 700 }}>{seg.innerItem.name}</span>
                                     {seg.innerItem.value && (
-                                      <span style={{ fontSize: '0.65rem', color: '#34d399', background: 'rgba(52,211,153,0.15)', padding: '0 3px', borderRadius: '2px' }}>
+                                      <span style={{ fontSize: '0.65rem', color: '#15803d', background: '#dcfce7', padding: '0 4px', borderRadius: '3px', fontWeight: 600 }}>
                                         = {seg.innerItem.value}
                                       </span>
                                     )}
@@ -1386,18 +1673,19 @@ export default function RatingEngineTab() {
                                       gap: '4px',
                                       padding: '0.2rem 0.5rem',
                                       borderRadius: '5px',
-                                      border: isFuncDropTarget ? '1.5px dashed #34d399' : '1px dashed rgba(52, 211, 153, 0.55)',
-                                      background: isFuncDropTarget ? 'rgba(52, 211, 153, 0.25)' : 'rgba(52, 211, 153, 0.08)',
-                                      color: isFuncDropTarget ? '#a7f3d0' : '#6ee7b7',
+                                      border: isFuncDropTarget ? '1.5px dashed #059669' : '1px dashed #6ee7b7',
+                                      background: isFuncDropTarget ? '#d1fae5' : '#f0fdf4',
+                                      color: isFuncDropTarget ? '#065f46' : '#059669',
                                       fontSize: '0.74rem',
-                                      fontFamily: 'var(--font-mono)'
+                                      fontFamily: 'var(--font-mono)',
+                                      fontWeight: 500
                                     }}
                                   >
                                     <span>{isFuncDropTarget ? '⚡ Solte agora para encaixar!' : '📥 Solte constante/variável aqui'}</span>
                                   </div>
                                 )}
 
-                                <span style={{ color: '#6ee7b7', fontFamily: 'var(--font-mono)', fontSize: '0.95rem', fontWeight: 700 }}>)</span>
+                                <span style={{ color: '#047857', fontFamily: 'var(--font-mono)', fontSize: '0.95rem', fontWeight: 700 }}>)</span>
 
                                 <button
                                   type="button"
@@ -1409,16 +1697,15 @@ export default function RatingEngineTab() {
                                   style={{
                                     background: 'none',
                                     border: 'none',
-                                    color: '#34d399',
-                                    opacity: 0.7,
+                                    color: '#047857',
                                     cursor: 'pointer',
                                     padding: '1px',
                                     display: 'flex',
                                     alignItems: 'center',
                                     marginLeft: '2px'
                                   }}
-                                  onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.color = '#ef4444'; }}
-                                  onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.7'; e.currentTarget.style.color = '#34d399'; }}
+                                  onMouseEnter={(e) => { e.currentTarget.style.color = '#ef4444'; }}
+                                  onMouseLeave={(e) => { e.currentTarget.style.color = '#047857'; }}
                                 >
                                   <X size={12} />
                                 </button>
@@ -1439,8 +1726,8 @@ export default function RatingEngineTab() {
                       style={{
                         position: 'relative',
                         borderRadius: 'var(--radius-sm)',
-                        border: isDraggingOver ? '2px dashed #0066FF' : '1px solid var(--border-card)',
-                        background: isDraggingOver ? 'rgba(0, 102, 255, 0.08)' : '#070b14'
+                        border: isDraggingOver ? '2px dashed var(--primary, #0066ff)' : '1px solid var(--border, #cbd5e1)',
+                        background: isDraggingOver ? 'var(--primary-subtle, #eff6ff)' : 'var(--bg-surface, #f8fafc)'
                       }}
                     >
                       <textarea
@@ -1458,7 +1745,7 @@ export default function RatingEngineTab() {
                           width: '100%',
                           fontFamily: 'var(--font-mono)',
                           fontSize: '0.92rem',
-                          color: '#93c5fd',
+                          color: 'var(--text-main, #0f172a)',
                           background: 'transparent',
                           border: 'none',
                           padding: '0.75rem 1rem',
@@ -1473,22 +1760,22 @@ export default function RatingEngineTab() {
                   <div
                     style={{
                       marginTop: '0.45rem',
-                      padding: '0.45rem 0.75rem',
-                      background: '#090D17',
-                      border: '1px solid rgba(255, 255, 255, 0.06)',
-                      borderRadius: '6px',
+                      padding: '0.5rem 0.85rem',
+                      background: 'var(--bg-surface, #f1f5f9)',
+                      border: '1px solid var(--border, #e2e8f0)',
+                      borderRadius: '8px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
                       gap: '0.5rem',
-                      fontSize: '0.76rem'
+                      fontSize: '0.78rem'
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px', minWidth: 0, flex: 1 }}>
-                      <span style={{ color: 'var(--text-muted)', whiteSpace: 'nowrap', fontWeight: 600 }}>
+                      <span style={{ color: 'var(--text-secondary, #475569)', whiteSpace: 'nowrap', fontWeight: 600 }}>
                         Expressão Gerada:
                       </span>
-                      <code style={{ color: '#93c5fd', fontFamily: 'var(--font-mono)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <code style={{ color: 'var(--primary, #0066ff)', fontFamily: 'var(--font-mono)', fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {editExpression || '(nenhum objeto inserido)'}
                       </code>
                     </div>
@@ -1501,13 +1788,16 @@ export default function RatingEngineTab() {
                           setTimeout(() => setCopiedFormulaExpr(false), 1600);
                         }}
                         style={{
-                          background: 'transparent',
-                          border: 'none',
-                          color: copiedFormulaExpr ? '#10B981' : '#60A5FA',
+                          background: 'var(--bg-card, #ffffff)',
+                          border: '1px solid var(--border, #cbd5e1)',
+                          color: copiedFormulaExpr ? '#059669' : 'var(--primary, #0066ff)',
+                          borderRadius: '4px',
+                          padding: '3px 8px',
                           fontSize: '0.72rem',
+                          fontWeight: 600,
                           display: 'flex',
                           alignItems: 'center',
-                          gap: '3px',
+                          gap: '4px',
                           cursor: 'pointer',
                           flexShrink: 0
                         }}
@@ -1521,7 +1811,7 @@ export default function RatingEngineTab() {
 
                 {/* Quick Operators Toolbar (Strictly Textual) */}
                 <div style={{ marginBottom: '1.25rem' }}>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.35rem', fontWeight: 600 }}>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary, #475569)', textTransform: 'uppercase', marginBottom: '0.35rem', fontWeight: 600 }}>
                     Operadores Rápidos Textuais (Clique para inserir na fórmula):
                   </div>
                   <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
@@ -1541,13 +1831,36 @@ export default function RatingEngineTab() {
                         type="button"
                         className="pagination-btn"
                         style={{
-                          padding: '0.3rem 0.65rem',
+                          padding: '0.35rem 0.75rem',
                           fontFamily: 'var(--font-mono)',
-                          fontSize: '0.84rem',
-                          fontWeight: 600,
-                          background: op.isSpecial ? 'rgba(244, 63, 94, 0.1)' : 'rgba(255, 255, 255, 0.04)',
-                          borderColor: op.isSpecial ? 'rgba(244, 63, 94, 0.3)' : 'var(--border-card)',
-                          color: op.isSpecial ? '#fda4af' : '#e2e8f0'
+                          fontSize: '0.88rem',
+                          fontWeight: 700,
+                          background: op.isSpecial ? '#fff1f2' : 'var(--bg-card, #ffffff)',
+                          borderColor: op.isSpecial ? '#fecdd3' : 'var(--border, #cbd5e1)',
+                          color: op.isSpecial ? '#e11d48' : 'var(--text-main, #0f172a)',
+                          boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
+                          transition: 'all 0.15s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          if (op.isSpecial) {
+                            e.currentTarget.style.background = '#ffe4e6';
+                            e.currentTarget.style.borderColor = '#fda4af';
+                          } else {
+                            e.currentTarget.style.background = 'var(--primary-subtle, #eff6ff)';
+                            e.currentTarget.style.borderColor = 'var(--primary, #0066ff)';
+                            e.currentTarget.style.color = 'var(--primary, #0066ff)';
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (op.isSpecial) {
+                            e.currentTarget.style.background = '#fff1f2';
+                            e.currentTarget.style.borderColor = '#fecdd3';
+                            e.currentTarget.style.color = '#e11d48';
+                          } else {
+                            e.currentTarget.style.background = 'var(--bg-card, #ffffff)';
+                            e.currentTarget.style.borderColor = 'var(--border, #cbd5e1)';
+                            e.currentTarget.style.color = 'var(--text-main, #0f172a)';
+                          }
                         }}
                         onClick={() => {
                           if (op.insert === '__CLEAR__') {
@@ -1568,8 +1881,8 @@ export default function RatingEngineTab() {
                 {/* AI Gateway Validation */}
                 <div
                   style={{
-                    background: 'rgba(15, 23, 42, 0.8)',
-                    border: '1px solid rgba(139, 92, 246, 0.3)',
+                    background: 'linear-gradient(135deg, #f8fafc 0%, #f5f3ff 100%)',
+                    border: '1px solid #ddd6fe',
                     borderRadius: 'var(--radius-md)',
                     padding: '0.9rem',
                     marginBottom: '1rem'
@@ -1577,17 +1890,17 @@ export default function RatingEngineTab() {
                 >
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '0.6rem' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <Bot size={17} color="var(--accent-purple)" />
-                      <span style={{ fontSize: '0.84rem', fontWeight: 600, color: '#e2e8f0' }}>
+                      <Bot size={17} color="#7c3aed" />
+                      <span style={{ fontSize: '0.84rem', fontWeight: 700, color: '#5b21b6' }}>
                         Validação por IA (Gateway Local)
                       </span>
                     </div>
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                      <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Modelo:</span>
+                      <span style={{ fontSize: '0.72rem', color: 'var(--text-secondary, #475569)', fontWeight: 600 }}>Modelo:</span>
                       <select
                         className="select-field"
-                        style={{ padding: '0.25rem 0.5rem', fontSize: '0.78rem' }}
+                        style={{ padding: '0.25rem 0.5rem', fontSize: '0.78rem', background: '#ffffff', borderColor: '#cbd5e1', color: 'var(--text-main, #0f172a)' }}
                         value={selectedAiModel}
                         onChange={(e) => setSelectedAiModel(e.target.value)}
                       >
@@ -1599,7 +1912,7 @@ export default function RatingEngineTab() {
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
-                    <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', margin: 0 }}>
+                    <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary, #475569)', margin: 0 }}>
                       Analisa a integridade sintática, operadores e lógica atuarial do cálculo.
                     </p>
                     <button
@@ -1608,11 +1921,12 @@ export default function RatingEngineTab() {
                       disabled={validatingAi || !editExpression.trim()}
                       className="pagination-btn"
                       style={{
-                        background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(6, 182, 212, 0.3))',
-                        borderColor: 'var(--accent-purple)',
-                        color: '#fff',
+                        background: 'linear-gradient(135deg, #7c3aed, #0284c7)',
+                        border: 'none',
+                        color: '#ffffff',
                         fontSize: '0.8rem',
-                        fontWeight: 600
+                        fontWeight: 600,
+                        boxShadow: '0 2px 6px rgba(124, 58, 237, 0.25)'
                       }}
                     >
                       {validatingAi ? (
@@ -1622,7 +1936,7 @@ export default function RatingEngineTab() {
                         </>
                       ) : (
                         <>
-                          <Sparkles size={13} color="var(--accent-cyan)" /> Validar com IA
+                          <Sparkles size={13} color="#ffffff" /> Validar com IA
                         </>
                       )}
                     </button>
@@ -1633,16 +1947,16 @@ export default function RatingEngineTab() {
                       style={{
                         marginTop: '0.75rem',
                         background: aiValidation.status === 'APPROVED'
-                          ? 'rgba(16, 185, 129, 0.1)'
+                          ? '#ecfdf5'
                           : aiValidation.status === 'WARNING'
-                          ? 'rgba(245, 158, 11, 0.1)'
-                          : 'rgba(244, 63, 94, 0.1)',
+                          ? '#fffbeb'
+                          : '#fff1f2',
                         border: `1px solid ${
                           aiValidation.status === 'APPROVED'
-                            ? 'var(--accent-emerald)'
+                            ? '#a7f3d0'
                             : aiValidation.status === 'WARNING'
-                            ? 'var(--accent-amber)'
-                            : 'var(--accent-rose)'
+                            ? '#fde68a'
+                            : '#fecdd3'
                         }`,
                         borderRadius: 'var(--radius-sm)',
                         padding: '0.75rem'
@@ -1670,10 +1984,10 @@ export default function RatingEngineTab() {
                                 fontSize: '0.72rem',
                                 padding: '2px 8px',
                                 borderRadius: '4px',
-                                background: aiValidation.parens.balanced ? 'rgba(16, 185, 129, 0.18)' : 'rgba(244, 63, 94, 0.18)',
-                                border: `1px solid ${aiValidation.parens.balanced ? 'rgba(16, 185, 129, 0.4)' : 'rgba(244, 63, 94, 0.4)'}`,
-                                color: aiValidation.parens.balanced ? '#34d399' : '#fda4af',
-                                fontWeight: 600,
+                                background: aiValidation.parens.balanced ? '#dcfce7' : '#fee2e2',
+                                border: `1px solid ${aiValidation.parens.balanced ? '#bbf7d0' : '#fecdd3'}`,
+                                color: aiValidation.parens.balanced ? '#15803d' : '#b91c1c',
+                                fontWeight: 700,
                                 fontFamily: 'var(--font-mono)',
                                 display: 'inline-flex',
                                 alignItems: 'center',
@@ -1726,26 +2040,27 @@ export default function RatingEngineTab() {
               {/* RIGHT COLUMN: DRAGGABLE & SEARCHABLE OBJECTS TOOLBOX */}
               <div
                 style={{
-                  background: '#070b14',
-                  border: '1px solid var(--border-card)',
-                  borderRadius: 'var(--radius-sm)',
-                  padding: '0.9rem',
+                  background: 'var(--bg-surface, #f8fafc)',
+                  border: '1px solid var(--border, #e2e8f0)',
+                  borderRadius: '12px',
+                  padding: '1rem',
                   display: 'flex',
                   flexDirection: 'column',
-                  maxHeight: '660px'
+                  maxHeight: '660px',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                    <Layers size={16} color="var(--primary)" />
-                    <strong style={{ fontSize: '0.9rem', color: '#fff' }}>Objetos de Cálculo</strong>
+                    <Layers size={16} color="var(--primary, #0066ff)" />
+                    <strong style={{ fontSize: '0.95rem', color: 'var(--text-main, #0f172a)' }}>Objetos de Cálculo</strong>
                   </div>
-                  <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                  <span style={{ fontSize: '0.72rem', color: 'var(--text-muted, #64748b)', fontWeight: 500 }}>
                     {filteredBuilderItems.length} disponíveis
                   </span>
                 </div>
 
-                <p style={{ fontSize: '0.76rem', color: 'var(--text-secondary)', marginBottom: '0.75rem' }}>
+                <p style={{ fontSize: '0.76rem', color: 'var(--text-secondary, #475569)', marginBottom: '0.75rem', lineHeight: 1.4 }}>
                   <strong>Arraste</strong> para a fórmula ou <strong>clique</strong> para inserir na posição do cursor.
                 </p>
 
@@ -1755,7 +2070,7 @@ export default function RatingEngineTab() {
                   <input
                     type="text"
                     className="input-field"
-                    style={{ fontSize: '0.8rem', padding: '0.45rem 0.75rem 0.45rem 2rem' }}
+                    style={{ fontSize: '0.8rem', padding: '0.45rem 0.75rem 0.45rem 2rem', background: '#ffffff', borderColor: 'var(--border, #cbd5e1)' }}
                     placeholder="Filtrar constante, variável ou função..."
                     value={builderSearch}
                     onChange={(e) => setBuilderSearch(e.target.value)}
@@ -1771,32 +2086,57 @@ export default function RatingEngineTab() {
                   )}
                 </div>
 
-                {/* Category Pills */}
-                <div style={{ display: 'flex', gap: '0.35rem', overflowX: 'auto', paddingBottom: '0.4rem', marginBottom: '0.6rem' }}>
+                {/* Category Menu Buttons (Enlarged & Easy to Read/Click) */}
+                <div style={{ display: 'flex', gap: '0.45rem', flexWrap: 'wrap', paddingBottom: '0.4rem', marginBottom: '0.75rem' }}>
                   {[
-                    { id: 'all', label: 'Todos' },
-                    { id: 'constants', label: `Constantes (${dictionary.constants?.length || 0})` },
-                    { id: 'variables', label: `Variáveis (${dictionary.variables?.length || 0})` },
-                    { id: 'functions', label: `Funções Contêiner (${dictionary.functions?.length || 0})` },
-                    { id: 'operators', label: 'Operadores (Textuais)' }
-                  ].map(tab => (
-                    <button
-                      key={tab.id}
-                      type="button"
-                      className="pagination-btn"
-                      style={{
-                        padding: '0.2rem 0.5rem',
-                        fontSize: '0.72rem',
-                        whiteSpace: 'nowrap',
-                        background: builderCategory === tab.id ? 'var(--primary)' : 'rgba(255, 255, 255, 0.04)',
-                        borderColor: builderCategory === tab.id ? 'var(--primary)' : 'var(--border-card)',
-                        color: builderCategory === tab.id ? '#fff' : 'var(--text-secondary)'
-                      }}
-                      onClick={() => setBuilderCategory(tab.id)}
-                    >
-                      {tab.label}
-                    </button>
-                  ))}
+                    { id: 'all', label: 'Todos', count: null },
+                    { id: 'constants', label: 'Constantes', count: dictionary.constants?.length || 0 },
+                    { id: 'variables', label: 'Variáveis', count: dictionary.variables?.length || 0 },
+                    { id: 'functions', label: 'Funções Contêiner', count: dictionary.functions?.length || 0 },
+                    { id: 'operators', label: 'Operadores', count: 'Textuais' }
+                  ].map(tab => {
+                    const isActive = builderCategory === tab.id;
+                    return (
+                      <button
+                        key={tab.id}
+                        type="button"
+                        className="pagination-btn"
+                        style={{
+                          padding: '0.42rem 0.85rem',
+                          fontSize: '0.82rem',
+                          whiteSpace: 'nowrap',
+                          borderRadius: '8px',
+                          background: isActive ? 'var(--primary, #0066ff)' : 'var(--bg-card, #ffffff)',
+                          borderColor: isActive ? 'var(--primary, #0066ff)' : 'var(--border, #cbd5e1)',
+                          color: isActive ? '#ffffff' : 'var(--text-main, #1e293b)',
+                          fontWeight: isActive ? 700 : 600,
+                          boxShadow: isActive ? '0 2px 6px rgba(0, 102, 255, 0.3)' : '0 1px 2px rgba(0,0,0,0.04)',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          cursor: 'pointer',
+                          transition: 'all 0.15s ease'
+                        }}
+                        onClick={() => setBuilderCategory(tab.id)}
+                      >
+                        <span>{tab.label}</span>
+                        {tab.count !== null && (
+                          <span
+                            style={{
+                              fontSize: '0.7rem',
+                              padding: '1px 6px',
+                              borderRadius: '10px',
+                              fontWeight: 700,
+                              background: isActive ? 'rgba(255,255,255,0.25)' : 'var(--bg-surface, #f1f5f9)',
+                              color: isActive ? '#ffffff' : 'var(--text-secondary, #64748b)'
+                            }}
+                          >
+                            {tab.count}
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
 
                 {/* Scrollable list of items */}
@@ -1837,71 +2177,83 @@ export default function RatingEngineTab() {
                               : 'Variável: clique para inserir ou arraste para a fórmula/função'
                           }
                           style={{
-                            background: '#0c1220',
-                            border: '1px solid var(--border-card)',
-                            borderRadius: 'var(--radius-sm)',
+                            background: '#ffffff',
+                            border: '1px solid var(--border, #e2e8f0)',
+                            borderRadius: '8px',
                             padding: '0.55rem 0.75rem',
                             cursor: 'grab',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'space-between',
                             gap: '0.6rem',
+                            boxShadow: '0 1px 2px rgba(0,0,0,0.03)',
                             transition: 'all 0.15s ease'
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.borderColor = isFunc ? '#34d399' : isVar ? '#c084fc' : isConst ? '#60a5fa' : 'var(--primary)';
-                            e.currentTarget.style.background = '#101828';
+                            e.currentTarget.style.borderColor = isFunc ? '#10b981' : isVar ? '#a855f7' : isConst ? 'var(--primary, #0066ff)' : '#64748b';
+                            e.currentTarget.style.background = isFunc ? '#f0fdf4' : isVar ? '#faf5ff' : 'var(--primary-subtle, #eff6ff)';
+                            e.currentTarget.style.transform = 'translateX(2px)';
                           }}
                           onMouseLeave={(e) => {
-                            e.currentTarget.style.borderColor = 'var(--border-card)';
-                            e.currentTarget.style.background = '#0c1220';
+                            e.currentTarget.style.borderColor = 'var(--border, #e2e8f0)';
+                            e.currentTarget.style.background = '#ffffff';
+                            e.currentTarget.style.transform = 'none';
                           }}
                         >
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', minWidth: 0 }}>
-                            <GripVertical size={13} color="var(--text-muted)" style={{ flexShrink: 0 }} />
+                            <GripVertical size={13} color="var(--text-muted, #94a3b8)" style={{ flexShrink: 0 }} />
                             <div style={{ minWidth: 0 }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
                                 <span
                                   style={{
                                     fontFamily: 'var(--font-mono)',
-                                    fontSize: '0.8rem',
-                                    fontWeight: 600,
-                                    color: isConst ? '#60a5fa' : isVar ? '#c084fc' : isFunc ? '#34d399' : '#e2e8f0'
+                                    fontSize: '0.82rem',
+                                    fontWeight: 700,
+                                    color: isConst ? '#1d4ed8' : isVar ? '#7e22ce' : isFunc ? '#047857' : 'var(--text-main, #0f172a)'
                                   }}
                                 >
                                   {item.name}
                                 </span>
                                 {item.value && (
-                                  <span className="badge badge-emerald" style={{ fontSize: '0.68rem', padding: '0.1rem 0.35rem' }}>
+                                  <span style={{ fontSize: '0.68rem', padding: '0.1rem 0.35rem', background: '#dcfce7', color: '#15803d', border: '1px solid #bbf7d0', borderRadius: '4px', fontWeight: 600 }}>
                                     = {item.value}
                                   </span>
                                 )}
                                 <span
-                                  className="badge"
                                   style={{
                                     fontSize: '0.65rem',
                                     padding: '0.1rem 0.35rem',
+                                    borderRadius: '4px',
+                                    fontWeight: 600,
                                     background: isOp
-                                      ? 'rgba(255, 255, 255, 0.08)'
+                                      ? '#f1f5f9'
                                       : isFunc
-                                      ? 'rgba(52, 211, 153, 0.15)'
+                                      ? '#ecfdf5'
                                       : isConst
-                                      ? 'rgba(96, 165, 250, 0.15)'
-                                      : 'rgba(192, 132, 252, 0.15)',
+                                      ? '#eff6ff'
+                                      : '#f3e8ff',
                                     color: isOp
-                                      ? '#cbd5e1'
+                                      ? '#334155'
                                       : isFunc
-                                      ? '#34d399'
+                                      ? '#047857'
                                       : isConst
-                                      ? '#60a5fa'
-                                      : '#c084fc',
-                                    border: 'none'
+                                      ? '#1d4ed8'
+                                      : '#7e22ce',
+                                    border: `1px solid ${
+                                      isOp
+                                        ? '#e2e8f0'
+                                        : isFunc
+                                        ? '#a7f3d0'
+                                        : isConst
+                                        ? '#dbeafe'
+                                        : '#e9d5ff'
+                                    }`
                                   }}
                                 >
                                   {isOp ? 'Texto' : isFunc ? 'Função Contêiner' : item.category}
                                 </span>
                               </div>
-                              <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', margin: '0.15rem 0 0', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '280px' }}>
+                              <p style={{ fontSize: '0.72rem', color: 'var(--text-muted, #64748b)', margin: '0.15rem 0 0', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '280px' }}>
                                 {isFunc ? 'Recebe variável ou constante no slot interno' : item.description}
                               </p>
                             </div>
@@ -1909,12 +2261,13 @@ export default function RatingEngineTab() {
 
                           <span
                             style={{
-                              fontSize: '0.7rem',
-                              color: isOp ? '#94a3b8' : isFunc ? '#34d399' : 'var(--accent-cyan)',
-                              background: isOp ? 'rgba(255, 255, 255, 0.05)' : isFunc ? 'rgba(52, 211, 153, 0.12)' : 'rgba(6, 182, 212, 0.1)',
-                              border: `1px solid ${isOp ? 'rgba(255, 255, 255, 0.15)' : isFunc ? 'rgba(52, 211, 153, 0.3)' : 'rgba(6, 182, 212, 0.25)'}`,
-                              padding: '0.2rem 0.45rem',
-                              borderRadius: 'var(--radius-sm)',
+                              fontSize: '0.72rem',
+                              fontWeight: 600,
+                              color: isOp ? '#334155' : isFunc ? '#047857' : 'var(--primary, #0066ff)',
+                              background: isOp ? '#f1f5f9' : isFunc ? '#ecfdf5' : 'var(--primary-subtle, #eff6ff)',
+                              border: `1px solid ${isOp ? '#cbd5e1' : isFunc ? '#a7f3d0' : '#bfdbfe'}`,
+                              padding: '0.25rem 0.55rem',
+                              borderRadius: '6px',
                               flexShrink: 0,
                               whiteSpace: 'nowrap'
                             }}
@@ -1928,10 +2281,10 @@ export default function RatingEngineTab() {
                 </div>
 
                 {/* Bottom link to dictionary modal */}
-                <div style={{ borderTop: '1px solid var(--border)', paddingTop: '0.6rem', marginTop: '0.6rem', textAlign: 'center' }}>
+                <div style={{ borderTop: '1px solid var(--border, #e2e8f0)', paddingTop: '0.65rem', marginTop: '0.65rem', textAlign: 'center' }}>
                   <button
                     type="button"
-                    style={{ background: 'none', border: 'none', color: 'var(--accent-cyan)', fontSize: '0.78rem', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
+                    style={{ background: 'none', border: 'none', color: 'var(--primary, #0066ff)', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
                     onClick={() => setShowDictionaryModal(true)}
                   >
                     <BookOpen size={13} /> Abrir Dicionário & Catálogo com Todos os Detalhes
@@ -1945,28 +2298,11 @@ export default function RatingEngineTab() {
 
       {/* MODAL: DICIONÁRIO COMPLETO DE VARIÁVEIS, CONSTANTES E FUNÇÕES */}
       {showDictionaryModal && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.85)',
-            backdropFilter: 'blur(10px)',
-            zIndex: 120,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '1rem'
-          }}
-          onClick={() => setShowDictionaryModal(false)}
-        >
+        <div className="modal-overlay" onClick={() => setShowDictionaryModal(false)}>
           <div
-            className="card"
+            className="modal-content card"
             style={{
-              width: '100%',
               maxWidth: '960px',
-              background: '#0c1220',
-              border: '1px solid var(--border-card)',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 102, 255, 0.25)',
               maxHeight: '92vh',
               overflowY: 'auto'
             }}
@@ -1979,8 +2315,8 @@ export default function RatingEngineTab() {
                   <BookOpen size={20} />
                 </div>
                 <div>
-                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.3rem', color: '#fff' }}>
-                    Dicionário & Catálogo Atuarial de Fórmulas
+                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.3rem', color: 'var(--text-main)', fontWeight: 700 }}>
+                    Dicionário Atuarial & Catálogo de Funções
                   </h3>
                   <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', margin: 0 }}>
                     Guia de referência das variáveis dinâmicas, constantes cadastradas e funções do motor Tronador (RTE)
@@ -2043,14 +2379,15 @@ export default function RatingEngineTab() {
                 <div
                   key={item.id}
                   style={{
-                    background: '#070b14',
-                    border: '1px solid var(--border-card)',
+                    background: 'var(--bg-surface, #f8fafc)',
+                    border: '1px solid var(--border, #e2e8f0)',
                     borderRadius: 'var(--radius-sm)',
                     padding: '0.85rem 1rem',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
-                    gap: '0.6rem'
+                    gap: '0.6rem',
+                    boxShadow: '0 1px 2px rgba(0,0,0,0.03)'
                   }}
                 >
                   <div>
@@ -2090,24 +2427,24 @@ export default function RatingEngineTab() {
                       </button>
                     </div>
 
-                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.95rem', fontWeight: 600, color: '#fff', marginBottom: '0.35rem' }}>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-main, #0f172a)', marginBottom: '0.35rem' }}>
                       {item.name}
                     </div>
 
-                    <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.45, margin: 0 }}>
+                    <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary, #475569)', lineHeight: 1.45, margin: 0 }}>
                       {item.description}
                     </p>
 
                     {item.syntax && (
-                      <div style={{ marginTop: '0.45rem', fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-cyan)' }}>
-                        Sintaxe: <code>{item.syntax}</code>
+                      <div style={{ marginTop: '0.45rem', fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--primary, #0066ff)' }}>
+                        Sintaxe: <code style={{ background: 'var(--bg-card, #ffffff)', padding: '2px 6px', borderRadius: '4px', border: '1px solid var(--border, #e2e8f0)' }}>{item.syntax}</code>
                       </div>
                     )}
                   </div>
 
-                  <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.05)', paddingTop: '0.45rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.7rem', color: 'var(--text-muted)' }}>
+                  <div style={{ borderTop: '1px solid var(--border, #e2e8f0)', paddingTop: '0.45rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.7rem', color: 'var(--text-muted, #64748b)' }}>
                     <span>Origem: {item.source}</span>
-                    <code style={{ color: '#93c5fd', fontSize: '0.72rem' }}>{item.insertText}</code>
+                    <code style={{ color: 'var(--primary, #0066ff)', fontWeight: 600, fontSize: '0.72rem' }}>{item.insertText}</code>
                   </div>
                 </div>
               ))}
@@ -2127,6 +2464,156 @@ export default function RatingEngineTab() {
                 onClick={() => setShowDictionaryModal(false)}
               >
                 Fechar Dicionário
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* MODAL: DETALHES DO CONCEITO DE DESGLOSE */}
+      {selectedBreakdown && (
+        <div
+          className="modal-overlay"
+          onClick={() => setSelectedBreakdown(null)}
+        >
+          <div
+            className="modal-content card"
+            style={{
+              maxWidth: '750px',
+              border: '1px solid rgba(6, 182, 212, 0.3)',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1.25rem'
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', borderBottom: '1px solid var(--border)', paddingBottom: '0.75rem' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '4px' }}>
+                  <span className="badge badge-primary">Conceito #{selectedBreakdown.concept}</span>
+                  <span className="badge badge-neutral">Ramo {selectedBreakdown.branch}</span>
+                  <span className="badge badge-neutral">Cobertura {selectedBreakdown.coverage}</span>
+                </div>
+                <h3 style={{ margin: 0, fontSize: '1.2rem', color: 'var(--text-main)' }}>
+                  {selectedBreakdown.name || `Conceito ${selectedBreakdown.concept}`}
+                </h3>
+              </div>
+              <button
+                type="button"
+                className="btn-ghost"
+                onClick={() => setSelectedBreakdown(null)}
+                style={{ color: 'var(--text-muted)', padding: '4px' }}
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Overview Grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.75rem' }}>
+              <div className="card" style={{ padding: '0.75rem', background: 'var(--bg-surface, #f8fafc)', border: '1px solid var(--border, #e2e8f0)' }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>Tipo de Cálculo Primário</span>
+                <strong style={{ color: 'var(--primary, #0066ff)', fontSize: '0.9rem' }}>{selectedBreakdown.primaryCalculationType || 'N/A'}</strong>
+              </div>
+              <div className="card" style={{ padding: '0.75rem', background: 'var(--bg-surface, #f8fafc)', border: '1px solid var(--border, #e2e8f0)' }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>Base de Cálculo</span>
+                <strong style={{ color: 'var(--text-main)', fontSize: '0.9rem' }}>{selectedBreakdown.primaryBaseType || 'N/A'}</strong>
+              </div>
+              <div className="card" style={{ padding: '0.75rem', background: 'var(--bg-surface, #f8fafc)', border: '1px solid var(--border, #e2e8f0)' }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>Serviço Customizado</span>
+                <strong style={{ color: 'var(--text-main)', fontSize: '0.9rem' }}>{selectedBreakdown.customService || 'Nenhum'}</strong>
+              </div>
+              <div className="card" style={{ padding: '0.75rem', background: 'var(--bg-surface, #f8fafc)', border: '1px solid var(--border, #e2e8f0)' }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>Acumuladores</span>
+                <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginTop: '4px' }}>
+                  {selectedBreakdown.accumulators && selectedBreakdown.accumulators.length > 0 ? (
+                    selectedBreakdown.accumulators.map((acc, aIdx) => (
+                      <span key={aIdx} className="badge badge-info" style={{ fontSize: '0.7rem' }}>{acc}</span>
+                    ))
+                  ) : (
+                    <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>Nenhum</span>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Fields / Historic Versions */}
+            {selectedBreakdown.fields && selectedBreakdown.fields.length > 0 && (
+              <div>
+                <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.95rem', color: 'var(--text-main)' }}>
+                  Definições de Campos & Vigências ({selectedBreakdown.fields.length})
+                </h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  {selectedBreakdown.fields.map((fld, fIdx) => (
+                    <div
+                      key={fIdx}
+                      style={{
+                        padding: '0.75rem',
+                        borderRadius: '6px',
+                        background: 'rgba(0,0,0,0.2)',
+                        border: '1px solid var(--border)',
+                        fontSize: '0.82rem'
+                      }}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
+                        <span style={{ fontWeight: 600, color: 'var(--text-main)' }}>
+                          Tipo: {fld.calculationType || 'N/A'} (Base: {fld.calculationBaseType || 'N/A'})
+                        </span>
+                        <span style={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>
+                          Vigência: {fld.validityStartDate ? new Date(fld.validityStartDate).toLocaleDateString() : 'Início'} até{' '}
+                          {fld.validityEndDate ? new Date(fld.validityEndDate).toLocaleDateString() : 'Indeterminado'}
+                        </span>
+                      </div>
+                      {fld.calculationCustomServiceName && (
+                        <div style={{ color: 'var(--accent-cyan)', fontSize: '0.78rem' }}>
+                          Serviço: {fld.calculationCustomServiceName}
+                        </div>
+                      )}
+                      {fld.accumulatorsNames && fld.accumulatorsNames.length > 0 && (
+                        <div style={{ display: 'flex', gap: '4px', marginTop: '4px' }}>
+                          <span style={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>Acumula em:</span>
+                          {fld.accumulatorsNames.map((acc, aI) => (
+                            <span key={aI} className="badge badge-neutral" style={{ fontSize: '0.68rem', padding: '1px 4px' }}>
+                              {acc}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Raw JSON */}
+            <div>
+              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'block', marginBottom: '4px' }}>
+                Registro MongoDB Bruto
+              </span>
+              <pre
+                style={{
+                  background: 'rgba(0,0,0,0.4)',
+                  padding: '0.75rem',
+                  borderRadius: '6px',
+                  fontSize: '0.75rem',
+                  color: '#93c5fd',
+                  maxHeight: '180px',
+                  overflowY: 'auto',
+                  border: '1px solid var(--border)'
+                }}
+              >
+                {JSON.stringify(selectedBreakdown, null, 2)}
+              </pre>
+            </div>
+
+            {/* Footer */}
+            <div style={{ display: 'flex', justifyContent: 'flex-end', borderTop: '1px solid var(--border)', paddingTop: '0.75rem' }}>
+              <button
+                type="button"
+                className="pagination-btn"
+                onClick={() => setSelectedBreakdown(null)}
+              >
+                Fechar
               </button>
             </div>
           </div>

@@ -108,6 +108,7 @@ Como posso ajudar você hoje?`,
         role: 'assistant',
         content: data.answer,
         sources: data.sources || [],
+        toolsUsed: data.toolsUsed || [],
         modelUsed: data.modelUsed,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
@@ -241,10 +242,10 @@ Como posso ajudar você hoje?`,
             height: isMinimized ? '56px' : '660px',
             maxHeight: 'calc(100vh - 48px)',
             maxWidth: 'calc(100vw - 48px)',
-            backgroundColor: '#0C1220',
-            border: '1px solid #182338',
+            backgroundColor: 'var(--bg-card, #ffffff)',
+            border: '1px solid var(--border, #e2e8f0)',
             borderRadius: '16px',
-            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(0, 102, 255, 0.2)',
+            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 102, 255, 0.15)',
             zIndex: 10000,
             display: 'flex',
             flexDirection: 'column',
@@ -256,8 +257,8 @@ Como posso ajudar você hoje?`,
           <div
             style={{
               padding: '12px 16px',
-              backgroundColor: '#0E172A',
-              borderBottom: '1px solid #182338',
+              backgroundColor: 'var(--bg-card, #ffffff)',
+              borderBottom: '1px solid var(--border, #e2e8f0)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
@@ -271,8 +272,8 @@ Como posso ajudar você hoje?`,
                   width: '32px',
                   height: '32px',
                   borderRadius: '8px',
-                  backgroundColor: 'rgba(0, 102, 255, 0.12)',
-                  border: '1px solid rgba(0, 102, 255, 0.25)',
+                  backgroundColor: 'rgba(0, 102, 255, 0.08)',
+                  border: '1px solid rgba(0, 102, 255, 0.2)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -283,20 +284,20 @@ Como posso ajudar você hoje?`,
               </div>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <span style={{ fontWeight: 600, fontSize: '14px', color: '#F1F5F9' }}>ACDC Copilot</span>
+                  <span style={{ fontWeight: 600, fontSize: '14px', color: 'var(--text-main, #0f172a)' }}>ACDC Copilot</span>
                   <span style={{ 
                     fontSize: '10px', 
                     padding: '1px 6px', 
                     borderRadius: '4px', 
-                    backgroundColor: 'rgba(16, 185, 129, 0.15)', 
-                    color: '#10B981', 
+                    backgroundColor: 'rgba(16, 185, 129, 0.12)', 
+                    color: '#059669', 
                     fontWeight: 600 
                   }}>
                     ONLINE
                   </span>
                 </div>
                 {!isMinimized && (
-                  <div style={{ fontSize: '11px', color: '#94A3B8' }}>
+                  <div style={{ fontSize: '11px', color: 'var(--text-muted, #64748b)' }}>
                     IA Atuarial • MAPFRE & Tronador (NTT DATA)
                   </div>
                 )}
@@ -312,15 +313,15 @@ Como posso ajudar você hoje?`,
                   style={{
                     background: 'transparent',
                     border: 'none',
-                    color: '#64748B',
+                    color: 'var(--text-muted, #64748b)',
                     padding: '6px',
                     borderRadius: '6px',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#EF4444'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = '#64748B'}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#ef4444'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted, #64748b)'}
                 >
                   <Trash2 size={16} />
                 </button>
@@ -331,15 +332,15 @@ Como posso ajudar você hoje?`,
                 style={{
                   background: 'transparent',
                   border: 'none',
-                  color: '#94A3B8',
+                  color: 'var(--text-muted, #64748b)',
                   padding: '6px',
                   borderRadius: '6px',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.color = '#FFFFFF'}
-                onMouseLeave={(e) => e.currentTarget.style.color = '#94A3B8'}
+                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary, #0066ff)'}
+                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted, #64748b)'}
               >
                 {isMinimized ? <Maximize2 size={16} /> : <Minimize2 size={16} />}
               </button>
@@ -349,15 +350,15 @@ Como posso ajudar você hoje?`,
                 style={{
                   background: 'transparent',
                   border: 'none',
-                  color: '#94A3B8',
+                  color: 'var(--text-muted, #64748b)',
                   padding: '6px',
                   borderRadius: '6px',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.color = '#EF4444'}
-                onMouseLeave={(e) => e.currentTarget.style.color = '#94A3B8'}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#ef4444'}
+                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted, #64748b)'}
               >
                 <X size={18} />
               </button>
@@ -371,17 +372,17 @@ Como posso ajudar você hoje?`,
               <div 
                 style={{
                   padding: '8px 14px',
-                  backgroundColor: '#090D17',
-                  borderBottom: '1px solid #141C2E',
+                  backgroundColor: 'var(--bg-surface, #f8fafc)',
+                  borderBottom: '1px solid var(--border, #e2e8f0)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   fontSize: '11px',
-                  color: '#64748B'
+                  color: 'var(--text-secondary, #475569)'
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Database size={13} style={{ color: '#0066FF' }} />
+                  <Database size={13} style={{ color: 'var(--primary, #0066ff)' }} />
                   <span>
                     RAG MongoDB: {ragStatus?.documentCount ? `${ragStatus.documentCount} docs` : 'Ativo'}
                   </span>
@@ -392,9 +393,9 @@ Como posso ajudar você hoje?`,
                     value={selectedModel}
                     onChange={(e) => setSelectedModel(e.target.value)}
                     style={{
-                      backgroundColor: '#0F172A',
-                      color: '#93C5FD',
-                      border: '1px solid #1E293B',
+                      backgroundColor: 'var(--bg-card, #ffffff)',
+                      color: 'var(--text-main, #0f172a)',
+                      border: '1px solid var(--border, #cbd5e1)',
                       borderRadius: '4px',
                       padding: '2px 6px',
                       fontSize: '11px',
@@ -418,7 +419,7 @@ Como posso ajudar você hoje?`,
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '16px',
-                  backgroundColor: '#070A12'
+                  backgroundColor: 'var(--bg-surface, #f8fafc)'
                 }}
               >
                 {messages.map((msg) => {
@@ -442,11 +443,11 @@ Como posso ajudar você hoje?`,
                           maxWidth: '90%',
                           padding: '12px 16px',
                           borderRadius: isUser ? '16px 16px 4px 16px' : '16px 16px 16px 4px',
-                          backgroundColor: isUser ? '#0066FF' : '#0F172A',
-                          color: isUser ? '#FFFFFF' : '#E2E8F0',
-                          border: isUser ? 'none' : '1px solid #1E293B',
+                          backgroundColor: isUser ? 'var(--primary, #0066ff)' : 'var(--bg-card, #ffffff)',
+                          color: isUser ? '#ffffff' : 'var(--text-main, #0f172a)',
+                          border: isUser ? 'none' : '1px solid var(--border, #e2e8f0)',
                           fontSize: '13px',
-                          boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+                          boxShadow: isUser ? '0 2px 8px rgba(0, 102, 255, 0.25)' : '0 1px 3px rgba(0,0,0,0.06)'
                         }}
                       >
                         {isUser ? (
@@ -461,7 +462,7 @@ Como posso ajudar você hoje?`,
                             style={{
                               marginTop: '12px',
                               paddingTop: '10px',
-                              borderTop: '1px solid rgba(255,255,255,0.08)'
+                              borderTop: '1px solid var(--border, #e2e8f0)'
                             }}
                           >
                             <button
@@ -469,7 +470,7 @@ Como posso ajudar você hoje?`,
                               style={{
                                 background: 'transparent',
                                 border: 'none',
-                                color: '#60A5FA',
+                                color: 'var(--primary, #0066ff)',
                                 fontSize: '11px',
                                 display: 'flex',
                                 alignItems: 'center',
@@ -492,21 +493,47 @@ Como posso ajudar você hoje?`,
                                     style={{
                                       fontSize: '10.5px',
                                       padding: '4px 8px',
-                                      backgroundColor: 'rgba(0, 102, 255, 0.1)',
-                                      border: '1px solid rgba(0, 102, 255, 0.2)',
+                                      backgroundColor: 'var(--primary-subtle, #eff6ff)',
+                                      border: '1px solid #bfdbfe',
                                       borderRadius: '4px',
-                                      color: '#93C5FD',
+                                      color: 'var(--primary, #0066ff)',
                                       display: 'flex',
                                       alignItems: 'center',
                                       justifyContent: 'space-between'
                                     }}
                                   >
                                     <span style={{ fontWeight: 600 }}>{src.title}</span>
-                                    <span style={{ color: '#64748B' }}>{src.sourceCollection}</span>
+                                    <span style={{ color: 'var(--text-muted, #64748b)' }}>{src.sourceCollection}</span>
                                   </div>
                                 ))}
                               </div>
                             )}
+                          </div>
+                        )}
+
+                        {/* Read-Only Tools Badge */}
+                        {msg.toolsUsed && msg.toolsUsed.length > 0 && (
+                          <div style={{ marginTop: '8px', display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                            {msg.toolsUsed.map((t, tIdx) => (
+                              <div
+                                key={tIdx}
+                                style={{
+                                  fontSize: '10.5px',
+                                  padding: '3px 8px',
+                                  backgroundColor: '#ecfdf5',
+                                  border: '1px solid #a7f3d0',
+                                  borderRadius: '6px',
+                                  color: '#065f46',
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  gap: '5px',
+                                  fontWeight: 500
+                                }}
+                              >
+                                <Database size={11} style={{ color: '#059669' }} />
+                                <span>Consulta ao Banco (Read-Only): <strong>{t.tool}</strong> ({t.executionTimeMs}ms)</span>
+                              </div>
+                            ))}
                           </div>
                         )}
                       </div>
@@ -515,7 +542,7 @@ Como posso ajudar você hoje?`,
                       <span 
                         style={{ 
                           fontSize: '10px', 
-                          color: '#64748B', 
+                          color: 'var(--text-muted, #64748b)', 
                           marginTop: '4px',
                           paddingLeft: isUser ? 0 : '4px',
                           paddingRight: isUser ? '4px' : 0
@@ -535,11 +562,11 @@ Como posso ajudar você hoje?`,
                         width: '28px',
                         height: '28px',
                         borderRadius: '8px',
-                        backgroundColor: 'rgba(0, 102, 255, 0.15)',
+                        backgroundColor: 'var(--primary-subtle, #eff6ff)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        color: '#0066FF'
+                        color: 'var(--primary, #0066ff)'
                       }}
                     >
                       <Sparkles size={16} className="animate-spin" />
@@ -548,13 +575,14 @@ Como posso ajudar você hoje?`,
                       style={{
                         padding: '10px 14px',
                         borderRadius: '16px',
-                        backgroundColor: '#0F172A',
-                        border: '1px solid #1E293B',
+                        backgroundColor: 'var(--bg-card, #ffffff)',
+                        border: '1px solid var(--border, #e2e8f0)',
                         fontSize: '12px',
-                        color: '#94A3B8',
+                        color: 'var(--text-secondary, #475569)',
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '6px'
+                        gap: '6px',
+                        boxShadow: '0 1px 3px rgba(0,0,0,0.06)'
                       }}
                     >
                       <span>Consultando base de conhecimento RAG...</span>
@@ -570,8 +598,8 @@ Como posso ajudar você hoje?`,
                 <div 
                   style={{
                     padding: '8px 16px',
-                    backgroundColor: '#090D17',
-                    borderTop: '1px solid #141C2E',
+                    backgroundColor: 'var(--bg-card, #ffffff)',
+                    borderTop: '1px solid var(--border, #e2e8f0)',
                     display: 'flex',
                     flexWrap: 'wrap',
                     gap: '6px'
@@ -582,9 +610,9 @@ Como posso ajudar você hoje?`,
                       key={idx}
                       onClick={() => handleSendMessage(sug.query)}
                       style={{
-                        backgroundColor: '#111827',
-                        border: '1px solid #1F2937',
-                        color: '#93C5FD',
+                        backgroundColor: 'var(--bg-surface, #f1f5f9)',
+                        border: '1px solid var(--border, #e2e8f0)',
+                        color: 'var(--text-main, #0f172a)',
                         borderRadius: '12px',
                         padding: '4px 10px',
                         fontSize: '11px',
@@ -593,12 +621,14 @@ Como posso ajudar você hoje?`,
                         textAlign: 'left'
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = '#1E293B';
-                        e.currentTarget.style.borderColor = '#0066FF';
+                        e.currentTarget.style.backgroundColor = 'var(--primary-subtle, #eff6ff)';
+                        e.currentTarget.style.borderColor = 'var(--primary, #0066ff)';
+                        e.currentTarget.style.color = 'var(--primary, #0066ff)';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = '#111827';
-                        e.currentTarget.style.borderColor = '#1F2937';
+                        e.currentTarget.style.backgroundColor = 'var(--bg-surface, #f1f5f9)';
+                        e.currentTarget.style.borderColor = 'var(--border, #e2e8f0)';
+                        e.currentTarget.style.color = 'var(--text-main, #0f172a)';
                       }}
                     >
                       💡 {sug.label}
@@ -611,8 +641,8 @@ Como posso ajudar você hoje?`,
               <div
                 style={{
                   padding: '12px 16px',
-                  backgroundColor: '#0E172A',
-                  borderTop: '1px solid #182338'
+                  backgroundColor: 'var(--bg-card, #ffffff)',
+                  borderTop: '1px solid var(--border, #e2e8f0)'
                 }}
               >
                 <div
@@ -620,11 +650,10 @@ Como posso ajudar você hoje?`,
                     display: 'flex',
                     alignItems: 'center',
                     gap: '8px',
-                    backgroundColor: '#070A12',
-                    border: '1px solid #1E293B',
+                    backgroundColor: 'var(--bg-surface, #f8fafc)',
+                    border: '1px solid var(--border, #cbd5e1)',
                     borderRadius: '12px',
-                    padding: '6px 12px',
-                    boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.3)'
+                    padding: '6px 12px'
                   }}
                 >
                   <textarea
@@ -638,7 +667,7 @@ Como posso ajudar você hoje?`,
                       flex: 1,
                       backgroundColor: 'transparent',
                       border: 'none',
-                      color: '#F8FAFC',
+                      color: 'var(--text-main, #0f172a)',
                       fontSize: '13px',
                       resize: 'none',
                       outline: 'none',
@@ -650,8 +679,8 @@ Como posso ajudar você hoje?`,
                     onClick={() => handleSendMessage()}
                     disabled={!inputText.trim() || loading}
                     style={{
-                      backgroundColor: inputText.trim() && !loading ? '#0066FF' : '#1E293B',
-                      color: inputText.trim() && !loading ? '#FFFFFF' : '#64748B',
+                      backgroundColor: inputText.trim() && !loading ? 'var(--primary, #0066ff)' : 'var(--bg-surface, #e2e8f0)',
+                      color: inputText.trim() && !loading ? '#ffffff' : 'var(--text-muted, #94a3b8)',
                       border: 'none',
                       borderRadius: '8px',
                       width: '32px',
@@ -670,7 +699,7 @@ Como posso ajudar você hoje?`,
                   style={{ 
                     marginTop: '6px', 
                     fontSize: '10px', 
-                    color: '#64748B', 
+                    color: 'var(--text-muted, #64748b)', 
                     display: 'flex', 
                     justifyContent: 'space-between' 
                   }}

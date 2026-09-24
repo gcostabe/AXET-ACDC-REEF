@@ -1,0 +1,1905 @@
+Ayer llegábamos con los procesos de... tuvimos que revisarnos con Alberto de conexiones,
+vale, ahora por cada entorno está parametizado para que los activos digitales aputen al
+entorno que corresponda, vale, entonces eso ya me faltaba escribir en el Office que seguro
+es Alberto, ya está, suena que vamos a hacerlo. También vimos unos detalles en las variables
+en la formulación, en las reglas que se están implementando y en lo siguiente, las reglas
+y todo lo que se está haciendo entre los activos digitales en las configuraciones de los catálogos
+de Mongo son sensibles, una variable no yúscula, no yúscula, vale, entonces nosotros aquí
+estamos usando el tema de las definiciones con Canon Case, vale, y entonces hay uno de los
+problemas que nos dio Lio, era que la variable con que se haya definido la regla, la descripción
+de la regla que lo hablamos por acá, voy a quitarte un momento la pantalla y la presentación.
+La variable que estaba acá, que se había definido, esto estaba con mayúsculas,
+y obviamente esto es una varia, esto es del contexto del activo digital y siempre lo
+buscan, entonces eso hasta que no lo vimos después de dos horas revisando conmigo,
+era por eso, vale, encontramos en un detalle que lo van a revisar, lo que comentaba David para
+dejarlo ya específica, entonces si yo filtro acá, no sé cuántas reglas hay ahorita del 4 o 15,
+a Brasil, PCT comisión, Y Producto, ¿Cuál regla está habilitada de esas tres?
+Entonces vamos a empezar por el 10, hay dos reglas que son precios,
+PCT comisión y otra de Producto, miremos si Producto acá está habilitada de precios a
+nivel de los datos fijos de adultos de poliza, y está diciendo que si la moneda es igual a 11,
+de la condición la acción es de tipo asignación, se le da a colocar un volón y le da a poner
+aquí 4, 6, 3, vale, entonces miremos si esto funciona.
+Luego podemos probar esa misma quitándole el salto ¿no? que deseamos a nivel de salto, 4.
+Ah, ya lo traje, sí, voy a ver cómo es una cosa. Ah, mire, ya parece 4, 6, 3, pero con el que no vimos.
+Ahora sí, como nos estábamos en vuelta al acero. Agregale el mod bloqueado, pues.
+Espera, esperamos otra parte. Ya funciona ¿vale? Ya lo sé.
+Dentro de las acciones se meten otros, como se dice, los que cajan tenían entre 2.
+Como otra lista. Sí, se meten otros. ¿Dentro de qué de condiciones?
+O sea para los modelos. Ah, en acciones ¿no?
+Entonces ahí, miremos, hay que hizo el sistema. Obviamente, cuando se carga la pantalla llega aquí este flujo,
+es lo que explicaba. Se han colocado los diferentes puntos de conexión, una es la parte de los atributos,
+aquí en la pantalla tiene dos puntos de conexión, la parte de atributos para validar los previos y los van,
+¿vale? Y en el botón de abajo, la parte de los controles tengan. Entonces, aquí te ha configurado una regla para ese dato.
+Esa regla, lo que está diciendo es que si el dato de la moneda es igual a 11,
+va a colocarle a signarle 4, 6, 3 ¿vale? Eso es lo que está la regla. Si quieres abre, abre el mongo y la presentas.
+Bien, filtra y por la regla, dale un filtro.
+Vea cómo yo hago, porque esto también es una aprender.
+¿Tú te paras? Perdón.
+Parate, ahora pone aquí branch, click derecho, no, parate en el campo.
+Adicionar a query y pone aquí 4, 15. 4, 2, 1, ¿no?
+4, 3. Ahora filtra, filtra, adiciona otra consulta aquí, parate en opción, opción number.
+¿Option number? Sí. Adicionar al query y ponle que eso es el previo, entonces ponle un 10.
+¿Y a qué nivel? Entonces le vas a decir, mete aquí el proceso este.
+En este caso es 2, está bien.
+Está bien, porque yo copiaba.
+Vale, entonces te está diciendo que hay dos reglas que cumplen esta condición.
+Si tú filtras por el dato, ya aquí ya admiten las posiciones, etcétera.
+Entonces, la regla que tú has colocado es la siguiente regla, ¿de ese tipo de producto fue?
+Sí. Vale, baja.
+Bien, entonces lo primero, yo les decía, esto tiene tres componentes, el contexto, las condiciones.
+Entonces, ¿a quiénas condiciones pincha?
+Esta es la regla que va a evaluar, ¿vale?
+Esto es lo que antes nosotros teníamos en un registro, en una tabla.
+La columna, esto y así al mouse, ¿vale?
+Pues ahora es todo, eso se transforma en reglas, ¿vale?
+Entonces, ayer mandó el mostraba que tenía que en la zona del país y una marca CSS-CSN,
+pues cada conjunto, cada registro ahí se va a transformar en una regla, ¿vale?
+Porque esto es como si estuviéramos allá.
+Entonces, la base de datos es lo que es, la base de datos del mundo, ¿vale?
+Entonces, ahora el contexto hay que darle la vuelta.
+Es todos los diseños, todas las implementaciones y las reglas que se hagan para un país,
+pues ya no van en tablas, ¿vale? Los demás productos tendrían que trabajar.
+Esto es mucho más eficiente para ejecutarlo y mantenerlo.
+¿Qué pasa?
+Esta reglas o este grupo de reglas, como ven, eso es un objeto.
+Y aquí actualmente, esto puede meter una o varias reglas, ¿vale?
+Y hay reglas simples como estas y hay reglas mucho más complejas que lo que explicaba Manuel.
+Vale, Manuel explicaba que puede ser de la B1, es la más básica, el valor.
+Puedo combinar más condiciones, ¿vale?
+Y aquí yo coloco la información que a ese momento yo tenga el polizón, ¿vale?
+Entonces, si estoy en datos, fijo, no tengo coberturas porque no me han llegado, ¿vale?
+Diferente, una duda, estaba hablando con Vinicius ahí. Sólo para aclarar, ¿puedo tener varias condiciones, pero una acción o no?
+Sí, la acción es única sobre el elemento que estás tratando, ¿vale?
+Ya explicó otra cosa sobre esto.
+Esto es una regla.
+Esto es un objeto, entonces aquí puedes meter una condición, otra condición, si tiene condición.
+La acción es una forma, ¿vale?
+La verdad era por lo que la acción también está como una regla.
+Entonces, y por lo que...
+Louis Pauls creo que la acción.
+Entonces, aquí, en esta parte, es importante que tengan el nivel donde están.
+Pero si la acción es una sola y yo en este escenario, ahí yo tengo dos datos variando.
+No, quizá se va llevando un dato.
+Sí, pero yo estoy llevando un dato, la moneda, pero dependiendo...
+Yo soy el producto, perdón, el tipo de producto.
+No estás evaluando la moneda.
+No, no, el dato que suba un pelín...
+No, pero la condición es lo que él dice.
+La condición ahí dice...
+Sí, pero la regla es sobre esa edad.
+Vamos, muy interesante.
+La regla es esa edad.
+Déjame terminar la pregunta.
+O sea, a ver si yo estoy entendiendo bien o mal, así se me aclaro la vaina.
+Yo tengo una condición ahí que dice si la moneda 11 estoy asignando el valor.
+La moneda 11.
+La moneda 11 asigna un valor.
+No, la acción es donde vas a disputar qué quieres hacer cuando compre la condición.
+Entonces la acción cuál es?
+La acción es que asigno el tipo de producto, el valor 4, 6, 3.
+En este caso, sí.
+Eso.
+Si yo tuviese que por la misma condición asigno más de un dato,
+o sea, mi ámbito tiene que estar asociado a un dato.
+No puede ser una regla que se diga.
+Para todos mis datos, me voy a hablar al nivel de polis.
+En ese no. Aquí es lo que tenemos en la acción.
+Si tu necesitas asignar, controlar esto para otro tipo de dato,
+para que esto afecte...
+Para hablar con la pantalla.
+Para demostrar la pantalla de risco.
+Sí, tú quieres modificar dos datos.
+Sí, eso le pica la regla.
+Yo tengo una sola regla.
+¿Tiene más de una regla para un mismo campo?
+Ya, déjame terminar la idea, por favor.
+Para no obligarnos.
+Aquí yo subo, ¿no?
+Si subimos, tengo la moneda 11 que está arriba en los datos fijos.
+Y hago los datos variados.
+Y digo, si la moneda es 11, asigno 4, 6, 3 en el tipo de productos,
+pero también puedo asignar ahí el porcentaje de cuadros,
+que son 10% en la misma regla.
+Tengo que hacer dos.
+Eso es como si tuvieras dos registros o dos columnas ahí, lo mismo.
+Aquí va correo. Si tú quieres manejar eso, tienes la regla.
+O sea, si has otra regla, con esa comisión.
+O sea, signo 5 datos, por la misma condición,
+tengo que crear 5 correos.
+¿Y a qué órdenes ejecutan?
+Que mejor tenés que estar tratando los atributos.
+Sí, pero si tú tienes un atributo.
+O sea, no puedes sobre el mismo atributo tener varias reglas.
+Móngor no te va a decir que no.
+O sea, tú lo puedes duplicar.
+O sea, ¿puedes hacer para los mismos atributos o la regla?
+Es un atributo, obviamente.
+Pero son reglas diferentes.
+Cada regla tiene un ámbito.
+Si yo tengo, en este caso, el tipo de producto baja un porcentaje.
+Claro, si yo imagínate, pongo para el tipo de producto.
+Cuando la moneda soce, ponme ese dato.
+Cuando la moneda es 5, ponme otro dato.
+Eso es otra regla.
+Eso son distintas reglas.
+Pero si puedo poner distintas reglas,
+pero que lo mismo uno se pise a otro y quiero que sea un orden.
+No, no, porque lo voy a ejecutar.
+Lo ejecuta en un orden.
+Va en un orden de ejecución.
+Y si ambos, en este caso, el criterio de consulta, voy por partes.
+Para contestar aquí.
+Todo esto tiene un orden.
+Lo sabemos que esto tiene un orden.
+Si responde un atributo.
+Ahora, yo necesito colocar que cuando la condición sea la moneda 11,
+entonces este dato, este y este, hagan cosas.
+¿Cuántas condiciones o cuántas reglas se especifican aquí?
+Tres.
+Una para este dato, otra para este y otra para este.
+¿Vale?
+¿En qué orden se van a ejecutar?
+En el orden en que está armado el producto.
+0, el 1, el 2, el 3.
+Un secudentador.
+Eso es seguro.
+Ahora, el criterio de ir a buscar la regla.
+¿Cuál regla aplicar?
+Porque yo puedo tener aquí tres reglas asociadas a un dato.
+¿Vale?
+El va a un criterio.
+Primero criterio de las condiciones generales.
+O sea, sobre qué hábito está.
+Luego, voy a evaluar la condición específica.
+La que estaba.
+Pásate por favor.
+Ajá.
+Amor.
+Amor.
+Voy a compartir todo.
+Ese lo evaluó primero a esto.
+El motor evaluó primero esta condición, la parte de arriba.
+¿Vale?
+Filtra.
+Luego se va aquí.
+Filtra aquí.
+Y luego se va a las condiciones.
+¿A qué?
+A estas condiciones.
+Va a tomar las más restrictivas.
+¿Vale?
+La condición que tenga más restricción.
+¿Yo pongo la 0 o el más?
+No, aquí va a tomar.
+Si tú tienes tres reglas asociadas a este mismo campo.
+Y tiene, en una regla tiene tres condiciones.
+En otra 2, en otra 1.
+Y en ese momento se cumple la de tres condiciones.
+Esa es la regla que toma.
+El coge.
+El capa de saber todas las reglas.
+Sí.
+Las más restrictivas el empieza a tomar.
+Porque yo puedo tener para el mismo dato.
+Una regla con una condición con sólo dos características.
+Pero si aquí tienes tres.
+Y en ese momento con los datos que tiene.
+Se cumple las tres.
+Esa es la regla que toma.
+¿Vale?
+Entonces el evaluó a esto.
+Y luego a la acción.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+Esa es la regla que toma.
+con nivel de forma que ahí me dice que el reloj no está funcionando, que entre los entran a un...

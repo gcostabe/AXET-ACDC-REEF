@@ -1,0 +1,4796 @@
+Entonces muestra dónde están realmente las formulas dentro del reto. Ok, vemos esa estructura para entender un poquito. Ok.
+Bueno, nos metemos en las cipas de la formula para la cañurismo.
+Vamos a ver si el reto se finanza o no.
+Vamos a ver si el reto se finanza o no.
+Vamos a ver si el reto se finanza o no.
+Vamos a ver si el reto se finanza o no.
+Mucha ya existía nuevamente.
+Te vas a explicar cómo está el reto.
+¿Dónde estamos colocando las formulas?
+Te voy a explicarlo para que sepan bien la estructura.
+¿En qué concepto?
+Aunque ahora solo tenemos que linear bien con Albert y con el tipo cómo vamos a hacer el modelo de gobierno, pero por lo menos de lo que hay, ¿dónde está?
+Vamos a ver si el reto se finanza o no.
+Vamos a ver si el reto se finanza o no.
+Aquí está la implementación, ese es el servicio y nosotros para individuales lo que hicimos es crear la parte de O, ahí están las de Brasil y la de España.
+Vamos a crear una estructura separada para el test de individuales.
+Si, lo vamos a cambiar.
+Con nivel país, si son cosas muy específicas de producto, las clases por componente deberían tener algo que referencia a ese producto.
+Si hacemos algo con el 410 ahora, lo estábamos probando.
+Si estamos específicos de distribución deberían ir con el acronomismo.
+Aquí en Rating deberíamos tener Rating países, países dentro de países, para lo que sea hombre, y luego ya el acronomismo.
+Eso es lo que más uno está, ¿no?
+Eso es lo que hay que hacerlo con España, ya que estamos aquí.
+Y montamos un documento, a partir de Rating, país dentro de países 2, T&N y país.
+O sea, en ejemplo tendríamos Rating, España, dentro de España tendríamos todas las fórmulas que ya están implementadas de España.
+Ah, perdona, España y T&N, ¿cómo sería España y T&N?
+Esa es T&N, que es la parte cómoda, sería alguna fórmula o alguna lógica que se va a poder rehabilitar para todos los países.
+Tendría que ir dentro de él, paquete de T&N.
+O sea, T&N sería todo lo que sea fuera, fuera de España, ¿verdad?
+Es ok.
+En España tendríamos las de España por ahora implementadas ahí.
+Pero, ¿todos sería?
+Por ejemplo, estas fórmulas, ¿se acuerdan de las bonitas de esta mañana?
+La fórmula principal es la de abajo.
+Pero todo esto es el entramado que hay dentro de la formulación.
+Por eso yo pienso que todos esos elementos son comunes.
+Porque, bueno, a ver algunos de ellos, que Brasil va a utilizar mortalidad.
+No sé, tal vez esa función va a ir hasta la mortalidad, llegar a los LDX y lo sumen desde X hasta BAP.
+Eso seguramente es algo, digamos, transversal para calcular los LDX.
+A ver, señoría, que están en la capital de T&N.
+Yo?
+Los que senten T&N, el que toquen cualquier programa que senten T&N, tiene que garantizar la compatibilidad.
+Con todo mundo.
+Pero, a ver, también eso es lo que queremos.
+O sea, que hay un diccionario de cuórenos en las comunidades que tiene la actualidad.
+Que él define su fórmula y mira los LDX.
+Por decirlo, el interés se calcula así, el valor futuro.
+Uno magía la N, por decirlo.
+Se calcula así.
+Y ellos no tienen definido, eso lo llamaron I.
+Bueno, ese I tiene que estar definido aquí.
+Como un ventario de pequeñas funciones.
+El punto es en qué nivel de la estructura la vamos a montar, ¿vale?
+Eso también está claro.
+Lo que pasa es que, claro, esta es la prensa, esta es la prensa, esto es España.
+Esto no te va a aplicar ahora así.
+Está de pronto de muerte, pero yo estoy seguro que los de Brasil, alguna modificación a la forma.
+Entonces, pero sí, sí, David, estructuremos, no ahorita porque no vamos a aliarnos ahora,
+pero porque esto nos toca sentarnos todos, España, Brasil, Japón, los que estamos trabajando.
+Para hacer una sesión de cómo vamos a unificar estos criterios.
+Porque esto va a crecer mucho, ¿vale?
+Eso es lo que no se quiere.
+Es decir, el catálogo de mini funciones debería ser un catálogo con que mini.
+O sea, debería ser un catálogo acogado.
+No lo sé, no, se ahorita no me daba porque sí.
+Obviamente, si está misma fórmula, la de Bono.
+La de Bono no quesa tampoco funciona.
+La de capital.
+La de capital.
+La de capital que es una fórmula estándar y le sirve a todo el mundo.
+Esa es la candidata que dejamos de usted.
+Que tiene el impacto de lo que dice Alberto.
+O esa fórmula, ahí sí tiene que tener triple chequeo.
+Y próvate regresión para todo el mundo.
+Eso no tiene esos próditos que tienen que formar a todos los países.
+Claro que no va a haber si no.
+Pero también el pro de lo positivo de eso es que cuando vayamos a otro país,
+otro cojuego, crees otro producto, vamos con el diccionario.
+Y eso es una función que yo tengo.
+Tú vas a crear una fórmula, tú harás así.
+Ve, aquí está mi diccionario, usa alguna vez.
+Vamos a pensarlo bien, ¿vale?
+Porque la idea es que no hay que mostrar todos una balanza y ver que...
+Sí, vamos a unificarlo porque es importante saber de quién es de España,
+quién es de Brasil, quién es de Talga, ¿vale?
+Yo creo que si lo tenemos que hacer,
+tenemos que hacer una sesión de trabajo para hacer eso, ¿vale?
+Entonces, yo diría, Fonso, que tú si deberías detener desde aquí,
+una que diga Brasil, para el otro.
+Ya organizaremos con España bien como nos echamos.
+Pero tú si deberías detener una que diga Brasil.
+Vendrías dos estructuras, una TRL y otra Brasil,
+dentro de esa para saber qué propones de Teren
+que irían en este momento vacíos porque no sabemos cuáles son Teren,
+pero el resto sí serían de Brasil, ¿vale?
+Entonces, he explicado eso.
+Esta es la que nosotros trabajamos, ¿cuáles?
+¿Dónde está? A esta.
+Y sobre esa hemos implementado esta que está aquí.
+Esta que está aquí, esta implementación de la individual de Brasil,
+es la que se ha puesto en el esquema de lo que ha estado,
+en el tatalgo de lo que ha estado el proceso.
+Y aparte de aquí, es el cálculo que la puta,
+eso es lo que no explica.
+Y eso está aquí, esta parte que está en la izquierda,
+es el catálogo de fórmulas del RTE,
+de las que están inscritas, ¿vale?
+Porque el resto van a estar ese en la base de datos.
+Otras tipos como las que es un multiplique y sume por algo,
+están en la base de datos.
+Estas no, estas existen acá, ¿vale?
+Entonces, ya te puedo ir a ver.
+Entonces, lo que todo el noticias hoy era, bajo un poco,
+es modificar estos valores, ¿sí?
+Vamos a ver.
+¿Qué haces esta historia?
+¿La estructura que ha aprendido a hacer los fondos?
+No, para que vayan en contexto, ¿dónde está esto por qué?
+Si no.
+Entonces, sí, otro poquito.
+Ve a la principio.
+Vamos a empezar por todo.
+Esta fórmula,
+¿qué hacen si el proceso de calcula del RTE?
+¿En dónde va a depositar eso?
+La misión de...
+En el colisión.
+En el colisión.
+O sea, él va a hacer los cálculos,
+pero la salida la va a depositar en el colisión, ¿cierto?
+Me va a decir, oye, la cobertura, su capital es 100.
+Entonces, lo va a poner en el capital de la cobertura.
+La prima, el concepto que esté trabajando, ¿vale?
+Eso va a estar por el concepto que está en este caso,
+eso va a ser el 1.
+Entonces, en el concepto de un, concepto económico 1,
+que corresponda, le va a poner y calcula su prima, ¿vale?
+Y esa es la misión de esas fórmulas.
+Y en el de suscripciones va a tener que hacer...
+Calcule los capitales, calcula las primas,
+y calcula la suscripción.
+La suscripción se calcula en los procesos de las corturas
+que tenían suscripción.
+Y luego, dentro del motor de RTE,
+lo que va a hacer es ir a sumar los capitales de esa suscripción
+y las primas que hayan generado esa inscripción,
+y ese es el total que le va a poner en el desglose, ¿vale?
+O sea, el desglose, el cálculo del desglose es la sumatoria,
+las primas que calculan la suscripción, ¿vale?
+¿De acuerdo?
+¿Para las corturas que tenían suscripción? ¿Sí?
+¿Cuándo?
+Sí, sí.
+¿De qué feliz?
+No, porque está interesante.
+Eso cambia, ¿vale?
+Es decir, el concepto del desglose antes lo ponía yo de cálculo,
+y no, para las que tenían suscripción,
+la primera de los capitales salen de la suscripción.
+Y luego va el desglose, y el desglose,
+y luego el capital va a la parte de la corta, ¿vale?
+Y esto solo aplica el concepto del desglose 1.
+Por lo más, no explican.
+Es decir, que no tengo suscripción en el concepto del desglose 2.
+Es el 1 para las corturas de ahora, ¿vale?
+El resto del concepto del desglose,
+pero estos coberturas operan con toda la vida, ¿vale?
+Entonces, cuando él llega aquí, la misión de esta fórmula,
+como es de suscripción, es calcularme la suscripción,
+el concepto del desglose y los capitales.
+Entonces, nosotros que hemos hecho,
+hemos estructurado una prueba de cañerías,
+que esa la, ese nombre lo puso Juan,
+una prueba de cañerías en donde tengo todo conectado,
+pero realmente la fórmula es como tal, no está construida,
+pero ya la tengo implementada, ya hace cosas.
+De lo que vamos a explicar aquí es la forma en que el objetivo
+de esa, de esa implementación es construir esos tres objetos.
+Suscripción, desglose y cobertura.
+Lo vamos a meter a cañón,
+pero después esto se quita y se pone a las cámaras
+que va a hacer que tenga que calcular.
+Pero el objetivo siempre es hacer eso.
+En las demás cálculos, el objetivo es hacer crear o construir
+desgloses y, si tiene capital, ¿vale?
+A mí depende que...
+El desglose pues calcula, el desglose,
+entonces el desglose hay que calcular,
+hay que construirlo para que el valor.
+Esa es la misión de la fórmula, ¿vale?
+Pues...
+Aquí lo que tenemos es que,
+ya tenemos el objeto construido,
+que valores quieren modificar,
+que serían los...
+Ahí ya está llegando la...
+¿Tú esto lo entienden?
+Cierto.
+En la polícia.
+¿Cuál que explicáis?
+Yo te lo digo.
+Se tea, compañía, a partir del polisón,
+no tiene deliquies en el tema del polisón.
+Eso no tiene ciencia tampoco, ¿vale?
+Entonces vamos a hacer primer semestre.
+Vale, entonces como ya tienes esto en un apeado,
+lo que queremos aquí es...
+Aquí imaginaos que la fórmula de este valor,
+ya es el capital.
+Pues esto es lo que yo tengo que pasarle,
+devolverle a la estructura de esta implementación
+para que aquí en el anual,
+estas son las primas, ¿vale?
+Venga.
+¿Vale?
+Bueno, porque son primas,
+pero esto aquí no va al esto cero.
+En la emisión, esto es cero.
+Ok.
+Y lo mismo agravante que lo tenemos.
+Con esto es 2, 0.
+Ajá, ya va.
+Ahí se teaste lo primero.
+O sea, yo digo que calcula y se tea
+estos valores que están aquí abajo.
+Ajá.
+En alguna parte del polisón.
+No, en este, mira.
+No, no, no.
+Lo se tea justamente en ese campo del polisón.
+Eso es.
+Pero arriba estoy haciendo la misma operación,
+no estoy seteando.
+Claro, porque estás construyendo el objeto
+del concepto de los bloces,
+si ves el breakdown concepto.
+Ah, y necesita todo el concepto.
+Claro, estás construyendo el concepto.
+Está así porque volví y digo,
+esto está quemado.
+Pero obviamente la fórmula es teniatoso.
+Estos son análisis para calcular estos datos.
+¿Vale?
+Si ves la fórmula original.
+Estos son análisis para calcular.
+Esto no existe, si ves.
+Aquí, por ejemplo.
+Él llegue y me llama lo primero que va a hacer
+es por aquí ir a la base técnica.
+Ahí está la base técnica.
+Ya se fue y este, este cuando llega aquí
+tiene todo el paquetón del objeto
+que vimos de base.
+Y luego por aquí abre la suscripción.
+Este es otro método.
+Esto aquí ya se vea.
+Le estoy pasando.
+Mira, el auxiliar.
+El auxiliar es el objeto que va construyendo
+en ese momento para la salida, ¿vale?
+Ellos se crearon en un auxiliar
+para ir componiéndolo, para luego pasárselo al polizón.
+¿Vale?
+Y aquí ya esto empieza y no empieza aquí.
+El árbol de esta mañana
+empieza por las ramas ir a buscar allá.
+Está ahí.
+Y va haciendo y aquí hay más lógica.
+Esta lógica está implementada
+acorde a la cálculo que está haciendo
+esta implementación.
+¿Y de dónde salió toda esta lógica?
+De los análisis de los 20.000 coboles
+que ellos confiaron y empezaron a hacer
+lo que ustedes tienen que hacer.
+¿Vale? Y hacer lo mismo.
+Y esta, la ventaja de las fórmulas
+ya estaban supertestadas.
+Ya se ellos panó para evitar los líos.
+Lo que hicieron fue los mismos flujos
+que estaban en cobol.
+Bueno, los que estaban aquí.
+Y nos estaban dando al 100% del cálculo.
+Esa estrategia está bien.
+Lo digo para que nos pongamos ahí y que pasan
+y siguen con un camino. Ya están creados.
+Y nos pongamos allá. Le van años ahí.
+Pagamos lo mismo.
+¿Vale?
+Cambio Brasil, no. Brasil no tiene
+donde tirar. Ellos tienen que construirse.
+Esa es la diferencia.
+Ellos tienen que construir las fórmulas.
+¿Ok?
+Nosotros no, nosotros...
+La están en cobol. Ven, ahí está en cobol.
+Le cogen una ahí y ahí está en cobol.
+¿Vale?
+¿Vale?
+De toda esta lógica,
+ha salido y la orquestación que está aquí.
+Entonces van a haber muchas operaciones
+que tiene que hacer
+el proceso para...
+Vea, este retur
+cuando viene este retur
+él viene de todos los elementos
+que ha construido acá.
+Pero ya con la información de las coberturas
+del desglose y de las inscripciones.
+Vale, ya viene completa.
+Esclaro, aquí se ven tres líneas,
+pero donde está la chicha está aquí y está...
+¿De lo caldo?
+Para mirar.
+Esto para nosotros es bastante grande.
+Sí, aquí.
+Mira, Veta, voy a ver por ahí.
+Ahí estás en el doble one boost
+y le ingresas todos los valores que tú necesitas.
+El petiente es la fórmula que voy a hacer en otras fórmulas.
+Hasta luego tenemos el levanto de base.
+Concentaje de valorización.
+¿Vale?
+¿Vale?
+Entonces, no vamos a hacer...
+El alcance de esta formación no se hace esto
+porque no llegamos allá.
+Pero si entender dónde está y qué piezas
+usted es, dónde lo tiene que componer.
+Por eso digo que el trabajo con actuario
+se puede empezar a hacer desde ya
+para entender bien cómo son las fórmulas,
+los logos y todo eso.
+Ahí...
+Ideal sería que ya vayan por el catálogo
+de...
+que ya tiene actuaría y que de hecho ya estaba construido.
+Cuando nosotros iniciamos con Uruguay
+ya vieron.
+Pero luego va a utilizar los mismos que hicimos.
+Sí, debería usar la misma fórmula.
+No la misma fórmula total.
+Las mismas fórmulas pequeñas
+se componen la total.
+Lo que digo es que ese trabajo se puede empezar.
+Eso significaría mucho.
+No hay quién pensar a eso.
+Vale, ahora sí...
+Bueno, pero para eso es que nos tienen que dar la fórmula.
+O sea, tú dices, son los mismos Uruguay
+pero no sabemos.
+Claro, no lo sabemos.
+Pero creo que en Brasil
+utilizaba en base de datos
+había algunas fórmulas de Brasil
+hace tiempo, ¿no?
+Y son muy parecidas.
+Claro, pero nosotros no deberíamos
+trabajar en base a algo que no nos ha dado.
+Claro, no los tienen que definir.
+Pero si nosotros vamos y así deberíamos
+ir a todos los países.
+En ese catálogo trata de no salirte de aquí
+y si te sales dime
+¿Qué estás creando?
+Ah, necesito estas funciones.
+La adicionamos al diccionario
+y ya seguimos a otros países
+con ese mismo diccionario.
+¿Verdad?
+¿Duras? ¿Preguntas?
+¿Duras? ¿Preguntas?
+Bueno, empezamos.
+Pero la chicha es cálculo, ¿vale?
+Sí.
+Una cosita que no me había quedado fuera
+porque yo tenía otra idea
+y estoy viendo la aplicación
+que tenía en la cabeza la parte
+de los que están los de suscripciones.
+Yo dice que en esa cobertura
+se calcula ahora.
+Aparte de que lo más acabe.
+Pero que se calcula por suscripciones
+y lo que voy a ejecutar son
+el módulo de suscripciones
+o la clase Java de suscripciones
+que me dice la definición
+en base a los datos en los datos dentro.
+Ejecuto una suscripción
+y me da esa prima
+con la que luego voy a poder ejecutar
+el resto del concepto de DDoS.
+Pero ahí estoy viendo que se calcula
+el resto del concepto de DDoS.
+A ver, sube.
+No, acá no.
+Aquí no porque los conceptos de DDoS
+están por fuera. ¿Te acuerdas
+que Manuel tuvo que ajustar?
+Ahí era la prima pura.
+Es la prima pura.
+Vale, vale, vale. ¿Te acuerdas que
+tuvimos un detalle de ese como 15 días
+que nos faltaba el LOOP para te ejecutar?
+Sí, sí, sí.
+El HVN también, ¿eh?
+En España, por ejemplo,
+alguna cosilla sí que sale también.
+Sí, ahí.
+Los suplementos parece.
+Vale, vale.
+El ejemplo lo que hemos podrido aplicar
+cuando estamos añadiendo el registro
+el objeto de concepto de DDoS
+es solo el de la prima.
+Sí, la prima pura.
+Vale, vale, vale, ok, perfecto.
+No, no están los otros porque
+no hace el ámbito de la suscripción.
+¿Cómo que ya las sirvan más en el directo?
+Eso es porque están acá en New York, ¿vale?
+Está quemado.
+Que no, porque ahora se implementan
+una fórmula que nos dan en LOOP.
+Entonces, aquí
+es lo que
+es que tú sepas
+qué queremos construir
+dentro del concepto de la fórmula.
+Obviamente, esto va a dar un cálculo
+de la prima de concepto 1.
+Por aquí debe estar el concepto 1 prima pura,
+¿verdad?
+Esa es el 1.
+Y solo calcula ese.
+La suscripción, bueno digo, solo va a calcular el 1.
+Como también nosotros...
+Ah, vale, esta es la diferencia.
+En España sí calculamos el capital.
+Pero bueno, no pasa nada.
+Perdóname...
+Perdona que pinta rumba.
+Que si no, seguís y me pierdo.
+Que una pregunta entonces es
+¿Por qué solamente
+estamos calculando un concepto de gloss?
+O sea...
+Para la suscripción soña.
+Es que la suscripción solo trabaja
+con el concepto gloss 1.
+Pero solo hemos llegado a la suscri...
+No lo he entendido. A ver.
+El flujo, por lo que yo entendí,
+Freddy, el activo
+con las condiciones que tiene
+se va a mirar qué fórmula tiene que aplicar.
+Para aplicar esa fórmula
+primero recupera la suscripción
+en la que nos encontramos.
+Y realiza
+la fórmula que en este caso
+aquí estamos poniendo
+valores fijos
+y lo mete
+en el de gloss de prima pura.
+Eso es lo que está haciendo.
+Sí.
+Exactamente.
+Y como va por suscripción
+no va con otros conceptos de gloss.
+Sí, lo va a tener.
+Lo que pasa es esto.
+Vaya la cobertura de ahorro
+que tiene...
+por por si no tiene suscripción
+pero esa cobertura tiene el gloss 1
+que lo va a calcular la suscripción
+el de gloss 2 y 3 que sobrecargo
+si hay agravantes o impuestos, ¿sí?
+Sí.
+Entonces tiene tres desgloses, el 1 y el 2 y el 3.
+Sí.
+Cuando el motor de cálculo de red te determina
+que esta cobertura tiene suscripción
+se va a ir a calcular la descripción
+la suscripción y se lo va a depositar
+en el concepto de gloss 1 de prima pura.
+Está diseñado.
+Es el primer paso que hace la suscripción
+y calcula...
+Y luego termina eso
+y se va a los demás conceptos de desglose
+a calcular el 2 y a calcular el 3.
+Pero y entonces...
+perdona, el frujo no lo entiendo
+porque yo entendía que era por las condiciones
+iba a mirar
+qué fórmula íbamos a coger
+no por desglose.
+Sí, Sonia, la fórmula...
+voy a calcular el concepto 1
+del gloss 1
+prima pura, ese es lo que va a calcular.
+Vale, entonces voy a ir
+al motor de suscripciones para saber
+cómo calculo ese concepto 1.
+Entonces abre el motor
+de suscripciones y dice
+dependiendo de lo que está entrando
+voy por el camino 1
+llamo la fórmula 1 o llamo la fórmula 2
+llamo la fórmula 3.
+Ese llamado fórmula
+se va a ejecutar, va a hacer lo que tenía que hacer
+y devuelve los valores
+del concepto 1
+de la suscripción.
+Y luego hace el cálculo
+termina, le pase esa información
+al proceso, al concepto del gloss
+termina y luego la red
+comienza con los demás conceptos
+de esa cobertura, tiene más conceptos.
+Pero y entonces
+vale, vale, va por concepto
+vale, va primero
+por suscripción, el orden
+de ejecución, primero la suscripción
+en el caso de que estamos de suscripción
+por los conceptos. Pero entonces
+cuando hemos
+explicado antes, que lo vimos yo
+no lo he entendido bien, de
+en la tabla que teníamos
+de fórmulas, que dependiendo
+de la condición
+en la que nos encontramos, si estábamos
+en un suplemento de emisión o habíamos
+hecho cualquier otra, elegíamos
+una fórmula, eso cuando lo hace.
+Lo hace cuando
+en el primer punto, aquí
+para calcular la prima pura de la suscripción
+llega y se va a calcular
+la prima pura de la suscripción, va
+a esa tabla que tú llamas
+y pregunta que de
+cuál fórmula uso para calcular la prima pura
+la 1 o la 2, la 3 o la 4
+en este caso te toca las 3, te calculo y le devuelve
+a la prima pura. Vale, perfecto
+ya he entendido el frutjo, gracias
+Vale, entonces
+vamos a marcar
+No tenemos la marca en la cobertura
+¿Mueve la?
+Pero nos tocó volver a hacer en la cobertura
+No, aquí la mueve muy tal la mormoya, muevela
+y muevela sin todo
+entonces
+que ese fuera el problema
+Me has asustado
+Ahorita David mágicamente le mueve la marca
+y ya lo tenemos, entonces
+vuelve digo, aquí vamos a calcular la prima pura
+esto es
+una vez
+la fórmula que hagan ya a cada uno
+va a construir este objeto
+el de conceptos de denuncia
+que el otro objeto que tiene que construir este elemento
+esta fórmula es la implementación
+en la suscripción
+la suscripción se divide
+en, digamos
+tres grupos
+el primer grupo
+es la información técnica
+de la base técnica
+es decir, aquí
+vamos a depositar
+todos los conceptos
+que se han calculado
+o que ha usado la fórmula
+para la base técnica para que después eso se pueda ver
+en la polisa, recordad consultar
+aquí la idea es que se deposite
+cual base técnica fue
+que tabla de mortalidad usé
+que gastos, que intereses
+que es el ITC
+Gato de internos sobreprisos
+esa vaina, el IT1
+el IT2, el DT
+los datos
+son importantes
+porque estoy sin información
+que es muy importante que en algunos casos se imprime
+hay que depositarlos en este componente
+esto
+y aquí me da igual si me creas un nuevo
+concepto de base técnica
+pues yo simplemente lo adiciono
+a esta
+salida
+la base técnica de este elemento
+y lo incorporo
+y esto se va a ver en la polisa
+que eso se imprime
+esto es fundamental
+que dependiendo de las necesidades
+que nos digan los actuarios
+o si es necesario
+para la impresión de la polisa
+porque a veces oye
+en algún clansulado
+aparece el interés técnico aplicado
+los gastos aplicados
+la tabla de mortalidad aplicada
+esa información tiene que salir de aquí
+pero no tendríamos que recordar
+esta información de base técnica
+si
+pero es que aquí esto lo tengo quemado
+esto es un ejemplo
+tú vas a crear una fórmula como explicábamos anteriormente
+que en uno de los pasos es ir a
+la base técnica ya la tienes ahí
+perfecto y ya tú la estructura
+y ya el resultado digamos que el resultado
+de todas esas calculas es crear este objeto
+ah vale, perfecto
+esta empieza con el desenvolver
+entonces
+esta parte
+va a ser un metro de calculation
+colocarlo bien
+y poner en
+es más en la fórmula que está en el PLS
+de España
+hay el pre-calculación
+las bases perintas
+en la pre-calculación
+entonces hay cargas
+toda la información que necesites y la empiezas a desglosar
+de ahí para abajo en la fórmula que necesites
+a ver que puso el suplicción de ese en la primera
+una otra duda
+pero ahí si ya no tenemos actuario
+pero abajo abajo ¿no? abajo no está lo que escribes
+eso
+pero estas son ya escóvigos
+aquí hay tres líneas
+pero allá es como 80
+aquí nosotros la escribimos
+a mano
+en el de individual
+pero debe haber
+en lo que se debe hacer
+debe haber como una función que diga de posito aquí
+todo lo que hay
+la función que está haciendo eso ya
+y pues para allá por allá en
+en la línea 200.000
+este es el resultado
+este objeto
+debería ser genérico
+o no?
+la base técnica si porque
+es una estructura estandaria
+porque como hay uno es
+ese si
+porque tira de la base técnica
+hay un tema que nos ha pasado
+muy similar
+esta construcción está hecha para
+colectivos
+entonces como está hecha para colectivos de España
+es que pueden llegar a atender
+ese
+desapuste
+pero ahora lo que tenemos que hacer es alinearlo con un holicón
+para empezar a ver cómo vamos
+a hacer tanto la nomenclatura de los nombres
+donde los vamos a alinear etcétera
+esa es como que empezaron a ver
+como lo componemos
+a la base técnica entran con unos criterios
+y individuales van a entrar con otros
+pero la estructura de la base técnica es la misma
+el objeto
+eso hay que estandarizarlo
+pero si se deja
+de devuélvete
+esto hay que
+importante vale porque esto nos vamos a ver
+en la consulta de la pulsión
+y adicional a eso
+yo tengo otro
+elemento aquí que es unos datos
+adicionales
+que puedo meter aquí lo que necesitemos
+de información diferente a lo que la
+base técnica por ejemplo aquí
+ustedes pueden volcar los datos de los parámetros
+que estaban en la
+en la suscripción de esos parámetros de entrada
+ese
+puede volcarlo aquí para que vean por donde pasó
+si lo necesitan
+eso ya es más necesidad actuarial
+o algo digo en traseo de impresión
+aquí podemos colocar los intemos
+esto es un celo que puede ser cualquier cosa
+vale entre los campos obviamente
+esto está definido con la necesidad
+espalda esta paramentación
+todos estos datos que están metidos acá
+claro digamos que hay repositas
+además de la base técnica
+lo que necesites
+para la suscripción
+exactamente
+esto que me facilita
+que si me quiero una nueva parámetro
+esto me tiene que modificar mi la tabla
+nada todo está aquí
+mi consejo
+depositen absolutamente todos los datos
+que haya usado la cálculo
+de la fórmula de la base técnica
+depositen todo vale
+porque se va a consultar
+a ver
+para hacer lo que necesitas
+depositen todo vale
+y ya el resto de valores
+son ya las columnas
+como tal de la tabla que se vende
+y entonces
+el cálculo como tal de la base técnica
+está aquí
+vale
+está el anual
+de la suscripción
+esto si es
+esto si es el resultado de la fórmula
+vale la fórmula me calcula
+y me voy a depositar en esos valores
+entonces
+hay las fórmulas de cálculo
+si tienen que ir y saber
+que positar como me voy a depositar
+la suscripción se calcula
+para la línea
+que estrenó bien
+como tú decías
+un manejo de portada bancaria
+entonces yo hice una aportación
+con un interés técnico y medio tanto
+eso fue en el año 5
+ese año hago otra aportación
+con tu interés técnico
+si yo hago por ejemplo
+un rescate parcial
+cierto y ese rescate parcial
+es a partir de la mitad del periodo
+de hace 5 años
+porque estoy rescatando prima de hace 5 años
+que va a ser la nueva
+la nueva suscripción
+va a calcular el porcentaje
+hecho de hace 5 años
+calcula partir de esta fecha
+cuánto era al interés técnico
+que tenía hace 5 años
+para hacer el rescate
+la opción
+calcula el saldo de cada participación
+pero al interés técnico que tenía hace 5 años
+luego viene la otra
+calcula el rescate a partir de esta fecha
+pero con el interés técnico
+eso y me genera 2 registros
+para que sepan
+que ese valor quedó calculado
+uno con interés técnico de hace 5 años
+y el otro con interés técnico de hace 8
+entonces voy grabando la historia
+y ahí
+hay una parte interesante
+que es que
+habitualmente rescatas
+desde los más viejos
+entonces te pueden quedar
+saltos de suscripciones anteriores
+en el primer depósito
+a plazos hijos
+pague 5.000
+que posee 5.000
+y en el segundo 5.000 más
+quiero rescatar 2.000
+que es la primera
+ya te queda con 3.000
+y a partir de esa fecha
+vas a acumular 3.000
+en vez de 5.000 saldo
+entonces eso es importante porque
+en algunos suplementos
+cuando se están trabajando con esta historia
+en algunos suplementos
+van a ver que el movimiento
+me generó varias suscripciones
+o sea no me genera una sola
+me puede generar varias
+porque efectivamente es eso
+que tanto le corresponde
+de esos 3.000 que había hecho hace 2 años
+ahora con el movimiento que estoy haciendo
+calculándome
+antes tenía 5.000 ahora me quedan
+pues yo tengo que registrar esos 2.000
+porque ya no son 5.000
+entonces de esa suscripción
+que hace 3 años tenía ahora queda 2.000
+entonces hay suplementos
+que pueden generar más de una suscripción
+¿vale?
+eso ya es como a chicha
+más
+de una suscripción
+claro porque yo
+cambio el interés técnico
+a una renovación
+tengo que recalcular lo que ya venía
+con el nuevo interés técnico
+y entonces tengo que ir a buscar cuántas
+suscripciones que tengo
+y puedo tener de así 10 años
+eso es equivalente al Excel
+que hemos probado hace poco
+que anula como que en los anteriores
+voy a dejar una vigencia
+de esta manera que si yo ya quiero
+una cobertura pues yo voy a hacer los capitales
+porque esos ya vienen calculados al momento
+¿de marzo tenemos que ir a eso?
+si, ya viene bien
+por favor cuáles
+ok
+bien
+entonces aquí estoy calculando las primas
+aquí voy a llenar este objeto de la suscripción
+pero cuando estén trabajando en brasil
+van a encontrar partes
+le llenamos este objeto
+y creo que no llenamos más ¿no?
+mal, entonces ahora lo que vamos a hacer
+es que vamos a implementar
+este call
+en la parte de
+vamos a decir los atributos
+que se visualizan a nivel de suscripción
+si puedes subir un poquito por favor
+eso ¿dónde está?
+¿dónde se mete?
+ah, esto
+eso es porque eso es lo que se visualiza
+un poco como atributo
+en la pantalla abajo
+la pantalla lo que hace es ir a leer
+y separar los campos
+pero es lógica para que se vea los campos separados
+no sería bueno normalitarlo
+de una manera
+para que no sea un stream
+que tenías más como una
+una estructura ya ¿o qué?
+¿dónde tú al final tienes una definición
+de lo que te dicen?
+y estos son los datos que voy a establecer
+¿no?
+para estabelar tu pregunta
+y el sistema únicamente
+si, entiendo que será como atributo
+más que concatenar como stream
+yo creo que sí
+lo podemos gestionar
+ya viene a meter
+porque a la data lo que estábamos pasando es un campo malo
+sí, sí, sí
+es como una lista
+lo podemos ver
+y se puede hacer
+cuando se esté dando de alta y ese co-elemento
+este lado lo tomamos
+a ver cómo mejora ¿vale?
+como dice Alberto
+sería un objeto
+sería un objeto
+o un mapa clave valor
+para meter ahí lo que queramos
+ese
+sbn, tcb
+¿vale?
+¿está todo como clave valor?
+si, si
+puede ser una lista
+lo único que no sé si
+claro, porque esto impacta en la pantalla
+porque yo no sé qué lógica tiene
+para separar la pantalla
+eso también tenemos que ver si
+por eso si impacta la pantalla los literales
+porque son finales ¿cómo vamos a literar la pantalla?
+le da una descripción directamente
+hasta ya no llegue
+ahorita lo vemos en pantalla
+como se ve
+es por normalizarlo
+bien, entonces
+vamos a coger este ejemplo
+lo ponemos esto
+en el que... ¿dónde está?
+está en el indespanso
+en el indespanso
+si, pero lo subiríamos a nuestra rampa
+si, suela la rampa
+y lo tenemos que plegar para ahora si
+lo desplegaría
+pero le digo preguntar a los valores
+los valores los dejamos así
+son valores genéricos pero los mejores
+son 1.500
+y no están 1.500 ahí
+si, yo creo que si
+como ahorita no es
+ellos van a quitar todo este código
+y ya lo van a hacer bien
+para ver la operación
+los valores distintos en cada campo
+así se ve
+vamos a ver lo diferente
+voy subiendo desde acá
+si, vamos allá
+vamos a ver
+estamos por eso
+vamos a ver
+esta es la opción
+vamos a ponerle un cambio
+no
+lo que veo es la opción
+esto no sale
+se puede hacer
+algo así
+eso lo que me pasa es estar viendo
+David, estás ahí?
+si
+te puedo mostrar
+vamos a hacer
+el cruz hacia
+hacia develop
+pero hice
+un merge de develop a mi rama
+y me aparecieron muchos cambios
+es para ver con tu vista
+mirar si estos son los cambios que se han inputado
+vale
+aparte entonces
+hace el punto
+nosotros solamente vamos a pasar
+la clase
+esta aquí
+la demás si
+no hay problema
+los pomes normal
+la documentación es normal
+y para arriba un poco
+creo que hemos borrado
+alguna cosa sube para arriba
+tablas de mortalidad y cosas
+que estaban
+deprecadas
+si, puedes ver
+puedes venir aquí
+esto es lo que tiene que hacer
+vale, puse
+listo
+yo lo puedo hacer
+y hace un poco de costo
+un poco de costo
+y aquí esta anualizador
+todo el mundo tiene permiso
+pero no
+si, mira a ver
+realmente solo hay un fichero
+y recordad que
+cuando hacéis esto
+este es la vuestra
+estoy trabajando sobre eso directamente
+dale a merge
+si era solo un fichero
+si
+es un fichero que no existía
+todo el mundo
+tu magia
+si
+yo creo que es un fichero
+pero este creo que es el máximo
+si, ya sabéis
+si, ya sabéis
+si, ya sabéis
+si, ya sabéis
+si, ya sabéis
+ahora falta el pego danis
+porque necesitas la compra
+en el lado de la cinta
+es bonito
+no tiene nada de resistencia
+solo tiene estupido
+solo puede
+no se ve a tener falta de actip
+solo voy a estar en la recta
+no tenemos la idea de resistencia
+por eso no hay idea de actip
+eso es un punto ahí
+con manes y estructuras de una manera
+que
+tengo que afanecer eso
+porque con las tres puntas le voy a mascrepar
+donde lo sé
+lo que hice es dar manes y actas
+y podemos standardizar las formas
+estas manes que compren
+las mismas necesidades para el sistema
+ese de proyecto
+pero si ahí todos podemos normalizar
+es que ya
+con ese vaculo del producto
+de vida
+voy a ir para más prácticamente
+los peces para decir
+que podemos standardizar
+el tipo David
+está bien
+está desprevándose
+presenta para que por lo menos
+la licorna danis
+es un Jenkins
+saliendo cositas verdes
+tampoco hay
+es que la pantalla negra con tu nombre
+y nos da como jueno
+de hecho
+ni empieza la pipeline
+así que
+mía de meda
+pero porque ha metado
+porque estaba dando
+no, no, empezó a arrancar
+no arranca, no arranca
+está cogiendo fuerza
+no suele pasar
+así que está ahora
+no se que está ahora
+ahí está
+exacto
+paciencia
+ahí va en progreso
+si, si
+por cierto, he puesto la marca de
+la marca de suscripción
+ahorita la mostramos
+cuando termine esto
+para que sepa
+parece igual
+es correcto, mongo
+y mira, me está contando en el
+ok, lo sé
+no me puedo faltar de maldito
+y ahí, no me voy a hacer cambiando
+y pese
+le he puesto para la 4003, es correcto
+o queremos otra cobertura diferente
+ah David, solo de la 4003
+modificaste con suscripción, ¿cierto?
+la ultima abajo
+no, que si, la 4003
+si, David
+vale, ya entrará
+en ajuste de suscripción
+vale, eso está marcado aquí
+gracias
+una pregunta, ¿por qué le dejamos
+en español y las otras en inglés?
+porque si
+no lo sé
+las cosas se definen y se hacen
+previa, esto es
+esto es así
+y se puede cambiar en cualquier momento
+no hay problema
+ya tengo una pregunta
+esta tabla, por lo que me habéis contado
+antes, se descarga
+de la tabla de producto, ¿no?
+si
+si, pero claro se carga
+de las tablas de vida
+de las coberturas de vida, Freddy
+es decir
+a ver
+de la A23
+esta tabla, ese objeto mejor dicho
+esa colección que estás viendo
+es la información
+de la A1250
+más
+servida la A102
+más la A180, más la A190
+es el compendio de todas esas tablas
+si nosotros
+tenemos un producto que no es bebida
+y no está rellena la tabla
+la A23202
+entiendo que esa marca
+de ajuste de suscripción va a venir sin Reine
+pero se va a descargar
+la marca
+de momento de hecho no existe
+de ninguna forma
+es decir hay que poner la mano
+vale, bueno
+mi pregunta es, ¿va a funcionar
+cuando yo no tenga la tabla
+rellena de coberturas
+de vida?
+es decir, si yo no relleno la
+230, 102
+el clínsel se va a hacer correctamente
+y voy a poder utilizarlo
+porque claro, si no me llega la cobertura
+porque no tengo
+de la bebida
+si el de vida la A102
+tiene que estar cargada
+si, pero si no es de vida
+si no es de vida no pasa nada
+no pasa nada, se va a cargar
+igualmente la cobertura
+en esa tabla
+y me entra con la marca
+a no
+es que ni siquiera va a decir que hay esa marca
+en el catálogo
+no pasará por ajuste
+si no existe
+veremos ahora cuando
+nos existe como se ha hecho una fórmula
+dame, ¿cómo estás conectando?
+no lo hemos hecho Sonya
+en este momento no
+quiero esto y me ha volado otra
+claro, claro, por eso
+pero hay que piden la diferencia
+si, claro
+va a ir por el otro lado
+va a ir por sus pies
+y que te mire
+vamos a terminar la cobertura
+de ahora que vamos a hacer con la otra fórmula
+si, si, si
+si, era por preguntar si no venía esa tabla
+que se había tenido en cuenta
+que puede ser que esa tabla no se te rellena
+claro
+pero bueno
+para vida si tiene que estar
+si, para vida si, geni
+yo hablo de no vida
+no, no vida no
+claro, por eso creo que se ha tenido en cuenta
+por eso creo que se ha tenido en cuenta
+que en el cruz se ha tenido en cuenta que esa tabla puede ser
+que este va fía, pasa cobertura
+me saco
+va
+serían los cálculos que hemos
+configurado como fórmula
+que van aparte si
+¿Quién tiene conexión a la base de datos de Brasil?
+yo
+porque no sé si Jordani ya creó la
+creo que no
+creo que no es cierto
+la configuración del open
+de la regla suplementa
+suplement role operation
+de la base de datos
+hay que cambiarla, hay que modificarla con la nueva
+con la nueva implementación que subimos
+ah, esto le acabo
+por favor
+si
+no, la podemos crear con David
+te la ha pasado David
+si
+bueno el nombrecito al final
+es lo que va a necesitar
+el nombre de la clasica implementa
+y cambiarlos
+se compartió
+con Jason completo
+yo creo que no hay nada, osea
+con las dos compañías
+todas que están sin compañía
+y sin ramo no lo levantan bien de nosotros
+por lo que nosotros ya las compañías
+se van directamente a ese
+si, cogería el valor por defecto
+la semana pasada hablamos
+de que no era correcto
+en principio
+siempre se tenía que especificar
+compañía
+no
+quiero abrir esta colección
+a ver si perdió yo
+la conexión también a Brasil
+segundo
+vamos a probarlo
+ahora también me cagó
+ya fue tocado
+si, me va a dar time out
+puede ser todo
+puede ser
+que no hay problema de compañía
+15
+me da time out
+pues si
+tocas en el ingeniero
+lo hicieron ustedes
+puedes cambiarlo
+puedes cambiarlo vosotros
+sino que la implementación es
+hay que cambiar el campo de la
+campaña
+ya está
+¿cuál campo es?
+es que no tenemos
+no tenemos
+no tenemos nada para la campaña
+no tengo que crear
+un documento completo
+no, duplica uno
+y cambia el
+no se, la prueba esta
+¿que es para crear?
+si, pero si no le vas a hacer tu
+que te lo estaba pasando
+si, pero no tengo conexión
+Freddy
+ese es el puesto
+debería
+debería
+escribo
+ahí va
+se acaba de caer ahora
+porque el cambio de ajuste de suscripción
+si me ha dado tiempo hacerlo
+si ha cambiado la que tenías
+puede ser
+es cuando quieras
+tardará un poco el mongo alas
+en actualizar
+un poco
+para la otra
+porque le van a traer dos valores
+un dato por otro
+lo cogemos y la hacemos como la escribimos
+dentro de
+ah, porque se ha bajado
+pasamos por aquí
+que tiene que hacer con los datos variados
+pasan a los nombres de los datos variados
+el cogega la cuarta
+ah, porque se ha bajado
+el mongo
+el mongo
+puede ser la función esa noche
+el mongo
+es el X parse con el dato
+el tipo fórmula
+los normales
+si tiene la persona
+de momento no puedo
+de momento no puedo yo
+que podéis
+cambiar la configuración
+lo podéis hacer vosotros
+si quieres seguir un poco
+es como lo creasteis
+para las pruebas
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+la regla que necesitamos
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora te voy a hacer
+un mongo
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de que está actualizando el parque
+y ahora sí que sale el mensaje
+de hecho se
+inserta en la
+en el endpoint, como variable
+claro, yo no lo noto porque yo estoy en España
+o sea, también bien
+bien
+una pregunta
+perdenar, igual
+igual lo habéis explicado
+y como hay veces que ha hecho Leona
+en la reunión no me entero
+estos son los
+conceptos económicos, ¿no?
+pero aquí no tiene que estar definido
+también el
+el qué, perdona
+sí, estábais
+en un ataque
+se te corta
+perdón
+ahora vamos a hacerlo
+no, te escuchamos
+no
+te corto
+hola
+no me voy
+ahora sí
+que la tabla que estábais, estábais definiendo
+los conceptos económicos, ¿no?
+por cobertura
+si
+no me habéis
+si, si, si
+si, y el uno
+no se, no se definear
+no estábamos, ¿no?
+el qué? el uno, el concepto uno
+perteniendo a Ophonia
+en el estado que está dedicando ahora
+el concepto uno
+si
+el uno también se define ahí
+no está
+no está
+no está
+cuál
+es que yo lo que creo
+es que no está, es el la
+la fórmula de la calcula
+de qué cobertura le está diciendo
+la fórmula ahora pone código
+422
+Economic concept rating
+not found en los concept, en breakdown concept
+uno
+componente
+con
+mafretron rating core engine
+service rating request and rich service
+la cobertura, que vamos a mirar
+Braves
+Branches
+vamos a ver la
+la protesta a nivel C
+vamos a ver la cobertura
+esto es la
+118
+correcto
+esto es
+138
+puede entrar bien
+con el brand
+brand 96
+si el concepto
+lo que dice Vinicius
+ahí hay un country
+con nece
+donde?
+en los conceptos, en los breakdown concept
+de qué cobertura?
+no, los conceptos de desglose
+no están a nivel de cobertura
+al menos
+el premio está en la cobertura
+si, pero si están a nivel de cobertura
+contacto con el otro
+en el otro, no, el 4 aquí
+miramos 421
+si, faltan entre
+pero esto no se modificó
+Alberto
+21 a 59, ¿cuál es el otro?
+4300
+no, pues está modificado
+los dos que emitían por la cobertura
+están
+y
+aquí están los acomodadores
+una pregunta que me escuché, será bien?
+si, ya me acudí
+será aquí
+me he conectado con el móvil
+a ver, si yo lo he entendido bien
+la suscripción
+te genera ya el concepto 1
+de prima pura
+y entonces ahora
+lo que decís, se va al resto
+de los conceptos económicos
+pero se salta el 1
+entonces, ahora
+o vuelve otra vez para entrar al 1
+no, el error es que no sabemos
+por qué está dando el error sonido
+si, pero es que está justo dando en el 1
+por eso pregunto
+no sé si lo que está haciendo
+por lo que me habéis explicado era
+primero la suscripción
+ya te calcula el concepto 1
+y después se va al resto
+de los conceptos económicos de la cobertura
+Exacto, así es
+definidos como conceptos económicos
+de la cobertura está otra al hacer 1
+pero no se lo salta, si ya lo ha calculado
+se lo salta, ¿no?
+si, ya lo ha calculado, sí
+eso lo acepta igual
+entre un web sonido y calcula
+primero el concepto 1, el concepto de desglose
+o recordad que los económicos
+son los de las reactivas, ¿vale?
+el concepto de glose 1
+y después calcula el resto
+saltándose el 1
+porque el 1 es como la base para el resto
+supongo que será por lo mismo que lo hacen aquí igual
+claro, pero como la hacía en el otro punto
+si, por eso le preguntaba
+como lo metían en la suscripción esta
+digo, pues igual está duplica
+entrando, ¿vale?
+solo en las 403 modelos
+pero además eso
+ya, ya, ahí
+no está en los conceptos económicos
+a ver si lo sé por eso
+ah
+a ver
+ah, claro, aquí parte el contra
+si, aquí
+detalles
+no, yo no fui a acceder, si
+gracias
+yo tengo el mp
+Jesús
+es un músico
+de la que hablo en la
+es un músico
+de la que hablo en la
+es un músico
+de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la
+es un músico de la que hablo en la

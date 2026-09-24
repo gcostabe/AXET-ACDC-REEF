@@ -1,0 +1,3413 @@
+voy a poner 6, 0, 10
+que es lo que hace
+no lo danis
+6, 0, 10
+es que?
+creo que 6
+perdón
+alguien faló
+David estás?
+si
+vamos a subir la configuración del producto a mongo
+lo pueden mostrar para ver que lo que se hace como cineculsa
+pero por lo menos tener el contexto
+vale
+esto que va a hacer David es porque no está conectado el tallet de productos a la CDC
+bueno y por aquí hasta que no tengamos ya la comisión en porcienda del taller atractivo
+nos toca hacer este proceso que toma la comisión del producto
+y subir la letra T
+es esto lo que se va a hacer
+vale
+pero una vez lo tengamos ya en tu el tallet pues esto no hay que devolverlo
+no lo hacemos a peor
+no está arriba?
+no
+ahora conecto y comparto
+vale
+no
+no
+no
+no
+no
+no
+no
+no
+ok a ver tal como lo tenemos ahora
+hay unos scripts que extraen de base de datos
+estoy en la de tron2000 que es la conexión que tengo
+es el brasil?
+no lo sé
+si me decís la conexión
+ya no se muestra, por un teléfono es tan saldón de las dos de conexión
+el tron2000 para extraer esa información
+lo van a pasar por
+ok
+tengo solamente el primer
+si no tengo uno
+ah
+a ver que saco la chuleta
+lo van a pasar
+todo el info se lo adaptan al ver
+que tiene ahí
+yo no te lo he pasado
+si aquí
+eso no está
+no se comparte
+ah
+y allá por eso
+me llamo Pepito
+bueno cuando no me atientan
+no se está grabando
+si
+no voy a hacer así
+no
+no
+ahora comparto
+ustedes compañeros
+aquí sí es fundamental
+vamos a empezar con esta versión
+cada vez te modifiquen el producto
+sobre todo en vez de las coberturas
+y la función de que volver a subirlo a RTE
+entonces va a ser que lo sea porque digo con el taller
+pero mientras el taller no entre el juego
+hay que hacer eso
+vale
+a ver paciencia
+estoy en ello
+con la rte
+la rte de la definición de coberturas
+y la reducta también
+no es necesario cargar definición
+la reducta solo se cargará las reglas
+el resto de cosas no hay que tocar
+no
+para reducto para rte
+sí
+lo que pasa es que el motor de rte
+fue creado a imágenes
+semejan a ser lo que estaba entrón
+entonces se entira en las colecciones
+tira la definición
+para saber los procesos
+cómo tiene que ejecutar el cálculo
+de cada una de las coberturas
+por eso tiene eso
+en la documentación está que tablas hay que exportar
+es que realmente eso no deberíamos de hacerlo
+porque lo vamos a hacer por el taller
+pero sí es una definición
+esto es porque volver con el taller
+por favor
+exporta para la tarifa mostrida
+porque es muy popular
+hay una pregunta
+dime eso
+esto se tenía que haber hecho
+al principio entiendo
+en cualquier momento es que se cambia el producto
+si ya tienes el producto
+lo ejecutas para empezar a trabajar
+con el activo
+y si lo ajustas
+lo vuelves a ejecutar
+David te vas a llevar el producto
+entiendo que de David te puedes llevar
+también el mío
+si
+una vez hecho uno
+se pueden hacer varios
+a ver
+estoy conectado
+de derrete funciona
+la parte de los modulos
+la parte
+de el resto si necesitas
+porque el resto ya está dentro
+de las tripas y el proceso
+la definito las coberturas
+y la definación de coberturas
+si tengas en la base de datos
+lo vas a ejecutar y lo vas a ejecutar
+para el packaging
+el packaging en el packaging
+es que hay un montón
+no los packages no son moda
+eso son modos
+eso no se carga
+eso no porque eso se consiguiera directamente
+es la definición
+el breakdown conces
+eso si
+y ahí tira toda la definición
+hay otra tabla
+breakdown conces
+no, economico
+calculación
+y la definición es activaria
+qué paso
+qué paso sin término
+qué paso sin término
+10
+escalas
+suplementos
+hasta ahí hasta suplementos
+son más
+es toda la definición que tenemos en las tablas
+lo queréis estar en la documentación
+las tablas
+a ver
+en principio
+voy a generar la carpeta nueva
+pero bueno
+no se caso
+a ver
+compañías la 15 ¿verdad?
+y el ramo
+421
+ok
+yo los hago en orden por si acaso
+que esto tampoco soy experto
+los otros
+lo que tú haces es generar un csm
+y luego los impostos
+si, es la única forma
+que hay
+hay una chuleta en algún sitio
+que os pase
+de cómo hacerlo
+además esta generación
+es antigua
+no sé cuánto hace
+que se usa pero
+he aprendido hace poco a hacerlo
+y confío en que
+funcione
+pero como generar
+hay un programa
+dentro de RT
+que coge todo eso
+y lo transforma al coleccionas
+y esto en principio
+hay alguna forma de lanzar un extractor
+que lo haga todo pero no me funciona
+porque tampoco me he puesto a investigar
+así que
+me toca hacerlo a mano
+si
+lo que pasa es que eso
+está todavía pendiente
+no, está trabajando
+la verdad, está trabajando
+por eso
+si, siempre que hablo con el
+tiene una cosa nueva
+eso es importante
+en principio tengo los fichos aquí
+y hay que
+ajustar alguna cosilla siempre
+que está generado
+con espacios
+con líneas en blanco
+y hay que arreglarlas
+esto de aquí
+a ver si...
+no, en el diciembre
+o no
+no sé
+no se me hace arrastro
+no se me hace arrastro
+no se me hace arrastro
+no me hace arrastro
+no sé por qué lo genera así
+el salto de línea este
+no es correcto
+entiendo
+porque es que nosotros
+le concretaramos la cultura aquí
+es el nombre del dato
+no, si le toca hacerlo a mano
+para que me mostraris
+que yo esto se está haciendo
+un poquito de tarra de calda
+estos en España no me pasaba
+los saltos estos de
+de la línea
+¿la línea es muy grande o qué?
+no, no, debe haber un
+campo aquí, quizás es un espacio
+al empezar la
+el campo
+algo así
+bueno, no pasa nada
+por eso se miran todos
+porque si no
+este no tiene nada
+de multivariable no hay nada
+pero igual hay que correr
+un poquito
+en transfronción a la primera
+esto no va a ser
+las intervenciones
+no me digo
+y ahora está bajar aquí
+¿no quieres?
+no le tienes esa teoría
+tu ahora esa idea y eso es
+no, no, no, no, no, qué hacía en la noche
+cuando se ve mucho riso, cuando va a estar
+y en las finales
+por finalmente sí, pero por finalmente
+por ejemplo si, pero al final ha hecho de nuevo
+si coincidimos por aquí
+y si llevamos tres más por evento
+pero una vez antes
+pero hay, inclusive, si se atuera el evento
+Rick los trae el evento
+lo deposita el fichero
+ya lo que quiero
+ayer estábamos comentando
+lo verdad porque me preguntaba
+oye, la parte de integración con Rick
+¿cómo va a poner el evento?
+¿sonos como?
+Rick va a consumir APIS
+para el online
+pero al finalizar
+te va a hacer un proceso
+de sinronización de los que hacer más
+inicialmente era evento
+y está ahí
+pero a la verdad
+como ríe es el golden record
+que llaman
+tres enteroías que tonarse
+entonces no tengo que recordar
+de algún lado, que está dando por ahora
+que en el año 10% van con un fichero
+8 años
+no sé
+a ver, no sé, es que esta semana
+si va a decir cosas pero
+no estarán arregladas
+pero bien, eso es lo que se va a hacer
+el ISO de Brasil
+de 3
+vale, eso de 2, el BR
+y de 3 ahí
+el de España
+vale, pero ahorita
+lo tengo que seguir pensando en el CP
+de Avid porque eso ya está
+para eso ¿vale?
+vale
+porque no se actualiza
+detalles, vale
+ahora con este flip en principio
+ya sí debería funcionar
+vamos al posman, yo tengo aquí uno
+de
+pero esto que es
+de
+cuando se actualice
+el país correctamente
+ahorita el país está el CP
+pero cuando se despliegue
+correctamente para que tira
+la definición total
+en 900 va a quedar que
+deber de obrar
+entonces las colecciones
+que están voltando del sistema
+que están con el CP
+hay que cambiarlas a ese core
+ese es un detalle
+y ese core lo tengo
+vamos a seguir poniendo el nombre
+pero no con el nombre
+de la facturidad dejada
+bueno
+me puedes pasar
+el endpoint de
+Brasil
+la ruta
+que voy con el de España
+con el de integración de Córdoba
+si, si, voy
+te lo pego ahí el DNS
+si
+necesito
+si
+funcionará
+no sé
+creo que tenemos expuesto
+el backoffice igual
+vemos la caña ¿no?
+si
+voy a probar
+no, vale
+el RT lo tenemos expuesto también
+no lo sé
+¿preguntan más fáciles David?
+ya, no, claro
+claro, aquí tenemos el
+de rating, no sé si tenemos expuesto
+el servicio de
+porque este mediante FDC no lo usamos
+lo necesitamos a través
+del RT
+sino lo que puedo hacer es cargarlo en España
+y pasar todas las colecciones
+a Brasil
+y hacer el copiado manual
+para esta
+¿alcas compañías 15 no tenemos
+o si tenemos, creo que no
+no, es decir, yo ya tengo los datos
+los tengo en el
+en el comprimido
+¿me los puedo pasar a la mongo de España?
+si, ahí la más entonces
+en el
+en el entorno de
+por nuestra línea y por la compañía
+eso
+a ver
+aquí es cargado
+yo no tengo, claro
+que no es inmediato
+a ver
+lo veo bien
+la compañía 15 ¿no?
+si
+a ver, a ver si da algún error
+dejó de compartir un momento
+que siempre
+tengo la chuleta en algún sitio
+que os la pasé, esperad un segundo
+lo la pasé a ti, Fredia, Manuel, creo
+¿qué hago? ¿la busco?
+no, no, la busco y yo, no te preocupes
+a ver
+a ver
+y a ver
+y a ver
+y a ver
+y a ver
+y a ver
+y a ver
+y a ver
+a ver, no te preocupes
+por lo tanto, no te preocupes
+por lo tanto, después de ocultar la brisa
+para acobizar
+pero lo que pasa es que
+lo que tiene el problema de vida es que no tiene acceso
+a vector
+no sé si tenemos expuesto
+en Brasil el RTE directamente
+a ver
+y a ver
+te va a mandar el
+que mandó a alguien que me mandó a David
+para acelerar
+bueno, porque vamos a estar moviendo el producto
+que todavía no tiene la otra modalidad
+lo hace
+¿no es como una incierta borranza
+o las que ya existen o las tocas
+la colección de Mongo de cada una de esas
+las que ya existen o la modifican
+y
+va a traer todas las tablas
+toda la información, incluso la que ya exista
+o sea, hay una cierta
+al momento de yo subirla, no se duplican
+sino que solo dejan las que no estaban
+añade las
+las que no están
+listo
+a ver que me ha fallado
+segundo
+por el país
+¿que va a ser el alito?
+me estoy para atrás un momento
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+¿que va a ser el alito?
+solo que nosotros lo queremos
+es decir, John Level I
+estamos aquí
+a uno de los días
+que vamos a realizamos
+este
+vamos a decir de rechazo
+nosotros teníamos
+la cobertura informada, el cobre
+la quitamos, hicimos la prueba
+un poco
+en el gran
+de esa misma compañía
+en el 145
+a nosotros nos funciona
+la asignación de bases técnicas
+ahí solo tienes una récorda
+de lo que nos estamos ligando
+sí
+un palmo, querido
+¿que va a ser el valor?
+¿que va a ser el valor?
+no sé
+yo creo que no
+pero lo tienen todos
+este dato me imagino
+es el valor
+lo pongo
+pero no tiene sentido
+está haciendo referencia
+no tiene un dato
+pero es el fin
+y aquí en un diario
+no lo está encontrando
+no se lo veis ahí
+no, el paridema
+quedé aquí en ocho
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+11
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+118
+15
+a ver qué dice este señor acá
+FINE
+Error en la asignación
+está claro
+No en el sangue lo apretó el compromete
+¿Qué tiene la pantalla?
+¿Eh? ¿Tú?
+Sí
+En el nitro que me estaba atribuando
+y aparece la pantalla
+y aparecen los campos y ni siquiera aparecen
+sí, no aparecen los campos
+No aparecen
+Cuando quitamos estas reglas
+aparecían y aparecían los discados
+usamos las reglas y cuando se le da el botón
+le da su manera de cobertura
+se queda exargando y aparece el botón
+Ahora vamos a ver
+ponle
+ponle
+¿Puedo cobertura?
+Al final
+Al final
+Sí, aquí como salen estos de acá
+El coán de descorco y el coán de cobertura
+A los variados directamente
+Sí
+El marca ya está bien ¿no?
+Jes
+Sí, es bien que estar en Jes
+porque si no eso no funciona
+activar
+Al final
+Sí, es bien que estar en Jes
+porque si no eso no funciona
+activar
+el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y el coán de descorco
+y la suspición de la A23002
+yo les explicaba con el exerque
+con la presentación que hice esta mañana
+que iba a la suspición como peregral
+entonces
+una de las cosas
+que determina el proceso de cálculo
+control rt
+cuando la cobertura es de suscripción
+es este orquestador
+que está implementado acá
+este orquestador
+está definido
+este orquestador
+está definido
+por cada una de las condiciones
+que
+va a analizar el proceso
+de cálculo para esa cobertura
+entonces
+hay unas condiciones que se van a especificar
+cuándo es una alta
+cuándo es un suplemento que modifique el capital
+cuándo modifique la edad
+cuándo modifique
+una fecha
+entonces
+da la complejidad
+de la análisis
+de ver qué dato entraba
+y qué cambiaba
+la evolución
+no se podía codificar con simplemente unificado
+entonces
+lo que se hizo fue un motor
+de reglas que evalúa eso
+dependiendo de
+lo que se esté cambiando
+o la operación que esté haciendo
+este motor va a terminar
+cuál es la suspición mártica
+sí
+estoy haciendo una emisión
+pues la suspición es de alta
+alta la suspición
+esa no tiene problema
+pero si estoy haciendo una modificación del capital
+me cambia la edad
+de jubilación
+y la fecha de jubilación
+que coincide
+en la fecha de vencimiento de la poliza
+pues eso tiene un poco no alteración
+en la forma de calcular
+y él tiene que terminar por qué camino
+dependiendo de lo que está modificando
+y tiene que ir en la formulación
+estos caminos y estas formulaciones
+son definidas por el equipo actual
+los equipos actuales
+dependiendo de lo que me cambien
+vas a llamar de esta manera
+esta forma y me tienes que pasar estos parámetros
+de entrada de esta manera
+para que la fórmula sea capaz
+de hacer los cálculos correctamente
+entonces
+eso es lo que nosotros hemos creado
+en esta parte
+para un producto de grupo hay un producto de panamá
+es lo más sencillo de este mundo
+sólo hay uno
+lo que ya está
+si Brasil decide
+y se puede
+que ya lo que se si
+se vuelve más
+el análisis va a ser más completo
+y se van a explotar más esto
+qué significa
+cuando yo estoy dando por ejemplo
+una
+una alta
+perdón
+perdón
+lo que decía el equipo actual
+que es una operación
+ese criéis
+eso, voy a buscar aquí
+las fórmulas así las tengo
+por acá Estonia
+porque José Carlos me pasó
+tú tienes ese excel que nos pasó
+no sé Carlos dónde está la matriz
+de fórmulas
+es el bonito que
+te digo por ahí
+No es lo que es, no es lo que es, no es lo que es.
+Vamos a ver si les encuentro.
+Ah, comparte esa.
+Yo no entiendo cómo hacer eso.
+Conseguí el corral de hace 10 años.
+Esto es una fórmula actual, ya la tenemos implementadas en el activo digital.
+La fórmula principal es esta.
+Esta fórmula, la que está señalando aquí, va a recibir la entrada de los datos que necesita la fórmula.
+Es decir, previamente, al activo digital le llegó polisorro y le llegó dos polisones.
+La entrada que está en el siguiente suplemento, lo que está entrando, y le va a llegar el vigente.
+Entonces, llegará las dos. La foto vigente, más lo que está modificando.
+El orquestador, cuando llega esa, toma la información de esos dos polisones,
+de lo que está modificando, más lo vigente,
+sacan de eso, le informan los parámetros que va a consumir esta fórmula.
+Es decir, ese orquestador prepara los datos para pasárselos a esta fórmula.
+Incluido, va a ir a buscar la base técnica correspondiente.
+Entonces, cuando llega aquí ese orquestador, si está parámetro, esta fórmula, esto lo tienes que hacer.
+Esta fórmula, le van a llegar los 10 parámetros.
+Uno son del vigente, otro es del actual, y otro es de lo que tenía anteriormente más, las base técnica.
+La base técnica es lo que te va a hacer tener.
+¿Le llega aquí?
+Y dependiendo de este análisis, que son cielos diferentes caminos,
+el sistema tiene que irse por un ofrutador, X, o este, o este, o el otro.
+¿Qué determina esa orquestación?
+Los datos que le van a llegar desde acá para saber cómo va a operar la fórmula.
+Entonces, dependiendo de los parámetros, estas fórmulas actuales, va a coger este camino,
+va a ir aquí, empieza acá, empieza acá, termina aquí.
+Cuando él haga el cálculo, la salida, todo ese cálculo es un capital y una priva.
+Una fecha de validez, ¿vale?
+Entonces, todas estas fórmulas ya están en el arquivo digital.
+Si alguien entra y escarva, las van a ver.
+Pero la ruta es esta, toda la orquestación.
+Esto sería bueno que ustedes hicieran también para no perderse, ¿vale?
+Porque la que tenemos ahorita me ahorro en Uruguay.
+Se puede pintar así, ¿no?
+Se puede pintar de esa manera.
+En este esquema, yo lo entendía como él calcula esas cosas antes.
+No, él va a llamar, llama a éste, llama a éste, luego ejecuta éste, obtiene y esto está aquí.
+Pero aquí, eso yo quedo aquí, imagínate que esta es la multiplicación de éste por éste, aquí.
+Entonces, claro, para multiplicar, todos van a ver que tenemos que ir para aquí y calcular todo esto.
+Obviamente, claro, esto es un compendio de fórmulas.
+Esta fórmula hace todo esto. Esta solo hace esto.
+Le devuelve para lo del anterior y...
+¿Se acuerdan de esto es la versión?
+La versión del PL que había el taller de cálculo, ahora es esta versión del taller del PL.
+¿Sólo que está en España?
+Es una pregunta y para la reserva matemática, porque la fórmula aquí se llama, ¿no?, en la emisión.
+La emisión o el surdamento va a llamar a la fórmula y te va a dar la prima.
+Y para el proceso de cierre, porque en el proceso de cierre,
+también tienes que llamar a la fórmula mi jamés para calcular la reserva matemática del mes que está cerrando.
+Debería hacer igual, o sea, debería llamar a la emisión.
+Pero desde el programa de cierre, no, estamos conectando con el módulo.
+O sea, tendríamos que hacer eso, ¿no?, conectar también el programa de cierre.
+Es que hay que ir a la SNS, seguro.
+El programa de cierre va a tener que hoy es un PL, porque el programa de cierre
+que calcula, el proceso de módulo, es el que calcula las reservas al mes.
+Nosotros, ¿cómo estamos haciendo eso?
+Es un PL, que llama esa misma fórmula que hoy la tenemos en PL.
+Otros presentó el único en propias renovaciones, que eran la renovación.
+Ya iba y se lanzaba el PL.
+Pues que nos tocó reestructurar eso para que primero hiciera el análisis.
+Y era el activo rescatar los datos, tener toda la información.
+Y ahí sí, tome, ¿quién ejecuta el PL?
+Pues ya viene y se manda los datos.
+¿Hay que conectar?
+No, no, eso es lo que no hay que hacer.
+Imagínate que de la reserva matemática es el cierre de las polisas del mes.
+Usted tendría que levantar todas esas polisas del mes.
+Tendría que ser un componente llava, una tarea llava que levante o...
+E ir al activo digital por cada una, hacer el cálculo de las reservas,
+porque las fórmulas y las van a poder consumir 100% y tenerlo.
+Y no sé si hay que grabar en unas estructuras,
+pero ya ha calculado todo para que el otro PL los tome y ya tenga todo listo, ¿vale?
+No vamos a salir desde la base datos a mitad del proceso y ir a la...
+No, no, no.
+O sea, tendríamos que migrar esa tarea que hoy.
+Es un PL, aún una tarea llava que haga la integración.
+Y escriba esa...
+Eso hay que mirar.
+No salís de la base datos al activo, porque es que no van a ver ni canales abiertos.
+Alberto no va a ver ningún canal.
+Te van a negar rotultura.
+Vale, eso hay que reestructurarlo.
+Eso hay que reestructurarlo.
+Sí, para los productos que tengan reserva matemática,
+de lo que vamos a...
+Acuerdan de que ustedes sí van a poder consumir la fórmula del activo digital que necesiten.
+O van a poder hacer una simulación, ¿vale?
+Eso lo van a poder hacer.
+Y también faltan las proyecciones.
+De valor garantizado.
+La proyección es coger este valor y ponerlo en años.
+Ya está.
+Pero digamos que eso es algo que...
+Y nosotros por ejemplo en el individual ahorita no haría,
+a menos que te haga un suplemento.
+Es que con la suscripción donde necesita hacer la proyección,
+que la tienes ahí, el valor está vigente.
+Si no cambia nada de escogerlo, te va a dar.
+Si no estás cambiando ningún interés,
+el valor garantizado es este que tienes ya en la tabla.
+Porque ya lo tienes.
+Esa es la gran diferencia entre lo que no teníamos a tener con las resoluciones.
+Ya tienes el valor.
+Si quiere a 10 años, pues lleva a los 10 años esa proyección.
+Pero ya es una proyección.
+Ya ni siquiera es el cálculo de todo el proceso que está aquí.
+Vale, lo que quiero decir,
+que vamos a hacer una prueba cañería con esto.
+No tan complejo con toda esta historia,
+porque eso es lo que va a hacer Alfonso y va a hacer tú.
+Pero podemos recordar mucho que multiplica aquí por una tabla.
+Sí, eso es lo que vamos a hacer, que vamos a explicar con Jarny.
+Conozco.
+Pero sí quiero entender la capacidad
+que tiene el activo para trabajar este tipo de fórmulas.
+Y estas son las más complejas entre comillas.
+Entonces, todo esto está implementado.
+Cada fórmula, nuestro interés, por ejemplo,
+en el taller de productos,
+es que tengamos el validador de fórmulas.
+El validador de fórmulas,
+vamos a tener un catálogo de fórmulas
+para poderlo consumir desde el taller.
+Y al catálogo inicialmente vamos a empezar por las más grandes.
+Vamos a poner las cinco fórmulas que hay de cálculo actualmente.
+Se van a meter en el catálogo
+para que se puedan consumir desde el taller.
+¿Qué va a pedir ese validador de fórmulas?
+Acuerden que tenemos varias formas de calcular la prima.
+Entonces, ese va a evaluar
+que si el tipo fórmula
+entre el catálogo de fórmulas
+de este tipo
+se va a especificar qué consume esta fórmula para calcular.
+Entonces, van a estar los parámetros de qué tipo es,
+no sé qué, para que se pueda pintar en el taller
+y la persona pueda meter los datos.
+Entonces, le va a calcular, pues se va a calcular,
+va a tomar los datos y va a llamarme al activo digital
+para hacer la fórmula y calcularla.
+Y exactamente me da lo mismo
+que si lo hubiera hecho por otro lado.
+Estoy llamando la nueva fórmula con los parámetros que son.
+Entonces, pero la idea,
+y bueno, es dentro de eso también queremos
+que si este pasa por todo esto
+tengamos ese roteiro de cálculo
+que necesitan los actuales para ver qué pasó por aquí.
+Entró o salió los valores que tuvo,
+para que se vea toda la ejecución
+del proceso de la fórmula.
+Esa también es una de las capacidades
+que queremos que tenga el baleador de fórmula.
+Eso ya se está mandando construir, ¿vale?
+Y eso va a quedar dentro de una colección del Mongo.
+No, ahorita no sé en dónde va a quedar la salida,
+pero si la tendremos que ver en el baleador
+tú vas a ver esa gestión.
+Sobre todo, sobre todo para
+quien esté revisando qué cálculo está correcto,
+que los valores son, los que son.
+Y ahorita usted se decir si va a quedar aquí
+porque lo vamos a dejar el taller.
+El taller tiene su propia base de datos, ¿vale?
+Bien, entonces algo importante.
+Quien esté creando estas fórmulas en Brasil,
+porque como ya las hicimos en España
+nos toca hacer un ajuste.
+Hay que dejar especificado
+qué es lo que se va a poner aquí Alberto,
+la entrada y la salida para hacerlo el roteiro.
+¿Hay una instrucción que se colocaba
+o era un sistema lo bestia?
+No, no, no.
+Un sistema no puede ser.
+Eso no va, hay que meterlo a nivel de lo,
+pero hay un método que es el que se va a llamar,
+que es el que se va a encargar la pila,
+cada uno de los mensajes de entrada a salida
+de cada una de las fórmulas pesajeras.
+Eso si hay que meterlo.
+Nos dañadiendo una colección de llavas.
+Si tú vas llamando a un método y ya vas a encargar la pila.
+Entonces tú vas a poner ese método en la entrada
+y que entro y de un mismo modo que a la salida
+y que resumen.
+Es lo último, es una llamada,
+lo hemos intentado hacer de diferentes formas.
+Lo hemos intentado con taps,
+haciendolo, realizandolo con un tap,
+pero los taps de sprint tienen el problema
+de si lo pones en un método privado,
+no lo inyecta.
+Y si lo metes, si orquestas métodos
+dentro de la misma clase,
+no lo inyectas un poco.
+Entonces al final lo hemos intentado
+también hacer a través de
+aspectos.
+Y tienen el mismo problema.
+No, solo te coge la etapa pública,
+el resto.
+Entonces al final hemos engrado
+y se mete de este método
+en el último alinear de cada uno de los
+métodos de fórmulas.
+Y ya ha estado.
+Lo hemos hecho con la notación.
+Claro, lo hemos hecho con la notación,
+pero tiene el problema.
+Pero si son privados,
+no te lo cogen.
+Son métodos privados para la notación.
+Pero tiene que ser la etapa pública.
+El método tiene este problema.
+Pero ese método es solamente
+consumir el método,
+ingresarlo
+es solamente consumir el método
+en el cargo de cada uno.
+Esos cartutas
+también tienes que implementar.
+¿Vale?
+No se, estás tomando
+referencia a los trabajos.
+Yo le voy a tomar
+fotos secuas de él.
+Ah, pregunto.
+Son ya los trabajos
+abdiados.
+Lo que no sé si se ha adaptado
+la actualización de las fórmulas.
+No lo sé.
+Pero, por favor,
+sí, pues individuales
+y arrancamos ya con eso, ¿vale?
+Esa labor de verdad es
+que hace el estudio para individuales.
+¿Está bien?
+Este resultado, esto eran los cobales.
+Estas fórmulas se estaban hecho en cobol.
+Y lo que hicieron
+fueron todos los análisis de cobol
+y la trasladaron a un árbol,
+y el árbol lo trasladaron ya a la estructura.
+Hoy te vamos a ver en el RT, ¿vale?
+¿Tiene una prueba de cañerías?
+Hasta aquí.
+No nos vamos a hacer una prueba de cañería por ahí.
+Vamos a hacer la fórmula principal
+y ese se encarga de hacer toda la gestión.
+Pero ustedes de aquí palante
+lo que van a tener que trabajar, ¿vale?
+Bien, usted entonces
+va a terminar de explicar acá.
+Te explicas eso.
+Para terminar de explicar esto.
+Para intentar eso.
+La clave que acabas de hacer
+comparte lo que tiene.
+Vale, entonces
+como ven
+este es el orquestador
+de la operación para
+terminar la transcripción
+de la regalidad, dependiendo
+de unas condiciones.
+Vuelvo y digo
+esto evalúa cualquier
+dato de la fuerza.
+Entonces, yo por aquí
+tengo esta la frecuencia.
+Bueno, este es uno de las creaciones.
+Este con lo que tenemos que ver.
+Por este momento.
+¿Evalúa la fórmula?
+Perdona.
+Si el nombre
+¿Cómo identificas?
+¿Dónde?
+No sé cómo se llega
+justo a esta operación.
+¿Cómo se relaciona
+la operación con esta fórmula?
+Sí, malo.
+Lo primero que va a hacer
+el motor de RTE
+es
+lanzar las condiciones.
+Hay que tenerlo.
+Producto cargado en España.
+Faltaba
+la configuración en la 2050
+de la cobertura
+463.
+Uy, aquí tiene que darle palo.
+Y cuando falla eso hay que mirarlo a mano.
+Entonces estaba comprando los ficheros.
+Y
+André ahí ayudó bastante.
+La verdad es un crack.
+Muchas gracias.
+Lo traigo en España.
+Vale.
+Mándalo paura por así.
+Sí.
+Voy.
+Yo sigo aquí. Vale, por si me le de.
+Dale, dale.
+Lo que va a hacer el motor de
+RTE es abordar estas condiciones.
+Estas de hoy empieza abordando estos criterios.
+Entonces,
+dependiendo de estos criterios
+va a determinar
+cuál, a qué
+proceso de suscripción se va a ir.
+Entonces aquí valúa cualquier
+dato de la fuerza.
+Entonces lo que se ha hecho
+es que el equipo actual
+detinió cada uno de los caminos.
+Cuando es una emisión,
+cuando hago un resgate,
+todo cambió la fecha
+de jubilación
+o la de jubilación
+y me cambiaba el técnico.
+Entonces cada uno de esas características
+ellos han definido
+los diferentes caminos.
+Eso lo definen ellos.
+Y nosotros lo que hemos hecho es analizar
+cada uno de sus criterios
+y colocarlo en estas condiciones.
+Si la condición se cumple,
+el motor va a seleccionar
+este proceso de suscripción.
+Si la condición es válida,
+te distra. Ok. Imaginemos
+esta que se cumple.
+Esta distancia es una rehabilitación.
+Y que la fecha
+de efecto es igual a la fecha
+de efecto del día.
+¿Vale?
+Él evalúa esta información
+y se perfecta. Entonces la suscripción
+que voy a ejecutar
+es esta, la de reducción de garantías
+certificadas. ¿Vale?
+Tiene unos valores por parámetro
+que esto es configuración.
+Esto es para España. Para Brasil pueden ser otros.
+Esta información
+es necesaria porque la información
+que va a entrarle a la fórmula
+ellos tienen unos parámetros
+definidos de tipo...
+tipo no.
+Si es de rescate, si la operación
+es un bono, si es una modificación,
+si es una suspensión.
+Entonces esto se parametrizen. Entonces
+si cumple esta condición
+y hay unos parámetros que volve
+y digo, se ha definido España
+una le pone con qué valor van a entrar.
+Entonces como esto es una modificación
+aquí le están diciendo que es una ex
+que es una suspensión
+entonces le están colocando aquí en una ex.
+Si fuera un proceso de bordo
+imagínate que me llega al cálculo del bordo.
+Ahí la veo.
+Es cada fórmula puede tener diferentes
+para estas manores.
+No tienen que ser los números.
+Incluso los parámetros
+son totalmente diferentes
+para los que va a consumir España.
+España por ejemplo no necesita
+este dato.
+De claras si es para una pb que es el pago
+de los bonos.
+Y otra cosa, yo podría
+hacer algunas cosas si habran un dato
+de la polsita, yo podría decir en esta entrada
+tomar el valor de la polsita.
+No, porque vuelvo y digo
+los datos
+les vas a tener cuando llame la fórmula
+de cálculo. Allá si vas a tenerlo.
+Aquí es determinar
+cuál de las operaciones
+de los
+suscripciones
+de las suscripciones
+se va a tomar.
+En la fórmula había diferentes
+caminos.
+El tiene que terminar porque camino se va a ir.
+Entonces lo que están realizando
+es aquí dependiendo de la entrada de las condiciones
+que le están llegando el riesgo.
+Determina vale
+va a cumplir esta.
+Aquí estos son los valores
+para mí son como valores
+de un cereal. Sí, son valores de un cereal
+que necesitan la fórmula.
+Pero esto va a consumir las fórmulas.
+Entonces
+usted tendrá que definir cuál de los valores
+de la fórmula.
+Actualmente le va a definir eso.
+Pero si la fórmula solo puede
+utilizar esos valores
+o también va a poder utilizar valores
+de que tengamos a nivel de producto.
+Sí, sólo que aquí
+son los valores de la comida.
+Estos son como parámetros.
+Se debería como constantes de la fórmula
+que le va a llegar.
+Pero perfeando que no van a estar en el polisón
+y que necesitamos.
+Pero eso es básicamente la configuración
+para tomar la decisión de qué camino
+llevar a la fórmula.
+Hay de cuenta Sonia
+que como si fuera constantes de la fórmula
+le va a llegar que en este caso la marca
+de bonos se excede porque no es
+para un tratamiento de bonos.
+No es para un rascón.
+Son como constantes para que nos entendamos
+son las constantes.
+Y esto lo define
+el país para cada una de las fórmulas
+porque entiendo que dentro de la fórmula
+utilizará estos valores.
+Exactamente. Imagínate
+esto no los pasó los compañeros de actividades.
+La verdad es que no los pasaron.
+Compañeros hace 33 años
+que definieron estas fórmulas.
+Ya.
+En donde dependiendo de la operación
+que tenían que identificar
+qué iba a hacer.
+Es un bono, es un rescate.
+Entonces ellos se han definido
+para metros que son estos que la fórmula
+va a consumir internamente.
+Pero para saber si la fórmula
+qué fórmula tiene que usar
+entonces están las condiciones
+de las condiciones cualquier dato
+que vengan la ponza.
+Tanto la información actual
+como el vigente.
+Entonces el evaluar
+las condiciones, cumple las condiciones
+y dice vale, el camino
+voy a irme por este camino
+porque estas condiciones se cumplieron
+y le voy a pasar estos parámetros.
+¿Vale?
+Esto hay que ponerlo, no sé por qué no me lo puse
+porque hay más países y esto se calcó.
+Pero utiliza... bueno igual...
+¿Lo tienes que ponerme?
+¿Lo tienes que ponerme? ¿Lo tienes que ponerme?
+Si quieres colocar...
+Esto es España, esto se lo voy a hablar
+con ellos para que le ponga.
+Entonces ¿Qué hace el sistema?
+El motor de la implementación
+evalúa esto
+y determina que va a mandar
+una reducción de propias.
+Entonces aquí está
+la implementación.
+¿Vale?
+Esta es la implementación
+que va a ejecutar el motor
+de RTD para la suscripción.
+En esa implementación
+le entra estos valores
+que están acá.
+En esta implementación
+está internamente la fórmula
+que va a consumir.
+La fórmula que va a consumir
+es una fórmula que necesita 10 parámetros.
+Mentan la vigencia de la polisa,
+la fecha de nacimiento de la persona,
+la reculidación,
+etcétera, la base técnica.
+Dentro de esa implementación
+está...
+va a tomar del polizón completo
+y se los va pasando
+a la fórmula.
+¿La fecha de nacimiento o la fecha de nacimiento?
+¿La edad de la violación?
+La edad de la violación.
+Esto es el nombre de un método.
+Sí.
+¿Cómo se hace el encajo del método
+con la cosija?
+Eso lo quedamos a ver en las tripas
+de ahorita con esto.
+Entonces, esto
+internamente
+va a recibir estrés del polizón
+cabrón de los cámaras.
+Cuando llega
+ese método a esta implementación
+ya el motor de la sustitución
+ya filtró que la suscripción va a ir.
+Ya lo hizo.
+¿Cuál es la implementación que ejecuten?
+Dentro de esa implementación
+va a rescatar los parámetros,
+va a ir a cada uno
+a pasárselos a la fórmula.
+Y adicional,
+va a ir a la base técnica.
+Nos faltan bases técnicas, compañeros.
+¿Pero para qué?
+Para nuestros no habitamos porque todavía
+ya no está acudido.
+Está acudido.
+Pero ahora que con lo que
+dentro de la
+implementación como tal
+nos los podemos traer las bases técnicas
+para poderlas utilizar.
+Es bien.
+Es que el complemento de la base técnica
+para los productos,
+no sabes que está empezando o
+que muchas condiciones que esta tabla
+quedó bien pesada para hacer cándal
+como las que me estaba mandando.
+Si lo hace, si lo hace, si lo hace.
+¿No puede que me lo recorre?
+Si, podemos verlo.
+Incluso yo puedo entrar a un código
+que tiene que ser el concepto
+para dar un dúo
+si no da todo y eso.
+Esta es mi teoría.
+En fin,
+sigamos.
+Pensando en bohar.
+Bien,
+es que la base técnica entre las tripas
+aquí el hombre se va a ir acá
+y me va a decir
+esta la base técnica.
+La base técnica
+son todos los conceptos actuales
+que necesita el proceso de cárculo
+para dar su primo o su capital.
+Esta
+están aquí de juguete porque
+estamos una gente exista bien
+en 2003.
+Vamos a trabajar con esto.
+La base técnica la defino
+como se define en todo el tema
+del estilo digital.
+Compañía Ramo
+en fin, porque aquí no le metemos la idea.
+¿Por qué fueron los primeros?
+¿Sería?
+No te lo tenías a poder.
+Incluso ya está todo.
+Está todo.
+Claro, porque esa no es nuestra.
+Mira.
+Tiene que meterle la modalidad
+la cobertura, porque la cobertura
+es por la base técnica es por cobertura.
+Cada una tiene su
+su cortada.
+Aparte de eso
+hay negocios
+que se establecen donde
+el interés técnico difiere
+de otro cliente
+que son las preferencias
+como tal, que aquí en España le llaman
+una taranja a medida.
+Aquí puedo poner una taranja a medida
+con cliente. El interés técnico
+del ICI-PC
+no sea el 3, no sea el 2.5
+o la 1.
+Eso te puede personalizar
+porque lo puedo hacer o por una bolsa de luz
+un contrato, una bolsa,
+un canal.
+¿Qué hace el sistema?
+Que te explica
+que esto te lo insiste tú.
+¿Qué pasa?
+Dale.
+Se definieron aquí varios
+objetos.
+¿Pilotean desde allí?
+Porque lo estoy señalando aquí,
+tú vas a tocar.
+Por ejemplo, si quieres ver
+abriendo estos, los objetos nada más
+para que veas en principio
+¿Cuáles hay?
+¿Abro todos?
+Sí, pero así en primer nivel
+esa canal.
+Entonces, aquí
+se siguió un poco
+lo que está
+definido en
+lo que se definió en un principio
+sobre bases técnicas o sea
+podemos configurar
+3 tablas de mortalidad
+para un producto
+podemos manejar
+simultáneamente 3 tablas de mortalidad
+gastos internos
+calculados sobre el capital
+porcentaje de gastos internos
+calculados sobre prima, porcentaje
+de gastos externos, ¿no?
+Entonces, ¿Qué pasa?
+¿Todo esto son como
+pueden ser vectores
+o pueden ser tablas, ¿vale?
+Si quieres
+sigue bajando Fred y estos son margen
+de...
+el MGB es margen
+de beneficio
+en tarifa
+se guardan
+las tablas de tarifa, ¿no?
+para las coberturas que se calculan de forma anual
+las tasas, ¿no?
+es aquí donde se guarda
+interés
+el interés técnico
+y penalización por rescate
+que prácticamente es como un vector
+que penaliza dependiendo
+en que se encuentre la polsita, ¿vale?
+Entonces, vamos
+a entrarnos en uno de ellos
+el de tabla de mortalidad para este
+el primer frente
+Entonces
+allí tienes
+dos posibles
+tienes dos posibles
+tienes dos posibles
+valores, claro, aquí
+si quieres abre condiciones
+pero aquí lo que veo es que
+indistintamente de la condición
+se está yendo para la misma
+tabla de mortalidad
+aquí pudiéramos configurar por ejemplo
+si el sexo
+no, eso puede ser, pero eso puede ser
+si el sexo
+del asegurado es
+igual a femenino
+entonces se va a la tabla mortalidad femenino
+que es la 7 no de 4
+y la otra condición
+el arca sexo es masculino
+entonces se va a la tabla mortalidad
+7 no de 6
+que tiene los registros específicamente
+para masculino
+entonces, él entra por aquí
+por el filtro principal
+compañía, ramo, modalidad, cobertura
+y empieza a evaluar estas condiciones
+por el elemento
+entra en tabla de mortalidad y pregunta
+de esto, estas son excluyentes
+como hemos trabajado anteriormente
+entonces
+que están subiendo las condiciones
+es femenino, entonces busco la tabla 7 no de 4
+y entonces se va
+a la otra colección
+y buscas allí la 7 no de 4
+por ejemplo
+y aquí
+es un arreglo de
+111 elementos
+ahí prácticamente
+se va a estar dentro de cada uno
+como la fila
+es decir, abre el primero por ejemplo
+este tiene 2 columnas
+para la edad 0
+SMR elevado
+y bueno
+reciclamos los
+nombres que estaban
+en la base edad
+estos son los leds
+los sobrevivientes a la edad 0
+por ejemplo
+entonces a la edad
+ese es el 1er
+abre
+abrió el 9 de 14
+por ejemplo
+este NR vale tanto
+y
+aquí como pueden ver
+en campos, en films
+tiene 2 columnas
+entonces lo que va a suceder es que
+él va a recuperar esta tabla 7 no de 4
+y va a devolver
+los 111 registros
+los más actualizados
+según la fecha
+de validez que nosotros le estemos enviando
+porque por ejemplo
+este objeto 0 que está aquí
+dice que tiene 2 campos
+14 y LMR
+L es 996
+946
+pero puede suceder que haya
+una versión nueva de este dato
+entonces
+aquí mismo
+agrego
+otro registro
+con otra fecha
+de modificación
+de validez
+y entonces
+claro
+eso que me permite
+que no es necesario duplicar
+toda la tabla
+para solo cambiar un registro
+sino que le agrego un solo registro
+según la fecha de validez
+y cuando
+venga
+cuando vengamos a consultar por el código de tabla
+794
+y por una determinada fecha
+él ya me va a filtrar estos 111 registros
+según la fecha de validez
+entonces el LMR el rival es el factor por edad
+se aplica
+para calcularlo
+los comentarios de esa tabla de mortalidad
+a los 14 años a partir de esa fecha de validez
+claro, ojo que
+me acuerdo que
+comentaban que
+se devuelve el objeto completo
+no sabes que es lo que hay aquí adentro
+yo te devuelvo edad
+y te devuelvo la matriz completa
+con esa matriz
+en la formulación
+tú haces lo que quieras
+y te das
+el primero lo multiplica por el último
+osea haces operaciones ya con esa matriz
+es lo que haces de volcar la base técnica
+ya filtrado
+y ya lo recorre
+cuando yo les digo que
+dentro de la operación
+de la suscripción
+de la implementación
+obtiene los parámetros que consume la fórmula
+más la base técnica
+está hablando de esta tabla completa
+lo que pasa es que ya hizo un ciclo
+ya sabe que base técnica
+va a consumir
+cuando hablamos de bases técnicas
+no necesariamente en este caso es la tabla de mortalidad
+que tiene 120 registros
+pero por ejemplo las otras si es el interés
+¿cuáles son?
+vamos a la otra vez
+no es que la traes solo la de femenino
+o la de masculino sea el caso
+claro y va a ser un prefiltrado
+y te va a decir que utilizas todo
+por ejemplo me voy a ir a esta base técnica
+que es el gasto
+gasto externo
+y le digo acá
+este código
+este código cuántos registros tiene
+uno
+la base técnica en que es un
+un, no entera
+ese es uno
+este es el porcentaje de gasto
+que vas a aplicar en la fórmula
+si tuvieras aquí dos versiones
+uno antes del 2025 y uno después del 2025
+dependiendo de la fecha
+que tú le estés enviando para consultar
+y te traes uno u otro
+a 2026 te traes el más reciente
+estoy calculando al 2020
+te traes el anterior
+esto es algo así, no estamos viviendo acá
+en el tutorial
+para que las nuevas emisiones entraran por un valor
+pero si es así, ya no es igual con el tipo normal
+estas dos
+estas dos técnicas digamos que
+quienes tienen cargado de estar
+haciendo esas
+esas campes, los tipo actual
+por eso nosotros
+en el taller que también ya lo tiene Gabi
+está implementando
+esto para que sean los actuarios
+los que hagan el mantenimiento de la
+técnica
+esto digamos que es algo
+que manejaré
+esto es dinero que calcula
+la mafre a
+20 años, 15 años
+todo va a tener errores específicos
+los va a actualizar
+ya que digo que esto va a tener doble
+nivel de chequeo
+si o si va a tener doble
+alguien notifica
+pero esa notificación no va a ir
+hasta que otra persona con otro rol diga
+que ok
+a nivel asimil y general
+digamos
+tienes por un lado la fórmula
+ahora el Excel lo tengo yo ahí
+pero teníamos por aquí la fórmula
+y la fórmula y va a buscar la base técnica
+como yo lo veo
+es
+por ejemplo
+los cálculos que yo hago para validar la prima
+que hago, yo cargo
+la tabla de mortalidad
+cargo el gasto, la tabla de gasto
+y hago un filtro
+según las características
+de la fórmula
+siempre menina entonces cargo esto
+pero tienes un catalogo ya de donde seleccionar
+esto es lo mismo
+es como que señala la fórmula le entra
+todos los catalogos inclusive ya filtrados
+por los parámetros
+que tú le estás enviando
+son los parámetros de la fórmula
+ya te los traes filtrados
+te devuelve cada uno de esos catalogos
+y dentro de la fórmula
+ya puedes hacer lo que quieras
+esto es porque están completos
+los cálculos, si fuera más sencillo
+se te ha tomado una tasa, un valo
+los víanos así
+entonces
+por eso esas fórmulas son específicas
+por eso se escriben esas fórmulas
+donde están
+entonces
+que más interesante
+de ...
+me parece muy interesante
+esto porque
+si llegaste
+realmente la base técnica completa
+y ya la fórmula
+la que usa tuas informaciones
+en el culte de lo que sea
+están completos
+también con el cálculo más completo
+que hay a llamar a eso
+el doble chequeo, ¿quién va a ser esta segunda persona?
+no, no, aquí
+aquí la teí no debería participar
+porque esta información no la controla
+generalmente
+tengo cómo está funcionando España
+España crea un interés técnico hoy
+Mafre Inversión decide que
+este va a ofrecer
+los productos de vida de 3.2
+de Mafre Inversión
+habla con Mafre Vida
+y le dice ahora las polisas de vida
+que vendan a partir de aquí
+el interés técnico es 3.2
+eso le llega a Mafre Vida
+Mafre Vida se lo pasa a los actuales
+los actuales hacen los cálculos
+y hacen la proyección
+si el 3.2 es
+viable
+financieramente
+o sea hacen las proyecciones
+y ellos son los que entran
+a la base técnica y ponen 3.2
+las simulaciones
+las más completas
+ya en el sistema
+y en ese momento que está ok
+le pueden decir si ese 3.2
+aplica para todo el producto
+o aplica para un negocio específico
+ese 3.2 cuando está todo el producto
+ellos creo que lo hacen directamente
+y si es para un negocio específico
+se lo trasladan a la área del negocio
+la de técnica
+eso es lo que le hago
+lo que lo queremos es que cuando la persona
+no aplique ese interés
+el 3.2 lo puede hacer
+lo va a hacer pero no lo pueda promocionar
+al entorno de producción
+o al otro
+hasta que alguien
+que no tiene una norma de
+libertividad
+lo garantice y dirá que es el que le cuenta
+al entorno de producción
+cargar todos los datos
+solamente en la base producible
+no la idea es que
+ellos entren a su ambiente
+que debe ser un pre
+entre allá
+a la foto
+perdón
+nosotros
+vamos a hacer un copy
+no
+nosotros no vamos a jugarle
+la idea es que nosotros
+salgamos del juego
+no vamos a intervenir
+el actuario
+va a tener la herramienta
+del taller de productos
+ellos van a entrar
+en el taller de productos
+que van a ver
+en el taller de productos
+pues como mínimo
+posible van a tener
+es la base exterior
+ellos no se van a meter con las coberturas
+no van a multiplicar un dato variable
+no, ellos van a ir
+entonces en el taller
+lo que hace por rol
+en esta parte de administración se crean los roles
+con los roles específicas
+que pueden ver
+donde puede llegar
+el usuario científica se le asime ese rol
+y él va a ver por aquí que en esta
+la parte de las bases técnicas
+entonces va a ver su componente
+aquí de bases técnicas
+y aquí va a pinchar
+y va a decir las condiciones generales
+son estas
+va testando, va a meter el dato
+y va a meter esta información acá
+estoy en pre, vale
+aquí va a colocar la
+la pistola
+hay un valor aquí, las condiciones
+aquí, pone un valor
+13
+y le hago
+pero ese guardar
+con ese guardar que va a hacer
+va a empezar, luego coge la formulación
+que está aquí, empieza a testar
+de qué cuadra, todo bien
+pero esa actualización
+que he hecho aquí no se ha promocionado
+está en la base
+del taller de productos
+lo que también está
+es lo que se está diseñando
+con el equipo de GPT
+es que aquellas modificaciones
+que están pendientes, va a haber una
+una pantalla donde van a haber
+medidas pendientes de esta modificación
+de estrenar
+va a haber que ha modificado una base
+técnica de 12 a 15
+bueno
+él aprobo y si le acepta
+nosotros lo que estamos haciendo es que
+definiendo qué
+distintidades necesitan valer el doble
+cheque
+y dentro de esas bases, aunque le dé
+despegar
+eso no va a llegar a pre, hasta que otra persona
+no entre
+y diga que está probado ese cambio
+si esa otra persona
+que tiene el segundo nivel de chequeo
+dice que sí, ese cambio si se va a ir a pre
+bueno
+pero nosotros aquí no jugamos nada
+no van a ser hechos
+pero también estos que se han vuelo usando
+nosotros vamos a estar probando
+si, si, a los que nos están
+pregunterse si ha mejor
+una cosa que les voy a comentar
+es que una limitación que tenemos ahorita
+en las bases técnicas
+en base de datos
+es que las que están
+no, en la actual
+es que
+no podemos agregar
+columnas nuevas
+la estructura es como eso
+solo se agrega si es
+exactamente necesaria
+unos permisos y todo el tema
+pero digamos que ya la estructura está definida
+igual
+la cantidad de elementos
+lo que yo les comentaba allí de
+tenemos tres tablas de mortalidad
+gastos externos
+esos elementos también están
+de alguna forma limitados, acotados
+están inscritos en una tabla
+de columnas
+aquí va la tabla de mortalidad 1, la 2, la 3
+en gastos
+en cambio aquí
+con verdad no es que si es
+necesario más adelante
+hay otro producto
+o identificamos
+que necesitamos un elemento más aquí
+se pudiera agregar
+uno que diga, no se
+no se, alguna cosa de
+no se, otro elemento adicional
+no lo tienes ahí, tú le dices
+10
+claro, claro, yo puedo agregar otro
+claro 10
+otro elemento
+lo agrego aquí en la colección, claro
+obviamente esto tiene que estar casado
+con la base técnica
+para que la fórmula venga
+y lea, claro, porque estos nombres que están aquí
+si son exámenes
+o sea
+están bautizados así
+entonces desde
+desde el llavo
+venimos aquí a, yo quiero entrar
+a la primera tabla de mortalidad
+entonces de alguna forma
+estos elementos tienen un nombre
+específico para saber cómo accesar
+a cada uno de ellos
+cuál es la flexibilidad de esto
+que aquí yo puedo agregar otro elemento
+si se necesita
+y listo, y ellos lo van a devolver
+con la misma lógica
+va a ser un elemento más que van a devolver
+y también
+dentro de la tabla
+otra
+en la otra, creo
+en la otra colección
+también
+o sea, ahí
+este elemento cero
+en este caso tiene sólo
+es como un vector, sólo tiene una columna
+ahora aquí
+sólo tiene una columna que es el gasto
+el gasto es igual a otra
+pero
+otra tabla
+por ejemplo, una tabla de mortalidad
+la que nos encontramos por ahí
+que era de dos dimensiones
+es como una matriz
+muy grande, tendrá
+20 columnas
+y 100 pilas
+eso perfectamente lo puedes colocar aquí
+en esto es las 20 columnas
+o sea, las 20 columnas irían aquí
+y cada uno de estos
+sería una fila
+entonces ¿qué te permite eso? crear
+cualquier estructura
+cualquier matriz
+desde un vector hasta...
+las que son matricial, ¿sí?
+si, si, por eso puedes crear desde un vector
+que sería esto, porque si yo le voy agregando más
+un vector
+hasta una matriz
+eso es lo que no
+sólo por
+entender la flexibilidad que tiene
+yo puedo tener por ejemplo
+un objeto
+con cinco filas
+con cinco columnas
+y otro objeto
+con tres filas
+porque se necesita de esa manera
+no tengo ni idea de qué funciona
+no sé
+qué escenario, o sea
+devolverías
+cinco y tres
+en todo caso
+sería cinco y cinco
+con los otros dos en un
+pero vas a devolver siempre una tabla
+por ejemplo
+a nivel de
+las versiones que tienes
+diferentes versiones
+puedes añadir una columna adicional
+entonces en el segundo fiel
+perdón
+en el segundo fiel que estás en acá
+vas a tener cinco objetos
+y en el primero vas a tener cuatro
+eso quiere decir que añadís una columna adicional a la tabla
+entonces creo que puede llegar a ser así
+de flexible porque yo conozco el código
+pero es más por confirmar
+nuevamente cómo es la flexibilidad
+porque podríamos necesitar una tabla
+que lo que tú dices el día de hoy
+la tabla de mortalidad son dos columnas
+y mañana me llegó una tabla de mortalidad
+que tiene o veinte columnas que necesito
+mapearlas
+creo que se puede porque la base de datos te permite tenerlo así
+y en código lo que se hace
+es llamar
+como interpretar
+si no vienen
+asumirá que se da todo seguro
+pero si digamos que
+la visión general de esto es que por
+cada elemento
+tal la mortalidad acá
+yo te devuelvo una tabla
+un vector o un elemento
+de un solo valor
+esto está bien
+es bastante flexible esa tabla
+queremos hacer modificaciones dependiendo del producto
+esta tabla de mortalidad
+de tremendidad de masculino
+es la mínima tabla
+sí
+por ley
+ya no sé la diferencia si es hombre o mujer
+es la tabla de mortalidad
+y por ley
+bien compañeras
+entonces teniendo estos conceptos
+vamos a ir
+a la otra parte que es como
+esto 64
+es la tabla de mortalidad
+la tabla de mortalidad
+es la tabla de mortalidad
+es la tabla de mortalidad
+y es la tabla de mortalidad
+es la tabla de mortalidad
+es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+y es la tabla de mortalidad
+vale y eso lo que
+lo que hace es que
+osea de manera que entras por el mi querida
+y ya lo que viene es aquí
+y ejecuta esto
+lo que se hace en la interfaz
+lo que se hace en la interfaz
+es listar básicamente las operaciones que tú tienes
+entonces lo que yo decía en misión
+la modificación de la policia es un suplemento
+modificate en el suspension
+es un suplemento pero de suspensión
+hace el rescate, el bonus
+dependiendo de la operación fequeta
+dentro de la operación como tal
+tú puedes colocar las n mil
+flujos que tú necesites
+que va a ser en la misión necesitas hacer
+una fórmula para que te calcule el capital
+por ejemplo el suplemento
+en vez de críe y por ejemplo el suplemento
+calcule
+entra por suplemento
+eso es así, si el suplemento
+no entra por real
+no entra por real, sino entra por suplemento
+por modify, si
+puede suceder que dependiendo
+del tipo de suplemento lo haga dos cálculos distintos
+pero es el cálculo que tú defines
+dentro de esto
+tu dices, dependiendo de los parámetros
+te dedica y ya tu monta la fórmula
+para el otro
+yo lo voy a decir, es suplemento
+y utiliza las clases
+de así, no sé que en la avenida
+las clases van así, va a entrar por el suplemento
+y se va a encontrar aquí
+y aquí tu dices
+que camino correcto
+y dentro modificas los caminos que te van a tomar
+con los parámetros que teníamos
+con los parámetros que se pagan
+con los parámetros que se pagan
+del mongo, teníamos ahí embargo
+echamos la fórmula hacia el motor
+a donde hacer la fórmula
+yo les comentaba
+que dentro del cálculo
+cuando la cobertura de suscripción
+va a ir allá
+y lo primero que va a entrar
+a evaluar cuál colección
+cuál condición va a entrar
+vamos a dejar que Brasil
+entre bola de
+ah bueno, ahorita le matemos una
+nos tiene condiciones
+no, pero recordad
+pero con esto lo tenemos local
+porque nosotros no tenemos accesorio así
+entonces esto básicamente lo tenemos
+para que hicimos la prueba
+para poder crearnos
+aquí lo va a poner, qué condición
+pues como es el crate
+va a ser cuando suplementos X
+va a ir a esta implementación
+y le va a pasar estos parámetros
+que están aquí
+te va a coger este
+va a llegar aquí y se va a ir
+al código que están mostrando por aquí
+eso que dice ahí
+acompañamos movilidades
+en un quinto, si es en un quinto
+y va a llegar acá
+pero va a llegar a la implementación
+de Brasil y a partir de aquí
+es tumilo
+porque aquí ya viene toda la información
+entonces en este punto
+si ven que por default
+le está llegando la información
+en líneas generales de todo
+y a partir de aquí
+si la fórmula, aquí ya empieza
+a escribir cómo es el proceso de cálculo
+el árbol que veíamos en la mañana
+en Excel, esa rama principal
+es decir, en elito que me paso
+para fecha de nacimiento
+la vigencia del suplemento
+el ramo, la cobertura
+la edad de población, etc.
+y a la fórmula ya extraes
+de lo que está llegándole aquí
+en estos componentes
+ya tiene todo
+y ya la fórmula tiene que
+ejecutar lo que va a hacer
+¿vale?
+pues este momento a la primera
+de Mongo que vimos por donde están los
+esa no sino la otra
+¿cuál otra?
+la que tienen los
+ah es la misma
+pero para exacto ¿vale?
+eso es lo que estaba buscando
+vale, es la misma
+el orquestador de suscripción determina
+por qué camino se va en de las
+suscripciones y dentro de la
+implementación de las suscripciones
+está la fórmula de cálculo
+inclusive aquí puedes
+hacer un
+puedo hacer un filtro también
+con misiones
+puedes hacer un puedo filtro aquí
+para tener que codificarnos
+si quieres, claro, esto
+exactamente porque aquí yo
+en la condición es dependiendo de
+si me aquí ¿qué se valúan?
+se valúan, oye, estoy
+haciendo una modificación del capital
+no, papi, perdón
+si yo filtro aquí
+imagínate que sean esos dos cálculos
+distintos ¿no? que yo lo puedo filtrar
+por aquí ¿no?
+si es sexo femenino
+me voy por el críeit y hago el cálculo
+y si es masculino, no por el críeit
+y hago el cálculo
+pero esa condición también la tengo que
+tener allá porque lo que veo
+es que cuando te metes aquí por el críeit
+él va a ejecutar todo lo que está allá
+lo que está implementado acá
+todo lo que está en críeit
+no, lo que sí, bueno
+el críeit pero va
+porque ahí los grandes esperamos
+que depende de lo que tú quieras hacer
+porque, por ejemplo, es a variables que tú dices
+de sexo, ¿sí? que es la que tú quieres
+involucrar dentro del código
+tienes que identificar como
+al flu, si tú quieres esa variable
+específicamente para la emisión de la poliza
+de...
+claro, que es lo que veo aquí
+o sea, aquí
+no podría ir, por ejemplo, esa condición
+de sexo, por ejemplo
+cuando tiene que ir en esa condición
+así, si tú quieres hacer
+una suscripción totalmente diferente
+no sé
+otro camino
+pero realmente
+la fórmula, a ti lo que te va a cambiar
+si es una o otra, es dentro del cálculo
+más allá, entonces
+es que dentro de
+claro
+aquí, aquí es, oye
+yo tengo o el cálculo de bonos
+rescates, anulaciones
+emociones
+cambio de capital
+si las defino acá, pasa a ver qué
+tiene que hacer
+claro, eso ahí va más, entonces esa condición
+va más poniendo nada un poco
+como dice, como al tipo de suprimita
+para la operación, a la operación
+¿que está haciendo? ¿vale?
+claro, porque...
+claro, todo lo suplujoso
+tenía que ir dentro de
+el protocolo
+¿sabes?
+no, porque a veces
+es que aquí
+ya es un poco a la carga
+¿vale?
+lo que hemos hecho es flexibilizarlo
+por lo mismo, por ser
+tan complejo las operaciones que teníamos
+tocaba flexibilizarlo, hacer los análisis
+para saber por dónde
+el problema de cualquier parre
+para que se están ocupando
+para obtener su molsa
+de recuperación
+para en nuestro caso
+en lo que pagué en su cuartel
+no la tomo muy fácil
+porque mi operación
+no tiene tanta complejidad
+lo que si podríamos pensar
+un país como Uruguayo
+o... oye
+estoy haciendo
+un rescate
+eh... no sé
+obviamente
+pero la operación es...
+quién me va a llamar un rescate, ¿no?
+la persona ya terminó
+llegó a su población
+demé el dinero
+no sé qué de ida
+ya me dieron el valor
+del rescate a la Policía
+¿cuál es el valor del rescate a la Policía?
+pues la sumatoria de los capitales
+¿cuál es el valor del rescate a la Policía?
+¿dónde están esos capitales?
+donde tengo que ir?
+oye venga amigo, hace 20 años
+hiciste una suscripción
+de 1000
+tengo que hacer su malo porque ya es un valor
+que tengo ahí
+pero la operación
+imagínate la operación
+la operación de la Policía es
+de un rescate
+que es un ERS
+de tipo suplemento
+es decir, el valor del rescate a la Policía
+son...
+porque suplemento
+lo que va a hacer es como estoy rescatando la Policía
+el ERS entra
+pero el final del suplemento es una T
+Policía ha quedado nulada por el rescate
+ya la rescate
+ya le asiniestro el valor del rescate
+y ellos hacen el valor del rescate
+en España le va a pasar el valor
+de rescate a Fesicón
+a versus Juan
+pero a mí la Policía me quedó nulada por el rescate
+de tipo suplemento
+que son ERS pero quedó nulada por el rescate
+yo le informo
+a ver sus guanes, el valor del rescate
+pero yo demoró la Policía
+o sea que versus guanes en este caso
+no tiene que llamar por un tipo de suplemento
+si, el valor del rescate
+la petición de un ERS
+es un rescate parcial dependiendo de mi aspecto
+que es eso
+yo le tengo que dar el valor del rescate
+para los del rescate son
+esto
+si le ponemos un genitipo de suplemento
+entraría
+por este camino
+solo que ellos hayan siniestro
+cuando acabe la reserva inicial
+no tienen que llamar con el...
+el valor de la reserva inicial te la tengo que
+hacer yo
+por eso que tienen que llamar igual
+o es con el ERS
+o sea como si tu estabas haciendo un rescate
+si es como el flujo que ahora hay en versus guanes
+voy a respetar las cosas
+que fecha tanto, ah, entonces ponen la fecha
+y me van a llamar a mí
+la primera llamada no voy a afectar la Policía
+entonces ellos me van a llamar
+por el tipo mental 25
+que es una simulación
+va a la simulación, llama
+y de qué tipo es un rescate
+la tío dice ah, entre un rescate
+y a partir de esta fecha o otra historia de cálculos
+tome el valor de... yo le devuelvo
+yo en sí lo voy a ver un pulizón
+con los capitales y tal
+y con la información que hay en el rescate
+van a hacer dos llamadas distintas
+una simula que va contra el activo directamente
+y otra que será
+oye, este suplica, aplica este suplica
+exactamente, ah, y si ya hago el suplemento
+yo el valor de la reserva entrego
+la simulación y el dato
+y si ya la operación como tal
+ya hago la operación
+pero y con el rescate ya lo tengo
+en termos de decir si o sea en cualquier caso
+la
+la petición, apartando esto
+de que va a ser simplemente
+una simulación
+tiene que venir una petición de recate
+para que me pregura que
+vaya a la clase
+exactamente, al activo le va a dar igual
+si me fue
+porque me está dando de operación
+y yo si entiendo de la operación
+y hago la operación
+la entrada tiene que ser prácticamente
+la misma para yo poder darte
+eso es uno de los potenciales que teníamos
+y cualquier uno lo llama, digo, hago la operación
+que me dice que haga, lo importante es que aquí
+contra esta historia que estamos montando
+es que el sistema si sepa porque el camino
+echa, vale
+eso es lo que también ha mucho con todo lo que teníamos
+Freddy, perdona
+escuchar
+bueno, habéis hablado mucho a la vez
+y desde aquí nos ha escuchado muy bien
+lo que estabais hablando
+porque había varias conversaciones
+pero
+lo que he intentado, bueno, lo que he intentado
+en un lido, vale, es que
+el flujo parte de las condiciones
+que se indican en la fórmula
+mi pregunta es
+entonces ahora
+entiendo que
+lo lógico es que sería que cada
+tipo de suplemento o proceso
+que tenemos estuviera en la condición
+para aplicar una fórmula a otra
+si
+cuando trabajas con suscripciones
+o sea, en el orquestador
+aquí este orquestador que está en pantalla
+debería entender los criterios
+para identificar por qué camino
+irse, vale
+y por qué dices con suscripción
+qué diferencia es si no es suscripción
+no sería lo mismo
+no, porque
+lo que he explicado hasta mañana, la suscripción
+es un tratamiento específico para ahora
+si
+pero si no tengo suscripción
+yo no puedo poner aquí también
+en una misión la marca
+no, no
+sólo va a entrar en las suscripciones
+cuando entran las coberturas
+de ahorro que tienen la marca de suscripción
+si pero ahí
+entiendo que todas las coberturas
+van a ser de tipo prima
+la primera tienda que ve
+la primera tienda que ve
+es la marca de suscripción
+y si no tienes suscripción
+opera como la de toda la vida
+de una fórmula
+o la fórmula como dirá
+calcula pero sin la suscripción
+vamos a ver después las de no suscripción
+¿Felipe?
+y la idea es poder hacer un ejemplo con la de
+tasa por suma asegurada y eso
+ok
+vale, o sea, esto solamente
+esto solamente es cuando van
+por suscripción
+el activo realiza
+se va a esta tabla
+se va a las condiciones y ve
+que fórmula tiene que aplicar
+eso es, para las suscripciones
+sí
+y antes ha ido a ver la suscripción
+que se tiene que descargar ¿no?
+claro
+la idea es
+que el motor de la suscripción
+acorde a las reglas de termina
+por qué camino irse
+por el de la creación o por una
+pb
+y el rescate, etc
+esa es la misión de este motor
+y lo que le entra
+es el polison con las suscripciones
+que tenga, ¿no?
+la tanto las vigentes como la doña
+y eso sí da igual para todo el mundo
+vale, o sea, el cálculo va a contar
+con toda la información de la fórmula
+sea por suscripción o sin suscripción
+porque fórmula
+no sé, una fórmula definitiva
+un dato de eso sí
+va a constar con todo
+que parece que las suscripciones
+por ser
+tan especial para las coberturas de abajo
+tiene este tratamiento, ¿vale?
+eso es lo diferente, es todo se mantiene
+igual como toda la vida, como los que
+gramos es siempre
+vamos pues me parece bien, o sea
+calculamos una con suscripción, ¿no? sí, suscripción
+y así entendemos bien
+eso, que espero menos del tiempo
+entonces vamos a hacer un break para comer
+y seguimos después, ¿vale?
+y ya preparamos
+lo que hacemos
+tendríamos que montar eso

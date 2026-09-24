@@ -8,6 +8,7 @@ export default function ProductsCatalogTab() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [selectedCountry, setSelectedCountry] = useState('ALL');
+  const [selectedBranch, setSelectedBranch] = useState('ALL');
 
   // Edit Product Modal State
   const [editingProduct, setEditingProduct] = useState(null);
@@ -60,6 +61,19 @@ export default function ProductsCatalogTab() {
   }, []);
 
   const countries = ['ALL', ...new Set(products.map(p => p.countryCode).filter(Boolean))];
+  const branchOptions = [
+    { code: 'ALL', label: 'Todos os Ramos' },
+    ...Array.from(
+      new Map(
+        products
+          .filter(p => p.branchCode)
+          .map(p => [
+            String(p.branchCode),
+            { code: String(p.branchCode), label: `Ramo ${p.branchCode} - ${p.branchName || 'Geral'}` }
+          ])
+      ).values()
+    ).sort((a, b) => (a.code === 'ALL' ? -1 : Number(a.code) - Number(b.code)))
+  ];
 
   // Open Edit Modal
   const handleOpenEdit = (p) => {
@@ -176,13 +190,26 @@ export default function ProductsCatalogTab() {
 
   const filteredProducts = products.filter(p => {
     const matchesCountry = selectedCountry === 'ALL' || p.countryCode === selectedCountry;
-    const term = search.toLowerCase();
-    const matchesSearch = !search ||
+    const matchesBranch = selectedBranch === 'ALL' ||
+      String(p.branchCode) === selectedBranch ||
+      (p.legacyBranchCode && String(p.legacyBranchCode) === selectedBranch);
+
+    const term = search.trim().toLowerCase();
+    const matchesSearch = !term ||
       (p.productName && p.productName.toLowerCase().includes(term)) ||
       (p.companyName && p.companyName.toLowerCase().includes(term)) ||
       (p.branchName && p.branchName.toLowerCase().includes(term)) ||
-      String(p.productCode).includes(term);
-    return matchesCountry && matchesSearch;
+      String(p.productCode).includes(term) ||
+      String(p.branchCode).includes(term) ||
+      (p.legacyBranchCode && String(p.legacyBranchCode).includes(term)) ||
+      String(p.companyCode).includes(term) ||
+      (p.legacyCompanyCode && String(p.legacyCompanyCode).includes(term)) ||
+      (p.coverages && p.coverages.some(c =>
+        (c.coverageName && c.coverageName.toLowerCase().includes(term)) ||
+        String(c.coverageCode).includes(term)
+      ));
+
+    return matchesCountry && matchesBranch && matchesSearch;
   });
 
   return (
@@ -235,19 +262,36 @@ export default function ProductsCatalogTab() {
           />
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <Globe size={16} color="var(--text-muted)" />
-          <select
-            className="select-field"
-            value={selectedCountry}
-            onChange={(e) => setSelectedCountry(e.target.value)}
-          >
-            {countries.map(c => (
-              <option key={c} value={c}>
-                {c === 'ALL' ? 'Todos os Países' : `País: ${c}`}
-              </option>
-            ))}
-          </select>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Layers size={16} color="var(--text-muted)" />
+            <select
+              className="select-field"
+              value={selectedBranch}
+              onChange={(e) => setSelectedBranch(e.target.value)}
+            >
+              {branchOptions.map(b => (
+                <option key={b.code} value={b.code}>
+                  {b.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Globe size={16} color="var(--text-muted)" />
+            <select
+              className="select-field"
+              value={selectedCountry}
+              onChange={(e) => setSelectedCountry(e.target.value)}
+            >
+              {countries.map(c => (
+                <option key={c} value={c}>
+                  {c === 'ALL' ? 'Todos os Países' : `País: ${c}`}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
 
@@ -267,9 +311,14 @@ export default function ProductsCatalogTab() {
             <div key={prod._id} className="product-card">
               <div className="product-header">
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem', flexWrap: 'wrap' }}>
                     <span className="badge badge-emerald">{prod.countryCode}</span>
                     <span className="product-code">Ramo #{prod.branchCode} • Prod #{prod.productCode}</span>
+                    {prod.source === 'ACDC_OPERATIONAL' && (
+                      <span className="badge badge-purple" style={{ fontSize: '0.68rem', padding: '0.15rem 0.45rem' }} title="Catálogo operacional ACDC (Vida Plurianual)">
+                        ACDC Vida
+                      </span>
+                    )}
                   </div>
                   <h3 className="product-title">{prod.productName || 'Produto sem nome'}</h3>
                 </div>
@@ -326,37 +375,16 @@ export default function ProductsCatalogTab() {
 
       {/* MODAL: EDITAR PRODUTO E COBERTURAS */}
       {editingProduct && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            backdropFilter: 'blur(8px)',
-            zIndex: 110,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '1rem'
-          }}
-          onClick={() => setEditingProduct(null)}
-        >
+        <div className="modal-overlay" onClick={() => setEditingProduct(null)}>
           <div
-            className="card"
-            style={{
-              width: '100%',
-              maxWidth: '640px',
-              background: '#0c1220',
-              border: '1px solid var(--border-card)',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 102, 255, 0.25)',
-              maxHeight: '90vh',
-              overflowY: 'auto'
-            }}
+            className="modal-content card"
+            style={{ maxWidth: '640px' }}
             onClick={(e) => e.stopPropagation()}
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid var(--border)', paddingBottom: '0.75rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Edit3 size={18} color="var(--primary)" />
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', color: '#fff' }}>
+                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', color: 'var(--text-main)', fontWeight: 700 }}>
                   Editar Produto & Coberturas
                 </h3>
               </div>
@@ -510,37 +538,16 @@ export default function ProductsCatalogTab() {
 
       {/* MODAL: CRIAR NOVO PRODUTO */}
       {showCreateModal && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            backdropFilter: 'blur(8px)',
-            zIndex: 110,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '1rem'
-          }}
-          onClick={() => setShowCreateModal(false)}
-        >
+        <div className="modal-overlay" onClick={() => setShowCreateModal(false)}>
           <div
-            className="card"
-            style={{
-              width: '100%',
-              maxWidth: '640px',
-              background: '#0c1220',
-              border: '1px solid var(--border-card)',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 102, 255, 0.25)',
-              maxHeight: '90vh',
-              overflowY: 'auto'
-            }}
+            className="modal-content card"
+            style={{ maxWidth: '640px' }}
             onClick={(e) => e.stopPropagation()}
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid var(--border)', paddingBottom: '0.75rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <PlusCircle size={18} color="var(--primary)" />
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', color: '#fff' }}>
+                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', color: 'var(--text-main)', fontWeight: 700 }}>
                   Cadastrar Novo Produto de Seguro
                 </h3>
               </div>

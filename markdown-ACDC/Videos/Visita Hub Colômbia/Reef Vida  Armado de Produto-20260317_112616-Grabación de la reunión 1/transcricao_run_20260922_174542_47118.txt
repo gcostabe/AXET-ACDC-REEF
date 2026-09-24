@@ -1,0 +1,612 @@
+y el que te quise yo. ¿No tú? ¿Qué sé? En fin, no te haces a idol y el ché de idol. ¿Viste? Entonces pegaron las tardes que nosotros no me entendamos para que hubiera un producto. ¡Pah! ¡Pues están por diarias por los modulos que ya hemos visto en las carrillas! ¿Cierto? Certo.
+La principal para la configuración de un producto es la 118 del vero que tiene en un modo de cuarta. Que hay donde estar toda la que iniciar el ramo. Pero para poder configurar la tabla tenemos que tener de bien en la compañía, en el tratamiento, en el sector y en su sector.
+Perfecto.
+Todo eso es necesario para configurar el ramo. Es nuestro modo de ramo. Como encontrar muchas marcas emocionales.
+Esas marcas que tenemos ahí, las que van a terminar. ¿Cómo se comporta el producto?
+Lo que me marcaras. No lo decimos, acabo en nuestro producto, pertenecer a esta compañía, a este sector y a este sector. A tener este nombre y a tener esta relletura.
+Siguiente a eso vamos a encontrar unas marcas. Como entró Marca Claus, lo va a decir. ¿Tiene todas las lociadas?
+También va a encontrar. ¿Tiene anexos? ¿Cierto? Todo va a ser por rata. Por rata es que va a calcular no años enteros, sino puede calcular meses, días, por ejemplo, en los endosos, no va a calcular el año entero, sino que seis meses.
+Si se está realizando los endosos los seis meses, no le va a calcular. Se aprecia cinco años y a los cuatro años y medio ya se viene dos.
+Y ese endoso le necesita cálculo de nuevo. Si se está colocando la marca por rata en el, le calcular todo el año.
+En la acción a esa parte, cuando se le colocan ese, le calcula sobre lo que se corresponde. Entonces eso nos permite esa marca.
+Por rata, sí. Esos dos son regaladas a eso. Tenemos la marca riesgos que la que nos ilica, que podemos tener más de un riesgo.
+Si no lo damos en en, solo nos va a ser emitir un incorrecto. Esa es la que nos habilita a tener varios riesgos. La marca periodo nos permite tener más de un periodo.
+A ver, que otro es importante, como hacía el público, hacía adelante. La emisión. Marca emisión es un producto de emisión, sí. Por eso se debe estar en ese, ¿no?
+Si permite el cambio de agentes de esa marca, cambio nivel 3. De acuerdo. Para la medicina comercial, si nosotros queremos hacer un cambio, medicina comercial en un producto lo puede tener, tenemos que tener habilidad a esa marca.
+Ahí también hay otras que son cuando no hace un cambio de plan de pago, muchas veces pueden generar un suplemento o no. Hay ciertos puntos que a los que le aplican cambio de plan de pago durante su vigencia.
+Y eso le puede haber creado como un suplemento o no. Entonces nosotros tenemos una marca de suplemento en cambio de plan de pago que nos permite hacer eso.
+Pero en esa marca yo estoy diciendo que puedo tener la alteración de plan de pago.
+No, usted puede tener igual. Pero eso fica como un suplemento, ¿sí, doctor?
+Si te hagan esa alteración que me quiera registrado, tenemos que poner un suplemento.
+Ah, por eso. O sea, marco sí, porque cuando altera el plan de pago, será suplemento.
+O sea, será muy superante. Otra que es importante es la marca de 365 días, tenemos más adelante.
+Está ahí. Eso no determina si el año de él va a ser 365 o 330 días que va a calcular. Algunos productos calculan con 330 días.
+Entonces es lo que me determinaba en ese producto. El año de él va a ser 375 días o 330.
+Esa marca o llegada presupuesto, como su nombre lo dice, cuando usted habia emitido una pora, tiene que existir un presupuesto.
+¿Valida el presupuesto? ¿Valida que el presupuesto existe de verdad o valida que yo ponga un número?
+Valida que tenga un presupuesto.
+¿Sí?
+¿Valida que hace un presupuesto o valida?
+O sea, cuando usted está emitiendo, tiene un campo que es número de presupuesto.
+Pero si usted metiera una policía en mi forma, ¿y qué presupuesto tiene? Viene el generario error.
+Pero por eso.
+¿No va a validar que es un presupuesto o valida? ¿Va a validar que yo ponga una información ahí?
+No le podría confirmar. Tendría que entrar directamente a ver la lógica de esa validación, a ver si valía que el presupuesto.
+Hay más de que sea informado que exista.
+¿Va a dar un presupuesto? No. A ver si, si. ¿Va a dar un presupuesto?
+¿Va a dar un presupuesto o valida? ¿Va a dar un presupuesto?
+Es un presupuesto. Lo de cambio de polisa es que cuando nosotros renovamos, tiene un número de polis.
+Muchas veces que en cuanto a 9, tiene un número de polis, es que estos más que nos permiten hacer eso.
+Hay otros que tenemos que ser importantes ahí.
+¿A qué movilizamos ahorita y permitan hacer eso?
+Exacto. Llamamos para allá. Es cual?
+Márcame un picador. ¿Qué hace?
+Ah, listo.
+Y marca remesa recibo. Cierto. Esa marca remesa recibo. Estará un poco más adelante.
+De la que nos indica que los recibos deben hacer remesados.
+Como la integración con SAP, los recibos deben que han no emitidos pendientes, sino remesados y enviados en carga gestionada.
+Pero eso es cuando nosotros mandamos al SAP Global. Porque al SAP local, los recibos que mandaron no están en la tabela que interfacen.
+No es para configura, es para autofroductor. Lo otro es que tiene demasiadas primas manuales.
+Esa primera manual es la que termina. Es que termina un tipo de cálculo de premio 3-1, si por cálculo manual, que la persona que está emitiendo en serie o en porté,
+sería automático cuando tenemos una configuración de tarifa a tarja para que el sistema pase al cálculo automáticamente. Y 3 va a permitir las dos opciones.
+Es aplicar un cheque en el promesor de la misión.
+En ese momento tenemos como 3 para hacer los dos testes.
+Ya prima manual o prima automática para que tiver configurada tarifa.
+Todos esos chips tienen una tabela para ver lo que puede configurar el campo.
+¿Qué es esta tarifa?
+¿Quién es ese 31?
+¿Con el campo?
+¿Puedo tener una búsqueda?
+Si, voy a llegar así para la tabela X.
+El número de agentes, tenemos una gente principal, pero podemos tener agentes secundarios.
+Nosotros tenemos que podemos permitir hasta 4 agentes. Podemos limitarlo a 2, 3, otro va a meter a 1.
+¿Más o menos a un 4?
+Si.
+Hay otro que es muy importante, que es el nombre del programa del reto.
+¿Aquí va a ser la parte que va a entrar el desenvolvimiento de todos?
+¿Puedo explicar?
+Nosotros, el producto debilado que hacen generalmente es el nombre de riesgos de nombre de la persona.
+Nosotros quedamos en la lógica de que pegue, se informara ahora, te apagara a los terceros,
+o seguro que estoy informado y asigné por nombre de riesgo dependiendo de la persona.
+Los productos ni residencial o productos curado.
+El nombre de riesgo es adresado.
+¿Eres profesor?
+Eres profesor de un lugar en casa.
+Es un lógico, es un desenvolvimiento.
+El programa tiene que ser un director.
+¿Más para ver aquí el producto que sería ahora?
+Un nombre.
+Tenemos que tener una lógica que pegue.
+Eso es cuando es asegurado por nominadas.
+Si no por nominados, tendríamos que variar cuál sería la descripción del riesgo.
+Por ejemplo, en la nutron web, cuando es asegurado no por nominados,
+hay chip relaj.
+Por pilo, sobra, sobra.
+Eso es lo que pica en un nombre del riesgo.
+Y tiene una lógica por atrás también.
+¿Esos programas también existen en la nutron web?
+O es una lógica diferente.
+Sí, estamos en la nutron web.
+Está en un pacote BCR.
+Tenemos que validar cuál va a ser el comportamiento para achar el nombre del riesgo,
+incluirlo en dos pacotes de mantenimiento del producto.
+Para eso tenemos que ver cómo fue definido el negocio.
+Si vamos a mantener la misma regla que tenemos en la nutron web,
+cuando por nominado pega el nombre del riesgo,
+cuando no por pega el relato, para el momento sinistro,
+conseguir mirar cuál es el riesgo sinistrado,
+por ejemplo, donde es el sobra de eso,
+o va a variar la meta.
+Porque eso funciona en el caso de no informar.
+Es automático, es un programa.
+¿Es automático?
+Es automático, para informar el proquilado,
+y va a ser el sujeto de siempre.
+El proquilado es un tipo no nominado.
+¿Verdad? Pega el nombre.
+No tiene un personal no nominado.
+Vamos a pegar un monstruo para dejarlo estudiando riesgo.
+Estos programas, les voy a dejar habilitados.
+¿Lativo o desativo, ellos o no?
+Está ahí, está ahí, está ahí.
+Porque ahí, él fue expuesto.
+¿Cuáles cantos no se fue?
+Es un programa que él pega el nombre del riesgo,
+o sea el nombre del asegurado.
+Entonces, si yo informo el asegurado,
+él va a pegar el nombre del asegurado que me informé.
+Pero si yo no informo,
+hoy en el trombeb está para pegar el...
+El tipo de relacionamiento.
+El tipo de relacionamiento.
+Sólo necesitamos ver si mantiene lo que está en el trombeb hoy,
+o si está inscrito en algún lugar.
+El tipo de relacionamiento del riesgo con el asegurado.
+Con el titular.
+El tipo de relacionamiento.
+Por ejemplo, hoy en el trombeb,
+cuando tenemos riesgos generales,
+son nominados por el código del filo.
+Porque va a presentar en el nombre del riesgo,
+va a ser eso mismo.
+El filo es un trombeb, un toro, un sobra.
+Sí.
+Y tenemos una historia que habla sobre riesgos nominados,
+que explica dentro de los tres productos.
+Explica si ellos no tienen riesgos no nominados o no.
+Y yo creo que ellos colocan ese tipo de relacionamiento.
+Eso debería ser una historia de implementación, de desenvolvimiento,
+porque él necesita construir el programa para hacer esa lógica.
+Eso es, necesitaremos construir el Proc,
+que va a ver el riesgo nominado.
+Voy a presentar el nombre del asegurado.
+Algunos con el nombre nominado.
+Voy a presentar el tipo de relacionamiento.
+Una de las técnicas.
+Esas próximas que estamos hablando,
+que vamos a mostrar,
+van a estar todas en el TPP.
+Para el TPP.
+Para el campo de productos,
+para las bares de productos,
+para los reglas de negocio del producto.
+Todo eso está en el TPP.
+Pero como es?
+Hay una pregunta que no paré para pensar.
+¿Cómo es que el sistema rítmico va a llamar a una TPP?
+Porque imagino yo...
+Estaba en el TPP y el parámetro de canal.
+Olé, olé por ejemplo.
+¿Y qué es esa Proc que tenemos en la columna?
+Tenemos el nombre en el comienzo del llamado de la Proc.
+TPP.
+Entonces, con eso que el sistema...
+Imagínate que sólo va a ser llamado.
+Entendido.
+Entonces, sólo vamos a conseguir la configuración del producto
+y por eso que creemos las cascas de Proc.
+Eso es, podemos comenzar a adiantar eso.
+Podemos adiantar eso.
+Sólo tenemos que crear un sistema TPP.
+Ya está creado.
+El TPP está terminando de configurar.
+Sí.
+Entonces, podemos hacer eso.
+Ya crea estas Procs.
+¿Qué serían los pacotes que tenemos en la planilla?
+En la hora de...
+O algo...
+Que en este caso se ven...
+Usamos los pacotes para calmar los boletos.
+Las tabelas de cobertura.
+O sí, cuando tenga que para empezar...
+Maldito una carnavala efica.
+Puedes apuntar al pacote de cobertura.
+En el TPP 421, un Berlaini, el VL.
+Y el TPP ya sabe que son sus pacotes.
+Tenemos que hacerlo.
+Sí, entretenería que me hacer.
+Sólo quises.
+Son los pacotes.
+Dentro de esos pacotes, los moteros...
+Esproquia.
+Esproquia.
+No están definiendo.
+Sí, pero ya se ve.
+Por qué no se consigue diferencia.
+No, por qué.
+No, por qué...
+En el TPP no son los pacotes.
+Un nombre de aproquia no son los pacotes.
+Sí, es un nombre de aproquia.
+Es un nombre de aproquia.
+Yo no son los pacotes.
+Y después, un nombre de pacotes...
+Y después, un nombre de aproquia.
+Entonces, para el caso no.
+Subaficial.
+TPP, VL.
+Ponto.
+En el K421RSK.
+Punto.
+Un nombre de aproquia.
+Pero eso tiene una normativa.
+O sea, un padrão para esos nombres.
+O sea, que usted tenga 7 coberturas.
+La cobertura K421RSK.
+Programa de pre, programativa o programas de cálculo.
+Esa es la lista de PTD que tiene?
+Los PTD son otra cosa.
+Son la salva de comunicación.
+En ese caso, entre el TPP y los pacotes.
+O sea, nosotros tenemos la capa color y tenemos la capa de producto.
+Si la capa de producto es precisada o algo, la capa de color.
+O sea, el TPP tiene que comunicar por medio de los PTD.
+Déjame hacer una proposición aquí.
+Porque la idea es brillante.
+Vamos...
+Para lo que voy a decir, ahora vamos a salir de cero.
+Pérense en el chivazo y el volto a cero.
+Vamos a hacer con ellos, ¿cómo va a ser la estructura de banco?
+Pensando de cómo va a ser esta estructura y después de volver a casa.
+Ya tenemos?
+Ya estamos en la escultura.
+Si es lo que estoy pensando, vamos a hacer el nivel abajo.
+Déjame ver.
+¿Cuál es usted?
+Porque ya daría para comenzar a hacer esto.
+Si tuviese la lista de prop, inclusive.
+Esenciales en la configuración.
+Ya tiene el modelo que él habló.
+Si tenemos 10 coberturas.
+Vamos a hacer 30 procedimientos.
+Y vamos a comenzar a temar porque ya tenemos las coberturas.
+¿Por qué es el documento de Rifa Cárdenas?
+Y eso fue lo que él habló en la reunión de la semana pasada.
+Él habló que conseguimos configurar toda la estructura de productos en las tabelas.
+Sólo conseguimos dar una historia, como concluido,
+después de que terminemos de desarrollar esas propias.
+Y colocar la lógica detrás.
+Si, lo recuerdo.
+Pero si queremos hacer este link para que no faltara hablar en portugués.
+¿Eso no está pegado?
+Si podemos crear el paquete.
+Puedes crear el propio mokado.
+Y registrar el propio mokado en las tabelas.
+Y eso conseguía fechar la configuración.
+Ya más por frente, cuando fuera a iniciar el desenvolvimiento.
+Dentro de esas propias, irán a aplicar las reglas de negocio.
+¿Pero qué es esto?
+¿Pero qué es esto?
+¡Pero qué es esto!
+¿Pero qué es esto?
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¡Pero qué es esto!
+¿Pero qué es esto?
+¡Pero qué es esto!
+¡Pero qué es esto!
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?
+¿Tiene un tipo de piscina?

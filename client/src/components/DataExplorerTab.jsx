@@ -230,8 +230,8 @@ export default function DataExplorerTab() {
               <div key={idx} className="card" style={{ padding: '1.25rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '0.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                    <span className="badge badge-gray">Doc #{idx + 1 + (page - 1) * 12}</span>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: '#60a5fa' }}>
+                    <span className="badge badge-neutral">Doc #{idx + 1 + (page - 1) * 12}</span>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--primary)', fontWeight: 600 }}>
                       _id: {docId}
                     </span>
                     {doc._class && (
@@ -267,7 +267,7 @@ export default function DataExplorerTab() {
                     .filter(([k]) => k !== '_id' && k !== '_class' && typeof doc[k] !== 'object')
                     .slice(0, 8)
                     .map(([k, v]) => (
-                      <span key={k} style={{ background: 'rgba(255, 255, 255, 0.03)', padding: '0.2rem 0.5rem', borderRadius: 'var(--radius-sm)', fontSize: '0.78rem' }}>
+                      <span key={k} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', padding: '0.2rem 0.5rem', borderRadius: 'var(--radius-sm)', fontSize: '0.78rem' }}>
                         <span style={{ color: 'var(--text-muted)' }}>{k}: </span>
                         <strong style={{ color: 'var(--text-main)' }}>{String(v)}</strong>
                       </span>

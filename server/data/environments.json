@@ -1,0 +1,33 @@
+{
+  "activeEnvironmentId": "env-local",
+  "environments": [
+    {
+      "id": "env-local",
+      "name": "Local (Docker)",
+      "type": "local",
+      "uri": "mongodb://localhost:27017",
+      "dupDb": "acdc_dup_br-int",
+      "rteDb": "acdc_rte_br-int",
+      "isDefault": true,
+      "description": "MongoDB Community Server 7.0 rodando localmente via Docker na porta 27017.",
+      "createdAt": "2026-09-23T00:00:00.000Z",
+      "lastTestedAt": "2026-09-24T07:55:07.082Z",
+      "lastStatus": "OK",
+      "latencyMs": 5
+    },
+    {
+      "id": "env-1790219161531-dfkc7",
+      "name": "Servidor Remoto MAPFRE BR",
+      "type": "remote",
+      "uri": "mongodb://usuario:senha@ip-servidor:27017/?authSource=admin",
+      "dupDb": "acdc_dup_br-int",
+      "rteDb": "acdc_rte_br-int",
+      "isDefault": false,
+      "description": "Servidor corporativo dedicado para subscrição DUP e tarifação RTE Tronador.",
+      "createdAt": "2026-09-24T03:06:01.531Z",
+      "lastTestedAt": "2026-09-24T03:09:47.891Z",
+      "lastStatus": "ERROR",
+      "lastError": "Server selection timed out after 4000 ms"
+    }
+  ]
+}

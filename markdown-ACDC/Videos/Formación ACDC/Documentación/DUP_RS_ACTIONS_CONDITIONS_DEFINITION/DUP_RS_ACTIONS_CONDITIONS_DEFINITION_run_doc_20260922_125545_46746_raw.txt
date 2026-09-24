@@ -1,0 +1,1850 @@
+--- [PÁGINA 1 DE 49] ---
+
+Explicación Rules RS-Rules-Action-Conditions en DUP 
+Introducción 
+Este documento es una guía de referencia completa del sistema de reglas EasyRules para el 
+procesamiento de selección de riesgos en DUP. 
+Esta guía cubre tres áreas fundamentales del motor de reglas: 
+1. FACTORES (FACTS) - Todos los datos disponibles para evaluar en las reglas 
+2. CONDICIONES Y MOTORES DE EVALUACIÓN - Cómo escribir y evaluar 
+condiciones 
+3. ACCIONES - Qué hacer cuando una regla se cumple 
+Índice de Categorías 
+0. TRÍADA DE FILTRADO 
+0.1. processStep — Nivel de salto 
+0.2. optionNumber — Opción de paso 
+0.3. optionMenuNumber — Menú de opción 
+0.4. Tabla de referencia completa del flujo del orquestador 
+1. FACTORES (FACTS) 
+1.1. Datos Variables 
+1.2. Datos Fijos 
+1.3. Constantes 
+1.4. Cuestionarios 
+1.5. Documentos 
+1.6. Coberturas 
+1.7. Acumulaciones 
+1.8. Asegurado 
+1.9. Participantes 
+2. CONDICIONES Y MOTORES DE EVALUACIÓN 
+2.1. Cómo Funciona la Evaluación 
+2.2. Versión 1 (V1) - Condiciones Estructuradas
+
+
+--- [PÁGINA 2 DE 49] ---
+
+2.3. Versión 2 (V2) - Expresiones Java 
+2.4. Comparativa V1 vs V2 
+3. TIPOS DE CONFIGURACIÓN Y FILTRADO 
+3.1. Equivalencia de Campos 
+3.2. Tipos de Configuración 
+3.3. Filtrado de Reglas 
+4. PRIORIZACIÓN DE REGLAS 
+4.1. Introducción a la Priorización 
+4.2. Cómo Funciona 
+4.3. Criterios de Priorización 
+4.4. Nuevos Campos 
+4.5. Ejemplo Completo 
+5. ACCIONES 
+5.1. Tipos de Acciones 
+5.2. Tipos de Cálculo de Valores 
+ 
+0. TRÍADA DE FILTRADO: NIVEL DE SALTO, OPCIÓN Y MENÚ 
+Cada invocación al motor de reglas de risk-selection se identifica de forma unívoca 
+mediante tres coordenadas, que el orquestador externo envía como parámetros del 
+RiskSelectionRequest y que el repositorio usa para filtrar las reglas aplicables en la 
+colección RS-RULES-ACTIONS-CONDITIONS. 
+La notación compacta usada en la documentación del orquestador es [processStep-
+optionMenuNumber-optionNumber]. 
+ 
+0.1 processStep — Nivel de salto
+
+
+--- [PÁGINA 3 DE 49] ---
+
+Campo en request Campo en MongoDB Constante Java 
+processStep process_step CRITERIA_NAME_COD_NIVEL_SALTO 
+El nivel de salto es el discriminador principal: indica en qué fase del flujo DUP se invoca el 
+motor. Es obligatorio cuando executionType es de tipo selección (EXEC_TYPE_SEL). 
+Valor Nombre DUP Descripción 
+1 FIXED_DATA Datos fijos de póliza 
+2 VARIABLE_DATA_POLICY Datos variables de póliza 
+3 BENEFICIARY_RISK_TYPE Tipo de beneficiario / riesgo 
+4 VARIABLE_DATA_RISK Datos variables del riesgo 
+6 COVERAGE Control de coberturas 
+7 REINSURANCE Control de reaseguro 
+8 CONTROLS Controles finales (guarda, cláusulas, terminación, etc.) 
+11 RISK_SELECTION_FORM Formulario de selección de riesgos 
+ 
+0.2 optionNumber — Opción de paso 
+Campo en request Campo en MongoDB Constante Java 
+processStepOption option_number CRITERIA_NAME_COD_NIVEL_SALTO_OPTION 
+Discrimina la sub-variante dentro del nivel de salto. Solo se aplica al criterio de filtrado si 
+viene informado (no null).
+
+
+--- [PÁGINA 4 DE 49] ---
+
+Valor Semántica Ejemplo de notación 
+null / 
+0 
+Ejecución principal — control técnico 
+(CT) directo [2-0-0] CT VARIABLE_DATA_POLICY 
+Pre-cálculo DUP (PREVIOUS) — 
+atributos calculados antes del CT 
+[4-0-10] DUP 
+PREVIOUS_VARIABLE_DATA_RISK 
+Validación DUP (VALIDATION) — 
+validación de atributos antes del CT 
+[4-0-20] DUP 
+VALIDATION_VARIABLE_DATA_RISK 
+1–8 Controles individuales dentro del nivel 8 
+(agrupados por menú) [8-1-3] CT SUSPEND_CONTROL 
+El patrón optionNumber=10 → PREVIOUS y optionNumber=20 → VALIDATION es 
+consistente en todos los niveles (2 para póliza, 4 para riesgo, 6 para cobertura). 
+ 
+0.3 optionMenuNumber — Menú de opción 
+Campo en request Campo en MongoDB Constante Java 
+processStepMenuOpti
+on 
+option_menu_numb
+er 
+CRITERIA_NAME_COD_NIVEL_SALTO_OPTION_
+MENU 
+Agrupa familias de controles dentro del mismo nivel de salto. Solo se incluye en el criterio 
+de filtrado si viene informado (no null). Tiene especial relevancia en el nivel 8, donde el 
+orquestador tiene múltiples grupos de controles técnicos. 
+Valor Aplica a 
+nivel Familia de controles 
+0 1–7, 11 Flujo estándar — único grupo por nivel 
+1 8 Terminación · Suspensión · Multi-usuario 
+3 8 Guarda · Abandono · Verificación · Cláusulas · Páginas adicionales · Impresión · 
+Riesgos · Opciones adicionales 
+7 8 Opciones adicionales tipo ANY
+
+
+--- [PÁGINA 5 DE 49] ---
+
+0.4 Tabla de referencia completa del flujo del orquestador 
+La siguiente tabla lista todas las invocaciones que el orquestador realiza a este servicio, en 
+orden de ejecución, usando la notación [processStep-optionMenuNumber-optionNumber]: 
+Notació
+n 
+processSt
+ep 
+optionMenuNum
+ber 
+optionNumb
+er Nombre 
+[2-0-
+10] 2 0 10 PREVIOUS_VARIABLE_DATA_POLI
+CY 
+[2-0-
+20] 2 0 20 VALIDATION_VARIABLE_DATA_P
+OLICY 
+[1-0-
+0] 1 0 0 FIXED_DATA_DUP 
+[2-0-
+0] 2 0 0 VARIABLE_DATA_POLICY 
+[3-0-
+0] 3 0 0 BENEFICIARY_RISK_TYPE 
+[4-0-
+10] 4 0 10 PREVIOUS_VARIABLE_DATA_RIS
+K 
+[4-0-
+20] 4 0 20 VALIDATION_VARIABLE_DATA_R
+ISK 
+[4-0-
+0] 4 0 0 VARIABLE_DATA_RISK 
+[11-
+0-0] 11 0 0 RISK_SELECTION_FORM 
+[6-0-
+10] 6 0 10 PREVIOUS_VARIABLE_COVERAGE 
+[6-0-
+20] 6 0 20 VALIDATION_VARIABLE_COVERA
+GE
+
+
+--- [PÁGINA 6 DE 49] ---
+
+Notació
+n 
+processSt
+ep 
+optionMenuNum
+ber 
+optionNumb
+er Nombre 
+[6-0-
+0] 6 0 0 COVERAGE_CONTROL 
+[11-
+0-0] 11 0 0 RISK_SELECTION_FORM 
+[7-0-
+0] 7 0 0 REINSURANCE_CONTROL 
+[8-1-
+6] 8 1 6 TERMINATE_CONTROL 
+[8-1-
+3] 8 1 3 SUSPEND_CONTROL 
+[8-1-
+4] 8 1 4 MULTIUSER_CONTROL 
+[8-3-
+1] 8 3 1 SAVE_CONTROL 
+[8-3-
+2] 8 3 2 ABANDON_CONTROL 
+[8-3-
+3] 8 3 3 VERIFY_CONTROL 
+[8-3-
+4] 8 3 4 CLAUSES_CONTROL 
+[8-3-
+5] 8 3 5 ANNEX_PAGES_CONTROL 
+[8-3-
+6] 8 3 6 PRINT_CONTROL 
+[8-3-
+7] 8 3 7 RISKS_CONTROL 
+[8-3-
+8] 8 3 8 ADDITIONAL_OPTIONS_CONTROL
+
+
+--- [PÁGINA 7 DE 49] ---
+
+Notació
+n 
+processSt
+ep 
+optionMenuNum
+ber 
+optionNumb
+er Nombre 
+[8-7-
+null] 8 7 null ADDITIONAL_ANY_OPTIONS_CON
+TROL 
+ 
+1. FACTS DE DATOS VARIABLES 
+Variable Data (Atributos Variables a cualquier nivel Poliza/Riesgo/Cobertura) 
+Prefijo: variableData. 
+Patrón Descripción Ejemplos 
+variableData.{clave} Cualquier dato variable del request 
+variableData.sumaAsegurada 
+variableData.plazoAnios 
+variableData.formaPago 
+ 
+2. FACTS DE DATOS FIJOS 
+Fixed Values (Valores Fijos) 
+Prefijo: fixedValues 
+Patrón Descripción Ejemplos 
+fixedValues.{clave} Valores fijos configurados 
+fixedValues.tipoPoliza 
+fixedValues.canalVenta 
+fixedValues.modalidadPago 
+ 
+3. FACTS DE CONSTANTES 
+Constants (Tabla Constants-Definition en MongoDB) 
+Prefijo: constants
+
+
+--- [PÁGINA 8 DE 49] ---
+
+Constantes de configuración almacenadas en MongoDB, específicas por país, compañía y 
+ramo. 
+Patrón Descripción Fuente 
+constants.{nombreConstante} Constantes configuradas en el 
+sistema 
+ConstantDefinition 
+(MongoDB) 
+ 
+4. FACTS DE CUESTIONARIOS 
+Questionnaires (Cuestionarios de Salud/Riesgo) 
+Prefijo: questionnaires 
+Información de cuestionarios completados por el cliente (médicos, deportes, viajes, etc.). 
+Patrón Tipo Descripción 
+questionnaires.{idCuestionario} String Valor "0" indicando que existe el 
+cuestionario 
+questionnaires.{idCuestionario}.{idPregunta} Varies Respuesta a una pregunta 
+específica 
+ 
+5. FACTS DE DOCUMENTOS 
+Documents (Documentación Requerida) 
+Prefijo: documents 
+Control de documentos presentados y su estado de firma. 
+Patrón Tipo Descripción 
+documents.{grupo}.{codigoDoc} String "0" = documento existe 
+documents.{grupo}.{codigoDoc}.signed String "1" = firmado, "0" = sin firmar
+
+
+--- [PÁGINA 9 DE 49] ---
+
+6. FACTS DE COBERTURAS 
+Coverages (Coberturas Contratadas) 
+Prefijo: coverages 
+Información detallada de cada cobertura incluida en la póliza. 
+Fact Tipo Descripción 
+coverages.{id}.name String Nombre de la cobertura 
+coverages.{id}.capital BigDecimal Capital asegurado 
+coverages.{id}.franchiseCode String Código de franquicia 
+coverages.{id}.supplementCapital BigDecimal Capital suplementario 
+coverages.{id}.minFranchise BigDecimal Franquicia mínima 
+coverages.{id}.maxFranchise BigDecimal Franquicia máxima 
+coverages.{id}.franchiseTypeCode String Código tipo de franquicia 
+coverages.{id}.annualPremium BigDecimal Prima anual 
+coverages.{id}.supplementAnnualPremium BigDecimal Prima anual suplementaria 
+ 
+7. FACTS DE ACUMULACIONES (NIVEL PRINCIPAL) 
+Accumulations (Acumulación de Capitales/Primas) 
+Prefijo: accumulations 
+Seguimiento de acumulaciones de riesgo a nivel de operación.
+
+
+--- [PÁGINA 10 DE 49] ---
+
+Fact Tipo Descripción 
+accumulations.{id}.mxmAgrCplVal String Valor máximo agregado de capital 
+accumulations.{id}.mxmAgrPreVal String Valor máximo agregado de prima 
+accumulations.{id}.accumulationWithCapital String Capital acumulado + capital 
+cobertura 
+accumulations.{id}.accumulationWithPremium String Prima acumulada + prima cobertura 
+ 
+8. FACTS DEL ASEGURADO (INSURED) 
+👤 Insured - Información del Asegurado 
+Prefijo: insured 
+8.1 Datos Personales Básicos 
+Fact Tipo Descripción 
+insured.birthDate String Fecha de nacimiento 
+insured.gender String Género (M/F) 
+insured.age Integer Edad actual del asegurado 
+insured.finalNaturalAge Integer Edad natural final 
+insured.maritalStatusCode String Código estado civil 
+insured.educationLevelCode String Código nivel educativo 
+insured.typeOfEmploymentCode String Código tipo de empleo 
+insured.authorizePersonalDataUse Boolean Autorización uso datos personales 
+8.2 Datos de Residencia y Ocupación
+
+
+--- [PÁGINA 11 DE 49] ---
+
+Fact Tipo Descripción 
+insured.occupationCode String Código de ocupación/profesión 
+insured.resident Boolean Es residente 
+insured.residenceCountry String País de residencia 
+8.3 Actividades Deportivas 
+Fact Tipo Descripción 
+insured.doesSport Boolean Practica deportes 
+insured.nonFederatedSport String Deportes no federados 
+insured.federatedSport String Deportes federados 
+8.4 Uso de Motocicleta 
+Fact Tipo Descripción 
+insured.ridesMotorcycle Boolean Conduce motocicleta 
+insured.motorcycleCC Integer Cilindrada (CC) 
+insured.motorcycleHP Integer Caballos de fuerza (HP) 
+8.5 Estancias en el Extranjero 
+Fact Tipo Descripción 
+insured.staysAbroadPlanned Boolean Tiene estancias planificadas 
+insured.staysAbroad.{id}.duration Integer Duración de la estancia 
+insured.staysAbroad.{id}.reason String Razón de la estancia 
+Ejemplos de uso:
+
+
+--- [PÁGINA 12 DE 49] ---
+
+insured.age >= 18 AND insured.age <= 65  
+insured.occupationCode IN ["001", "002", "005"]  
+insured.ridesMotorcycle == true AND insured.motorcycleCC > 500  
+insured.doesSport == true AND insured.federatedSport == "PARACAIDISMO"  
+insured.staysAbroad.1.duration > 90 
+8.6 Acumulaciones del Asegurado 
+Prefijo: insured.accumulations 
+Fact Tipo Descripción 
+insured.accumulations.{id}.mxmAgrCplVal String Valor máximo agregado 
+capital 
+insured.accumulations.{id}.mxmAgrPreVal String Valor máximo agregado 
+prima 
+insured.accumulations.{id}.accumulationWithCapital String Capital acumulado total 
+insured.accumulations.{id}.accumulationWithPremium String Prima acumulada total 
+ 
+9. FACTS DE PARTICIPANTES 
+Participants - Otros Participantes de la Póliza 
+9.1 Policy Holder (Tomador/Contratante) 
+Prefijo: participants.policyHolder 
+Fact Tipo Descripción 
+participants.policyHolder.sameAsInsured Boolea
+n 
+Es el mismo 
+que el 
+asegurado 
+participants.policyHolder.typeOfPerson String 
+Tipo de 
+persona 
+(física/jurídica
+)
+
+
+--- [PÁGINA 13 DE 49] ---
+
+Fact Tipo Descripción 
+participants.policyHolder.documentType String Tipo de 
+documento 
+participants.policyHolder.documentCode String Número de 
+documento 
+participants.policyHolder.name String Nombre 
+completo 
+participants.policyHolder.birthDate String Fecha de 
+nacimiento 
+participants.policyHolder.gender String Género 
+participants.policyHolder.nationality String Nacionalidad 
+participants.policyHolder.countryOfBirth String País de 
+nacimiento 
+participants.policyHolder.maritalStatusCode String Estado civil 
+participants.policyHolder.hasPublicServiceResponsibilit
+y 
+Boolea
+n Cargo público 
+participants.policyHolder.usesLegalRepresentative Boolea
+n 
+Usa 
+representante 
+legal 
+Acumulaciones del Tomador: 
+Fact Descripció
+n 
+participants.policyHolder.accumulations.{id}.mxmAgrCplVal 
+Valor 
+máximo 
+agregado 
+capital 
+participants.policyHolder.accumulations.{id}.mxmAgrPreVal 
+Valor 
+máximo 
+agregado 
+prima
+
+
+--- [PÁGINA 14 DE 49] ---
+
+Fact Descripció
+n 
+participants.policyHolder.accumulations.{id}.accumulationWithCapita
+l 
+Capital 
+acumulado 
+total 
+participants.policyHolder.accumulations.{id}.accumulationWithPremiu
+m 
+Prima 
+acumulada 
+total 
+Ejemplos: 
+participants.policyHolder.sameAsInsured == false  
+participants.policyHolder.hasPublicServiceResponsibility == true  
+participants.policyHolder.accumulations.1.accumulationWithCapital > 1000000  
+9.2 Policy Holder Legal Representative 
+Prefijo: participants.policyHolderLegalRepresentative 
+Fact Tipo Descripci
+ón 
+participants.policyHolderLegalRepresentative.documentType String 
+Tipo de 
+document
+o 
+participants.policyHolderLegalRepresentative.documentCode String 
+Número 
+de 
+document
+o 
+participants.policyHolderLegalRepresentative.name String Nombre 
+completo 
+participants.policyHolderLegalRepresentative.birthDate String 
+Fecha de 
+nacimient
+o 
+participants.policyHolderLegalRepresentative.gender String Género 
+participants.policyHolderLegalRepresentative.nationality String Nacionali
+dad
+
+
+--- [PÁGINA 15 DE 49] ---
+
+Fact Tipo Descripci
+ón 
+participants.policyHolderLegalRepresentative.countryOfReside
+nce String País de 
+residencia 
+participants.policyHolderLegalRepresentative.hasPublicServic
+eResponsibility 
+Boole
+an 
+Cargo 
+público 
+participants.policyHolderLegalRepresentative.maritalStatusCo
+de String Estado 
+civil 
+9.3 Beneficiaries (Beneficiarios) 
+Prefijo: participants.beneficiaries 
+Para cada beneficiario identificado por {id}: 
+Fact Tipo Descripción 
+participants.beneficiaries.{id}.participantType String Tipo de participante 
+participants.beneficiaries.{id}.beneficiaryType String Tipo de beneficiario 
+participants.beneficiaries.{id}.isInsured Boolean Es el asegurado 
+participants.beneficiaries.{id}.isPolicyHolder Boolean Es el tomador 
+participants.beneficiaries.{id}.isLegalHeir Boolean Es heredero legal 
+participants.beneficiaries.{id}.typeOfPerson String Tipo de persona 
+participants.beneficiaries.{id}.documentType String Tipo de documento 
+participants.beneficiaries.{id}.documentCode String Número de documento 
+participants.beneficiaries.{id}.name String Nombre completo 
+participants.beneficiaries.{id}.birthDate String Fecha de nacimiento 
+Ejemplos:
+
+
+--- [PÁGINA 16 DE 49] ---
+
+participants.beneficiaries.1.isInsured == true  
+participants.beneficiaries.1.beneficiaryType == "REVOCABLE"  
+participants.beneficiaries.2.isLegalHeir == true  
+participants.beneficiaries.1.name EXISTS 
+ 
+CÓMO FUNCIONA LA EVALUACIÓN DE CONDICIONES 
+El sistema soporta dos versiones de evaluación de condiciones de reglas: V1 (Legacy) y V2 
+(Expresiones Java). 
+Routing Automático (RulesEvaluationRouter) 
+El sistema decide automáticamente qué versión usar: 
+Regla simple: Si en MongoDB la regla tiene el campo condition con valor, se usa V2. Si 
+está vacío o no existe, se usa V1. 
+ 
+VERSIÓN 1 (V1) - Condiciones Estructuradas 
+Descripción 
+V1 utiliza una estructura JSON en el campo ruleConditions para definir condiciones. Es el 
+sistema original (legacy). 
+Estructura en MongoDB 
+Cada condición en ruleConditions es un objeto JSON con: 
+{ 
+  "factor": "insured.age",   // El fact a evaluar 
+  "operator": "GE",         // Operador de comparación (EQ, NOT_EQ, GT, LT, GE
+, LE, IN, NOT_IN, BTW, EX, NEX, BLANK) 
+  "value": "18",            // Para operadores simples (EQ, GT, etc.) 
+  "value1": "18",              // Para operadores BTW 
+  "value2": "65",              // Para operadores BTW 
+  "values": ["001","002"]      // Para operadores IN/NOT_IN 
+}
+
+
+--- [PÁGINA 17 DE 49] ---
+
+Operadores Disponibles en V1 
+Operado
+r Código Descripción Ejemplo Estructura 
+Igual EQ Igualdad 
+exacta 
+{"factor": "insured.gender", "operator": 
+"EQ", "value": "M"} 
+No igual NOT_EQ Diferente de {"factor": "insured.age", "operator": 
+"NOT_EQ", "value": "0"} 
+Mayor 
+que GT Estrictament
+e mayor 
+{"factor": "coverages.1.capital", 
+"operator": "GT", "value": "100000"} 
+Mayor o 
+igual GE Mayor o 
+igual que 
+{"factor": "insured.age", "operator": "GE", 
+"value": "18"} 
+Menor 
+que LT Estrictament
+e menor 
+{"factor": "insured.age", "operator": "LT", 
+"value": "65"} 
+Menor o 
+igual LE Menor o 
+igual que 
+{"factor": "insured.motorcycleCC", 
+"operator": "LE", "value": "125"} 
+En lista IN Pertenece a 
+lista 
+{"factor": "insured.occupationCode", 
+"operator": "IN", "values": ["001","002"]} 
+No en 
+lista NOT_IN 
+No 
+pertenece a 
+lista 
+{"factor": "insured.gender", "operator": 
+"NOT_IN", "values": ["X","O"]} 
+Entre BTW Valor entre 
+rango 
+{"factor": "insured.age", "operator": "BTW", 
+"value1": "18", "value2": "65"} 
+Existe EX El fact existe 
+{"factor": 
+"documents.MEDICOS.INFORME_CLINICO", 
+"operator": "EX"} 
+No existe NEX El fact no 
+existe 
+{"factor": "insured.motorcycleCC", 
+"operator": "NEX"} 
+En 
+blanco BLANK Valor 
+vacío/nulo 
+{"factor": "insured.federatedSport", 
+"operator": "BLANK"}
+
+
+--- [PÁGINA 18 DE 49] ---
+
+Operado
+r Código Descripción Ejemplo Estructura 
+Alguno 
+coincide 
+ANY_MATC
+H 
+Busca en 
+colección 
+con patrón 
+{"factor": 
+"participants.beneficiaries.*.beneficiaryTyp
+e", "operator": "ANY_MATCH", "value": "5"} 
+Nota sobre ANY_MATCH: Este operador permite buscar en colecciones usando el asterisco 
+(*) como comodín para índices numéricos. Ver sección Evaluación de Colecciones para más 
+detalles. 
+Características V1 
+Ventajas: 
+● Estructura clara y predecible 
+● Validación de esquema sencilla 
+● Fácil de mantener para condiciones simples 
+● No requiere conocimientos de programación 
+Limitaciones: 
+● Condiciones simples únicamente 
+● No permite lógica compleja (OR anidados, cálculos, etc.) 
+● Todas las condiciones se evalúan con AND implícito 
+ 
+VERSIÓN 2 (V2) - Expresiones Java 
+Descripción 
+V2 permite escribir código Java directamente en el campo condition. Usa Janino como 
+compilador en runtime para evaluar expresiones complejas. 
+Estructura en MongoDB 
+{ 
+  "ruleId": 2001, 
+  "ruleName": "Validación Compleja con Lógica OR", 
+  "condition": "Integer edad = f.asInteger(\"insured.age\"); Double capital = 
+f.asDouble(\"coverages.1.capital\"); return (edad != null && edad >= 18 && eda
+
+
+--- [PÁGINA 19 DE 49] ---
+
+d <= 65) && (capital != null && capital > 100000);" 
+} 
+Objeto f (SafeFactsUtils) 
+En V2, tienes acceso al objeto f que es una instancia de SafeFactsUtils con métodos para 
+acceder a los facts de forma segura: 
+Métodos Disponibles 
+Método Descripció
+n Ejemplo 
+f.asString(String 
+key) 
+Obtiene un 
+fact como 
+String 
+String genero = 
+f.asString("insured.gender"); 
+f.asInteger(String 
+key) 
+Obtiene un 
+fact como 
+Integer 
+Integer edad = f.asInteger("insured.age"); 
+f.asDouble(String 
+key) 
+Obtiene un 
+fact como 
+Double 
+Double capital = 
+f.asDouble("coverages.1.capital"); 
+f.asLocalDate(String 
+key) 
+Obtiene un 
+fact como 
+LocalDate 
+LocalDate fecha = 
+f.asLocalDate("insured.birthDate"); 
+f.asLocalDateTime(St
+ring key) 
+Obtiene un 
+fact como 
+LocalDate
+Time 
+LocalDateTime timestamp = 
+f.asLocalDateTime("operation.timestamp"); 
+f.asList(String key, 
+String delimiter) 
+Obtiene un 
+fact como 
+List 
+List<String> deportes = 
+f.asList("insured.sports", ","); 
+f.formatLocalDate(Lo
+calDate date) 
+Formatea 
+fecha a 
+ddMMyyy
+y 
+String fechaStr = 
+f.formatLocalDate(LocalDate.now()); 
+f.anyMatch(String 
+pattern, Object 
+value) 
+Verifica si 
+algún 
+elemento 
+boolean existe = 
+f.anyMatch("participants.beneficiaries.*.ben
+eficiaryType", 5);
+
+
+--- [PÁGINA 20 DE 49] ---
+
+Método Descripció
+n Ejemplo 
+en 
+colección 
+coincide 
+Importante: Todos los métodos as*() retornan null si el fact no existe o no se puede 
+convertir al tipo solicitado. 
+ 
+Nota sobre anyMatch: Este método permite buscar en colecciones usando patrones con 
+asterisco (*). Ver sección Evaluación de Colecciones para ejemplos completos. 
+Paquetes y Clases Java Permitidos 
+V2 permite usar las siguientes librerías estándar de Java: 
+Imports por Defecto (Disponibles sin declarar) 
+java.util.List 
+java.util.Arrays 
+java.time.LocalDate 
+java.time.LocalDateTime 
+java.time.Duration 
+java.time.Period 
+java.math.BigDecimal 
+com.mapfre.psypd.risk.selection.service.rules.util.SafeFactsUtils 
+Clases y Métodos Permitidos 
+● Matemáticas básicas: +, -, *, /, % 
+● Lógica: &&, ||, !, ==, !=, >, <, >=, <= 
+● String: Todos los métodos de String (.equals(), .contains(), .startsWith(), etc.) 
+● LocalDate/LocalDateTime: Todos los métodos de java.time.* 
+● BigDecimal: Operaciones aritméticas y comparaciones 
+● List/Arrays: Métodos de colecciones (contains(), isEmpty(), size(), etc.) 
+Expresiones PROHIBIDAS (Seguridad) 
+Por razones de seguridad, las siguientes expresiones están bloqueadas:
+
+
+--- [PÁGINA 21 DE 49] ---
+
+System.  
+Runtime.  
+Process.  
+File.  
+Files.  
+ClassLoader.  
+Thread.  
+exec(  
+getRuntime(  
+getClass(  
+java.lang.  
+java.io.  
+java.nio.  
+java.net.  
+javax.  
+sun.  
+com.sun.  
+Class.forName  
+new   
+jdk.internal.  
+jdk.nashorn.  
+jdk.vm. 
+Seguridad: Si una condición contiene alguna expresión prohibida, la regla NO se ejecutará 
+y se registrará un warning. 
+Sintaxis y Estructura 
+Todas las expresiones V2 deben: 
+1. Declarar variables para los facts que necesites 
+2. Retornar un boolean usando return 
+3. Validar null antes de usar valores 
+ 
+EVALUACIÓN DE COLECCIONES CON PATRONES 
+Introducción 
+Tanto V1 como V2 soportan evaluación de reglas sobre colecciones (como beneficiarios, 
+coberturas, asegurados) usando el operador/método ANY_MATCH. 
+¿Cuándo usar ANY_MATCH?
+
+
+--- [PÁGINA 22 DE 49] ---
+
+Usa ANY_MATCH cuando necesites: 
+●    Verificar si algún elemento de una colección cumple una condición 
+●    Buscar en beneficiarios, coberturas, asegurados sin conocer el índice exacto 
+●    Evaluar colecciones de tamaño variable 
+Cómo Funciona el Patrón con Asterisco (*) 
+El asterisco * actúa como comodín para el índice numérico de elementos en una colección. 
+Ejemplo de facts en memoria: 
+participants.beneficiaries.0.beneficiaryType = 3  
+participants.beneficiaries.0.name = "Juan"  
+participants.beneficiaries.1.beneficiaryType = 5  
+participants.beneficiaries.1.name = "Maria"  
+participants.beneficiaries.2.beneficiaryType = 2  
+participants.beneficiaries.2.name = "Pedro" 
+Patrón: "participants.beneficiaries.*.beneficiaryType" 
+Este patrón buscará todos los facts que: 
+● Comienzan con "participants.beneficiaries." 
+● Terminan con ".beneficiaryType" 
+Encuentra: beneficiaryType en índices 0, 1, 2 
+Uso en V1 (Condiciones Estructuradas) 
+Ejemplo 1: Verificar beneficiario tipo 5 
+Estructura JSON en MongoDB: 
+{ 
+  "ruleId": 1001, 
+  "ruleName": "Beneficiario Legal Requerido", 
+  "ruleConditions": [ 
+    { 
+      "factor": "participants.beneficiaries.*.beneficiaryType", 
+      "operator": "ANY_MATCH", 
+      "value": 5 
+    }
+
+
+--- [PÁGINA 23 DE 49] ---
+
+] 
+} 
+Resultado: Devuelve true si al menos un beneficiario tiene beneficiaryType = 5 
+Ejemplo 2: Beneficiario con DNI 
+{ 
+  "ruleConditions": [ 
+    { 
+      "factor": "participants.beneficiaries.*.documentType", 
+      "operator": "ANY_MATCH", 
+      "value": "DNI" 
+    } 
+  ] 
+} 
+Resultado: Devuelve true si al menos un beneficiario tiene documentType = "DNI" 
+Ejemplo 3: Múltiples condiciones (AND lógico) 
+{ 
+  "ruleConditions": [ 
+    { 
+      "factor": "participants.beneficiaries.*.beneficiaryType", 
+      "operator": "ANY_MATCH", 
+      "value": 5 
+    }, 
+    { 
+      "factor": "participants.policyHolder.typeOfPerson", 
+      "operator": "EQ", 
+      "value": "N" 
+    }, 
+    { 
+      "factor": "variableData.CAPITAL_TOTAL", 
+      "operator": "GT", 
+      "value": 100000 
+    } 
+  ] 
+} 
+Resultado: true si: 
+● Al menos un beneficiario tipo 5 Y 
+● Tomador es persona natural Y
+
+
+--- [PÁGINA 24 DE 49] ---
+
+● Capital > 100000 
+Uso en V2 (Expresiones Java) 
+Ejemplo 1: Verificar beneficiario tipo 5 
+return f.anyMatch("participants.beneficiaries.*.beneficiaryType", 5); 
+Explicación: Una línea simple que verifica si existe al menos un beneficiario con tipo 5. 
+Ejemplo 2: Verificar documento DNI 
+return f.anyMatch("participants.beneficiaries.*.documentType", "DNI"); 
+Explicación: Verifica si existe al menos un beneficiario con documentType = "DNI" 
+Ejemplo 3: Lógica compleja 
+// Verificar beneficiario tipo 5 Y tomador natural Y capital > 100000 
+boolean tieneBeneficiarioTipo5 = f.anyMatch("participants.beneficiaries.*.bene
+ficiaryType", 5); 
+String tipoPersona = f.asString("participants.policyHolder.typeOfPerson"); 
+Double capital = f.asDouble("variableData.CAPITAL_TOTAL"); 
+ 
+return tieneBeneficiarioTipo5  
+       && "N".equals(tipoPersona)  
+       && capital != null  
+       && capital > 100000; 
+Explicación: Combina anyMatch con otras validaciones en una expresión compleja. 
+Ejemplo 4: Validación con OR 
+// Beneficiario tipo 5 O tipo 6 
+boolean tipo5 = f.anyMatch("participants.beneficiaries.*.beneficiaryType", 5); 
+boolean tipo6 = f.anyMatch("participants.beneficiaries.*.beneficiaryType", 6); 
+return tipo5 || tipo6; 
+Ventaja V2: Permite lógica OR que no es posible en V1.
+
+
+--- [PÁGINA 25 DE 49] ---
+
+Patrones Disponibles 
+Patrón Descripción 
+participants.beneficiaries.*.beneficiaryType Tipo de todos los beneficiarios 
+participants.beneficiaries.*.documentType Tipo de documento de beneficiarios 
+participants.beneficiaries.*.name Nombre de beneficiarios 
+participants.beneficiaries.*.age Edad de beneficiarios 
+coverages.*.capital Capital de todas las coberturas 
+coverages.*.franchiseCode Código de franquicia de coberturas 
+accumulations.*.amount Monto de acumulaciones 
+Notas Importantes 
+1. Obligatoriedad del Asterisco (*) 
+El patrón DEBE contener el asterisco: 
+// ✅ Correcto 
+"participants.beneficiaries.*.beneficiaryType" 
+ 
+// ❌ Incorrecto (sin asterisco) 
+"participants.beneficiaries.0.beneficiaryType" 
+2. Tipo de Datos 
+● Números: Se convierten automáticamente a Double (Integer, Long, etc.) 
+● Strings: Comparación exacta y case-sensitive 
+● null: Puedes buscar valores null pasando null como valor 
+3. Case-Sensitivity en Strings
+
+
+--- [PÁGINA 26 DE 49] ---
+
+// Busca "DNI" exacto 
+f.anyMatch("path.*.documentType", "DNI") 
+// NO encontrará "dni", "Dni", "dNi" 
+4. Conversión Automática de Números 
+// Ambos funcionan correctamente 
+f.anyMatch("path.*.type", 5)    // Integer 
+f.anyMatch("path.*.type", 5.0)  // Double 
+// Se comparan como iguales 
+Migración de Código Legacy 
+Antes (código verboso): 
+Integer tipo0 = f.asInteger("participants.beneficiaries.0.beneficiaryType"); 
+Integer tipo1 = f.asInteger("participants.beneficiaries.1.beneficiaryType"); 
+Integer tipo2 = f.asInteger("participants.beneficiaries.2.beneficiaryType"); 
+return (tipo0 != null && tipo0 == 5) ||  
+       (tipo1 != null && tipo1 == 5) ||  
+       (tipo2 != null && tipo2 == 5); 
+Después (código limpio con anyMatch): 
+return f.anyMatch("participants.beneficiaries.*.beneficiaryType", 5); 
+Ventajas: 
+●    1 línea vs 5+ líneas 
+●    Funciona con cualquier cantidad de beneficiarios 
+●    Más legible y mantenible 
+●    Sin errores si cambia la cantidad de elementos 
+Casos de Uso por Industria 
+Seguros de Vida 
+// Validar que existe heredero legal (tipo 5) 
+f.anyMatch("participants.beneficiaries.*.beneficiaryType", 5)
+
+
+--- [PÁGINA 27 DE 49] ---
+
+Seguros de Salud 
+// Validar que existe beneficiario con DNI 
+f.anyMatch("participants.beneficiaries.*.documentType", "DNI") 
+Seguros Generales 
+// Validar que existe cobertura con capital > 50000 
+// Nota: ANY_MATCH verifica existencia, no valores numéricos complejos 
+// Para eso mejor usar V2 con lógica personalizada 
+ 
+Características V2 
+Ventajas: 
+● Lógica compleja con OR, AND anidados 
+● Operaciones matemáticas y cálculos 
+● Manipulación de fechas 
+● Uso de métodos de Java estándar 
+● Mayor expresividad y flexibilidad 
+Desventajas: 
+● Requiere conocimientos de Java 
+● Mayor complejidad de mantenimiento 
+● Posibles errores de compilación si la sintaxis es incorrecta 
+● Debugging más difícil 
+ 
+COMPARATIVA V1 vs V2 
+Característica V1 (Estructurado) V2 (Java) 
+Complejidad Baja Media-Alta 
+Flexibilidad Limitada Total
+
+
+--- [PÁGINA 28 DE 49] ---
+
+Característica V1 (Estructurado) V2 (Java) 
+Curva aprendizaje Baja Media 
+Mantenibilidad Alta Media 
+Operadores lógicos Solo AND implícito AND, OR, NOT 
+Cálculos No soportado Sí soportado 
+Fechas Limitado Completo 
+Debugging Fácil Complejo 
+Rendimiento Rápido Muy rápido (compilado) 
+Seguridad Alta (no código) Alta (sandbox) 
+ 
+TIPOS DE CONFIGURACIÓN Y FILTRADO 
+Equivalencia de Campos de Configuración 
+Las reglas en la colección RS-RULES-ACTIONS-CONDITIONS se identifican y filtran mediante 
+una combinación de campos que definen el contexto de aplicación de cada regla. A 
+continuación se muestra la relación entre los campos de la entidad 
+RiskSelectionRulesActionsConditions y los conceptos de configuración: 
+Campo en 
+RiskSelectionRulesActionsConditions Tipo Descripción Usado en 
+Filtrado 
+processStep Integer Paso del proceso (nivel) 
+donde se aplica la regla    Sí 
+optionMenuNumber Integer Número de menú de 
+opciones    Sí 
+optionNumber Integer Número de opción 
+específica    Sí
+
+
+--- [PÁGINA 29 DE 49] ---
+
+Campo en 
+RiskSelectionRulesActionsConditions Tipo Descripción Usado en 
+Filtrado 
+executionType String 
+Tipo de ejecución de la 
+regla (Enum 
+RiskSelectionTypeEnum) 
+   Sí 
+processTypeId Integer 
+Tipo de 
+operación/proceso (Enum 
+DupOperationEnum) 
+   Sí 
+companyId Integer Identificador de la 
+compañía    Sí 
+branchId Integer Identificador del ramo de 
+negocio    Sí 
+productId Integer Identificador del producto    Sí 
+(Opcional) 
+coverageId Integer Identificador de cobertura 
+específica 
+   Sí 
+(Opcional) 
+processField String 
+Campo del proceso que 
+será afectado por la 
+acción 
+ℹ️ Info 
+ruleConditions List<Map<String, 
+Object>> 
+Condiciones estructuradas 
+(V1) 
+    
+Evaluación 
+condition String Expresión Java (V2)     
+Evaluación 
+ruleActions List<Map<String, 
+Object>> 
+Acciones a ejecutar si la 
+regla se cumple 
+    
+Ejecución 
+Leyenda: 
+●    Sí: Campo usado obligatoriamente en el filtrado de reglas 
+●    Sí (Opcional): Campo usado en filtrado cuando tiene valor (no null) 
+● ℹ️ Info: Campo informativo, no usado directamente en filtrado 
+●     Evaluación/Ejecución: Campo usado en la lógica de evaluación o ejecución
+
+
+--- [PÁGINA 30 DE 49] ---
+
+Tipos de Configuración 
+Las reglas se configuran mediante combinaciones de los campos processStep, 
+optionMenuNumber, optionNumber, executionType (RiskSelectionTypeEnum) y 
+processTypeId (DupOperationEnum). A continuación se detallan los tipos de configuración 
+más comunes: 
+Tipo de 
+Configurac
+ión 
+processSt
+ep 
+optionMenuNu
+mber 
+optionNum
+ber 
+executionTyp
+e processTypeId 
+Control de 
+Datos Fijos 
+DUP 
+1 0 0 POLICY_TYP
+E 
+TECHNICAL_CONT
+ROL 
+Datos 
+Variables de 
+Póliza 
+2 0 0 POLICY_TYP
+E 
+TECHNICAL_CONT
+ROL 
+Validación 
+Previa - 
+Datos 
+Variables 
+Póliza 
+2 0 10 POLICY_TYP
+E PREVIOUS 
+Validación - 
+Datos 
+Variables 
+Póliza 
+2 0 20 POLICY_TYP
+E VALIDATION 
+Tipo de 
+Riesgo 
+Beneficiario 
+3 0 0 RISK_TYPE TECHNICAL_CONT
+ROL 
+Datos 
+Variables de 
+Riesgo 
+4 0 0 RISK_TYPE TECHNICAL_CONT
+ROL 
+Validación 
+Previa - 
+Datos 
+Variables 
+Riesgo 
+4 0 10 RISK_TYPE PREVIOUS 
+Validación - 
+Datos 4 0 20 RISK_TYPE VALIDATION
+
+
+--- [PÁGINA 31 DE 49] ---
+
+Tipo de 
+Configurac
+ión 
+processSt
+ep 
+optionMenuNu
+mber 
+optionNum
+ber 
+executionTyp
+e processTypeId 
+Variables 
+Riesgo 
+Formulario 
+de Selección 
+de Riesgo 
+11 0 0 RISK_TYPE TECHNICAL_CONT
+ROL 
+Validación 
+Pre-
+Formulario 
+11 10 10 FORM_TYPE PREVIOUS 
+Validación 
+Post-
+Formulario 
+11 10 20 FORM_TYPE VALIDATION 
+Control de 
+Cobertura 6 0 0 COVERAGE_T
+YPE 
+TECHNICAL_CONT
+ROL 
+Validación 
+Previa - 
+Cobertura 
+Variable 
+6 0 10 COVERAGE_T
+YPE PREVIOUS 
+Validación - 
+Cobertura 
+Variable 
+6 0 20 COVERAGE_T
+YPE VALIDATION 
+Control de 
+Reaseguro 7 0 0 COVERAGE_T
+YPE 
+TECHNICAL_CONT
+ROL 
+Control de 
+Terminación 8 1 6 COVERAGE_T
+YPE 
+TECHNICAL_CONT
+ROL 
+Control de 
+Suspensión 8 1 3 COVERAGE_T
+YPE 
+TECHNICAL_CONT
+ROL 
+Control 
+Multiusuari
+o 
+8 1 4 COVERAGE_T
+YPE 
+TECHNICAL_CONT
+ROL 
+Control de 
+Guardado 8 3 1 COVERAGE_T
+YPE 
+TECHNICAL_CONT
+ROL
+
+
+--- [PÁGINA 32 DE 49] ---
+
+Tipo de 
+Configurac
+ión 
+processSt
+ep 
+optionMenuNu
+mber 
+optionNum
+ber 
+executionTyp
+e processTypeId 
+Control de 
+Abandono 8 3 2 COVERAGE_T
+YPE 
+TECHNICAL_CONT
+ROL 
+Control de 
+Verificación 8 3 3 COVERAGE_T
+YPE 
+TECHNICAL_CONT
+ROL 
+Control de 
+Cláusulas 8 3 4 COVERAGE_T
+YPE 
+TECHNICAL_CONT
+ROL 
+Control de 
+Páginas de 
+Anexo 
+8 3 5 COVERAGE_T
+YPE 
+TECHNICAL_CONT
+ROL 
+Control de 
+Impresión 8 3 6 COVERAGE_T
+YPE 
+TECHNICAL_CONT
+ROL 
+Control de 
+Riesgos 8 3 7 COVERAGE_T
+YPE 
+TECHNICAL_CONT
+ROL 
+Validación - 
+Datos Fijos 
+Póliza 
+Grupo 
+1 30 20 FIXED_DATA VALIDATION 
+Validación 
+Previa - 
+Datos 
+Variables 
+Póliza 
+Grupo 
+2 30 10 POLICY_GRO
+UP PREVIOUS 
+Validación - 
+Datos 
+Variables 
+Póliza 
+Grupo 
+2 30 20 POLICY_GRO
+UP VALIDATION 
+Control de 
+Opciones 
+Adicionales 
+8 3 8 COVERAGE_T
+YPE 
+TECHNICAL_CONT
+ROL 
+Control de 
+Cualquier 8 7 null COVERAGE_T
+YPE 
+TECHNICAL_CONT
+ROL
+
+
+--- [PÁGINA 33 DE 49] ---
+
+Tipo de 
+Configurac
+ión 
+processSt
+ep 
+optionMenuNu
+mber 
+optionNum
+ber 
+executionTyp
+e processTypeId 
+Opción 
+Adicional 
+Control de 
+Exclusión 50 0 30 TBD TBD 
+Control de 
+Reproceso 50 0 40 TBD TBD 
+Notas importantes: 
+● processStep: También conocido como stepLevel, indica el paso del flujo del proceso 
+(1 = Datos Fijos, 2 = Datos Variables Póliza, 4 = Datos Variables Riesgo, etc.) 
+● executionType: Mapea a valores del enum RiskSelectionTypeEnum (POLICY_TYPE, 
+RISK_TYPE, COVERAGE_TYPE, FORM_TYPE, FIXED_DATA, 
+POLICY_GROUP) 
+● processTypeId: Mapea a valores del enum DupOperationEnum 
+(TECHNICAL_CONTROL, PREVIOUS, VALIDATION) 
+● Los valores null indican que ese campo no se usa como filtro para ese tipo de 
+configuración 
+● Los valores TBD (To Be Determined) indican que la configuración está pendiente de 
+definición 
+ 
+Filtrado de Reglas en RiskSelectionRulesActionsConditions 
+El sistema de reglas utiliza un mecanismo de filtrado en cascada para recuperar únicamente 
+las reglas aplicables a un contexto de ejecución específico. Este filtrado se realiza antes de la 
+evaluación de condiciones y priorización. 
+¿Cómo Funciona el Filtrado? 
+El filtrado se realiza en MongoDB mediante una query que combina criterios obligatorios y 
+opcionales: 
+1. Criterios Obligatorios (Siempre presentes)
+
+
+--- [PÁGINA 34 DE 49] ---
+
+Estos campos SIEMPRE se incluyen en la búsqueda: 
+Campo Descripción Ejemplo de Valor 
+companyId Compañía aseguradora 1 (MAPFRE España) 
+branchId Ramo de negocio 100 (Vida) 
+processStep Paso del proceso 4 (Datos Variables Riesgo) 
+executionType Tipo de ejecución "RISK_TYPE" 
+processTypeId Tipo de operación 1 (TECHNICAL_CONTROL) 
+Query MongoDB (simplificada): 
+{ 
+  "companyId": 1, 
+  "branchId": 100, 
+  "processStep": 4, 
+  "executionType": "RISK_TYPE", 
+  "processTypeId": 1 
+} 
+2. Criterios Opcionales (Cuando tienen valor) 
+Estos campos se añaden al filtro solo si tienen un valor específico en el contexto de 
+ejecución: 
+Campo Descripción Lógica de Filtrado 
+productId Producto 
+específico 
+Se incluyen reglas con productId = X O productId = 
+null 
+coverageId Cobertura 
+específica 
+Se incluyen reglas con coverageId = X O coverageId 
+= null 
+optionNumber Número de 
+opción 
+Se incluyen reglas con optionNumber = X O 
+optionNumber = null 
+optionMenuNumber Número de menú Se incluyen reglas con optionMenuNumber = X O 
+optionMenuNumber = null
+
+
+--- [PÁGINA 35 DE 49] ---
+
+Ejemplo de Query con criterios opcionales: 
+{ 
+  "companyId": 1, 
+  "branchId": 100, 
+  "processStep": 4, 
+  "executionType": "RISK_TYPE", 
+  "processTypeId": 1, 
+  "$or": [ 
+    { "productId": 205 }, 
+    { "productId": null } 
+  ], 
+  "$or": [ 
+    { "coverageId": 410 }, 
+    { "coverageId": null } 
+  ] 
+} 
+Interpretación: Obtiene reglas que: 
+● Aplican específicamente al producto 205 O aplican a todos los productos 
+● Aplican específicamente a la cobertura 410 O aplican a todas las coberturas 
+3. Filtros de Contexto Extendidos (Priorización) 
+A partir de la implementación de priorización, se añadieron filtros adicionales para contextos 
+más específicos: 
+Campo Descripción Comportamiento 
+policyNumber Número de póliza Filtra por póliza específica si está 
+presente 
+clientPolicy Póliza del cliente Filtra por póliza de cliente si está 
+presente 
+contractNumber Número de contrato Filtra por contrato si está presente 
+groupPolicyNumber Número de póliza de 
+grupo Filtra por grupo si está presente 
+channel1, channel2, 
+channel3 Canales de distribución Filtran por canal de venta si están 
+presentes
+
+
+--- [PÁGINA 36 DE 49] ---
+
+Campo Descripción Comportamiento 
+level1, level2, level3 Niveles de clasificación Filtran por clasificación si están 
+presentes 
+Estos campos también se evalúan con lógica OR (valor específico O null). 
+4. Filtros de Estado 
+Campo Descripción Comportamiento 
+active Estado activo/inactivo Solo se recuperan reglas con active = "S" (Sí) 
+disabledDate Fecha de deshabilitación Se excluyen reglas con disabledDate en el pasado 
+expiryDate Fecha de expiración Se excluyen reglas con expiryDate en el pasado 
+ 
+Flujo Completo de Filtrado 
+┌─────────────────────────────────────────────────────────────┐  
+│  1. CONTEXTO DE EJECUCIÓN                                   │  
+│     - companyId: 1                                          │  
+│     - branchId: 100                                         │  
+│     - productId: 205                                        │  
+│     - processStep: 4                                        │  
+│     - executionType: "RISK_TYPE"                            │  
+│     - processTypeId: 1                                      │  
+│     - coverageId: 410                                       │  
+└─────────────────────────────────────────────────────────────┘  
+                          ↓  
+┌─────────────────────────────────────────────────────────────┐  
+│  2. CONSTRUCCIÓN DE QUERY MONGODB                           │  
+│     {                                                       │  
+│       "companyId": 1,          // Obligatorio              │  
+│       "branchId": 100,         // Obligatorio              │  
+│       "processStep": 4,        // Obligatorio              │  
+│       "executionType": "RISK_TYPE",  // Obligatorio        │  
+│       "processTypeId": 1,      // Obligatorio              │  
+│       "$or": [                                             │  
+│         { "productId": 205 },  // Opcional                 │  
+│         { "productId": null }                              │  
+│       ],                                                   │  
+│       "$or": [                                             │  
+│         { "coverageId": 410 }, // Opcional                 │
+
+
+--- [PÁGINA 37 DE 49] ---
+
+│         { "coverageId": null }                             │  
+│       ],                                                   │  
+│       "active": "S",           // Estado                   │  
+│       "$or": [                                             │  
+│         { "expiryDate": null },                            │  
+│         { "expiryDate": { "$gte": "2026-03-19" } }        │  
+│       ]                                                    │  
+│     }                                                      │  
+└─────────────────────────────────────────────────────────────┘  
+                          ↓  
+┌─────────────────────────────────────────────────────────────┐  
+│  3. RESULTADO: REGLAS FILTRADAS                             │  
+│     - Regla ID 1001 (productId=205, coverageId=410)        │  
+│     - Regla ID 1002 (productId=205, coverageId=null)       │  
+│     - Regla ID 1003 (productId=null, coverageId=410)       │  
+│     - Regla ID 1004 (productId=null, coverageId=null)      │  
+└─────────────────────────────────────────────────────────────┘  
+                          ↓  
+┌─────────────────────────────────────────────────────────────┐  
+│  4. PRIORIZACIÓN (ver sección siguiente)                    │  
+│     Las reglas filtradas se ordenan por prioridad           │  
+└─────────────────────────────────────────────────────────────┘  
+                          ↓  
+┌─────────────────────────────────────────────────────────────┐  
+│  5. EVALUACIÓN DE CONDICIONES                               │  
+│     Se evalúan condiciones (V1 o V2) en orden de prioridad │  
+└─────────────────────────────────────────────────────────────┘  
+                          ↓  
+┌─────────────────────────────────────────────────────────────┐  
+│  6. EJECUCIÓN DE ACCIONES                                   │  
+│     Se ejecutan acciones de las reglas que cumplen          │  
+└─────────────────────────────────────────────────────────────┘ 
+Ejemplos Prácticos de Filtrado 
+Ejemplo 1: Filtrado Simple (Solo criterios obligatorios) 
+Contexto: 
+● Compañía: 1 
+● Ramo: 100 
+● Paso: 2 (Datos Variables Póliza) 
+● Tipo Ejecución: POLICY_TYPE 
+● Tipo Proceso: TECHNICAL_CONTROL 
+Query MongoDB:
+
+
+--- [PÁGINA 38 DE 49] ---
+
+db.getCollection('RS-RULES-ACTIONS-CONDITIONS').find({ 
+  "companyId": 1, 
+  "branchId": 100, 
+  "processStep": 2, 
+  "executionType": "POLICY_TYPE", 
+  "processTypeId": 1, 
+  "active": "S" 
+}) 
+Resultado: Todas las reglas de datos variables de póliza para esa compañía y ramo. 
+ 
+Ejemplo 2: Filtrado con Producto Específico 
+Contexto: 
+● Compañía: 1 
+● Ramo: 100 
+● Producto: 205 (Vida Individual) 
+● Paso: 4 
+● Tipo Ejecución: RISK_TYPE 
+● Tipo Proceso: TECHNICAL_CONTROL 
+Query MongoDB: 
+db.getCollection('RS-RULES-ACTIONS-CONDITIONS').find({ 
+  "companyId": 1, 
+  "branchId": 100, 
+  "processStep": 4, 
+  "executionType": "RISK_TYPE", 
+  "processTypeId": 1, 
+  "$or": [ 
+    { "productId": 205 }, 
+    { "productId": null } 
+  ], 
+  "active": "S" 
+}) 
+Resultado: Reglas específicas del producto 205 Y reglas genéricas (productId = null). 
+ 
+Ejemplo 3: Filtrado Completo con Cobertura
+
+
+--- [PÁGINA 39 DE 49] ---
+
+Contexto: 
+● Compañía: 1 
+● Ramo: 100 
+● Producto: 205 
+● Cobertura: 410 (Fallecimiento) 
+● Paso: 6 
+● Tipo Ejecución: COVERAGE_TYPE 
+● Tipo Proceso: VALIDATION 
+Query MongoDB: 
+db.getCollection('RS-RULES-ACTIONS-CONDITIONS').find({ 
+  "companyId": 1, 
+  "branchId": 100, 
+  "processStep": 6, 
+  "executionType": "COVERAGE_TYPE", 
+  "processTypeId": 20,  // VALIDATION 
+  "$or": [ 
+    { "productId": 205 }, 
+    { "productId": null } 
+  ], 
+  "$or": [ 
+    { "coverageId": 410 }, 
+    { "coverageId": null } 
+  ], 
+  "active": "S" 
+}) 
+Resultado: 
+● Reglas específicas: producto 205 + cobertura 410 
+● Reglas semi-específicas: producto 205 + todas coberturas 
+● Reglas semi-específicas: todos productos + cobertura 410 
+● Reglas genéricas: todos productos + todas coberturas 
+ 
+Optimización del Filtrado 
+Ventajas del filtrado en cascada: 
+   Reducción de carga: Solo se recuperan reglas relevantes (no todas las de la BD) 
+   Flexibilidad: Reglas genéricas y específicas coexisten sin conflicto
+
+
+--- [PÁGINA 40 DE 49] ---
+
+Escalabilidad: Añadir nuevas reglas no afecta el rendimiento 
+   Mantenibilidad: Reglas específicas sobrescriben comportamiento genérico vía 
+priorización 
+Mejores prácticas: 
+1. Reglas Genéricas (productId = null, coverageId = null): Para comportamiento por 
+defecto 
+2. Reglas Específicas (productId = X, coverageId = Y): Para excepciones o casos 
+particulares 
+3. Uso de active y expiryDate: Para desactivar temporalmente sin eliminar 
+4. Índices en MongoDB: Crear índices en campos de filtrado obligatorios para optimizar 
+consultas 
+ 
+TIPOS DE ACCIONES 
+Las acciones son las respuestas que ejecuta el sistema cuando una regla se cumple. Se 
+definen en el campo ruleActions de la regla en MongoDB. 
+Estructura de una Acción en MongoDB 
+Cada acción es un objeto JSON con la siguiente estructura base: 
+{ 
+  "type": "Rechazo",                    // Tipo de acción a ejecutar 
+  "value": "Capital excede el límite",  // Valor/mensaje/dato de la acción 
+  "valueCalculationType": "DIRECT"      // Cómo calcular el valor (DIRECT, FAC
+TOR, FORMULA, FUNCTION) 
+} 
+Tipos de Acciones Disponibles 
+Tipo Código Descripción Ejemplo de Uso 
+Rechazo Rechazo Rechaza la operación y detiene 
+validación 
+Edad fuera de rango, Capital 
+excedido
+
+
+--- [PÁGINA 41 DE 49] ---
+
+Tipo Código Descripción Ejemplo de Uso 
+Revisión Revisión Marca para revisión manual Ocupación de riesgo, 
+Acumulación alta 
+Requisito requirement Solicita información adicional Informes médicos, 
+Declaraciones 
+Documento document Solicita documentación 
+específica DNI, Certificados 
+Tarifa Tarifa Aplica extraprima o 
+modificación de tarifa 
+Deportes de riesgo, 
+Ocupaciones peligrosas 
+Asignación Asignacion Asigna valores a variables del 
+sistema 
+Modificar prima, Ajustar 
+capital 
+Cuestionario questionnaire Solicita cuestionario adicional Cuestionario médico detallado 
+Aviso message Mensaje informativo (no 
+bloquea) Advertencias, Notas 
+Aceptado Aceptado Acepta explícitamente la 
+operación - 
+Cálculo 
+Fecha TEMP Calcula y almacena una fecha Fechas de vencimiento 
+Exclusión Exclusion Excluye elementos o 
+aplicaciones específicas 
+Exclusión de coberturas, 
+garantías 
+Reproceso Reproceso Solicita reprocesamiento de la 
+operación 
+Recalcular tarifas, actualizar 
+datos 
+ 
+TIPOS DE CÁLCULO DE VALORES EN ACCIONES 
+El campo valueCalculationType determina cómo se calcula el valor de la acción. Existen 4 
+tipos: 
+1. DIRECT (Valor Directo) 
+Valor literal, sin transformaciones.
+
+
+--- [PÁGINA 42 DE 49] ---
+
+Estructura: 
+{ 
+  "type": "Rechazo", 
+  "value": "Mensaje de rechazo directo", 
+  "valueCalculationType": "DIRECT" 
+} 
+ 
+2. FACTOR (Referencia a un Fact) 
+Obtiene el valor desde un fact existente. 
+Estructura: 
+{ 
+  "type": "Tarifa", 
+  "value": "constants.extraPrimaDeportesRiesgo", 
+  "valueCalculationType": "FACTOR" 
+} 
+ 
+3. FORMULA (Expresión Java) 
+Ejecuta código Java para calcular el valor dinámicamente. Usa el mismo motor V2 que las 
+condiciones. 
+Estructura: 
+{ 
+  "type": "Tarifa", 
+  "value": "Integer edad = f.asInteger(\"insured.age\"); return edad > 50 ? 15
+0 : 100;", 
+  "valueCalculationType": "FORMULA" 
+} 
+ 
+4. FUNCTION (Función Predefinida del RTE)
+
+
+--- [PÁGINA 43 DE 49] ---
+
+Llama a una función o método específico en el RTE (Runtime Engine) a través del 
+orquestador. 
+Estructura: 
+{ 
+  "type": "Asignacion", 
+  "value": "ProcessAttributes.calcYearDuration", 
+  "valueCalculationType": "FUNCTION", 
+  "data": "ANIO_DURACION_PAGO_PRIMAS_410", 
+  "jumpLevel": 6, 
+  "message": "Previo obtenido de método anio_duracion", 
+  "coverage": 410, 
+  "dataType": "String" 
+} 
+Cómo Funciona: 
+1. DUP procesa la regla 
+2. Cuando encuentra valueCalculationType: "FUNCTION", prepara la llamada 
+3. El Orquestador recibe la petición con: 
+○ value: Clase y método a ejecutar (ej: 
+"ProcessAttributes.calcYearDuration") 
+○ dataType: Tipo de dato esperado (String, Integer, etc.) 
+4. El Orquestador invoca el RTE 
+5. El RTE ejecuta la función especificada: 
+ProcessAttributes.calcYearDuration(Polizon, Riesgo, Cobertura, data) 
+6. El resultado se devuelve al orquestador y lo sobreescribe en la regla 
+Ejemplo de la Imagen: 
+{ 
+  "type": "Asignacion", 
+  "jumpLevel": 6, 
+  "message": "Previo obtenido de método anio_duracion", 
+  "value": "ProcessAttributes.calcYearDuration",  // Clase.método en RTE 
+  "valueCalculationType": "FUNCTION", 
+  "data": "ANIO_DURACION_PAGO_PRIMAS_410",       // Parámetro 
+  "coverage": 410, 
+  "dataType": "String" 
+}
+
+
+--- [PÁGINA 44 DE 49] ---
+
+PRIORIZACIÓN DE REGLAS 
+Introducción a la Priorización 
+El sistema de priorización de reglas es un mecanismo que optimiza el procesamiento de 
+reglas evitando redundancias cuando múltiples reglas afectan al mismo campo 
+(processField). 
+Objetivo principal: Una vez que se ha aplicado una regla a un processField específico, el 
+sistema no procesará más reglas para ese mismo campo, mejorando el rendimiento y 
+evitando resultados contradictorios. 
+Cómo Funciona la Priorización 
+Flujo de Evaluación: 
+1. Carga de Reglas: El sistema obtiene todas las reglas aplicables del repositorio 
+2. Cálculo de Prioridad: Cada regla recibe un score de prioridad basado en criterios 
+específicos 
+3. Ordenamiento: Las reglas se ordenan por prioridad descendente (mayor puntuación 
+= ejecuta primero) 
+4. Aplicación: Se ejecutan las reglas en orden de prioridad 
+5. Bloqueo de Campo: Una vez se aplica una regla a un processField, ese campo queda 
+marcado como procesado 
+6. Filtrado: Las reglas subsecuentes que afecten a un processField ya procesado se 
+saltan automáticamente 
+Ventajas: 
+   Rendimiento mejorado - No se ejecutan reglas innecesarias 
+   Evita conflictos - Una única decisión por campo 
+   Orden determinístico - Resultados predecibles y consistentes 
+   Control granular - Prioridad explícita para cada regla 
+Criterios de Priorización 
+La prioridad se calcula sumando penalizaciones (restar puntuación) en función de:
+
+
+--- [PÁGINA 45 DE 49] ---
+
+Criterio Penalización Descripción 
+Tiene productId -1200 Reglas específicas del producto son prioritarias 
+Tiene policyNumber -1100 Reglas para número de póliza específico 
+Tiene clientPolicy -1000 Reglas para póliza de cliente específica 
+Tiene contractNumber -900 Reglas para número de contrato específico 
+Tiene groupPolicyNumber -800 Reglas para número de póliza de grupo 
+Tiene thirdPartyCode -700 Reglas con tercero especificado 
+Tiene channel3 -600 Reglas para canal de venta nivel 3 
+Tiene channel2 -500 Reglas para canal de venta nivel 2 
+Tiene channel1 -400 Reglas para canal de venta nivel 1 
+Tiene level3 -300 Reglas para clasificación nivel 3 
+Tiene level2 -200 Reglas para clasificación nivel 2 
+Tiene level1 -100 Reglas para clasificación nivel 1 
+Tiene disabledDate -10000 Reglas deshabilitadas tienen máxima penalización 
+Tiene ruleConditions -N Se resta el número de condiciones en la regla 
+Tiene condition (V2) -N Se resta el número de llamadas a funciones encontradas 
+Nota: Una puntuación menor = mayor prioridad (se ejecuta primero) 
+Ejemplo de Cálculo de Prioridad 
+Regla 1: 
+{ 
+  "productId": "VIDA_INDIVIDUAL",
+
+
+--- [PÁGINA 46 DE 49] ---
+
+"policyNumber": null, 
+  "channel1": "DIRECTO", 
+  "ruleConditions": [{...}, {...}], 
+  "condition": null, 
+  "processField": "tarifa" 
+} 
+Cálculo: 
+● Puntuación inicial: 0 
+● Tiene productId: -1200 
+● Tiene channel1: -400 
+● Tiene 2 ruleConditions: -2 
+● Total: -1602 ← Se ejecuta con alta prioridad 
+ 
+Regla 2: 
+{ 
+  "productId": null, 
+  "policyNumber": null, 
+  "channel1": null, 
+  "ruleConditions": [], 
+  "condition": null, 
+  "processField": "tarifa" 
+} 
+Cálculo: 
+● Puntuación inicial: 0 
+● Sin criterios específicos 
+● Total: 0 ← Se ejecuta con baja prioridad 
+Nuevos Campos en RiskSelectionRulesActionsConditions 
+Se han agregado nuevos campos a la entidad RiskSelectionRulesActionsConditions para 
+soportar la priorización: 
+Campo Tipo Descripción Ejemplo 
+policyNumber String Número de póliza específico (null 
+si aplica a todas) "POL-2024-00123"
+
+
+--- [PÁGINA 47 DE 49] ---
+
+Campo Tipo Descripción Ejemplo 
+clientPolicy String Referencia de póliza del cliente "CLIENT-POL-456" 
+contractNumber String Número de contrato "CON-2024-789" 
+groupPolicyNumber String Número de póliza de grupo "GROUP-POL-2024" 
+thirdPartyCode String Código de tercero "TERCERO-001" 
+channel1 String Canal de venta nivel 1 "DIRECTO", "BROKER", 
+"AGENCIA" 
+channel2 String Canal de venta nivel 2 "ONLINE", "PRESENCIAL" 
+channel3 String Canal de venta nivel 3 Subcanal específico 
+level1 String Clasificación nivel 1 "VIDA", "PROPERTY", 
+"HEALTH" 
+level2 String Clasificación nivel 2 "INDIVIDUAL", 
+"COLECTIVO" 
+level3 String Clasificación nivel 3 Subclasificación específica 
+Uso: Estos campos se usan en la condición de la regla if (Objects.nonNull(field)) para 
+determinar si la regla es aplicable 
+Campos de Condición Dinámica 
+Además de los campos anteriores, se pueden usar condiciones dinámicas en el campo 
+condition (V2): 
+Patrón de búsqueda: f.as*("fieldName") 
+El sistema extrae automáticamente los nombres de campos referenciados en expresiones V2 
+de la forma: 
+f.asString("fixedValue.valor")      // Extrae: fixedValue.valor 
+f.asInteger("fixedValue.datos")     // Extrae: fixedValue.datos 
+s.asBoolean("status.activo")        // Extrae: status.activo
+
+
+--- [PÁGINA 48 DE 49] ---
+
+Estos campos extraídos también se consideran en el cálculo de prioridad cuando la regla tiene 
+un campo condition con referencias a datos fijos. 
+Ejemplo Completo de Regla Priorizada 
+{ 
+  "id": "RULE_001", 
+  "productId": "VIDA_INDIVIDUAL", 
+  "level1": "VIDA", 
+  "level2": "INDIVIDUAL", 
+  "channel1": "DIRECTO", 
+  "policyNumber": null, 
+  "clientPolicy": null, 
+  "contractNumber": null, 
+  "groupPolicyNumber": null, 
+  "thirdPartyCode": null, 
+  "channel2": null, 
+  "channel3": null, 
+  "level3": null, 
+  "disabledDate": null, 
+  "processField": "tarifa", 
+  "ruleConditions": [], 
+  "condition": "f.asString(\"fixedValue.tipoAsegurado\").equals(\"PRINCIPAL\")
+", 
+  "ruleActions": [ 
+    { 
+      "type": "Tarifa", 
+      "value": "1.5", 
+      "jumpLevel": 2 
+    } 
+  ], 
+  "priority": -1700  // Calculado: -1200 (productId) -400 (channel1) -100 (lev
+el1) 
+} 
+ 
+COMPORTAMIENTO ESPECIAL DE ACCIONES 
+Prioridad de Acciones 
+Las acciones se ejecutan en el orden definido en ruleActions. Sin embargo, el resultado final 
+se determina por prioridad: 
+Orden de Prioridad (mayor a menor):
+
+
+--- [PÁGINA 49 DE 49] ---
+
+1. Rechazo - Máxima prioridad 
+2. Revisión - Media-Alta prioridad 
+3. Requisito/Documento - Media prioridad 
+4. Tarifa/Asignación - Media-Baja prioridad 
+5. Mensaje/Aceptado - Baja prioridad

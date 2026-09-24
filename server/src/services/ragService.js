@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import { getDupDb, getRteDb } from '../db.js';
 import { updateRagStatus } from '../routes/chat.js';
 
@@ -347,8 +349,120 @@ Visualização: Disponível em tabela com ordenação e busca rápida, com modal
 - VIEWER (Visualizador): Acesso em modo somente leitura (read-only) às telas liberadas.`
   });
 
-  console.log(`✅ Total de documentos de conhecimento bruto sintetizados: ${rawDocs.length}`);
+  // 11. COVERAGE-PACKAGE-DEFINITION (MÓDULOS)
+  try {
+    const packages = await rteDb.collection('COVERAGE-PACKAGE-DEFINITION').find({}).limit(100).toArray();
+    for (const pkg of packages) {
+      const branch = pkg.branchId || 'Geral';
+      const prod = pkg.product || 'N/A';
+      const pref = pkg.preferenceId || 'N/A';
+      const covs = (pkg.coverages || []).map(c => `Cob #${c.coverageId}${c.data?.mandatory ? ' (Obrigatória)' : ''}`).join(', ');
+      const rules = (pkg.rules || []).map(r => JSON.stringify(r)).join('; ');
+
+      const content = `Pacote de Coberturas (MÓDULOS): Preferência #${pref}
+Produto: ${prod} | Ramo: ${branch} | Companhia: ${pkg.companyId}
+Regras de Elegibilidade: ${rules || 'Sem restrições adicionais'}
+Coberturas do Pacote: ${covs}
+Coleção MongoDB: COVERAGE-PACKAGE-DEFINITION (Banco acdc_rte_br-int)`;
+
+      rawDocs.push({
+        id: `pkg_${pkg._id}`,
+        title: `Pacote de Cobertura #${pref} - Produto ${prod}`,
+        category: 'Pacotes de Coberturas (MÓDULOS)',
+        sourceCollection: 'COVERAGE-PACKAGE-DEFINITION',
+        tags: [String(pref), String(prod), String(branch), 'pacote', 'cobertura', 'módulos'],
+        content
+      });
+    }
+  } catch (err) {
+    console.warn('Erro ao extrair COVERAGE-PACKAGE-DEFINITION:', err.message);
+  }
+
+  console.log(`✅ Total de documentos de conhecimento bruto MongoDB sintetizados: ${rawDocs.length}`);
   return rawDocs;
+}
+
+/**
+ * Extracts knowledge documents from the official markdown-ACDC folder
+ */
+function extractRawKnowledgeFromMarkdownFiles() {
+  const mdDocs = [];
+  const possiblePaths = [
+    path.resolve(process.cwd(), '../markdown-ACDC'),
+    path.resolve(process.cwd(), 'markdown-ACDC'),
+    '/Users/gcostabe/dev/ACDC/markdown-ACDC'
+  ];
+
+  let mdDir = null;
+  for (const p of possiblePaths) {
+    if (fs.existsSync(p)) {
+      mdDir = p;
+      break;
+    }
+  }
+
+  if (!mdDir) {
+    console.warn('⚠️ Diretório markdown-ACDC não localizado para indexação RAG.');
+    return [];
+  }
+
+  function findMdFiles(dir, fileList = []) {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+      const filePath = path.join(dir, file);
+      if (fs.statSync(filePath).isDirectory()) {
+        findMdFiles(filePath, fileList);
+      } else if (file.endsWith('.md')) {
+        fileList.push(filePath);
+      }
+    }
+    return fileList;
+  }
+
+  const allFiles = findMdFiles(mdDir);
+  console.log(`📚 Localizados ${allFiles.length} arquivos Markdown em markdown-ACDC para indexação RAG...`);
+
+  for (const file of allFiles) {
+    try {
+      const text = fs.readFileSync(file, 'utf-8');
+      const filename = path.basename(file, '.md');
+      const lines = text.split('\n');
+      const titleLine = lines.find(l => l.startsWith('# ')) || `# ${filename}`;
+      const title = titleLine.replace(/^#\s*/, '').trim();
+
+      // Determine category from path
+      const normPath = file.normalize('NFC');
+      let category = 'Documentação Oficial ACDC';
+      if (normPath.includes('Manual Export')) category = 'Documentação de Arquitetura & Módulos (Manual Export)';
+      else if (normPath.includes('Formación ACDC') || normPath.includes('Formação ACDC')) category = 'Formação Técnica & Treinamento ACDC';
+      else if (normPath.includes('Hub Colômbia') || normPath.includes('Hub Colombia')) category = 'Missão Hub Colômbia - Modelagem Vida';
+      else if (normPath.includes('profissões') || normPath.includes('profissoes')) category = 'Configuração TRON / LOVs';
+
+      // Split into logical sections (at ## headers)
+      const sections = text.split(/\n(?=##\s+)/);
+      for (let sIdx = 0; sIdx < sections.length; sIdx++) {
+        const sec = sections[sIdx].trim();
+        if (!sec || sec.length < 50) continue;
+
+        const secLines = sec.split('\n');
+        const secHeader = secLines[0].replace(/^##\s*/, '').trim();
+
+        mdDocs.push({
+          id: `md_${filename.slice(0, 25)}_${sIdx}`,
+          title: `${title} - ${secHeader}`,
+          category,
+          sourceCollection: `markdown-ACDC/${path.basename(path.dirname(file))}`,
+          tags: [filename, title, secHeader, 'acdc', 'mapfre', 'tron', 'rag'].map(s => s.toLowerCase().slice(0, 40)),
+          content: sec.slice(0, 3800)
+        });
+      }
+    } catch (readErr) {
+      console.warn(`Erro ao ler arquivo markdown ${file}:`, readErr.message);
+    }
+  }
+
+  console.log(`✅ Total de chunks de documentação Markdown sintetizados: ${mdDocs.length}`);
+  return mdDocs;
 }
 
 /**
@@ -386,7 +500,10 @@ export async function buildAndIndexRag(force = false) {
   updateRagStatus({ isIndexing: true });
 
   try {
-    const rawDocs = await extractRawKnowledgeFromMongo();
+    const mongoDocs = await extractRawKnowledgeFromMongo();
+    const mdDocs = extractRawKnowledgeFromMarkdownFiles();
+    const rawDocs = [...mongoDocs, ...mdDocs];
+
     if (rawDocs.length === 0) {
       console.warn('Nenhum documento encontrado para indexação RAG.');
       isIndexingInProgress = false;

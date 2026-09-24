@@ -1,0 +1,275 @@
+Passo a passo para configuração das profissões
+
+1. Cadastro das profissões
+
+O cadastro das profissões foi realizado na tabela G1000100, utilizando os seguintes parâmetros:
+
+cod_cia = 15
+
+cod_idioma = 'BR'
+
+Essa tabela passa a ser a referência (LOV - Lista de Valores) para o campo de profissão.
+
+2. Configuração da tabela de dados variáveis
+
+2.1 Identificação do campo de profissão
+
+Na tabela de dados variáveis G2000020, foi identificado o campo referente às profissões (COD_PROFESION) por meio da query abaixo:
+
+SQL
+
+SELECT a.*, rowid
+
+FROM tron2000.G2000020 a
+
+WHERE cod_cia = 15
+
+AND cod_ramo = 421
+
+AND cod_campo = 'COD_PROFESION'
+
+AND cod_modalidad = 42101;
+
+2.2 Atualização da tabela de dados variáveis
+
+Com base nas informações localizadas, foi realizado o update para apontar o campo para a tabela de profissões e configurar a exibição como lista de valores:
+
+SQL
+
+UPDATE tron2000.G2000020
+
+SET nom_tabla_valida = 'G1000100', -- Tabela de profissões
+
+nom_global_pgm_help = 'VALOR_LISTA', -- Tipo de exibição (lista)
+
+nom_pgm_help = 'AL000010'
+
+WHERE cod_cia = 15
+
+AND cod_campo = 'COD_PROFESION'
+
+AND cod_modalidad = 42101;
+
+3. Configuração da tabela de configuração (G1010300 / G10103)
+
+3.1 Verificação de regras existentes
+
+Foi realizada a consulta abaixo para verificar se já existiam regras configuradas para a tabela de profissões:
+
+SQL
+
+SELECT a.*, rowid
+
+FROM tron2000.G1010300 a
+
+WHERE cod_cia = 15
+
+AND nom_tabla = 'G1000100'; -- Tabela de profissões
+
+Apesar de existirem alguns registros, foi necessária a inclusão de dois novos registros, conforme descrito a seguir.
+
+3.2 Inclusão dos registros de configuração
+
+Registro 1 – Código da profissão
+
+nom_tabla: G1000100
+
+cod_version: 5
+
+num_orden_tabla: 1
+
+num_secu_columna: 1
+
+nom_columna: COD_PROFESION
+
+tip_columna: N
+
+lng_visible: 6
+
+mca_funcion: N
+
+cod_modulo: TRN
+
+cod_texto: 685
+
+nom_global: VALOR_LISTA
+
+mca_visible / filtro / order_by: S
+
+cod_instalacion: TRN
+
+cod_cia: 15
+
+SQL
+
+INSERT INTO tron2000.G10103
+
+(nom_tabla, cod_version, num_orden_tabla, num_secu_columna,
+
+nom_columna, tip_columna, lng_visible, mca_funcion, cod_modulo,
+
+cod_texto, nom_global, mca_visible, mca_filtro, mca_order_by,
+
+cod_instalacion, cod_cia)
+
+VALUES
+
+('G1000100', 5, 1, 1, 'COD_PROFESION', 'N', 6, 'N',
+
+'TRN', 685, 'VALOR_LISTA', 'S', 'S', 'S', 'TRN', 15);
+
+Registro 2 – Nome da profissão
+
+nom_columna: NOM_PROFESION
+
+tip_columna: C
+
+lng_visible: 30
+
+cod_texto: 686
+
+SQL
+
+INSERT INTO tron2000.G10103
+
+(nom_tabla, cod_version, num_orden_tabla, num_secu_columna,
+
+nom_columna, tip_columna, lng_visible, mca_funcion, cod_modulo,
+
+cod_texto, nom_global, mca_visible, mca_filtro, mca_order_by,
+
+cod_instalacion, cod_cia)
+
+VALUES
+
+('G1000100', 5, 1, 2, 'NOM_PROFESION', 'C', 30, 'N',
+
+'TRN', 686, '', 'S', 'S', 'S', 'TRN', 15);
+
+4. Vinculação da versão na tabela de dados variáveis
+
+Após a criação dos registros de configuração, foi necessário vincular a versão criada (cod_version = 5) na tabela G2000020:
+
+SQL
+
+UPDATE tron2000.G2000020
+
+SET cod_version = 5 -- Versão configurada
+
+WHERE cod_cia = 15
+
+AND cod_campo = 'COD_PROFESION'
+
+AND cod_modalidad = 42101;
+
+5. Configuração das tabelas de lista de valores (LOV)
+
+5.1 Consulta prévia
+
+SQL
+
+SELECT a.*, rowid
+
+FROM tron2000.t_trn_d_lst_val_map a
+
+WHERE a.obj_prp_idn IN ('G1000100');
+
+SELECT t.*, rowid
+
+FROM tron2000.t_trn_d_lst_prp_clm_map t
+
+WHERE obj_prp_idn = 'G1000100';
+
+5.2 Inclusão dos registros
+
+SQL
+
+INSERT INTO tron2000.t_trn_d_lst_val_map
+
+(ins_val, obj_prp_idn, src, cod_lst_typ,
+
+cod_lov_aer, nbr_vrs_aer, nbr_vrs)
+
+VALUES
+
+('TRN', 'G1000100', 'TW', 'V', 'G1000100', 5, 5);
+
+SQL
+
+INSERT INTO tron2000.t_trn_d_lst_prp_clm_map
+
+(prp_idn, clm_idn, src, obj_prp_idn, nbr_vrs)
+
+VALUES
+
+('JOB_NAM', 'NOM_PROFESION', 'TW', 'G1000100', 5);
+
+SQL
+
+INSERT INTO tron2000.t_trn_d_lst_prp_clm_map
+
+(prp_idn, clm_idn, src, obj_prp_idn, nbr_vrs)
+
+VALUES
+
+('PRF_VAL', 'COD_PROFESION', 'TW', 'G1000100', 5);
+
+6. Limpeza de cache
+
+Após todos os inserts e updates, é necessário limpar o cache relacionado à modalidade:
+
+SQL
+
+DELETE tron2000.xbackground
+
+WHERE cod_marco LIKE '%421%';
+
+7. Consulta auxiliar para entendimento dos campos
+
+Caso haja dúvidas sobre o significado ou preenchimento dos campos das tabelas, a query abaixo pode ser utilizada para consulta:
+
+SQL
+
+SELECT atc.column_id,
+
+atc.column_name,
+
+CASE
+
+WHEN atc.data_type = 'VARCHAR2'
+
+THEN atc.data_type || '(' || atc.data_length || ')'
+
+ELSE atc.data_type
+
+END AS data_type,
+
+acc.comments AS comentario_coluna,
+
+g.cod_valor,
+
+g.nom_valor
+
+FROM all_tab_columns atc
+
+LEFT JOIN all_col_comments acc
+
+ON acc.owner = atc.owner
+
+AND acc.table_name = atc.table_name
+
+AND acc.column_name = atc.column_name
+
+LEFT JOIN tron2000.g1010031 g
+
+ON g.cod_campo = atc.column_name
+
+AND g.cod_cia = 15
+
+AND g.cod_idioma = 'BR'
+
+WHERE atc.owner = 'TRON2000'
+
+AND atc.table_name = 'A1001410' -- Alterar para a tabela desejada
+
+ORDER BY 1, 5;

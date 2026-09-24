@@ -1,0 +1,399 @@
+# Orquestador Batch
+
+Orquestador Batch
+
+
+
+
+# [REEF-ACDC Backend](https://reef.acdc-dev.es.emea.aws.mapfre.net/acdc/docs-portal/index.html)
+
+* **Inicio**
+  + [Documentación general](#/README "Documentación general")* **ACDC — Módulo principal**
+    + [Endpoints Online](#/ACDC/ENDPOINTS_ONLINE "Endpoints Online")+ [Orquestador Batch](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR "Orquestador Batch")
+        - [Índice](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=%c3%8dndice "Índice")- [1. Endpoint](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=_1-endpoint "1. Endpoint")- [2. Seguridad](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=_2-seguridad "2. Seguridad")- [3. Request body](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=_3-request-body "3. Request body")- [4. Respuestas](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=_4-respuestas "4. Respuestas")- [5. Flujo de orquestación E2E](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=_5-flujo-de-orquestaci%c3%b3n-e2e "5. Flujo de orquestación E2E")- [6. Manejo de errores](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=_6-manejo-de-errores "6. Manejo de errores")- [7. Validación de entrada](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=_7-validaci%c3%b3n-de-entrada "7. Validación de entrada")- [8. Diagrama de flujo completo](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=_8-diagrama-de-flujo-completo "8. Diagrama de flujo completo")+ [Cotizaciones](#/ACDC/COTIZACIONES "Cotizaciones")+ [Clientes externos](#/ACDC/EXTERNAL_CLIENTS "Clientes externos")+ [Auditoría](#/ACDC/AUDIT "Auditoría")+ [Seguridad](#/ACDC/SECURITY "Seguridad")* **DUP — Motor de reglas**
+      + [DUP Engine](#/DUP/DUP_ENGINE "DUP Engine")+ [Módulo DUP](#/DUP/README_DUP_MODULE "Módulo DUP")* **Módulos**
+        + [Cálculo de Módulos](#/MODULOS/MODULES_SERVICE "Cálculo de Módulos")* **RTE — Tarificación**
+          + [Configuración de tarifas](#/RTE/RTE_TARIFF_CONFIGURATION "Configuración de tarifas")
+
+# [OrchestratorController — Endpoint y flujo de orquestación](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=orchestratorcontroller-endpoint-y-flujo-de-orquestaci%c3%b3n)
+
+> 📚 Parte de la documentación de `REEF-ACDC` · [← Índice general](#/../README)
+
+**Relacionado con:** [COTIZACIONES.md](#/COTIZACIONES) · [DUP\_ENGINE.md](#/../DUP/DUP_ENGINE) · [MODULES\_SERVICE.md](#/../MODULOS/MODULES_SERVICE) · [EXTERNAL\_CLIENTS.md](#/EXTERNAL_CLIENTS) · [AUDIT.md](#/AUDIT)
+
+---
+
+## [Índice](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=%c3%8dndice)
+
+1. [Endpoint](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=1-endpoint)- [Seguridad](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=2-seguridad)- [Request body](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=3-request-body)- [Respuestas](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=4-respuestas)- [Flujo de orquestación E2E](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=5-flujo-de-orquestaci%c3%b3n-e2e)- [Manejo de errores](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=6-manejo-de-errores)- [Validación de entrada](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=7-validaci%c3%b3n-de-entrada)- [Diagrama de flujo completo](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=8-diagrama-de-flujo-completo)
+
+---
+
+## [1. Endpoint](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=_1-endpoint)
+
+**Fichero:** `controller/OrchestratorController.java`  
+**Caso de uso:** `usecase/ExecuteOrchestratorUsecase.java`
+
+| Método | Ruta | Descripción |
+| --- | --- | --- |
+| `POST` | `/acdc/orchestrator/policies/execute` | Ejecuta el proceso E2E de cotización/emisión de póliza |
+
+Es el **único punto de entrada** al flujo de orquestación completo. Recibe los datos de una póliza y coordina la cadena de servicios externos en orden estrictamente definido.
+
+---
+
+## [2. Seguridad](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=_2-seguridad)
+
+El endpoint está protegido con **OAuth2 JWT** (Spring Security Resource Server). Se requiere el rol ACDC de orquestación o uno de los roles GAZU existentes:
+
+```
+@PreAuthorize("hasRole('ROL_ACDC_ORCH') or hasAnyAuthority('GAZU_ROLRTEMGR', 'GAZU_ROLRTEADM')")
+```
+
+| Situación | Respuesta |
+| --- | --- |
+| Sin token | `401 Unauthorized` |
+| Token válido pero sin rol | `403 Forbidden` |
+| Token válido con rol correcto | Continúa el flujo |
+
+> La seguridad puede desactivarse con `spring.security.enabled: false` para entornos locales.
+
+---
+
+## [3. Request body](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=_3-request-body)
+
+### [`PolicyInfoRequest`](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=policyinforequest)
+
+```
+{
+  "oPlyPlyC":     { },          // Objeto de póliza completo (riesgos, coberturas, atributos)
+  "oPlyPlyCPrev": { },          // Póliza previa — solo para suplementos, nullable
+  "requestInfo": {
+    "countryId":     "ES",      // OBLIGATORIO
+    "productId":     1234,      // OBLIGATORIO
+    "executionType": "7",       // OBLIGATORIO — "7" = cotización, resto = emisión/suplemento
+    "processTypeId": 1,         // OBLIGATORIO; Integer en el modelo actual
+    "languageId":    "es",
+    "requestId":     "uuid-v4"
+  },
+  "operation":    "AltPly",     // OBLIGATORIO; enum OperTypeEnum serializado
+  "dataFormMap":  [ ],          // Cuestionarios/formularios del producto
+  "documents":    [ ],          // Documentos adjuntos
+  "cmlObj":       [ ]           // Acumulaciones CML del tomador/asegurado
+}
+```
+
+> **`executionType = "7"`** es el único valor que activa el cálculo de planes de pago al final del flujo. Cualquier otro valor devuelve `paymentPlans: []`.
+
+> `processTypeId` es `Integer` en el código (`RequestInfo.processTypeId`, `RiskSelectionProcessorRequest.processTypeId`). Las referencias antiguas a string `"ALT"` no reflejan el contrato actual de este campo.
+
+### [Campos de `RequestInfo` validados](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=campos-de-requestinfo-validados)
+
+| Campo | Obligatorio | Validación |
+| --- | --- | --- |
+| `countryId` | ✅ | No nulo ni vacío |
+| `productId` | ✅ | No nulo |
+| `executionType` | ✅ | No nulo |
+| `processTypeId` | ✅ | No nulo |
+| `languageId` | ❌ | Opcional |
+| `requestId` | ❌ | Opcional (se usa para trazabilidad/auditoría) |
+
+### [Contrato funcional de `cmlObj` para reglas DUP](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=contrato-funcional-de-cmlobj-para-reglas-dup)
+
+`cmlObj` es la entrada de acumulaciones CML que alimenta las reglas de DUP para tomador y asegurado.
+
+**Estructura esperada:**
+
+```
+"cmlObj": [
+  {
+    "thpDcmTypVal": "DNI",
+    "thpDcmVal": "12345678A",
+    "agrCvrT": [
+      { "cvrVal": 100, "mxmAgrPreVal": 1500, "mxmAgrCplVal": 300000 },
+      { "cvrVal": 410, "mxmAgrPreVal": 900, "mxmAgrCplVal": 120000 }
+    ]
+  }
+]
+```
+
+**Reglas de cruce que aplica el backend antes de invocar DUP:**
+
+* El tomador cruza por `thpDcmTypVal + thpDcmVal` contra `participants.policyHolder`.* El asegurado cruza por `thpDcmVal` y, si hay tipo documental informado, tambien por `thpDcmTypVal` contra `insured`.* Cada `agrCvrT.cvrVal` se publica como clave de cobertura en facts (`...accumulations.{cvrVal}.*`).
+
+**Facts que quedan disponibles para reglas:**
+
+* `participants.policyHolder.accumulations.{cvrVal}.mxmAgrCplVal`* `participants.policyHolder.accumulations.{cvrVal}.mxmAgrPreVal`* `participants.policyHolder.accumulations.{cvrVal}.accumulationWithCapital`* `participants.policyHolder.accumulations.{cvrVal}.accumulationWithPremium`* `insured.accumulations.{cvrVal}.mxmAgrCplVal`* `insured.accumulations.{cvrVal}.mxmAgrPreVal`* `insured.accumulations.{cvrVal}.accumulationWithCapital`* `insured.accumulations.{cvrVal}.accumulationWithPremium`
+
+**Uso de wildcard `*`:**
+
+* Sí, se puede usar `*` con `ANY_MATCH` sobre claves de cobertura y acumulaciones.* Ejemplos validos:
+    + `coverages.*.name`+ `insured.accumulations.*.accumulationWithCapital`+ `participants.policyHolder.accumulations.*.mxmAgrCplVal`
+
+```
+{
+  "factor": "insured.accumulations.*.accumulationWithCapital",
+  "operator": "ANY_MATCH",
+  "value": "1000000"
+}
+```
+
+> Si no hay cruce documental, no se generan facts de acumulaciones.
+>
+> Si el `cvrVal` de `cmlObj` no existe en las coberturas seleccionadas de la poliza, no se generan `accumulationWithCapital` ni `accumulationWithPremium` para esa clave.
+>
+> Detalle completo de autoria de reglas en [DUP\_ENGINE.md §11.9](#/../DUP/DUP_ENGINE?id=119-accumulations--desde-cmlobj).
+
+---
+
+## [4. Respuestas](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=_4-respuestas)
+
+| Código | Descripción |
+| --- | --- |
+| `200` | Lista de `PolicyInfoResponse` (una por módulo/paquete calculado) |
+| `400` | Request inválida (error de parseo JSON) |
+| `422` | Error de negocio (`AcdcError` estructurado con lista de errores) |
+| `500` | Error interno no controlado |
+
+### [`PolicyInfoResponse`](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=policyinforesponse)
+
+```
+[
+  {
+    "oPlyPlyC": { },        // Póliza enriquecida: atributos calculados, CTs aplicados, tarificación
+    "paymentPlans": [ ]     // Planes de pago — vacío si executionType != "7"
+  }
+]
+```
+
+> La respuesta es una **lista** porque `ModulesService` puede devolver N combinaciones de coberturas (una por preferencia/paquete disponible). Cada elemento representa una opción válida de cotización. Ver [MODULES\_SERVICE.md](#/../MODULOS/MODULES_SERVICE).
+
+### [`AcdcError` (respuesta de error 422)](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=acdcerror-respuesta-de-error-422)
+
+```
+{
+  "code": "ORCH_ERR",
+  "message": "Error ejecutando la orquestación",
+  "application": "acdc-backend",
+  "errors": [
+    {
+      "code": "...",
+      "message": "...",
+      "component": "ExecuteOrchestratorUsecase"
+    }
+  ]
+}
+```
+
+---
+
+## [5. Flujo de orquestación E2E](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=_5-flujo-de-orquestaci%c3%b3n-e2e)
+
+**Fichero:** `usecase/ExecuteOrchestratorUsecase.java`
+
+El `ExecuteOrchestratorUsecase` ejecuta los pasos en un orden **rígido y determinista**, midiendo tiempos con `Stopwatch` (Guava). Los pasos DUP se identifican con notación `[stepLevel-menuOption-stepOption]`.
+> Para entender qué hace cada paso DUP y cómo se construye la request, ver [DUP\_ENGINE.md](#/../DUP/DUP_ENGINE).
+
+### [FASE 1 — Nivel Póliza](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=fase-1-nivel-p%c3%b3liza)
+
+Antes de esta fase, el orquestador evalúa reglas batch especiales de exclusión/reproceso:
+
+```
+[50-0-30] DUP EXCLUSION_POLICY   ← solo RENEW_POLICY (RnwPly) y PRE_RENEW_POLICY (PlyPrw)
+[50-0-40] DUP REPROCESS_POLICY   ← solo PRE_RENEW_POLICY (PlyPrw)
+```
+
+* Si `EXCLUSION_POLICY` devuelve reglas aplicadas, se lanza `AcdcException` con errores de exclusión y no continúa el flujo.* Si `REPROCESS_POLICY` indica que no procede reprocesar, se devuelve respuesta temprana con `OTrnPrcS.trmVal = "1"` y `paymentPlans: []`.
+
+```
+[2-0-10]  DUP PREVIOUS_VARIABLE_DATA_POLICY     ← pre-cálculo atributos de póliza
+[2-0-20]  DUP VALIDATION_VARIABLE_DATA_POLICY   ← validación atributos de póliza
+[1-0-0]   CT  FIXED_DATA_DUP                    ← control técnico datos fijos
+[2-0-0]   CT  VARIABLE_DATA_POLICY              ← control técnico datos variables
+[3-0-0]   CT  BENEFICIARY_RISK_TYPE             ← control técnico beneficiarios
+```
+
+#### [Catálogo de tipos de interviniente (`bnfTypVal`)](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=cat%c3%a1logo-de-tipos-de-interviniente-bnftypval)
+
+El control técnico `[3-0-0] CT BENEFICIARY_RISK_TYPE` utiliza este catálogo para interpretar el rol del interviniente:
+
+BeneficiaryTypeEnum
+| `bnfTypVal` | Tipo |
+|-------------|------|
+| `0` | TOMADOR |
+| `1` | TOMADORES ALTERNOS |
+| `2` | ASEGURADOS |
+| `3` | CONDUCTORES |
+| `4` | PROPIETARIOS |
+| `5` | BENEFICIARIOS |
+| `6` | BENEFICIARIOS VIDA |
+| `7` | PROPONENTE |
+| `8` | ENDOSATARIO |
+| `9` | PREVENTOR |
+| `11` | BENEFS. CONTINGENTE, VIDA |
+| `12` | CONSORCIO |
+| `13` | AVAL |
+| `14` | TUTOR LEGAL |
+| `15` | PROPIETARIO DE LA CARGA |
+| `20` | SUBAGENTES |
+| `21` | PAGADOR |
+| `22` | BENEFICIARIO IRREVOCABLE |
+| `23` | BENEFICIARIO CESION DERECHOS |
+| `24` | BENEFICIARIOS LEGALES |
+| `25` | HEREDERO LEGAL |
+| `26` | REPRESENTANTE LEGAL |
+| `27` | CONDUCTOR OCASIONAL |
+| `28` | NOTARIO |
+> Nota: `participants.beneficiaries` contiene todo interviniente cuyo `bnfTypVal` esté en este catálogo (incluidos tomador `0` y asegurado `2`); las reglas DUP filtran el rol con `participants.beneficiaries.*.beneficiaryType`. Códigos fuera del catálogo no se mapean.
+
+### [FASE 2 — Nivel Riesgo *(itera por cada riesgo)*](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=fase-2-nivel-riesgo-itera-por-cada-riesgo)
+
+```
+[4-0-10]  DUP PREVIOUS_VARIABLE_DATA_RISK       ← pre-cálculo atributos del riesgo
+[4-0-20]  DUP VALIDATION_VARIABLE_DATA_RISK     ← validación atributos del riesgo
+[4-0-0]   CT  VARIABLE_DATA_RISK                ← control técnico datos del riesgo
+[11-0-0]  CT  RISK_SELECTION_FORM               ← control técnico formulario
+```
+
+### [FASE 3 — Cálculo de Módulos](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=fase-3-c%c3%a1lculo-de-m%c3%b3dulos)
+
+```
+ModulesService.calculateModules()
+  → llama a CalculatePackagesService (POST /calculate-packages)
+  → devuelve 1..N OPlyPlyCDto (uno por paquete/preferencia)
+```
+
+> Ver [MODULES\_SERVICE.md](#/../MODULOS/MODULES_SERVICE) para el detalle de los dos modos de cálculo.
+
+### [FASE 4 — Por cada Módulo *(bucle)*](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=fase-4-por-cada-m%c3%b3dulo-bucle)
+
+```
+[6-0-10]    DUP PREVIOUS_VARIABLE_COVERAGE      ← pre-cálculo por cobertura
+[6-0-20]    DUP VALIDATION_VARIABLE_COVERAGE    ← validación por cobertura
+
+            RTE Flow #1 (RISK_TYPE)
+              → RteService → POST /calculate-rating-ply
+              → two-pass si COVERAGE_CONTROL devuelve pasos pendientes
+
+[6-0-0]     CT  COVERAGE_CONTROL
+[11-0-0]    CT  RISK_SELECTION_FORM
+[7-0-0]     CT  REINSURANCE_CONTROL
+[8-1-6]     CT  TERMINATE_CONTROL
+[8-1-3]     CT  SUSPEND_CONTROL
+[8-1-4]     CT  MULTIUSER_CONTROL
+
+            setRiskVal(0)                        ← cambia contexto a nivel póliza
+            calculatePolicyCoverages()           ← consulta catálogo con coverageLevel=POLICY
+              → ExternalHttpClient → POST /calculate-packages
+              → inyecta coberturas en oPlyCvcCT (siempre, sobrescribe)
+
+            RTE Flow #2 (COVERAGE_TYPE)          ← solo si calculatePolicyCoverages devolvió coberturas
+              → RteService → POST /calculate-rating-ply
+
+[8-3-1]     CT  SAVE_CONTROL
+[8-3-2]     CT  ABANDON_CONTROL
+[8-3-3]     CT  VERIFY_CONTROL
+[8-3-4]     CT  CLAUSES_CONTROL
+[8-3-5]     CT  ANNEX_PAGES_CONTROL
+[8-3-6]     CT  PRINT_CONTROL
+[8-3-7]     CT  RISKS_CONTROL
+[8-3-8]     CT  ADDITIONAL_OPTIONS_CONTROL
+[8-7-null]  CT  ADDITIONAL_ANY_OPTIONS_CONTROL
+
+            PaymentPlanService                   ← solo si executionType == "7"
+              → POST /calculate (planes de pago)
+
+→ PolicyInfoResponse añadida a la lista de respuesta
+```
+
+### [Medición de tiempos (log)](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=medici%c3%b3n-de-tiempos-log)
+
+El `Stopwatch` genera las siguientes trazas de log:
+
+```
+execution time risk selection previous: Xms
+execution time modules: Xms
+execution time rte: Xms
+execution time risk selection: Xms
+execution time payment plans: Xms
+method executeOrchestration finish, total time execution: Xms
+```
+
+---
+
+## [6. Manejo de errores](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=_6-manejo-de-errores)
+
+| Excepción | Comportamiento |
+| --- | --- |
+| `AcdcException` | Se relanza directamente — el error ya viene formateado del servicio que lo originó |
+| `PlyValException` en planes de pago | Se **captura** y se devuelve `paymentPlans: []` — no interrumpe la respuesta |
+| Cualquier otra `Exception` | Se envuelve en `AcdcException` con código `ORCH_ERR` |
+
+---
+
+## [7. Validación de entrada](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=_7-validaci%c3%b3n-de-entrada)
+
+**Fichero:** `validation/OrchestratorValidator.java`
+
+Se ejecuta al inicio de `ExecuteOrchestratorUsecase.executeOrchestration()`. Si hay errores, lanza `AcdcException` con código `RS_MISSING_DATA` **antes** de hacer ninguna llamada externa.
+
+Campos validados:
+
+```
+PolicyInfoRequest      → no nulo
+  oPlyPlyC             → estructura de póliza (validada con ValidationUtil.validatePlyData)
+  operation            → no nulo
+  requestInfo          → no nulo
+    countryId          → no nulo y no vacío
+    productId          → no nulo
+    executionType      → no nulo
+    processTypeId      → no nulo
+```
+
+---
+
+## [8. Diagrama de flujo completo](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR?id=_8-diagrama-de-flujo-completo)
+
+```
+POST /acdc/orchestrator/policies/execute
+               │
+               ▼
+      OrchestratorController
+       @PreAuthorize(ROL_ACDC_ORCH | GAZU_ROLRTEMGR | GAZU_ROLRTEADM)
+               │
+               ▼
+     OrchestratorValidator.validateOrchestrationRequest()
+      → 422 si falta campo obligatorio
+               │
+               ▼
+     ┌─────────────────────────────────┐
+     │  FASE PÓLIZA                    │
+     │  DUP PREVIOUS + VALIDATION + CT │
+     └──────────────┬──────────────────┘
+                    │
+     ┌──────────────▼──────────────────┐
+     │  FASE RIESGO (x cada riesgo)    │
+     │  DUP PREVIOUS + VALIDATION + CT │
+     └──────────────┬──────────────────┘
+                    │
+     ┌──────────────▼──────────────────┐
+     │  ModulesService                 │
+     │  → CalculatePackagesService     │
+     │  → devuelve 1..N pólizas        │
+     └──────────────┬──────────────────┘
+                    │
+              ┌─────┴──────────────────────────────────────┐
+              │  Por cada módulo/paquete:                   │
+              │                                             │
+              │  DUP PREVIOUS + VALIDATION (coberturas)     │
+              │  → RteService #1 (tarificación RISK_TYPE)   │
+              │  → CT x6 (cobertura, reaseguro, controles)  │
+              │  → RteService #2 (si hay CVC nivel 0)       │
+              │  → CT x9 (cláusulas, impresión, opciones…)  │
+              │  → PaymentPlanService (si execType="7")     │
+              │  → PolicyInfoResponse                       │
+              └─────────────────────────────────────────────┘
+                    │
+                    ▼
+     List<PolicyInfoResponse>  →  HTTP 200
+```

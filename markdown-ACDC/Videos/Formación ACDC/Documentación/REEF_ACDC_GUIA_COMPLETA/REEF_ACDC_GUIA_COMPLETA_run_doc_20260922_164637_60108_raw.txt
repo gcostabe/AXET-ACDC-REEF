@@ -1,0 +1,2306 @@
+--- [PÁGINA 1 DE 75] ---
+
+REEF-ACDC — Guía Completa del Proyecto 
+Spring Boot 3 · Java 21 · WebFlux WebClient · MongoDB Context path: /acdc 
+Versión: 1.0 — Marzo 2026 Equipo: ACDC - MAPFRE TRON 
+ 
+Tabla de Contenidos 
+PARTE I: VISIÓN GENERAL 
+1. Arquitectura General 
+2. Estructura de Paquetes 
+PARTE II: ENDPOINT BATCH — ORQUESTADOR 
+1. Endpoint del Orquestador 
+2. Seguridad 
+3. Request y Response 
+4. Flujo de Orquestación E2E 
+5. Manejo de Errores 
+6. Validación de Entrada 
+PARTE III: ENDPOINTS ONLINE 
+1. AttributesController 
+2. RiskSelectionController 
+3. CoveragePackagesController 
+4. RatingController 
+5. FormController 
+6. TechnicalBasisController 
+7. GeneralDataController 
+PARTE IV: MOTOR DUP — REGLAS DE NEGOCIO 
+1. ¿Qué es DUP? 
+2. Tipos de Operación 
+3. Niveles de Aplicación
+
+
+--- [PÁGINA 2 DE 75] ---
+
+4. Pasos del Orquestador 
+5. Agrupaciones de Pasos 
+6. Funcionamiento de DupServiceImpl 
+7. Construcción del RequestInfo 
+8. Mapeo Completo OPlyPlyCDto → RiskSelectionRequest 
+9. Procesamiento de la Respuesta DUP 
+10. Two-Pass en el Flujo RTE 
+11. OPlyPlyCDto ↔ Facts de las Reglas DUP 
+PARTE V: RS-RULES-ACTIONS-CONDITIONS — DEFINICIÓN DE REGLAS 
+1. Tríada de Filtrado 
+2. Facts de Datos Variables, Fijos, Constantes, Cuestionarios, Documentos, Coberturas, 
+Acumulaciones, Asegurado y Participantes 
+3. Condiciones V1 y V2 
+4. Evaluación de Colecciones con Patrones 
+5. Tipos de Configuración y Filtrado 
+6. Priorización de Reglas 
+7. Acciones 
+PARTE VI: MÓDULOS / PAQUETES DE COBERTURAS 
+1. ModulesService 
+PARTE VII: MOTOR RTE — TARIFICACIÓN 
+1. Introducción al Motor de Rating 
+2. Arquitectura General RTE 
+3. API REST RatingController 
+4. Flujo Principal de Cálculo 
+5. Configuración de Ramos, Coberturas y Conceptos 
+6. Flujo de Suscripciones 
+7. Mapeos de Datos 
+8. Motor de Reglas JEasy Rules 
+9. Motor de Fórmulas 
+10. Módulo Coverage Packages (RTE)
+
+
+--- [PÁGINA 3 DE 75] ---
+
+PARTE VIII: CLIENTES EXTERNOS 
+1. Patrón Común de Clientes WebClient 
+2. Configuración de Autenticación 
+3. Tabla de Clientes 
+4. SelectRiskService — Motor DUP 
+5. RteExternalService — Tarificación 
+6. CalculatePackagesService — Paquetes 
+7. PaymentPlansService — Planes de Pago 
+8. TechnicalsBasisService — Bases Técnicas 
+PARTE IX: AUDITORÍA 
+1. Sistema de Auditoría 
+2. Estrategias de Auditoría 
+3. Componentes y Flujo 
+4. Modelo AuditLog en MongoDB 
+5. Circuit Breaker 
+PARTE X: SEGURIDAD 
+1. Seguridad 
+PARTE XI: PLANES DE PAGO 
+1. Planes de Pago 
+ANEXOS 
+● Glosario de Términos 
+● Colecciones MongoDB 
+ 
+PARTE I: VISIÓN GENERAL 
+Arquitectura en una línea 
+POST /acdc/orchestrator/policies/execute  
+  │
+
+
+--- [PÁGINA 4 DE 75] ---
+
+▼  
+OrchestratorController  
+  → ExecuteOrchestratorUsecase  
+    │  
+    ├─ DupService → SelectRiskService  
+    │    (motor de reglas)  
+    ├─ ModulesService → CalculatePackagesService  
+    │    (paquetes)  
+    ├─ RteService → RteExternalService  
+    │    (tarificación)  
+    └─ PaymentPlanService → PaymentPlansService  
+         (planes de pago)  
+  
+        ↕ AuditFilter + WebClientAuditInterceptor  
+        ↕ MongoDB (audit-request) 
+Estructura de Paquetes 
+com.mapfre.reef.acdc.backend  
+├── audit/          → Auditoría asíncrona  
+├── config/         → Configuración Spring (Security, WebClient, CircuitBreake
+r)  
+├── controller/     → Endpoints REST  
+├── exception/      → AcdcException, PlyValException  
+├── external/  
+│   └── client/     → Clientes WebClient  
+├── model/          → DTOs, requests, responses, enums, mappers  
+├── orchestator/  
+│   └── domain/     → DupStepEnum, StageEnum, DupOperationEnum  
+├── service/        → DUP, Módulos, RTE, Pagos  
+├── usecase/        → Casos de uso  
+├── util/           → AppKeys, CoverageUtil, AuthHeaderUtil, Utils  
+└── validation/     → OrchestratorValidator 
+ 
+PARTE II: ENDPOINT BATCH — ORQUESTADOR 
+1. Endpoint 
+Fichero: controller/OrchestratorController.java Caso de uso: 
+usecase/ExecuteOrchestratorUsecase.java
+
+
+--- [PÁGINA 5 DE 75] ---
+
+Método Ruta Descripción 
+POST /acdc/orchestrator/policies/execute Ejecuta el proceso E2E de 
+cotización/emisión de póliza 
+Es el único punto de entrada al flujo de orquestación completo. Recibe los datos de una 
+póliza y coordina la cadena de servicios externos en orden estrictamente definido. 
+ 
+2. Seguridad 
+El endpoint está protegido con OAuth2 JWT (Spring Security Resource Server). Se requiere 
+uno de estos roles de autoridad: 
+@PreAuthorize("hasAnyAuthority('GAZU_ROLRTEMGR', 'GAZU_ROLRTEADM')") 
+Situación Respuesta 
+Sin token 401 Unauthorized 
+Token válido pero sin rol 403 Forbidden 
+Token válido con rol correcto Continúa el flujo 
+La seguridad puede desactivarse con spring.security.enabled: false para entornos locales. 
+ 
+3. Request body 
+PolicyInfoRequest 
+{ 
+  "oPlyPlyC":     { }, 
+  "oPlyPlyCPrev": { }, 
+  "requestInfo": { 
+    "countryId":     "ES", 
+    "productId":     1234, 
+    "executionType": "7", 
+    "processTypeId": "ALT",
+
+
+--- [PÁGINA 6 DE 75] ---
+
+"languageId":    "es", 
+    "requestId":     "uuid-v4" 
+  }, 
+  "operation":    "ALT", 
+  "dataFormMap":  [ ], 
+  "documents":    [ ], 
+  "cmlObj":       [ ] 
+} 
+executionType = "7" es el único valor que activa el cálculo de planes de pago al final del 
+flujo. Cualquier otro valor devuelve paymentPlans: []. 
+Campos de RequestInfo validados 
+Campo Obligatorio Validación 
+countryId    No nulo ni vacío 
+productId    No nulo 
+executionType    No nulo 
+processTypeId    No nulo 
+languageId   Opcional 
+requestId   Opcional (se usa para trazabilidad/auditoría) 
+ 
+4. Respuestas 
+Código Descripción 
+200 Lista de PolicyInfoResponse (una por módulo/paquete calculado) 
+400 Request inválida (error de parseo JSON) 
+422 Error de negocio (AcdcError estructurado con lista de errores)
+
+
+--- [PÁGINA 7 DE 75] ---
+
+Código Descripción 
+500 Error interno no controlado 
+PolicyInfoResponse 
+[ 
+  { 
+    "oPlyPlyC": { }, 
+    "paymentPlans": [ ] 
+  } 
+] 
+La respuesta es una lista porque ModulesService puede devolver N combinaciones de 
+coberturas (una por preferencia/paquete disponible). Cada elemento representa una opción 
+válida de cotización. 
+AcdcError (respuesta de error 422) 
+{ 
+  "code": "ORCH_ERR", 
+  "message": "Error ejecutando la orquestación", 
+  "application": "acdc-backend", 
+  "errors": [ 
+    { 
+      "code": "...", 
+      "message": "...", 
+      "component": "ExecuteOrchestratorUsecase" 
+    } 
+  ] 
+} 
+ 
+5. Flujo de orquestación E2E 
+Fichero: usecase/ExecuteOrchestratorUsecase.java 
+El ExecuteOrchestratorUsecase ejecuta los pasos en un orden rígido y determinista, 
+midiendo tiempos con Stopwatch (Guava). Los pasos DUP se identifican con notación 
+[stepLevel-menuOption-stepOption].
+
+
+--- [PÁGINA 8 DE 75] ---
+
+FASE 1 — Nivel Póliza 
+[2-0-10]  DUP PREVIOUS_VARIABLE_DATA_POLICY  
+            ← pre-cálculo atributos de póliza  
+[2-0-20]  DUP VALIDATION_VARIABLE_DATA_POLICY  
+            ← validación atributos de póliza  
+[1-0-0]   CT  FIXED_DATA_DUP  
+            ← control técnico datos fijos  
+[2-0-0]   CT  VARIABLE_DATA_POLICY  
+            ← control técnico datos variables  
+[3-0-0]   CT  BENEFICIARY_RISK_TYPE  
+            ← control técnico beneficiarios 
+FASE 2 — Nivel Riesgo (itera por cada riesgo) 
+[4-0-10]  DUP PREVIOUS_VARIABLE_DATA_RISK  
+            ← pre-cálculo atributos del riesgo  
+[4-0-20]  DUP VALIDATION_VARIABLE_DATA_RISK  
+            ← validación atributos del riesgo  
+[4-0-0]   CT  VARIABLE_DATA_RISK  
+            ← control técnico datos del riesgo  
+[11-0-0]  CT  RISK_SELECTION_FORM  
+            ← control técnico formulario 
+FASE 3 — Cálculo de Módulos 
+ModulesService.calculateModules()  
+  → CalculatePackagesService  
+    (POST /calculate-packages)  
+  → devuelve 1..N OPlyPlyCDto  
+    (uno por paquete/preferencia) 
+FASE 4 — Por cada Módulo (bucle) 
+[6-0-10]  DUP PREVIOUS_VARIABLE_COVERAGE  
+            ← pre-cálculo por cobertura  
+[6-0-20]  DUP VALIDATION_VARIABLE_COVERAGE  
+            ← validación por cobertura  
+  
+          RTE Flow #1 (RISK_TYPE)  
+            → RteService  
+            → POST /calculate-rating-ply  
+            → two-pass si COVERAGE_CONTROL  
+              devuelve pasos pendientes
+
+
+--- [PÁGINA 9 DE 75] ---
+
+[6-0-0]   CT  COVERAGE_CONTROL  
+[11-0-0]  CT  RISK_SELECTION_FORM  
+[7-0-0]   CT  REINSURANCE_CONTROL  
+[8-1-6]   CT  TERMINATE_CONTROL  
+[8-1-3]   CT  SUSPEND_CONTROL  
+[8-1-4]   CT  MULTIUSER_CONTROL  
+  
+          RTE Flow #2 (COVERAGE_TYPE)  
+            ← solo si hay CVC a nivel  
+              póliza (riesgo 0)  
+            → POST /calculate-rating-ply  
+  
+[8-3-1]     CT  SAVE_CONTROL  
+[8-3-2]     CT  ABANDON_CONTROL  
+[8-3-3]     CT  VERIFY_CONTROL  
+[8-3-4]     CT  CLAUSES_CONTROL  
+[8-3-5]     CT  ANNEX_PAGES_CONTROL  
+[8-3-6]     CT  PRINT_CONTROL  
+[8-3-7]     CT  RISKS_CONTROL  
+[8-3-8]     CT  ADDITIONAL_OPTIONS_CONTROL  
+[8-7-null]  CT  ADDITIONAL_ANY_OPTIONS_CONTROL  
+  
+          PaymentPlanService  
+            ← solo si executionType == "7"  
+            → POST /calculate (planes de pago)  
+  
+→ PolicyInfoResponse añadida a la lista 
+ 
+6. Manejo de errores 
+Excepción Comportamiento 
+AcdcException Se relanza directamente — el error ya viene formateado del servicio 
+que lo originó 
+PlyValException en planes de 
+pago 
+Se captura y se devuelve paymentPlans: [] — no interrumpe la 
+respuesta 
+Cualquier otra Exception Se envuelve en AcdcException con código ORCH_ERR 
+ 
+7. Validación de entrada
+
+
+--- [PÁGINA 10 DE 75] ---
+
+Fichero: validation/OrchestratorValidator.java 
+Se ejecuta al inicio de ExecuteOrchestratorUsecase.executeOrchestration(). Si hay 
+errores, lanza AcdcException con código RS_MISSING_DATA antes de hacer ninguna llamada 
+externa. 
+Campos validados: 
+PolicyInfoRequest      → no nulo  
+  oPlyPlyC             → estructura de póliza (validada con ValidationUtil.val
+idatePlyData)  
+  operation            → no nulo  
+  requestInfo          → no nulo  
+    countryId          → no nulo y no vacío  
+    productId          → no nulo  
+    executionType      → no nulo  
+    processTypeId      → no nulo 
+ 
+8. Diagrama de flujo completo 
+POST /acdc/orchestrator/policies/execute  
+  │  
+  ▼  
+OrchestratorController  
+  @PreAuthorize(GAZU_ROLRTEMGR | GAZU_ROLRTEADM)  
+  │  
+  ▼  
+OrchestratorValidator  
+  .validateOrchestrationRequest()  
+  → 422 si falta campo obligatorio  
+  │  
+  ▼  
+┌──────────────────────────────┐  
+│ FASE PÓLIZA                  │  
+│ DUP PREVIOUS + VALIDATION+CT │  
+└──────────────┬───────────────┘  
+               │  
+┌──────────────▼───────────────┐  
+│ FASE RIESGO (x cada riesgo)  │  
+│ DUP PREVIOUS + VALIDATION+CT │  
+└──────────────┬───────────────┘  
+               │  
+┌──────────────▼───────────────┐  
+│ ModulesService               │
+
+
+--- [PÁGINA 11 DE 75] ---
+
+│ → CalculatePackagesService   │  
+│ → devuelve 1..N pólizas      │  
+└──────────────┬───────────────┘  
+               │  
+┌──────────────▼───────────────┐  
+│ Por cada módulo/paquete:     │  
+│                              │  
+│ DUP PREVIOUS + VALIDATION    │  
+│   (coberturas)               │  
+│ → RteService #1              │  
+│   (tarificación RISK_TYPE)   │  
+│ → CT x6 (cobertura,         │  
+│   reaseguro, controles)      │  
+│ → RteService #2              │  
+│   (si hay CVC nivel 0)      │  
+│ → CT x9 (cláusulas,         │  
+│   impresión, opciones…)      │  
+│ → PaymentPlanService         │  
+│   (si execType="7")          │  
+│ → PolicyInfoResponse         │  
+└──────────────┬───────────────┘  
+               │  
+               ▼  
+List<PolicyInfoResponse> → HTTP 200 
+ 
+PARTE III: ENDPOINTS ONLINE 
+Contexto 
+A diferencia del orquestador batch que ejecuta el ciclo completo de una póliza de principio a 
+fin, estos endpoints exponen operaciones granulares pensadas para ser invocadas desde 
+frontales o BFF que necesitan ejecutar pasos concretos del proceso de contratación de forma 
+individual y bajo demanda. 
+Todos los endpoints comparten: 
+● Base path: /acdc 
+● Autenticación: OAuth2 JWT (Spring Security Resource Server) 
+● Formato: application/json 
+● Sistema fuente: SourceSystemEnum.ONLINE (frente al BATCH del orquestador) 
+ 
+1. AttributesController
+
+
+--- [PÁGINA 12 DE 75] ---
+
+Fichero: controller/AttributesController.java Casos de uso: 
+PrevalidateAttributesUsecase · ValidateAttributesUsecase Roles requeridos: GAZU-
+ROLPSYADM, GAZU-ROLPSYCTR 
+Gestiona los atributos variables de una póliza (nivel póliza, riesgo o cobertura). Equivale a 
+los pasos PREVIOUS y VALIDATION del DUP en modo online. 
+POST /acdc/attributes/previous 
+Pre-calcula los valores por defecto y asignaciones automáticas para un conjunto de atributos. 
+  
+Cuándo usarlo Antes de mostrar un formulario al usuario, para rellenar valores por defecto o 
+propagar datos de niveles superiores 
+Equivalente en 
+batch 
+Pasos PREVIOUS_VARIABLE_DATA_POLICY, PREVIOUS_VARIABLE_DATA_RISK, 
+PREVIOUS_VARIABLE_COVERAGE 
+Llama a DupService.precalculateByStep() → SelectRiskService (POST /risk-
+selection) 
+Request: PrevalidationRequestDto 
+{ 
+  "operationInfo": { "requestId": "...", "productId": 1234, "executionType": "
+7", ... }, 
+  "oPlyPlyC":  { }, 
+  "level":     "2", 
+  "subLevel":  null, 
+  "riskVal":   1, 
+  "coverageVal": null, 
+  "cmlObj":    [ ] 
+} 
+Response: List<OPlyAtcPC> — lista de atributos con sus valores actualizados tras aplicar las 
+reglas DUP de pre-cálculo. 
+ 
+POST /acdc/attributes/validation 
+Valida los atributos introducidos por el usuario. Si las reglas DUP detectan inconsistencias, 
+devuelve 422 con la lista de errores.
+
+
+--- [PÁGINA 13 DE 75] ---
+
+Cuándo usarlo Al hacer submit de un formulario, antes de avanzar al siguiente paso del proceso 
+Equivalente en 
+batch 
+Pasos VALIDATION_VARIABLE_DATA_POLICY, 
+VALIDATION_VARIABLE_DATA_RISK, VALIDATION_VARIABLE_COVERAGE 
+Llama a DupService.validationByStep() → SelectRiskService (POST /risk-
+selection) 
+Request: igual que /previous Response: List<OPlyAtcPC> con los atributos validados, o 422 
+AcdcError con los errores de validación. 
+ 
+2. RiskSelectionController — Technical Control 
+Fichero: controller/RiskSelectionController.java Caso de uso: 
+TechnicalControlUsecase Roles requeridos: GAZU-ROLPSYADM, GAZU-ROLPSYCTR 
+Ejecuta un bloque de controles técnicos DUP para un paso concreto. 
+POST /acdc/technical-control/execution 
+  
+Cuándo usarlo Cuando el frontal necesita ejecutar un CT concreto de forma aislada 
+Equivalente en 
+batch Cualquier paso TECHNICAL_CONTROL del orquestador 
+Llama a DupService.processTCByStep() → SelectRiskService (POST /risk-
+selection) 
+Request: TechnicalControlRequestDto 
+{ 
+  "operationInfo":  { "requestId": "...", "productId": 1234, "processStep": 6,
+ "processStepMenuOption": 0, "processStepOption": 0, ... }, 
+  "oPlyPlyC":       { }, 
+  "riskVal":        1, 
+  "coverageVal":    100, 
+  "dataFormMap":    [ ],
+
+
+--- [PÁGINA 14 DE 75] ---
+
+"documents":      [ ], 
+  "cmlObj":         [ ] 
+} 
+Response: List<OPlyUtcP> — controles técnicos resultantes. 
+ 
+3. CoveragePackagesController 
+Fichero: controller/CoveragePackagesController.java Casos de uso: 
+CalculateCoveragePackagesUsecase · ObtainCoveragePackagesUsecase Roles requeridos: 
+GAZU_ROLRTEMGR, GAZU_ROLRTEADM 
+POST /acdc/coverage-packages/calculation 
+Calcula las coberturas concretas que corresponden al paquete elegido para un riesgo 
+específico. 
+Request: CalculatePackagesRequestDto 
+{ 
+  "requestId":  "uuid-v4", 
+  "countryId":  "ES", 
+  "riskVal":    1, 
+  "oPlyPlyC":   { } 
+} 
+Response: List<OPlyCvcPC> — coberturas calculadas para el riesgo indicado. 
+POST /acdc/coverage-packages/preferences 
+Obtiene todas las opciones de paquetes disponibles para un riesgo. 
+Response: List<ResponsePreferences> — lista de paquetes disponibles con sus 
+identificadores y descripción. 
+ 
+4. RatingController 
+Fichero: controller/RatingController.java Caso de uso: RatingUsecase Roles 
+requeridos: GAZU_ROLRTEMGR, GAZU_ROLRTEADM
+
+
+--- [PÁGINA 15 DE 75] ---
+
+POST /acdc/rating/calculation 
+  
+Cuándo usarlo Para calcular o recalcular las primas de un riesgo concreto 
+Equivalente en 
+batch 
+RteService.sendToRteService() → RTE Flow #1 / RTE Flow #2 del 
+orquestador 
+Llama a RteService.calculationRisk() → RteExternalService (POST 
+/calculate-rating-ply) 
+Request: RatingPlyRequestDto 
+{ 
+  "requestInfo":    { "requestId": "...", "countryId": "ES", "riskVal": 1, "op
+erationDate": "...", "operationNumber": null }, 
+  "currentPolicy":  { "oPlyPlyC": { } }, 
+  "newSupplement":  { "oPlyPlyC": { } } 
+} 
+Response: List<OPlyCvcPC> — coberturas del riesgo indicado con las primas calculadas por 
+RTE. 
+ 
+5. FormController 
+Fichero: controller/FormController.java Casos de uso: FormDefinitionUsecase · 
+PreCalculateFormUsecase · ValidateFormUsecase Roles requeridos: GAZU_ROLRTEMGR, 
+GAZU_ROLRTEADM 
+POST /acdc/form/definition 
+Obtiene la definición de los formularios que el proceso requiere para un paso concreto. 
+    Actualmente es un mock. 
+Response: List<FormDefinition> — definición de formularios con sus campos y metadatos. 
+POST /acdc/form/previous
+
+
+--- [PÁGINA 16 DE 75] ---
+
+Pre-calcula los atributos de un formulario aplicando las reglas DUP de tipo formulario 
+(PRE_FORM_VALIDATION_DEFINITION). 
+Response: List<OPlyAtcPC> — atributos del formulario con sus valores pre-calculados. 
+POST /acdc/form/validation 
+Valida los datos introducidos en un formulario aplicando las reglas DUP de validación de 
+formulario. 
+Response: List<OPlyAtcPC> con los atributos validados, o 422 AcdcError si hay errores. 
+ 
+6. TechnicalBasisController 
+Fichero: controller/TechnicalBasisController.java Caso de uso: 
+TechnicalBasisUsecase Roles requeridos: GAZU-ROLPSYADM, GAZU-ROLPSYCTR 
+POST /acdc/technical-basis/search 
+Consulta las bases técnicas del producto. No forma parte del flujo batch. 
+Request: TechnicalBasisRequest 
+{ 
+  "countryId":   "ES", 
+  "companyId":   1, 
+  "branchId":    45, 
+  "productId":   1234, 
+  "processTypeId": 1 
+} 
+Response: List<TechnicalBasisResponse> 
+ 
+7. GeneralDataController 
+Fichero: controller/GeneralDataController.java Caso de uso: 
+GeneralDataAttributesUsecase Roles requeridos: GAZU-ROLPSYADM, GAZU-ROLPSYCTR 
+POST /acdc/general-data/validation
+
+
+--- [PÁGINA 17 DE 75] ---
+
+Valida los datos generales de la póliza (OPlyGniP) aplicando las reglas DUP de datos fijos y 
+variables. 
+Response: OPlyGniP — datos generales validados y actualizados. 
+ 
+Módulos subyacentes por endpoint 
+Endpoint Módulo Servicio Externo 
+/attributes/previous DupService (PREVIOUS) SelectRiskService 
+/attributes/validation DupService (VALIDATION) SelectRiskService 
+/technical-control/execution DupService (CT) SelectRiskService 
+/coverage-packages/calculation ModulesService CalculatePackagesService 
+/coverage-packages/preferences ModulesService CalculatePackagesService 
+/rating/calculation RteService RteExternalService 
+/form/definition FormDefinitionUsecase (mock) 
+/form/previous DupService (PREVIOUS) SelectRiskService 
+/form/validation DupService (VALIDATION) SelectRiskService 
+/technical-basis/search TechnicalsBasisService (externo) 
+/general-data/validation DupService (CT) SelectRiskService 
+ 
+PARTE IV: MOTOR DUP — REGLAS DE NEGOCIO 
+1. ¿Qué es DUP?
+
+
+--- [PÁGINA 18 DE 75] ---
+
+DUP (Data Update Process) es el motor de reglas de negocio del sistema. Es un servicio 
+externo que, dado el estado actual de una póliza y el identificador del paso en el que nos 
+encontramos, devuelve un conjunto de reglas aplicadas (appliedRules) que pueden: 
+● Asignar valores a atributos de la póliza (pre-cálculos, valores por defecto, herencia de 
+datos). 
+● Validar que los datos son correctos y coherentes (puede bloquear el flujo con 
+errores). 
+● Aplicar controles técnicos (reaseguro, cláusulas, impresión, opciones adicionales, 
+etc.). 
+El backend lo invoca a través de SelectRiskService → POST /risk-selection. 
+ 
+2. Tipos de operación (DupOperationEnum) 
+Valor Método en DupService Descripción 
+PREVIOUS precalculateByStep() 
+Pre-cálculo: aplica asignaciones sobre los 
+atributos de la póliza en memoria. No bloquea 
+ante errores de validación. 
+VALIDATION validationByStep() 
+Validación: aplica reglas que pueden devolver 
+errores bloqueantes. Si hay errores, se lanza 
+AcdcException. 
+TECHNICAL_CONTROL processTCByStep() 
+Control técnico: aplica reglas de control sobre 
+coberturas, reaseguro, cláusulas, etc. Devuelve 
+List<OPlyUtcP>. 
+ 
+3. Niveles de aplicación (RiskSelectionTypeEnum) 
+Nivel Iteración en el orquestador Atributos incluidos en variableData 
+POLICY_TYPE Una sola llamada para toda la 
+póliza Atributos de póliza (OPlyAtcCT raíz) 
+POLICY_GROUP Una sola llamada (grupo de 
+póliza) Atributos de póliza raíz
+
+
+--- [PÁGINA 19 DE 75] ---
+
+Nivel Iteración en el orquestador Atributos incluidos en variableData 
+RISK_TYPE Una llamada por cada riesgo Atributos de póliza + atributos del riesgo actual + 
+atributos de sus coberturas 
+COVERAGE_TYPE Una llamada por cada 
+cobertura de cada riesgo 
+Atributos de póliza + atributos del riesgo actual + 
+atributos de la cobertura actual 
+FORM_TYPE Una llamada por formulario Atributos del formulario 
+FIXED_DATA Una llamada para datos fijos — 
+ 
+4. Pasos del orquestador (DupStepEnum) 
+Cada paso se identifica por tres números: [stepLevel - optionMenuNumber - optionNumber] 
+Paso Ste
+p 
+Men
+u 
+Optio
+n Nivel Operación 
+FIXED_DATA_DUP 1 0 0 POLICY_TYPE CT 
+VARIABLE_DATA_POLICY 2 0 0 POLICY_TYPE CT 
+PREVIOUS_VARIABLE_DATA_POLIC
+Y 2 0 10 POLICY_TYPE PREVIOUS 
+VALIDATION_VARIABLE_DATA_POL
+ICY 2 0 20 POLICY_TYPE VALIDATIO
+N 
+BENEFICIARY_RISK_TYPE 3 0 0 RISK_TYPE CT 
+VARIABLE_DATA_RISK 4 0 0 RISK_TYPE CT 
+PREVIOUS_VARIABLE_DATA_RISK 4 0 10 RISK_TYPE PREVIOUS 
+VALIDATION_VARIABLE_DATA_RIS
+K 4 0 20 RISK_TYPE VALIDATIO
+N 
+RISK_SELECTION_FORM 11 0 0 RISK_TYPE CT
+
+
+--- [PÁGINA 20 DE 75] ---
+
+Paso Ste
+p 
+Men
+u 
+Optio
+n Nivel Operación 
+PRE_FORM_VALIDATION_DEFINITI
+ON 11 10 10 FORM_TYPE PREVIOUS 
+POST_FORM_VALIDATION_DEFINIT
+ION 11 10 20 FORM_TYPE VALIDATIO
+N 
+COVERAGE_CONTROL 6 0 0 COVERAGE_TY
+PE CT 
+PREVIOUS_VARIABLE_COVERAGE 6 0 10 COVERAGE_TY
+PE PREVIOUS 
+VALIDATION_VARIABLE_COVERAGE 6 0 20 COVERAGE_TY
+PE 
+VALIDATIO
+N 
+REINSURANCE_CONTROL 7 0 0 COVERAGE_TY
+PE CT 
+TERMINATE_CONTROL 8 1 6 COVERAGE_TY
+PE CT 
+SUSPEND_CONTROL 8 1 3 COVERAGE_TY
+PE CT 
+MULTIUSER_CONTROL 8 1 4 COVERAGE_TY
+PE CT 
+SAVE_CONTROL 8 3 1 COVERAGE_TY
+PE CT 
+ABANDON_CONTROL 8 3 2 COVERAGE_TY
+PE CT 
+VERIFY_CONTROL 8 3 3 COVERAGE_TY
+PE CT 
+CLAUSES_CONTROL 8 3 4 COVERAGE_TY
+PE CT 
+ANNEX_PAGES_CONTROL 8 3 5 COVERAGE_TY
+PE CT
+
+
+--- [PÁGINA 21 DE 75] ---
+
+Paso Ste
+p 
+Men
+u 
+Optio
+n Nivel Operación 
+PRINT_CONTROL 8 3 6 COVERAGE_TY
+PE CT 
+RISKS_CONTROL 8 3 7 COVERAGE_TY
+PE CT 
+ADDITIONAL_OPTIONS_CONTROL 8 3 8 COVERAGE_TY
+PE CT 
+ADDITIONAL_ANY_OPTIONS_CONTR
+OL 8 7 null COVERAGE_TY
+PE CT 
+VALIDATION_FIXED_DATA_PLY_GR
+P 1 30 20 FIXED_DATA VALIDATIO
+N 
+PREVIOUS_VARIABLE_DATA_PLY_G
+RP 2 30 10 POLICY_GROUP PREVIOUS 
+VALIDATION_VARIABLE_DATA_PLY
+_GRP 2 30 20 POLICY_GROUP VALIDATIO
+N 
+ 
+5. Agrupaciones de pasos (StageEnum) 
+Stage Pasos incluidos 
+POLICY_DATA_TC FIXED_DATA_DUP + VARIABLE_DATA_POLICY 
+RISK_DATA_AND_FORM_TC VARIABLE_DATA_RISK + RISK_SELECTION_FORM 
+RISK_AND_COVERAGE_TC 
+COVERAGE_CONTROL + RISK_SELECTION_FORM + 
+REINSURANCE_CONTROL + TERMINATE_CONTROL + SUSPEND_CONTROL 
++ MULTIUSER_CONTROL 
+COVERAGE_FINAL_TC 
+SAVE_CONTROL + ABANDON_CONTROL + VERIFY_CONTROL + 
+CLAUSES_CONTROL + ANNEX_PAGES_CONTROL + PRINT_CONTROL + 
+RISKS_CONTROL + ADDITIONAL_OPTIONS_CONTROL + 
+ADDITIONAL_ANY_OPTIONS_CONTROL
+
+
+--- [PÁGINA 22 DE 75] ---
+
+Stage Pasos incluidos 
+END_COVERAGE_TC REINSURANCE_CONTROL + TERMINATE_CONTROL 
+END_POLICY_TC SAVE_CONTROL + CLAUSES_CONTROL + ANNEX_PAGES_CONTROL 
+ 
+6. Cómo funciona DupServiceImpl 
+Fichero: service/dup/implementation/DupServiceImpl.java 
+Flujo general para PREVIOUS / VALIDATION 
+DupServiceImpl  
+  .precalculateByStep() / .validationByStep()  
+  │  
+  ├─ Si riskVal es null  
+  │    → itera por todos los riesgos  
+  ▼  
+callDupServiceByStep()  
+  │  
+  ▼  
+RiskSelectionMapper  
+  .toRiskSelectionRequest()  ← construye payload  
+  │  
+  ▼  
+SelectRiskService  
+  .callSelectRisk()  ← POST /risk-selection  
+  │  
+  ▼  
+RiskSelectionResponse.appliedRules[]  
+  │  
+  ├─ action.type == "ASIGNACION"  
+  │    └─ applyAssignment()  
+  │       → modifica atributo en OPlyPlyCDto  
+  │  
+  └─ action.type == otro  
+       └─ checkValidationRules()  
+          → acumula ErrorComponent  
+          → si hay errores:  
+             throw AcdcException(ASSIGNMENT_RULE_ERR) 
+Flujo para TECHNICAL_CONTROL
+
+
+--- [PÁGINA 23 DE 75] ---
+
+DupServiceImpl.processTCByStep()  
+  │  
+  ▼  
+callDupServiceByStep()  
+  │  
+  ▼  
+SelectRiskService.callSelectRisk()  
+  │  
+  ▼  
+RiskSelectionResponse.appliedRules[]  
+  │  
+  └─ procesa reglas  
+     → devuelve List<OPlyUtcP>  
+     Se acumula en OPlyPlyCDto.OPlyUtcPT 
+Acumulación de OPlyUtcP (controles técnicos) 
+Nivel Dónde se acumula 
+POLICY_TYPE OPlyPlyCDto.OPlyUtcPT 
+RISK_TYPE OPlyRkcC.OPlyUtcPT (del riesgo correspondiente) 
+COVERAGE_TYPE OPlyCvcC.OPlyUtcPT (de la cobertura correspondiente) 
+ 
+7. Construcción del RequestInfo desde DupStepEnum 
+Fichero: model/mapper/RequestInfoMapper.java (MapStruct) 
+DupStepEnum.PREVIOUS_VARIABLE_DATA_RISK  
+  │  
+  ▼  RequestInfoMapper.toRequestInfo(  
+       OperationInfoQuery, DupStepEnum)  
+  │  
+RequestInfo {  
+  riskSelectionType = RISK_TYPE  
+  processStep       = 4  
+  processStepMenuOption = 0  
+  processStepOption     = 10  
+  requestId     = query.requestId  
+  languageId    = query.languageId  
+  productId     = query.productId  
+  executionType = query.executionType
+
+
+--- [PÁGINA 24 DE 75] ---
+
+processTypeId = query.processTypeId  
+  riskVal       = query.riskVal  
+  coverageVal   = query.coverageVal  
+} 
+ 
+8. Mapeo completo: OPlyPlyCDto → RiskSelectionRequest 
+Fichero: model/mapper/RiskSelectionMapper.java (MapStruct + métodos default) 
+Estructura completa de RiskSelectionRequest 
+{ 
+  "companyId":              123, 
+  "branchId":               45, 
+  "languageId":             "es", 
+  "productId":              1234, 
+  "executionType":          "7", 
+  "processTypeId":          1, 
+  "processStep":            4, 
+  "processStepMenuOption":  0, 
+  "processStepOption":      10, 
+  "operationNumber":        null, 
+  "operationDate":          1716000000000, 
+  "prevalidation":          false, 
+  "fixedData":              { ... }, 
+  "variableData":           { ... }, 
+  "coverages":              { ... }, 
+  "insured":                { ... }, 
+  "participants":           { ... }, 
+  "questionnaires":         { ... }, 
+  "documents":              [ ... ] 
+} 
+8.1 Campos de cabecera / metadata 
+Campo 
+RiskSelectionRequest Origen en OPlyPlyCDto / RequestInfo 
+companyId OPlyPlyCDto.OPlyGniP.OPlyGniS.cmpVal 
+branchId OPlyPlyCDto.OPlyGniP.OPlyGniS.lobVal
+
+
+--- [PÁGINA 25 DE 75] ---
+
+Campo 
+RiskSelectionRequest Origen en OPlyPlyCDto / RequestInfo 
+languageId RequestInfo.languageId 
+productId RequestInfo.productId 
+executionType RequestInfo.executionType (default "Seleccion") 
+processTypeId RequestInfo.processTypeId 
+processStep RequestInfo.processStep ← viene de 
+DupStepEnum.stepLevel 
+processStepMenuOption RequestInfo.processStepMenuOption ← de 
+DupStepEnum.optionMenuNumber 
+processStepOption RequestInfo.processStepOption ← de 
+DupStepEnum.optionNumber 
+operationNumber RequestInfo.operationNumber 
+operationDate System.currentTimeMillis() (timestamp actual) 
+prevalidation Siempre false 
+8.2 fixedData — Datos fijos de la póliza 
+getDefaultFixedValues(OPlyPlyCDto) construye un Map<String, Object> con los datos 
+inmutables. 
+Origen principal: OPlyPlyCDto.OPlyGniP.OPlyGniS Origen secundario: 
+OPlyPlyCDto.OPlyInaPT[0].OPlyInaS (primer agente) 
+Desde OPlyGniS: 
+Campo OPlyGniS Clave fixedData Descripción 
+delVal contractNumber Número de contrato
+
+
+--- [PÁGINA 26 DE 75] ---
+
+Campo OPlyGniS Clave fixedData Descripción 
+sblVal subcontract Subcontrato 
+gppVal groupPolicyNumber Número de póliza grupo 
+enrVal supplementCode Código de suplemento 
+enrSbdVal supplementSubcode Subcódigo de suplemento 
+enrSqn supplementNumber Número de suplemento 
+enrTypVal supplementType Tipo de suplemento 
+clpVal clientPolicy Póliza cliente 
+plyVal policyNumber Número de póliza 
+vldDat validityDate Fecha de validez 
+plyEfcDat policyEffectiveDate Fecha efecto póliza 
+plyExpDat policyExpirationDate Fecha vencimiento póliza 
+enrEfcDat supplementEffectiveDate Fecha efecto suplemento 
+enrExpDat supplementExpirationDate Fecha vencimiento supl. 
+crnVal currency Divisa 
+ptaPly applyProrata Aplicar prorrata 
+aplVal applicationNumber Número de solicitud 
+aplEnrSqn supplementApplicationNumber Nº solicitud suplemento 
+plyDrtVal policyDuration Duración de la póliza 
+pmsVal paymentModality Modalidad de pago
+
+
+--- [PÁGINA 27 DE 75] ---
+
+Campo OPlyGniS Clave fixedData Descripción 
+rnwVal renovationsNumber Número de renovaciones 
+plyRgl applyRegularization Aplicar regularización 
+rglTypVal regularizationType Tipo de regularización 
+rglPer regularizationPercentage Porcentaje regularización 
+rglIdxVal regularizationIndex Índice de regularización 
+mnlPre manualPremium Prima manual 
+tmpEnr temporalSupplement Suplemento temporal 
+tnrPlyTypVal policyType Tipo de póliza 
+exrVal changeRate Tasa de cambio 
+secVal sector Sector 
+totRskVal totalRisk Riesgo total 
+cinTypVal coinsuranceType Tipo de coaseguro 
+enrCasVal supplementMotivation Motivo del suplemento 
+sndVal sendType Tipo de envío 
+mnlRnsDst manualReinsurance Reaseguro manual 
+cptThrLvlVal captureThirdLevel Capturar tercer nivel 
+rnsTypVal reinsuranceType Tipo de reaseguro 
+bsnVal businessType Tipo de negocio 
+inlInmAmn initialQuota Cuota inicial
+
+
+--- [PÁGINA 28 DE 75] ---
+
+Campo OPlyGniS Clave fixedData Descripción 
+frpVal declarationPolicy Póliza de declaración 
+(constante) currencyDecimals Siempre "2" 
+(constante) enforceDevolution Siempre "S" 
+Desde OPlyInaPT[0].OPlyInaS (agente): 
+Campo OPlyInaS Clave fixedData Descripción 
+thpVal thirdPartyCode Código de tercero (agente) 
+frsLvlVal level1 Nivel 1 
+scnLvlVal level2 Nivel 2 
+thrLvlVal level3 Nivel 3 
+frsDstHnlVal channel1 Canal 1 
+scnDstHnlVal channel2 Canal 2 
+thrDstHnlVal channel3 Canal 3 
+cmcVal commissionTable Tabla de comisiones 
+8.3 variableData — Atributos dinámicos 
+Los atributos se extraen siempre de la misma forma: 
+OPlyAtcPC  
+  .OPlyAtcC  
+    .OPlyAtrP  
+      .OPlyAtrS  
+        .fldNam    → KEY del mapa  
+        .fldValVal → VALUE del mapa
+
+
+--- [PÁGINA 29 DE 75] ---
+
+Solo se incluyen atributos donde tanto fldNam como fldValVal son no nulos. 
+Composición según el nivel 
+POLICY_TYPE / POLICY_GROUP — solo atributos de póliza: 
+OPlyPlyCDto.OPlyAtcCT[]  
+  └── cada OPlyAtcPC → { fldNam: fldValVal } 
+RISK_TYPE — atributos de póliza + riesgo actual + coberturas del riesgo: 
+OPlyPlyCDto.OPlyAtcCT[]  
+OPlyPlyCDto.OPlyRkcCT[riskVal]  
+  .OPlyAtcCT[]  
+OPlyPlyCDto.OPlyRkcCT[riskVal]  
+  .OPlyCvcCT[].OPlyAtcCT[] 
+COVERAGE_TYPE — atributos de póliza + riesgo + cobertura actual: 
+OPlyPlyCDto.OPlyAtcCT[]  
+OPlyPlyCDto.OPlyRkcCT[riskVal]  
+  .OPlyAtcCT[]  
+OPlyPlyCDto.OPlyRkcCT[riskVal]  
+  .OPlyCvcCT[coverageVal].OPlyAtcCT[] 
+Cuando hay colisión de nombres entre niveles, el atributo de nivel inferior sobreescribe al 
+superior. 
+8.4 coverages — Coberturas seleccionadas 
+mapCoverages() devuelve Map<Integer, RiskSelectionCoverages> donde la clave es el 
+código de cobertura (cvrVal). 
+Solo se incluyen coberturas donde CoverageUtil.evaluateCoverageSelected() devuelve 
+true. 
+Ruta de datos: 
+OPlyRkcCT[riskVal]  
+  .OPlyCvcCT[coverageVal]
+
+
+--- [PÁGINA 30 DE 75] ---
+
+.OPlyCvcC  
+      .OPlyCvrP.OPlyCvrS 
+Campo OPlyCvrS Destino Descripción 
+cvrVal key del mapa Código cobertura 
+cvrNam name Nombre 
+cplAmn capital Capital 
+dctVal franchiseCode Cód. franquicia 
+enrCplAmn supplementCapital Capital suplementario 
+mnmDctVal minFranchise Franquicia mínima 
+mxmDctVal maxFranchise Franquicia máxima 
+dctTypVal franchiseTypeCode Tipo franquicia 
+Prima desde Breakdown Concept (ecmBrwCncVal==1): 
+Campo OPlyBrwS Destino 
+anlAmn annualPremium 
+enrAmn supplementAnnualPremium 
+8.5 insured — Datos del asegurado 
+Se construye a partir de los atributos del riesgo para el asegurado (bnfTypVal == "2"). 
+Atributo (fldNam) Campo en RiskSelectionInsured Tipo 
+FEC_NACIMIENTO birthDate LocalDate 
+MCA_SEXO gender Integer
+
+
+--- [PÁGINA 31 DE 75] ---
+
+Atributo (fldNam) Campo en RiskSelectionInsured Tipo 
+COD_OCUPACION occupationCode Integer 
+MCA_RESIDENTE_FISCAL resident String 
+MCA_PAIS_RESIDENCIA residenceCountry String 
+EDAD_ACTUARIAL_INI age Integer 
+EDAD_ACTUARIAL_FINAL finalNaturalAge Integer 
+MCA_PRACTICA_DEPORTES doesSports String 
+NUM_DEPORTE_NO_FEDERADO nonFederatedSports Integer 
+NUM_DEPORTE_COMPETICION federatedSports Integer 
+MCA_MOTO ridesMotorcycle String 
+CC_MOTO motorcycleCC Integer 
+HP_MOTO motorcycleHP Integer 
+MCA_ESTANCIA_EXTRANJERO staysAbroadPlanned String 
+COD_EST_CIVIL_2 maritalStatusCode Integer 
+COD_ESTUDIOS_2 educationLevelCode Integer 
+TIP_EMPLEO_2 typeOfEmploymentCode Integer 
+8.6 participants — Participantes 
+PolicyHolder (tomador) — bnfTypVal == "0" 
+OPlyPlyCDto.OPlyInePT  
+  filtro: OPlyIneS.bnfTypVal == "0"  
+  ├─ OPlyIneS.cpeNam       → name
+
+
+--- [PÁGINA 32 DE 75] ---
+
+├─ OPlyIneS.thpDcmTypVal → documentType  
+  └─ OPlyIneS.thpDcmVal    → documentCode 
+Beneficiaries — bnfTypVal == "5" 
+OPlyRkcCT[*].OPlyRkcC.OPlyInePT  
+  filtro: OPlyIneS.bnfTypVal == "5"  
+  ├─ OPlyIneS.bnfTypVal    → beneficiaryType  
+  ├─ OPlyIneS.thpDcmTypVal → documentType  
+  ├─ OPlyIneS.thpDcmVal    → documentCode  
+  └─ OPlyIneS.cpeNam       → name 
+8.7 questionnaires — Cuestionarios 
+Agrupa los campos de formulario por ID de formulario: 
+{ 
+  "123": { 
+    "CAMPO_A": "valor1", 
+    "CAMPO_B": "valor2" 
+  }, 
+  "456": { 
+    "CAMPO_C": "valor3" 
+  } 
+} 
+8.8 documents — Documentos 
+Mapeo directo 1:1: 
+Campo Document Campo RiskSelectionDocument 
+dcnNam documentName 
+dcnVal documentCode 
+grpVal groupCode 
+sgtVal segmentCode
+
+
+--- [PÁGINA 33 DE 75] ---
+
+9. Procesamiento de la respuesta DUP 
+Procesamiento de acciones 
+type Acción en DupServiceImpl 
+"ASIGNACION" applyAssignment() — modifica el atributo fldNam en OPlyPlyCDto en el nivel 
+indicado 
+Otro checkValidationRules() — acumula ErrorComponent 
+Si la acción tiene valor "EXPLICIT_NULL", el atributo se pone a null. 
+ 
+10. Two-pass en el flujo RTE 
+callRTEFlow(oPlyPlyCDto, request,  
+            riskSelectionTypeEnum)  
+  │  
+  ├─ rteService.sendToRteService()  
+  │    ← 1ª llamada a RTE  
+  │  
+  ├─ recalculateTwoPass()  
+  │    └─ DupService.processTCByStep(  
+  │         COVERAGE_CONTROL)  
+  │       Si devuelve pasos pendientes:  
+  │         → rteService.sendToRteService()  
+  │           ← 2ª llamada a RTE  
+  │       Si lista vacía:  
+  │         → retorna resultado de la 1ª  
+  │  
+  └─ retorna OPlyPlyCDto actualizado 
+ 
+11. OPlyPlyCDto ↔ Facts de las reglas DUP 
+11.1 Mapa general de correspondencia 
+Flujo general
+
+
+--- [PÁGINA 34 DE 75] ---
+
+OPlyPlyCDto (estructura interna Java)  
+  │  
+  ▼  RiskSelectionMapper  
+RiskSelectionRequest (JSON enviado a DUP)  
+  │  
+  ▼  Motor EasyRules (DUP)  
+Facts (prefijos disponibles en reglas) 
+Sección de 
+RiskSelectionRequest 
+Prefijo en reglas 
+DUP Fuente en OPlyPlyCDto 
+fixedData fixedValues.* OPlyGniS + OPlyInaPT[0] 
+variableData variableData.* OPlyAtcCT[].fldNam (según nivel) 
+coverages coverages.* OPlyRkcCT[].OPlyCvcCT[] 
+insured insured.* Atributos de riesgo del asegurado 
+participants participants.* OPlyInePT + 
+OPlyRkcCT[].OPlyInePT 
+questionnaires questionnaires.* dataFormMap[] (request externa) 
+documents documents.* documents[] (request externa) 
+accumulations accumulations.* cmlObj[] (request externa) 
+(no viene de OPlyPlyCDto) constants.* MongoDB ConstantDefinition 
+11.2 fixedValues — Desde OPlyGniS y OPlyInaS 
+Facts disponibles en todos los pasos y en todos los niveles. 
+Fact en regla DUP Campo de 
+OPlyGniS Descripción 
+fixedValues.policyNumber plyVal Número de póliza 
+fixedValues.supplementCode enrVal Código suplemento
+
+
+--- [PÁGINA 35 DE 75] ---
+
+Fact en regla DUP Campo de 
+OPlyGniS Descripción 
+fixedValues.supplementSubcode enrSbdVal Subcódigo suplemento 
+fixedValues.supplementNumber enrSqn Número de suplemento 
+fixedValues.supplementType enrTypVal Tipo de suplemento 
+fixedValues.contractNumber delVal Número de contrato 
+fixedValues.subcontract sblVal Subcontrato 
+fixedValues.groupPolicyNumber gppVal Póliza grupo 
+fixedValues.clientPolicy clpVal Póliza cliente 
+fixedValues.validityDate vldDat Fecha de validez (timestamp) 
+fixedValues.policyEffectiveDate plyEfcDat Fecha efecto póliza 
+(timestamp) 
+fixedValues.policyExpirationDate plyExpDat Fecha vencimiento póliza 
+(timestamp) 
+fixedValues.supplementEffectiveDate enrEfcDat Fecha efecto suplemento 
+(timestamp) 
+fixedValues.supplementExpirationDate enrExpDat Fecha vencimiento suplemento 
+(timestamp) 
+fixedValues.currency crnVal Divisa 
+fixedValues.applyProrata ptaPly Aplicar prorrata 
+fixedValues.applicationNumber aplVal Número de solicitud 
+fixedValues.policyDuration plyDrtVal Duración de la póliza 
+fixedValues.paymentModality pmsVal Modalidad de pago
+
+
+--- [PÁGINA 36 DE 75] ---
+
+Fact en regla DUP Campo de 
+OPlyGniS Descripción 
+fixedValues.renovationsNumber rnwVal Número de renovaciones 
+fixedValues.applyRegularization plyRgl Aplicar regularización 
+fixedValues.regularizationType rglTypVal Tipo de regularización 
+fixedValues.regularizationPercentage rglPer Porcentaje de regularización 
+fixedValues.regularizationIndex rglIdxVal Índice de regularización 
+fixedValues.manualPremium mnlPre Prima manual 
+fixedValues.temporalSupplement tmpEnr Suplemento temporal 
+fixedValues.policyType tnrPlyTypVal Tipo de póliza 
+fixedValues.changeRate exrVal Tasa de cambio 
+fixedValues.sector secVal Sector 
+fixedValues.totalRisk totRskVal Riesgo total 
+fixedValues.coinsuranceType cinTypVal Tipo de coaseguro 
+fixedValues.supplementMotivation enrCasVal Motivo del suplemento 
+fixedValues.sendType sndVal Tipo de envío 
+fixedValues.manualReinsurance mnlRnsDst Reaseguro manual 
+fixedValues.reinsuranceType rnsTypVal Tipo de reaseguro 
+fixedValues.businessType bsnVal Tipo de negocio 
+fixedValues.initialQuota inlInmAmn Cuota inicial
+
+
+--- [PÁGINA 37 DE 75] ---
+
+Fact en regla DUP Campo de 
+OPlyGniS Descripción 
+fixedValues.declarationPolicy frpVal Póliza de declaración 
+fixedValues.currencyDecimals (constante) Siempre "2" 
+fixedValues.enforceDevolution (constante) Siempre "S" 
+Facts del agente (OPlyInaS): 
+Fact en regla DUP Campo de OPlyInaS Descripción 
+fixedValues.thirdPartyCode thpVal Código del agente 
+fixedValues.level1 frsLvlVal Nivel 1 
+fixedValues.level2 scnLvlVal Nivel 2 
+fixedValues.level3 thrLvlVal Nivel 3 
+fixedValues.channel1 frsDstHnlVal Canal 1 
+fixedValues.channel2 scnDstHnlVal Canal 2 
+fixedValues.channel3 thrDstHnlVal Canal 3 
+fixedValues.commissionTable cmcVal Tabla de comisiones 
+11.3 variableData — Atributos fldNam de la póliza 
+variableData.{fldNam}  =  fldValVal 
+Si un mismo fldNam existe a nivel póliza y a nivel riesgo, el del nivel inferior sobreescribe al 
+superior. 
+11.4 coverages — Desde OPlyCvcCT 
+Solo coberturas activas/seleccionadas.
+
+
+--- [PÁGINA 38 DE 75] ---
+
+Fact en regla DUP Origen en OPlyCvrS 
+coverages.{id}.name cvrNam 
+coverages.{id}.capital cplAmn 
+coverages.{id}.franchiseCode dctVal 
+coverages.{id}.supplementCapital enrCplAmn 
+coverages.{id}.minFranchise mnmDctVal 
+coverages.{id}.maxFranchise mxmDctVal 
+coverages.{id}.franchiseTypeCode dctTypVal 
+coverages.{id}.annualPremium OPlyBrwPT[ecmBrwCncVal==1].anlAmn 
+coverages.{id}.supplementAnnualPremium OPlyBrwPT[ecmBrwCncVal==1].enrAmn 
+11.5 insured — Atributos del asegurado 
+Fact en regla DUP fldNam en el polizón Tipo 
+insured.birthDate FEC_NACIMIENTO LocalDate 
+insured.gender MCA_SEXO Integer 
+insured.age EDAD_ACTUARIAL_INI Integer 
+insured.finalNaturalAge EDAD_ACTUARIAL_FINAL Integer 
+insured.occupationCode COD_OCUPACION Integer 
+insured.resident MCA_RESIDENTE_FISCAL String 
+insured.residenceCountry MCA_PAIS_RESIDENCIA String
+
+
+--- [PÁGINA 39 DE 75] ---
+
+Fact en regla DUP fldNam en el polizón Tipo 
+insured.doesSports MCA_PRACTICA_DEPORTES String 
+insured.nonFederatedSports NUM_DEPORTE_NO_FEDERADO Integer 
+insured.federatedSports NUM_DEPORTE_COMPETICION Integer 
+insured.ridesMotorcycle MCA_MOTO String 
+insured.motorcycleCC CC_MOTO Integer 
+insured.motorcycleHP HP_MOTO Integer 
+insured.staysAbroadPlanned MCA_ESTANCIA_EXTRANJERO String 
+insured.maritalStatusCode COD_EST_CIVIL_2 Integer 
+insured.educationLevelCode COD_ESTUDIOS_2 Integer 
+insured.typeOfEmploymentCode TIP_EMPLEO_2 Integer 
+11.6 participants — Tomador y beneficiarios 
+Tomador (participants.policyHolder) — bnfTypVal == "0" 
+Fact en regla DUP Campo de OPlyIneS 
+participants.policyHolder.documentType thpDcmTypVal 
+participants.policyHolder.documentCode thpDcmVal 
+participants.policyHolder.name cpeNam 
+participants.policyHolder.sameAsInsured calculado 
+Beneficiarios (participants.beneficiaries) — bnfTypVal == "5" 
+Se recorren todos los riesgos. Los beneficiarios se indexan correlativamente.
+
+
+--- [PÁGINA 40 DE 75] ---
+
+Fact en regla DUP Campo de OPlyIneS 
+participants.beneficiaries.{n}.beneficiaryType bnfTypVal 
+participants.beneficiaries.{n}.documentType thpDcmTypVal 
+participants.beneficiaries.{n}.documentCode thpDcmVal 
+participants.beneficiaries.{n}.name cpeNam 
+11.7–11.10 Cuestionarios, Documentos, Acumulaciones y Constantes 
+Facts Fuente 
+questionnaires.{frlVal}.{fldNam} dataFormMap[] 
+documents.{grpVal}.{dcnVal} documents[] 
+accumulations.{cvrVal}.mxmAgrCplVal cmlObj[] 
+constants.{nombre} MongoDB ConstantDefinition 
+11.11 Ejemplos con campos reales del polizón 
+Ejemplo 1 — Rechazo por edad fuera de rango (V1) 
+{ 
+  "ruleId": "REGLA_EDAD_ASEGURADO", 
+  "processField": "EDAD_ACTUARIAL_INI", 
+  "ruleConditions": [ 
+    { "factor": "insured.age", "operator": "LT", "value": "18" } 
+  ], 
+  "ruleActions": [ 
+    { "type": "Rechazo", "value": "El asegurado debe tener al menos 18 años", 
+"valueCalculationType": "DIRECT" } 
+  ] 
+} 
+Ejemplo 2 — Asignación de tarifa por moto (V2)
+
+
+--- [PÁGINA 41 DE 75] ---
+
+{ 
+  "ruleId": "TARIFA_MOTO_ALTA", 
+  "processField": "EXTRAPRIME_MOTO", 
+  "condition": "Integer cc = f.asInteger(\"insured.motorcycleCC\"); return cc 
+!= null && cc > 500;", 
+  "ruleActions": [ 
+    { "type": "Tarifa", "value": "1.25", "valueCalculationType": "DIRECT" } 
+  ] 
+} 
+Ejemplo 3 — Asignación mediante función del RTE 
+{ 
+  "ruleId": "CALCULO_DURACION_PAGO", 
+  "processField": "ANIO_DURACION_PAGO_PRIMAS", 
+  "condition": "return true;", 
+  "ruleActions": [ 
+    { 
+      "type": "Asignacion", 
+      "value": "ProcessAttributes.calcYearDuration", 
+      "valueCalculationType": "FUNCTION", 
+      "data": "ANIO_DURACION_PAGO_PRIMAS_410", 
+      "jumpLevel": 6, 
+      "coverage": 410, 
+      "dataType": "String" 
+    } 
+  ] 
+} 
+Resumen visual: ciclo completo de una regla 
+OPlyPlyCDto (polizón)  
+  │  
+  │ RiskSelectionMapper  
+  ▼  
+RiskSelectionRequest  
+  │  
+  │ POST /risk-selection  
+  ▼  
+DUP (EasyRules)  
+  evalúa condiciones sobre facts:  
+  - fixedValues.*  
+  - variableData.*  
+  - coverages.*  
+  - insured.*  
+  - participants.*
+
+
+--- [PÁGINA 42 DE 75] ---
+
+- questionnaires.*  
+  - documents.*  
+  - accumulations.*  
+  - constants.*  
+  │  
+  │ devuelve appliedRules[]  
+  ▼  
+DupServiceImpl.applyAssignment()  
+  │  
+  ▼  
+OPlyPlyCDto actualizado  
+  (fldValVal modificado o OPlyUtcPT añadido) 
+ 
+PARTE V: RS-RULES-ACTIONS-CONDITIONS — DEFINICIÓN DE REGLAS 
+0. TRÍADA DE FILTRADO: NIVEL DE SALTO, OPCIÓN Y MENÚ 
+Cada invocación al motor de reglas se identifica de forma unívoca mediante tres 
+coordenadas: [processStep-optionMenuNumber-optionNumber]. 
+processStep — Nivel de salto 
+Valor Nombre DUP Descripción 
+1 FIXED_DATA Datos fijos de póliza 
+2 VARIABLE_DATA_POLICY Datos variables de póliza 
+3 BENEFICIARY_RISK_TYPE Tipo de beneficiario / riesgo 
+4 VARIABLE_DATA_RISK Datos variables del riesgo 
+6 COVERAGE Control de coberturas 
+7 REINSURANCE Control de reaseguro 
+8 CONTROLS Controles finales 
+11 RISK_SELECTION_FORM Formulario de selección de riesgos
+
+
+--- [PÁGINA 43 DE 75] ---
+
+optionNumber — Opción de paso 
+Valor Semántica 
+null / 0 
+Ejecución principal — control técnico (CT) directo 
+Pre-cálculo DUP (PREVIOUS) 
+Validación DUP (VALIDATION) 
+1–8 Controles individuales dentro del nivel 8 
+optionMenuNumber — Menú de opción 
+Valor Aplica a 
+nivel Familia de controles 
+0 1–7, 11 Flujo estándar 
+1 8 Terminación · Suspensión · Multi-usuario 
+3 8 Guarda · Abandono · Verificación · Cláusulas · Impresión · Opciones 
+adicionales 
+7 8 Opciones adicionales tipo ANY 
+Tabla de referencia completa del flujo del orquestador 
+Notació
+n 
+processSt
+ep 
+optionMenuNum
+ber 
+optionNumb
+er Nombre 
+[2-0-
+10] 2 0 10 PREVIOUS_VARIABLE_DATA_POLI
+CY 
+[2-0-
+20] 2 0 20 VALIDATION_VARIABLE_DATA_P
+OLICY 
+[1-0-
+0] 1 0 0 FIXED_DATA_DUP
+
+
+--- [PÁGINA 44 DE 75] ---
+
+Notació
+n 
+processSt
+ep 
+optionMenuNum
+ber 
+optionNumb
+er Nombre 
+[2-0-
+0] 2 0 0 VARIABLE_DATA_POLICY 
+[3-0-
+0] 3 0 0 BENEFICIARY_RISK_TYPE 
+[4-0-
+10] 4 0 10 PREVIOUS_VARIABLE_DATA_RIS
+K 
+[4-0-
+20] 4 0 20 VALIDATION_VARIABLE_DATA_R
+ISK 
+[4-0-
+0] 4 0 0 VARIABLE_DATA_RISK 
+[11-
+0-0] 11 0 0 RISK_SELECTION_FORM 
+[6-0-
+10] 6 0 10 PREVIOUS_VARIABLE_COVERAGE 
+[6-0-
+20] 6 0 20 VALIDATION_VARIABLE_COVERA
+GE 
+[6-0-
+0] 6 0 0 COVERAGE_CONTROL 
+[7-0-
+0] 7 0 0 REINSURANCE_CONTROL 
+[8-1-
+6] 8 1 6 TERMINATE_CONTROL 
+[8-1-
+3] 8 1 3 SUSPEND_CONTROL 
+[8-1-
+4] 8 1 4 MULTIUSER_CONTROL 
+[8-3-
+1] 8 3 1 SAVE_CONTROL
+
+
+--- [PÁGINA 45 DE 75] ---
+
+Notació
+n 
+processSt
+ep 
+optionMenuNum
+ber 
+optionNumb
+er Nombre 
+[8-3-
+2] 8 3 2 ABANDON_CONTROL 
+[8-3-
+3] 8 3 3 VERIFY_CONTROL 
+[8-3-
+4] 8 3 4 CLAUSES_CONTROL 
+[8-3-
+5] 8 3 5 ANNEX_PAGES_CONTROL 
+[8-3-
+6] 8 3 6 PRINT_CONTROL 
+[8-3-
+7] 8 3 7 RISKS_CONTROL 
+[8-3-
+8] 8 3 8 ADDITIONAL_OPTIONS_CONTROL 
+[8-7-
+null] 8 7 null ADDITIONAL_ANY_OPTIONS_CON
+TROL 
+ 
+1. FACTS DE DATOS VARIABLES 
+Prefijo: variableData. 
+Patrón Descripción Ejemplos 
+variableData.{clave} Cualquier dato 
+variable del request 
+variableData.sumaAsegurada, 
+variableData.plazoAnios 
+2. FACTS DE DATOS FIJOS 
+Prefijo: fixedValues.
+
+
+--- [PÁGINA 46 DE 75] ---
+
+Patrón Descripción 
+fixedValues.{clave} Valores fijos configurados 
+3. FACTS DE CONSTANTES 
+Prefijo: constants. 
+Constantes de configuración almacenadas en MongoDB. 
+4. FACTS DE CUESTIONARIOS 
+Prefijo: questionnaires. 
+Patrón Tipo Descripción 
+questionnaires.{idCuestionario} String "0" indicando que existe 
+questionnaires.{idCuestionario}.{idPregunta} Varies Respuesta a pregunta 
+5. FACTS DE DOCUMENTOS 
+Prefijo: documents. 
+Patrón Tipo Descripción 
+documents.{grupo}.{codigoDoc} String "0" = documento existe 
+documents.{grupo}.{codigoDoc}.signed String "1" = firmado 
+6. FACTS DE COBERTURAS 
+Prefijo: coverages. 
+Fact Tipo Descripción 
+coverages.{id}.name String Nombre de la cobertura 
+coverages.{id}.capital BigDecimal Capital asegurado
+
+
+--- [PÁGINA 47 DE 75] ---
+
+Fact Tipo Descripción 
+coverages.{id}.franchiseCode String Código de franquicia 
+coverages.{id}.supplementCapital BigDecimal Capital suplementario 
+coverages.{id}.minFranchise BigDecimal Franquicia mínima 
+coverages.{id}.maxFranchise BigDecimal Franquicia máxima 
+coverages.{id}.franchiseTypeCode String Código tipo de franquicia 
+coverages.{id}.annualPremium BigDecimal Prima anual 
+coverages.{id}.supplementAnnualPremium BigDecimal Prima anual suplementaria 
+7. FACTS DE ACUMULACIONES 
+Prefijo: accumulations. 
+Fact Tipo Descripción 
+accumulations.{id}.mxmAgrCplVal String Valor máximo agregado de capital 
+accumulations.{id}.mxmAgrPreVal String Valor máximo agregado de prima 
+accumulations.{id}.accumulationWithCapital String Capital acumulado + capital 
+cobertura 
+accumulations.{id}.accumulationWithPremium String Prima acumulada + prima cobertura 
+8. FACTS DEL ASEGURADO 
+Prefijo: insured. 
+Fact Tipo Descripción 
+insured.birthDate String Fecha de nacimiento
+
+
+--- [PÁGINA 48 DE 75] ---
+
+Fact Tipo Descripción 
+insured.gender String Género 
+insured.age Integer Edad actual 
+insured.finalNaturalAge Integer Edad natural final 
+insured.maritalStatusCode String Estado civil 
+insured.educationLevelCode String Nivel educativo 
+insured.typeOfEmploymentCode String Tipo de empleo 
+insured.occupationCode String Ocupación 
+insured.resident Boolean Es residente 
+insured.residenceCountry String País de residencia 
+insured.doesSport Boolean Practica deportes 
+insured.nonFederatedSport String Deportes no federados 
+insured.federatedSport String Deportes federados 
+insured.ridesMotorcycle Boolean Conduce motocicleta 
+insured.motorcycleCC Integer Cilindrada (CC) 
+insured.motorcycleHP Integer Caballos de fuerza (HP) 
+insured.staysAbroadPlanned Boolean Estancias planificadas 
+9. FACTS DE PARTICIPANTES 
+Policy Holder — participants.policyHolder.*
+
+
+--- [PÁGINA 49 DE 75] ---
+
+Fact Tipo Descripción 
+participants.policyHolder.sameAsInsured Boolean Es el mismo que el asegurado 
+participants.policyHolder.typeOfPerson String Tipo de persona 
+participants.policyHolder.documentType String Tipo de documento 
+participants.policyHolder.documentCode String Número de documento 
+participants.policyHolder.name String Nombre completo 
+Beneficiaries — participants.beneficiaries.{id}.* 
+Fact Tipo Descripción 
+participants.beneficiaries.{id}.beneficiaryType String Tipo de beneficiario 
+participants.beneficiaries.{id}.documentType String Tipo de documento 
+participants.beneficiaries.{id}.documentCode String Número de documento 
+participants.beneficiaries.{id}.name String Nombre completo 
+ 
+CÓMO FUNCIONA LA EVALUACIÓN DE CONDICIONES 
+El sistema soporta dos versiones: V1 (Legacy) y V2 (Expresiones Java). 
+Routing automático: Si la regla tiene el campo condition con valor → V2. Si está vacío o 
+no existe → V1. 
+ 
+VERSIÓN 1 (V1) - Condiciones Estructuradas 
+Cada condición en ruleConditions es un objeto JSON:
+
+
+--- [PÁGINA 50 DE 75] ---
+
+{ 
+  "factor": "insured.age", 
+  "operator": "GE", 
+  "value": "18" 
+} 
+Operadores V1 
+Operador Código Descripción 
+Igual EQ Igualdad exacta 
+No igual NOT_EQ Diferente de 
+Mayor que GT Estrictamente mayor 
+Mayor o igual GE Mayor o igual 
+Menor que LT Estrictamente menor 
+Menor o igual LE Menor o igual 
+En lista IN Pertenece a lista 
+No en lista NOT_IN No pertenece a lista 
+Entre BTW Valor entre rango (value1, value2) 
+Existe EX El fact existe 
+No existe NEX El fact no existe 
+En blanco BLANK Valor vacío/nulo 
+Alguno coincide ANY_MATCH Busca en colección con patrón * 
+Todas las condiciones V1 se evalúan con AND implícito.
+
+
+--- [PÁGINA 51 DE 75] ---
+
+VERSIÓN 2 (V2) - Expresiones Java 
+Usa Janino como compilador en runtime. 
+{ 
+  "condition": "Integer edad = f.asInteger(\"insured.age\"); Double capital = 
+f.asDouble(\"coverages.1.capital\"); return (edad != null && edad >= 18 && eda
+d <= 65) && (capital != null && capital > 100000);" 
+} 
+Objeto f (SafeFactsUtils) 
+Método Descripción 
+f.asString(String key) Obtiene fact como String 
+f.asInteger(String key) Obtiene fact como Integer 
+f.asDouble(String key) Obtiene fact como Double 
+f.asLocalDate(String key) Obtiene fact como LocalDate 
+f.asLocalDateTime(String key) Obtiene fact como LocalDateTime 
+f.asList(String key, String delimiter) Obtiene fact como List 
+f.formatLocalDate(LocalDate date) Formatea fecha a ddMMyyyy 
+f.anyMatch(String pattern, Object value) Verifica si algún elemento en colección coincide 
+Todos los métodos as*() retornan null si el fact no existe. 
+Imports por defecto 
+● java.util.List 
+● java.util.Arrays 
+● java.time.LocalDate 
+● java.time.LocalDateTime 
+● java.time.Duration 
+● java.time.Period
+
+
+--- [PÁGINA 52 DE 75] ---
+
+● java.math.BigDecimal 
+● SafeFactsUtils (com.mapfre.psypd...) 
+Expresiones PROHIBIDAS (Seguridad) 
+System., Runtime., Process., File., ClassLoader., Thread., exec(, getRuntime(, 
+Class.forName, new, etc. 
+ 
+EVALUACIÓN DE COLECCIONES CON PATRONES 
+El asterisco * actúa como comodín para el índice numérico. 
+Uso en V1 
+{ 
+  "factor": "participants.beneficiaries.*.beneficiaryType", 
+  "operator": "ANY_MATCH", 
+  "value": 5 
+} 
+Uso en V2 
+return f.anyMatch("participants.beneficiaries.*.beneficiaryType", 5); 
+ 
+COMPARATIVA V1 vs V2 
+Característica V1 (Estructurado) V2 (Java) 
+Complejidad Baja Media-Alta 
+Flexibilidad Limitada Total 
+Operadores lógicos Solo AND implícito AND, OR, NOT 
+Cálculos No soportado Sí soportado
+
+
+--- [PÁGINA 53 DE 75] ---
+
+Característica V1 (Estructurado) V2 (Java) 
+Rendimiento Rápido Muy rápido (compilado) 
+ 
+TIPOS DE CONFIGURACIÓN Y FILTRADO 
+Filtrado de Reglas en RS-RULES-ACTIONS-CONDITIONS 
+Criterios Obligatorios 
+Campo Descripción 
+companyId Compañía aseguradora 
+branchId Ramo de negocio 
+processStep Paso del proceso 
+executionType Tipo de ejecución 
+processTypeId Tipo de operación 
+Criterios Opcionales (valor específico O null) 
+Campo Descripción 
+productId Producto específico 
+coverageId Cobertura específica 
+optionNumber Número de opción 
+optionMenuNumber Número de menú 
+Filtros de Estado
+
+
+--- [PÁGINA 54 DE 75] ---
+
+Campo Descripción 
+active Solo reglas con active = "S" 
+disabledDate Se excluyen reglas deshabilitadas 
+expiryDate Se excluyen reglas expiradas 
+ 
+PRIORIZACIÓN DE REGLAS 
+Cuando múltiples reglas afectan al mismo processField, el sistema ejecuta primero la de 
+mayor prioridad y luego bloquea ese campo. 
+Criterios de Priorización 
+Criterio Penalización Descripción 
+Tiene productId -1200 Reglas específicas del producto 
+Tiene policyNumber -1100 Reglas para póliza específica 
+Tiene clientPolicy -1000 Reglas para póliza de cliente 
+Tiene contractNumber -900 Reglas para contrato 
+Tiene groupPolicyNumber -800 Reglas para grupo 
+Tiene thirdPartyCode -700 Reglas con tercero 
+Tiene channel3 -600 Canal nivel 3 
+Tiene channel2 -500 Canal nivel 2 
+Tiene channel1 -400 Canal nivel 1 
+Tiene level3 -300 Clasificación nivel 3
+
+
+--- [PÁGINA 55 DE 75] ---
+
+Criterio Penalización Descripción 
+Tiene level2 -200 Clasificación nivel 2 
+Tiene level1 -100 Clasificación nivel 1 
+Tiene disabledDate -10000 Máxima penalización 
+Una puntuación menor = mayor prioridad (se ejecuta primero). 
+ 
+TIPOS DE ACCIONES 
+Tipo Código Descripción 
+Rechazo Rechazo Rechaza la operación 
+Revisión Revisión Marca para revisión manual 
+Requisito requirement Solicita información adicional 
+Documento document Solicita documentación 
+Tarifa Tarifa Aplica extraprima 
+Asignación Asignacion Asigna valores a variables 
+Cuestionario questionnaire Solicita cuestionario adicional 
+Aviso message Mensaje informativo (no bloquea) 
+Aceptado Aceptado Acepta explícitamente 
+Cálculo Fecha TEMP Calcula y almacena fecha 
+Exclusión Exclusion Excluye elementos 
+Reproceso Reproceso Solicita reprocesamiento
+
+
+--- [PÁGINA 56 DE 75] ---
+
+Tipos de Cálculo de Valores 
+Tipo Descripción 
+DIRECT Valor literal 
+FACTOR Referencia a un fact existente 
+FORMULA Expresión Java (mismo motor V2) 
+FUNCTION Función predefinida del RTE 
+Prioridad de Acciones 
+1. Rechazo — Máxima prioridad 
+2. Revisión — Media-Alta 
+3. Requisito/Documento — Media 
+4. Tarifa/Asignación — Media-Baja 
+5. Mensaje/Aceptado — Baja 
+ 
+PARTE VI: MÓDULOS / PAQUETES DE COBERTURAS 
+ModulesService — Cálculo de módulos y paquetes de coberturas 
+¿Qué es un módulo? 
+Un módulo (o paquete) es una combinación predefinida de coberturas que el producto ofrece 
+al asegurado. El servicio externo CalculatePackagesService es quien conoce qué paquetes 
+son aplicables. 
+El resultado de ModulesService.calculateModules() es una lista de OPlyPlyCDto, donde 
+cada elemento representa una opción válida de cotización. 
+Cuándo se calcula 
+Se llama en la Fase 3 del orquestador, tras todos los controles técnicos y justo antes del bucle 
+de coberturas.
+
+
+--- [PÁGINA 57 DE 75] ---
+
+Dos modos de cálculo 
+La selección del modo es automática: se comprueba si todos los riesgos tienen 
+NUM_SIMULACION. 
+Condición Modo 
+Todos los riesgos tienen NUM_SIMULACION Con simulación → 1 resultado 
+Algún riesgo no tiene NUM_SIMULACION Sin simulación → N resultados 
+Con simulación (NUM_SIMULACION informado) 
+Para cada riesgo:  
+  1. Lee NUM_SIMULACION → preferenceId  
+  2. Llama a CalculatePackagesService (POST /calculate-packages)  
+  3. Aplica las coberturas del paquete al riesgo  
+  
+→ Devuelve List con UN ÚNICO OPlyPlyCDto 
+Sin simulación (primera cotización) 
+1. Construye PackagesRequest con TODOS los riesgos  
+2. Llama a CalculatePackagesService  
+3. Extrae todos los preferenceId únicos  
+4. Por cada preferenceId:  
+   a. Clona el OPlyPlyCDto original  
+   b. Para cada riesgo → aplica coberturas del paquete  
+   c. Si todos ok → añade a la lista  
+  
+→ Devuelve List<OPlyPlyCDto> con N elementos 
+Procesamiento de cada riesgo (processRisk) 
+processRisk(...)  
+  ├─ Obtiene preferenceId para este riesgo  
+  ├─ Obtiene ResponseRisk  
+  ├─ Busca ResponsePreference correspondiente  
+  ├─ ModulesDataFillService  
+  │    .fillModulesData()
+
+
+--- [PÁGINA 58 DE 75] ---
+
+└─ ModulesWithCvcFillService  
+       .fillModulesWithCvc() 
+Ordenación de coberturas 
+Antes del flujo DUP, se ordenan de mayor a menor por sqnVal. 
+Errores y casos límite 
+Situación Excepción 
+Con simulación: un riesgo no produce resultado AcdcException(PK_PLY_ERR) 
+Sin simulación: ninguna preferencia válida PlyValException(PK_PLY_ERR) 
+Error en CalculatePackagesService (HTTP 422) AcdcException 
+Otros métodos del servicio 
+Método Uso Descripción 
+getModules() CoveragePackagesController Coberturas del primer módulo para un 
+riesgo 
+getPreferences() CoveragePackagesController Todas las preferencias disponibles 
+obtainModules() Interno POST /calculate-preferencesId 
+ 
+PARTE VII: MOTOR RTE — TARIFICACIÓN 
+1. Introducción al Motor de Rating 
+El proyecto core-engine es el motor de cálculo de rating (tarificación) del sistema TRON. Su 
+responsabilidad principal es calcular las primas de seguros basándose en configuraciones de 
+ramo, coberturas, conceptos de desglose, reglas de negocio y fórmulas parametrizadas. 
+Funcionalidades Principales 
+● Cálculo de primas según configuración
+
+
+--- [PÁGINA 59 DE 75] ---
+
+● Conceptos de desglose: recargos, impuestos, descuentos 
+● Suscripciones: ajustes de suscripción 
+● Fórmulas parametrizadas: cálculos complejos configurables 
+● Motor de reglas JEasy Rules 
+● Anulaciones y modificaciones: devoluciones y ajustes 
+ 
+2. Arquitectura General RTE 
+RatingController  
+  /api/1.00/calculate-rating  
+  /api/1.00/calculate-rating-ply  
+  │  
+  ▼  
+PlyRatingUsecase (Caso de Uso)  
+  │  
+  ▼  
+Mappers (Transformadores)  
+  PlyRequestMapper:  
+    OPlyPlyCDto → RatingRequest  
+  PlyResponseMapper:  
+    RatingResponse → OPlyPlyCDto  
+  │  
+  ▼  
+RatingService (Motor)  
+  1. Enriquecimiento de configuración  
+  2. Ejecución de reglas de negocio  
+  3. Construcción de respuesta  
+  │  
+  ▼  
+Motor de Reglas (JEasy Rules)  
+  - Reglas de cobertura  
+  - Reglas de conceptos de desglose  
+  - Reglas de anulación  
+  - Reglas de rehabilitación  
+  - Reglas de suplementos especiales 
+ 
+3. API REST - RatingController 
+Endpoint 1: Calculate Rating (Request Estándar) 
+URL: POST /api/1.00/calculate-rating
+
+
+--- [PÁGINA 60 DE 75] ---
+
+Calcula el rating a partir de un objeto RatingRequest estándar. 
+Endpoint 2: Calculate Rating Ply (Request desde Póliza) 
+URL: POST /api/1.00/calculate-rating-ply 
+Mapea los campos principales de la póliza y calcula el rating. Utiliza la estructura 
+OPlyPlyCDto. 
+ 
+4. Flujo Principal de Cálculo 
+Secuencia del Flujo 
+1. Extracción de datos del request 
+2. Validación y carga de configuración de ramo 
+3. Identificación de operaciones de suscripción 
+4. Operaciones previas (si hay coberturas de suscripción) 
+5. Extracción de cotizaciones (Quotes) 
+6. Mapeo a Rating Request (PlyRequestMapper) 
+7. Ejecución del motor de cálculo (RatingService) 
+8. Mapeo a Ply Response (PlyResponseMapper) 
+RatingService — Fases del Cálculo 
+FASE 1: ENRIQUECIMIENTO 
+● Configuración de ramo, coberturas, conceptos de desglose 
+FASE 2: EJECUCIÓN DE REGLAS 
+● Por cada riesgo → periodo → cobertura: 
+○ Reglas de cobertura (Pure Premium) 
+○ Por cada concepto de desglose: 
+■ Reglas de cálculo, temporalidad, acumulación 
+FASE 3: CONSTRUCCIÓN DE RESPUESTA 
+ 
+5. Configuración de Ramos, Coberturas y Conceptos
+
+
+--- [PÁGINA 61 DE 75] ---
+
+BranchRatingConfig - Configuración de Ramos 
+Colección MongoDB: branches 
+Campo Tipo Descripción 
+country String País 
+company int Código de compañía 
+branch int Código de ramo 
+cancellationAsAT boolean Trata anulaciones como AT 
+days365 boolean Usa 365 días para cálculos 
+manualRate boolean Permite tasa manual 
+multiperiod boolean Admite multiperiodo 
+coverageRatingConfigs List Configuraciones de coberturas 
+Tipos de Cálculo de Cobertura 
+Valor Nombre Descripción 
+1 PERCENTAGE Porcentaje sobre capital 
+2 SO_MUCH_PER_THOUSAND Tanto por mil 
+3 FIXED_AMOUNT Importe fijo 
+4 FIXED_AMOUNT_PER_UNIT Importe fijo por unidad 
+6 OBJECT Programa personalizado 
+9 FORMULA Fórmula 
+10 FORMULA_ACDC Fórmula ACDC
+
+
+--- [PÁGINA 62 DE 75] ---
+
+Valor Nombre Descripción 
+11 MULTIPLICATIVE_RATE Tasa multivariable 
+Tipos de Cálculo de Concepto de Desglose 
+Valor Nombre Descripción 
+1 PERCENTAGE Porcentaje sobre base 
+2 SO_MUCH_PER_THOUSAND Tanto por mil 
+3 FIXED_AMOUNT Importe fijo 
+5 OBJECT Programa personalizado 
+6 FORMULA Fórmula 
+7 FORMULA_ACDC Fórmula ACDC 
+ 
+6. Introducción a Suscripciones 
+Una cobertura de suscripción permite gestionar múltiples ajustes individuales. Se activa 
+cuando mcaAjusteSuscripcion == "S". 
+SUPPLEMENT-OPERATION-RULES 
+Reglas que determinan qué operación ejecutar, con jerarquía de búsqueda: 
+1. country + company + branch + product 
+2. country + company + branch + product="99" 
+3. country + company + branch="99" + product="99" 
+4. country + company="99" + branch="99" + product="99" 
+Combinaciones de Operaciones
+
+
+--- [PÁGINA 63 DE 75] ---
+
+Combinación Código Método 
+S + N + N SNN create() 
+N + N + S NNS modify() 
+N + S + S NSS modifySuspended() 
+N + S + N NSN suspension() 
+N + N + N NNN compensate() o emptyOperation() 
+RESCATE=S - rescue() 
+BONOS=S - bonus() 
+Estados de Suscripción 
+Estado Código Incluye en Capital Incluye en Prima 
+Activa AC Sí Sí 
+Suspendida SP Sí No 
+Cancelada CA No No 
+ 
+11. Arquitectura de Mapeos 
+PlyRequestMapper: OPlyPlyCDto → RatingRequest 
+● Extrae FixedValues desde OPlyGniS 
+● Extrae Parameters desde OPlyAtcCT 
+● Mapea riesgos y coberturas 
+● Asigna operaciones de suscripción 
+PlyResponseMapper: RatingResponse → OPlyPlyCDto
+
+
+--- [PÁGINA 64 DE 75] ---
+
+● Actualiza primas en coberturas 
+● Crea/actualiza OPlyBrwP con breakdown concepts 
+● Mapea: ecmBrwCncVal, anlAmn, enrAmn, anlAgrAmn, nonCnmAmn 
+ 
+16. Introducción a JEasy Rules 
+El motor usa JEasy Rules con reglas basadas en POJOs y anotaciones @Rule, @Condition, 
+@Action, @Priority. 
+Reglas de Cobertura (Orden de prioridad) 
+Prioridad Regla Cálculo 
+1 ManualRule Si prima manual → usa valor manual 
+10 PercentageRule capital * rate / 100 
+11 SoMuchPerThousandRule capital * rate / 1000 
+12 FixedAmountRule amount 
+15 FormulaRule Evalúa fórmula 
+16 FormulaAcdcRule Evalúa fórmula ACDC 
+17 MultivariateRule Factores multivariable 
+100 CapitalChangeRateRule Aplica tipo de cambio 
+Reglas de Breakdown Concept (Flujo) 
+1. Determinación de Base: Capital / PurePremium / Aggregator 
+2. Cálculo del Importe Anual: Porcentaje / Fijo / Fórmula 
+3. Aplicación de Prima Mínima 
+4. Temporalidad: Prorrata 
+5. Redondeo 
+6. Acumulación
+
+
+--- [PÁGINA 65 DE 75] ---
+
+22. Introducción al Motor de Fórmulas 
+FORMULA (Estándar) 
+Variables: [VARIABLE], Constantes: MMATH.f_cte('NOMBRE') 
+[BASE_CALCULO] * MMATH.f_cte('TASA_RECARGO') / 100 
+FORMULA_ACDC (Advanced) 
+Funciones personalizadas adicionales: FUNC_XXX() 
+Colecciones MongoDB 
+Colección Contenido 
+FORMULA-DEFINITION Definiciones de fórmulas 
+CONSTANT-DEFINITION Constantes parametrizadas 
+Ejemplo Completo de Fórmula 
+( [BASE_CALCULO]  
+  / (1  
+     - [COMISION]/100  
+     - [412]  
+     - [413]  
+     - MMATH.f_cte('PCT_RE_140')  
+     + MMATH.f_cte('PCT_FC_140')  
+    )  
+) * [413] 
+ 
+27. Introducción a Coverage Packages 
+Endpoint: POST /api/1.00/calculate-packages 
+Caso 1: Selección Directa (preferenceId > 0): Solicita una preferencia específica.
+
+
+--- [PÁGINA 66 DE 75] ---
+
+Caso 2: Búsqueda Inversa (preferenceId = 0): Busca preferencias que contengan 
+coberturas específicas. 
+Colecciones MongoDB 
+Colección Propósito 
+COVERAGE-PACKAGE-DEFINITION Definición de paquetes 
+COVERAGE-PACKAGE-NAME Nombres de paquetes 
+ 
+PARTE VIII: CLIENTES EXTERNOS (WebClient) 
+1. Patrón común 
+Todos los clientes externos siguen el mismo patrón: 
+1. Serializar payload a JSON (auditoría)  
+2. webClient.post().uri(url + "/endpoint")  
+3.   .headers(AuthHeaderUtil::applyAuthHeader)  
+4.   .bodyValue(payload)  
+5.   .retrieve()  
+6.   .onStatus(422, parsear AcdcError  
+       y lanzar AcdcException)  
+7.   .bodyToMono / bodyToFlux  
+8.   .contextWrite(ctx -> ctx.put(  
+       "auditRequestBody", requestBody))  
+9.   .block() 
+Puntos clave: 
+● WebFlux WebClient en modo bloqueante (.block()). 
+● HTTP 422 → parsea AcdcError y lanza AcdcException. 
+● El requestBody serializado se inyecta en el contexto reactor para auditoría. 
+ 
+2. Configuración de autenticación 
+Fichero: util/AuthHeaderUtil.java
+
+
+--- [PÁGINA 67 DE 75] ---
+
+Valor de auth.type Cabecera generada 
+Basic Authorization: Basic Base64(username:password) 
+Bearer Authorization: Bearer <password> 
+vacío / otro Sin cabecera 
+ 
+3. Tabla de clientes 
+Cliente Servicio externo 
+SelectRiskService Motor DUP 
+Endpoint: POST /risk-selection Config: external.services.select-
+risk.* 
+RteExternalService Motor RTE 
+Endpoints: POST /calculate-rating-ply, POST 
+/function-dup Config: external.services.rte.* 
+CalculatePackagesService Servicio de paquetes 
+Endpoints: POST /calculate-packages, POST 
+/calculate-preferencesId 
+Config: external.services.coverage-
+packages.* 
+PaymentPlansService Planes de pago 
+Endpoint: POST /calculate Config: external.services.payment-
+plans.* 
+TechnicalsBasisService Bases técnicas 
+Endpoint: POST /technical-basis/search Config: external.services.technical-
+basis.*
+
+
+--- [PÁGINA 68 DE 75] ---
+
+4. SelectRiskService — Motor de reglas DUP 
+Endpoint: POST {select-risk.url}/risk-selection 
+Lo llama DupServiceImpl en cada paso del orquestador. 
+Response: RiskSelectionResponse con appliedRules[]. 
+ 
+5. RteExternalService — Tarificación 
+callRte() — POST {rte.url}/calculate-rating-ply 
+Se llama desde RteServiceImpl.sendToRteService() (dos veces por módulo: RTE Flow #1 y 
+RTE Flow #2). 
+callRteFunctionCalculation() — POST {rte.url}/function-dup 
+Para cálculos puntuales de funciones DUP individuales. 
+ 
+6. CalculatePackagesService — Paquetes de coberturas 
+callCalculatePackages() — POST {coverage-packages.url}/calculate-packages 
+callObtainPackages() — POST {coverage-packages.url}/calculate-preferencesId 
+ 
+7. PaymentPlansService — Planes de pago 
+Endpoint: POST {payment-plans.url}/calculate 
+Solo se invoca si executionType == "7". Un fallo no interrumpe el flujo principal. 
+ 
+8. TechnicalsBasisService — Bases técnicas 
+Endpoint: POST {technical-basis.url}/technical-basis/search 
+No forma parte del flujo batch.
+
+
+--- [PÁGINA 69 DE 75] ---
+
+PARTE IX: SISTEMA DE AUDITORÍA 
+1. Visión general 
+El sistema registra de forma asíncrona y no intrusiva cada petición HTTP entrante y todas 
+las llamadas WebClient salientes. 
+Petición HTTP entrante  
+  │  
+  ▼  
+AuditFilter  
+  Inicializa AuditContext (ThreadLocal)  
+  Captura URI, método, body req/res  
+  │  
+  ▼ (cada llamada WebClient)  
+WebClientAuditInterceptor  
+  Captura URL, body, status, duración  
+  │  
+  ▼  
+AuditContext  
+  Acumula hasta 30 WebClientCallInfo  
+  │ al finalizar la petición HTTP  
+  ▼  
+AuditService (@Async + CircuitBreaker)  
+  No bloquea el hilo principal  
+  │  
+  ▼  
+MongoDB: colección audit-request 
+ 
+2. Estrategias de auditoría (AuditStrategy) 
+Configurable con audit.strategy en application.yml. 
+NONE (por defecto) 
+● No se captura nada. Cero overhead. 
+ALL 
+● Captura todas las llamadas WebClient (éxitos y errores). 
+● Captura bodies de request y response.
+
+
+--- [PÁGINA 70 DE 75] ---
+
+ERROR 
+● Solo captura bodies si hubo algún error (4xx/5xx o excepción). 
+● Ideal para producción. 
+ 
+3. Componentes y flujo de datos 
+Componente Tipo 
+AuditFilter OncePerRequestFilter — Intercepta requests HTTP. Inicializa 
+AuditContext. 
+WebClientAuditInterceptor ExchangeFilterFunction — Intercepta cada llamada WebClient. 
+AuditContext ThreadLocal — Almacena estado de auditoría de la petición actual. 
+AuditService @Service + @Async — Persiste en MongoDB. 
+AuditRepository Spring Data MongoDB — Interfaz de persistencia. 
+AuditLog @Document MongoDB — Modelo de datos persistido. 
+ 
+8. Modelo AuditLog en MongoDB 
+Colección: audit-request 
+AuditLog {  
+  _id,  
+  requestId,  
+  timestamp,  
+  endpoint,  
+  httpMethod,  
+  requestBody,  
+  responseBody,  
+  responseStatus,  
+  webClientCalls: [  
+    {  
+      serviceName,  
+      url,  
+      httpMethod,
+
+
+--- [PÁGINA 71 DE 75] ---
+
+requestBody,  
+      responseBody,  
+      statusCode,  
+      startTime,  
+      endTime,  
+      durationMs,  
+      success,  
+      errorMessage  
+    }  
+  ],  
+  totalDurationMs,  
+  hasErrors,  
+  totalCalls,  
+  successfulCalls,  
+  failedCalls,  
+  persistedAt  
+} 
+ 
+9. Circuit Breaker 
+Protege MongoDB de sobrecarga. 
+failureRateThreshold:          50%  
+slidingWindowSize:             10  
+minimumNumberOfCalls:          5  
+waitDurationInOpenState:       30s  
+permittedCallsInHalfOpenState: 5  
+autoTransitionHalfOpen:        true 
+Estado Comportamiento 
+CLOSED Normal — todas las llamadas se realizan 
+OPEN MongoDB posiblemente caído — se saltan guardados 
+HALF_OPEN Permite 5 llamadas de prueba 
+ 
+10. Protección de tamaño (límite 16MB MongoDB) 
+Si estimatedSize > 14MB:
+
+
+--- [PÁGINA 72 DE 75] ---
+
+1. Trunca WebClientCallInfo progresivamente (las más antiguas primero) 
+2. Si sigue excedido: trunca bodies de llamadas con error → "TRUNCATED" 
+Bodies de la petición principal NUNCA se truncan. 
+ 
+11. Configuración 
+audit: 
+  strategy: ALL           # NONE | ALL | ERROR 
+  filter: 
+    enabled: true 
+    exclude-patterns: /actuator/**,/swagger-ui/**,/v3/api-docs/**,/favicon.ico 
+    max-body-size: 250000 
+  webclient: 
+    max-body-size: 5000 
+ 
+PARTE X: SEGURIDAD 
+⚠️ Documento pendiente de completar 
+@Alberto Rodrigo · @Santiago Conde 
+Esta sección queda reservada para la versión definitiva de seguridad del proyecto. 
+ 
+PARTE XI: PLANES DE PAGO 
+⚠️ Pendiente de documentar 
+Esta sección será completada cuando se documente el servicio PaymentPlanService y su 
+integración con el endpoint POST /calculate del servicio externo de planes de pago. 
+Resumen actual: 
+● Solo se invoca si executionType == "7" (cotización).
+
+
+--- [PÁGINA 73 DE 75] ---
+
+● Un fallo en el cálculo de planes de pago no interrumpe el flujo principal — se 
+devuelve paymentPlans: []. 
+● El servicio externo se llama a través de PaymentPlansService con el endpoint POST 
+{payment-plans.url}/calculate. 
+ 
+GLOSARIO DE TÉRMINOS 
+Término Descripción 
+DUP Data Update Process — Motor de reglas de negocio 
+RTE Motor de tarificación / Rating Engine 
+Rating Proceso de cálculo de prima (tarificación) 
+Pure Premium Prima pura, prima base antes de recargos 
+Breakdown Concept Concepto de desglose (prima pura, recargos, impuestos) 
+Coverage Cobertura de seguro 
+Risk Riesgo asegurado 
+Supplement Suplemento de póliza 
+Temporality Prorrata temporal 
+Subscription Suscripción individual dentro de una cobertura 
+Technical Basis Bases técnicas para cálculo de primas 
+Polizón / OPlyPlyCDto Estructura de datos de póliza completa 
+FixedValues Campos fijos mapeados de la póliza (datos generales) 
+variableData Atributos dinámicos de póliza/riesgo/cobertura
+
+
+--- [PÁGINA 74 DE 75] ---
+
+Término Descripción 
+Parameters Parámetros dinámicos mapeados de la póliza 
+JEasy Rules Framework de motor de reglas 
+Facts Datos disponibles para reglas 
+Formula Fórmula matemática parametrizada 
+MMATH.f_cte() Función para referenciar constantes en fórmulas 
+FUNC_XXX Patrón de funciones personalizadas (solo FORMULA_ACDC) 
+CT Control Técnico 
+PREVIOUS Pre-cálculo de atributos 
+VALIDATION Validación de atributos 
+ 
+COLECCIONES MONGODB 
+Colección Propósito 
+branches Configuración de ramos 
+breakdownConcepts Conceptos de desglose 
+economicConcepts Conceptos económicos 
+quotes Cotizaciones multivariable 
+FORMULA-DEFINITION Definiciones de fórmulas 
+CONSTANT-DEFINITION Constantes para fórmulas 
+SUPPLEMENT-OPERATION-RULES Reglas de operaciones de suscripción
+
+
+--- [PÁGINA 75 DE 75] ---
+
+Colección Propósito 
+TECHNICAL-BASIS Bases técnicas 
+COVERAGE-PACKAGE-DEFINITION Definición de paquetes 
+COVERAGE-PACKAGE-NAME Nombres de paquetes 
+RS-RULES-ACTIONS-CONDITIONS Reglas de selección de riesgos (DUP) 
+audit-request Registros de auditoría 
+ 
+Fin del documento 
+Versión: 1.0 Fecha: Marzo 2026 Equipo: ACDC - MAPFRE TRON

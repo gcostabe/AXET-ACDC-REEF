@@ -1,0 +1,1949 @@
+que unos están trasmadugando, otros han tocado viajar y otros están trasnochados.
+Entonces, vamos a trabajar esta semana en un nuevo componente dentro de la parte de
+RID, voy aquí a presentar. Entonces, estamos buscando un hueco para hacer esa formación,
+poderla extender, que no solo esté en círculo de personas, sino que sea más transversal y
+lo logramos hacer esta semana, en donde vamos a ver esa nueva funcionalidad de RID. Como tal,
+es un nuevo activo digital que se ha venido trabajando y diseñando a lo largo de casi
+un año y unos meses. Por poner en contexto, primero que todo agradecerles, no sé si todos
+los conocemos y me gustaría que nos intentáramos como para ver dónde están porque vamos a
+realizar el equipo y vamos a trabajar muy de la mano entre todos. Creo que estamos todos los que
+necesitamos estar porque están todos los compañeros que han trabajado aquí con el activo digital,
+como el grupo de personas que se va a unir a llevar los nuevos desarrollos que se vayan a
+implementar en RID. Entonces, pues nada, empecemos por la delegación de Brasil, que es la que viene
+más lejos. Si, reforzo de Brasil. Y por qué estás haciendo ello? Porque como líder de esta
+equipo. ¿Libertad? Es eso. ¿Y vas a encargarte de que la implementación de los productos? Si,
+también, junto con el equipo funcional. Con el equipo funcional. Si, y está Vinicius,
+que es lo que es. Vinicius, presentate. Hola, buenos días a todos. Soy Vinicius, soy del hub
+de Brasil, soy especialista en sistemas y he estado trabajando hace un par de meses en la
+configuración del producto. Así que voy a estar trabajando con los compañeros de España,
+de Colombia en la implementación del producto de Brasil. Ya tenemos muchas historias, tenemos
+muchas muchas cosas ya liberadas para implementar ya dentro de RIF y dentro de la CDC ahora. Así
+que estaremos ahí trabajando de la mano con ustedes. Vale. También está apoyando al equipo
+Brasil. David y está Daniel. David, ¿dónde se dice? Estoy por acá. Ah. Gracias, compañeros.
+Yo soy David, soy del hub de Colombia, he estado en la parte de misión, había estado apoyando al
+equipo de Brasil y también a Manuel por algunos productos de salvador. Vale. Y Daniel, ¿está
+en dónde? Ya está en Colombia. ¿Ya se volvió para Colombia? Si. Que está contigo, ¿no? Si.
+El es no está metido acá, ¿no? Yo le mando la invitación, quiero ver en Colombia un poco más
+dentro de la mano. Un, dos, tres. Bueno, de parte de otros equipos que trabajan con nosotros está
+NTT. Vale. NTT también está trabajando con nosotros en esta parte de individuales, ¿cierto? Sí.
+Está a Óscar y estás tú, ¿no? Por favor, por favor. Bueno, yo soy Alejandro Salmón. Como
+voy, soy del NTT y estamos aquí ayudando en todo el tema de individuales en la migración de
+los programas de fóbol para lo otro. Y Óscar, que es mi superior, que ahora vendrá, también está
+metido en eso. Vale, gracias. Raúl, no sé quién más de Indra habido o está con Óscar.
+Bueno, si no me dejo otra cosa. Y también vengo a parte de Indra. Ah, contigo se ha hablado.
+Sí, sí. Ah, qué bien. Gracias por buscarme. Y bueno, nada, todavía ni todo lo que hago es para
+la cantorita como futuro. Vale. Este, de mis compañeros de colectivos, ellos ya conocen
+esta historia. Entonces, no sé si hay alguien conectado aquí de colectivos ahora, ¿no? No creo,
+no. Pero ellos, con ellos arrancamos el proyecto, vale, de la integración de actividades y tal.
+Y bueno, que son los programas que los conoce, que son Carlos y Luz Jiménez. Entonces, bueno,
+ya nos queda en la parte nuestra. Pesemos por arquitectura.
+de la gente, de la gente, de la gente, de la gente, de la gente.
+Yo soy Jorge Reguillo, también el compañero de Alberto y David, y el arquitectur.
+Yo soy Luis Fernando y estoy en el equipo de...
+Bueno, a parte de eso, obviamente, está el componente de la actividad de corcines,
+que ya ha sido posible y ya está.
+No soy feliz, pero estoy en el departamento de emisión y estamos formando parte
+de la integración del activo digital con las diferentes operaciones online, básicamente, de emisión.
+Ya cuando tú te presentaste. ¿Y por qué?
+Yo soy una de los equipos de Llevia, ayudando a la gestión con Freddy y David
+para gestión de todos sus fizabiertos, edifos y del proyecto.
+Y nos queda el lab y ahí hay en cabeza el Manuel, que es la persona que ha sumido
+toda la parte del consumimiento de la CDC aquí con Alberto y Miguel,
+que nos está apoyando en todo lo que es integración con la SAPIS y con la CDC.
+Vale, yo soy Manuel, trabajo como líder técnico en RILA, aquí es Manuel
+y básicamente todos los problemas que vaya viendo del código,
+probablemente un mejor amigo o alguno de mis mejores soldados.
+Bueno, yo soy Miguel y eso me ha dicho Freddy.
+Estoy en la parte del desarrollo con la implementación de las SAPIS con la CDC
+y alguna tarea que me ha morido mal.
+Es como ven aquí estamos, que esto no se hizo solo, se hizo con un equipo,
+la unión de todos los equipos que tenemos aquí en la TI,
+para poder llegar a este puerto que tenemos inicialmente.
+Eso es un punto de partida, ¿vale?
+Porque el activo digital en este momento lo estamos certificando para RILA.
+Entonces conforme van entrando más productos, más cosas,
+pues ahí tiramos certificando ya la funcionalidad de todos los procesos.
+Y pues nada, ¿vamos a trabajar esta semana o va a presentar aquí el plan de trabajo?
+Bueno, perdón, me he saltado cosas, disculpen.
+Aquí pueden estar tus compañías y la idea, la idea cuál es,
+la idea es que este conocimiento que tenemos,
+la idea que tenemos de esto es para traducirlo,
+y que esto sea, que se repliquen todas las instalaciones donde sea útil,
+el activo digital que es una compañía conmigo,
+una compañía Manuel y tantos compadreros también de la TI.
+Entonces, Sonia, ¿tú estás con nosotros en la interpretación?
+Bueno, en Coreno, en la parte de Geminción,
+con Manuel en los entrenamientos.
+Este es el idioma de implantación.
+Sí, plantaciones, en realidad no estamos en implantaciones.
+En la parte de Geminción, de implantaciones de Centroamérica con Manuel,
+y Geminí Gavío también está en el Estado.
+Bueno, creo que todos me conocen, ¿no?
+Ronald Rojas de Implantaciones Novid y Salud,
+que Sonia está un poco enredada porque esculturalmente es una cosa y funcionalmente otra.
+A pesar de que aquí hay compañeros que son de Core,
+igual trabajo con nosotros en todas las implantaciones.
+Sonia es una de ellos.
+Entonces, nada, Fred, y aquí a ver qué aprendemos
+para tratar de llevar a todos los productos que tenemos ahí,
+que tenemos en los cuentos, los nuevos con esto.
+Claro que sí, y nada, bienvenidos.
+Se me olvidan mitad del equipo.
+Manuel es quedando mal hoy.
+Falta el equipo que está con nosotros de vida,
+porque inicialmente, volví digo, este proyecto es la Cocombia.
+Está Marjorie, que Marjorie es una de las personas que salieron
+de las implantaciones de los productos de vida.
+Y está Jordanes, está Dane, está Javier, ¿no?
+Sí, vamos con Prentes.
+Estoy en el equipo de Rispida.
+Bueno, por ahora trabajando con los evolutivos de Uruguay,
+de vida Uruguay, con la implementación de Panamá.
+Sí, de vida en Panamá, y pues ahora la idea es continuar con Brasil
+y lo que salga para este año,
+que por allí entiendo que viene Chile y Perú.
+Entonces, bueno, acá para lo que salga, ¿no?
+Bueno, yo, Daniel, lo voy a presentar porque es que es mi becario.
+Ese es el profesor de semana pasada,
+y cual está apoyándonos como becarios
+por la semana pasada y fue.
+Daniel, encantado.
+Yo soy Javier Artine y estoy también en el equipo de vida
+con Freddy, Jordanes, Marjorie y Daniel.
+Y bueno, realmente estoy más metido con temas de Panamá
+y de Aseguro, pero bueno, disponible para todos.
+Yo soy Jordanes Alves,
+igual al pertenece al equipo de Rispida
+y, realmente, a lo que salga Panamá,
+ahorita estoy, principalmente,
+con Rispida, España, individual, la parte de formulación.
+Y, bueno, igual al equipo de Rispida.
+Compañal, allá es que yo no veo quién está conectado
+que me aparecen solo los apellidos, las iniciales.
+Entonces, si está fuera de la sala,
+¿quién está fuera de aquí?
+Para el presente, ¿no?
+Sí, sí, el presente.
+Ah, mira, está Ramón.
+Ah, Ramón, si queréis, se ha empezado yo.
+Bueno, de igual.
+Ah, vale, sale.
+Hola, ¿qué tal?
+Yo soy Esther, vengo por la parte de Neteterata,
+por la parte de mantenimiento Core,
+y están por aquí también mis compañeros,
+Ayub, Sihami y Carlos,
+que se van conectando a estas formaciones.
+¿Quién más está por ahí?
+¿Quién más?
+Bueno, hola, yo soy Oscar,
+y estoy en el equipo de prestaciones de RIF.
+Y, nada, estoy al cargo de Miguel Ángel Martínez Soliano,
+y, bueno, soy aneista programador,
+y, pues, entre hace casi un mes,
+y, bueno, pues empezó a trabajar con RIF,
+sobre todo en backend.
+Luego también tengo compañeros que están trabajando
+en la parte de front,
+pero digamos que yo me encargo un poco más
+de la parte de backend,
+de servicios, de microservicios, vamos.
+Pues bienvenido, Oscar.
+Gracias.
+¿Alguien más, compañeros?
+Me quiero presentar.
+No es obligatorio.
+Vale.
+Entonces, pues bienvenidos a todos.
+La idea de esta formación que la tenemos aquí,
+ahora sí va al compartirlo.
+Es explicar tanto lo que se ha hecho
+el componente de la actividad digital de que va,
+que piezas lo componen, cómo se estructuró,
+cómo se implementó, cómo funciona.
+Poderéis, explicando cada una de esas piecitas
+que están componiendo esa parte de la actividad,
+y hay uno de bioclart,
+y es que, como decía Marjori,
+nosotros ahorita tenemos los proyectos.
+El actividad digital ha empezado con vida,
+y ha empezado con España,
+ya que empezamos con los países no grandes del grupo.
+Empezamos con España y empezó la actividad digital,
+y viene Brasil.
+Y Brasil también va a usar el actividad digital.
+Entonces, uno de los puntos sobre su actividad digital
+es España y Brasil.
+Te aniré ese conocimiento.
+Está hablando de vida para empezar a trabajar con esa funcionalidad
+dentro de él.
+Y por eso está aquí los demás compañeros
+para que en los países donde también se vaya a utilizar
+el actividad digital de las implementaciones
+que se llevan haciendo de nuevo vida,
+lo empiecen también.
+No siendo, segundo, empezando con vida igual.
+Eso es fundamental,
+que nos toca empezar a manifestar que todos los grupos van bien.
+¿Cuál es el objetivo?
+¿Cómo es la agenda de esta semana?
+Hoy, digamos que nos vamos a enfocar
+en todas las piezas y componentes
+al detalle de lo que está hecho el actividad digital.
+Entonces, la parte funcional,
+la partidura de diseño, integraciones, flujos,
+en point, en online,
+para que aquí nos quede claro
+cómo se ha integrado esta pieza dentro de Brasil.
+Entonces, cuando llegue el RIV,
+está el activo por mi foco.
+Si estuviera otra pieza,
+no está separada el interior.
+Se va a con RIV como todo lo que estamos haciendo.
+Y la metodología a partir del martes
+en la mañana, explicar funcionalidades
+con lo que necesitamos inicialmente para Brasil.
+Entonces, en la mañana haremos teoría
+y si nos queda conforme el amor liberando,
+empezamos a hacer la práctica.
+¿Qué quiere decir esto?
+Que al día viernes,
+podamos tener integrado el esqueleto
+que hay actualmente en el producto de Brasil
+con, como con todas las teclas.
+Pero sí con las líneas generales
+de lo que iría a hacer el trabajo de implementación,
+de una línea de un nuevo producto
+trabajando con el activo del privado.
+Entonces, la idea es que esto sea práctica.
+No, va a haberla, obviamente,
+la conducción del todo teórico,
+pero la idea es que de aquí,
+el producto del esqueleto que está montado
+en el entorno, que va a ser el entorno de desarrollo
+de Brasil, es que el ya trabajando con el activo digital,
+con la funcionalidad, ahí vamos a encontrar,
+vamos a cacharrear, aquí están.
+Oye, me faltó Daniel.
+¿Daniel está?
+¿Diga David?
+David, David está, ¿no?
+Sí, estoy pasando en modo de boca.
+Estoy, estoy.
+¿Y por qué no se presenta?
+Manuel ya no se presentaba a todos.
+Con eso.
+Es el mejor resultado de la familia.
+¿Por qué no se presenta?
+David, presentate.
+Sí, pues he estado desarrollando el ACDC desde que empezó,
+y después nos unió Manuel y nada,
+cualquier problema que haya con el activo,
+o Manuel, o yo, en principio.
+Bien, gracias.
+Nada.
+Entonces, compañero, sé que ya te va a dar el jetlag,
+pero la idea es que tengamos esa capacidad aquí al viernes, ¿vale?
+Entonces, este, vamos a trabajar aquí,
+todos mirando el producto, conociendo.
+Y con eso vamos a ir cacharreando, ¿vale?
+Y que se pueda ver las diferentes funcionalidades.
+Hoy vuelvo y digo que conozcan las capacidades,
+y aquí sí me gustaría que ustedes la tengan bien,
+bien claras para saber qué es capaz de hacer el activo digital,
+en cuál, en dónde es el foco del proceso
+o la integración contra el activo digital, ¿vale?
+Ahí vamos a resolver dudas de por qué salgan, capacidad, etcétera, ¿vale?
+Pues lo digo, esto es un iguíche,
+porque el conforme hemos vendido trabajando en él,
+pues se va impreciéndola cada uno de sus componentes,
+hemos hecho mejoras,
+inicialmente, pues hay unos plantamientos,
+eso ha ido evolucionando.
+Entonces, por comentar la agenda, ¿no?
+Hoy tenemos, pues esto que estamos hablando de la introducción,
+a lo importante, el café,
+más o menos a las diez y media compadre,
+entonces para que te bajen a tomar café,
+si no hay cerveza, no hay.
+Entonces, hoy tenemos especificaciones funcionales, ¿vale?
+La parte arquitectura en torno al activo digital,
+aquí van a ver varios conferencistas.
+Alberto, para explicar esto,
+obviamente vamos a ir trabajando durante la semana cosas que salgan,
+pero pues para ir alineando,
+Alberto nos va a ayudar con todo lo que es el imprimitor,
+que te imprimirá en torno.
+Algo sigue el diseño técnico,
+ahí está Navaman, ¿vale?
+La integración de APIs
+con todos los procesos batch de emisión con Miguel.
+Aquí también es importante,
+y me ha colaborado mucho también Miguel Guila, ¿vale?
+Por Miguel Guila y Pablo de lasques,
+que hemos trabajado también en las integraciones de las APIs,
+aunque sea Miguel que está acá,
+pero obviamente con el soporte de Pablo y Miguel Pará,
+para ver esos las apps, ¿ok?
+La parte de emisión online la hemos llevado,
+el 100% la bandera la tenía un fence
+para hacer todas las análisis e integraciones, ¿vale?
+Vamos a explicar un poquito los trucos del activo digital,
+los endpoint,
+cómo se ha concebido cada uno de sus puntos.
+Y luego a partir de mañana,
+van a ver más o menos en líneas generales
+el activo está divido en cuatro funcionalidades,
+selección, módulos, RTD,
+y hay una parte que es la del contenedor
+y de entrada que es la de cómo nos vamos a explicar.
+Entonces, cada día es entrarnos
+en una de esas funcionalidades
+para que hay especificemos
+de las necesidades y de los funcionalidades
+que están pidiendo de Brasil,
+y de decir sacando de Aní,
+mirando cuáles incorporamos, ¿vale?
+Vamos a hacerlo despacito,
+es decir, son por las que son fáciles entre comillas, ¿vale?
+Y las que tienen mayor complejidad,
+dependiendo del tiempo, ¿no, Óscar?
+Óscar, ¿no?
+Entonces las vamos a ir tratando, ¿vale?
+Ahí van a ver ustedes qué tenemos
+a qué hemos llegado, ¿OK?
+Entonces, la metodología es esa,
+es la manera de estar y quería preguntar,
+¿la...
+¿el producto está, no?
+Porque lo dimos el pueblo, ¿no?
+Está, está litiendo
+los errores que había antes solucionado.
+Está solucionado internacional en pantalla,
+después de la solucionación,
+después de la metodología.
+¿Vale?
+¿Por qué hoy vamos a hacer...
+Sí, porque nos da tiempo de mirar
+que vamos a mover unas marcas
+que hacen que se conecte al activo digital,
+entonces vamos a ver si ya tenemos conexión,
+¿no?
+Sí.
+Como hemos evolucionado vida, ¿vale?
+Hay una nueva propiedad en vida.
+Se llama suscripciones.
+¿Y por qué?
+Porque los componentes de vida,
+los componentes de vida riesgo,
+pues el cálculo es el cálculo de...
+de un capital por las primas,
+por las cosas, o sea,
+la fórmula es más o menos la misma.
+Pero cuando viene la parte de ahorro,
+cambia totalmente, ¿vale?
+Este nuevo producto tiene ahorro.
+¿Qué le quiero?
+Solo riesgo.
+Pero, meten los modus suscripciones
+de compañero, entonces, es el segundo examen.
+Que no lo conozco, ¿vale?
+Que si este actualmente el dron
+no tiene oportunidad.
+Pero es que este...
+este...
+Bueno, lo vemos entre las coberturas, ¿vale?
+¿Por qué?
+No, esto ahora se me ha escrito, espero.
+A día de hoy creo que no.
+No tiene ningún proponente de ahorro.
+No me lo diste.
+No creo que ahorro.
+La de muerte.
+Vale o no hables.
+Y nos hables.
+Déjenme mirar.
+No hables, no hables.
+Ni quién debutan.
+Déjenme la pregunta.
+Es prima nivelada.
+¿Es un bien vivir más otras coberturas?
+Sí.
+Entonces, ahí...
+vamos a usar los proponentes porque...
+si es un bien vivir...
+la formulación...
+Sí.
+Es una formulación...
+completamente de vida, ¿vale?
+donde hace...
+no hay que lo explicar yo, no hay mejor que yo.
+Pero donde se hace es si es prima nivelada.
+Si es multiperión.
+Que es...
+pero en así las cinco años.
+Hay productos cinco años.
+O productos de...
+de larga duración anuales renovables, ¿vale?
+Aunque sea, por ejemplo, la de muerte.
+Trabaja, si es el enfoque
+que inicialmente llevamos a bien vivir.
+Pues esos tienen formulaciones
+que en su momento se llevaron
+al componente de forma.
+Pero ya, por ejemplo, con lo que salió España
+con la parte de suscripciones,
+pues vimos que la podamos llevar a uno.
+Y teníamos otro mejor para qué.
+Para todos los que son los suplementos
+de rescates,
+las extunción de...
+creo...
+las alias, las proponentes, etcétera.
+Suscripciones que se hizo para vida.
+El componente de muerte
+nos viene para los compornos,
+las demás culturas que sonriendo.
+La pórmula de...
+capital, una tasa
+que dependerá de...
+van a ver que hemos evolucionado
+en la parte de vida
+las bases técnicas.
+Las bases técnicas serán un elemento.
+Inicialmente los construimos
+de una manera porque
+era el lado lo que teníamos en su culto de partidas.
+Pero ya viendo la necesidad
+de la experiencia que vivimos
+con los productos de Uruguay
+y de Toanama,
+vimos que las bases técnicas podían evolucionar
+y podíamos standardizarlo. Entonces, con la llegada
+de la actividad digital, que eso sea normalizado
+en una manera mucho más eficiente,
+se ha dejado estandarizados
+y organizó diseño de una estructura
+para que las bases técnicas sean totalmente transparentes.
+E, inclusive,
+podamos extender tablas
+no necesariamente que son de mortalidad
+sino de componentes de intereses, gastos y tal.
+Para que también las podamos
+incluir en algún cálculo
+de la cobertura de la lista.
+Eso también es
+un nuevo elemento que estamos
+llevando
+para vida.
+Y, a dicionar...
+Pregunta.
+Siempre comentas que hemos evolucionado
+vida, vida, vida.
+Cuando hablas de eso, hablamos de los productos
+con tratamiento de vida.
+Es que
+en muchos productos de vida
+que tenemos en América Central
+no podemos usar tratamiento de vida
+porque también tenemos el manejo
+declarativo.
+Entonces,
+para quedarnos declarativos
+tenemos que ser también de transporte.
+Entonces aquí...
+Porque me imagino que hacen mesame las cabras
+y eso. Sí.
+Tenemos la
+parte livigual
+o colectiva, pero
+también
+está la parte declarativa.
+Entonces no lo podemos poner como tratamiento de vida.
+Vale. Cuando hablo de vida
+o el producto de vida, sólo que
+van a ver que esto podría ser
+para lo que es el proceso
+el control activo, le va a dar un poco igual.
+Vale. Vale.
+Lo único que sí, obviamente, hemos
+entrado
+los evolutivos de vida, ¿vale?
+¿Por qué nació esos nuevos
+evolutivos de la necesidad para la espalda?
+Y vimos que
+para la parte que hemos hecho de Brasil
+de vivir también aplica.
+Vale. Y los productos
+de Uruguay, para más,
+y el componente de ahorro, pues ya esos
+productos están como están y no los vamos a tocar.
+Pero los nuevos que hagamos,
+esa misma componente de ahorro van con
+para la vivienda, pues en nuevas piezas que tenemos.
+¿Vale?
+A mí me gustaría que cuando termináramos
+por lo menos lo que con la sesión
+de hoy en la parte de mañana
+vamos a ver qué tan lejos estamos
+de integrar ese tipo de procesos.
+Porque la verdad es la parte operativa del proceso.
+Porque el producto es de vida.
+Lo que pasa es que la operación es la que han
+mandado a que sean por...
+Pongo la pregunta diferente. Yo puedo usar
+este activo y estar con cualquier tratamiento.
+Sí. De diversos de auto,
+de transporte.
+Es algo que vamos
+a explicar ahí entre toda la historia
+y como va a estar.
+Pero como tengo un foco
+y es que para Brasil
+la pieza de esto no es
+olvidar lo que usted necesita, ¿vale?
+Pero no los objetivos de aquí es que Brasil
+despedida con el tema
+de por la importancia que tiene
+del proyecto de
+estrategia ¿vale?
+Entonces, la idea, aunque
+es eso, yo sé que la cuertura de muerte
+y si ese es el foco de vivir,
+vamos a trabajar con susficiencias.
+¿Vale?
+¿Qué más
+tengo que comentar?
+Bien,
+un poquito de la historia aquí ¿no?
+Esto de dónde salió?
+Inicialmente, cuando trabajamos
+en
+Convergencia
+uno de los retos
+a los cuales nos tocó
+entrar fue en autos
+la gran cantidad de parametrización
+que había de arreglar y comprar.
+Era un montón de arregla.
+Entonces en el momento
+fuimos allá con los compañeros
+y decidimos que no podíamos programar
+entonces en un montón de arregla
+y ahí salió un término
+que por ahí ustedes me escuchaban
+que eran los pacotes.
+Y luego salió lo que se conoció
+como la recusaflexibilidad
+ya en Brasil.
+Esas ideas quedaron plasmadas
+que hoy componentes se llaman así.
+Pero cuando llegó vida
+y nos llevó los requerimientos
+de Hugo, que era el productor
+de vida, se propuso
+llevar ese conocimiento
+a otro nivel
+que ahí fue donde empezó a aparecer el activo digital.
+Y en base a esa información
+se hizo una propuesta
+del año pasado del activo digital
+y empezando por vida
+y ahí es donde se empezó
+a trabajar con esta definición.
+Entonces
+pues
+yo creo que voy a empezar por aquí
+y aquí voy comentando
+lo que es el activo digital de cálculo
+con estos puntos porque es necesario
+los principios
+y esta es la introducción ¿vale?
+Y ya luego vamos a ir viendo
+cada uno en detalle de los componentes.
+Bien
+el nombre de la CSS lo cruzó David.
+Pues no sabemos
+cómo ponerlo entonces.
+David
+de Francisco.
+Entrado justo a tiempo.
+Seguro que no puse ellos, no me acuerdo ¿eh?
+Estamos ahí
+¿Cómo le ponemos? Quedó hacerse.
+Objetivo del activo digital
+de cálculo dentro del componenterre
+de interpenizar
+el proceso, el análisis técnico
+y cálculo
+de lo que teníamos actualmente
+es el transaccional ¿vale?
+Entonces
+¿Para qué? Para que le podamos dar
+una oferta comercial
+al cliente completa
+sin tener que ir al transaccional.
+Ese es el objetivo
+y eso va a marcar todo lo que
+nosotros hagamos y implementemos
+dentro del producto ¿vale?
+Entonces
+si logramos ese objetivo
+de poder hacer los análisis
+de cálculo técnico
+y procesos actuales
+etcétera
+y aplicando todas las políticas
+de descripción que tenga el producto
+para ofrecer la...
+ese es el objetivo de la explícita
+sin tener que ir al transaccional ¿vale?
+Ese es nuestra
+nuestra meta y ahí nos estamos moviendo
+y la idea es que eso se mantenga
+de esa manera ¿vale?
+Todas las nuevas desarrollaciones que ustedes hagan
+que se tenga
+vamos a escuchar el más alto rico ¿vale?
+Como decía tiene
+3 módulos principales, selección de riesgo
+que vamos a explicar
+qué va es, las reglas de negocio y los cálculos actuales
+Otro de los objetivos es
+la eficiencia ¿vale?
+En la eficiencia tenemos
+en los procesos que
+por ejemplo en Brasil
+y en España
+que la bulometría y la transaccional
+el número de transacciones es tan alto
+que necesitamos dar tiempo de responsabilidad adecuados
+Estando en Brasil
+necesitamos dar tiempo de 3
+ofertas comerciales en 3 segundos
+y yo la voy a lograr el 6
+¿vale?
+y con el PLE daba lo que daba
+y llegaba un punto en que el PLE ya ha llegado con
+como este componente es un nuevo componente
+en todas las especies de arquitectura
+con las nuevas tecnologías
+si hemos visto y si hemos mejorado
+los tiempos
+hemos hecho pruebas de rendimiento
+de la función PLE y la función Java
+pues lo cuando
+cuando nos daba cero el margen
+de diferencia era bastante alto
+entre lo que consumía el PLE y lo que consumía el Java
+¿vale?
+Eres eso también ha llegado a optimizarnos aquí
+al ver
+todo explicar todas esas mejoras que se han hecho
+para optimizar tiempos
+respuestas, capacidad
+que tengamos para leer los diferentes procesos
+para que podamos darle
+a la operación de negocio
+el 100% de lo que nos está bien
+lo hemos integrado con las APIs
+que eso nos da todo el potencial
+que tiene las APIs para trabajar
+otro punto importante
+es que
+trabajando con el activo digital
+lo que nos ha permitido
+es facilitar la configuración
+de la regla
+este es otro de los altos que queremos dar
+nosotros actualmente
+cuando diseñamos un producto
+a nivel de implementación
+tenemos que configurarlo
+entre el taller de productos
+si o si, no es un arreglador
+que el configurar del taller de productos
+pero luego tenemos que
+empezar a escribir código
+para aplicar las reglas de negocio que nos están pidiendo
+configuración
+de reglas de los atributos, validaciones
+controles técnicos, prohibición de promularios
+calculos y tal
+en la parte de
+queremos que
+el desarrollo
+de las reglas de negocio
+lo que son reglas de negocio
+del 100%
+queremos llegar a un 90% de configuración
+y nos queda un 10%
+de función
+reglas de negocio
+con esto lo que queremos es que
+ya le trasladaríamos
+la configuración y la publicización
+de esas reglas de negocio
+del ATI a la idea técnica
+que se responda
+y eso es uno de los objetivos que queremos llegar
+todavía esa parte
+está en trabajo
+porque ahí van a ver
+que van a intervenir el taller de productos
+para hacer
+el que va a gobernar esas reglas de negocio
+y se le entregará al área técnica
+y se va a convertir en configuración
+ya no será desarrollo
+obviamente
+hay cosas que no se pueden quitar
+porque hay que hacer más cosas
+del proceso
+en RIS
+para el clínico de la Policía
+entonces por eso no es el 100%
+si queremos que sea un 90%
+queremos tan prioridad
+como decía se ha diseñado
+las últimas tecnologías
+solo lo vamos a explicar aquí mis compañeros
+y que sea independiente de los transaccionales
+esto está diseñado con una base de datos
+Monroe, todas las colecciones
+están mismo
+y todos los procesos están de vuelta
+también es importante
+hemos
+trabajado con flujos
+standard
+cotizaciones rápidas
+lo que la propuesta
+la poliza y suplemento
+el activo digital
+es capaz de trabajar las operaciones
+de renta de forma
+normal
+va a estar enfocado
+y va a estar integrado por dentro del producto
+esta línea está abierta
+estas líneas están trabajando con los compañeros
+desde que tienen que estar abierto
+pero
+para integrar
+toda la parametrización
+toda la configuración que va a tener
+en el activo digital dentro del producto
+fórmulas
+los procesos de cálculo dentro del activo digital
+van a ver que se pueden hacer
+mantener la configuración de fórmulas
+como está ahora
+hemos creado también
+una parte
+la explicación en el nivel detalle
+las formulaciones
+podemos construir actualmente en llado
+están construidas en llado
+lo que permiten la optimización
+totalmente integrado contra el activo
+se ha hablado de poder hacer
+también integraciones que nos la hemos hecho
+con alguna vez con otro lenguaje
+solo tenemos que ir mirando
+pero inicialmente la renta le ha llevado
+toda la configuración de fórmulas
+y van a ver cómo está integrado
+las formulaciones por los procesos
+de este caso de RTB
+con las más escénicas etc
+toda esa parte está configurada
+implementada sin las fórmulas
+algo que sean fórmulas muy básicas
+el resto
+son fórmulas que hay que implementar
+o un actuario
+de at conocimiento técnico como
+que lo dio en la ESPAM
+porque son fórmulas que no son de
+bastante competitividad en los casos
+en otras si es una fórmula
+una pobre tasa pues el taller
+va a permitir
+perdón allí
+nosotros venimos trabajando con la tarifa multidareable
+todos los productos lo tenemos que hacer
+entonces
+no todos saben
+tenemos una tasa
+de apertura
+y luego los factores de riesgo que usan la actividad
+y así todos los actuales
+de la región ya están acostumbrados
+a trabajar
+ese modelo
+lo soporta
+la tarifa multidareable es uno de los puntos
+que queremos incorporar
+el producto tiene RTB original
+incorporaba todas las funcionalidades de correo
+de tarifa tradicional y tarifa multidareable
+el único que no sea
+certificado nunca con un producto real
+si quiero pruebas con un producto
+con un producto automóvil desde Brasil
+pero no se llegó a cerrar con un producto
+cambiado
+está desarrollado pero no se ha certificado
+este esquema
+es el que yo me pongo abajo
+y por todo lado explicando que es el activo digital
+es un
+componente en el cual
+uno se va a estar integrado
+a las diferentes puentes de información
+puede ser un RIF
+puede ser un frontal
+un actual servicio
+una API
+o algún otro consumidor
+que quieran
+que nosotros leemos una oferta comercial
+cuando digo oferta comercial
+somos capaces con el activo digital
+con nuestra información
+estas son sus garantías
+sus capitales, sus primos
+y formularios
+bastante completas
+para el cliente
+entonces esta fuente de información
+puede ser cualquier componente
+vamos a escuchar y si no
+eso es algo que vamos a explicar
+tiene una entrada
+sí o sí estándar
+y esa estándar es lo que nosotros llamamos el polizón
+el polizón es la fuente de texto
+lo que existe en el polizón
+lo controla el activo digital
+no existe en el polizón
+alguna manera que se llegan
+la entrada es el polizón
+una vez recibe la información
+en el activo digital
+él va a evaluar varias cosas
+lo explicamos en detalle
+va a ir a mirar si tiene formularios
+y tiene cúbulos
+porque este proceso
+va a consumir cúmulos
+en caso de que se necesite
+formularios cúmulos
+igual lo otro migue
+documento por ejemplo
+documentación
+y una vez con esa información
+lo manda el activo digital
+en el activo digital
+su parte
+de configuración y parametrización
+está en el tal vez de producto
+el activo digital
+como tanto partiendo a tales productos
+tiene que tener
+una estructura de producto
+tiene que haber el producto
+tiene que existir
+y con esa información
+ya se empieza
+existe un flujo general
+en el cual el sistema
+en lo que es el componente del activo digital
+empiece a abordar
+lo primero que va a hacer
+con la entrada de datos
+es lo que hemos denominado selección de riesgo
+ahí va a determinar
+con esa entrada
+se aplica controles técnicos
+se aplica controles técnicos
+se aplica controles técnicos
+se aplica controles técnicos
+si pide formularios
+si tiene la documentación
+tiene
+unas
+funcionalidades de
+periodo de documentación adicional
+o no
+puede aplicar un recargo de descuento
+con información que tiene
+tiene pues el lanzado de mensaje informativo
+con una parte
+que está haciendo de renovaciones
+vamos a poder configurar las excepciones
+de renovaciones o recursos
+para que también quede parametrizado
+podemos validar
+datos en el flujo
+tanto a nivel de datos finos como de datos variables
+y a nivel de datos variables los previos
+y los varios
+ese componente es bastante potente
+hace muchas cosas
+perdona, entonces los formularios
+van a ser generados
+de que hoy
+sería por el modus
+suscriptor
+no, lo que comento aquí
+de los formularios
+estamos trabajando en un operativo
+el formulario ya existe
+y está definido en el armado del producto
+el formulario se dice en el formulario de salud
+o de
+la barática
+y que en fin en los formularios las preguntas
+pero quien determina si tiene que pedir
+o no el formulario
+lo va a determinar una regla
+que le indiquemos entre los activos y tal
+dependiendo de la información que entra
+si pide o no ese formulario, si pide el de salud
+si pide un laborativo
+esas son las reglas
+lo que condiciona aquí el activo es saber
+si pide o no ese formulario
+pero el formulario tiene que existir
+y donde se fito
+lo que lo sé es que no sé si te arreglan
+en la serie, no es nada todo el modo de inscripción
+en la parte de cron
+es otro comp...
+y aquí le estamos dando la vuelta
+porque el módulo de suscriptor
+estaba en otro
+fuera del...
+todo esto está integrado en REIT
+hay una pieza nueva
+que se llama el módulo
+de suscripción
+que no...
+creo que nos va a dar tiempo de verla
+que va a complementar esto que está haciendo el activo
+ahora lo que quisimos fue tener el control
+completo de procesos
+que influyen en una parta comercial
+de procesos incluye
+el formulario y la recomendación
+todo lo que hay aquí
+eso es una de las dudas que teníamos
+desde que ya estamos revisando y historiando
+y es que los formularios ya tienen
+la capacidad de danza
+lo estamos utilizando como format
+de hacer agrados sobre la fin
+dependiendo lo...
+lo vamos a ver en todo eso
+para que lo trabajemos como dice Alberto
+también los formularios
+podemos pedirlo ante las colecturas
+o posterior, vale, dependiendo de...
+es... esta evaluación es bastante completa
+¿vale? y volveigo a esa configuración
+¿vale? se vuelve configuración
+una vez el evaluado a todos estos criterios
+pasa la parte de los módulos
+la parte de los módulos
+heredas de lo que es la configuración
+de la modalidad del producto
+es decir, en un producto
+yo tengo una modalidad con 20 coberturas
+en los módulos yo puedo configurar
+dependiendo de
+las necesidades de negocios
+esas coberturas ser...
+esos grupos
+es decir, para un...
+un cliente platino
+un cliente gol
+un cliente... brote
+entonces, el módulo que me...
+toma esa información de la base de las modalidades
+y la configura
+entonces, si es un cliente platino
+de esas 20 le va a aparecer 15 coberturas
+con las características específicas
+capitales, si es obligatorio
+¿no?
+si es un cliente brote, se le ofrezco
+solo 6 coberturas con los capitales delimitados
+y unas características propias
+entonces, esa parte
+se vuelve también configuración
+y la parametriz
+en este caso, el objetivo es que lo haga negocio
+y la como quiero ofrecer
+o las circunferencias comerciales
+dependiendo de esas características
+se puede personalizar
+por un ramo
+por una polsabrupo
+por un agente
+por una estructura comercial
+por lo que necesita el negocio se puede configurar
+¿vale?
+tengo selección
+tengo módulos y llega la tarifa
+la tarifa es el componente más técnico que tenemos
+porque ese es donde entra todo el flujo
+de cálculo de comercial
+esto fue heredar
+de la parte de cálculo que teníamos en tron
+y llevarlo arriba
+este caso al retenido
+entonces, él va a hacer todo el flujo
+de cálculo de las coberturas
+con sus conceptos económicos
+sus conceptos de bloce
+y empezara a hacer los cálculos
+y aquí es donde vienen nuevos elementos
+que han incorporado
+estas las bases técnicas para vida
+¿vale? que son los puntos de los elementos
+que se han hecho
+está uno que está a dos de suscripciones
+que también es para vida
+y eso es para tratar el tema de las coberturas
+que no es de ahorro que están comentando
+y por defecto tiene lo que estaban
+que eran las cálculos multivariables
+¿vale?
+esa es la que nos falta certificar
+porque no hemos todavía entrado a trabajar
+con cálculos multivariables
+con esa información, selección de riesgos
+módulos, RT
+y en el trae del cumulo
+el proceso es capaz de dar una oferta comercial
+y aquí tiene dos maneras de ejecutar
+un entuent
+o un paso a paso
+que eso lo vamos explicando
+¿qué va a hacer? la salía de ese proceso
+entonces aquí viene
+aquí viene la información del riesgo
+y en el estilo
+en el formato del polizón
+y aquí sale ya el polizón
+con todos sus cálculos, sus controles técnicos
+sus reglas y validaciones
+sus atributos con todo
+y se le envía
+y lo devuelve a quien nos llamó
+si me lo llamó RIF
+pues se lo pasó a RIF, si me lo llamó una API
+se lo pasó una API, se lo me lo llamó de frontal
+o frontal
+para qué?
+para que ya el resto del proceso
+se termine a hacer lo de corresponde
+si es una emisión de polsas
+pues se debe pasar el proceso a RIF
+para que le hagan la emisión de polsas
+después de la vida, o simplemente lo que tiene que hacer
+o lo que ya no va a hacer mi cálculo
+las reglas están
+¿cierto? ya tiene todo
+entre comillas y mascaritos
+faltarán cosas obviamente
+porque no tenemos comisiones
+para hacer que se emite un apoyo
+que no tenemos el trasseguro
+pero está por fuera
+que también lo tenemos acá
+lo que da es la oferta comercial
+y complementará el proceso
+quien nos llama
+si es una cotización mostrará los datos de la cotización
+si es una emisión de polsas
+y API pues la API complementará la información
+con lo que recibió el activo
+y emitirá o para que simplemente corresponde
+en la parte de cotización
+está la posibilidad de poner
+varias ofertas, que el problema es el pago
+si es que en el diagrama falta
+la parte de planes de pago
+hay un migo
+con la funcionalidad de planes de pago
+para tener la oferta de precios
+aquí lo tengo como salida
+este aquí
+planes de pago
+otra cosa importante también
+que seguro, nos hemos trabajado con módulos
+porque finalmente el sistema
+si el producto o esa modalidad
+trabaja con 5 lecturas
+la oferta de módulos
+nos diga que trabaja con 5
+el sistema internamente
+trabaja con 5 lecturas
+entonces
+es una evolución para si el módulo
+trabaja a pese que trabaja con 5
+internamente el modelo trabaja con esas 5
+lo que ya no tiene que trabajar con las 3
+con lo que es familia
+el desprendimiento también es un mejor insultado
+lo acuerdo
+entonces
+estos detalles lo estamos viendo
+en profundidad entre hoy
+y esta semana para que vayan a aclarar
+estas dos
+esta es la foto a nivel conceptual
+de lo que es el activo digital
+totalmente integrada con RIF
+es una pieza
+que está separada del transaccional
+por lo que comentábamos anteriormente
+la capacidad de rendimiento y tal
+y lo que vamos a explicar bien
+y en esa parte
+como hemos llegado antes
+y
+lo que queremos que se integre a cada uno
+de los componentes, es un banco Brasil
+o
+de Brasil
+de proveedores
+el frontal de proveedores
+si hacen ofertas comerciales
+se pueden integrar aquí
+un auto servicio
+todos esos que se puedan hacer directamente
+obviamente
+RIF 100% al 100%
+eso es lo que
+en este momento se están trabajando
+en el activo digital
+los cotizadores también ya no tenemos que hacer
+más cosas si nos llama el activo
+hay algo importante
+el único proceso
+que se va a quedar 100% en el activo digital
+es la cotización
+la cotización rápido
+va a ir al activo digital
+se va a estar trabajando con negocio
+para el tema de contenedores
+y la información va a recibir en el activo digital
+la cotización rápido
+no va a ir a ninguna otra base
+para que después se pueda explotar
+para que después se pueda sacar esa información
+continuar con los demás procesos
+entonces
+la cotización rápida queda ahí
+si quieren continuar con el proceso, obviamente
+tienen los tantos ahí
+y podrán continuar con su sustitución
+o con lo que necesite
+pero el resto, la cotización rápida
+la deslamos de lo que es el transacción
+también se va a explicar para ver
+el tema de reunión
+no se va a arreglar ni que la tratablas
+los 6 millones de cotizaciones
+que hace Brasil
+que quedaban ahí
+la tasa de conversión era el 1%
+entonces eso quedaba ahí
+cada vez haciendo un expurgo
+para eliminar todo eso
+queremos eso
+y también que cada vez quédemos precio
+cada vez que esto quede la información
+si me damos al activo
+yo te digo que calculo aquí
+esta la información calculada
+es un poco transparente
+si esta haciendo una propuesta
+o simplemente una cotización
+porque eso va a quedar presente
+a veces es otro de los puntos que quieren también
+eso lo vamos a ver más adelante
+técnicamente donde queda eso
+si, si, todo eso está ahí
+además de los apartados
+donde se va a explicar un poco el flujo
+la construcción, entonces ahí es donde se va a ver
+todos los paralelismos
+que hay en todos los puntos del proceso
+es decir
+también paralel
+o si estoy
+en una cotización
+y tengo en los contextos
+en las ocupaciones de cobertura
+cada ocupación de cobertura
+tendrá que tratar en paraleles también
+entonces eso agiliza
+o minimiza los tiempos del resto
+bueno
+le damos muchas mejoras
+hay que comentar
+y que ustedes las doyan bien
+y que obviamente ni entre sus funcionarios
+porque fue necesario
+pues nada, lo que venimos comentando
+separar la parte
+de que ya no tenemos que construir feiles
+sino que ojalá le damos al tema
+de rendimiento
+y de escalabilidad etc.
+pero llega un momento en que ya
+nos damos contra las paredes
+de cómo mejorar el PNL
+para sacarle la rendimiento
+y no podían
+entonces
+las otras herramientas y nos permiten
+esa escalabilidad
+esa eficiencia en los procesos
+que es la negocio que dan
+el control de sus reglas
+no nos llaman a nosotros para meter una regla
+oye, si es que el señor tiene ojos verdes
+entonces quiero poner un recado
+a lo que es importante es que estén
+dentro de la información
+no codificarnos
+no digo que no estote
+por eso no es el tiempo que hay
+en nuestro grado, es para metrización
+el componente del activo digital
+tiene un entúe
+o un paso a paso, eso lo vamos a ir explicando
+cada una de nuestras sesiones
+debe ser para acelerar las reglas de negocio
+los cálculos obviamente
+los cálculos actuales están estructurados
+se han creado dentro de la parte
+el RTE una sección
+y están más fórmulas
+ahora ha sido lo que es el taller
+de cálculo original de tron
+se ha especificado con los componentes
+estamos trabajando en la trazabilidad
+de esos componentes
+y yo voy y uso
+una fórmula
+y el ejecuto le pasó los parámetros
+y quiere ver por donde pasó
+lo que se llama en Brasil el rote y el cálculo
+entonces poder ver esa trazabilidad
+para ver que
+ha hecho que entró que salió mal
+pues de todas formas, aquí
+estamos trabajando también
+con donde está el problema
+saber qué ha pasado
+queremos meter todo el tema
+y la trazabilidad con la inatresa
+obviamente para que nos exciona mano con eso
+los cálculos por defecto
+están antivariables
+tenemos los nuevos conceptos
+de bases técnicas
+donde hemos incluido un montón de capacidad ahí
+antes que pasa
+si me decían
+necesito un nuevo
+un nuevo gasto
+un nuevo interés
+un nuevo interés técnico
+que no es un dato sino es
+una nueva columna
+que nos tocaba hacer
+porque son altas las tablas
+para meter la columna
+ahora con eso que hemos hecho
+es un nuevo registro de infraestructura
+y se meti ya está muy bien
+hay muchas mejoras
+y obviamente
+los lenguajes de programación
+si están más enfocados
+allá va
+aquí no tocamos tanto Python
+pero hay componentes en el TDMD
+que se están trabajando con Python
+que luego llaman a la partel app
+y ganchas contra el activo
+una cosita que quería comentar
+es que estás viendo la lista
+con la experiencia con lo que llevo aquí trabajando más
+con temas de medicación de productos
+de crear nuevas bases técnicas
+de forma de trabajar
+ahora en el contexto de la IA
+es muchísimo más fácil de gestionar
+los proyectos tradicionales
+que hemos intentado en ambos tipos
+de proyectos y en este caso es mucho más sencillo
+más fácil de contextualizar
+y de que se pueda automatizar algún día
+simplemente por lo simple de pronto
+ese es otro punto importante
+aquí va a tener
+toda la gestión de las reglas
+claro eso se vuelve
+grande
+no monstruoso manejar todas las reglas
+entonces ya nos aprobaron
+la incorporación
+para empezar los trabajos
+de meter una gente
+al activo digital
+que nos ayude a toda la gestión
+de todo eso
+entonces la semana del viernes creo que no la aprobaron
+pero vamos a empezar a trabajar
+con la IA para incorporar
+ese está nuevo
+pero como dice Manu
+las expectaciones con esto
+sea mucho más eficiente
+si ya eres el experto
+si
+en caso de por lo menos las reglas que integramos
+en Java si no van a ser muchas
+ya va a ser integrado propiamente en el soy
+así que yo creo que ya va a fino
+no se puede ir las que sea una vez más
+que vivesen a poder ir ocurriendo personalmente
+bien
+principios de arquitectura voy a pasar un rápido
+porque esto me va a explicar Alberto
+esta toda la nube
+garantizando esa seguridad
+rendimiento
+flexibilidad
+independencia que esto vuelvo
+y digo es fundamental y aquí si necesito
+que los que implantemos
+o trabajemos contra el activo digital
+el proceso tiene que ser
+siempre independiente
+porque si yo le meto algo en mitad
+del proceso que vaya a algún otro lado
+alguna base de datos
+y ahí ya rompemos las cosas
+lo vamos a ir bien
+tengo muchas dudas
+todo tranquilo
+y me tomas no nota
+hoy la introducción necesitamos que conozcan
+las capacidades
+para que luego crucemos contra las dudas
+y podamos irlas trabajando
+poder usar en diferentes sistemas
+como vieron
+la formulación
+está integrado online y batch
+trazabilidad
+este configuración
+son los pilares
+de todo esto
+nosotros como
+como
+como componente
+como
+aquí las especificaciones funcionales
+que lo que estoy comentando
+y
+que se me queda por aquí
+para por el yendo explicando
+esta parte
+ese hizo un poquito aquí
+que este fundo comentó base sobre el cual
+hemos trabajado
+uno de los puntos principales
+va a ser el taller de productos
+el taller de productos es nuestra experiencia
+nosotros actualmente
+voy a ir aquí
+esto está en construcción
+todavía no falta
+el equipo que está trabajando
+con nosotros en el taller
+que no sé si hay un compañero perpetuario
+de taller creo que no hay nadie
+pero
+va
+que pasa
+el taller lo conoce
+en cierto?
+vamos a tener los productos
+los vamos por aquí
+antes
+en lo que hay
+para si que el strong web
+es el generado del producto
+pero
+y que he sido
+generados de productos
+que era
+era por la componente en strong web
+que nos garantizaba
+que la estructura de armado de productos
+estuvo en la correcha donde yo especificaba
+y la configuración del ramo
+coberturas, datos variables
+etc etc etc
+y
+la lección que hay ahora en rift
+entonces los que han conocido el generado
+de productos
+les va a parecer mucho más
+transparente la forma en que se está haciendo el taller
+de producto
+el taller de productos
+incorpora esas funciones que tenía
+más otras
+de integración 100%
+control los componentes que tenía en rift
+esto lo va a explicar
+mejor alberto con toda la tema de arquitectura
+lo que se ha hecho porque el taller de productos
+está
+tiene su propio
+su propio instalación
+un producto de aparte
+y de su distancia
+propiedad para cada uno de los modelos
+¿Qué hace?
+y está enlazado
+yo no sé si ya de las instalaciones que están haciendo
+usted ya está con el taller
+tirate abajo
+entonces también lo calces
+para meter el producto en el taller de arquitectura
+y lo que mandas es un polisón
+¿No?
+¿No tiene su propio base de datos
+donde va a estar la fuente de verdad
+de definición del producto
+y luego el usuario es el que decide
+si traslada
+si esa definición
+la quiere poner en la explotación
+y entonces igual de creer
+a mandar correo
+lo que era el rasalte en el final
+lo va a mandar en este caso a las colecciones de acerente
+¿En serio?
+tenemos un armado de producto
+de pdl
+imagino que
+la prioridad
+de cálculos es tomar
+ese armado que en pdl
+¿Cierto?
+vamos a explicar
+entonces
+solo por complementar un poco
+porque no tenemos la misma duda que tal
+nosotros que venimos de generales
+de productos
+tenemos todos nuestros productos de aquí
+todos nuestros tablas conocidas
+para hablar
+¿Cómo se traduce eso
+a esto?
+la idea es
+voy a hacerlo de las dos maneras
+yo lo he hecho
+de la manera tradicional
+y luego lo he subido hasta eso
+que es implementarlo en
+RIF
+y una vez lo tengo esto
+hay un botón de subir el producto
+la definición de la base
+hasta ahí
+y otra forma de trabajar
+es el tallé
+todo el tallé
+y hay que decidir si quieres exportar
+ese producto
+al acelerado
+creo que es vallabando
+la idea es que nosotros trabajemos
+en tallé de productos
+toda la definición del tallé
+y una vez estemos listos
+me lo quiero llevar a la base de desarrollo
+es un botón para la base de desarrollo
+me lo quiero llevar a la base de integración
+pero siempre va a existir las tablas
+de toda la vida de productos
+porque
+todo el proceso
+transaccional de RIF
+tira de la definición de la base de datos
+si tu no llevas ni mi producto ya
+son ofinciones
+es el tallé
+reparece que el enfoque es que todo lo gobierne
+el tallé de productos
+en la fuente información real
+sea el tallé
+es lo único que hay
+si yo le veo una variación de un atributo
+normalmente los estamos haciendo
+filando PLSQN
+si solo puedo meter como reglax
+no tengo que tirar una línea de exercio
+eso en atributos
+pero el tallé esténico sopura lo mismo
+si puedo definir todo como reglax
+no tiene una línea de PLSQN
+para el tallé esténico
+si seguimos lo mismo
+la parte de generación de las agrupaciones de coberturas
+lo mismo si nos vamos a la tarificación
+lo mismo si puedo definir
+con las antivariables
+o con fórmulas
+se pueden programar las fórmulas
+o se pueden definir
+se van a poder definir las fórmulas
+en la librería de exploración de fórmulas
+lo que queremos es
+minimizar el código que tengamos
+desarrollado
+esa regla queda en el tallé
+por lo que entiendes
+una regla
+pero eso no te la puedes bajar
+después a base de datos
+la idea es
+yo defino en el tallé mi premio
+en un momento dado digo al sistema
+quiero poner una explotación
+esta definición de protocolo
+y toda esa parametrización
+que tengo en el tallé la voy a bajar
+a la base de datos de la operación
+a la hora de prevenir toda la vida
+y luego actualizarme una pese
+pero mi duda es si
+tu mapeche
+puede configurar
+las reglas en el tallé
+esa regla que yo configuraba
+en el tallé
+cómo se baja la base de datos
+esa regla completo no va a ir a la base de datos
+para ir a hacer de peso
+porque tu producto va a intentar
+pero en mi producto no
+lo que yo entiendo como producto en base de datos
+no me queda esa regla, queda eso en el tallé
+es eso
+como decía el componente del activo digital
+está separado
+del transaccional
+solo que el punto de gestión
+controla eso es el tallé de productos
+que los que quiero explicar acá
+y yo configuró la regla
+si el producto trabaja porque eso también es importante
+los productos pueden seguir trabajando
+de la manera estándar
+como se ve que trabaja toda la vida
+o trabaja con el activo digital
+de cabo
+nosotros obviamente por temas
+perdimientos, capacidad, etcétera
+para España y Brasil 100% vamos a ir
+con el activo digital
+¿Qué es lo deseado?
+Leando un poco, entendiendo un poco más
+nosotros tenemos todo nuestro non-pareje
+todo el tallé de productos
+lo que queremos es quitar todos esos non-parejes
+eso lo que entiendan
+siempre que se pueda
+obviamente hay que mirar las capacidades
+si es
+por ejemplo productos con una volumenía
+o nada de rendimiento
+en el tan tiempo de respuesta
+eficiente y nuestra sugerencia
+por lo menos lo que nosotros sabemos es que se lleve
+contra el activo digital, que los productos se van contra el activo digital
+por todo lo que se está haciendo
+por todas las aquellas que se están implementando
+para garantizar rendimiento
+escalabilidad, etcétera
+entonces sí
+yo diría que ustedes empicen
+a trabajar también con los productos
+del activo digital
+eso no es camisa de fuerza para que no se sigan
+trabajar con los productos de manera tradicional
+No, con la idea de evolucionarlo
+y probarlo
+es lo que queremos
+¿Qué pasa?
+yo defino una regla
+va a poner una regla de auto
+si el coche duerme en la calle
+sí
+voy a pedirle
+que me diga cuantos días duerme en la calle
+este es un dato que dice duerme en la calle
+tengo otro dato que dice
+cuantos días
+una regla sencilla
+vale, antes se está acá
+coger el charcódico
+lo que queremos aquí con el activo
+que es uno de los que vamos a trabajar es
+la configuración
+yo tengo el dato
+en la marca, me hace duerme en la calle
+y digo, oye, si me hace duerme
+si duerme
+porque es lo que dice Manuel
+oye
+oye, hacer ese
+ponle una regla que diga si el coche duerme en la calle
+la marca
+pida el número de días que duerme en la calle
+esto es lo que queremos llegar a eso
+¿Qué va a hacer el sistema?
+va a tomar el dato
+y si me hace duerme en la calle
+va a decirle si el valor es ese
+entonces el previo
+del siguiente dato
+ah, entonces este dato es obligatorio
+tiene que ser mayor hacer
+y configura esa regla
+es cuando yo esté trabajando en RIF
+bien sea por API
+o por
+por online
+va a ir ah, estoy en el dato
+y me hace duerme en la calle
+y me dijo que sí
+y la siguiente regla de si me dijo
+que sí, tengo que pedirle este dato
+entonces él va a ir a la actividad digital
+evaluar esa regla y ese dato tiene que ser mayor hacer
+y que lo configurar
+si después viene y la cambia
+pues eso tras la regla, trapechao al día, etc
+y la evolución
+pero ya no tengo que provocar
+esas son las reglas
+que no van a
+como son reglas que están dentro
+de la actividad digital, no van a ir a la base de datos
+porque no es un PL
+o sea, el pre
+y los variables no van a existir
+van a estar bien
+tú vas a ver un esqueleto y dices
+esto no tiene reglas
+no, si están
+ese es un ejemplo
+lo mismo
+que se tiende perfectamente
+entonces
+los demás componentes
+lo que gobierna el proyecto
+obviamente si van a ir al transaccional
+porque si yo me creo una nueva cobertura
+yo tengo que darle
+llevar esa cobertura al transaccional
+porque si no nunca va a existir
+la gobierna es también
+pero esa cobertura la creó acá
+y la mandó al transaccional
+para que quede allá
+esos datos si van
+entonces hay unos que si dependiendo
+de su entorno
+van a ir a la base de datos
+y teniendo
+una pregunta Freddy porque hoy en los productos
+que tenemos de Uruguay y Panamá
+a pesar de que estamos teniendo
+reglas de mongo
+por ejemplo
+de que me traiga el capital por defecto
+el capital por defecto lo tengo en mongo
+pero igual en el procedimiento
+de pre del producto
+yo tengo que llamar el package de módulo
+eso ya
+eso ya no existe
+todo ese tema que nosotros va a hacer
+inicialmente
+vamos a cumplir con una premisa
+que es dejamos de integrar
+servicios desde la base de datos
+de eso desaparecen
+toda la evolución
+toda la integración del online
+no se realiza desde la base de datos
+o se realiza desde la capa de neutral
+o desde la parte de las actis
+pero está fuera de la base de datos
+yo teniendo la pregunta es
+las reglas al configurar
+las reglas está automatizado
+para que lo entienda tanto
+origen como destina
+quiero decir
+yo configuró la regla
+para que lo reciba al frontal
+pero
+tengo que pasar por el taller de productos
+para que lo actualice a cdc
+eso está automatizado
+a ver si tu vas a gestionar
+una regla
+es por el taller
+tienes que entrar al taller
+para gestionar la regla
+y ya si es una regla del activo
+para darle el taller
+se le encarga de llevarla al activo
+y tal
+ya está automatizado
+que el taller del producto directamente
+lleve la información a aterre
+bueno
+estamos trabajando
+eso está en construcción también
+porque todo esto está utilizando
+nos quedan dos minutos
+decirme que ya hacemos un reto
+hay que no necesita mucho
+no necesita
+no necesita mucho
+hacemos un break
+de 15 minutos
+y tal vez cerrarme en 15 los detalles
+vuelve y digo estoy en esas temas
+en la radio
+porque todas las semanas vamos a estar viendo para arriba con el taller
+para abajo por un lado
+pero necesito que engañen todos los detalles
+hoy
+de todo lo que está y en esta semana
+pues es muy interesante
+todos estos detalles que estamos hablando
+entonces vuelve y digo
+el taller está aquí
+si no lo saben nosotros lo tenemos
+en España y Brasil no tienen allí
+eso hay que pedirlo
+está dentro del inventario de los atributos
+está para los pedazos
+vale porque es fundamental
+eso no está en América Central todavía
+eso no está en América Central
+eso no está en América Central
+no está en América Central
+no está en el desarrollo
+es
+yo pinto acá
+esto tiene un montón
+de personalidades
+que se les pueden decir
+ni en el administrativo
+que quiero que vean
+y que operación quiero que ejecuten
+entonces por qué estás modificada al cerrar
+por qué las temperaturas tienen mucha capacidad
+obviamente
+como este es un producto de lidar
+que me va a pedir una movabilidad
+aquí tengo una movabilidad sobre la cual
+le trajo
+y voy a empezar
+con el producto y con los otros en el evento
+lo voy a hacer ahora
+tiene muchas funcionales, un ejemplo
+cuando vean un pibito
+esto es un programa
+entonces el mercado ya va a poner el mismo acado
+un segundo
+vamos a mostrar esto
+y llegamos al resto
+aquí ya me enlaza contra los riesgos académicos
+y se va la definición del ramo
+estoy aquí en un montón de funcionalidades
+y conforme vamos creciendo
+pues la estamos implementando
+entonces
+aquí se va la definición
+de aquí no sabe pinche acá
+y se va acá
+Lesslie tienes una mano levantada
+ah
+si
+hola
+buenos días
+escuché
+una pregunta por favor
+quería saber si
+porque ahora tenemos el trono
+el trono web que está configurando
+el taller del producto
+este
+este
+directory
+va a sustituir
+el taller de producto que está en trono web
+o van a comunicar
+y cohabitir los dos
+no, esto es
+la evolución
+de lo que era el taller
+obviamente el antiguo taller de trono
+es todo a reemplacer
+pero van a convivir
+van a convivir los dos durante un tiempo
+claro
+no Freddy
+aquí hay muchas más funcionalidades
+que no tiene el taller anterior
+lo que pregunta
+si este ahora mismo
+reemplaza por completo
+el taller de producto de trono web
+y de momento no
+de momento van a convivir los dos
+si
+o no
+es que esto producto es muy
+profundo porque estamos hablando
+de productos que existen
+que ya están operativos
+en algún país
+pero si vamos a hacer algo nuevo
+que empezamos por aquí
+con la cdc y tal
+ahí si no
+lo que sería ese mal
+de los nuevos por acá
+de lo antiguo o de los productos que están
+que nos falta certificar
+de qué nos podamos
+los productos que hicimos
+en los últimos
+años
+en Honduras
+es la base
+de cómo se está operando
+todas las funcionalidades
+todas estas conexiones
+de los activos
+pero al principio
+estos productos que ahorita tenemos
+un producto de Honduras
+esos van a seguir como están
+y van a estar el conjugador
+de productos
+y todos los PL que hicimos
+si nos piden un nuevo ramos
+de vida
+pero en un momento alguien tendrá
+que trasladar
+toda esa parametrización
+que dejamos de usar el taller
+y secar, bajar en esta evolución
+y se gestiona desde esta evolución
+esos planes en los países
+yo no me conozco nada
+no es tan el plan todo
+si tenemos tablas
+que son
+propias del país, de Centroamérica
+y demás, ¿cómo se gestionan
+con este titular?
+o sea, también se podrían
+porque no son tablas pecón
+o sea, se añadirían aquí
+se irían incorporando aquí
+¿por ahí llamaron GDC?
+como dice David
+yo tengo un GDC
+con una tabla de GDC
+no lo tienes como definición
+de producto
+lo estás gestionando en otro flujo
+no hay cosas lo gestionas por lo que es la definición
+y otro lado de fin es como parece
+son dos partes distintas
+pero eso es complementario
+tener una tabla personalizada
+de configuración de producto
+tienes, si te estás apoyando en GDC
+no es necesario que lo incorpores
+a este flujo de producto
+si lo quieres testenar desde aquí
+aquí sí que necesita una evolución
+para el país, para el país
+partamos de un hecho
+nuevo, entra propia
+bien
+y lo otro, hablamos con José
+muy bien
+¿qué nos parece bien?
+lo nuevo lo hacemos por aquí
+lo que está, ya estamos
+eso es, no vamos a ponernos a buscar
+también nos pasa con los de Uruguay
+eso ya queda ahí
+de tamo-territa funciona
+sí, pero la funcionalidad de tablas
+de país
+o de las tablas estas que nos van a incorporar
+sí que la necesitamos aquí
+para poder irnos a cualquier país
+porque eso va a ser necesario
+esto es un punto
+esto es lo que llevamos
+conforme nosotros vamos trabajando
+hay una necesidad tal que esto no está construyendo
+vamos a hacer un break
+porque hace mucho sueño
+y nos vemos en 15 minutos
+para terminar esta parte
+nos vemos en 15, ¿vale?
+a mí más besos me quedo yo
+ya sé
+también me quedo en el teléfono
+no me quedo en el teléfono
+no me quedo en el teléfono
+no me quedo en el teléfono
+no me quedo en el teléfono
+no me quedo en el teléfono
+no me quedo en el teléfono
+no me quedo en el teléfono
+no me quedo en el teléfono
+no me quedo en el teléfono
+no me quedo en el teléfono

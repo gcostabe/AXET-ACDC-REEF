@@ -9,6 +9,20 @@ services:
       - acdc_mongo_data:/data/db
       - .:/dumps:ro
 
+  gateway:
+    build:
+      context: .
+      dockerfile: gateway/Dockerfile
+    container_name: acdc-ai-gateway
+    restart: unless-stopped
+    ports:
+      - "8766:8766"
+    volumes:
+      - ./gateway:/app/gateway
+    environment:
+      - GATEWAY_HOST=0.0.0.0
+      - GATEWAY_PORT=8766
+
 volumes:
   acdc_mongo_data:
     name: acdc_mongo_data

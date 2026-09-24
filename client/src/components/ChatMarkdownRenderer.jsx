@@ -33,7 +33,7 @@ export default function ChatMarkdownRenderer({ content }) {
         .chat-markdown-renderer {
           font-size: 13px;
           line-height: 1.6;
-          color: #E2E8F0;
+          color: var(--text-main, #0f172a);
         }
 
         /* Headings */
@@ -41,7 +41,7 @@ export default function ChatMarkdownRenderer({ content }) {
         .markdown-body-custom h2,
         .markdown-body-custom h3,
         .markdown-body-custom h4 {
-          color: #F8FAFC;
+          color: var(--text-main, #0f172a);
           font-weight: 600;
           margin: 14px 0 6px 0;
           line-height: 1.35;
@@ -49,10 +49,10 @@ export default function ChatMarkdownRenderer({ content }) {
           align-items: center;
           gap: 6px;
         }
-        .markdown-body-custom h1 { font-size: 15px; border-bottom: 1px solid #1E293B; padding-bottom: 4px; }
-        .markdown-body-custom h2 { font-size: 14px; color: #93C5FD; }
-        .markdown-body-custom h3 { font-size: 13.5px; color: #BAE6FD; }
-        .markdown-body-custom h4 { font-size: 13px; }
+        .markdown-body-custom h1 { font-size: 15px; border-bottom: 1px solid var(--border, #e2e8f0); padding-bottom: 4px; }
+        .markdown-body-custom h2 { font-size: 14px; color: var(--primary, #0066ff); }
+        .markdown-body-custom h3 { font-size: 13.5px; color: var(--text-main, #0f172a); }
+        .markdown-body-custom h4 { font-size: 13px; color: var(--text-secondary, #334155); }
 
         /* Paragraphs & Text */
         .markdown-body-custom p {
@@ -62,11 +62,11 @@ export default function ChatMarkdownRenderer({ content }) {
           margin-bottom: 0;
         }
         .markdown-body-custom strong {
-          color: #FFFFFF;
+          color: var(--text-main, #0f172a);
           font-weight: 600;
         }
         .markdown-body-custom em {
-          color: #CBD5E1;
+          color: var(--text-secondary, #475569);
         }
 
         /* TABLES - Rich, modern, responsive styling */
@@ -79,62 +79,62 @@ export default function ChatMarkdownRenderer({ content }) {
           border-spacing: 0;
           margin: 12px 0;
           font-size: 12px;
-          background: #080D1A;
-          border: 1px solid #1E293B;
+          background: var(--bg-card, #ffffff);
+          border: 1px solid var(--border, #e2e8f0);
           border-radius: 8px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.05));
         }
         .markdown-body-custom table::-webkit-scrollbar {
           height: 5px;
         }
         .markdown-body-custom table::-webkit-scrollbar-track {
-          background: #080D1A;
+          background: var(--bg-surface, #f8fafc);
         }
         .markdown-body-custom table::-webkit-scrollbar-thumb {
-          background: #1E293B;
+          background: var(--border, #cbd5e1);
           border-radius: 3px;
         }
         .markdown-body-custom table::-webkit-scrollbar-thumb:hover {
-          background: #0066FF;
+          background: var(--primary, #0066ff);
         }
         .markdown-body-custom thead {
-          background: #111C33;
+          background: var(--bg-surface, #f1f5f9);
         }
         .markdown-body-custom th {
-          color: #93C5FD;
+          color: var(--primary, #0066ff);
           font-weight: 600;
           padding: 8px 12px;
           text-align: left;
           font-size: 11px;
           text-transform: uppercase;
           letter-spacing: 0.5px;
-          border-bottom: 2px solid #0066FF;
+          border-bottom: 2px solid var(--primary, #0066ff);
           white-space: nowrap;
         }
         .markdown-body-custom td {
           padding: 8px 12px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-          color: #E2E8F0;
+          border-bottom: 1px solid var(--border, #e2e8f0);
+          color: var(--text-main, #0f172a);
           vertical-align: middle;
         }
         .markdown-body-custom tr:last-child td {
           border-bottom: none;
         }
         .markdown-body-custom tbody tr:nth-child(even) {
-          background: rgba(255, 255, 255, 0.015);
+          background: var(--bg-surface, #f8fafc);
         }
         .markdown-body-custom tbody tr:hover {
-          background: rgba(0, 102, 255, 0.08);
+          background: var(--primary-subtle, #eff6ff);
           transition: background 0.15s ease;
         }
 
         /* Inline Code */
         .markdown-body-custom :not(pre) > code {
-          background: rgba(0, 102, 255, 0.12);
-          color: #93C5FD;
+          background: var(--primary-subtle, #eff6ff);
+          color: var(--primary, #0066ff);
           padding: 2px 6px;
           border-radius: 4px;
-          border: 1px solid rgba(0, 102, 255, 0.25);
+          border: 1px solid #bfdbfe;
           font-family: var(--font-mono, monospace);
           font-size: 11.5px;
           white-space: nowrap;
@@ -142,19 +142,18 @@ export default function ChatMarkdownRenderer({ content }) {
 
         /* Code Blocks */
         .markdown-body-custom pre {
-          background: #050811;
-          border: 1px solid #1E293B;
-          border-left: 3px solid #0066FF;
+          background: var(--bg-surface, #f8fafc);
+          border: 1px solid var(--border, #e2e8f0);
+          border-left: 3px solid var(--primary, #0066ff);
           border-radius: 8px;
           padding: 10px 14px;
           margin: 10px 0;
           overflow-x: auto;
-          box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
         }
         .markdown-body-custom pre code {
           background: transparent;
           border: none;
-          color: #6EE7B7;
+          color: #0f172a;
           padding: 0;
           font-family: var(--font-mono, monospace);
           font-size: 12px;
@@ -164,12 +163,12 @@ export default function ChatMarkdownRenderer({ content }) {
 
         /* Blockquotes / Alerts */
         .markdown-body-custom blockquote {
-          border-left: 3px solid #0066FF;
-          background: rgba(0, 102, 255, 0.06);
+          border-left: 3px solid var(--primary, #0066ff);
+          background: var(--primary-subtle, #eff6ff);
           padding: 8px 12px;
           margin: 10px 0;
           border-radius: 0 6px 6px 0;
-          color: #94A3B8;
+          color: var(--text-secondary, #334155);
           font-size: 12.5px;
         }
         .markdown-body-custom blockquote p {
@@ -184,16 +183,16 @@ export default function ChatMarkdownRenderer({ content }) {
         }
         .markdown-body-custom li {
           margin-bottom: 4px;
-          color: #CBD5E1;
+          color: var(--text-secondary, #334155);
         }
         .markdown-body-custom li::marker {
-          color: #0066FF;
+          color: var(--primary, #0066ff);
         }
 
         /* Horizontal Rule */
         .markdown-body-custom hr {
           border: none;
-          border-top: 1px solid #1E293B;
+          border-top: 1px solid var(--border, #e2e8f0);
           margin: 14px 0;
         }
       `}</style>

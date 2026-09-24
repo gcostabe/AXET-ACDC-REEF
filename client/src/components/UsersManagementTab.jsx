@@ -21,6 +21,7 @@ export default function UsersManagementTab() {
   const availableTabs = [
     { id: 'overview', label: 'Visão Geral' },
     { id: 'products', label: 'Catálogo de Produtos' },
+    { id: 'packages', label: 'Pacotes & Módulos' },
     { id: 'rules', label: 'Seleção de Risco & Regras' },
     { id: 'rating', label: 'Motor de Tarifação (RTE)' },
     { id: 'audit', label: 'Auditoria & PECA (Admin)' },
@@ -52,7 +53,7 @@ export default function UsersManagementTab() {
     setSelectedUser(u);
     setSelectedRole(u.role || 'ATUARIO');
     setSelectedStatus(u.status || 'APPROVED');
-    setSelectedTabs(u.permissions?.allowedTabs || ['overview', 'products', 'rules', 'rating', 'explorer']);
+    setSelectedTabs(u.permissions?.allowedTabs || ['overview', 'products', 'packages', 'rules', 'rating', 'explorer']);
     setCanEditRating(u.permissions?.canEdit?.rating || false);
     setCanEditRules(u.permissions?.canEdit?.rules || false);
     setCanEditProducts(u.permissions?.canEdit?.products || false);
@@ -292,36 +293,17 @@ export default function UsersManagementTab() {
 
       {/* Modal for Editing User Profile & Alçadas */}
       {selectedUser && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            backdropFilter: 'blur(8px)',
-            zIndex: 110,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '1rem'
-          }}
-          onClick={() => setSelectedUser(null)}
-        >
+        <div className="modal-overlay" onClick={() => setSelectedUser(null)}>
           <div
-            className="card"
-            style={{
-              width: '100%',
-              maxWidth: '540px',
-              background: '#0c1220',
-              border: '1px solid var(--border-card)',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 102, 255, 0.25)'
-            }}
+            className="modal-content card"
+            style={{ maxWidth: '560px' }}
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', marginBottom: '0.5rem', color: '#fff' }}>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', marginBottom: '0.4rem', color: 'var(--text-main)', fontWeight: 700 }}>
               Alterar Perfil & Permissões
             </h3>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1.25rem' }}>
-              Usuário: <strong>{selectedUser.name}</strong> ({selectedUser.email})
+              Usuário: <strong style={{ color: 'var(--text-main)' }}>{selectedUser.name}</strong> ({selectedUser.email})
             </p>
 
             {/* Profile Selection & Status */}

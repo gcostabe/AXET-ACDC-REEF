@@ -1,0 +1,3454 @@
+con lo que estaba trabajando explicando, Manu. Luego miramos un punto importante que es la
+parte de Miguel y el resto de la tarde vamos a explicar un poco más detenidamente los
+clubos haciendo relación a todos los procesos que estamos hablando y continuamos ya pues
+con lo que es la tarde con eso, ¿vale? O tu, yo no. Vale, pues ya que el club solo nos
+traba el último caso que es la priorización de la frecuencia. Tú puedes tener una regla
+y luego tener otra, lo que quiere hacer es que se overactiva en ese caso específico
+y decir que tú tengas alguna más general que cumpla en todos los casos y que en algún
+caso específico, pues tengas que aplicar a alguna. Ya sea por un tercero o el caso más
+pequeño no fue un atoriza grupo, ¿no? Es importante para lo que están trabajando.
+Un modelo. Sí. Entonces, el caso es que está hablando muy importante para entenderla, la
+jerarquía de las redes. Exactamente, es como un tema de lo que él dice, el contrato
+de la polisagrupo y todo eso. Hay unos que son más específicos y otros que más generales,
+¿no? Les he comentado tus preferencias en, en este caso. Entonces, bueno, que está
+la, el mapa de, de priorización. Entonces, cuando hay previos o validaciones, en mismo
+nivel de desalto, lo que ocurriría es que se quedaría solo con la primera capricasa
+de las condiciones. Es decir, si hay cinco reglas, se quedaría con las más prioritarias
+que cumpla en esa situación. El resto la ignoraría y lo estaría haciendo por el criterio
+que tiene aquí. El orden es inverso. Es decir, a mapa prioridad tiene, le va, le va metiendo
+más penalización que lo que hace es que entra antes. Entonces, ya cuando aplico una
+de estos no van a aplicar. Este caso, lo mismo está en los scope, como he dicho, de previos
+de validaciones. De controles técnicos, deberíamos tener un tipo de identificador para saber que
+pertenece al mismo grupo para poder definir que si cumple uno no aplique el otro. O que
+realmente incluso, aunque no lo cumple, lo tenés que aplicar. Por ahora no hemos tenido
+un caso de este estilo. Pero por lo menos en previos de validaciones sí que aplica perfectamente
+ya. Son los trajes a medida, ¿vale? Esto lo estamos
+ya fundando en España, le llaman trajes a medida. Poder personalizar una regla. Hay
+reglas generales que, por lo que ustedes te dan una regla general y salimos así. Pero
+resulta que llega un negocio que para una línea comercial, un corredor, un apoyos al
+grupo, un contrato, hay una personalización de la regla porque se está estableciendo.
+De una manera, en España le llaman trajes a medida, nosotros en el taller van a encontrar
+que son preferencias, ¿vale? Entonces lo hemos visto mucho en el Centro Amaria y Placía
+del Comando. Sí. A las Policías del Grupo de Contratos en Brasil en este momento no
+lo he visto. Lo vas a ver porque lo vas a hacer lo que prefieres.
+Pero ¿cómo sería lo, no sé, en traduciendo un poco las cosas? Primero tenés que aplicar
+los específicos y después los generales. Imagínate que yo tenés una regla para el
+Comando, que no sé, que la suma segura de la cobertura de muertes siempre son 10.000,
+pero llegó a un contrato. Y sepa este contrato son 5.000, él va a conseguir primero la del
+contrato. Sí. Y esa es la que devuelve. Pero ¿cómo, eso de penalización no lo entiendo?
+¿Qué pone los indeprioridad? ¿Cuáles son los primeros? Los que tienen más cercano
+de cero. ¿Puraría que es? El primero. Sí, los que son, los que empiezan a dar
+más cercano para cero. Más son los que son pares de ser el que, oye, para esta Policía
+ahí. Luego empiezan a subir con Policías clientes, luego con un contrato, luego con
+el Grupo, luego la persona, luego los canales, luego los niveles comerciales, luego allá
+abajo que tiene la fecha. Tú le pones una Policía, la regla es para esa pos y empiezas
+a subir. Pero lo que no me acuerdo es que el producto tenga 1200, y después la Policía
+es una regla que pase para todos los programas, y pues es la menos prioritaria. Y si después
+pongo una específica para una Policía, esa debería. Exacto, es la más prioritaria.
+Y si tengo una para el canal. La prioritaría se apunta a esto. Pero no debería prestar
+a la Policía. Primero va a la Policía y luego al canal, ¿vale? Pero ¿dile usted qué
+no va a hacer? Está por esta decente, ¿me digas? Primero va a la Policía.
+Reglais el artífito y luego lo pongo como ya, que no es la primera. O sea, el principio
+tan lógico es así. ¿Va de lo específico o de la verdadera?
+Era porque me lo había dicho hoy. Entonces, un ejemplo, entre América tenemos Policía
+con el contrato subcontrato. El contrato sería el más específico, entonces sería el valor
+más alto negativo. Sí, bueno, el alto negativo aquí es el manejo del motor, pero la filosofía
+sería esa por detrás. El tema es que tiene campo, que ya se están tratando como prioridad,
+que son estos que tienen aquí, pero antes no existían prioridades. Entonces estaba
+dentro de las condiciones que expliqué antes. Esto lo que hace es que si tú en las condiciones
+pones, porque imagínate una regla de sábado que dice, solo aplica para esta Policía
+que es muy bueno, él busca la expresión regular dentro de tu cálculo de las condiciones
+y al haber aplicado por esa restricción también lo va a costar en las prioridades. Eso por
+detrás lo razón a cuando lo tiene que ordenar. Y en función de eso, puedes tomar la primera
+que aplique. Ahora mismo, Fredy, la filosofía que está tomando es que si no cumple la específica
+va a intentar evaluar la general. No existe como la específica ya era candidata de carta
+de evaluar las demás. Si no aplica, pero si no aplica porque va cumpliendo las condiciones,
+va a irse a la más general. No existe un caso ahora mismo en el que tú digas, vale,
+como ésta no cumple, no hagas ninguna cosa. No evalues la fe, no así quiera.
+No, tiene que estar. Así está bien. De lo particular, en lo general, que no aplico
+ninguna regla, pero es que no hay ninguna que contrato.
+Exacto. Pero si no lo tienes, que más hay que extramantelo del contrato.
+Y si no. Y si no tomarlo, la Policía Agricultura tiene que no, tiene que tomar en toda general.
+Así que está funcionando. Esto sí es importante que tengámoslo claro para
+que cuando estén trabajando las reglas, sobre todo los que le amaran aquí en España, nuestra
+empresa media podamos implementar, ¿vale? Que es algo que esta semana hemos venido hablando
+con Alderto. Los trajes a medida, el vagón, también el taller, ¿no? Entonces, ¿qué pasa?
+Los trajes a medida los condiciona el negocio, generalmente el negocio, el que nos dice que
+abre una nueva línea de venta para un canal comercial X, ¿cierto? Y ellos van a parametrizar
+esa regla. Esas específicas, esas reglas específicas que parametrizan, pues el negocio,
+son ellos lo que no necesitan llamarnos a nosotros para, en cambio, lo que es la implementación
+de las reglas generales del producto, pues si estará aquí cuando sea el producto, la
+aplicación en la línea, entonces ahí habrá una configuración de todas esas reglas generales,
+aplican al nivel estándar, esa, pues, que incluye el producto, en un caso ya cuando
+esto esté mejor integrado, lo haga la diatecnica, pero se aplica para todas. Y las que son
+específicas van a tener varias cosas. Es tu primero que comentan, Manuel, una de las
+reglas, segundo, las que son específicas van a tener un condicionante de, por ejemplo,
+alejar las fechas, no lo pueden poner en una fecha retroactiva, porque puede impactar
+el negocio, ¿cierto? Va a quedar específica para, para esa, para esa personalización
+que les quieren hacer. Nosotros, por ejemplo, el colectivo, me dicen, oye, para esta polsacoletiva
+necesito una rela X, lo podrán hacer, pero ya estamos mirando cómo estructuramos para
+que cuando sea un traje de medida, ya sepamos cuál es esa polsacoletiva con ese contrato
+y la regla que de atada, esa polsacoletiva con trato específica, así que tenga más
+que hacer, pero ya el usuario va a entrar por la polsacoletiva, va a parametrizar esa
+regla y va a quedarle a esa polsacoletiva con trato. Las demás polsacoletivas, pues,
+las demás, de las reglas que están. Entra que actualmente la polsacoletiva con trato
+es parte de la regla. Claro. El activo digital tiene una norma. Yo puedo tener mi producto
+en líneas generales, pero puedo llegar a personalizar lo que es selección de módulos
+a nivel de alguna regla específica, o lo que es en el taller, está como el nombre. No
+sea personalización, se llama... bueno, los trajes a medida. Entonces eso, pero están
+en el taller, vale, para que lo hagan. O sea, en palabras que conozcamos algunos de
+nosotros vamos a poner, ejemplo, la tarifa multivariable. Yo en la tarifa multivariable
+tengo una serie de elementos de configuración que puedo usar para ese traje a medida, que
+es la estructura geográfica, la estructura comercial, la estructura de canales, polisagrupo
+contrato, una polisa específica, también el agente, eso más o menos lo mismo que está
+acá, que yo digo. Tengo muy tarifa general del producto.
+Por eso, alguna cámara está en el RT también. Y después, si personalizo por alguno de esos
+elementos, él siempre va a respetar primero con ese orden de prioridad. O sea, sería la
+misma filosofía. O sea, hemos querido trasladar lo que era esa línea de escondiciones que
+había específicamente en el punto de llevar la alstanda general del activo digital, vale,
+para que se encontró. Lo que sí es cierto es que cuando están tomando la multivariabilidad,
+en el caso que me dice, hay que testarlo, porque eso no lo hemos llegado a garantizar.
+Me la quedo yo. Me la quedo yo para probarlo, pero no se certificó con un producto realizado.
+Exactamente. Por eso, no todo de un producto va primero lo más sencillo y a todo un producto.
+Ahí tenemos que decirlo. La estamos trabajando de arriba abajo con todo lo que estamos haciendo,
+pero claro, hemos tocado palos que nos han salido para lo que estamos haciendo, pero
+la idea es que, teniéndolo en los diferentes productos de autos, de hogar, se necesite,
+pues ahí vamos sobre todo para certificar, vale, porque nos interesa que haya certificado
+los procesos. De hecho, en la red original de lo que se ha evolucionado había un exportador
+directamente de Dron, a las colecciones de... exprimiraba las portaciones de los pizzeros,
+de las farmas correspondientes, y luego, obviamente, importador que es la farmata de los pizzeros.
+Vale, ¿vale? Es bien.
+Vale, en un principio ya de Duc no ha ganado, simplemente que ya Duc lo que haría es, es
+decir, pues ha aplicado estas tres, cuatro reglas, y pues en el caso, como lo hemos dicho,
+de las funciones, pues ya maría el RTE para tener resultados, y ya con esa lista, el orquestador
+es que toma las decisiones de cómo actuar con él. Lo mando en mala regla de asignación,
+coge los atributos, los datos variables, sobrecribe el valor, que también tiene modificadores
+de acceso, que no lo habíamos comentado, que también puede hacer que un campo, un atributo
+entre una poliza pueda hacer que se bloquee, que sea obligatorio, o que se pueda ocultar
+incluso. Es decir, que también tiene reglas de comportamiento en vez de las relaciones
+que nos habíamos comentado.
+Eso es importante, porque son reglas no funcionales, y están muy guayos, porque si hay cosas que
+puedo condicionar. Tengo el producto y quiero que algún dato, por alguna condición no
+parezca, pues digo que es visible o la falsa.
+¿Con un valor por defecto?
+No, la que digo es que no salga, la configuro, o algo, que ponele las reglas que es esto,
+aparte que pongo un dato, lo que puedo decir, que no es visible, ¿no?
+¿Es visible o obligatorio?
+Si tienen tres test, que realmente son menos probadores, que sería bloqueantes, es decir,
+que hay mutabilidad cambiada, invisible, que es oculto y requerido, que es obligatorio,
+que son tres relables, que tú puedes poner y ya eso se incluye en el dato variable,
+y eso es lo que hace que el frontal sepa tomar vesticiones acorde a ese atributo.
+Las marcas que teníamos en la 20, que es la 20.
+Ah, pero era de estáticas. Cuando tú defines esas marcas, están en estáticas, ¿sí?
+No, en cambio, por todo eso que hemos dicho. Si tiene los ojos azules, pues pidele...
+Será todo variable, lo que usted decía ahorita, que si él llega a esta marca, pues pidele
+la cantidad. O los que él oponga la reducción o oponga la reducción.
+Un caso más obvio, si tú dices que fumador quiere que te pongas y yo si cuantos te garró
+va a fumar, pues si sé que vamos allá, te vas a hacer un día.
+Son que las sartiones de las reglas sobre los atributos, aparte de eso que tienes valores,
+tratamiento funcional, hacer un valor, una variación concreta, puede modificar los atributos
+no funcionando. Y eso lo hacemos, que es que...
+La definición, cuando tú defines la regla, cuando le hicieras la función...
+Es cuando cambia un atributo de cualquier tal.
+Su comportamiento no funciona. De configuración.
+De los atributos. De los atributos.
+De los atributos, ¿vale? Se lo puedes...
+De los datos.
+De los datos.
+De los datos.
+Y eso se ejecuta cuando sale del campo.
+Ah, un mismo. Pero...
+Pero se ve que está en riesgo.
+Espera, espera, calma. Claro, porque es eso. No, mira, es fumador,
+tabulador.
+Es selección de riesgos. Es que yo me tengo que situar por eso también.
+Y ha dicho algo de que se conecta después con el RP.
+Lo que está a dos de ACDC va haciendo llamados, y lo que va a hacer es llamar la selección
+de riesgos y luego posteriormente llamar el RPDC para hacer los calos.
+Entonces, todo esto de selección de riesgos que bueno aquí controla esta ni competición
+de todo eso lo que hemos visto... Claro, que estaciones a general cuando hablábamos
+de los que están los géneros. Ahí vas viendo cada una de las armadas y va a llamar la selección
+de riesgos o va a llamar... Claro, pero esta es la selección de riesgos.
+Exacto, sí.
+Vale. Y aquí pone dentro de selección de riesgos todo esto de aviso, de documentación,
+petición de formularios, controles técnicos, todo esto es esto. Pero no hemos visto todo.
+Hoy ya hemos visto.
+No hemos visto. Es que lo hemos pasado muy rápido en el estado general, ahí se ha habido
+de cada uno de los géneros.
+Sí, lo hemos sabido.
+Es que me tengo que situar porque claro, como hago yo todo esto.
+O sea, ahora mismo con esa regla.
+¿Y usted que ya ha pasado todos los géneros?
+Ya, ya.
+Cómo lo tempreta, por ejemplo, si estamos colocando reglas con los datos callables.
+Mira mi baque y me lo estoy bajando, ¿sí?
+No, de esta forma lo cortaré todo el APDF para que lo tenga.
+No, de esta forma lo buscó.
+Según mi baque, es esta.
+Yo coloco regles para los atributos, ¿no?
+Entonces, el equivalente a todo lo que hacíamos o en el prueba o en el val del dato variante,
+¿no?
+Ahora lo vamos por acá, como una regla, sin pre y sin val.
+Pero entonces, ¿en qué punto se...
+Como pre y como val.
+O como estábamos como val.
+¿Y si estábamos como pre y como val?
+Ah, vale, vale. Entonces, ¿en qué momento lo pintamos? O sea, cuando está pintando
+la pantalla, por lo que pregunta ahorita Jordán.
+Igual que ahora.
+Igual que ahora.
+Igual que ahora.
+Ahora, yo lo que entiendo es que ya los programas, o sea, no es que tengamos el ATR y que este
+ejecute directamente estos, sino que directamente el programa va a llamar ya la CSS.
+Y va a pintar la pantalla en función de lo que tengamos cuesta ahí.
+Entonces, va a ignorar lo que haya en la base de datos.
+¿A qué?
+Compremente.
+Yo tengo la regla de... Hacen los dos, o sea. Yo tengo una definición de un pre de
+datos variables, ¿cierto?
+Digamos que tengo una lógica en la base de datos.
+Sí.
+Sí, pero ya sé todo el día.
+Para los nuevos, dale el acuerdo que hicimos en la mañana, ¿eh?
+Que todo está aquí.
+O sea, no metes reglas en el producto.
+Lo que se puede.
+Pero si no sé, o sea, estoy mirando a qué alcance tiene.
+O sea.
+Sí, el alcance.
+No, pero es importante. No es tan sin posq. Vale.
+Queremos llegar al nuevo intento y han llegado, pero lo importante es que, si la regla está
+en el activo, esa es la que está en el activo, para que no mezcle reglas, porque si no, vamos
+a perder el objetivo y es que el activo uno de los puntos es la independencia que tiene
+con el transaccionado, con la base de datos de Oracle.
+La importancia de todo esto que estamos montando es que el activo sea independiente.
+Si se cae Oracle, yo puedo seguir dando precios.
+Yo puedo seguir calculando, yo no necesito ahora para dar ese problema de convencencia,
+que hay en convencencia.
+¿Por qué crees que es eso?
+Es ese el enfoque.
+Entonces, claro, nuestra misión, como trabajando con los nuevos productos, es a ver, la regla
+está gobernada en el activo, está allá.
+Como le decía, necesito calcular el reseguro para ese, si está en RIF, ¿vale?
+Y de toda la vida y por ahora se seguirá haciendo así, es algo que alguien llega a otra cosa,
+en las comisiones.
+O sea, nada ya calculando, o todo lo demás que no esté dentro del componente del activo
+se tiene que seguir manteniendo y eso es lo que nosotros hemos hecho.
+No se ha quitado ninguna funcionalidad actual del sistema, ninguna.
+Solo que sea extrapolado y la ventaja que tenemos es que al separar nosotros, todo ese
+proceso, todo lo que es el concepto de oferta comercial, lo que engloba lo que es la oferta
+comercial que es la variación de los datos, las reglas que aplican de negocio.
+Cierto?
+La oferta comercial con sus coberturas y sus capitales, y si estoy coquizando hasta los
+planes de pago, queda dentro del activo, entonces el activo ya te da una fuente de información
+bastante alta.
+¿Qué tengo que hacer con esos datos?
+Pues, devolverlo aquí de los llamados, una API o seguir con el flujo, porque es una emisión,
+entonces sigo con el flujo, pero ya él sí se la pasa la base de datos y él ya se
+va a encargar de hacer este proceso.
+Si o si, quien manda ese producto, yo tengo un dato que el producto le dije que es obligatorio
+y en el activo le dije que cuando llegue aquí al producto va a callar, ¿vale?
+Porque la transacción la hace como tal ya, la va a hacer datos.
+Claro, o sea, manda la última palabra y la tiene mi producto, entonces es importante
+también que el producto esté bien estructurado, bien armado para que, pues una cosa es el
+activo y otra cosa es el activo.
+Allí ganan tu parte de cumplimiento.
+No, no, es muy bueno, entonces se van a poder cambiar a actividades de campos siguientes,
+¿no?
+Es decir, yo puedo tener un campo que depende de lo que ponga ahí, el siguiente se transforma
+en obligatorio.
+Sí, pero no quieres decir que el línea, cuando yo trae un poco el dato, se transforme en
+un campo.
+No tenemos...
+No.
+Se puede activar.
+mucho, hay un campo de parametrización en las atributos que le dices si se dispara la validación.
+Te manda todo, tienes que recibir rado, pero por eso no se recomienda, solo para ciertos casos se
+recomienda atirar la validación al abandonar, para perder el foco del campo del atributo.
+Me refiero visualmente, nosotros ahora vemos en el río, en el asesito rojo, y yo con un valor y el
+siguiente campo que no hará obligatorio, pasa a ser obligatorio, ese aspecto visual y se complica.
+Es cuando le deje aceptar, en atributos del riesgo por ejemplo, cuando le deje aceptar,
+si lo dejas en blanco, te vas a aceptar, te vas a decir, oye, te faltan un valor
+obligatorio y te va a marcar uno que no llevo el asesito rojo.
+Ahora mismo funciona así, nosotros con una parte contexto, te guardas que lo quitamos en el gramo
+de lo mismo, o sea, yo tengo un producto diverso que tiene 300 datos de valor y que,
+dependiendo de la modalidad, se pintan unos u otros, entonces, con lo de contexto,
+tenemos la global del contexto y ahí opongo cuáles datos van a estar acuntos por contexto,
+eso ya se tendríamos que trasladarlo aquí.
+Y esto se lo trasladan a negocio, o que quieran llevar al atributo.
+Sí, pues un cañazo con modalidad, ocultar todos los datos que no se ven, tiene una regla por datos.
+Esto es un producto muy específico, ¿no? Que no es normal, lo normal es que sea menos,
+¿sabes? Es por no llevar un caso.
+Digamos, Manu, para que tú quieras liberar.
+Por el que un poco de refaso general, que digo que había parte de los que estaban entendiendo
+cuando hubiera el resto de servicios, haciéndolo lo que va haciendo, que tú tienes el servicio de los que está a dos
+y va haciendo todo el flujo como lo está recorriendo aquí, como lo está explicando,
+es decir, va primero a dos y hace el control técnico de datos frijos.
+Que a lo mejor llegue uno de datos frijos que no viene un campo informado, que debería ser informado,
+no viene en formato correcto, pues daría el control técnico del rechazo.
+¿Qué rechazo? Pues para ahí sale hacia afuera y entonces ya no haría nada más para el proceso.
+Si todo sigue funcionando, pues va haciendo todos los controles técnicos, que va empezando por precálculo,
+que coge un previo y dice, vale, pues este campo tiene que tener un valor por defecto de X.
+Ese valor, a lo mejor lo sabe por la regla, pues se lo va a sobrecribir al producto
+y le va a meter los campos no funcionarios que hemos estado hablando, si alguno te lo ha dicho.
+Que hay algún caso de un campo que al mejor no sabe hacer, que fue una fórmula,
+pues va a leer, le pregunta y la se tira y siga el paso siguiente.
+Se afinará un proceso iterativo que va enriqueciendo el polición con todo lo que es más incluyendo,
+sabe acá que hay algo que se ha rechazado que directamente lo se hace fuera.
+Y diga, pues no puedo continuar con los pesos.
+Entonces ya luego voy viajando a nivel de riesgo y ya estaría al punto ya en que ha pasado
+todos estos controles técnicos, periodos de validación y empieza a capturar módulos.
+En el caso de módulos, tiene la forma de considerar que lo vemos en los más detalles.
+Pero puede ocurrir que tú no tengas informado los módulos desde las preferencias de lo que quieres construir,
+y entonces te lo vas a construir y informándote los valores por defecto de todas las coberturas,
+o que tú ya me estás diciendo, oye, tengo estas preferencias, tengo estas coberturas,
+lo tengo informado de tal y tal forma, y entonces en ese caso lo que dices es,
+voy a ver si lo que me has dicho tiene sentido.
+Si tiene sentido, te dejo pasar y puedes continuar hacia adelante.
+Que no, error, porque a lo mejor te has saltado una cobertura obvio o te has salido del límite de los capitales,
+o la reclación entre un riesgo y otro del capital es demasiado grande o solo porcentaje.
+Está bien incluido el módulo, o te decidas, no te diría, por error y no pones más.
+Hay cosas que solo se valían en módulos, ¿no?
+Por ejemplo, la dependencia de cobertura, eso lo vamos a ver en el módulo.
+Sí, eso está bien.
+Eso que dice, no es importante, ¿vale?
+Porque lo que están haciendo módulos es garantizar la integridad de lo que hayas configurado
+en esta sección para que pueda continuar, si no, o no te dejas seguir.
+Y ahí, en vida para Brasil, donde vamos a trabajar, papá, mamá, hijo,
+se fundamentan en donde están las configuraciones echadas, ¿no?
+Vamos, papá. Míjoles.
+La dependencia, o sea, los otros temas de dependencia, coberturas, ¿los ver por ahí?
+Sí.
+Marta, módulos ya en un caso, que no va a ser más rápido de resolver,
+porque tiene muchas cosas que hemos comentado en el sistema de la preferencia,
+porque tiene suyo propio y funcionará exactamente igual.
+El motor de reglas tiene como la versión V1 de las condiciones,
+que es por lo que puede aplicar un módulo o otro, que habrá preferencia.
+Ahora ya estamos en módulos.
+Sí, sí.
+Vale.
+Perdona, tengo piedras.
+Vale.
+Entonces, ahí hay dos servicios que se han puesto en el activo digital.
+Yo le paso los riesgos y necesito que me ve cuál es el módulo que se está configurado.
+Tenme al 10, el 20, el 30 dependiendo las reglas.
+Este servicio está.
+O, ya le digo, deme la configuración del, o pase la configuración del 20,
+porque fue la que seleccioné, entonces lo que se ha explicado Manuel es eso, ¿vale?
+O sea, dos puntos.
+O le, o le devuelve los módulos que puede aplicar, o le le digo uno específico, ¿vale?
+Si tú no me informa ninguno, te doy con sus valores por defecto.
+Todas las coberturas marcadas, que tú ya me lo das, evaluas si tiene sentido o no.
+Con módulo de evaluar, pues con una estructura como tiene ahí, que esto sería un módulo.
+Es la preferencia tipo 1, para un ramo y sería una lista de todas las coberturas que tendría,
+te diría si son obligatorias o no, si tienen capitales mínimos, máximos, por defecto.
+También reglaciones entre coberturas, es decir, que puede ser que la cobertura 308 sea siempre
+el 100% o el 200% de la 307, y todo ese tipo de información en la que el módulo te da,
+es decir, al final el módulo lo único que hace es recabarla y con una serie de condiciones,
+con un motor bebé, muy mal filo al deduz, pero en la versión 1v1, te da el objeto.
+Y entonces, en ese caso, lo que no existía aquí, y si que existe ahora, es que lo hace
+el orquestador, es lo que estoy diciendo esa parte de la locación, porque, que ponga aquí
+de un 200% de una cobertura anterior, eso que tenga sentido no, lo está sabiendo interpretar
+el orquestador, que es quien define, sea final aplica o no aplica.
+Realmente, el módulo es que la lógica es muy parecida a lo que tenemos en dudas, con
+la salvedad de que realmente estás cubriendo todas las coberturas que tengas.
+Tú cuando pones una petición dices, pues ya tengo, está en la cobertura, pues ya los
+que no tengan esa cobertura, de qué exactamente los más respetan, es decir, porque ya no
+los va a robar, porque no aplica, y el caso aquí peculiar que ya estaba incluido, es
+que existían unos campos aquí en esta lista, primero no los tengo todos, en el que tú
+podías poner con respecto a un riesgo que fuese anterior, es decir, el primer riesgo que aplique,
+que tenga un campo específico, va a ser el riesgo que va a tomar para comparar los capitales,
+que era un caso que tenemos incluido, de hecho, en los comentarios pones para así.
+Complementando ahí, también se evolucionó, es que si la producto de esa modalidad tiene
+20 coberturas y la configuración de ese módulo de vuelve 5, pues ya se van a ver visualmente
+solo 5, y va a tratar esa 5, pues eso ya va a hacer el proceso, ¿OK?
+En Uruguay, creo que fue en Panamá, nos presentó un tema con el mínimo entre 200,000, 250,000,
+50% de... necesitábamos una operación, más de una temática, de un capital de una cobertura,
+50% de la cobertura de este módulo. Acuérdense que el módulo nos presenta el cálculo por dispol, pero obviamente está el nombre de la cobertura, es que va a estar en el que se quita y es de frima.
+Si tú estás en el orden, es que tú puedes volver, tú vas a perder el orden capital, y lo entiendo. Que lo aprueba, que si no, las mantistas, el vuelve capital, y frima.
+Pero esa pasada módulo es que... La suma asegurada, por el mínimo, es que es el somio, es que no habría estado ahí sufriendo, es que vamos por el orden.
+O sea, yo me estoy ubicando así, porque lo están explicando en el orden, porque yo me estoy imaginando el fútbol de enición, eso se empieza.
+Porque no lo ponen en un cuadrito de... No me da tiempo a leerlo. Yo sé que hemos pasado ya por selección de riesgos, hemos pasado y ya está, no sé muy bien qué hace en selección de riesgos, ¿controles técnicos, entendido?
+Pero no sé, yo lo que necesitas saber es en qué orden vas a ejecutar todo eso. Es el mismo orden del flujo de enición que tenemos actualmente. Es el mismo que los Nights.
+Pero eso es donde... A ver, si yo entiendo que, bueno, pues... Pero necesito ver un poco más claro, a no sé que después lo vayamos a ver más claro.
+Porque la idea es hoy ver las características como... Porque si estamos hablando de hecho, muchas cosas que, claro, digo, no sé dónde encaja un control técnico, o dónde meto...
+No nos da ese espacio de... Sí, sí, por eso. Pero sí que tenga los conceptos de qué las capacidades y esta semana la idea es si ponen una cacharriar, ver los flujos, ver cómo están.
+Incluso si podemos verlo hasta mi producto de España para que vean dónde están las formas. Sí, sí, yo lo que... O sea, yo entiendo que esto de fase 1 y fase 2 es lo que va haciendo, vamos llamando, ¿no?
+Y claro, está pasando de repente a pasar a otro sitio de módulos cuando no había entendido todavía que esto entiendo que son los dedú...
+Un momento para ver qué se hacen a nivel de atributo. No sólo atributo. Claro, está aquí no estoy entendiendo toda la capacidad, porque ya se me está perdiendo capacidad.
+Imagínate la pantalla del online, ¿cierto? Y tú ya metiste los datos y estésme en el botón de aceptar de la primera pantalla. Sí, sí, por eso...
+Es de poliza a nivel de riesgo y ya me voy a módulos. Perfecto. Eso es más, eso es el clube que estamos siguiendo, ¿vale?
+Y ahí van metidos controles técnicos y validaciones de atributos y controles técnicos del paso.
+Y todo eso que habéis explicado en la fase 1 y en la fase 2 que tenéis ahí puesto es lo que llamamos dud.
+Yo no tengo que configurar el dud. Es que es lo que pone ahí en la fase 1 y en la fase 2. Eso está configurado en dud.
+Entonces todo el nivel de poliza y el nivel de atributo no había dud. Y dependiendo de lo como yo lo configurando va a ser un control técnico o va a ser una validación.
+Vale, es que si es solamente por enfocarlo, ¿dónde hay que poner?
+De opción, de salto, de lo que define si es previo o validación o control técnico.
+Claro, entonces todo lo que está en fase 1 y en fase 2 me voy a dud y yo lo configuro según después ya veré cómo se configura por niveles de controles técnicos,
+por lo que no se habéis explicado antes de que hay distintas formas, lo que es que pueda leer una variación.
+Es todo eso, ¿vale? Es que necesito un resumen así porque vamos pasando y no me enfoco.
+Allí lo único que a mí me está faltando en esa fase 1 son de los de la J-20 en el 30, que no lo veo.
+Claro, eso es lo que lo vimos esta semana, hace como 15 días que efectivamente, claro.
+No, no, pues está bien, es por saber. Mira, lo de la J-20 en el 30 sigue esto en la J-20 en el 30.
+Ya hay detalles que queremos todavía, ese es el margen del 10%.
+Está bien, pero es por entender, es la misma línea de la capacidad. Ya cuando llegue ya...
+La fecha del 20. Ya debe no tener.
+Está bien. Vale.
+Vale, pues ya en ese punto entramos en módulos y es lo que comentábamos.
+No sé si comentamos aún más porque este ya es final en la misma lógica que en dub.
+La misma forma de Valván regla, la misma forma de prioridad.
+La única salvedad es que en este caso maneja mucho el tema de si obligatoria los capitales que tiene
+o la dependencia con otros riesgos o otras coberturas.
+Pero en función de eso ya el módulo habría pasado.
+No, yo creo que ya se fue un poco resumido.
+Para poner también un poco de orden, mañana vamos a ver el tipo de orden con PEN.
+Esa lo mejor, eso da también un poco más de clases.
+Sí, simplemente con lo que explica lo antes, se ve un poco a que se corresponde cada fase.
+O sea, más que ver ya el código, ya me puedo meter yo.
+Esa vez, esa fase que se está pasando en mi servicio.
+Por lo que entendí de lo pase uno.
+Por saber dónde está conectado, con qué está leyendo.
+Porque claro, ahí está leyendo.
+Donde confundir un otro eso, que lo mismo es muy básico para vosotros.
+Pero yo no lo había visto.
+No veas con lo tan particular a la verla.
+No va, es todavía que estás leyendo un poco a Chile.
+Pero yo creo que la línea con que estás viéndola va desallazando las piezas.
+Como dice Alberto, las podemos ver más funcionalmente como cada una.
+Lo que lo demás lo veis es obvio, pero yo no necesito ver en cada una.
+De todas formas, a mí me pasó con esta parte que lo iba haciendo por el ejercicio de Federico que me hacía Federico.
+Un momento en que Alberto me enseñó algo online y ya empezaron a unirse todos los puntos.
+Ya entendía por qué se estaba haciendo cada cosa.
+Sí, sí.
+Y ya entendimos qué le factorizaron con el ejercicio de Federico.
+Yo sé que tengo alguien control técnico, yo quiero saber dónde se lanza control técnico o yo quiero saber dónde se lanza la validad.
+Si es antes de módulos y después de módulos.
+En el sujo de frontal, porque le va a decir, ¿no?
+Cuando llegas al paso uno y va a lanzar el premio de atributos, le va a decir,
+oye, lanza el premio de atributos de este nivel que es nivel poliza.
+Y eso, aún enumerado, dentro del activo que dice.
+Para el premio de atributos de nivel poliza tienes que ejecutar esto.
+Sí, pero no tengo todas las capacidades.
+Yo lo que quiero saber es todo lo que tengo posibilidad de llamar en cada punto.
+Es que está fijado ya.
+Claro, por eso.
+Pero ahí están sonidos.
+Ahí te lo está diciendo, mira.
+Claro, ahora sí.
+Pero ahora sí.
+Pero ahí está.
+Pero ahí están los control técnico.
+Ahora sí, pero que esta mañana no estaba.
+Y claro, digo, ¿dónde llamo cada cosa?
+Y que todo eso está concluido.
+Y entonces es lo que tengo que encontrar.
+No tengo esta idea.
+Configurado el primero en ACDC, donde se le dice qué es lo que va a hacer.
+Sí, eso.
+Eso está en el ACDC.
+Y luego eso se traduce en unas definiciones de arreglas que por no estar en selección de arriesgos.
+Sí, sí, pasó de muchos.
+El parque de RTE, la parte de la alfiga.
+No, perdón.
+¿Quién va a alcanzar?
+Es los nuevos.
+O sea, solamente esa configuración de coberturas y el fronto tarifa,
+o incluso por intervenir en las características de arriesgos.
+No, las características de arriesgos de selección.
+O sea, el componente de selección es el que va a determinar cómo se comportan los datos.
+Si están bien, si están mal, lo tengo que darles valores de esos datos.
+Esa es la selección.
+Pero, pues, dependiendo de las características podría definir un módulo.
+Y dependiendo del módulo no va a alterar los datos.
+Sino que ya tengo que poner las reglas directamente para que los datos se valide por las características que han anteriormente.
+A ver, no tenemos la vez que tenga los datos ya finalizando
+y luego tenga que echar meca para ajustar a un dato o eso no lo tenemos.
+Porque es un flujo como el de la opción.
+Lo que vas pantalla a pantalla va metiendo los datos.
+Si queremos validar un dato que estaba aquí al final,
+que lo pido al final,
+pero lo tengo que contestar por uno que pide al principio,
+pues lo tienes que validar en ese momento,
+porque ya tienes toda la información completa.
+El comportamiento de módulos no se ha alterado.
+Módulos, comportamiento de coberturas y los atributos asociados a esas coberturas.
+El resto de atributos de riesgos, eso lo hago.
+Es selección. Siempre seleccionamos.
+Es lo que comentábamos.
+Como por ver qué alcance tenías ahí,
+se limitabas sobre los temas,
+sobre los refrontos podrías hacer algo más.
+El módulo a ver cada componente aquí se elica a lo suyo.
+Y el que orquesta y dirige todo eso, es el activo de quitarse.
+Es ese que me están llamando aquí,
+entonces llamo a este, llamo a este y devuelvo.
+Ese es el que orquesta.
+Eso es lo que el orquestador, incluso, por las reglas,
+decide qué consecuencia aplica.
+Es decir, tú simplemente dices,
+estas cinco reglas están saltados.
+¿Quién tiene que hacer con ellas? No tengo ni idea.
+Es decir, el orquestador es quien decide
+para sobrecribir un atributo,
+si lanzó un rechazo, si escribió un control técnico,
+si es un formulario que realiza
+si el formulario ya viene informado o no
+para ver si aplica, pues ella la había rellenado también.
+Si es un requerimiento del documento
+si ya viene correctamente firmado,
+todas esas decisiones lo está decidiendo el orquestador.
+Tú simplemente sabes qué reglas te acompañen a ti.
+Y ya él decide cómo actuar con ellas,
+con cada uno de los casos.
+O sea, en el módulo.
+Lo que sería el dub, los módulos y menos que el RT.
+Primero, la imagen al principio,
+el flujo era como muy en línea general.
+Lo que pasa es que, claro,
+hay selección de riesgos
+en los atributos de cobertura,
+sí, claro, porque están en ese momento
+lo estuviendo, yo no los tenía antes,
+se los tengo que devolver en ese momento.
+Entonces, lanza selección de riesgos ahí.
+Hay selección de riesgos en formularios
+después de cobertura, claro que sí,
+hay selección de riesgos, porque ahí es donde tengo el dato.
+O selección de riesgos finalizar la polsa, claro,
+que lo controlo como un control técnico.
+Entonces, selección de riesgos, digamos,
+que es la pieza que más puntos de contacto
+tiene con el activo digital,
+porque se está reclutando en diferentes puntos, ¿vale?
+En cambio, módulos, módulos,
+se enfoca a cañones, cañones, coberturas.
+RT, a lo que es el cárcel,
+capital, primas, desgloses,
+eso se enfoca RT, ¿vale?
+Y no va a salir,
+en cambio, selección sí tiene
+más puntos de contacto con el agido.
+Y también tiene más puntos de contacto
+con el agido digital,
+porque tiene que seguir el flujo
+estándar de nuestro proceso, ¿vale?
+En resumo,
+y como yo ya lo mapé a mi cabeza,
+todos los nómperes que tenemos
+de datos variables y todos los controles técnicos
+van a selección de riesgos.
+¿Verdad? Toda la parte...
+Toda la parte...
+Bueno, muchas más cosas, ¿no?
+Hablando de lo que tenemos actualmente,
+más otras cosas.
+Después, como acabas de decir,
+si quiero pintar los planes,
+tengo mis modalidades configuradas,
+pero voy a hacer unos planes específicos
+y lo pongo en modo.
+Y eso es el momento que pinta la pantalla cobertura.
+Cuando le doy al botón calcular,
+sale en el RT y calcula
+todas las primas, dependiendo de lo que tengamos,
+la fórmula o la multivariable o lo que sea.
+Y después de ahí seguimos otra vez
+con selección de riesgos,
+porque en la última pantalla el finalizable
+puedo tener controles técnicos y me seleccionan una clausula.
+O si es un plan de paga, por lo que sea.
+Así lo tengo mapeado ya en la cabeza.
+El flujo de la emisión,
+toda selección de riesgos disponible.
+En todo el flujo,
+módulos para pintar los planes,
+el RT para calcular.
+Y así es.
+Si el flujo realmente no tiene módulos,
+por medio de los módulos que hay que configurar
+los de las coberturas.
+Bueno, yo voy a tener mis modalidades.
+Bueno, por lo menos uno.
+Claro, porque tenemos la modalidad
+en el producto,
+en el producto de España,
+cuando llegan a los aprilusos del riesgo,
+el último atributo que sale
+es la ayuda de las preferencias
+que cumplen los datos de la polícia
+y el riesgo que es importante.
+Se sale la ayuda porque hecho es
+ayudar una llamada a módulos
+para decirle qué preferencias tiene.
+Se sale el estado de preferencias, te eliges una.
+Y cuando pasas a la siguiente pantalla
+es cuando sale la primera.
+Las preferencias exactamente
+qué es lo que te muestran.
+Hay cuándo dices lo de las preferencias
+que te muestras exactamente.
+Un listado, es un listado.
+Es un listado para seleccionar
+qué preferencia es la que quieres elegir.
+¿Te acuerdas qué estuvo?
+Te necesitabas que mostráramos
+las diferentes configuraciones
+que sino que no me acuerdas
+qué producto estabas haciendo.
+Te necesitabas que te mostrara
+dependiendo de
+solo la lista
+del conjunto de datos
+y de la lista de datos solvidas
+por tres datos.
+Lo que se hizo fue un servicio
+que evalúa las mismas condiciones
+pero ya no te devuelve todo eso
+en ese momento sino te devuelven
+las listas de opciones que tengan módulos
+que aplican para esas condiciones de riesgo.
+Que para ti te son partibles.
+Es como si fuese la oferta converten
+para esas características del riesgo.
+Eso no te lo mande el formato listado.
+No te estás haciendo la potidación de riesgo.
+Te vas sacando solo 10.
+Constre con estos módulos.
+Para elegir el módulo.
+Te dice
+algo que te indica
+todos los posibles soportas que existe.
+Exactamente.
+Y eso ya se puede hacer el de Neutron también.
+Esto antes es lo que hacía el contestado
+pero ahora de Neutron
+te vale decir
+la prioridad
+perdón.
+Las posibles.
+Para eso entendí bien.
+Poniendo un caso real.
+Yo tengo un ramo de dogar y pimpas.
+200.
+Y yo tengo una serie de modalidades
+que son dogar
+y una serie de modalidades
+que son de pimpas.
+Pero dentro de...
+y lo tuvimos que separar así.
+Pero yo pudiera tener una sola modalidad
+para ogar y una para pimpas.
+Y dependiendo de la modalidad
+me van a salir listas.
+Cansa protegida, familia segura,
+todo riesgo incendio.
+Salirían en ese dato variable.
+Es como decir el plan
+o la oferta comercial.
+Seleccionó esto y ya me indica el módulo.
+Y salimos con una ayuda, lo único que hemos hecho
+es que en la ayuda, en vez de firmar
+la configuración de las edad,
+lo evolucionamos para que te van a observar.
+Entonces le escribo una edición.
+Puedes aprender las coberturas, las obligatorias
+de cuantas veces tú quieras.
+Las sumas aseguradas, las reclas de cálculos
+son muy bajas.
+Eso es un potencial que se...
+porque antes quedaba muy atado, ¿ok?
+Es eso que...
+¿Por qué no preguntan en el chat?
+En el chat.
+Sí, en el chat.
+Si no dan bits,
+no respondemos.
+¿Por qué?
+Yo no...
+Lo que digo es que ahí ponen en el punto 814
+el multilluser control.
+Eso...
+había dejado de funcionar hace años.
+Y la pregunta que os hago es
+¿esto ya funciona ahora otra vez en Neutron?
+Tenemos todos los pasos
+y hay uno que no aplica simplemente Serica.
+Vale.
+A eso voy.
+¿Lo que habéis hecho ha sido maplar
+de alguna forma los pasos que teníamos en Neutron
+entre un web con respecto a lo que es todo
+este tipo de activo digital, pero no por eso funciona todo.
+Ramón, esto es.
+En registrar.
+Hay dos de una misma polícia por diferentes usuarios.
+Sí.
+Pero eso dejo de funcionar hace años.
+Nosotros eso, todavía ese flujo
+no hemos exonado.
+Vale, vale. Ok.
+Si no es crítica, esto digo que es por entender
+si lo habéis puesto en la funcionalidad o no.
+Lo que yo entiendo ahora
+es como que lo que habéis hecho ha sido
+de alguna forma copiar los puntos
+digamos, donde se ejecutaban determinadas
+sus flujos, digamos,
+en el proceso de emisión
+para hacerlo activo digital.
+Otra cosa es que funciona o no funcione
+en emisión.
+Correcto.
+Estamos tomando todos los flujos de emisión.
+Hemos hecho emisión de polícia, emisión de suplemento,
+emisión de presupuesto,
+emisión de renovación.
+Y eso es lo que hemos hecho
+es integrar la CDC
+para lo que hacía antes el PL
+pues ahora que nos
+nos rellena
+y nos valida la información a CDC.
+Vale.
+A ver, yo se entiendo. La pregunta sería más
+enfocada con Félix.
+Félix funciona el multi-user
+o no?
+Hola Ramón.
+A ver,
+a mí no me consta que funcione
+pero tampoco se ha probado
+con lo cual
+como bien decía, lo único que se ha
+registrado aquí es
+todos los puntos en los cuales había invocaciones
+a los controles técnicos. Eso no significa
+que lo hacía un punto.
+Vale, vale, vale. Listo, venga, que no lo pasará.
+Y no me consta que nadie se ha puesto
+a intentar a mí.
+Aseguire igual.
+Se lo chutamos para un siguiente grupo.
+Venga, continúad.
+Ok, thank you.
+O sea, yo lo que,
+perdón ahí por comentar, lo que hemos visto
+nosotros de la fuerza multi riesgo
+es que ahora a ningún punto de cobertura
+tú no puedes la supender
+y lo puedes retomar después.
+Pero eso es un problema, existía.
+Pero lo que no sé es
+si lo puedes recuperar tu usuario
+o el mismo que la suspendió.
+No, Manuel,
+si existía.
+Eso si existía lo puedes retomar cualquier usuario
+que tuviera potestad. Lo que se dejó fue
+que ahora solo lo puedes retomar
+el usuario que la dejó suspendida.
+Solo.
+Pero originalmente les voy a coger cualquier usuario.
+Está en Honduras.
+Ramón, perfecto.
+Solo vio Oliva.
+Ok. Le preguntamos ahora.
+Eso existía desde hace 40 años, ¿eh?
+O lo aseguro.
+Pregunta a la margarita, por favor.
+Eso sí.
+Sí, a otra vez.
+Seguimos más.
+Ok, pues empezamos ya
+con la parte de tarificación.
+Ya, ya, gracias.
+Y además en una película
+bastante tenés lo realizada
+porque de cada caso puede aplicar de una forma.
+Entonces
+hay que intentar aplicar el orden
+de la mejor forma posible.
+Aquí no llegaría en lo que tendríamos
+misapolitó.
+Y aquí es relevante que por los casos de suscripción
+normalmente tenemos la estructura actual
+y la que hay con el cambio de suscripción.
+Y con ese tipo de
+parámetros, nosotros lo que hacemos
+es coger toda la configuración
+que tenemos en Mongo, que serán todas las que ya
+conocéis.
+Por las cuales
+tienen la configuración
+y el comportamiento para esas coberturas
+de cómo se tiene que calcular.
+Todos.
+Tenemos un ramo izquierdo.
+Aquí ramo.
+Y a ver si cargan.
+Vamos, pues ahí está.
+La otra compañía.
+Entonces tiene configuración.
+Esa es típica para cada cobertura.
+Entonces
+en función de eso es cómo se va a comportar
+cargando todas estas tablas.
+Y en función de eso es cómo se va a comportar.
+Y por eso es cómo se va a comportar.
+Para cada uno de las coberturas
+dentro de todo el proyecto.
+Es decir, el RT puede calcular
+a tarificar un único riesgo,
+tarificarlo todo, tarificar solo el riesgo cero.
+Cómo tú quieras.
+Entonces, cuando está cogiendo esta operación
+de los ramos, puede tener
+distintas formas de resolverse.
+Estaba el sistema antiguo que iba 100%
+y siruls, que era el caso que comentábamos
+con las reglas de siruls.
+Eso es de suscripción.
+Eso es lo que se está haciendo la fórmula específica
+que ha desarrollado el colectivo
+y que está desarrollando la descripción.
+La parte de suscripciones
+que se está enfocado
+a los productos de vida del componente de agua.
+¿Vale?
+Y trabajan para este tipo de coberturas.
+No las vamos a encontrar en las coberturas
+de riesgo. ¿Vale?
+Las coberturas de riesgo siguen operando normalmente.
+Pero no.
+Pero que las de agua, si tienen manejo de suscripciones.
+Y la suscripción es toda
+la historia de la polisar
+conforme ha venido trabajando
+durante sus 15 o 20 años
+con las aportaciones extraordinarias
+con sus bases técnicas,
+con sus interés, con sus gastos
+y en la cual se va grabando
+históricamente ese valor
+para que al momento de bienestar
+que templis la violencia de la polisar
+yo dedo el rescate de la polisar
+o un descarte parcial, un total
+y aplica los diferentes formas de ejaculógiza en él.
+En las suscripciones tenemos ese detalle
+con cada una de sus bases técnicas.
+Esto nos permite
+hacer que si hay polisas
+anuales, renovables
+que me cambien
+de interés o la base técnica
+vamos a otro registrarles información en la suscripción
+o hago
+una aportación extraordinaria
+que tiene una base técnica diferente
+y cada aportación eso también
+no lo permite en esta metograba
+y nos deja la historia de esa información
+de la suscripción.
+Ya está totalmente integrado con el sistema
+y ya se puede hacer el rescate
+ya inclusive el rescate
+es ir a consultar y ver los vigentes
+de la suscripción, totalizar
+listos del valor del rescate a primera.
+Eso
+salió de España
+de la definición de España
+pero ya trasladándole lo que hemos hecho en vía
+tenemos que aplicar 100 por 100
+lo que hicimos y entonces trasladó ya el cor.
+Esta parte también
+nos dice que las coberturas
+que lo vamos a hacer en Brasil
+las opciones
+que son también parte de configuración
+se configura
+la cobertura que trabaja
+con sus presiones
+las socias, las bases técnicas
+las socias, todos los cálculos, las reservas
+entiendo y todos los cálculos
+para que te vayan aguardando
+un histórico de cada una cobertura
+ya directamente con su base técnica
+tu interés, todos los conceptos que están ahí
+las primas, las fechas
+tenemos las de cazado y no cazado
+que son los tramos cuando ya voy a hacer
+el crecimiento de si está cazado
+pues el interés técnico es diferente
+entonces también se grabo ahí.
+Todo ese nivel de cobertura
+tiene toda esa información en el nivel de cobertura
+que en los productos de auro entiendo
+que irán a consultar
+la fórmula irá a consultar eso
+para que te recuperen el rescate
+entonces es como unas tablas adicionales
+o cualquier cobertura que no sea de auro
+donde tienes que informar todo eso
+y entonces ahora lo que estaba diciendo
+es que las de auro tienen además
+esas tablas y entiendo que una cobertura normal
+tendrá absolutamente
+la tabla esta que nos están enseñando
+de, o sea, tendrá la información
+las coberturas de riesgo son las que ya
+conocemos
+donde calculó la definición
+las en 20 o 50
+para que haya algunas tablas
+o sea, estas son de cálculos ya
+esta definición que estás viendo ahí
+en la extracción entre la 180
+190 y 170
+vale la combinación de eso
+y lo que hace aquí es la definición
+de esa estructura de ese cálculo
+y las en 20 o 50 en este caso
+lo ves aquí ya grupado
+en ese contexto de la cobertura
+y aquí es donde tengo que tener ese contexto
+de esa cobertura porque es de un riesgo
+las de aorro lo que tú estabas explicando
+si, las de aorro atienden una marca adicional
+que dice si es suscripción para que la activa digital
+se fa y se vaya por eso
+aquí se ve que esto lo que define
+se va por su cobertura
+ah mira, esta es una cobertura que tiene esa marca
+mcaf
+ya tiene la colección
+de los conceptos de los
+internos, o sea, si es este concepto
+que está arreglado así
+claro, RTE
+esto es RTE, vale
+y RTE es lo que extraía
+para la definición del armado de la cobertura
+vale
+trae ya esa definición del producto
+y la
+monta en esta colección
+de la oxidación de monjo
+y aquí ya ves, en esta colección
+estamos viendo toda la configuración
+que va a aplicar para esa cobertura
+modalidad rama
+vale, todas completas
+este caso, he dado un caso
+que no he ido por suscripción y le metimos la marca
+entonces tiene muchos campos por el motor antiguo
+de Easy Rules para este caso
+usted tiene campos informados que son propios
+de cuando no va por suscripciones
+si va por suscripciones simplemente valúan
+esa cobertura va por suscripción
+y ya entraría por la forma manual que estaré
+desarrollando vosotros
+en este caso, lo que ocurre es que cuando
+vas por suscripción, sería el siguiente punto
+es evaluar qué operaciones
+va a hacer esa suscripción
+dame una acción de que te vayas ahí
+eso obviamente
+está definido en RTE
+y es toda la definición de lo que está
+en el cálculo de tron, o sea, si yo defino
+acumuladores, aquí yo las puedo consumir
+vale, esto también tiene acción
+para que en las fórmulas también las pueda
+volver a, o sea
+ya hemos trabajado con acumuladores
+de cálculo, todo eso se mantiene porque
+el motor de RTE hace todo eso
+solo que está metido acá
+para qué? para que la fórmula
+que estoy trabajando, si yo necesito una base cálculo
+la pueda obtener, lo hemos incrementado
+para que en los componentes de vida
+usemos las bases técnicas, vale
+ya está metida aquí la base técnicas
+se consume, al momento de que yo llame
+la fórmula, la idea es que
+cuando yo llame la fórmula que calcula
+yo le pueda enviar toda la definición
+que necesita la fórmula
+para hacer su cálculo y ejecutar su cálculo
+no pregunto, ok
+no, no sé
+yo por reglas
+podría definir por un día acumulado
+en qué acumulado
+las bases de cálculo se mantienen
+o sea, como está el vídeo, no es tan flexible
+como está ahí en la 170
+porque tú haz una fórmula
+me refiero, en la 170 o 190
+dependiendo
+yo defino en qué, en cuál les voy a acumular
+0, 0, 0, 0, 3, cierto
+ya está definido ahí
+yo de las reglas
+podría decir, acumuleme en ese 4
+si es la rica cesta
+no, porque eso ya es de la definición del producto
+pero la modética es como tal
+no, eso ya es la definición del producto
+tú defines como operar el producto
+en su cobertura, cierto
+tú defines en dónde acumula
+y en dónde toma el valor
+y eso
+solo para definir los limites
+unas preguntas
+y ya, eso está aquí
+lo puedes consumir, si la fórmula necesita
+esa acumuladora lo tienes disponible
+aparte de eso, pues obviamente
+le va, si la fórmula necesita
+la información del riesgo
+porque lo necesitan los capitales
+si eso es lo que estás explicando
+bueno, que le va a llegar esa información
+más
+envía en un sitio base esteril
+el concepto de suscripción
+se entiende
+yo que soy el menos funciona del mundo
+aquellas coberturas
+que van a realizar sus cálculos
+en base a suscripción
+lo primero que van a hacer es el cálculo de la suscripción
+cuando no
+calculábamos la prima tarifa
+a partir de ya en otro día con los factores
+se van calculando el resto de conceptores
+de eso, lo sé
+lo primero que se hace, cuando tiene activada suscripción
+es calcular la suscripción
+porque esa es la base
+que le va a decir la prima
+por la que no se va a calcular
+por capital, por capital, por el caso de calcular
+el resto
+para esos meses ya es que
+es producto diferente de lo que han hecho si
+porque ustedes saben ha trabajado riesgo
+el bien vivir es lo más parecido
+a esto que estamos haciendo
+porque se ha evolucionado al ser nivel
+entonces esa suscripción
+si efectivamente tiene suscripciones
+el va a la suscripción
+y la suscripción me tiene que decir
+si entra el capital pues me da la prima
+o si entra la prima me da el capital
+eso ya es un manejo que desea
+pero la suscripción es la que se encarga
+de darme el comportamiento
+de cálculo de la cobertura
+y de ahí se la pasa el concepto económico
+unos conceptos de los S1
+y esa es la parte de la suscripción
+entonces ya no
+ese dos valores
+sale de la suscripción y ya partir de ahí
+va a empezar con los demás conceptos
+de los ROS
+las coberturas que no tienen suscripción
+seguirán operando como estamos operando actualmente
+tendrá una fórmula
+de cálculo que de la prima
+pero será de toda la vida
+o también una regla
+que tiene la tasa
+si ya es otra cosa
+en la tarifa puedes definir
+que
+que tasa puedes utilizar
+dependiendo de ciertas funciones
+como ese caso
+por eso es que puede ser
+no de la suscripción
+ahí debería tener un no
+y él va a decir que es el 10%
+la tarifa
+es que ya tiras de la definición
+están en el producto
+como está definido el producto
+a nivel de cobertura
+pero tenemos
+un programa de cálculo a nivel de cobertura
+es que no lo termina la prima
+y muchas gracias
+pero que no da la tarifa multivariable
+es lo que no puede entender que la tarifa multivariable
+lo que es definir es la tasa
+dependiendo de la marca
+la tarifa multivariable
+si
+puede ser con esas
+esas reglas, dependiendo de los datos
+no va en la misma tasa
+también tendrían así
+en el próximo programa de cálculo
+tenemos la prima marmán
+que hay que poner un valor
+por una tasa por tarifa multivariable
+¿cierto?
+o por tasa informada también
+si, es exactamente lo mismo
+por suscripción
+o por una función
+en ese caso la función es el non-pereje
+entonces digamos que
+si trabaja por multivariable
+pues hay que configurar la multivariable
+para que se haga las operaciones
+y calcule el valor
+si es por función
+que nosotros actualmente
+los productos de España
+como son de ahorro están por función
+si hay alguna que sea más directo
+de cálculo que sea en la prima forma de la tasa
+pues miramos y aplica función
+ahí ya vamos mirando cuál
+es la más óptima de usar
+pero actualmente trabajamos con la función
+y localizamos esta mañana
+que son funciones de cálculo muy específicas
+que ya el proceso
+inclusive de suscripción
+se encarga el gestionario que está en eso
+pero aquí no está la fórmula
+no, no, esto es definición
+esto es definición Sony, todavía no ha llegado
+la fórmula
+es un porcentaje
+el 10% pero nos vuelve
+y nosotros es definición, estamos viendo la definición
+dentro de RT
+suponemos que
+a final aquí hay una disfrutación
+y haríamos unos por un sitio y otros por una
+si fuese por suscripción, nosotros, antes de empezar
+iríamos a esta tabla
+y lo queríamos evaluar
+las operaciones que aplican
+por eso, es decir, qué cambia ha ocurrido
+en esa cobertura
+para en función de eso tomar la definición
+de qué clases e implementaciones
+de fórmulas de JAVA que tenemos por debajo
+aplican para resolver este
+es decir, cómo sacaremos de la base técnica
+y cómo hay de los cálculos que toquemos
+en este caso
+tenemos la versión de la condición
+igual el motor de condición, lo único que pasa es que tiene
+un sistema más partido a la bolsa
+que no sea el nuevo JAVA, porque si puede ser necesario
+incluiría exactamente igual
+aquí hay un caso peculiar
+que lo conocerán mejor para España
+hay un caso en el que querían que supiesen
+que la operación le aplicaba cada cobertura
+antes de empezar porque quería que cambiara la fecha
+de texto, de la publicidad o algo así
+sí, pero en los datos tributos
+que por eso tuvimos que evaluar
+los datos tributos, entonces los datos tributos
+lo que hace el RTE es
+que primero se va por suscripción
+toda la operación de suscripción que va a tener que hacer
+por si tiene que cambiar el tributo
+esa interfaz la tiene disponible en otros países
+por si quiere hacer cualquier cambio en reposición
+que aplique por si pues sea necesario
+por la operación de suscripción que va a tener que hacer
+era un caso en lo particular que entraba para España
+y está disponible en la interfaz
+para cualquier otro país
+aquí estamos hablando de suscripciones
+y es suplementos, pone suplementos en la
+interfaz, eso no es un nombre, no
+sí, bueno, pero que digo que
+o sea, por el título
+parecen títulos de suplementos
+donde estamos ahora
+ponen la habitación
+de preestación
+ese es el de Crate, no?
+Rehabilitación preestación
+el evalúa varios
+los títulos pueden ser así así
+no, no, no, por los títulos, sino por lo que contienen
+realidad
+por lo cual si estoy en una emisión
+ésta no se va a aplicar
+porque por ejemplo en una emisión no hay reducción
+claro, por eso
+esa emisión no se aplica, entonces el motor la descarta
+está no, está no, entonces cuando esté emitiendo
+hay una emisión por ahí que dice
+debe haber una emisión
+que les doy realmente la suscripción
+que la que va a aplicar para calcular
+entonces dependiendo ya después si está haciendo un rescate
+va a entrar por otro lado, vale
+pero la que es de primeras que estáis explicando
+de esa por ahí
+vale, si era por entender
+si, si
+que realmente lo que hace es que coge
+todas las operaciones que apliquen, lo aplana
+y con eso llama a la fórmula que toque
+claro, por eso, si el caso de emisión
+pues llamará al que aplique
+entonces en ese caso
+ya lo que haría es que cogen, ya tiene esta regla
+ya sabe como tiene que ir recorriendo
+y aquí para los que desarrollan
+los calculos en vía
+con ahorros son muy complicados
+no es tan fácil
+como la multivariad de coger
+y pensar el que es actual en vía
+no funcionan esas
+los que son de ahorro, vale
+los que son de ahorro, si son
+más, menos
+menos complicados
+vale, este cambio es porque ahora ya
+también entrando por Easy Rules
+la parte de suscripciones pero bueno, si que no
+aplicáis se puede entender
+lo primero que haces
+es coger todas las que son de suscripciones
+y las fórmulas, de calculas en las primas
+que son de la apertura
+y después de eso ya entran para el motor
+para las que no entran sin por suscripción
+resolverla, para el resto de conceptos
+de degloses que no sean la prima pura
+también lo va a ir resolviendo por el sistema
+de configuración que había en los RAM
+exactamente igual
+aquí se unen con los demás
+entonces Autos va a entrar
+por las que no es de suscripción
+y va a hacer la operación normalista a hogar
+igual, las colecturas de vida que son de riesgo
+igual lo entregarán por les, vale
+pero a ver otra vez la conexión
+para ganar
+yo entro en el, es repetir
+no?
+tengo definidas todas mis coberturas
+de si en coberturas tiene que
+en algún sitio decirme que fórmula
+voy a aplicar a cada cobertura
+si, cuando tu...
+eso donde esta
+cuando tu define la fórmula
+en
+ahorita en el activo
+esto se va a definir en el taller
+en el taller
+entonces como quieres aplicar la fórmula
+que fórmula calcula
+tu escoges la cobertura y dices
+que fórmula quieres aplicar
+entonces hay la normalidad
+de poner un PRG
+la base de datos y quieres que lo llevas
+y calculen la de un valor fijo
+y hay uno de tipos fórmulas
+que se ha evolucionado
+esa fórmula es Java, vale
+y aquí como define, osea donde
+aquí es donde los llaman
+a la fórmula
+osea se va a mirar la cobertura
+a lo que tengo definido
+en mongo
+y esa cobertura después se va a ver
+donde en el taller
+a que el fórmula corresponde
+entiendo para cada concepto
+cuando tu defines eso
+cuando yo me la hago
+tu haces una definición de producto en el taller
+y defines eso como estas diciendo
+a esta fórmula quiero que me calcule
+esta cobertura quiero que la calcule
+esta fórmula es Java X
+como lo teníamos ahora
+en lugar de un PRG ahora
+la tienes en el taller
+eso
+el taller hasta que no le des aceptar
+no te va a subir eso al activo digital
+porque el momento de la verdad es cuando
+tu lo pasas aquí
+entonces le dices yo me quiero llevar esta actualización
+al activo digital
+entonces le dices aceptar
+te va a decir que en torno y todo eso
+entonces tu no lleves
+tu definición del taller
+y se la vas a poner a las colecciones
+que estamos mostrando más nuevamente
+para que cuando le des calcula
+que el motor del activo digital
+entre este ciclo
+vaya a la definición que esta de la cobertura
+y la tristeza fórmula
+porque la fórmula será después
+a verlo como yo tenía en el taller
+no va en el mongo
+no, la fórmula son allá en el activo
+que está allá arriba
+que se lo hay formado
+la tengo desde el taller
+aquí solo tengo que formar las coberturas
+donde?
+donde estamos ahora
+esto no hay que hacer nada
+estas son las tritas del motor
+Manuel lo que estaba viendo es
+levantó el capo del coche
+donde se está mostrando
+ya, pero no han enseñado mongo con las coberturas
+claro, porque en otros detalles de salud
+puedes buscar los arreglos de aquí
+si, pero el mongo si tengo que meter las coberturas
+si, pero tú no, lo vas a hacer el taller
+o cuando no lo vas a hacer el taller
+yo me carga
+esto son pasos que no
+o sea que el taller del producto
+es el mongo a generar todas las colecciones
+vale, vale
+que ahorita no lo tenemos en la réplica
+vale, vale, si, si, entonces yo no tengo que tocar nada
+y porque ya desde el taller me lo traigo
+bueno, ahorita ahorita tenemos
+algunos detalles que estaba mejorando
+pero la idea es que no, tú todo lo controles
+desde el taller
+vale, Jackie
+el caso de suscripción
+es un caso particular que siempre tiene
+formulajado por demás
+el motor de fórmula en el caso de que vaya por isidur
+puede ser que resuelva como dice por el viernes ciento
+de cálculo de prima, o puede ser que vaya por fórmula
+pero eso son por configuración
+el caso de suscripción, pues si la cobertura
+no está seleccionada, es decir, por eso la valida
+mantén módulo porque si no está seleccionada
+directamente pasa de ella, si está seleccionada
+pues ya calcula las operaciones que apliquen
+y con esto aquí en GService
+está una interfaz
+por la cual es donde cada país
+por debajo
+se va a conectar, es decir, al final lo que va a hacer
+va a ser crearnos implementaciones
+que nosotros va a ser las que vamos a llamar
+con esa colección de módulo
+entonces en este caso el colegio de España ha hecho una
+individual está haciendo otra
+y Brasil podrá la suya propia
+con sus fórmulas, con sus fórmulas
+y con ganas de empezar
+y será lo que yo llamaré para hacer ese cálculo
+en esa cobertura específica
+entonces en la implementación por ahí cualquiera
+puede...
+aquí en el código
+lo voy a poner
+si lo veis, esta sería la de colectivo
+y esta la de individual
+y hay una colección
+donde están parametrizadas
+iguales son las fórmulas
+es decir, que estoy apuntado
+eso es lo que está haciendo aquí su problema de presión root
+es decir, al final tiene tipos de operaciones
+son los métodos dentro de la empresa
+y luego en implementación
+tiene la implementación de la clase Java
+que sí están picados
+para que nosotros podamos llamar a ésta
+y ese interfaz tiene sus citas
+todas las clases que van defendiendo
+todos los países
+y en función de eso nosotros decidiremos a cuán aplica
+es decir, para un país muy específico
+por las condiciones que tenga aquí
+pues va a llamar a este implementación
+a este método de la interfaz
+¿Y a un PLE service de ERE?
+Bueno, bueno
+No lo tienen ya, ¿no?
+Si, si, esto ya es código que esto lo va a crear
+lo va a poner en la mano
+Eso es lo que vas a hacer el tubo
+Vale, aquí ya le voy a dejar
+Es un poco llave de la universidad
+pero la oportunidad
+es la oportunidad
+Vale, pues ya con ese caso
+simplemente por cada cobertura lo iría recorriendo
+nosotros tenemos una fombra
+de que coge la última suscripción
+y de hecho toma la prima
+del proceso de clase y el capital
+Bueno, dice que coge la última suscripción
+perdonad, eso no me acuerdo
+¿Eso qué significa?
+Hizo los cálculos de análisis
+de la cobertura por cada
+dependiendo si estoy emitiendo
+o si en un suplemento o una renovación
+o una aportación extraordinaria
+es un cálculo de la suscripción
+para evaluar si hay que reemplazar
+la base técnica, así que creer no importa
+Y se va a una de las operaciones
+esas que no se conocen
+Y ese estudio me lo está grabando
+línea a línea en la tabla de suscripciones
+¿Y eso lo hace por dentro
+y lo activo?
+Como un concepto de esbrose para que no lo entiendes
+Entonces deja el registro como concepto de esbrose
+solo que ya se trata de una cobertura
+entonces cuando yo termine el cálculo
+y consultemos la polisa
+va a saber que está una suscripción
+conforme yo empiezo a hacer un suplemento
+y la suscripción cambia
+va a crear otro registro
+y no va a aparecer donde estaba
+Este pedazo se calculó una base técnica
+y este otro pedazo, otra fase se calculó
+Entonces ¿cuál es el valor de la cobertura?
+Pues la prima de este valor
+de esta suscripción que calculó esta fecha
+más la de este pedazo que se calculó
+Entonces es el total que es este
+Y si estamos en riesgo no hay suscripción
+Claro, porque los riesgos no trabajan
+por eso se basaría directamente
+al cálculo normal
+O sea, estaría grabando también
+en esa tabla una emisión normal
+No, la suscripción sólo trabajaría
+para las coberturas de ahorros
+Por eso, pero la tabla es la que nos ha enseñado
+operaciones de suplementos
+No, por ahí no aplica
+Sólo cuando es de ahorro
+las que tienen ahorros y va a aplicar
+las que son de riesgo
+no va a aplicar suscripción
+Va a poner otro ciclo
+No tiene nada más en de que calcula el clima normalito
+Y que lo hace enorme
+Una cosa más que te has comentado
+¿Por qué tiene que hacer el cálculo
+de todas las suscripciones de las coberturas?
+En el alfazo
+antes de entrar en el cálculo cobertura de la cobertura
+Perdón
+Has comentado que lo primero que se hace
+es realizar el cálculo de suscripciones
+de todas las coberturas
+¿Cuáles son las operaciones que tiene que hacer?
+Porque en el caso de España podría ser
+que cambiasen las variables de la fecha de fecha
+Es una cosa así
+Es que el orquestador de suscripciones
+Realmente uno espera que haya
+una sola movimiento
+Pero para España
+No digo que para los de los productos
+Pero para España dependiendo
+del tipo de modificación
+yo puedo llamar a una operación diferente
+Entonces dependiendo
+si modifique la fecha
+de edad de jubilación
+o cambié la profesión
+o cambié
+no sé, algunos otros datos
+me puede indicar una operación diferente
+con respecto a
+si se hacía un rescate
+y cambié solo la edad
+o cambié la fecha de jubilación
+¿Cierto? Y esa operación dice
+¿Qué me estás cambiando? Me cambiaste la fecha
+y me cambiaste este otro dato
+Entonces voy a hacer un rescate de esta manera
+Me cambiaste de todo
+Algo un rescate de esta otra manera
+Ese orquestador de suscripciones
+evandúa la data
+que le está entrando con respecto a lo que
+tiene ahora, versus lo que traía el policio
+en el anterior
+porque puede coger varios caminos
+Imagínate que hay tres
+reglas que se cumpren
+Entonces hay un término
+que me llama planamiento
+que es unir
+cual de esos tres
+efectivamente se tiene que identificar
+Entonces ese planamiento lo que está evaluando
+es unas condiciones que están muy especificadas ahí
+Si tiene que hacer un rescate
+si tiene que calcular la evolución
+de la prima, si tiene que anular la fuerza
+Entonces esas marcas determinan cuál es la que prima más
+para decirle al sistema
+Oye, tome, entrela la fórmula
+de estos parámetros porque realmente
+entonces todo lo que hace
+el motor de suscripciones es
+definir cuál es los datos
+de entrada que le va a llegar a la fórmula
+de cálculo
+y esa fórmula de cálculo le entra a esos parámetros
+que hace el motor de suscripciones
+más la información del policio en el anterior
+más
+más la información que está modificando ahí
+más la base técnica
+y se la manda la fórmula
+y la fórmula ya hace
+un poco no de cosas
+salía en el capital y su prima es esa
+salía aquí
+En el pensamiento lógico
+yo voy a hacer el calculón a cobertura
+si es de suscripción calcularía
+sus suscripciones y luego ya el resto
+del concepto de rescate
+¿No recordaba el planamiento?
+Por ese caso nos toca sacarlo todo
+hacia fuera, justo al enero
+Pero lo que es que España la fórmula
+de cálculo es una de las más difíciles
+que se toca implementar
+Vale
+y ya lo único caso que es
+el previo ofrecio en el caso que incluye esto
+y el caso de pre cálculo
+que sería donde
+todas las operaciones
+siempre al principio de la interfaz
+llevamos a un campo que estaba un método que se llama pre cálculo
+que en el que por tema de rendimiento
+por lo que viene 80 veces la base técnica
+o en el campo que se necesite todo se obtiene aquí
+si nosotros necesitáis
+tener cualquier tipo de información desde el pre cálculo
+lo hacéis por eso de aquí nos pedí la base técnica
+nosotros tenemos servicios por debajo
+que lo que hacen es buscarla
+y dártela por la última versión activa
+en función de la fecha de esa pública
+el criterio para eso
+pues si vamos aquí tenemos dos tablas
+este diseño de Jordan
+tu tienes una base técnica
+con todos los campos
+con las tablas que aplican
+y en función de cada tabla
+por un código de base técnica
+por los filtros, por las preferencias
+o en módulos
+tú por las condiciones puedes decidir
+si coges una tabla u otra
+en función de estos campos
+por ejemplo en este caso, por el sexo asegurado o si fuma
+o va a elegir una tabla de base técnica
+de mortalidad u otra
+y al final es el código de la tabla que hay aquí
+ese no viene aquí en las tablas
+y nosotros con eso tendremos aquí toda la lista de item
+que son con los parámetros que aplicen
+en función de la fecha de valide
+nosotros tomaremos una celda
+u otra, es decir
+de la fecha que nos pasen nosotros pasaremos
+la más actualizada que ya empece a aplicar
+porque si es a futuro pues no la tenemos en cuenta
+o sea a vosotros ya lo damos
+como la tabla que os trae
+y entonces a partir de ahí pues ya es toda vuestra fórmula
+la podéis utilizar libremente
+para los cálculos que os toquéis
+Aquí hay algo importante
+y usted tiene que ir frente
+y tampoco nos queda mal
+¿No?
+Realmente de suscripciones no
+nos quedaría la parte de la regla
+que nos va por suscripción y la fórmula
+Mañana reúne
+No quedaré en equiparse
+Si mañana
+pues mañana
+Voy a compartir para terminar eso
+que está explicando Manu
+y terminamos
+esa parte
+cuando yo tengo acá
+esto es luz
+por aquí están las bases técnicas
+Como decía
+las bases técnicas
+con esta implementación en el activo digital
+yo puedo definir
+cualquier base técnica
+del estilo que necesitemos
+materiales de cuatro dimensiones
+de tres dimensiones que lo necesito
+a mí puedo definir
+gastos o intereses
+por ejemplo aquí
+estamos definiendo que
+con esta condición
+con esta base técnica
+la número 4481
+tengo una tabla de gas
+¿Vale?
+y esta tabla de gastos
+el valor de esta tabla de gastos
+está por aquí metida
+acá
+y por aquí debe estar el valor
+1.5
+si
+llega el equipo actual
+y nos dicen
+y nos dicen
+que hay que crear
+una nueva componente base técnica
+o cualquier
+intereses etcétera
+simplemente se nos va a dar configuración
+antes para nosotros era desarrollo
+crear una nueva columna de la balda
+modificar el campo
+meter la regla ahora ya no
+simplemente es
+para estas renovaciones
+hay que dar un interés técnico nuevo
+que no existía simplemente se crea
+y se crea ese elemento acá
+sino que hace más desarrollo
+y adicional cuando el sistema hace cálculo
+de la cobertura
+que trabaje con bases técnicas
+ese nuevo elemento
+se va a ver reflejada en la tabla
+sin necesidad de hacer otra modificación
+porque ese componente, todo ese componente
+se agrupa en una sección de base técnica
+y es un
+tipo CELO donde yo ya pego esos datos
+entonces
+no necesito modificar ni la estructura
+ni la lógica
+para incorporar es
+y este dato por ejemplo este dato
+si le va a llegar la fórmula para que el llegue al cálculo
+es esta información también
+la implementa la fórmula
+para que el llegue a los procesos de cálculo
+pero ese dato podría ser
+lo mejor en lo que acabo de decir
+entendido bien, ese dato podría ser calculado
+o traído de un dato variable
+por ejemplo, no, esto ya queda configurado
+esta es la base técnica, si claro
+esto queda así, si tu tienes un dato de entrada
+en la fórmula que ya lo calculaste
+obviamente a la fórmula le vas a pasar
+ese dato para que la fórmula
+se alimente del llegue a los cálculos
+respectivos, que esto es configuración
+y ya está, tu lo configuras
+la configuración de las bases técnicas que tu vas a conocer
+vale, entonces la ventaja aquí
+es que no estoy tocando ni tablas
+ni programas
+lo meto acá
+si depende de la lógica
+con que yo esté haciendo la operación
+de la base técnica
+por aquí
+cuál es la condición
+de qué condición de base técnica es
+vale, la condición es esta
+si esto es igual a cero
+la base técnica es esta
+y si no, se va a la otra tabla
+en este caso son las tablas de mortalidad
+pues está aquí, vale
+entonces se vuelve configuración
+y el otro problema que también solucionamos
+eran las tablas de
+las que eran de tres dimensiones
+y todo eso, que eso era un lío
+empanamanos, estaban dando vueltas
+que generalmente la base técnica
+es la edad, con el sexo
+las normalitas
+pero por allá empanamas se están inventando
+una enmarca de azar un cubo
+para poder localizar el registro
+entonces por eso también
+yo me han necesito esta configuración
+paréntesis
+lo bueno es que puedes colocarle
+las columnas que quieras
+o sea por ejemplo
+a la tabla de mortalidad
+le puedes colocar las columnas
+que quieras
+entonces si hay productos que por ejemplo
+trabajan con comutativos
+o productos que nada más trabajan
+con el ledx
+por ejemplo puedes configurar
+una o cinco columnas
+es la flexibilidad
+tiene eso en todos
+cada uno de estos elementos
+y donde cargan las tablas
+las tablas acá
+acá están las tablas
+los valores
+si, los valores están aquí en este ojo
+y aquí
+si tuviera 100 elementos pues aquí sería
+el elemento uno de los productos
+por lo que se puede utilizar
+porque normalmente esas tablas
+no son terrenes
+imaginemos que eso es la combinación
+se cargan acá
+aquí se dan las tablas
+de mortalidad
+gastos por aquí
+gastos no sé si ahí nada por aquí
+se cargan todas aquí
+hay una gtd
+eso es lo que tú dices que quedas el ledx
+en el ledx y lo pegaste
+no, esa era la de reglas
+luego, esa era otra
+pero la idea es que todo esto
+juego y digo es lo que me va
+a alquistar el taller de productos
+el taller de productos va a tener la capacidad
+de llegar a configurar todo eso
+aquí estamos viendo en donde se deposita
+es como si estuviera la tabla con los registros
+todo lo que el taller de productos
+va a hacer toda la gestión
+para poder llegar a estos datos
+de una manera online
+y esa con una carga en un excel
+porque obviamente cargar las tablas
+de mortalidad son 120 registros
+por no sé cuántas tablas
+pues eso lo estamos trabajando
+para que el taller haga esas cartas
+y lo ejecuten manual
+o automática
+bueno, por cerrar lo que está explicando
+a Manuel, entonces nosotros
+a nivel de lo que la
+tengo yo
+nuestro componente
+Manuel ha explicado
+la parte de la selección de riesgos
+como está en las gripas
+ha abierto el motor y hemos visto esto
+la parte de la rep muy por encima
+las bases técnicas que lo que estaba mostrando
+donde se ve todo eso
+ese activo digital
+está haciendo la orquestación
+que es lo que vamos a empezar a ver
+estos días de cómo está orquestando
+mañana con Felix vemos en online
+para ver cómo está trabajando
+cada uno de los puntos
+si me gustaría
+ver si nos da espacio
+de ver
+uno de aquí con el trabajo
+esto es
+el línea general es el proceso
+pero ahora esto cómo trabaja
+pues habíamos explicado
+que esto se integra a un rig
+a un frontal, a una sapis
+¿cierto? o quiénes los llaman
+entonces
+que vamos a explicar cómo hicimos el trabajo con la sapis
+el que trabajó con la sapis
+con el soporte que nos prestó Miguel
+fue Miguel
+el otro Miguel
+Miguel le tocó el punto
+de integración con la sapis
+¿cuál fue la estrategia?
+la estrategia vale
+todas las funcionalidades
+que tenemos actualmente
+en el sistema
+que son
+que son
+a ver
+que son la cotización práctica
+la emisión de polizas presupuesto
+el modificar polizas
+¿cierto?
+¿se definieron?
+un orden y un plan de trabajo
+¿vale?
+nosotros empezamos por la emisión Batch
+luego pasamos al alterar
+renovaciones
+presupuestos
+simulación
+ah
+se me olvidaba
+tenemos otra funcionalidad
+dentro de la actividad digital
+que es una simulación
+la simulación
+es una definición
+para que
+actualmente simule
+yo le paso por ejemplo
+dame el valor de un rescato
+o calculeme cuánto me vale la modificación
+de un corte
+o voy a hacer una modificación de un capital
+simulado
+¿qué va a hacer? le pasa la entrada
+la misma
+los datos de entrada se mantienen
+todo lo que el proceso va a la actividad digital
+aplica todas sus reglas
+evaluaciones y cálculos
+pero no va a la base de datos
+una cotización de suplemento
+se devuelve y sale
+y no va a la base de datos
+pero te está dando la operación
+noto que el transaccional lo puede hacer
+cuántas veces quieren
+nosotros por ejemplo para España
+la simulación lo vamos a hacer con la integración
+que se llama jesicorre para los rescates
+que pasa si hago el rescate
+a esta fecha?
+ah vale, no
+esas son las simulaciones
+no hace el transaccional
+baila el activo hace todo
+por eso es importante
+todos nuestros procesos y todas nuestras reglas
+estén en el activo
+si hay algo por fuera pues la simulación
+la operación es muy importante
+otro de cabeza menos el activo invento
+25
+si no va a la base de datos
+solamente con lo que tiene en las acciones
+las acciones no
+vayan si tú quieres cotizar en cambio el vehículo
+le pasas ahí, llamas al activo
+y te va a dar todo
+el capital, los desbloces
+las reglas de evaluaciones
+los controles técnicos
+recibo y todo
+solo en cotización
+una simulación
+cuando tienes el plan de pago
+paga 100 dolares mesos
+te va a dar todo
+lo que hemos hecho mano es que
+diferente a las cotizaciones rápidas
+lo hacemos sobre el plan de pago
+si tiene un recargo
+tendríamos que ver como recalculamos
+ese recargo entre ese concepto del ANAL
+porque no hemos llegado todavía
+ese es otro punto que no ha llegado
+para que la simulación
+podríamos hacernos
+no a la simulación
+pero si podamos hacer
+es importante
+el problema lo que quería saber
+en Brasil y lo que fuimos fue que nos tocó
+modificar todo el núcleo
+para implementar el movimiento de 25
+que no lo teníamos y esto fue un dolor
+sabes como lo hice?
+ejecutaba el batch
+del suplemento
+y siempre la dejaba retener control técnico
+y recuperaba todo el suplemento completo
+y después recusaba el control técnico
+¿cuál será mi simulación del suplemento?
+sí
+vamos a hacer varios calcos
+la primera entra
+ver tres cotizaciones de suplemento diferente
+y después escoger
+cuál va a ser realmente la Policía
+esto si era uno
+bájame la suma solidaria de vehículos
+cómo me quedan los recibos
+en Brasil la salida
+era la variación de primas
+o los recibos
+nosotros seguimos un programa que imprimimos ya después
+porque antes ejecutamos
+un varied de pasos
+para que cogieran valor
+que haya el presupuesto
+y ya miramos cuántas cotas teníamos
+y así seguíamos con el valor que teníamos
+actualmente y hacíamos la cuota
+porque era un front tan diferente
+¿ya ahora no vamos a hacer esas nuevas muertas?
+ya no tienes en el labio
+sólo factoría el plan de pago
+no queda 10%
+cómo va a quedar la cuota finalmente
+todo lo que hay actualmente
+más lo que se variación como queda
+porque es que allá en Costa Rica nos pasaba eso
+el que él te decía
+bájame la suma a segurar vehículo
+ahorita paga $100 y él decía
+quiero pagar $90
+cuánto tengo que poner la suma a segurar el vehículo
+para pagar $90 y eso era así
+bájale $10,000 por lo menos a la suma solidaria
+pero ahora lo que está haciendo es simulando
+porque te va
+te va a quedar por tanto
+pero no es diferencial
+sólo la suma
+como quedaría
+si yo genero un suplemento
+si yo renuevo la cuenta
+con estas condiciones
+¿cómo quedaría
+las cuotas?
+no lo voy a hacer
+¿como quedaría? porque son las cosas distintas
+imagínate que va por la mitad
+y el tipo
+quiere pagar menos
+yo se dice pues hay que cobertura tengo yo ahí
+quítame la de costal
+quitaba la cobertura de cristales
+y le daba el suplemento
+que hacía tron
+tron web
+hacía el suplemento y le daba el plan de pago
+y yo la volvía a todo eso
+decía se te reduce
+esta prima
+y tus recibo quedan en esta
+con este monto cada uno
+a no, todavía un poquito menos
+bueno, bájale la suma a segurar vehículo
+y lo voy a dar
+entonces ahí y bajo ajustado el plan de pago
+la diferencia de eso
+nosotros digamos en los miles que es
+si usted quiere el punto aplico
+la persona dice no me gustó de esto
+tiene que volver a hacer el suplemento
+no me gustaban anterior
+se le tocaba ver hacer el suplemento
+cuando nosotros se había guardado ahí
+y se efectivaba
+yo tenía un año más
+de cuando estas cosas
+era mejorado
+este lo que te va a dar es completo
+si necesitas lo que está por fuera
+lo que está haciendo es
+tengo ya la información actual
+ya la tienes y tengo el valor del resultado
+porque eso no lo va a hacer en el estudio
+en este momento
+hay que olvidar que está para sacar la diferencia
+que necesitas volverlo a ajustar
+pues si lanza la simulación
+para que vea
+eso es lo que va a hacer la simulación
+date, completa la información
+o sea no te la va a apreciar
+con estos datos te calculo en su suplemento
+lo que sea todo esto es innovación
+otra cosa es que
+que hagan con esos datos
+para si es comparativa, si es valor
+para mostrar
+lo que queremos es que
+el activo simplemente se encargue
+a hacer su operación
+y sobre eso
+podremos montar las funcionalidades
+que queramos en real
+pero el activo ya hace lo que tiene que hacer
+vale
+vamos
+entonces la simulación se ha olvidado
+entonces
+todo esto se hizo un plan
+mañana introducir con el que
+el presidente Pérez hicimos
+un plan con Alberto, con Federico
+todo el equipo para ver cómo íbamos a integrar
+el componente del activo
+porque estaba ahí dentro de una parte
+del BAS
+de los procesos BAS como el de la online
+hicimos un plan de trabajo
+y en este momento se ha arreglado
+se fue la parte de la SAP
+por el camino y se fue la parte de la online
+por otro, porque la online es la que más trabajo
+tiene ahí de implementación
+de integración del activo digital
+y pues ha venido un plan
+que está en los predientes presupuestos
+ya estamos
+el presupuesto sí
+tenemos la emisión de política, emisión de suplemento
+renovación
+y luego lo que se está trabajando
+ah la renovación
+entonces
+y a Miguel se ganó la lotería
+y le tocó hacer la integración de la SAP
+con el activo digital
+y fue la persona que con el UME
+de Miguel Vila trabajamos ahí
+para hacer eso
+entonces
+Miguel si quieres tú ya puestros entrar ahí
+para que expliques cómo lo hicimos
+que enfoque se dio
+que sobre todo la estema general
+por eso porque quieres que la presente
+es que lo es mucho código
+no, pero lo cuento
+si quieres, a lo mejor
+es que no se que va a ser más claro
+¿tú lo tienes Esteban?
+está que tengo yo por aquí
+no
+yo no entiendo
+sí
+está no en las que
+lo hablamos de secuencias
+si, lo tienes
+¿no lo tienes?
+si lo haces impuesto
+tengo que hacer el primer documento
+gracias
+bueno, esta parte
+para los programas de tron
+que se hace configuración en variables
+no sé qué es más el tron
+la idea es que no sé
+pero ahora no es un PRG asociados
+a los preival de los aprilutos
+sino que se configura como reglas en el artigo
+todos los preivales controlados
+los caldos van acá
+y la tarifa van acá
+eso es lo que se dice
+no, creo que es
+se va
+y los colores
+los caldos
+perdón, los caldos
+es humana
+si, no
+compañeros
+lo que se planteó es
+intentar modificar lo menos posible
+reutilizar las llamas de existían
+entonces, lo que hiciste es, al antes de ejecutar
+el proceso BAS que ya inserta el estado de azúcar
+y inserta ya todas
+las S es y ya ha seguido el proceso
+lo primero que hiciste fue
+obtener el ramo
+y verificar el flag
+que tiene el ramo guardado en base de datos
+y si va a pasar por el activo
+en caso de que se sea así
+eso no ha tenido que ser metido
+se comparan el tipo de movimiento BAS
+según el tipo de movimiento que tenga
+se decide qué atributo se tiene
+o por ejemplo, en uno que hace un suplemento
+se tiene que tener el estado de la política actual
+y una vez
+se decide al movimiento
+y se obtengan todos los valores predios
+que sean necesarios en el tipo de movimiento
+o sea, una emisión de política
+un suplemento o cualquiera de los que se están planteando
+ya se ejecuta el activo como tal
+antes de ejecutar
+perdón, que te interro
+no te interro
+vale, cuando dices que recupera estos valores necesarios
+te va a saltar allá de
+eso después
+lo venimos de más de este
+por ejemplo, en caso de ser un suplemento
+se necesita el estado de la política actual
+si quieres
+esta es la emisión
+de emisión de policías
+yo cojo y voy a emitir una policía
+y se va a parar
+es el API
+este master no me ya lo permite una policía
+pero, y llaman al API
+la asiste ahora de emisión de policía
+si, ahí es su policía
+ahí es su policía, espero que ahora esto
+yo no se como allá
+entonces, esta es la ISU policía, vale
+si, el API
+y aquí te le mandas una entrada
+imagínate, el policisado
+claro, y le mando los datos
+si, le está llegando un policio
+claro, y ese policio ¿dónde lo he sacado?
+lo ha construido
+igual que el policisado, ¿no?
+ah, se ha construido lo que hemos hablado
+aunque lo han construido
+se lo ha pasado
+como si lo han construido mas o menos
+no me va a aplicar la parte de
+lleno de policías
+vamos a aplicar desde el policisado
+antes de todo
+antes de todo
+la pieza para que hay un tercero, imagínate
+no, si, si, si
+tercero y que haga la emisión
+anda en el policisado
+pero no sabía si
+que nos estaban explicando del antes del API
+no, no, no, la tercera vez se llama el API
+vale, cuando ya entras en el API
+cuando entras en el API
+a ver
+¿cómo lo muevo? ¿cómo sé dónde estoy?
+¿que has hecho?
+no sé
+es la misma operación, ¿no?
+no es la misma operación, ¿no?
+la simulación que está mirando yo sé
+es una operación diferente
+diferentes versiones de servicios
+que se han hecho en los medios
+se ha hecho una versión nueva
+de cada uno de los servicios de emisión de poliza
+de emisión de bienes de puesto
+de la acción que ha dado uno de los naves
+que por dentro de los servicios
+de ese programa
+y por el acuerdo de la operación
+de los naves
+de los naves
+que por dentro de los naves
+y por el acuerdo de la operación
+de los naves
+de los naves
+de la acción
+aquí
+está el app
+y aquí viene el polizón
+alguien compuso el polizón, ¿quién fue un cotizador?
+desde otro lado me lo llamaron
+y me entran los datos
+¿vale?
+vienen ya los datos necesarios
+para hacer la operación
+del polizón suplemento
+y
+hay una previa orquestación
+que lo que está comentando Miguel
+porque ya tengo los datos
+yo sé que Ramón es, tengo toda la información
+esto es mostrando
+no se ve ni madre
+no, se ve una pastaña
+si
+ya, pero como no señalas
+no se sabe ver
+que esto no es como lo del hombre
+del tiempo, tío
+bueno, de igual, no te preocupes
+es mi dedo, es mi dedo, no es Ramón
+vale, ahora sí Miguel
+bueno, una vez se despliega
+el que le obtenga el modelo
+tipo evento BAT
+se obtienen dos, por ejemplo acá es un suplemento
+se obtienen los datos previos
+esto es porque luego el activo va a necesitar
+más información aparte de la que nos envían actualmente
+porque la llamada es la misma
+y una vez se obtenga toda la información
+se complete el polizón con los datos necesarios
+más que se ejecutan entre siglos distintos
+se esperan que vuelvan las tres
+que son formularios, documentos y cúmulos
+y una vez se tengan esas tres
+se compone todo el objeto que recibe del activo
+y se hace la llamada del activo digital
+ahí es donde se hace todo el plufo
+que explicábamos en el antes
+y una vez tengamos todo eso, se recibe la pie otra vez de vuelta
+se hace un pequeño ajuste
+para poder mostrar por el api
+exactamente lo mismo que se está mostrando al mismo
+y se completa el plufo con eso
+eso para todos los
+para todos los que ejecutan el bach
+del api como tal mundo
+vale, a ver
+por el tipo de movimiento
+vale, llega el polizón
+ves el tipo de movimiento
+es raro, por ejemplo
+si va por
+y entonces
+miras el tipo de movimiento y dices
+si yo tengo toda la información necesaria
+se prepara para lo que el activo está esperando
+porque lo que como la llamada
+se está utilizando la misma que existe ahora mismo
+si, te llamas a la misma que estaban llamando
+no, por ejemplo
+por ejemplo, hay una de las
+se hacen unos cálculos previos
+por ejemplo, los atributos
+los atributos variables
+hay que hacer una mezcla en algunos
+porque no viene completo a veces
+con la situación que tenía la polizón anterior
+y la que se está planteando ahora mismo
+para el suplemento
+con los datos que ve hay para que el activo
+necesita muchos datos variables
+que a lo mejor no los envía
+los datos que pasar vacíos o con algún valor por defecto
+ahora son algunos ajustes que hay que hacer previos
+simplemente para que el activo pueda pegar
+para hacer la polizón igual que se dejaba antes
+para cualquier...
+eso después, si, al momento que se estaba
+por ejemplo, a ver, en la emisión de polizas
+yo no necesito el suplemento anterior
+no existe
+vale, entonces
+cuando si estoy emitiendo
+pues con la entrada de la poliza
+el ya le vale para mandarle la información al activo
+porque no necesito
+en un suplemento
+lo que si necesito
+la información que me está llegando
+es lo que yo le voy a hacer
+de suplemento a la poliza
+porque hay los datos de entrada que están queriendo
+justamente un capital o un acorto
+entonces, eso es lo que me entra
+y cuando él dice, ah, este es el activo digital
+el producto trasladado
+entonces va a buscarme el vigente de la poliza
+para traer la foto
+¿vale?
+la foto que está en base a tu verdad
+dentro de esta orquestación que está metida aquí
+y mala información
+que me llega, entonces, tiene dos polizones
+el vigente y el nuevo
+más
+los componentes que está comentando
+Miguel, aquí, que vamos a mirar
+si ya tiene documentación
+si tiene formularios
+y en el caso de que tenga la parte de los cúmulos
+tenemos un
+servicio de username
+para enchufarlo a cúmulos
+¿a qué cúmulos?
+¿a qué tiene RIP?
+donde que haya establecido el país
+para caracterizar los cúmulos
+entonces, ahí ya tengo
+claro
+entonces, ¿hay qué tengo para hacer el cálculo
+si es activo digital? tengo
+la información de tráqueo y en el punto
+el suplemento, tengo el vigente
+que está en base de datos
+también lo tengo, tengo los documentos
+tengo los cúmulos
+esos cuatro elementos
+se los envió al activo digital
+y la entrada que comentamos ahora
+¿el activo digital qué va a hacer?
+pues va a ser toda la orquestación
+que estamos montando aquí
+recibe la información, pasa por selección de riesgos
+si es una emisión de polizas
+pues ahora todo su flujo para la contratación
+calculará los módulos
+llamará al calificador
+a sus cálculos y me da una salida
+esa salida
+que es la que de aquí
+se la devuelve
+en el mismo formato
+de polizón, se la devuelve
+acá este punto
+para que aquí la pilla
+partir de aquí, con esa salida que dio
+siga a base de datos
+y se conecte a base de datos
+y ahí llama a base de datos
+de toda la vida
+ahí llama a producto
+qué diferencia hay
+que obviamente
+mañana lo vemos conferirse en el plumo
+que están los productos que trae activo digital
+entre comillas
+definidos como primas manuales
+porque todo el trabajo ya lo uso
+en el activo digital
+pero no es que el usuario pueda meter el primero manual
+sino que la forma en que
+nosotros enganchamos la parte de
+definición del activo
+y se va al producto
+y ya el producto lo lanza en base de toda la vida
+¿por qué? porque esta sapi ya
+reciben el mismo jotazón
+y ya se encargan de llenarme
+las mucones, lanzar el proceso base
+de prestación y ya es producto
+muy duro de la pregación
+nosotros teníamos una duda
+acerca de eso, que no es formulario
+pero no es formulario, si pueden acceder al valor
+entonces en el momento del producto
+nosotros teníamos tenencia formulario
+pero aquí se nos responde la duda
+porque ya el activo digital va a decir
+que para poder generar el producto
+necesita los formularios
+y obviamente
+si aquí ya me entra ese formulario
+y me entran las preguntas
+pues ya al activo le entra cada activo
+y aquí ahora en selección de riesgos
+que diga oye, alguna pregunta
+que sea de tipo tarifa
+cuando esté calculando aquí
+lanza la regla, encuentre que de tipo tarifa
+el barre tarificado
+ya el activo digital que se encarga en la esterna
+una cincuenta cigarrillos
+subalde un diez por ciento
+bien
+todo un pequeño marzo
+si hay controles técnicos
+de rechazo
+da un error directamente
+que se vuelve para el aquí
+y vuelve un error
+entonces lo continúa y ya está
+ni siquiera entra a base art
+no porque ya no
+no me he rechazado
+no, nada, eso es que ya le he compagado
+para tener auditoría
+o informativo los dos
+esos los consolidan
+exactamente
+pero entonces
+de la base art
+todas las variedades
+que nos están haciendo la serie
+y ya lo van a preparar
+para la estructura del producto
+y complementar las cosas que no hace el activo
+que el activo no hace el cien por cien de la operación
+ok
+no sé
+vamos a comisione lo aseguro
+pero cuando dices que definimos el producto
+con prima manual
+o sea, las polinesas también van a quedar
+emitidas
+con la marca prima manual
+y esto devuelve
+obviamente
+claro, esto devuelve toda la información
+del desglose concreto
+¿qué pasa?
+cuando tú veas que está trabajando ahí
+si tú puedes ponerle la prima
+imagínate que él te va a habilitar
+el campo de la prima
+y tú esa año le va a poner la prima
+pero las calculas
+de esta prima
+el producto del calculo va a necesitar
+las pórmulas que podrían decir
+en el activo de quizás
+¿cómo te va a calcular todo el activo?
+¿executó la fórmula?
+¿y la fórmula de lo que te siente?
+¿por qué no te siente lo que te está viendo ahí?
+porque realmente
+¿quién va a dejar de medicinar
+en los procesos de calculo que tú le has dicho
+dentro de la fórmula
+que da simplemente a un activo vital?
+es como cuando tú pones un dato al variable
+y luego le vas a aceptar
+y el proceso le hace el previo
+y el válite le vuelve el justo
+es la fórmula de la que valida
+la que hace el calculo tanto el capital
+como la prima
+y obviamente los conceptos de desglose ¿vale?
+porque tú defines aquí
+el comportamiento del producto a nivel del cálculo
+y aquí sale completo
+o sea aquí sale las capitales
+salen las primas, salen los conceptos de desglose
+cada uno con sus valores
+ahí sí entienden como tú ya has implementado
+la fórmula del cálculo
+y de tipo dentro de la fórmula
+y tú luego des allá
+y ahí está la confianza
+porque siempre que le doy la fórmula
+va a ir otra vez a la fórmula
+pero entonces cuando nosotros
+imagina que una misión va
+y
+¿cómo tengo que llenar los usones?
+yo no me encargo llenar nada
+obviamente la entrada del riesgo
+es la información de la agencia
+o sea llenamos los usones como toda la vida
+no, no, no
+tú no tienes que llenar usones
+usando el batch
+aquí los va se hacen a través
+de las áreas
+o sea ya no hay el mk
+llamador
+el mk batch
+un paso atrás
+ahora mismo si yo que le emitió una polisa
+por el batch, yo lo que hago es llenar la fórmula
+con los datos
+de entrada
+que son y luego de otro batch
+de tron huevo de de tron
+y él genera la polisa
+y me llena mi tablanfa
+en este caso el equivalente llenar
+los usones pero la fórmula
+es el polisón
+llamar a la preemisión del polisón
+¿y no hace falta los fórmula?
+¿no vas a tener los fórmula?
+no, no
+simplemente por la entrada y la solución
+claro, pues ya tiene la entrada
+el proceso
+utilizó una fase como cruzón
+para rellenar las cuestiones
+porque el proceso de uso es lo mismo
+lo que falta es que
+los casos ya sean igualas que aquí
+y los pasamos a otro punto
+y los problemas más libres
+que no existen en el territorio
+que no existen en el territorio
+que no existen en el territorio
+y eso con la nueva
+forma es a través del lanzado
+o sea
+la emisión de polisa es mediante la
+y su polisíes
+la suplementos es mediante la alta
+polisíes, esos son nuestros procesos
+¿qué pasa? obviamente
+esto es el uno a uno
+que interviene a otro nuevo elemento
+que es el temedé
+el temedé que es el que va a coger
+una carga de LRP
+los va a tratar
+de validar una vez nos termina la valía
+lo que nos va a llamar es la API
+con la API Altefolio
+con la API Renegación
+y así están los procesos ya bachos
+o sea ya no son
+públicos o PLS
+sino a través de lo que es el proceso
+el temedé es la pieza que encaja
+las cargas masivas o los procesos masivos
+y llama a las APIS
+y las APIS pues
+llaman esta protestación
+que está viendo que conecta el activo digital
+el activo hace de su cálculo y termina aquí
+y lanza el bach
+¿que lo fue el bach?
+no, lanza el BRTC
+de la folca para que haya el proceso
+para que haya
+¿y en qué momento valía contra la definición de product?
+cuando llega a este punto, dentro de eso
+claro porque eso ya es base
+de la verdad original que había
+la carga de los buzones y el mkbach
+que trabaja con las opciones
+eso no cambia nada, eso sigue así
+digamos que a la parte de...
+la variación
+el bach
+tiraba de la variación, es que hay en base de datos
+si tú ahora lo tienes en el activo
+pero las variaciones que sigas teniendo
+a nivel de producto te las vas a ir ejendo
+claro, pero si el bach
+nos ha modificado el río
+si estamos tirando de la API de antes
+el API de antes iba a base de datos
+cogía las reglas de base de datos
+se hacía los cálculos de base de datos
+y nos iban...
+si, pero los cálculos, como bajo, como prima, informada
+no lo hace ningún cálculo
+y justamente los de los buces que le tienen
+pero las variaciones que hemos hablado
+que puedes hacer
+a nivel de selección de riesgos y demás
+bueno, ya te llegan
+ya te llegan
+ya te llegan los datos
+ya te llegan los valores que son
+aquí solamente en pasar
+para insertar el éxito y insertar la base
+y que cumple en los más del producto
+que el dato obligatorio, el delegado
+primero hace todas las reglas
+acá arriba no hace ese, valía todas las reglas de negocio
+y a los que ha validado
+pues ya no va a volver a validar
+ya, pero... no, pero fuera
+estamos hablando de que se podía hacer una variación
+si no tienes el val y el pre
+tú hay, antes, el
+de presupuesto a presupuesto
+pero estoy intentando pasar por los val
+y va a seguir pasando
+si no están ahí y los tenemos puestos en el activo
+pero ahora no va a haber algo de identificar
+a nivel de los atributos que no tiene ninguna validación
+que ejecutar a nivel de programas
+y esa validación a nivel de programas no va a ejecutar
+claro, por eso, pero ya no es la misma funcionalidad
+a ver, a ver
+o sea, hablamos de
+los controles técnicos y los preíbales
+de los datos variados que van hasta el nul
+si no lo necesitamos porque hago una regla ahí
+que va a decir, ¿no?
+pero hablamos también de un 5-10%
+de cosas que no tenemos como validarlas
+a través de las reglas
+los PEP que hablaron a los PEP
+tienen que estar en control técnico o la base data
+entonces, él va a ejecutar todo el motor
+de reglas que definimos
+y después cuando vengan en ese último
+paso, él no va a ejecutar el control técnico
+de los PEP
+es así, ¿no? Hay cosas
+que todavía no hemos llegado
+en el día de lo que decía que claro
+si es la misma API no será el activo
+es lo que tenga en base de edad
+y todo esto es que se definan
+con esto siempre van a ir a hacer ese
+por eso lo primero que comentaba
+lo primero es
+recuperar la definición del tránsito
+para saber si va por hacer ese
+si va por hacer ese
+recuperar una serie de información
+túmulos
+y con todo eso
+llama a hacer ese
+le devuelve un polizón completo
+que es el que realmente se consumida
+los pulsoles y se lanza la neclevancia
+y ejecuta todo lo que hace
+la neclevancia
+para la definición que tiene en base de edad
+y va a aplicar toda esa definición
+de base de edad
+claro, pero lo otro ya te lo he devuelto
+te lo he devuelto en la actividad
+control técnico sintagio
+control técnico ya viene control técnico
+los valores de los datos variables
+ya vienen ahí
+las primas ya vienen ahí
+ya viene la validación
+si había una validación de una tripla
+ya lo viene aplicado
+ya viene aplicado
+porque la regla se aplicó
+y a ti te llenen la abusión
+como es un bash nadie más interviene
+entonces ya sientan los mismos datos
+que devuelve el activo son los que va a sentar
+a nivel transaccional
+y hay el peligro no fake
+de la incoherencia de algunas cosas que hagamos
+tengo una regla
+en la cc
+si el dato variable color
+es rojo
+es lo que va a hacer
+pero si después en el producto
+tengo un control técnico que dice
+si el dato variable color
+de azul me lo pones de rechazo
+ese es el cuidado de demostrar
+porque no podemos machacar a nosotros mismos
+por eso lo que digo es que si está en el activo
+pues está en el activo
+nadie no debería tener otra regla
+para abajo
+porque ahí empieza la incoherencia
+obviamente
+lo que no es en el activo se tiene que hacer
+otro sí
+pero si está en el activo
+es en el activo ¿por qué?
+porque eso les va a permitir a ustedes implementar
+todas las solucionalidades y automatismos
+que queremos llegar allá
+queremos llegar a que los procesos
+sean automatizados independientes
+de la base de datos
+poder ofrecer propizaciones
+simulaciones todos los procesos
+de alguna manera automatizados de esa manera
+luego
+que el cliente
+el cliente
+el área de negocio
+sea capaz de
+tener esa independencia
+porque eso es uno de los puntos que queremos
+llegar a que ellos sean los que
+realmente parametricen sus reglas de negocio
+¿vale?
+ya no tengo que programarlas
+las que tengas que definidas en el activo
+no las tengo que programar yo
+me da miedo
+ya es el fiente
+por el dato de que libre el fiente
+ya es una labor
+que es el taller de productos
+que tiene que controlar la gestión
+que eso es lo que estamos trabajando también
+o sea al taller de productos
+va a tener errores, validaciones
+accesos
+va a tener doble
+nivel de chequeo
+cuando sea ciertos valores críticos
+una base técnica por ejemplo
+una tasa algo
+va a tener doble nivel de chequeo
+las fechas
+tenemos que gobernar es
+aparte, vuelvo y digo
+esto nos queda de
+incluirle también una gente
+para que nos olvide con toda la gestión
+porque es que esto se va a convertir
+en un manejo de reglas y controles
+que hay que automatizar y gobernar
+por parte de nosotros para que
+los usuarios desde hoy sean capaces
+de almacenar
+¿qué sigue dependiendo de nosotros?
+pues aquellas fórmulas
+están complejas estilo o vida
+que hay que programarlas
+eso sí porque es que eso no
+por ahora espero que no
+no dejes de trabajar a nosotros porque si no
+yo dentro de este producto
+y ya hablaba esto es el gran producto
+realmente
+si tienen todo pueden crearme
+un producto de cero, configurarlo
+e ir al vegetar y despegarlo
+esos niveles podemos empezar
+a llegar y a pensar en eso
+entonces
+esto nos ha permitido
+ya cuando sentamos a eso con Alberto
+a pensar así
+no está viendo un mundo de posibilidades
+de armar productos que antes no teníamos
+que antes tenemos que comprar con EPM
+siempre
+nos pasamos
+a las estructuras
+ahora no puede hacer otras cosas
+que emitirnos a diseñar más cosas
+porque esto lo que va a hacer es
+un mar de oportunidades
+podemos pensar con Alberto
+que estaba mirando lo
+de ofrecer
+este financiero
+de una sola entrada
+poderle ofrecer este producto
+con esas características
+y quiero esto pues ser otro botón
+porque realmente
+a esos niveles podemos ir llegando
+que es muy dinámico
+no falta mucho camino
+esto no es el inicio
+que grabar nos vamos a encontrar
+claro claro
+digamos
+esta parte es emocional
+aquí no sé mucho más
+pero la pregunta es ¿podemos tener casos?
+tener un caso de exclusión donde podamos configurar
+todo lo que tú no estás diciendo
+para poder ver
+entonces no debes preguntarme
+es porque te toca hacer el individual
+es claro
+por ejemplo las cosas específicas
+que son tan extrañas
+que es este tipo de funcionalidad
+no más bien sabes que el individual es lo que tenemos
+tú si no puedes hacer el paralelo
+con lo que estamos haciendo en la base de datos
+de individuales porque esos son casos reales
+entonces
+algo en favor
+pregúntale a ver si tienes reglas específicas
+y te levantas tú
+para ametrizar
+esas reglas directamente
+sobre el activo ¿vale?
+las podemos coordinar ahí ya
+es que los que quieren ya ir a
+esto pues
+nos vamos a arreglar el canal
+lo que quiera
+lo que quieres
+pero es que tú tienes
+que si tienes
+tienes todo hecho
+tienes ahí el producto
+hay que montar los cálculos
+no haces pruebas
+sino vamos directamente
+a hacerlo
+no por eso
+donde realmente tenes la cosa
+que entornamos a hacer la
+vale nuestras pruebas
+inicialmente el objetivo
+para lo cual nos contrataron
+en esta formación
+es que de aquí al viernes
+tengamos
+haber pasado por los puntos
+importantes del activo digital
+y haber configurado los proyectos
+de vida
+Brasil con las características
+que más podamos hacer
+eso significa pues
+sacamos los casos de uso que tengan
+y eso como se interpreta ¿vale?
+y aquí pues generamos el soporte
+de los compañeros por si me falta
+un detalle una cosa para interpretar
+pero estaba pensado inicialmente
+yo no le había pensado otra manera
+con el de Brasil
+y trabajando ahí
+podemos dividirnos o ya hacer este
+tú vas a hacer todo otro
+pero tienes razón
+usted tiene unas características
+de pronto no necesidades de autos
+con esta forma de hacer
+ahora la implementación
+podemos hacer las claras
+pero don't
+propiamos porque
+ahí no sé si...
+estos son unos romancados en el entorno
+de diferentes discos y atentados
+no sé si vas a hacerlo con la pasilla
+o para hacerlo con otro ramo
+los pequeños se pasan y tienen
+un depare
+el entorno de integración de Corel
+es el que se ha estado manejando
+para Corel
+para España
+ahora ya para Brasil tiene su entorno propio
+y es por ella puede trabajar con su entorno propio
+si lo que pasa es que ya no
+está en el cine apuntando al
+el vehículo corel
+que está en la configuración de un palso nuevo
+y podemos hacerlo
+hoy a mañana
+para mañana con Paquema
+no puede empezar a cacharrear
+se pasa un producto en un mensico de los Dx
+es donde se entra América
+o sea a ver
+a pocas que
+la idea es ir evolucionando
+y ver realmente las capacidades
+de todo esto
+y llevarlos a realidad
+no es que es necesitar que nosotros hacemos
+y nosotros lo hacemos
+manualmente y lo que hemos acá
+a nosotros le estamos haciendo
+esta es mi sugerencia
+porque no sé
+los jefes que han dicho
+obviamente el objetivo principal
+es que lo de Brasil
+operativo pero lo de Brasil
+en el entorno de Brasil
+y ellos ya tienen todo apuntado
+como para trabajar
+no falta el taller
+bueno el taller en este momento no es tan
+imprescindible
+para no tocarle
+el producto
+a tocarle
+todos queremos meterle la mano
+a esto
+pero ese producto es el prototipo real
+como es que va a quedar
+eso no deberíamos agarrarlo como una práctica
+lo debemos copiar
+y que David y ustedes todos los de Brasil
+pueden trabajar sobre ese
+porque es un trabajo ya
+que se pueda reaprovechar
+pero no me gustaría meterle la mano
+a ellos
+por lo tanto entre 15 años
+que fue lo que hizo ahí
+no sé es mi sugerencia
+nada todo lo que está diciendo
+si me pregunto
+que me gustaría por lo menos a mí no particular
+yo en esa misma base
+yo me creo otro producto
+simple porque es que tampoco es que quiero
+agarrar unas reglas reales
+que tengo en los productos de Honduras
+que también pueden ser de vida
+o de accidentes personales que sea
+y la voy poniendo ahí
+un preio, un bar del dato variable
+un control técnico
+como una cobertura como se calcula
+con taso por cobertura nada más
+y así no lo tiene acceso
+por que si no lo tiene
+vas con todos los
+estamos de auto a usar 10
+pero de 0 a 0
+es que no hay otro producto
+tenemos que crear el producto de 0
+por eso
+y ustedes que trabajan sobre eso
+con la realidad real
+me gustaría un ramo ahí
+sentirse a como no
+el problema es el acceso a la base
+de datos que lo tengas
+vamos a tener ese en un cierto
+usuario y más contraseñas para acceder
+únicamente
+con el ACVT
+para simular
+las modificaciones
+o sea, yo voy
+a necesitarse integrado todo
+desde el online
+con las opciones
+yo se acuerdo de meter una polsa
+y aprieta la regla de la misión
+y el poder acceder
+y a este país con el ramo nosotros
+y hay que hacer todas las operaciones
+a Cambrasil, después de lo que hacemos
+es poner el ramo hasta luego
+¿y por qué haces las mismas redes
+que no tienen?
+para acceder
+no, tenemos que acceder
+entonces cuando lo vamos a ver
+vamos a meter la regla
+y que Jordane
+trabajen sobre el de vida de ella
+si, porque si, todas las que necesito
+que ya lo dejen
+es una sugerencia
+de 0
+creo que hay equipos de sargis para ayudarles
+y al mundo también
+al mundo, a los otros
+o sea, en el stream de recreación
+de usuarios
+o sea, hay que mano para trabajar
+en los sistemas
+de los aspectos
+porque efectivamente
+nos ha dado súper chaval
+es un material
+de la posibilidad de tu producto
+porque es de práctica
+y en otros días es de práctica
+directamente en la sala
+lo que queríamos, primero, hoy, es
+todo el entrando
+a los usuarios
+aquí, usando las apps
+y todo lo otro
+se está dando desde los 0, ¿no?
+ya acabamos
+yo
+ah, hoy por hoy
+o sea, ya nos acabamos
+no, ya sé que no acabamos
+es que estaba mirando la agenda
+nos faltan los 3.0
+pero los 3.0 es muy básico
+porque son
+los 3.0
+y los 3.0
+y los 3.0
+esto es el segundo
+pero bueno, entonces
+mano va a hacer ese ejercicio
+bueno, si yo haremos
+el producto de nosotros
+alguien más, como los de mi individuo
+de España que lo hagan sobre
+eso, no vamos a hacer uno
+cada uno vamos a hacer uno
+o sea, Osonia ha estado con mano
+vamos a trabajar nosotros a mi mismo
+el objetivo inicial
+es Brasil
+y ese sentido, entre todos
+vamos a llevar que el viernes
+proteger, ¿vale?
+que se tiene las líneas en paralelo
+para hacer las cosas
+pero el objetivo es
+producto de las líneas
+pero bien, bueno, aquí aquí
+mañana, nos quitaremos
+vamos a seguir explicando lo que se va
+a ir a hacer
+¿cuál es la metodología?
+vamos a terminar
+esto, ¿vale?
+para que todos tengamos todos los alcaldes
+que nos venía a hablar
+y luego
+vamos a ir explicando
+selección de riesgo
+cómo se ha configurado selección de riesgo
+qué características tienen, cómo se parametriza eso
+como el taller de producto
+no me da la capacidad de parametriz
+al teletalier, vamos a seguir directamente
+a la barriga
+y los configuramos en la base de datos
+y vemos ejemplos, les vamos colocando ejemplos
+y también que usted también nos cargue
+el producto
+el producto
+nos van siguiendo ahí
+con los productos
+luego vemos la parte cómo se configura los modros
+luego el RTE
+el RTE tiene un poquito más de chicha
+pero viendo eso, directamente ahí
+en la parte transaccionada, mire si
+lanzamos una API, ¿vale?
+la API ya no funciona, ¿sí?
+eso es lo que queremos que ustedes tengan esa capacidad
+pero obviamente
+el objetivo
+es para así, ¿vale?
+que en paralelo podamos ir haciendo cosas
+con una copia o un producto
+porque para eso está la actividad
+para que empecemos a cacharreal, ¿vale?
+no sabes qué tiene las reglas específicas
+el pan es más difícil
+¿no?
+las capacidades actuales las conocemos
+de lo que es
+y no hace el ACS
+pero pues como que tenemos que bastante
+hay muchas cosas que si hay que
+implementar, ¿vale? y eso es lo que
+queremos de que primero
+ustedes se vayan sobre todo a ti
+que tú es el que va después
+a liderar este punto, que te vayas con todas
+las capacidades y empieces a organizar el
+ahí ya lo tendremos que ver
+cómo vamos a organizar
+el trabajo, qué características
+se van a hacer o no se van a hacer
+pero tú ya te vas a hacer por la base
+de lo que tenemos, ¿vale? porque será una
+la grande duda de cómo este producto
+y como está en la planificación
+este producto es 100% activo digital, ¿vale?
+entonces aquí no hay otra manera
+aquí es por allá
+queremos reducir PL
+porque ahí si tenemos que ver oye
+todo esto nos está cubierto
+nosotros vamos a llegar a evolucionar seguro, ¿vale?
+la prioridad que nos han dado es que
+Brasil tiene que estar con el activo
+y ya bien evolutivos que nos han
+pillo en el producto, ¿vale? entonces eso
+también hay que comparar, no hay porque hubo ya
+nos pilló otras cosas que ya dije no lo tengo
+entonces eso también lo vamos a evolucionar
+cosas que nos faltan de quitar del PL
+que lo traemos con Ander, pero la formación
+de entrada de la publicidad Group
+pues no está, yo soy su mujer
+eso por eso porque tenemos que usar la JVM30
+no queremos usar PL
+pero vamos a acordar
+estas capacidades también, entonces
+pero para ustedes que van
+van tirando, van como
+en segundo, atrás
+pues es más fácil porque ya sabemos
+que nos enfrentamos y que
+pero si necesitamos por ejemplo de eso
+que ya conozcan, oye Freddy
+es que esto nos están pidiendo
+tal cosa, ¿dónde está?
+entonces eso hay que meterlo en la lista de actividades
+por hacer y por hacer ya
+porque ahora si le empieza
+pero que el otro mes
+no si nosotros teníamos muchas dudas, muchas dudas
+pero como íbamos a implementar el tema
+que tenemos y eso, muchas dudas
+en cuanto a los temas de las validas
+en el de coberturas, todo
+pero con lo que hemos visto y como se funciona
+hace ese, hasta el momento, lo que yo conozco
+y lo que he visto en las historias
+sí, no, nosotros estuvimos viendo en diciembre
+historias con Hugo
+y poder decirlo, yo le decía
+sí, eso está en el activo, la activo, la activo
+de nuestro señor, está en un punto que no me acuerdo
+que era
+eso lo quería decir una cosa
+yo
+cuando entré a la 9 de la mañana
+o sea, estaba totalmente
+perdido en todos estos nuevos términos
+porque estamos metiendo en plantaciones
+haciendo las cosas, las vi a gustar
+y admito
+que ya de aquí me voy
+con una visión clara
+de las capacidades y de donde poner
+cada una de las cosas
+o sea, la filosofía
+la estructura
+porque te hablan de duplio
+entonces
+ya hoy me voy con una visión clara
+y todo mundo ya está
+y ya, bueno, ya la mañana
+ya si me cantió, me lo gusta
+la visión
+ya no te volás
+para el alcance
+para los otros
+que están tan interiorizado
+eso nos ponemos de
+con ver, con ver, con ver
+es un problema porque nos ponemos visito
+hacer esto, esto, esto, esto
+ya me quedará un montón
+pero es que si no lo meterá
+ahora ya sí, pero es que si no paraba
+está bien, está bien
+a ver, esto sí ha sido cuy pañal
+lo admito porque me han dicho
+que entregará
+pero el tiempo con España no me da
+vale, entonces
+¿se logró sacar esta semana?
+porque si no, tampoco
+entonces se logró y ya que están ustedes
+vuelvo y digo esto en la base
+esto lo voy a entregar
+con muy de la mano
+con Alberto, nosotros, pero la idea es que esto
+va a entregarse
+como una funcionalidad más de misión
+y ya es de misión, ¿quién va a gobernar?
+nosotros vamos a entrepar un traspaso
+pero como lo estamos liderando nosotros
+pues sí lo teníamos ahí de la mano
+pero cuando te refieres a Eresía
+¿a quién te refieres?
+para que entreguen día de mantenimiento
+o sea, esto ya es el mantenimiento
+el color de misión ya no va a ser solo
+los formatores, las artes
+si yo necesito una modificación
+lo iría directamente
+si yo necesito un cambio en módulo
+pero es importante
+que necesito que
+algo que no se haya tenido en cuenta
+ya hay que avisar directamente a Eresía
+porque no se ha hecho por algo
+no hablamos de las cláxulas
+esto todavía no tiene la cláxula
+podemos generar un 7
+pero bueno
+es que yo tengo una historia aquí
+que yo estaba perdiendo la calor contigo
+porque
+en Portugal tenía un tema
+de las cláxulas
+de dinar
+para seleccionar
+yo escribo
+de hecho yo tengo referimiento al río
+de América Central que lo íbamos a SEMPL
+y está ahí bien detallados
+con ejemplos reales
+de cómo es que se seleccionan
+las cláxulas teniendo
+tenemos un trabajo
+que estamos haciendo con España
+y es que España para el proyecto de España
+tenemos que hacer las cláxulas
+no las define
+las define negocio y las paralelizan negocio
+entonces negocio dice oye con este dato
+quiero este texto en esta parte
+o quiero modificar este dependiendo de tal valor
+obviamente
+las cláxulas que tenemos no llegan a esa funcionalidad
+tan especializada
+es un componente que es al veo
+que estamos empezando a avisar
+como integramos esa parte al veo
+con ese dinamismo dentro de todo el esquema
+de calculado que tiene rito
+pero porque
+el requerimiento que yo tengo escrito
+es muy simple porque es enfocado
+en la selección
+o de selección
+y la habilitación y la habilitación
+esa es la primera parte
+que es lo de la marca
+esta es la sete de las cláxulas
+y lo otro es
+los dinámicos o variables
+dentro del texto a las cláxulas
+son los a dos cosas
+pero mantiene la estructura
+es tu cláusula con tu texto
+y si tienes texto o variables
+nosotros
+tenemos que tener eso y aquí a junio
+el dinamismo con al veo
+como?
+estamos aquí
+lo que pasa es que el dinamismo
+en la primera parte se va a nivel
+en la generación de documentación
+si, ya hemos visto
+dónde se va a hacer la llamada al veo
+porque al veo recibe
+cuando llamamos a Muffler Service
+para componer y distribuir la documentación
+ese xml
+es el que servía directamente al veo
+y al veo coge todo ese xml
+y interpreta
+que cambios tiene que hacer en ese xml
+y hace la zona de cláusulas
+y hace los cambios
+por esas cláusulas
+si se devuelve otra vez el xml actualizado
+entre el proceso de generación
+y distribución de documentación
+y las cláusulas que se seleccionan
+en la polsas de manera automática
+por unas condiciones de la polsas
+sólo salen los identificadores
+en la primera fase
+como un identificador y una descripción
+pero no está el contenido
+no tenemos visto el contenido de los variables
+ya más que la forma en que estamos pensando
+en la tarea, si hay que definir el código
+en ritmo
+pero ya el resto está trasado contra el veo
+y le va a llegar la información
+de la regla para ejecutarla
+y es al veo que le sabe
+cómo todo eso se normalda
+en el momento de la composición
+en ese momento de composición del xml
+entra el veo para acertar
+esa información
+pues imagina que yo tengo una cláusula
+que es del sesionario
+entonces si yo tengo el sesionario
+puesto en la polsas
+tiene que introducir la cláusula sesionaria
+ese tipo de cosas
+prácticamente otro lado tome polison
+porque volviste
+es que nuestras llaves, nuestro juego de datos
+va a ser lo que está en la polsas
+entonces te la vamos a asultar a ellos
+para que llenemos
+compañeros, por encerrar dobar
+me falta explicar este punto que es muy fácil
+los nson
+actualmente tenemos estos npoins
+que mañana los vamos a ver
+que lo que va a explicar es un poquito también
+feliz con las integraciones
+hemos hecho a nivel de controles técnicos
+el de rati
+este es el orquestador del activo digital
+este definitivamente
+me acuerdo para que es
+es tal de módulos
+y es tal de atributos
+estos npoins
+como ven
+entran por el activo digital
+este es lo que estaba hablando
+Dr. Alberto
+que ya no voy a ir al micro servicio
+como tal de rete o micro servicio
+de dub no
+entran es por ACDS
+y el ACDS va a garantizarlo
+seguridad
+todo
+para ejecutar el proceso
+entonces también el tema de los npoins
+se han implementado están operativos
+imaginemos esto
+un cotizador estilo
+que no es un flujo completo
+sino por fases
+entonces hoy le presenta coberturas
+coberturas
+luego variación de datos
+para hacer la acostación
+es un ejemplo de operación
+entonces
+que sepan que el activo tiene
+el flujo en tu n
+un proceso valio
+una cotización rápida es un proceso en tu n
+tomé datos de volumen de información
+o un paso a paso que mañana explicará
+cómo está estructurado
+y por eso están estos npoins
+ah si
+el de por un controles no es el que era
+el número de desinulación
+formularia
+formularia
+este servicio es lo que me estaba comentando al verte
+que yo lo llamo
+les paso los datos del río y me dice ah si
+porque con esta información puedes presentar
+gol y platino y te vuelve el código 10
+gol y el código 20 platino
+te da la salida
+y esto es lo que se ha implementado
+dentro de la lista de valor del valor
+en la lista
+en lugar de ir a base de datos de definición
+entonces es cobrecha para hacer el npoins
+para los que se debe hacer a la lista
+¿cuáles?
+ah perdón estoy hablando
+de cobrechas para cascontrar
+ese servicio
+y que tal vez
+ya se puede configurar como lista
+en la opción de lista y va al activo
+está por el amigo que está llamando
+red
+correcto, es decir neotron
+en el paso a paso se le llama algo a esto
+mañana lo voy a explicar feliz
+al detalle
+de las APIs
+las APIs le llaman al npoins
+y el frontal va llamando
+a cada avenue
+vale
+por comienzo
+lo que has que explicar mañana
+feliz
+esta tablita
+es la que está más
+es la forma
+de lo que estaba explicado esta mañana
+vale
+dependiendo
+de cómo se configura entre el ACS
+el sistema va a saber
+que tiene que hacer
+un control técnico
+un previo en datos variables
+la petición de un formulario
+el cálculo
+de RTE
+el va a saber en este momento
+y que va a ejecutar en el activo
+para eso depende de la configuración
+vale pues aquí
+hemos hecho cosas
+están los formularios también
+está incorporado dentro
+del proceso
+del sistema
+entonces
+vuelvo a decir que las referencias
+llevamos ya un año
+y estos meses trabajando con el proceso
+desde que se produjo el tema del activo digital
+y pues
+vamos con España abriendo
+viene ahora así
+así que vamos a hacerlo ahora
+bueno
+yo creo que por hoy vamos a
+marcar todos los flujos que tenemos
+pendientes
+si
+me gustaría entonces
+mañana que reglas para empezar
+esto lo mismo
+empezamos a cachar ya
+vamos a pensar en la información
+de este programa
+habla con Verónica
+un listado ya
+de muchas reglas a ver
+para ir implementando
+voy a parar la
+grabación ok

@@ -1,0 +1,2136 @@
+# DUP Engine
+
+DUP Engine
+
+
+
+
+# [REEF-ACDC Backend](https://reef.acdc-dev.es.emea.aws.mapfre.net/acdc/docs-portal/index.html)
+
+* **Inicio**
+  + [Documentación general](#/README "Documentación general")* **ACDC — Módulo principal**
+    + [Endpoints Online](#/ACDC/ENDPOINTS_ONLINE "Endpoints Online")+ [Orquestador Batch](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR "Orquestador Batch")+ [Cotizaciones](#/ACDC/COTIZACIONES "Cotizaciones")+ [Clientes externos](#/ACDC/EXTERNAL_CLIENTS "Clientes externos")+ [Auditoría](#/ACDC/AUDIT "Auditoría")+ [Seguridad](#/ACDC/SECURITY "Seguridad")* **DUP — Motor de reglas**
+      + [DUP Engine](#/DUP/DUP_ENGINE "DUP Engine")
+        - [Índice](#/DUP/DUP_ENGINE?id=%c3%8dndice "Índice")- [1. ¿Qué es DUP?](#/DUP/DUP_ENGINE?id=_1-%c2%bfqu%c3%a9-es-dup "1. ¿Qué es DUP?")- [2. Tipos de operación (`DupOperationEnum`)](#/DUP/DUP_ENGINE?id=_2-tipos-de-operaci%c3%b3n-dupoperationenum "2. Tipos de operación (DupOperationEnum)")- [3. Niveles de aplicación (`RiskSelectionTypeEnum`)](#/DUP/DUP_ENGINE?id=_3-niveles-de-aplicaci%c3%b3n-riskselectiontypeenum "3. Niveles de aplicación (RiskSelectionTypeEnum)")- [4. Pasos del orquestador (`DupStepEnum`)](#/DUP/DUP_ENGINE?id=_4-pasos-del-orquestador-dupstepenum "4. Pasos del orquestador (DupStepEnum)")- [5. Agrupaciones de pasos (`StageEnum`)](#/DUP/DUP_ENGINE?id=_5-agrupaciones-de-pasos-stageenum "5. Agrupaciones de pasos (StageEnum)")- [6. Cómo funciona `DupServiceImpl`](#/DUP/DUP_ENGINE?id=_6-c%c3%b3mo-funciona-dupserviceimpl "6. Cómo funciona DupServiceImpl")- [7. Construcción del `RequestInfo` desde `DupStepEnum`](#/DUP/DUP_ENGINE?id=_7-construcci%c3%b3n-del-requestinfo-desde-dupstepenum "7. Construcción del RequestInfo desde DupStepEnum")- [8. Mapeo completo: `OPlyPlyCDto` → `RiskSelectionRequest`](#/DUP/DUP_ENGINE?id=_8-mapeo-completo-oplyplycdto-%e2%86%92-riskselectionrequest "8. Mapeo completo: OPlyPlyCDto → RiskSelectionRequest")- [9. Procesamiento de la respuesta DUP](#/DUP/DUP_ENGINE?id=_9-procesamiento-de-la-respuesta-dup "9. Procesamiento de la respuesta DUP")- [10. Two-pass en el flujo RTE](#/DUP/DUP_ENGINE?id=_10-two-pass-en-el-flujo-rte "10. Two-pass en el flujo RTE")- [11. `OPlyPlyCDto` ↔ Facts de las reglas DUP](#/DUP/DUP_ENGINE?id=_11-oplyplycdto-%e2%86%94-facts-de-las-reglas-dup "11. OPlyPlyCDto ↔ Facts de las reglas DUP")+ [Módulo DUP](#/DUP/README_DUP_MODULE "Módulo DUP")* **Módulos**
+        + [Cálculo de Módulos](#/MODULOS/MODULES_SERVICE "Cálculo de Módulos")* **RTE — Tarificación**
+          + [Configuración de tarifas](#/RTE/RTE_TARIFF_CONFIGURATION "Configuración de tarifas")
+
+# [DUP Engine — Motor de reglas y mapeo de datos](#/DUP/DUP_ENGINE?id=dup-engine-motor-de-reglas-y-mapeo-de-datos)
+
+> 📚 Parte de la documentación de `REEF-ACDC` · [← Índice general](#/../README)
+
+**Relacionado con:** [ENDPOINT\_BATCH\_ORCHESTATOR.md](#/../ACDC/ENDPOINT_BATCH_ORCHESTATOR) · [EXTERNAL\_CLIENTS.md](#/../ACDC/EXTERNAL_CLIENTS)
+
+---
+
+## [Índice](#/DUP/DUP_ENGINE?id=%c3%8dndice)
+
+1. [¿Qué es DUP?](#/DUP/DUP_ENGINE?id=1-qu%c3%a9-es-dup)- [Tipos de operación](#/DUP/DUP_ENGINE?id=2-tipos-de-operaci%c3%b3n-dupoperationenum)- [Niveles de aplicación](#/DUP/DUP_ENGINE?id=3-niveles-de-aplicaci%c3%b3n-riskselectiontypeenum)- [Pasos del orquestador (DupStepEnum)](#/DUP/DUP_ENGINE?id=4-pasos-del-orquestador-dupstepenum)- [Agrupaciones de pasos (StageEnum)](#/DUP/DUP_ENGINE?id=5-agrupaciones-de-pasos-stageenum)- [Cómo funciona DupServiceImpl](#/DUP/DUP_ENGINE?id=6-c%c3%b3mo-funciona-dupserviceimpl)- [Construcción del RequestInfo desde DupStepEnum](#/DUP/DUP_ENGINE?id=7-construcci%c3%b3n-del-requestinfo-desde-dupstepenum)- [Mapeo completo: OPlyPlyCDto → RiskSelectionRequest](#/DUP/DUP_ENGINE?id=8-mapeo-completo-oplyzplyczdto--riskselectionrequest)
+                 * [8.1 Campos de cabecera / metadata](#/DUP/DUP_ENGINE?id=81-campos-de-cabecera--metadata)* [8.2 fixedData — Datos fijos de la póliza](#/DUP/DUP_ENGINE?id=82-fixeddata--datos-fijos-de-la-p%c3%b3liza)* [8.3 variableData — Atributos dinámicos](#/DUP/DUP_ENGINE?id=83-variabledata--atributos-din%c3%a1micos)* [8.4 coverages — Coberturas seleccionadas](#/DUP/DUP_ENGINE?id=84-coverages--coberturas-seleccionadas)* [8.5 insured — Datos del asegurado](#/DUP/DUP_ENGINE?id=85-insured--datos-del-asegurado)* [8.6 participants — Participantes](#/DUP/DUP_ENGINE?id=86-participants--participantes)* [8.7 questionnaires — Cuestionarios](#/DUP/DUP_ENGINE?id=87-questionnaires--cuestionarios)* [8.8 documents — Documentos](#/DUP/DUP_ENGINE?id=88-documents--documentos)- [Procesamiento de la respuesta DUP](#/DUP/DUP_ENGINE?id=9-procesamiento-de-la-respuesta-dup)- [Two-pass en el flujo RTE](#/DUP/DUP_ENGINE?id=10-two-pass-en-el-flujo-rte)- [OPlyPlyCDto ↔ Facts de las reglas DUP](#/DUP/DUP_ENGINE?id=11-oplyzplyczdto--facts-de-las-reglas-dup)
+                       * [11.1 Mapa general de correspondencia](#/DUP/DUP_ENGINE?id=111-mapa-general-de-correspondencia)* [11.2 fixedValues — Desde OPlyGniS y OPlyInaS](#/DUP/DUP_ENGINE?id=112-fixedvalues--desde-oplygnis-y-oplyinas)* [11.3 variableData — Atributos fldNam de la póliza](#/DUP/DUP_ENGINE?id=113-variabledata--atributos-fldnam-de-la-p%c3%b3liza)* [11.4 coverages — Desde OPlyCvcCT](#/DUP/DUP_ENGINE?id=114-coverages--desde-oplycvcct)* [11.5 insured — Atributos del asegurado](#/DUP/DUP_ENGINE?id=115-insured--atributos-del-asegurado)* [11.6 participants — Tomador y beneficiarios](#/DUP/DUP_ENGINE?id=116-participants--tomador-y-beneficiarios)* [11.7 questionnaires — Desde dataFormMap](#/DUP/DUP_ENGINE?id=117-questionnaires--desde-dataformmap)* [11.8 documents — Desde documents](#/DUP/DUP_ENGINE?id=118-documents--desde-documents)* [11.9 accumulations — Desde cmlObj](#/DUP/DUP_ENGINE?id=119-accumulations--desde-cmlobj)* [11.10 constants — Resolución bajo demanda desde MongoDB](#/DUP/DUP_ENGINE?id=1110-constants--fuente-externa-mongodb)* [11.11 Condiciones V1 y V2: ejemplos con campos reales](#/DUP/DUP_ENGINE?id=1111-condiciones-v1-y-v2-ejemplos-con-campos-reales)
+
+---
+
+## [1. ¿Qué es DUP?](#/DUP/DUP_ENGINE?id=_1-%c2%bfqu%c3%a9-es-dup)
+
+**DUP** (Data Update Process) es el **motor de reglas de negocio** del sistema. Es un servicio externo que, dado el estado actual de una póliza y el identificador del paso en el que nos encontramos, devuelve un conjunto de **reglas aplicadas** (`appliedRules`) que pueden:
+
+* **Asignar** valores a atributos de la póliza (pre-cálculos, valores por defecto, herencia de datos).* **Validar** que los datos son correctos y coherentes (puede bloquear el flujo con errores).* Aplicar **controles técnicos** (reaseguro, cláusulas, impresión, opciones adicionales, etc.).
+
+El backend lo invoca a través de `SelectRiskService` → `POST /risk-selection`.
+
+---
+
+## [2. Tipos de operación (`DupOperationEnum`)](#/DUP/DUP_ENGINE?id=_2-tipos-de-operaci%c3%b3n-dupoperationenum)
+
+Cada paso DUP tiene asociado un tipo de operación que determina cómo se procesan las reglas devueltas:
+
+| Valor | Método en DupService | Descripción |
+| --- | --- | --- |
+| `PREVIOUS` | `precalculateByStep()` | Pre-cálculo: aplica **asignaciones** sobre los atributos de la póliza en memoria (rellena valores por defecto, propaga datos entre niveles). No bloquea ante errores de validación. |
+| `VALIDATION` | `validationByStep()` | Validación: aplica reglas que pueden devolver **errores bloqueantes**. Si hay errores, se lanza `AcdcException`. |
+| `TECHNICAL_CONTROL` | `processTCByStep()` | Control técnico: aplica reglas de control sobre coberturas, reaseguro, cláusulas, impresión, etc. Devuelve `List<OPlyUtcP>` que se acumula en la póliza. |
+| `OTHERS` | Métodos específicos (`applyExclusionRules()`, `applyReprocessRules()`) | Operaciones especiales que no son previous/validation/technical-control. Actualmente se usa para exclusión y reproceso batch de renovaciones, con pasos `EXCLUSION_POLICY` y `REPROCESS_POLICY`. |
+
+---
+
+## [3. Niveles de aplicación (`RiskSelectionTypeEnum`)](#/DUP/DUP_ENGINE?id=_3-niveles-de-aplicaci%c3%b3n-riskselectiontypeenum)
+
+El nivel determina **con qué granularidad** se itera la estructura de la póliza y cómo se filtra el `variableData` enviado a DUP:
+
+| Nivel | Iteración en el orquestador | Atributos incluidos en `variableData` |
+| --- | --- | --- |
+| `POLICY_TYPE` | Una sola llamada para toda la póliza | Atributos de póliza (`OPlyAtcCT` raíz) |
+| `POLICY_GROUP` | Una sola llamada (grupo de póliza) | Atributos de póliza raíz |
+| `RISK_TYPE` | Una llamada **por cada riesgo** | Atributos de póliza + atributos del riesgo actual + atributos de sus coberturas |
+| `COVERAGE_TYPE` | Una llamada **por cada cobertura de cada riesgo** | Atributos de póliza + atributos del riesgo actual + atributos de la cobertura actual |
+| `FORM_TYPE` | Una llamada por formulario | Atributos del formulario |
+| `FIXED_DATA` | Una llamada para datos fijos | — |
+
+---
+
+## [4. Pasos del orquestador (`DupStepEnum`)](#/DUP/DUP_ENGINE?id=_4-pasos-del-orquestador-dupstepenum)
+
+Cada paso se identifica por tres números: `[stepLevel - optionMenuNumber - optionNumber]`
+
+| Paso | Step | Menu | Option | Nivel | Operación |
+| --- | --- | --- | --- | --- | --- |
+| `FIXED_DATA_DUP` | 1 | 0 | 0 | POLICY\_TYPE | CT |
+| `VARIABLE_DATA_POLICY` | 2 | 0 | 0 | POLICY\_TYPE | CT |
+| `PREVIOUS_VARIABLE_DATA_POLICY` | 2 | 0 | 10 | POLICY\_TYPE | PREVIOUS |
+| `VALIDATION_VARIABLE_DATA_POLICY` | 2 | 0 | 20 | POLICY\_TYPE | VALIDATION |
+| `BENEFICIARY_RISK_TYPE` | 3 | 0 | 0 | RISK\_TYPE | CT |
+| `VARIABLE_DATA_RISK` | 4 | 0 | 0 | RISK\_TYPE | CT |
+| `PREVIOUS_VARIABLE_DATA_RISK` | 4 | 0 | 10 | RISK\_TYPE | PREVIOUS |
+| `VALIDATION_VARIABLE_DATA_RISK` | 4 | 0 | 20 | RISK\_TYPE | VALIDATION |
+| `RISK_SELECTION_FORM` | 11 | 0 | 0 | RISK\_TYPE | CT |
+| `PRE_FORM_VALIDATION_DEFINITION` | 11 | 10 | 10 | FORM\_TYPE | PREVIOUS |
+| `POST_FORM_VALIDATION_DEFINITION` | 11 | 10 | 20 | FORM\_TYPE | VALIDATION |
+| `COVERAGE_CONTROL` | 6 | 0 | 0 | COVERAGE\_TYPE | CT |
+| `PREVIOUS_VARIABLE_COVERAGE` | 6 | 0 | 10 | COVERAGE\_TYPE | PREVIOUS |
+| `VALIDATION_VARIABLE_COVERAGE` | 6 | 0 | 20 | COVERAGE\_TYPE | VALIDATION |
+| `REINSURANCE_CONTROL` | 7 | 0 | 0 | COVERAGE\_TYPE | CT |
+| `TERMINATE_CONTROL` | 8 | 1 | 6 | COVERAGE\_TYPE | CT |
+| `SUSPEND_CONTROL` | 8 | 1 | 3 | COVERAGE\_TYPE | CT |
+| `MULTIUSER_CONTROL` | 8 | 1 | 4 | COVERAGE\_TYPE | CT |
+| `SAVE_CONTROL` | 8 | 3 | 1 | COVERAGE\_TYPE | CT |
+| `ABANDON_CONTROL` | 8 | 3 | 2 | COVERAGE\_TYPE | CT |
+| `VERIFY_CONTROL` | 8 | 3 | 3 | COVERAGE\_TYPE | CT |
+| `CLAUSES_CONTROL` | 8 | 3 | 4 | COVERAGE\_TYPE | CT |
+| `ANNEX_PAGES_CONTROL` | 8 | 3 | 5 | COVERAGE\_TYPE | CT |
+| `PRINT_CONTROL` | 8 | 3 | 6 | COVERAGE\_TYPE | CT |
+| `RISKS_CONTROL` | 8 | 3 | 7 | COVERAGE\_TYPE | CT |
+| `ADDITIONAL_OPTIONS_CONTROL` | 8 | 3 | 8 | COVERAGE\_TYPE | CT |
+| `ADDITIONAL_ANY_OPTIONS_CONTROL` | 8 | 7 | null | COVERAGE\_TYPE | CT |
+| `VALIDATION_FIXED_DATA_PLY_GRP` | 1 | 30 | 20 | FIXED\_DATA | VALIDATION |
+| `PREVIOUS_VARIABLE_DATA_PLY_GRP` | 2 | 30 | 10 | POLICY\_GROUP | PREVIOUS |
+| `VALIDATION_VARIABLE_DATA_PLY_GRP` | 2 | 30 | 20 | POLICY\_GROUP | VALIDATION |
+| `EXCLUSION_POLICY` | 50 | 0 | 30 | POLICY\_TYPE | OTHERS |
+| `REPROCESS_POLICY` | 50 | 0 | 40 | POLICY\_TYPE | OTHERS |
+
+---
+
+## [5. Agrupaciones de pasos (`StageEnum`)](#/DUP/DUP_ENGINE?id=_5-agrupaciones-de-pasos-stageenum)
+
+`StageEnum` agrupa pasos lógicamente relacionados para uso en los endpoints online. El contrato público de esos endpoints informa `operationInfo.onlineStage`; el backend traduce ese stage a uno o varios `DupStepEnum` y de ahí a `processStep`, `processStepMenuOption` y `processStepOption` internos antes de llamar a DUP.
+
+| Stage | Pasos incluidos |
+| --- | --- |
+| `POLICY_PREVIOUS` | `PREVIOUS_VARIABLE_DATA_POLICY` |
+| `RISK_PREVIOUS` | `PREVIOUS_VARIABLE_DATA_RISK` |
+| `COVERAGE_PREVIOUS` | `PREVIOUS_VARIABLE_COVERAGE` |
+| `POLICY_DATA_VALIDATION` | `PREVIOUS_VARIABLE_DATA_POLICY` + `VALIDATION_VARIABLE_DATA_POLICY` |
+| `RISK_DATA_VALIDATION` | `PREVIOUS_VARIABLE_DATA_RISK` + `VALIDATION_VARIABLE_DATA_RISK` |
+| `COVERAGE_DATA_VALIDATION` | `PREVIOUS_VARIABLE_COVERAGE` + `VALIDATION_VARIABLE_COVERAGE` |
+| `FIXED_DATA_TC` | `FIXED_DATA_DUP` |
+| `POLICY_DATA_TC` | `FIXED_DATA_DUP` + `VARIABLE_DATA_POLICY` |
+| `BENEFICIARY_RISK_TC` | `BENEFICIARY_RISK_TYPE` |
+| `RISK_DATA_TC` | `VARIABLE_DATA_RISK` |
+| `COVERAGE_DATA_TC` | `COVERAGE_CONTROL` |
+| `FORM_DATA_TC` | `RISK_SELECTION_FORM` |
+| `RISK_DATA_AND_FORM_TC` | `VARIABLE_DATA_RISK` + `RISK_SELECTION_FORM` |
+| `END_COVERAGE_TC` | `REINSURANCE_CONTROL` + `TERMINATE_CONTROL` |
+| `END_POLICY_TC` | `SAVE_CONTROL` + `CLAUSES_CONTROL` + `ANNEX_PAGES_CONTROL` |
+| `SUSPEND_TC` | `SUSPEND_CONTROL` |
+| `ABANDON_TC` | `ABANDON_CONTROL` |
+| `COVERAGE_DATA_CONTROL` | `COVERAGE_CONTROL` |
+| `RISK_AND_COVERAGE_TC` | `COVERAGE_CONTROL` + `RISK_SELECTION_FORM` + `REINSURANCE_CONTROL` + `TERMINATE_CONTROL` + `SUSPEND_CONTROL` + `MULTIUSER_CONTROL` |
+| `COVERAGE_FINAL_TC` | `SAVE_CONTROL` + `ABANDON_CONTROL` + `VERIFY_CONTROL` + `CLAUSES_CONTROL` + `ANNEX_PAGES_CONTROL` + `PRINT_CONTROL` + `RISKS_CONTROL` + `ADDITIONAL_OPTIONS_CONTROL` + `ADDITIONAL_ANY_OPTIONS_CONTROL` |
+| `PRE_RATING_FORMULARY_DEFINITION` | `PRE_FORM_VALIDATION_DEFINITION` |
+| `POST_RATING_FORMULARY_DEFINITION` | `POST_FORM_VALIDATION_DEFINITION` |
+| `GRP_PLY_FIXED_DATA_VALIDATION` | `VALIDATION_FIXED_DATA_PLY_GRP` |
+| `GRP_PLY_VARIABLE_DATA_PREVIOUS` | `PREVIOUS_VARIABLE_DATA_PLY_GRP` |
+| `GRP_PLY_VARIABLE_DATA_VALIDATION` | `VALIDATION_VARIABLE_DATA_PLY_GRP` |
+
+### [Validaciones de póliza grupo](#/DUP/DUP_ENGINE?id=validaciones-de-p%c3%b3liza-grupo)
+
+Los pasos de póliza grupo están modelados explícitamente en `DupStepEnum`:
+
+| Step | Stage online | Uso funcional | Nivel |
+| --- | --- | --- | --- |
+| `VALIDATION_FIXED_DATA_PLY_GRP` `[1-30-20]` | `GRP_PLY_FIXED_DATA_VALIDATION` | Validación de datos fijos de póliza grupo | `FIXED_DATA` |
+| `PREVIOUS_VARIABLE_DATA_PLY_GRP` `[2-30-10]` | `GRP_PLY_VARIABLE_DATA_PREVIOUS` | Pre-cálculo de datos variables de póliza grupo | `POLICY_GROUP` |
+| `VALIDATION_VARIABLE_DATA_PLY_GRP` `[2-30-20]` | `GRP_PLY_VARIABLE_DATA_VALIDATION` | Validación de datos variables de póliza grupo | `POLICY_GROUP` |
+
+El número de póliza grupo se toma del polizón como `OPlyGniS.gppVal` y se publica en DUP como `fixedValues.groupPolicyNumber` / `currentPolicyData.fixedData["groupPolicyNumber"]`. Las reglas de MongoDB también pueden especializarse por `groupPolicyNumber`.
+
+Desde endpoints online se invocan informando `operationInfo.onlineStage` con uno de los stages `GRP_PLY_*`. No se debe enviar `processStep`, `processStepMenuOption` ni `processStepOption` como contrato público: esos campos son derivados internos del `StageEnum` seleccionado.
+
+### [Flujo batch de exclusión y reproceso](#/DUP/DUP_ENGINE?id=flujo-batch-de-exclusi%c3%b3n-y-reproceso)
+
+Antes de ejecutar el ciclo normal de DUP/módulos/RTE, el orquestador batch evalúa reglas especiales:
+
+* `EXCLUSION_POLICY` `[50-0-30]` se aplica para operaciones `RENEW_POLICY` (`RnwPly`) y `PRE_RENEW_POLICY` (`PlyPrw`). Si hay reglas de exclusión aplicadas, se lanza `AcdcException` con errores construidos desde las reglas de exclusión y el flujo se bloquea.* `REPROCESS_POLICY` `[50-0-40]` se aplica solo para `PRE_RENEW_POLICY` (`PlyPrw`). Si las reglas indican que no procede reprocesar, el orquestador devuelve respuesta temprana con `oTrnPrcS.trmVal = "1"` y `paymentPlans: []`, sin continuar módulos/RTE/planes de pago.
+
+Ambos pasos tienen `DupOperationEnum.OTHERS` porque su tratamiento no encaja en previous, validation ni technical-control.
+
+### [Acciones DUP soportadas](#/DUP/DUP_ENGINE?id=acciones-dup-soportadas)
+
+El motor reconoce estos valores de `action.type` (`TechnicalControlTypeEnum`):
+
+| Acción | Impacto funcional general |
+| --- | --- |
+| `TEMP` | Cálculo/asignación temporal, por ejemplo fechas o facts auxiliares. |
+| `Rechazo` | Resultado bloqueante de mayor severidad funcional. |
+| `Revisión` | Marca necesidad de revisión/suscripción. |
+| `Requisito` | Requiere requisito adicional. |
+| `Documento` | Solicita o registra documentación requerida. |
+| `Cuestionario` | Solicita o relaciona cuestionarios/formularios. |
+| `Tarifa` | Acción asociada a condiciones de tarifa. |
+| `Aviso` | Mensaje informativo/no bloqueante según uso funcional. |
+| `Asignacion` | Asigna valores a facts/atributos del polizón o contexto. |
+| `Documentacion` | Acción documental genérica. |
+| `Auditoria` | Registro/huella funcional para auditoría. |
+| `Prima minima` | Aplica o informa control de prima mínima. |
+| `Exclusion` | Usada en `EXCLUSION_POLICY` para bloquear renovaciones/prerrenovaciones excluidas. |
+| `Reproceso` | Usada en `REPROCESS_POLICY` para decidir si procede continuar el reproceso. |
+
+En prioridad no-prevalidation, el código pondera `TEMP=1`, `Rechazo=2`, `Revisión=3`, `Requisito`/`Documento`/`Cuestionario`/`Tarifa=4` y el resto `5`.
+
+### [Selección y especificidad de reglas](#/DUP/DUP_ENGINE?id=selecci%c3%b3n-y-especificidad-de-reglas)
+
+Las reglas se leen de MongoDB (`RS-RULES-ACTIONS-CONDITIONS`) con filtros de cabecera y contexto:
+
+* Cabecera: compañía, ramo, producto (`product` o wildcard `99999`), `execution_type`, `process_type` (`processTypeId` o `99`), `process_step`, `option_number`, `option_menu_number`, campo de proceso, regla activa (`active = "Y"`) y vigencia (`expiry_date >= operationDate`).* Cobertura: si hay coberturas en el contexto, se aceptan reglas con `coverage` nulo o incluido en las coberturas; si no hay coberturas, solo `coverage = null`.* Datos fijos opcionales: `policyNumber`, `clientPolicy`, `contractNumber`, `groupPolicyNumber`, tercero, canales (`channel1`, `channel2`, `channel3`) y niveles de agente (`level1`, `level2`, `level3`). Cuando el request trae valor, el filtro acepta el valor exacto o `null` en la regla.* Vigencia/desactivación: la consulta actual filtra por `expiry_date` y `active`; el documento contiene `disabled_date`, pero no se observa filtro explícito por `disabledDate` en el repositorio actual.* Prioridad posterior: en prevalidación se ordena por la posición de `processField` en `processFields`; fuera de prevalidación se pondera por severidad de acción y se aplican factores de especificidad cuando el producto no coincide exactamente.
+
+### [Estructura de una regla DUP (campos y significado)](#/DUP/DUP_ENGINE?id=estructura-de-una-regla-dup-campos-y-significado)
+
+El documento persistido en `RS-RULES-ACTIONS-CONDITIONS` (clase `RiskSelectionRulesActionsConditions`) usa estos campos principales:
+
+| Campo Mongo | Significado funcional |
+| --- | --- |
+| `rule_id` / `rule_name` | Identificador lógico y nombre de la regla. |
+| `company`, `branch`, `product` | Ámbito comercial de la regla. `product` puede usar wildcard (`99999`). |
+| `execution_type`, `process_type` | Tipo de ejecución y proceso para segmentar reglas por flujo. |
+| `process_step`, `option_menu_number`, `option_number` | Contexto exacto del paso DUP (`DupStepEnum`). |
+| `process_field` | Campo funcional del formulario/proceso al que aplica la regla. |
+| `coverage` | Cobertura objetivo; `null` implica regla no acotada por cobertura. |
+| `actions` | Lista de acciones a ejecutar si la regla aplica. |
+| `conditions` (V1) / `condition` (V2) | Lógica de evaluación de la regla. |
+| `underwriter_level`, `visibility_level`, `visible` | Metadatos de visibilidad y nivel de uso. |
+| `active`, `expiry_date`, `disabled_date` | Estado y ventana temporal de validez de la regla. |
+| `days_period` | Parámetro auxiliar de periodo (según tipo de regla). |
+| `policyNumber`, `clientPolicy`, `contractNumber`, `groupPolicyNumber` | Especialización por póliza/contrato. |
+| `channel1..3`, `level1..3`, `third_party` | Especialización por canal, niveles comerciales y tercero. |
+
+### [Estructura de `conditions` (factores y operadores)](#/DUP/DUP_ENGINE?id=estructura-de-conditions-factores-y-operadores)
+
+En V1, cada entrada de `conditions[]` es un objeto con esta semántica:
+
+| Clave | Significado |
+| --- | --- |
+| `factor` | Fact/expresión a evaluar. Ejemplos: `fixedValues.paymentModality`, `coverages.*.capital`, `constants.TASA_X`, `date[fixedValues.policyEffectiveDate]`, `variableData.A+variableData.B`. |
+| `operator` | Operador de comparación/existencia. |
+| `value` | Valor simple de comparación (`EQ`, `GT`, `LT`, etc.). |
+| `values` | Lista de valores para `IN`/`NOT_IN`. |
+| `value1`, `value2` | Límite inferior/superior para `BTW`. |
+| `prevFactor` | Compara contra otro factor en lugar de `value` (útil en comparaciones current vs prev). |
+| `compareDateFactor` | Segundo factor de fecha para comparaciones de tipo fecha. |
+
+Operadores soportados por el evaluador V1 (`RulesEvaluationServiceImpl`):
+
+| Operador | Significado |
+| --- | --- |
+| `GT`, `GE`, `LT`, `LE` | Mayor, mayor o igual, menor, menor o igual. |
+| `EQ`, `NOT_EQ` | Igual / distinto (numérico, texto o listas). |
+| `IN`, `NOT_IN` | Pertenencia / no pertenencia a lista `values`. |
+| `BTW` | Entre `value1` y `value2` (inclusive). |
+| `EX`, `NEX` | Existe / no existe (valor no nulo ni vacío). |
+| `BLANK` | Valor nulo o string en blanco. |
+| `ANY_MATCH` | Algún fact con wildcard `*` es igual al valor. Misma semántica que `EQ` sobre valores escalares: texto estricto si fact y valor son texto (`"05" != "5"` cuando el valor de la regla se guarda como texto), numérica si alguno es número (`75000 == "75000"`). A diferencia de `EQ`, no hace "contiene" sobre facts de tipo lista. |
+| `ANY_GT` | Algún elemento con wildcard `*` es estrictamente **mayor que** el valor dado. Solo numérico. |
+| `ANY_LT` | Algún elemento con wildcard `*` es estrictamente **menor que** el valor dado. Solo numérico. |
+
+Notas de factores:
+
+* `factor` puede ser ruta de fact, expresión aritmética, constante (`constants.*`) o fecha (`date[...]`).* En fecha se admite desplazamiento en formato `date[origen.campo:{+1Y}]`, `{-2M}`, `{+10d}`.* V2 evalúa `condition` como expresión Janino sobre `SafeFactsUtils` (ver sección 11.11).
+
+### [Estructura de `actions` (acciones y cálculo de valores)](#/DUP/DUP_ENGINE?id=estructura-de-actions-acciones-y-c%c3%a1lculo-de-valores)
+
+Cada objeto dentro de `actions[]` contiene al menos `type` y, según el tipo, claves adicionales.
+
+| Clave | Significado |
+| --- | --- |
+| `type` | Tipo de acción (`TEMP`, `Rechazo`, `Revisión`, `Requisito`, `Documento`, `Cuestionario`, `Tarifa`, `Aviso`, `Asignacion`, `Documentacion`, `Auditoria`, `Prima minima`, `Exclusion`, `Reproceso`). |
+| `value` | Valor asociado a la acción; especialmente relevante en asignaciones/cálculos. |
+| `data` | Campo destino de asignación (`fldNam`) en acciones tipo `Asignacion`. |
+| `risk`, `coverage`, `jumpLevel` | Parámetros opcionales para orientar la asignación cuando aplica (según flujo/step). |
+| `requirement`, `document`, `questionnaire`, `message` | Contenido funcional para acciones de requisito, documento, cuestionario y aviso. |
+| `valueCalculationType` | Modo de cálculo de `value`: `DIRECT`, `FACTOR`, `FORMULA`, `FUNCTION`. |
+
+Reglas de cálculo de `value` (`ActionProcessingService`):
+
+* `DIRECT`: usa `value` tal cual.* `FACTOR`: `value` se interpreta como factor y se resuelve desde facts (`constants.*`, `Date[...]`, expresiones, etc.).* `FORMULA`: `value` se evalúa como expresión Janino V2.* `FUNCTION`: reservado para comportamiento por función; no transforma `value` en el preprocesado actual.
+
+### [Guía de configuración fina (plantillas listas para usar)](#/DUP/DUP_ENGINE?id=gu%c3%ada-de-configuraci%c3%b3n-fina-plantillas-listas-para-usar)
+
+#### [1) Checklist mínimo por regla](#/DUP/DUP_ENGINE?id=_1-checklist-m%c3%adnimo-por-regla)
+
+1. Definir contexto de ejecución: `company`, `branch`, `product`, `execution_type`, `process_type`, `process_step`, `option_menu_number`, `option_number`.- Definir segmentación adicional cuando aplique: `coverage`, `process_field`, `policyNumber`, `clientPolicy`, `contractNumber`, `groupPolicyNumber`, `channel1..3`, `level1..3`, `third_party`.- Elegir motor de condición:
+       * V1: `conditions[]` (lista de objetos con `factor/operator/...`).* V2: `condition` (expresión Janino con `f.as...("fact")`).- Definir `actions[]` con `type` y payload específico.- Revisar vigencia: `active`, `expiry_date` (y opcionalmente `disabled_date` como metadato).
+
+#### [2) Campos recomendados por tipo de acción](#/DUP/DUP_ENGINE?id=_2-campos-recomendados-por-tipo-de-acci%c3%b3n)
+
+| `type` | Campos de acción recomendados |
+| --- | --- |
+| `Asignacion` | `data`, `value`, opcional `valueTxt`, `mods`, `jumpLevel`, `coverage` |
+| `Rechazo` | `message` (texto del error; lo lee `checkValidationRules` → `AppKeys.KEY_MESSAGE`) |
+| `Revisión` | `message` (informativo; en flujo `Seleccion` el motor usa `rule_name` para el resultado final) |
+| `Requisito` | `requirement` (código/id del requisito; lo lee `ACTION_REQUIREMENT`) |
+| `Documento` | `document` |
+| `Cuestionario` | `questionnaire` |
+| `Aviso` | `message` |
+| `Tarifa` | `value` + opcionalmente `calculation_type` |
+| `TEMP` | `data`, `value` (normalmente con `valueCalculationType=FACTOR/FORMULA`) |
+| `Exclusion` / `Reproceso` | `message` |
+
+Notas:
+
+* Para asignaciones, `data` debe coincidir con `fldNam` del atributo destino.* `mods` se usa en online para metadatos de UI: `RQR` (requerido), `INV` (invisible), `BLK` (bloqueado).
+
+#### [3) Plantillas V1 de condiciones (factor/operator)](#/DUP/DUP_ENGINE?id=_3-plantillas-v1-de-condiciones-factoroperator)
+
+Ejemplo numérico simple:
+
+```
+{
+  "factor": "insured.age",
+  "operator": "GE",
+  "value": "18"
+}
+```
+
+Ejemplo rango:
+
+```
+{
+  "factor": "variableData.SUMA_ASEGURADA",
+  "operator": "BTW",
+  "value1": "50000",
+  "value2": "300000"
+}
+```
+
+Ejemplo lista:
+
+```
+{
+  "factor": "fixedValues.paymentModality",
+  "operator": "IN",
+  "values": ["M", "T", "S"]
+}
+```
+
+Ejemplo comparación contra otro factor (`prevFactor`):
+
+```
+{
+  "factor": "variableData.CAPITAL_ACTUAL",
+  "operator": "GT",
+  "prevFactor": "prev.variableData.CAPITAL_ACTUAL"
+}
+```
+
+Ejemplo fechas con `compareDateFactor`:
+
+```
+{
+  "factor": "date[fixedValues.policyEffectiveDate]",
+  "operator": "LE",
+  "compareDateFactor": "date[fixedValues.policyExpirationDate:{-1d}]"
+}
+```
+
+Ejemplo `ANY_MATCH` sobre colecciones indexadas:
+
+```
+{
+  "factor": "participants.beneficiaries.*.beneficiaryType",
+  "operator": "ANY_MATCH",
+  "value": "2"
+}
+```
+
+Ejemplo `ANY_GT` — alguna cobertura supera un capital mínimo:
+
+```
+{
+  "factor": "coverages.*.capital",
+  "operator": "ANY_GT",
+  "value": "50000"
+}
+```
+
+Ejemplo `ANY_LT` — alguna acumulación está por debajo del límite:
+
+```
+{
+  "factor": "insured.accumulations.*.accumulationWithCapital",
+  "operator": "ANY_LT",
+  "value": "1000000"
+}
+```
+
+#### [4) Plantillas de acciones](#/DUP/DUP_ENGINE?id=_4-plantillas-de-acciones)
+
+Asignación normal:
+
+```
+{
+  "type": "Asignacion",
+  "data": "MCA_SEXO",
+  "value": "1"
+}
+```
+
+Asignación a `null` explícito:
+
+```
+{
+  "type": "Asignacion",
+  "data": "COD_OCUPACION",
+  "value": "EXPLICIT_NULL"
+}
+```
+
+Asignación con flags de UI (online):
+
+```
+{
+  "type": "Asignacion",
+  "data": "CAMPO_X",
+  "value": "A",
+  "mods": ["RQR", "BLK"]
+}
+```
+
+Acción con `valueCalculationType=FACTOR`:
+
+```
+{
+  "type": "TEMP",
+  "data": "CAMPO_CALCULADO",
+  "valueCalculationType": "FACTOR",
+  "value": "constants.TASA_RECARGO"
+}
+```
+
+Acción con `valueCalculationType=FORMULA`:
+
+```
+{
+  "type": "TEMP",
+  "data": "CAMPO_CALCULADO",
+  "valueCalculationType": "FORMULA",
+  "value": "f.asDouble(\"variableData.CAPITAL\") * 0.05"
+}
+```
+
+#### [Ejemplo completo: acción `Aviso`](#/DUP/DUP_ENGINE?id=ejemplo-completo-acci%c3%b3n-aviso)
+
+La tríada no depende del tipo de acción. `process_step`, `option_menu_number` y `option_number` identifican **cuándo se consulta la regla**; `actions[].type` determina **qué hace la regla cuando aplica**.
+
+Ejemplo real de `dup_esp-int` consultado el 2026-08-28. Se omiten únicamente `_id` y los metadatos de auditoría (`creation_date`, `created_by`, `last_updated` y `updated_by`); los valores funcionales se reproducen sin cambios. Para facilitar la lectura, el BSON `NumberLong` de `rule_id` se representa como número JSON y el BSON `Date` de `expiry_date` como cadena ISO. La regla muestra un aviso durante el precálculo de datos de póliza (`PREVIOUS_VARIABLE_DATA_POLICY`, `[2-0-10]`):
+
+```
+{
+  "company": 20003,
+  "branch": 112,
+  "product": 99999,
+  "execution_type": "Seleccion",
+  "process_type": 99,
+  "process_step": 2,
+  "option_menu_number": 0,
+  "option_number": 10,
+  "process_field": "TIP_SITUA_ESP_POLIZA",
+  "coverage": null,
+  "rule_id": 200031121300090,
+  "underwriter_level": null,
+  "third_party": null,
+  "days_period": null,
+  "visible": "Y",
+  "visibility_level": null,
+  "active": "Y",
+  "expiry_date": "2099-12-31T23:59:59Z",
+  "actions": [
+    {
+      "type": "Aviso",
+      "message": "Poliza con situaciones especiales",
+      "jumpLevel": 2,
+      "value": 4000
+    }
+  ],
+  "conditions": [
+    {
+      "factor": "fixedValues.supplementType",
+      "operator": "EQ",
+      "value": "IN"
+    },
+    {
+      "factor": "variableData.TIP_SITUA_ESP_POLIZA",
+      "operator": "IN",
+      "values": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"]
+    }
+  ],
+  "rule_name": "TIP_SITUA_ESP_POLIZA - VALIDAR SITUACIONES ESPECIALES"
+}
+```
+
+> Este bloque representa los nombres de campo persistidos en MongoDB (`rule_id`, `company`, `actions`, `conditions`, etc.). No es un payload directo de `/risk-selection-rules/import-zip`, cuyo contrato usa las propiedades Java camelCase (`ruleId`, `companyId`, `ruleActions`, `ruleConditions`, etc.). Para insertarlo directamente en MongoDB, `expiry_date` debe conservarse como tipo BSON `Date`, no como string.
+
+Para `Aviso`, `message` es el payload funcional. En este ejemplo, al ser la única acción, el motor DUP construye `finalResult` con formato `Aviso - <message>`. La regla real también contiene `jumpLevel` y `value`, pero el procesamiento actual de `Aviso` no los consulta; no son necesarios para construir el mensaje. Tampoco necesita `valueCalculationType`.
+
+La tríada debe coincidir con el `DupStepEnum` ejecutado por el consumidor:
+
+| Momento de evaluación | Póliza | Riesgo | Cobertura |
+| --- | --- | --- | --- |
+| Control técnico | `[2-0-0]` | `[4-0-0]` | `[6-0-0]` |
+| Precálculo (`PREVIOUS`) | `[2-0-10]` | `[4-0-10]` | `[6-0-10]` |
+| Validación (`VALIDATION`) | `[2-0-20]` | `[4-0-20]` | `[6-0-20]` |
+
+Por tanto, no se debe copiar automáticamente la tríada de una validación. `[..., 0, 20]` identifica la segunda fase, específica de validación. Los stages online `POLICY_DATA_VALIDATION`, `RISK_DATA_VALIDATION` y `COVERAGE_DATA_VALIDATION` ejecutan primero el paso `PREVIOUS` (`[..., 0, 10]`) y después el paso `VALIDATION` (`[..., 0, 20]`); una regla `[2-0-10]` puede ejecutarse tanto en `POLICY_PREVIOUS` como dentro del stage compuesto `POLICY_DATA_VALIDATION`. El ejemplo usa `[2-0-10]` porque pertenece a la fase `PREVIOUS` a nivel de póliza.
+
+En `execution_type = "Seleccion"`, `process_step` siempre forma parte de la consulta. `option_menu_number` y `option_number` también deben coincidir cuando el request los informa: omitirlos en el documento **no actúa como wildcard**. La excepción actual es `ADDITIONAL_ANY_OPTIONS_CONTROL` (`[8-7-null]`): como el request envía `optionNumber = null`, el repositorio no añade filtro por `option_number` y pueden coincidir reglas con cualquier valor en ese campo. Se recomienda dejarlo `null` o ausente para reflejar la intención de “cualquier opción”.
+
+En respuestas DUP con varias acciones, `finalResult` toma su categoría de la primera acción de la regla aplicada con mayor prioridad. Los mensajes `Aviso - <message>` se recopilan solo cuando esa primera acción es `Aviso`; si antes hay una `Asignacion` o un `Rechazo`, el aviso permanece en `appliedRules`, pero `finalResult` será respectivamente `Aceptado` o el rechazo.
+> **Limitación actual de ACDC:** el motor DUP incluye el aviso en `RiskSelectionResponse.finalResult`, pero los adaptadores de ACDC para `PREVIOUS` y `VALIDATION` solo aplican asignaciones y solo `Rechazo` genera un error. `Aviso` no bloquea y no se devuelve al consumidor de esos endpoints. El adaptador de `TECHNICAL_CONTROL` tampoco convierte `Aviso` en `OPlyUtcP`. Si el frontal necesita mostrar el mensaje a través de ACDC, hace falta implementar ese transporte; cambiar la tríada a validación no lo resuelve.
+
+#### [5) Plantilla V2 (`condition`) con `SafeFactsUtils`](#/DUP/DUP_ENGINE?id=_5-plantilla-v2-condition-con-safefactsutils)
+
+```
+f.asInteger("insured.age") != null
+&& f.asInteger("insured.age") >= 18
+&& "M".equals(f.asString("fixedValues.paymentModality"))
+&& f.asDouble("coverages.100.capital") != null
+&& f.asDouble("coverages.100.capital") > 50000
+```
+
+Funciones típicas disponibles en V2: `asString`, `asInteger`, `asDouble`, `asLocalDate`, `asList`, `anyMatch`, `anyGt`, `anyLt`.
+
+#### [6) Casos borde importantes](#/DUP/DUP_ENGINE?id=_6-casos-borde-importantes)
+
+1. Fechas V1: usar `date[...]` (minúscula) en `conditions`.- Fechas en `valueCalculationType=FACTOR`: usar `Date[...]` (mayúscula D) para que lo procese `FactorValueResolver`.- `EXPLICIT_NULL` no es texto literal: fuerza asignación a `null` en backend.- `disabled_date` existe en documento y afecta prioridad interna, pero no sustituye `active`/`expiry_date` para activar/inactivar reglas.- Si `data` no corresponde a un `fldNam` existente en el nivel evaluado, la asignación acaba en error de regla (`ASSIGNMENT_RULE_ERR`).
+
+---
+
+## [6. Cómo funciona `DupServiceImpl`](#/DUP/DUP_ENGINE?id=_6-c%c3%b3mo-funciona-dupserviceimpl)
+
+**Fichero:** `service/dup/implementation/DupServiceImpl.java`
+
+### [Flujo general para PREVIOUS / VALIDATION](#/DUP/DUP_ENGINE?id=flujo-general-para-previous-validation)
+
+```
+DupServiceImpl.precalculateByStep() / validationByStep()
+       │
+       ├── Si riskVal es null → itera por todos los riesgos de la póliza
+       │
+       ▼
+callDupServiceByStep()
+       │
+       ▼
+RiskSelectionMapper.toRiskSelectionRequest()   ← construye el payload (ver sección 8)
+       │
+       ▼
+SelectRiskService.callSelectRisk()             ← POST /risk-selection
+       │
+       ▼
+RiskSelectionResponse.appliedRules[]
+       │
+      ├── action.type == "Asignacion"
+       │     └── applyAssignment() → modifica el atributo en OPlyPlyCDto en memoria
+       │
+  ├── action.type == "Rechazo"
+  │     └── checkValidationRules() → acumula ErrorComponent
+  │            └── si hay errores → throw AcdcException
+  │
+  └── action.type == otro (incluido "Aviso")
+        └── no modifica la póliza ni genera error en estos adaptadores
+```
+
+### [Flujo para TECHNICAL\_CONTROL](#/DUP/DUP_ENGINE?id=flujo-para-technical_control)
+
+```
+DupServiceImpl.processTCByStep()
+       │
+       ▼
+callDupServiceByStep()
+       │
+       ▼
+SelectRiskService.callSelectRisk()
+       │
+       ▼
+RiskSelectionResponse.appliedRules[]
+       │
+       └── procesa reglas → devuelve List<OPlyUtcP>
+             que se acumula en OPlyPlyCDto.OPlyUtcPT
+             (o en el riesgo/cobertura según el nivel)
+```
+
+### [Acumulación de `OPlyUtcP` (controles técnicos)](#/DUP/DUP_ENGINE?id=acumulaci%c3%b3n-de-oplyutcp-controles-t%c3%a9cnicos)
+
+Los controles técnicos se acumulan en la estructura de la póliza según el nivel:
+
+| Nivel | Dónde se acumula |
+| --- | --- |
+| `POLICY_TYPE` | `OPlyPlyCDto.OPlyUtcPT` |
+| `RISK_TYPE` | `OPlyRkcC.OPlyUtcPT` (del riesgo correspondiente) |
+| `COVERAGE_TYPE` | `OPlyCvcC.OPlyUtcPT` (de la cobertura correspondiente) |
+
+---
+
+## [7. Construcción del `RequestInfo` desde `DupStepEnum`](#/DUP/DUP_ENGINE?id=_7-construcci%c3%b3n-del-requestinfo-desde-dupstepenum)
+
+**Fichero:** `model/mapper/RequestInfoMapper.java` (MapStruct)
+
+Antes de llamar a DUP, el orquestador traduce el `DupStepEnum` al `RequestInfo` que se usará en el mapper:
+
+```
+DupStepEnum.PREVIOUS_VARIABLE_DATA_RISK
+       │
+       ▼  RequestInfoMapper.toRequestInfo(OperationInfoQuery, DupStepEnum)
+       │
+RequestInfo {
+  riskSelectionType       = DupStepEnum.riskSelectionTypeEnum  // → RISK_TYPE
+  processStep             = DupStepEnum.stepLevel               // → 4
+  processStepMenuOption   = DupStepEnum.optionMenuNumber        // → 0
+  processStepOption       = DupStepEnum.optionNumber            // → 10
+  requestId               = OperationInfoQuery.requestId
+  languageId              = OperationInfoQuery.languageId
+  productId               = OperationInfoQuery.productId
+  executionType           = OperationInfoQuery.executionType
+  processTypeId           = OperationInfoQuery.processTypeId
+  riskVal                 = OperationInfoQuery.riskVal
+  coverageVal             = OperationInfoQuery.coverageVal
+}
+```
+
+Este `RequestInfo` es luego consumido por `RiskSelectionMapper` para construir el `RiskSelectionRequest`.
+
+---
+
+## [8. Mapeo completo: `OPlyPlyCDto` → `RiskSelectionRequest`](#/DUP/DUP_ENGINE?id=_8-mapeo-completo-oplyplycdto-%e2%86%92-riskselectionrequest)
+
+**Fichero:** `model/mapper/RiskSelectionMapper.java` (MapStruct + métodos default)
+
+El `RiskSelectionMapper` es la pieza central que transforma el **"polizón"** (`OPlyPlyCDto`) en el payload que consume el endpoint `/risk-selection` de DUP.
+
+### [Estructura completa de `RiskSelectionRequest`](#/DUP/DUP_ENGINE?id=estructura-completa-de-riskselectionrequest)
+
+```
+{
+  "companyId":              123,
+  "branchId":               45,
+  "languageId":             "es",
+  "productId":              1234,
+  "executionType":          "7",
+  "processTypeId":          1,
+  "processStep":            4,
+  "processStepMenuOption":  0,
+  "processStepOption":      10,
+  "operationNumber":        null,
+  "operationDate":          1716000000000,
+  "prevalidation":          false,
+  "fixedData":              { ... },
+  "variableData":           { ... },
+  "coverages":              { ... },
+  "insured":                { ... },
+  "participants":           { ... },
+  "questionnaires":         { ... },
+  "documents":              [ ... ]
+}
+```
+
+---
+
+### [8.1 Campos de cabecera / metadata](#/DUP/DUP_ENGINE?id=_81-campos-de-cabecera-metadata)
+
+Estos campos vienen directamente de `OPlyPlyCDto` y `RequestInfo`:
+
+| Campo `RiskSelectionRequest` | Origen en `OPlyPlyCDto` / `RequestInfo` |
+| --- | --- |
+| `companyId` | `OPlyPlyCDto.OPlyGniP.OPlyGniS.cmpVal` |
+| `branchId` | `OPlyPlyCDto.OPlyGniP.OPlyGniS.lobVal` |
+| `languageId` | `RequestInfo.languageId` |
+| `productId` | `RequestInfo.productId` |
+| `executionType` | `RequestInfo.executionType` (default `"Seleccion"`) |
+| `processTypeId` | `RequestInfo.processTypeId` |
+| `processStep` | `RequestInfo.processStep` ← viene de `DupStepEnum.stepLevel` |
+| `processStepMenuOption` | `RequestInfo.processStepMenuOption` ← de `DupStepEnum.optionMenuNumber` |
+| `processStepOption` | `RequestInfo.processStepOption` ← de `DupStepEnum.optionNumber` |
+| `operationNumber` | `RequestInfo.operationNumber` |
+| `operationDate` | `System.currentTimeMillis()` (timestamp actual) |
+| `riskEffectiveDate` | `OPlyRkcCT[riskVal].OPlyRkcC.OPlyRskP.OPlyRskS.rskEfcDat` (timestamp epoch ms) — se usa como `effectiveDate` en la resolución de constantes; si es null se usa `Instant.now()` |
+| `prevalidation` | Siempre `false` |
+
+---
+
+### [8.2 `fixedData` — Datos fijos de la póliza](#/DUP/DUP_ENGINE?id=_82-fixeddata-datos-fijos-de-la-p%c3%b3liza)
+
+`getDefaultFixedValues(OPlyPlyCDto)` construye un `Map<String, Object>` con los **datos inmutables** de la póliza. Se envía en **todos los pasos** independientemente del nivel.
+
+**Origen principal:** `OPlyPlyCDto.OPlyGniP.OPlyGniS` (datos generales de la póliza)  
+**Origen secundario:** `OPlyPlyCDto.OPlyInaPT[0].OPlyInaS` (primer agente)
+
+```
+OPlyGniS  →  fixedData
+─────────────────────────────────────────────────────────────────
+cmpVal          → (ya en companyId/branchId de la cabecera)
+delVal          → "contractNumber"          Número de contrato
+sblVal          → "subcontract"             Subcontrato
+gppVal          → "groupPolicyNumber"       Número de póliza grupo
+enrVal          → "supplementCode"          Código de suplemento
+enrSbdVal       → "supplementSubcode"       Subcódigo de suplemento
+enrSqn          → "supplementNumber"        Número de suplemento
+enrTypVal       → "supplementType"          Tipo de suplemento
+clpVal          → "clientPolicy"            Póliza cliente
+plyVal          → "policyNumber"            Número de póliza
+usrVal          → "user"                    Usuario informado en la póliza
+vldDat          → "validityDate"            Fecha de validez (timestamp)
+plyEfcDat       → "policyEffectiveDate"     Fecha efecto póliza (timestamp)
+plyExpDat       → "policyExpirationDate"    Fecha vencimiento póliza (timestamp)
+enrEfcDat       → "supplementEffectiveDate" Fecha efecto suplemento (timestamp)
+enrExpDat       → "supplementExpirationDate" Fecha vencimiento suplemento (timestamp)
+crnVal          → "currency"                Divisa
+ptaPly          → "applyProrata"            Aplicar prorrata
+aplVal          → "applicationNumber"       Número de solicitud
+aplEnrSqn       → "supplementApplicationNumber" Nº solicitud suplemento
+plyDrtVal       → "policyDuration"          Duración de la póliza
+pmsVal          → "paymentModality"         Modalidad de pago
+rnwVal          → "renovationsNumber"       Número de renovaciones
+plyRgl          → "applyRegularization"     Aplicar regularización
+rglTypVal       → "regularizationType"      Tipo de regularización
+rglPer          → "regularizationPercentage" Porcentaje de regularización
+rglIdxVal       → "regularizationIndex"     Índice de regularización
+mnlPre          → "manualPremium"           Prima manual
+tmpEnr          → "temporalSupplement"      Suplemento temporal
+tnrPlyTypVal    → "policyType"              Tipo de póliza
+exrVal          → "changeRate"              Tasa de cambio
+secVal          → "sector"                  Sector
+totRskVal       → "totalRisk"               Riesgo total
+cinTypVal       → "coinsuranceType"         Tipo de coaseguro
+enrCasVal       → "supplementMotivation"    Motivo del suplemento
+sndVal          → "sendType"                Tipo de envío
+mnlRnsDst       → "manualReinsurance"       Reaseguro manual
+cptThrLvlVal    → "captureThirdLevel"       Capturar tercer nivel
+rnsTypVal       → "reinsuranceType"         Tipo de reaseguro
+bsnVal          → "businessType"            Tipo de negocio
+inlInmAmn       → "initialQuota"            Cuota inicial
+frpVal          → "declarationPolicy"       Póliza de declaración
+─────────────────────────────────────────────────────────────────
+(constantes)    → "currencyDecimals": "2"
+                → "enforceDevolution": "S"
+
+OPlyInaPT[0].OPlyInaS  →  fixedData
+─────────────────────────────────────────────────────────────────
+thpVal          → "thirdPartyCode"          Código de tercero (agente)
+frsLvlVal       → "level1"                  Nivel 1
+scnLvlVal       → "level2"                  Nivel 2
+thrLvlVal       → "level3"                  Nivel 3
+frsDstHnlVal    → "channel1"                Canal 1
+scnDstHnlVal    → "channel2"                Canal 2
+thrDstHnlVal    → "channel3"                Canal 3
+cmcVal          → "commissionTable"         Tabla de comisiones
+```
+
+---
+
+### [8.3 `variableData` — Atributos dinámicos](#/DUP/DUP_ENGINE?id=_83-variabledata-atributos-din%c3%a1micos)
+
+`mapParameters()` construye un `Map<String, Object>` con los **atributos variables** según el nivel del paso.
+
+Los atributos se extraen siempre de la misma forma:
+
+```
+OPlyAtcPC.OPlyAtcC.OPlyAtrP.OPlyAtrS
+                                ├── fldNam      → KEY del mapa
+                                └── fldValVal   → VALUE del mapa
+```
+
+> Solo se incluyen atributos donde **tanto `fldNam` como `fldValVal` son no nulos**.
+
+#### [Composición del `variableData` según el nivel](#/DUP/DUP_ENGINE?id=composici%c3%b3n-del-variabledata-seg%c3%ban-el-nivel)
+
+**`POLICY_TYPE` / `POLICY_GROUP`** — solo atributos de póliza:
+
+```
+OPlyPlyCDto.OPlyAtcCT[]
+  └── cada OPlyAtcPC → { fldNam: fldValVal }
+```
+
+**`RISK_TYPE`** — atributos de póliza + riesgo actual + coberturas del riesgo:
+
+```
+OPlyPlyCDto.OPlyAtcCT[]                           ← atributos de la póliza
+OPlyPlyCDto.OPlyRkcCT[riskVal].OPlyAtcCT[]        ← atributos del riesgo actual
+OPlyPlyCDto.OPlyRkcCT[riskVal].OPlyCvcCT[].OPlyAtcCT[]  ← atributos de todas sus coberturas
+```
+
+**`COVERAGE_TYPE`** — atributos de póliza + riesgo + cobertura actual:
+
+```
+OPlyPlyCDto.OPlyAtcCT[]                                             ← atributos de la póliza
+OPlyPlyCDto.OPlyRkcCT[riskVal].OPlyAtcCT[]                         ← atributos del riesgo
+OPlyPlyCDto.OPlyRkcCT[riskVal].OPlyCvcCT[coverageVal].OPlyAtcCT[]  ← atributos de la cobertura
+```
+
+> Cuando hay colisión de nombres entre niveles, el atributo de **nivel inferior** (cobertura > riesgo > póliza) sobreescribe al superior porque se añaden en ese orden.
+
+---
+
+### [8.4 `coverages` — Coberturas seleccionadas](#/DUP/DUP_ENGINE?id=_84-coverages-coberturas-seleccionadas)
+
+`mapCoverages()` devuelve `Map<Integer, RiskSelectionCoverages>` donde la clave es el **código de cobertura** (`cvrVal`).
+
+**Filtros aplicados:**
+
+* Si `riskVal` está informado → solo coberturas del riesgo indicado.* Si `coverageVal` está informado → solo la cobertura indicada.* Solo se incluyen coberturas donde `CoverageUtil.evaluateCoverageSelected()` devuelve `true` (cobertura activa/seleccionada).
+
+```
+OPlyRkcCT[riskVal].OPlyCvcCT[coverageVal].OPlyCvcC
+                                             ├── OPlyCvrP.OPlyCvrS
+                                             │     ├── cvrVal    → key del mapa
+                                             │     ├── cvrNam    → name
+                                             │     ├── cplAmn    → capital
+                                             │     ├── dctVal    → franchiseCode
+                                             │     ├── enrCplAmn → supplementCapital
+                                             │     ├── mnmDctVal → minFranchise
+                                             │     ├── mxmDctVal → maxFranchise
+                                             │     └── dctTypVal → franchiseTypeCode
+                                             └── OPlyBrwPT[ecmBrwCncVal==1].OPlyBrwS
+                                                   ├── anlAmn    → annualPremium
+                                                   └── enrAmn    → supplementAnnualPremium
+```
+
+> La prima anual (`annualPremium`) se obtiene del **desglose de prima** (`OPlyBrwPT`) donde `ecmBrwCncVal == 1` (concepto de prima base).
+
+---
+
+### [8.5 `insured` — Datos del asegurado](#/DUP/DUP_ENGINE?id=_85-insured-datos-del-asegurado)
+
+`mapInsured()` construye `RiskSelectionInsured` a partir de los **atributos del riesgo** para el asegurado (`bnfTypVal == "2"`).
+
+**Localización del asegurado:**
+
+```
+OPlyRkcCT[riskVal].OPlyRkcC.OPlyInePT
+  └── filtro: OPlyIneS.bnfTypVal == "2"  (tipo participante: asegurado)
+```
+
+**Mapeo de atributos del riesgo → campos del asegurado:**
+
+| Atributo (`fldNam`) | Campo en `RiskSelectionInsured` | Tipo |
+| --- | --- | --- |
+| `FEC_NACIMIENTO` | `birthDate` | `LocalDate` |
+| `MCA_SEXO` | `gender` | `Integer` |
+| `COD_OCUPACION` | `occupationCode` | `Integer` |
+| `MCA_RESIDENTE_FISCAL` | `resident` | `String` |
+| `MCA_PAIS_RESIDENCIA` | `residenceCountry` | `String` |
+| `EDAD_ACTUARIAL_INI` | `age` | `Integer` |
+| `EDAD_ACTUARIAL_FINAL` | `finalNaturalAge` | `Integer` |
+| `MCA_PRACTICA_DEPORTES` | `doesSports` | `String` |
+| `NUM_DEPORTE_NO_FEDERADO` | `nonFederatedSports` | `Integer` |
+| `NUM_DEPORTE_COMPETICION` | `federatedSports` | `Integer` |
+| `MCA_MOTO` | `ridesMotorcycle` | `String` |
+| `CC_MOTO` | `motorcycleCC` | `Integer` |
+| `HP_MOTO` | `motorcycleHP` | `Integer` |
+| `MCA_ESTANCIA_EXTRANJERO` | `staysAbroadPlanned` | `String` |
+| `COD_EST_CIVIL_2` | `maritalStatusCode` | `Integer` |
+| `COD_ESTUDIOS_2` | `educationLevelCode` | `Integer` |
+| `TIP_EMPLEO_2` | `typeOfEmploymentCode` | `Integer` |
+
+**Mapeo adicional desde interviniente del asegurado (`OPlyIneS`):**
+
+| Campo en `RiskSelectionInsured` | Campo de `OPlyIneS` | Tipo |
+| --- | --- | --- |
+| `relationType` | `rlnTypVal` | `String` |
+| `contactMethod` | `cnhSqnVal` | `Integer` |
+| `address` | `adrSqnVal` | `Integer` |
+| `paymentMethod` | `pcmSqnVal` | `Integer` |
+| `managerType` | `mnrTypVal` | `String` |
+
+**Acumulaciones del asegurado** (`accumulations`):  
+Se cruzan los datos del asegurado (`thpDcmVal`, `thpDcmTypVal`) con la lista `cmlObj` para obtener las acumulaciones CML por cobertura (`AgrCvrT`).
+
+---
+
+### [8.6 `participants` — Participantes](#/DUP/DUP_ENGINE?id=_86-participants-participantes)
+
+`mapParticipants()` construye `RiskSelectionParticipants` con tres bloques:
+
+#### [PolicyHolder (tomador) — `bnfTypVal == "0"`](#/DUP/DUP_ENGINE?id=policyholder-tomador-bnftypval-quot0quot)
+
+```
+OPlyPlyCDto.OPlyInePT
+  └── filtro: OPlyIneS.bnfTypVal == "0"
+        ├── OPlyIneS.cpeNam        → name
+        ├── OPlyIneS.thpDcmTypVal  → documentType
+        ├── OPlyIneS.thpDcmVal     → documentCode
+        ├── OPlyIneS.rlnTypVal     → relationType
+        ├── OPlyIneS.cnhSqnVal     → contactMethod
+        ├── OPlyIneS.pcmSqnVal     → address
+        ├── OPlyIneS.pcmSqnVal     → paymentMethod
+        ├── OPlyIneS.mnrTypVal     → managerType
+        └── cruce con cmlObj (por thpDcmVal + thpDcmTypVal)
+              └── AgrCvrT[]        → accumulations { cvrVal: { maxAgrPre, maxAgrCpl } }
+```
+
+Campos que actualmente se envían con valores por defecto/vacíos (pendiente de implementación):
+`birthDate`, `gender`, `nationality`, `countryOfBirth`, `maritalStatusCode`, `hasPublicServiceResponsibility`, `usesLegalRepresentative`, `typeOfPerson`.
+
+#### [PolicyHolderLegalRepresentative](#/DUP/DUP_ENGINE?id=policyholderlegalrepresentative)
+
+Se envía como **instancia vacía** (`new PolicyHolderLegalRepresentative()` — todos los campos `null`). Los campos `contactMethod`, `address`, `paymentMethod` y `managerType` existen en la clase pero no se mapean desde el polizón en la implementación actual.
+
+#### [Beneficiaries — cualquier `bnfTypVal` de `BeneficiaryTypeEnum`](#/DUP/DUP_ENGINE?id=beneficiaries-cualquier-bnftypval-de-beneficiarytypeenum)
+
+Se recorren **todos los riesgos** de la póliza y se agregan **todos los intervinientes cuyo `bnfTypVal` exista en `BeneficiaryTypeEnum`** (24 códigos: tomador `0`, tomador alterno `1`, asegurado `2`, ... notario `28`; ver `BeneficiaryTypeEnum.isValid`). Un código que no esté en el enum (p. ej. `76`) se descarta. Por tanto el mapa contiene también al tomador y al asegurado: una regla que quiera un rol concreto debe filtrar por `beneficiaryType` (decisión de negocio, 9/9/2026):
+
+```
+OPlyRkcCT[*].OPlyRkcC.OPlyInePT
+  └── filtro: BeneficiaryTypeEnum.isValid(OPlyIneS.bnfTypVal)   // cualquier codigo del enum
+        ├── OPlyIneS.bnfTypVal    → beneficiaryType
+        ├── OPlyIneS.thpDcmTypVal → documentType
+        ├── OPlyIneS.thpDcmVal    → documentCode
+        ├── OPlyIneS.cpeNam       → name
+        └── OPlyIneS.mnrTypVal    → contactMethod
+```
+
+Los beneficiarios se indexan numéricamente (`"1"`, `"2"`, ...) en el mapa de participantes. El índice es posicional sobre todos los roles mapeados y cambia si cambian los intervinientes del polizón: usa el comodín `*` en las reglas, no un índice fijo.
+
+---
+
+### [8.7 `questionnaires` — Cuestionarios](#/DUP/DUP_ENGINE?id=_87-questionnaires-cuestionarios)
+
+`mapQuestionnaires(List<DataForm>)` agrupa los campos de formulario por ID de formulario:
+
+```
+DataForm[]
+  └── cada DataForm:
+        ├── frlVal   → formId (clave del mapa exterior)
+        ├── fldNam   → nombre del campo (clave del mapa interior)
+        └── fldValVal → valor del campo
+```
+
+Resultado:
+
+```
+{
+  "123": {
+    "CAMPO_A": "valor1",
+    "CAMPO_B": "valor2"
+  },
+  "456": {
+    "CAMPO_C": "valor3"
+  }
+}
+```
+
+> En el caso del flujo de formularios (`toFormsRiskSelectionRequest`), la fuente no es `dataFormMap` sino la lista de `OPlyAtcPC` con `frlVal` informado.
+
+---
+
+### [8.8 `documents` — Documentos](#/DUP/DUP_ENGINE?id=_88-documents-documentos)
+
+Mapeo directo 1:1 de `List<Document>` a `List<RiskSelectionDocument>`:
+
+| Campo `Document` | Campo `RiskSelectionDocument` |
+| --- | --- |
+| `dcnNam` | `documentName` |
+| `dcnVal` | `documentCode` |
+| `grpVal` | `groupCode` |
+| `sgtVal` | `segmentCode` |
+
+---
+
+## [9. Procesamiento de la respuesta DUP](#/DUP/DUP_ENGINE?id=_9-procesamiento-de-la-respuesta-dup)
+
+`SelectRiskService` devuelve `RiskSelectionResponse` con una lista de `appliedRules`. Cada regla tiene:
+
+```
+{
+  "ruleId": "RULE_001",
+  "actions": [
+    {
+      "type": "Asignacion",
+      "data": "MCA_SEXO",
+      "value": "1"
+    }
+  ]
+}
+```
+
+### [Procesamiento de acciones](#/DUP/DUP_ENGINE?id=procesamiento-de-acciones)
+
+| `type` | Acción en `DupServiceImpl` |
+| --- | --- |
+| `"Asignacion"` | `applyAssignment()` — modifica el atributo `fldNam` en `OPlyPlyCDto` en el nivel indicado. Los adaptadores ACDC comparan este valor de forma sensible a mayúsculas; `ASIGNACION` no ejecuta la asignación. |
+| `"Rechazo"` | `checkValidationRules()` — acumula un `ErrorComponent` y puede bloquear el flujo. |
+| `"Aviso"` | El motor DUP lo conserva en `appliedRules`. Lo representa como `Aviso - <message>` en `finalResult` cuando `Aviso` es la primera acción de la regla aplicada con mayor prioridad; los adaptadores ACDC actuales de `PREVIOUS`, `VALIDATION` y `TECHNICAL_CONTROL` no lo exponen en su respuesta. |
+| Otro | Se conserva en `appliedRules`; su efecto depende del adaptador y del tipo concreto. |
+
+### [Aplicación de asignaciones](#/DUP/DUP_ENGINE?id=aplicaci%c3%b3n-de-asignaciones)
+
+El método `applyAssignment()` localiza el atributo correcto en la jerarquía de la póliza según el nivel de la acción (`POLICY`, `RISK`, `COVERAGE`) y el `riskVal`/`coverageVal` del contexto, y actualiza su `fldValVal`.
+
+Si la acción tiene valor `"EXPLICIT_NULL"` (constante `NULL_VALUE`), el atributo se pone a `null`.
+
+#### [Flujo especial: rechazo seguido de asignación de capital de cobertura](#/DUP/DUP_ENGINE?id=flujo-especial-rechazo-seguido-de-asignaci%c3%b3n-de-capital-de-cobertura)
+
+Cuando una misma regla devuelve primero un `Rechazo` y, a continuación, una acción `Asignacion` destinada al capital de una cobertura, el backend no debe intentar mutar un atributo inexistente en la cobertura.
+
+En este escenario:
+
+* la acción de rechazo se procesa normalmente y genera su `ErrorComponent` bloqueante;* la acción de asignación con `data: "capital"` se interpreta como una asignación sobre `OPlyCvrS.cplAmn`;* si no existe un campo asignable con nombre `capital` en la cobertura, el flujo devuelve un error específico de asignación indicando que debe informarse el capital de la cobertura;* el error debe incluir el identificador de la cobertura en `fieldName` y `capital` en `attributeVariableName`.* el tipo de mensaje que viaja en la excepción es un mensaje funcional de validación/asignación (no técnico), construido como `"Se debe asignar valor al capital de la cobertura: <valor>"`.
+
+Ejemplo de payload esperado:
+
+```
+{
+  "actions": [
+    {
+      "jumpLevel": 4,
+      "type": "Rechazo",
+      "message": "Capital deseado superior al límite permitido.",
+      "value": 4211
+    },
+    {
+      "data": "capital",
+      "type": "Asignacion",
+      "value": 10000,
+      "coverage": 4003
+    }
+  ]
+}
+```
+
+En términos funcionales, la acción de asignación no debe considerarse válida como asignación de atributo estándar; se trata de una asignación directa del capital asegurado de la cobertura (`cplAmn`).
+
+**Ejemplo explícito del error devuelto por la excepción:**
+
+```
+{
+  "errors": [
+    {
+      "code": "4072",
+      "component": "Assignment",
+      "message": "10000",
+      "fieldName": "4003",
+      "attributeVariableName": "capital"
+    }
+  ]
+}
+```
+
+---
+
+## [10. Two-pass en el flujo RTE](#/DUP/DUP_ENGINE?id=_10-two-pass-en-el-flujo-rte)
+
+Después de llamar a `RteService` (tarificación), el orquestador ejecuta `recalculateTwoPass()`:
+
+```
+callRTEFlow(oPlyPlyCDto, request, riskSelectionTypeEnum)
+       │
+       ├── rteService.sendToRteService()    ← 1ª llamada a RTE
+       │
+       ├── Actualiza processStep/Option en RequestInfo
+       │     → COVERAGE_CONTROL [6-0-0]
+       │
+       ├── recalculateTwoPass()
+       │     └── DupService.processTCByStep(COVERAGE_CONTROL)
+       │           → Si devuelve pasos pendientes (lista no vacía):
+       │                 └── rteService.sendToRteService()  ← 2ª llamada a RTE
+       │           → Si lista vacía:
+       │                 └── retorna resultado de la 1ª llamada
+       │
+       └── retorna OPlyPlyCDto actualizado
+```
+
+El two-pass garantiza que si los controles técnicos de cobertura detectan cambios que afectan a la tarificación, la segunda llamada a RTE los tiene en cuenta.
+
+---
+
+## [11. `OPlyPlyCDto` ↔ Facts de las reglas DUP](#/DUP/DUP_ENGINE?id=_11-oplyplycdto-%e2%86%94-facts-de-las-reglas-dup)
+
+> 📖 Esta sección conecta el **modelo de datos interno** (`OPlyPlyCDto`) con los **facts** que el motor de reglas EasyRules puede leer y sobre los que escribe condiciones y acciones.
+
+---
+
+### [11.1 Mapa general de correspondencia](#/DUP/DUP_ENGINE?id=_111-mapa-general-de-correspondencia)
+
+El `RiskSelectionMapper` transforma `OPlyPlyCDto` en `RiskSelectionRequest`. El motor DUP deserializa esa request en **facts** que las reglas pueden referenciar con prefijos:
+
+```
+OPlyPlyCDto (estructura interna Java)
+       │
+       ▼  RiskSelectionMapper
+       │
+RiskSelectionRequest (JSON enviado a DUP)
+       │
+       ▼  Motor EasyRules (DUP)
+       │
+Facts (prefijos disponibles en reglas)
+```
+
+| Sección de `RiskSelectionRequest` | Prefijo en reglas DUP | Fuente en `OPlyPlyCDto` |
+| --- | --- | --- |
+| `fixedData` | `fixedValues.*` | `OPlyGniS` + `OPlyInaPT[0]` |
+| `variableData` | `variableData.*` | `OPlyAtcCT[].fldNam` (según nivel) |
+| `coverages` | `coverages.*` | `OPlyRkcCT[].OPlyCvcCT[]` |
+| `insured` | `insured.*` | Atributos de riesgo del asegurado |
+| `participants` | `participants.*` | `OPlyInePT` + `OPlyRkcCT[].OPlyInePT` |
+| `questionnaires` | `questionnaires.*` | `dataFormMap[]` (request externa) |
+| `documents` | `documents.*` | `documents[]` (request externa) |
+| `accumulations` | `insured.accumulations.*` / `participants.policyHolder.accumulations.*` *(y `accumulations.*` solo si viene en raiz)* | `cmlObj[]` (request externa) |
+| *(no viene de OPlyPlyCDto)* | `constants.*` | MongoDB `ConstantDefinition` |
+
+---
+
+### [11.2 `fixedValues` — Desde `OPlyGniS` y `OPlyInaS`](#/DUP/DUP_ENGINE?id=_112-fixedvalues-desde-oplygnis-y-oplyinas)
+
+Estos facts están disponibles en **todos los pasos** y en todos los niveles (póliza, riesgo, cobertura). Son los datos estructurales de la póliza que no varían con el producto.
+
+```
+OPlyPlyCDto.OPlyGniP.OPlyGniS  →  fixedValues.*
+```
+
+| Fact en regla DUP | Campo de `OPlyGniS` | Descripción |
+| --- | --- | --- |
+| `fixedValues.policyNumber` | `plyVal` | Número de póliza |
+| `fixedValues.supplementCode` | `enrVal` | Código suplemento |
+| `fixedValues.supplementSubcode` | `enrSbdVal` | Subcódigo suplemento |
+| `fixedValues.supplementNumber` | `enrSqn` | Número de suplemento |
+| `fixedValues.supplementType` | `enrTypVal` | Tipo de suplemento |
+| `fixedValues.contractNumber` | `delVal` | Número de contrato |
+| `fixedValues.subcontract` | `sblVal` | Subcontrato |
+| `fixedValues.groupPolicyNumber` | `gppVal` | Póliza grupo |
+| `fixedValues.clientPolicy` | `clpVal` | Póliza cliente |
+| `fixedValues.user` | `usrVal` | Usuario informado en la póliza |
+| `fixedValues.validityDate` | `vldDat` | Fecha de validez (timestamp) |
+| `fixedValues.policyEffectiveDate` | `plyEfcDat` | Fecha efecto póliza (timestamp) |
+| `fixedValues.policyExpirationDate` | `plyExpDat` | Fecha vencimiento póliza (timestamp) |
+| `fixedValues.supplementEffectiveDate` | `enrEfcDat` | Fecha efecto suplemento (timestamp) |
+| `fixedValues.supplementExpirationDate` | `enrExpDat` | Fecha vencimiento suplemento (timestamp) |
+| `fixedValues.currency` | `crnVal` | Divisa |
+| `fixedValues.applyProrata` | `ptaPly` | Aplicar prorrata (`"S"/"N"`) |
+| `fixedValues.applicationNumber` | `aplVal` | Número de solicitud |
+| `fixedValues.policyDuration` | `plyDrtVal` | Duración de la póliza |
+| `fixedValues.paymentModality` | `pmsVal` | Modalidad de pago |
+| `fixedValues.renovationsNumber` | `rnwVal` | Número de renovaciones |
+| `fixedValues.applyRegularization` | `plyRgl` | Aplicar regularización |
+| `fixedValues.regularizationType` | `rglTypVal` | Tipo de regularización |
+| `fixedValues.regularizationPercentage` | `rglPer` | Porcentaje de regularización |
+| `fixedValues.regularizationIndex` | `rglIdxVal` | Índice de regularización |
+| `fixedValues.manualPremium` | `mnlPre` | Prima manual |
+| `fixedValues.temporalSupplement` | `tmpEnr` | Suplemento temporal |
+| `fixedValues.policyType` | `tnrPlyTypVal` | Tipo de póliza |
+| `fixedValues.changeRate` | `exrVal` | Tasa de cambio |
+| `fixedValues.sector` | `secVal` | Sector |
+| `fixedValues.totalRisk` | `totRskVal` | Riesgo total |
+| `fixedValues.coinsuranceType` | `cinTypVal` | Tipo de coaseguro |
+| `fixedValues.supplementMotivation` | `enrCasVal` | Motivo del suplemento |
+| `fixedValues.sendType` | `sndVal` | Tipo de envío |
+| `fixedValues.manualReinsurance` | `mnlRnsDst` | Reaseguro manual |
+| `fixedValues.captureThirdLevel` | `cptThrLvlVal` | Tercer nivel de captura |
+| `fixedValues.reinsuranceType` | `rnsTypVal` | Tipo de reaseguro |
+| `fixedValues.businessType` | `bsnVal` | Tipo de negocio |
+| `fixedValues.initialQuota` | `inlInmAmn` | Cuota inicial |
+| `fixedValues.declarationPolicy` | `frpVal` | Póliza de declaración |
+| `fixedValues.currencyDecimals` | *(constante)* | Siempre `"2"` |
+| `fixedValues.enforceDevolution` | *(constante)* | Siempre `"S"` |
+
+```
+OPlyPlyCDto.OPlyInaPT[0].OPlyInaS  →  fixedValues.* (agente)
+```
+
+| Fact en regla DUP | Campo de `OPlyInaS` | Descripción |
+| --- | --- | --- |
+| `fixedValues.thirdPartyCode` | `thpVal` | Código del agente/tercero |
+| `fixedValues.level1` | `frsLvlVal` | Nivel 1 del agente |
+| `fixedValues.level2` | `scnLvlVal` | Nivel 2 del agente |
+| `fixedValues.level3` | `thrLvlVal` | Nivel 3 del agente |
+| `fixedValues.channel1` | `frsDstHnlVal` | Canal de distribución 1 |
+| `fixedValues.channel2` | `scnDstHnlVal` | Canal de distribución 2 |
+| `fixedValues.channel3` | `thrDstHnlVal` | Canal de distribución 3 |
+| `fixedValues.commissionTable` | `cmcVal` | Tabla de comisiones |
+
+**Ejemplo de condición V1 usando `fixedValues`:**
+
+```
+{ "factor": "fixedValues.paymentModality", "operator": "EQ", "value": "M" }
+```
+
+**Ejemplo de condición V2 usando `fixedValues`:**
+
+```
+String modalidad = f.asString("fixedValues.paymentModality");
+String canal = f.asString("fixedValues.channel1");
+return "M".equals(modalidad) && canal != null && !canal.isEmpty();
+```
+
+#### [Cómo usar datos fijos en selección de riesgos](#/DUP/DUP_ENGINE?id=c%c3%b3mo-usar-datos-fijos-en-selecci%c3%b3n-de-riesgos)
+
+`RiskSelectionMapper` envía los campos estructurales como `fixedData` y DUP publica cada entrada como un fact `fixedValues.<clave>`. Al ser datos de cabecera, están disponibles en todos los pasos y niveles sin copiarlos a cada riesgo o cobertura.
+
+| Contexto | Sintaxis |
+| --- | --- |
+| Póliza actual | `fixedValues.<clave>` |
+| Póliza anterior | `prev.fixedValues.<clave>` |
+| Regla V2 | `f.asString("fixedValues.<clave>")` |
+
+Ejemplo de comparación entre la póliza actual y la anterior:
+
+```
+{
+  "factor": "fixedValues.paymentModality",
+  "operator": "NOT_EQ",
+  "prevFactor": "prev.fixedValues.paymentModality"
+}
+```
+
+El usuario de la póliza sigue el mismo contrato:
+
+```
+OPlyPlyCDto.OPlyGniP.OPlyGniS.usrVal -> fixedValues.user
+```
+
+```
+{ "factor": "fixedValues.user", "operator": "EQ", "value": "USUARIO_EJEMPLO" }
+```
+
+`USUARIO_EJEMPLO` es solo ilustrativo: el valor real procede siempre de `OPlyGniS.usrVal`. Las fechas se publican como epoch milliseconds y los valores nulos como cadenas vacías. Estos datos son contexto de negocio, no una identidad autenticada, y no deben usarse para autorización.
+
+---
+
+### [11.3 `variableData` — Atributos `fldNam` de la póliza](#/DUP/DUP_ENGINE?id=_113-variabledata-atributos-fldnam-de-la-p%c3%b3liza)
+
+Son los **atributos de producto** definidos en el polizón. Su presencia en `variableData` depende del **nivel del paso DUP** (ver sección 8.3).
+
+```
+OPlyPlyCDto.OPlyAtcCT[].OPlyAtcC.OPlyAtrP.OPlyAtrS
+                                              ├── fldNam    → clave en variableData
+                                              └── fldValVal → valor en variableData
+```
+
+El fact resultante en la regla es:
+
+```
+variableData.{fldNam}  =  fldValVal
+```
+
+#### [Composición según el nivel del paso](#/DUP/DUP_ENGINE?id=composici%c3%b3n-seg%c3%ban-el-nivel-del-paso)
+
+| Nivel del paso | Atributos incluidos en `variableData` |
+| --- | --- |
+| `POLICY_TYPE` | Solo atributos de póliza: `OPlyAtcCT[]` raíz |
+| `RISK_TYPE` | Atributos póliza + atributos del riesgo actual (`OPlyRkcCT[riskVal].OPlyAtcCT[]`) + atributos de sus coberturas |
+| `COVERAGE_TYPE` | Atributos póliza + atributos del riesgo actual + atributos de la cobertura actual |
+
+> ⚠️ Si un mismo `fldNam` existe a nivel póliza y a nivel riesgo, el del **nivel inferior** (riesgo/cobertura) sobreescribe al superior.
+
+**Ejemplos de facts `variableData` en condiciones:**
+
+```
+// V1: suma asegurada del producto
+{ "factor": "variableData.SUMA_ASEGURADA", "operator": "GT", "value": "500000" }
+
+// V1: tipo de pago
+{ "factor": "variableData.FORMA_PAGO", "operator": "IN", "values": ["M", "T", "S"] }
+
+// V1: campo de fecha
+{ "factor": "variableData.FEC_INICIO_ACTIVIDAD", "operator": "EX" }
+```
+
+```
+// V2: cálculo con atributo de producto
+Double capital = f.asDouble("variableData.SUMA_ASEGURADA");
+Integer plazo = f.asInteger("variableData.PLAZO_ANIOS");
+return capital != null && plazo != null && capital / plazo > 10000;
+```
+
+> **Para los compañeros que configuran reglas:** El `fldNam` que se pone en la regla DUP debe coincidir exactamente (case-insensitive en el mapper) con el campo `fldNam` del `OPlyAtcS` en el polizón. Si ese atributo no existe o no tiene valor, el fact no estará presente en `variableData`.
+
+---
+
+### [11.4 `coverages` — Desde `OPlyCvcCT`](#/DUP/DUP_ENGINE?id=_114-coverages-desde-oplycvcct)
+
+Solo se incluyen coberturas que están **activas/seleccionadas** (`CoverageUtil.evaluateCoverageSelected() == true`).
+
+```
+OPlyPlyCDto.OPlyRkcCT[riskVal].OPlyCvcCT[coverageVal].OPlyCvcC
+```
+
+La clave del mapa de coberturas es el valor numérico de la cobertura (`cvrVal`):
+
+```
+coverages.{cvrVal}.nombre_del_campo
+```
+
+> Sí se puede usar wildcard `*` sobre coberturas en condiciones V1 con los operadores `ANY_MATCH`, `ANY_GT` y `ANY_LT`, porque el motor busca cualquier fact cuya clave empiece y termine con el patrón informado.
+
+| Fact en regla DUP | Origen en `OPlyCvrS` | Descripción |
+| --- | --- | --- |
+| `coverages.{id}.name` | `cvrNam` | Nombre de la cobertura |
+| `coverages.{id}.capital` | `cplAmn` | Capital asegurado |
+| `coverages.{id}.franchiseCode` | `dctVal` | Código de franquicia |
+| `coverages.{id}.supplementCapital` | `enrCplAmn` | Capital de suplemento |
+| `coverages.{id}.minFranchise` | `mnmDctVal` | Franquicia mínima |
+| `coverages.{id}.maxFranchise` | `mxmDctVal` | Franquicia máxima |
+| `coverages.{id}.franchiseTypeCode` | `dctTypVal` | Tipo de franquicia |
+| `coverages.{id}.annualPremium` | `OPlyBrwPT[ecmBrwCncVal==1].anlAmn` | Prima anual (desglose concepto 1) |
+| `coverages.{id}.supplementAnnualPremium` | `OPlyBrwPT[ecmBrwCncVal==1].enrAmn` | Prima anual suplemento |
+
+**Ejemplo:**
+
+```
+// V1: verificar que la cobertura 100 tiene capital > 50000
+{ "factor": "coverages.100.capital", "operator": "GT", "value": "50000" }
+
+// V1: verificar que existe la cobertura 200
+{ "factor": "coverages.200.name", "operator": "EX" }
+
+// V1: existe alguna cobertura con capital exactamente 50000
+{ "factor": "coverages.*.capital", "operator": "ANY_MATCH", "value": "50000" }
+
+// V1: existe alguna cobertura con nombre VIDA
+{ "factor": "coverages.*.name", "operator": "ANY_MATCH", "value": "VIDA" }
+
+// V1: alguna cobertura supera un capital de 100000 (ANY_GT)
+{ "factor": "coverages.*.capital", "operator": "ANY_GT", "value": "100000" }
+
+// V1: alguna cobertura tiene capital por debajo de 10000 (ANY_LT)
+{ "factor": "coverages.*.capital", "operator": "ANY_LT", "value": "10000" }
+```
+
+```
+// V2: comparar capitales de dos coberturas
+Double cap100 = f.asDouble("coverages.100.capital");
+Double cap200 = f.asDouble("coverages.200.capital");
+return cap100 != null && cap200 != null && cap100 >= cap200;
+
+// V2: existe alguna cobertura con nombre VIDA
+return f.anyMatch("coverages.*.name", "VIDA");
+
+// V2: alguna cobertura supera un capital mínimo (anyGt)
+return f.anyGt("coverages.*.capital", 100000);
+
+// V2: alguna cobertura está por debajo del mínimo técnico (anyLt)
+return f.anyLt("coverages.*.capital", 10000);
+```
+
+---
+
+### [11.5 `insured` — Atributos del asegurado](#/DUP/DUP_ENGINE?id=_115-insured-atributos-del-asegurado)
+
+El asegurado (`bnfTypVal == "2"`) se construye leyendo atributos específicos del riesgo por su `fldNam`. Cada nombre de atributo del polizón tiene un campo fijo en `insured`:
+
+```
+OPlyPlyCDto.OPlyRkcCT[riskVal].OPlyAtcCT[]
+  → filtrado por fldNam conocidos → insured.*
+```
+
+| Fact en regla DUP | `fldNam` en el polizón | Tipo |
+| --- | --- | --- |
+| `insured.birthDate` | `FEC_NACIMIENTO` | `LocalDate` |
+| `insured.gender` | `MCA_SEXO` | `Integer` |
+| `insured.age` | `EDAD_ACTUARIAL_INI` | `Integer` |
+| `insured.finalNaturalAge` | `EDAD_ACTUARIAL_FINAL` | `Integer` |
+| `insured.occupationCode` | `COD_OCUPACION` | `Integer` |
+| `insured.resident` | `MCA_RESIDENTE_FISCAL` | `String` |
+| `insured.residenceCountry` | `MCA_PAIS_RESIDENCIA` | `String` |
+| `insured.doesSports` | `MCA_PRACTICA_DEPORTES` | `String` |
+| `insured.nonFederatedSports` | `NUM_DEPORTE_NO_FEDERADO` | `Integer` |
+| `insured.federatedSports` | `NUM_DEPORTE_COMPETICION` | `Integer` |
+| `insured.ridesMotorcycle` | `MCA_MOTO` | `String` |
+| `insured.motorcycleCC` | `CC_MOTO` | `Integer` |
+| `insured.motorcycleHP` | `HP_MOTO` | `Integer` |
+| `insured.staysAbroadPlanned` | `MCA_ESTANCIA_EXTRANJERO` | `String` |
+| `insured.maritalStatusCode` | `COD_EST_CIVIL_2` | `Integer` |
+| `insured.educationLevelCode` | `COD_ESTUDIOS_2` | `Integer` |
+| `insured.typeOfEmploymentCode` | `TIP_EMPLEO_2` | `Integer` |
+| `insured.relationType` | `OPlyIneS.rlnTypVal` | `String` |
+| `insured.contactMethod` | `OPlyIneS.cnhSqnVal` | `Integer` |
+| `insured.address` | `OPlyIneS.adrSqnVal` | `Integer` |
+| `insured.paymentMethod` | `OPlyIneS.pcmSqnVal` | `Integer` |
+| `insured.managerType` | `OPlyIneS.mnrTypVal` | `String` |
+
+> **Nota crítica para configuradores de reglas:** Si quieres que una regla evalúe la edad del asegurado, el atributo `EDAD_ACTUARIAL_INI` **debe existir y tener valor** en el polizón en el nivel de riesgo. Si no llega en el polizón, `insured.age` será `null` en la regla y las condiciones que lo usen fallarán silenciosamente.
+
+**Ejemplos de condiciones con `insured`:**
+
+```
+// V1: rango de edad
+{ "factor": "insured.age", "operator": "BTW", "value1": "18", "value2": "65" }
+
+// V1: practica deportes de competición
+{ "factor": "insured.federatedSports", "operator": "NOT_EQ", "value": "0" }
+
+// V1: tiene moto de alta cilindrada
+{ "factor": "insured.motorcycleCC", "operator": "GT", "value": "500" }
+
+// V1: relationType del asegurado
+{ "factor": "insured.relationType", "operator": "EQ", "value": "10" }
+```
+
+```
+// V2: extraprima por edad + moto
+Integer edad = f.asInteger("insured.age");
+Integer cc = f.asInteger("insured.motorcycleCC");
+return edad != null && edad > 50 && cc != null && cc > 250;
+```
+
+**Ejemplos con los nuevos campos de contacto/pago/gestor (desde IRV-12798):**
+
+```
+// V1: verificar que el método de contacto del asegurado está informado
+{ "factor": "insured.contactMethod", "operator": "EX" }
+
+// V1: verificar que la dirección del asegurado está informada
+{ "factor": "insured.address", "operator": "EX" }
+
+// V1: verificar que el método de pago del asegurado está informado
+{ "factor": "insured.paymentMethod", "operator": "EX" }
+
+// V1: verificar tipo de gestor concreto
+{ "factor": "insured.managerType", "operator": "EQ", "value": "AG" }
+```
+
+```
+// V2: todos los campos de contacto/pago del asegurado informados
+Integer contactMethod = f.asInteger("insured.contactMethod");
+Integer address = f.asInteger("insured.address");
+Integer paymentMethod = f.asInteger("insured.paymentMethod");
+return contactMethod != null && address != null && paymentMethod != null;
+```
+
+**Acumulaciones del asegurado** (`insured.accumulations`):  
+Se cruzan los datos de `OPlyIneS.thpDcmVal` / `thpDcmTypVal` del asegurado con la lista `cmlObj` de la request. El resultado es `insured.accumulations.{cvrVal}.mxmAgrCplVal`, etc.
+
+---
+
+### [11.6 `participants` — Tomador y beneficiarios](#/DUP/DUP_ENGINE?id=_116-participants-tomador-y-beneficiarios)
+
+#### [Tomador (`participants.policyHolder`) — `bnfTypVal == "0"`](#/DUP/DUP_ENGINE?id=tomador-participantspolicyholder-bnftypval-quot0quot)
+
+```
+OPlyPlyCDto.OPlyInePT → filtro bnfTypVal == "0" → participants.policyHolder
+```
+
+| Fact en regla DUP | Campo de `OPlyIneS` |
+| --- | --- |
+| `participants.policyHolder.documentType` | `thpDcmTypVal` |
+| `participants.policyHolder.documentCode` | `thpDcmVal` |
+| `participants.policyHolder.name` | `cpeNam` |
+| `participants.policyHolder.relationType` | `rlnTypVal` |
+| `participants.policyHolder.sameAsInsured` | calculado: `"S"` si no hay `bnfTypVal=="2"` en el riesgo |
+| `participants.policyHolder.contactMethod` | `OPlyIneS.cnhSqnVal` |
+| `participants.policyHolder.address` | `OPlyIneS.pcmSqnVal` |
+| `participants.policyHolder.paymentMethod` | `OPlyIneS.pcmSqnVal` |
+| `participants.policyHolder.managerType` | `OPlyIneS.mnrTypVal` |
+
+> Los campos `birthDate`, `gender`, `nationality`, `countryOfBirth`, `maritalStatusCode`, `hasPublicServiceResponsibility` se envían actualmente como **valores por defecto** (vacíos/`0`). Si las reglas los necesitan, el polizón debería incluirlos en `OPlyInePT`.
+
+> `policyHolderLegalRepresentative` se envía con todos los campos `null` (instancia vacía). Los campos `contactMethod`, `address`, `paymentMethod` y `managerType` existen en el DTO pero no se mapean desde el polizón actualmente.
+
+**Ejemplos con los nuevos campos de contacto/pago/gestor del tomador (desde IRV-12798):**
+
+```
+// V1: método de contacto del tomador informado
+{ "factor": "participants.policyHolder.contactMethod", "operator": "EX" }
+
+// V1: dirección del tomador informada
+{ "factor": "participants.policyHolder.address", "operator": "EX" }
+
+// V1: método de pago del tomador informado
+{ "factor": "participants.policyHolder.paymentMethod", "operator": "EX" }
+
+// V1: tipo de gestor concreto
+{ "factor": "participants.policyHolder.managerType", "operator": "EQ", "value": "AG" }
+```
+
+```
+// V2: todos los campos de contacto/pago del tomador informados
+Integer contactMethod = f.asInteger("participants.policyHolder.contactMethod");
+Integer address = f.asInteger("participants.policyHolder.address");
+Integer paymentMethod = f.asInteger("participants.policyHolder.paymentMethod");
+return contactMethod != null && address != null && paymentMethod != null;
+```
+
+**Acumulaciones del tomador** (`participants.policyHolder.accumulations`):  
+Se cruzan `thpDcmVal` + `thpDcmTypVal` del tomador con `cmlObj[]`. El resultado es `participants.policyHolder.accumulations.{cvrVal}.accumulationWithCapital`, etc.
+
+#### [Beneficiarios (`participants.beneficiaries`) — cualquier `bnfTypVal` de `BeneficiaryTypeEnum`](#/DUP/DUP_ENGINE?id=beneficiarios-participantsbeneficiaries-cualquier-bnftypval-de-beneficiarytypeenum)
+
+```
+OPlyPlyCDto.OPlyRkcCT[*].OPlyRkcC.OPlyInePT → filtro BeneficiaryTypeEnum.isValid(bnfTypVal)
+  → participants.beneficiaries.{1..N}
+```
+
+Se mapea **cualquier** interviniente cuyo `bnfTypVal` exista en `BeneficiaryTypeEnum` (24 códigos, incluidos tomador `0`, asegurado `2`, contingentes `11`, irrevocable `22`, cesión de derechos `23` y legales `24`); un código fuera del enum (p. ej. `76`) se descarta. Una regla que necesite un rol concreto filtra por `participants.beneficiaries.*.beneficiaryType`.
+
+Se recorren **todos los riesgos** de la póliza. Los beneficiarios se indexan correlativamente (`"1"`, `"2"`, ...) independientemente del riesgo al que pertenezcan. El índice es posicional sobre todos los roles mapeados (normalmente `"1"` será el asegurado) y cambia si cambian los intervinientes: usa el comodín `*`, no un índice fijo.
+
+| Fact en regla DUP | Campo de `OPlyIneS` | Notas |
+| --- | --- | --- |
+| `participants.beneficiaries.{n}.beneficiaryType` | `bnfTypVal` |  |
+| `participants.beneficiaries.{n}.documentType` | `thpDcmTypVal` |  |
+| `participants.beneficiaries.{n}.documentCode` | `thpDcmVal` |  |
+| `participants.beneficiaries.{n}.name` | `cpeNam` |  |
+| `participants.beneficiaries.{n}.contactMethod` | `mnrTypVal` |  |
+| `participants.beneficiaries.{n}.address` | — | `null` (no mapeado) |
+| `participants.beneficiaries.{n}.paymentMethod` | — | `null` (no mapeado) |
+| `participants.beneficiaries.{n}.managerType` | — | `null` (no mapeado; el valor de `mnrTypVal` cae en `contactMethod` por error) |
+
+**Clave para reglas de beneficiarios:** Como el índice es variable, siempre usa los operadores wildcard (`ANY_MATCH`, `ANY_GT`, `ANY_LT`) con comodín `*`:
+
+```
+// V1: existe algún beneficiario tipo 5
+{ "factor": "participants.beneficiaries.*.beneficiaryType", "operator": "ANY_MATCH", "value": "5" }
+
+// V1: algún interviniente del mapa (cualquier rol) tiene DNI
+{ "factor": "participants.beneficiaries.*.documentType", "operator": "ANY_MATCH", "value": "DNI" }
+
+// V1: algún interviniente del mapa (cualquier rol) tiene relationType 10
+{ "factor": "participants.beneficiaries.*.relationType", "operator": "ANY_MATCH", "value": "10" }
+
+// V1: existe algún beneficiario de vida (bnfTypVal 6)
+{ "factor": "participants.beneficiaries.*.beneficiaryType", "operator": "ANY_MATCH", "value": "6" }
+```
+
+> **Ojo:** cada condición `ANY_MATCH` se evalúa de forma independiente sobre todo el mapa. Combinar `beneficiaryType ANY_MATCH "6"` con `documentType ANY_MATCH "CIF"` se cumple aunque el tipo 6 y el CIF pertenezcan a intervinientes distintos (por ejemplo, el CIF del tomador). Una comprobación de rol + atributo sobre el mismo interviniente requiere una regla V2 (Java).
+
+```
+// V1: tomador con relationType 10
+{ "factor": "participants.policyHolder.relationType", "operator": "EQ", "value": "10" }
+```
+
+```
+// V2: beneficiario legal y tomador diferente al asegurado
+boolean tieneBenef = f.anyMatch("participants.beneficiaries.*.beneficiaryType", "5");
+String sameAsInsured = f.asString("participants.policyHolder.sameAsInsured");
+return tieneBenef && "N".equals(sameAsInsured);
+```
+
+---
+
+### [11.7 `questionnaires` — Desde `dataFormMap`](#/DUP/DUP_ENGINE?id=_117-questionnaires-desde-dataformmap)
+
+Los cuestionarios llegan en la request del orquestador (`PolicyInfoRequest.dataFormMap`) y se mapean agrupados por `frlVal` (ID de formulario).
+
+```
+PolicyInfoRequest.dataFormMap[]
+  └── DataForm { frlVal, fldNam, fldValVal }
+       └── questionnaires.{frlVal}.{fldNam} = fldValVal
+```
+
+| Fact en regla DUP | Origen |
+| --- | --- |
+| `questionnaires.{idFormulario}` | `"0"` si el formulario existe |
+| `questionnaires.{idFormulario}.{idPregunta}` | `DataForm.fldValVal` donde `frlVal==idFormulario` y `fldNam==idPregunta` |
+
+**Ejemplos:**
+
+```
+// V1: el cuestionario médico 42 existe
+{ "factor": "questionnaires.42", "operator": "EX" }
+
+// V1: respuesta a pregunta de cuestionario
+{ "factor": "questionnaires.42.MCA_FUMADOR", "operator": "EQ", "value": "1" }
+```
+
+```
+// V2: fumador en cuestionario 42
+String fumador = f.asString("questionnaires.42.MCA_FUMADOR");
+return "1".equals(fumador);
+```
+
+---
+
+### [11.8 `documents` — Desde `documents`](#/DUP/DUP_ENGINE?id=_118-documents-desde-documents)
+
+Los documentos llegan en `PolicyInfoRequest.documents[]` y se indexan por `grpVal` (grupo) y `sgtVal` (segmento) o `dcnVal` (código de documento).
+
+```
+PolicyInfoRequest.documents[]
+  └── Document { dcnNam, dcnVal, grpVal, sgtVal }
+       └── documents.{grpVal}.{dcnVal} → "0" (existe)
+       └── documents.{grpVal}.{dcnVal}.signed → "1"/"0"
+```
+
+**Ejemplos:**
+
+```
+// V1: el documento médico existe
+{ "factor": "documents.MEDICOS.INFORME_CLINICO", "operator": "EX" }
+
+// V1: el documento está firmado
+{ "factor": "documents.MEDICOS.INFORME_CLINICO.signed", "operator": "EQ", "value": "1" }
+```
+
+---
+
+### [11.9 `accumulations` — Desde `cmlObj`](#/DUP/DUP_ENGINE?id=_119-accumulations-desde-cmlobj)
+
+Las acumulaciones CML representan capitales y primas ya consumidas para un documento (`thpDcmTypVal` + `thpDcmVal`) y llegan en `PolicyInfoRequest.cmlObj[]`.
+> Esta sección describe cómo redactar reglas que usan `cmlObj` y cómo se publica en facts dentro del motor DUP.
+
+```
+PolicyInfoRequest.cmlObj[]
+  └── CmlObj { thpDcmTypVal, thpDcmVal, agrCvrT[] }
+       └── AgrCvrT { cvrVal, mxmAgrPreVal, mxmAgrCplVal }
+```
+
+#### [Cómo se mapea `cmlObj` a facts (flujo real)](#/DUP/DUP_ENGINE?id=c%c3%b3mo-se-mapea-cmlobj-a-facts-flujo-real)
+
+1. En `RiskSelectionMapper` se filtra `cmlObj` por documento del interviniente.- Se publica en dos ramas de facts (si existe match):
+     * `insured.accumulations.*` para el asegurado (`bnfTypVal = "2"`).* `participants.policyHolder.accumulations.*` para el tomador (`bnfTypVal = "0"`).- Cada `agrCvrT.cvrVal` se convierte en clave de cobertura (`"100"`, `"200"`, ...).- En el motor DUP, además de `mxmAgr*`, se calcula `accumulationWith*` usando la cobertura actual (`coverages.{cvrVal}`) cuando existe.
+
+> Si no hay match por documento o no llega `cmlObj`, no se generan facts de acumulaciones para ese interviniente.
+>
+> Si llega `cvrVal` en `cmlObj` pero esa cobertura no existe en `coverages`, el motor mantiene `mxmAgrCplVal` y `mxmAgrPreVal`, pero no publica `accumulationWithCapital` / `accumulationWithPremium`.
+
+#### [Facts disponibles para reglas](#/DUP/DUP_ENGINE?id=facts-disponibles-para-reglas)
+
+| Scope | Fact en regla DUP | Descripción |
+| --- | --- | --- |
+| Asegurado | `insured.accumulations.{cvrVal}.mxmAgrCplVal` | Capital máximo acumulado CML |
+| Asegurado | `insured.accumulations.{cvrVal}.mxmAgrPreVal` | Prima máxima acumulada CML |
+| Asegurado | `insured.accumulations.{cvrVal}.accumulationWithCapital` | `mxmAgrCplVal + coverages.{cvrVal}.capital` |
+| Asegurado | `insured.accumulations.{cvrVal}.accumulationWithPremium` | `mxmAgrPreVal + coverages.{cvrVal}.annualPremium` |
+| Tomador | `participants.policyHolder.accumulations.{cvrVal}.mxmAgrCplVal` | Capital máximo acumulado CML |
+| Tomador | `participants.policyHolder.accumulations.{cvrVal}.mxmAgrPreVal` | Prima máxima acumulada CML |
+| Tomador | `participants.policyHolder.accumulations.{cvrVal}.accumulationWithCapital` | `mxmAgrCplVal + coverages.{cvrVal}.capital` |
+| Tomador | `participants.policyHolder.accumulations.{cvrVal}.accumulationWithPremium` | `mxmAgrPreVal + coverages.{cvrVal}.annualPremium` |
+
+> `accumulations.{cvrVal}.*` (en raiz) solo existe si un consumidor informa explicitamente `RiskSelectionProcessorRequest.accumulations`. En los flujos estandar de ACDC (`orchestrator`, `attributes`, `technical-control`) esa raiz no se rellena.
+
+> Igual que en `participants.beneficiaries.*`, también puedes usar wildcard `*` en coberturas/acumulaciones con `ANY_MATCH`, `ANY_GT` y `ANY_LT`, por ejemplo `insured.accumulations.*.accumulationWithCapital` o `participants.policyHolder.accumulations.*.mxmAgrCplVal`.
+
+#### [Guía rápida para crear reglas con `cmlObj`](#/DUP/DUP_ENGINE?id=gu%c3%ada-r%c3%a1pida-para-crear-reglas-con-cmlobj)
+
+1. Usa el scope correcto (`insured` o `participants.policyHolder`) según a quien pertenece el documento CML.- Usa el mismo `cvrVal` que en `coverages` (p. ej. `100`, `410`).- Si comparas contra límites técnicos, prioriza `accumulationWithCapital` / `accumulationWithPremium`.- Si necesitas solo historico CML sin poliza actual, usa `mxmAgrCplVal` / `mxmAgrPreVal`.
+
+**Ejemplos:**
+
+```
+// V1: control de acumulación del asegurado en cobertura 100
+{ "factor": "insured.accumulations.100.accumulationWithCapital", "operator": "GT", "value": "1000000" }
+
+// V1: control de acumulación del tomador en cobertura 410
+{ "factor": "participants.policyHolder.accumulations.410.mxmAgrCplVal", "operator": "GE", "value": "500000" }
+
+// V1: existe alguna acumulación del asegurado que supera 1000000 (ANY_GT)
+{ "factor": "insured.accumulations.*.accumulationWithCapital", "operator": "ANY_GT", "value": "1000000" }
+
+// V1: existe alguna acumulación del tomador por debajo de 300000 (ANY_LT)
+{ "factor": "participants.policyHolder.accumulations.*.mxmAgrCplVal", "operator": "ANY_LT", "value": "300000" }
+
+// V1: existe alguna acumulación del asegurado exactamente igual a 1000000 (ANY_MATCH)
+{ "factor": "insured.accumulations.*.accumulationWithCapital", "operator": "ANY_MATCH", "value": "1000000" }
+
+// V1: existe alguna acumulación del tomador con capital CML exactamente 300000
+{ "factor": "participants.policyHolder.accumulations.*.mxmAgrCplVal", "operator": "ANY_MATCH", "value": "300000" }
+```
+
+```
+// V2: acumulación combinada del asegurado en dos coberturas
+Double acumCap100 = f.asDouble("insured.accumulations.100.accumulationWithCapital");
+Double acumCap200 = f.asDouble("insured.accumulations.200.accumulationWithCapital");
+Double totalAcum = (acumCap100 != null ? acumCap100 : 0.0)
+        + (acumCap200 != null ? acumCap200 : 0.0);
+return totalAcum > 2000000;
+
+// V2: alguna acumulación del asegurado supera el límite (anyGt)
+return f.anyGt("insured.accumulations.*.accumulationWithCapital", 1000000);
+
+// V2: alguna acumulación del tomador está por debajo del mínimo (anyLt)
+return f.anyLt("participants.policyHolder.accumulations.*.mxmAgrCplVal", 300000);
+
+// V2: existe alguna acumulación del asegurado con prima acumulada informada
+return f.anyMatch("insured.accumulations.*.mxmAgrPreVal", 1500);
+```
+
+---
+
+### [11.10 `constants` — Resolución bajo demanda desde MongoDB](#/DUP/DUP_ENGINE?id=_1110-constants-resoluci%c3%b3n-bajo-demanda-desde-mongodb)
+
+Las constantes **no vienen del polizón**. Se resuelven **bajo demanda** en el momento de evaluación de cada regla, leyendo la colección `ConstantDefinition` en MongoDB.
+
+#### [Cómo se resuelven](#/DUP/DUP_ENGINE?id=c%c3%b3mo-se-resuelven)
+
+La resolución usa un sistema de **especificidad con máscara de bits**: se recuperan todos los documentos candidatos que coincidan con el contexto de la regla (incluyendo wildcards) y se selecciona el más específico según el bitmask de dimensiones informadas.
+
+**Dimensiones de resolución** (de mayor a menor peso):
+
+| Dimensión | Campo MongoDB | Wildcard | Fuente en el contexto |
+| --- | --- | --- | --- |
+| Producto | `mdtVal` | `99999` | `request.productId` |
+| Cobertura | `cvrVal` | `9999` | `request.coverageId` → `request.ruleCoverageId` → null |
+| Canal 1 | `definicionesConstantes.frsDstHnlVal` | `ZZZZ` | `fixedValues.channel1` |
+| Canal 2 | `definicionesConstantes.scnDstHnlVal` | `ZZZZ` | `fixedValues.channel2` |
+| Canal 3 | `definicionesConstantes.thrDstHnlVal` | `ZZZZ` | `fixedValues.channel3` |
+| Nivel 1 | `definicionesConstantes.frsLvlVal` | `99` | `fixedValues.level1` |
+| Nivel 2 | `definicionesConstantes.scnLvlVal` | `999` | `fixedValues.level2` |
+| Nivel 3 | `definicionesConstantes.thrLvlVal` | `9999` | `fixedValues.level3` |
+| Agente | `definicionesConstantes.agnVal` | `999999` | *(pendiente de mapeo)* |
+| Subcontrato | `definicionesConstantes.sblVal` | `99999` | `fixedValues.subcontract` |
+| Contrato | `definicionesConstantes.delVal` | `99999` | `fixedValues.contractNumber` |
+| Póliza grupo | `definicionesConstantes.gppVal` | `ZZZZZZZZZZZZZ` | `fixedValues.groupPolicyNumber` |
+| Póliza | `definicionesConstantes.plyVal` | `ZZZZZZZZZZZZZ` | `fixedValues.policyNumber` |
+| Divisa | `definicionesConstantes.crnVal` | `99` | `fixedValues.currency` |
+
+**Criterios de cabecera** (obligatorios y no configurables):
+
+* `cnyVal` — país (`request.countryCode`)* `cmpVal` — compañía (`request.companyId`)* `lobVal` — ramo (`request.branchId`)* `vldDat < effectiveDate` — vigencia: se usa `rskEfcDat` del riesgo si está disponible (`request.riskEffectiveDate`); si no, `Instant.now()` como fallback |
+
+#### [Campos obligatorios — correspondencia en el polizón](#/DUP/DUP_ENGINE?id=campos-obligatorios-correspondencia-en-el-poliz%c3%b3n)
+
+`ConstantResolutionService.resolve()` valida estos cuatro campos antes de ejecutar ninguna consulta. Si alguno falta, devuelve `null` inmediatamente (log `WARN`) y la resolución de la constante se cancela sin lanzar excepción, por lo que el fallo es silencioso.
+
+| Campo en `RiskSelectionProcessorRequest` | Origen en `OPlyPlyCDto` | Clase/campo Java |
+| --- | --- | --- |
+| `countryCode` | **`RequestInfo.countryId`** (NO viene del polizón directamente; lo aporta el llamador: `PrevalidateAttributesUsecase`, `RatingUsecase` o `ExecuteOrchestratorUsecase`) | `RequestInfo.countryId` (ej. `"ESP"`) |
+| `companyId` | `OPlyGniP.OPlyGniS.cmpVal` | `BigDecimal` → `int` |
+| `branchId` | `OPlyGniP.OPlyGniS.lobVal` | `BigDecimal` → `int` |
+| `riskEffectiveDate` | `OPlyRkcCT[riskVal].OPlyRkcC.OPlyRskP.OPlyRskS.rskEfcDat` | `Date` → epoch ms (`Long`); si null, `Instant.now()` como fallback |
+
+> **Punto de fallo más frecuente:** `countryCode` llega null cuando el `RequestInfo` no se construye correctamente antes de llamar a DUP. Verifica que el usecase rellena `requestInfo.countryId` con el código de país (ej. `"ESP"`) antes de invocar a `DupService`.
+
+> **Nota sobre `riskEffectiveDate`:** aunque tiene fallback a `Instant.now()`, un valor null puede devolver una constante diferente a la esperada si la colección tiene varias filas con distintas `vldDat`. Asegúrate de que `OPlyRkcCT` contiene el riesgo `riskVal` correcto.
+
+#### [Resolución de `effectiveDate`](#/DUP/DUP_ENGINE?id=resoluci%c3%b3n-de-effectivedate)
+
+La fecha de vigencia usada para filtrar constantes sigue esta prioridad:
+
+```
+request.riskEffectiveDate  (OPlyRkcCT[riskVal].OPlyRkcC.OPlyRskP.OPlyRskS.rskEfcDat)
+  → si null: Instant.now()
+```
+
+Esto garantiza que las constantes se resuelven con la **fecha de efecto del riesgo** y no con la fecha del sistema, lo que es determinante en suplementos y renovaciones.
+
+#### [Resolución de cobertura (`cvrVal`)](#/DUP/DUP_ENGINE?id=resoluci%c3%b3n-de-cobertura-cvrval)
+
+Para la dimensión `cvrVal`, la prioridad es:
+
+```
+request.coverageId      (puesto por DupServiceImpl en el loop de coberturas)
+  → si null: request.ruleCoverageId  (puesto por RiskSelectionServiceImpl desde la regla)
+  → si null: null (se usará el wildcard 9999)
+```
+
+#### [Caché](#/DUP/DUP_ENGINE?id=cach%c3%a9)
+
+Los resultados se cachean en **EhCache** (`constantsDefinition`, TTL 30 min). La clave de caché incluye: nombre de la constante, país, compañía, ramo, fecha de vigencia (truncada a día) y todas las dimensiones de contexto.
+
+#### [Resolución bajo demanda (sin pre-carga en facts)](#/DUP/DUP_ENGINE?id=resoluci%c3%b3n-bajo-demanda-sin-pre-carga-en-facts)
+
+Las constantes se resuelven **en el momento en que la regla las necesita**, sin escribir en el mapa de `Facts` compartido:
+
+* **V1**: `resolveValue(key, request, rule, facts)` — si la clave empieza por `constants.`, llama directamente a `ConstantResolutionService.resolve()`.* **V2**: el objeto `SafeFactsUtils` recibe un `Function<String, Object> constantResolver` en su constructor; cuando un script Janino llama a `f.asDouble("constants.X")`, el método `getFactValue()` intercepta la clave y delega en el resolver si el valor no está en `facts`.
+
+Esto evita la contaminación entre reglas que existía con el antiguo mecanismo de pre-carga (`injectConstantFacts`).
+
+#### [Uso en reglas](#/DUP/DUP_ENGINE?id=uso-en-reglas)
+
+```
+// V1: capital supera el límite configurado como constante
+{ "factor": "accumulations.100.accumulationWithCapital", "operator": "GT", "value": "constants.LIMITE_CAPITAL_COB_100" }
+
+// V1: comparar edad del asegurado con constante de edad mínima
+{ "factor": "insured.age", "operator": "GE", "value": "constants.EDAD_MINIMA_ACCESO" }
+```
+
+```
+// V2: usar una constante numérica en lógica
+Double limite = f.asDouble("constants.LIMITE_CAPITAL_MAXIMO");
+Double capital = f.asDouble("coverages.100.capital");
+return limite != null && capital != null && capital > limite;
+
+// V2: usar una constante string como flag de activación
+String activo = f.asString("constants.REGLA_EXTRA_ACTIVA");
+return "S".equals(activo);
+```
+
+#### [Estructura del documento MongoDB (`CONSTANT-DEFINITION`)](#/DUP/DUP_ENGINE?id=estructura-del-documento-mongodb-constant-definition)
+
+```
+ConstantDefinition {
+  cnyVal           → país (ej. "ES")
+  cmpVal           → compañía
+  lobVal           → ramo
+  vldDat           → fecha de validez (epoch ms, filtro: < effectiveDate)
+  mdtVal           → producto (wildcard: 99999)
+  cvrVal           → cobertura (wildcard: 9999)
+  delVal           → contrato (wildcard: 99999)
+  sblVal           → subcontrato (wildcard: 99999)
+  definicionesConstantes[] {
+    vrbNam         → nombre de la constante (ej. "LIMITE_CAPITAL_MAXIMO")
+    vrbNamVal      → valor (siempre String; parseado por SafeFactsUtils al tipo que pida el script)
+    frsLvlVal      → nivel 1 agente (wildcard: 99)
+    scnLvlVal      → nivel 2 agente (wildcard: 999)
+    thrLvlVal      → nivel 3 agente (wildcard: 9999)
+    frsDstHnlVal   → canal 1 (wildcard: ZZZZ)
+    scnDstHnlVal   → canal 2 (wildcard: ZZZZ)
+    thrDstHnlVal   → canal 3 (wildcard: ZZZZ)
+    gppVal         → póliza grupo (wildcard: ZZZZZZZZZZZZZ)
+    plyVal         → póliza (wildcard: ZZZZZZZZZZZZZ)
+    crnVal         → divisa (wildcard: 99)
+    dsbRow         → deshabilitado
+  }
+}
+```
+
+---
+
+### [11.11 Condiciones V1 y V2: ejemplos con campos reales del polizón](#/DUP/DUP_ENGINE?id=_1111-condiciones-v1-y-v2-ejemplos-con-campos-reales-del-poliz%c3%b3n)
+
+A continuación, ejemplos completos que combinan campos reales del polizón con la sintaxis de reglas:
+
+#### [Resumen operadores y campos (V1)](#/DUP/DUP_ENGINE?id=resumen-operadores-y-campos-v1)
+
+| Caso | Operadores | Campo(s) a usar | Regla rápida |
+| --- | --- | --- | --- |
+| Existencia | `EX`, `NEX`, `BLANK` | `factor` | No llevan operando derecho |
+| Comparación simple | `GT`, `GE`, `LT`, `LE`, `EQ`, `NOT_EQ` | `prevFactor` o `value` | Si informas ambos, manda `prevFactor` |
+| Lista | `IN`, `NOT_IN` | `values` | Mantiene comportamiento histórico |
+| Rango | `BTW` | `value1` + `value2` | Rango inclusivo |
+| Wildcard igualdad | `ANY_MATCH` | `factor` con `*` + `prevFactor` o `value` | Busca coincidencia exacta en keys indexadas (`participants.beneficiaries.*`, `coverages.*`, `insured.accumulations.*`) |
+| Wildcard mayor que | `ANY_GT` | `factor` con `*` + `prevFactor` o `value` | Algún elemento es estrictamente mayor. Solo numérico |
+| Wildcard menor que | `ANY_LT` | `factor` con `*` + `prevFactor` o `value` | Algún elemento es estrictamente menor. Solo numérico |
+| Fecha | `GT`, `GE`, `LT`, `LE`, `EQ` | `factor` con `date[...]` + `compareDateFactor` | Comparación entre fechas parseadas |
+
+> Recomendación: para reglas nuevas de comparación usa `prevFactor` (factor vs factor). Usa `value` solo como fallback/legacy.
+
+#### [Operaciones de condiciones V1 soportadas](#/DUP/DUP_ENGINE?id=operaciones-de-condiciones-v1-soportadas)
+
+Estas son las operaciones que evalúa `validateConditions` en V1:
+
+| Operador | Significado | Campos de condición | Notas |
+| --- | --- | --- | --- |
+| `EX` | Existe | `factor` | `true` si la key existe en facts y tiene valor no nulo/no vacío |
+| `NEX` | No existe | `factor` | `true` si la key no existe o viene vacía |
+| `BLANK` | Vacío | `factor` | `true` si el valor es `null` o string en blanco |
+| `ANY_MATCH` | Algún elemento coincide exactamente | `factor` con `*` + `value` o `prevFactor` | Busca igualdad en facts indexados o keyed maps (`participants.beneficiaries.*...`, `coverages.*...`, `insured.accumulations.*...`) |
+| `ANY_GT` | Algún elemento es mayor que | `factor` con `*` + `value` o `prevFactor` | Comparación numérica estricta (`>`). Si el valor no es numérico, retorna `false` |
+| `ANY_LT` | Algún elemento es menor que | `factor` con `*` + `value` o `prevFactor` | Comparación numérica estricta (`<`). Si el valor no es numérico, retorna `false` |
+| `GT` | Mayor que | `factor` + `value` o `prevFactor` | Comparación numérica (también soporta `BigDecimal`) |
+| `GE` | Mayor o igual | `factor` + `value` o `prevFactor` | Comparación numérica (también soporta `BigDecimal`) |
+| `LT` | Menor que | `factor` + `value` o `prevFactor` | Comparación numérica (también soporta `BigDecimal`) |
+| `LE` | Menor o igual | `factor` + `value` o `prevFactor` | Comparación numérica (también soporta `BigDecimal`) |
+| `EQ` | Igual | `factor` + `value` o `prevFactor` | Soporta string, numérico y arrays |
+| `NOT_EQ` | Distinto | `factor` + `value` o `prevFactor` | Soporta string, numérico y arrays |
+| `IN` | Está en lista | `factor` + `values` | Mantiene comportamiento histórico por lista |
+| `NOT_IN` | No está en lista | `factor` + `values` | Mantiene comportamiento histórico por lista |
+| `BTW` | Entre min y max | `factor` + `value1` + `value2` | Rango numérico inclusivo |
+
+**Comparación de fechas (`date[...]`)**
+
+* Se activa cuando `factor` viene con sintaxis `date[...]`.* Requiere `compareDateFactor` (puede venir como `date[...]` o como `origen.campo`).* Operadores válidos en fecha: `GT`, `GE`, `LT`, `LE`, `EQ`.
+
+#### [Datos del polizón previo en facts con notación `prev.`](#/DUP/DUP_ENGINE?id=datos-del-poliz%c3%b3n-previo-en-facts-con-notaci%c3%b3n-prev)
+
+Cuando llega `prevOPlyPlyC` (póliza anterior), se generan **dos conjuntos de facts**: uno para la póliza actual (sin prefijo) y otro para la póliza anterior con el prefijo `prev.` al **principio** de la clave.
+
+El patrón es **siempre `prev.` + grupo + campo**:
+
+| Grupo | Fact póliza actual | Fact póliza anterior |
+| --- | --- | --- |
+| `fixedValues` | `fixedValues.policyNumber` | `prev.fixedValues.policyNumber` |
+| `variableData` | `variableData.SUMA_ASEGURADA` | `prev.variableData.SUMA_ASEGURADA` |
+| `insured` | `insured.age` | `prev.insured.age` |
+| `coverages` | `coverages.100.capital` | `prev.coverages.100.capital` |
+| `participants` | `participants.policyHolder.documentCode` | `prev.participants.policyHolder.documentCode` |
+
+> **Regla nemotécnica:** el prefijo `prev.` va **siempre al inicio** de la clave, antes del nombre del grupo. Internamente, la función `prefixed(base, "prev")` produce `"prev." + base`.
+
+#### [Evaluación de condiciones V1: `value`, `prevFactor` y `values`](#/DUP/DUP_ENGINE?id=evaluaci%c3%b3n-de-condiciones-v1-value-prevfactor-y-values)
+
+En V1, el operando derecho de la comparación se resuelve con esta prioridad:
+
+* Si existe `prevFactor`, se toma el valor del fact indicado por `prevFactor`.* Si no existe `prevFactor`, se usa `value` (comportamiento histórico).* Para `IN` y `NOT_IN` se mantiene `values` (lista), como hasta ahora.
+
+Esto permite comparar **factor vs factor** sin perder compatibilidad con reglas antiguas.
+
+```
+// Comparación contra dato del polizón previo (prev.variableData.*)
+{
+  "factor": "variableData.SUMA_ASEGURADA",
+  "operator": "GT",
+  "prevFactor": "prev.variableData.SUMA_ASEGURADA"
+}
+
+// Comparación contra dato fijo previo (prev.fixedValues.*)
+{
+  "factor": "fixedValues.policyNumber",
+  "operator": "NOT_EQ",
+  "prevFactor": "prev.fixedValues.policyNumber"
+}
+
+// GT entre dos factors (nuevo): insured.age > variableData.EDAD_MINIMA_PERMITIDA
+{
+  "factor": "insured.age",
+  "operator": "GT",
+  "prevFactor": "variableData.EDAD_MINIMA_PERMITIDA"
+}
+
+// EQ entre dos factors string (nuevo): tipo doc asegurado == tipo doc tomador
+{
+  "factor": "insured.documentType",
+  "operator": "EQ",
+  "prevFactor": "participants.policyHolder.documentType"
+}
+
+// Fallback clásico (sin prevFactor): usa value
+{
+  "factor": "insured.age",
+  "operator": "GE",
+  "value": "18"
+}
+
+// IN sigue usando values (lista)
+{
+  "factor": "participants.policyHolder.documentType",
+  "operator": "IN",
+  "values": ["DNI", "NIE", "PASAPORTE"]
+}
+
+// ANY_MATCH también admite prevFactor como valor objetivo
+{
+  "factor": "participants.beneficiaries.*.beneficiaryType",
+  "operator": "ANY_MATCH",
+  "prevFactor": "participants.policyHolder.participantType"
+}
+
+// ANY_GT con prevFactor: alguna acumulación supera el umbral definido en variableData
+{
+  "factor": "insured.accumulations.*.accumulationWithCapital",
+  "operator": "ANY_GT",
+  "prevFactor": "variableData.LIMITE_ACUMULACION"
+}
+
+// ANY_LT con prevFactor: alguna cobertura tiene capital por debajo del capital mínimo configurable
+{
+  "factor": "coverages.*.capital",
+  "operator": "ANY_LT",
+  "prevFactor": "constants.CAPITAL_MINIMO_TECNICO"
+}
+```
+
+> Recomendación de configuración: no mezclar `prevFactor` y `value` en la misma condición. Si ambos vienen informados, se aplicará `prevFactor`.
+
+---
+
+#### [Ejemplo 0 — Comparación de pólizas: actual vs. anterior con prefijo `prev.`](#/DUP/DUP_ENGINE?id=ejemplo-0-comparaci%c3%b3n-de-p%c3%b3lizas-actual-vs-anterior-con-prefijo-prev)
+
+Cuando quieras detectar cambios entre la póliza anterior y la póliza actual, **siempre usa el prefijo `prev.`** al inicio de la clave para acceder a los datos de la póliza anterior.
+
+**Cambio en la modalidad de pago (V1)**
+
+```
+{
+  "ruleId": "DETECCION_CAMBIO_MODALIDAD_PAGO",
+  "ruleConditions": [
+    { "factor": "fixedValues.paymentModality", "operator": "NOT_EQ", "prevFactor": "prev.fixedValues.paymentModality" }
+  ],
+  "ruleActions": [
+    { "type": "Revisión", "message": "Se ha detectado cambio en modalidad de pago. Revisar condiciones." }
+  ]
+}
+```
+
+> Compara `fixedValues.paymentModality` (actual) vs. `prev.fixedValues.paymentModality` (anterior).
+
+**Aumento de suma asegurada (V1)**
+
+```
+{
+  "ruleId": "AUMENTO_SUMA_ASEGURADA",
+  "ruleConditions": [
+    { "factor": "variableData.SUMA_ASEGURADA", "operator": "GT", "prevFactor": "prev.variableData.SUMA_ASEGURADA" }
+  ],
+  "ruleActions": [
+    { "type": "Requisito", "requirement": "INFORME_RIESGOS" }
+  ]
+}
+```
+
+> Detecta si la suma asegurada actual es mayor que la anterior usando `prev.variableData.SUMA_ASEGURADA`.
+
+**Cambio en edad del asegurado (V2)**
+
+```
+{
+  "ruleId": "CAMBIO_EDAD_ASEGURADO",
+  "condition": "Integer edadActual = f.asInteger(\"insured.age\"); Integer edadPrev = f.asInteger(\"prev.insured.age\"); return edadActual != null && edadPrev != null && !edadActual.equals(edadPrev);",
+  "ruleActions": [
+    { "type": "Tarifa", "value": "1.05" }
+  ]
+}
+```
+
+> Compara `insured.age` (actual) vs. `prev.insured.age` (anterior).
+
+**Cambio en coberturas (V2)**
+
+```
+{
+  "ruleId": "CAMBIO_CAPITAL_COBERTURA_100",
+  "condition": "Double capActual = f.asDouble(\"coverages.100.capital\"); Double capPrev = f.asDouble(\"prev.coverages.100.capital\"); return capActual != null && capPrev != null && capActual > capPrev;",
+  "ruleActions": [
+    { "type": "Revisión", "message": "Capital de cobertura 100 aumentado. Verificar reaseguro." }
+  ]
+}
+```
+
+> Compara `coverages.100.capital` (actual) vs. `prev.coverages.100.capital` (anterior).
+
+**Cambio en tomador (V1)**
+
+```
+{
+  "ruleId": "CAMBIO_DATOS_TOMADOR",
+  "ruleConditions": [
+    { "factor": "participants.policyHolder.documentCode", "operator": "NOT_EQ", "prevFactor": "prev.participants.policyHolder.documentCode" }
+  ],
+  "ruleActions": [
+    { "type": "Revisión", "message": "El tomador ha cambiado. Requiere validación de identidad." }
+  ]
+}
+```
+
+> Compara el código de documento del tomador usando `prev.participants.policyHolder.documentCode`.
+
+> **Recomendación para configuradores:** Usa siempre `prevFactor` para comparaciones entre póliza actual y anterior. El prefijo `prev.` se añade automáticamente al construir los facts — tu trabajo es solo poner `prev.` al inicio de la clave del fact anterior.
+
+---
+
+#### [Ejemplo 1 — Rechazo por edad fuera de rango (V1, paso `PREVIOUS_VARIABLE_DATA_RISK`)](#/DUP/DUP_ENGINE?id=ejemplo-1-rechazo-por-edad-fuera-de-rango-v1-paso-previous_variable_data_risk)
+
+```
+{
+  "ruleId": "REGLA_EDAD_ASEGURADO",
+  "processField": "EDAD_ACTUARIAL_INI",
+  "ruleConditions": [
+    { "factor": "insured.age", "operator": "LT", "value": "18" }
+  ],
+  "ruleActions": [
+    { "type": "Rechazo", "message": "El asegurado debe tener al menos 18 años" }
+  ]
+}
+```
+
+> El campo `EDAD_ACTUARIAL_INI` de `OPlyAtcCT` en el riesgo se convierte en `insured.age`.
+
+---
+
+#### [Ejemplo 2 — Asignación de tarifa por moto (V2, paso `COVERAGE_CONTROL`)](#/DUP/DUP_ENGINE?id=ejemplo-2-asignaci%c3%b3n-de-tarifa-por-moto-v2-paso-coverage_control)
+
+```
+{
+  "ruleId": "TARIFA_MOTO_ALTA",
+  "processField": "EXTRAPRIME_MOTO",
+  "condition": "Integer cc = f.asInteger(\"insured.motorcycleCC\"); return cc != null && cc > 500;",
+  "ruleActions": [
+    { "type": "Tarifa", "value": "1.25" }
+  ]
+}
+```
+
+> `insured.motorcycleCC` ← `CC_MOTO` en `OPlyAtcCT` del riesgo.
+
+---
+
+#### [Ejemplo 3 — Revisión por acumulación + capital alto (V2, paso `VALIDATION_VARIABLE_COVERAGE`)](#/DUP/DUP_ENGINE?id=ejemplo-3-revisi%c3%b3n-por-acumulaci%c3%b3n-capital-alto-v2-paso-validation_variable_coverage)
+
+```
+{
+  "ruleId": "REVISION_CAPITAL_ACUMULADO",
+  "processField": "REVISION_REASEGURO",
+  "condition": "Double acum = f.asDouble(\"insured.accumulations.100.accumulationWithCapital\"); Double limite = f.asDouble(\"constants.LIMITE_ACUM_COB100\"); return acum != null && limite != null && acum > limite;",
+  "ruleActions": [
+    { "type": "Revisión", "message": "Acumulación supera límite técnico. Revisar reaseguro." }
+  ]
+}
+```
+
+---
+
+#### [Ejemplo 4 — Requisito de cuestionario médico si hay deporte federado (V1, paso `VALIDATION_VARIABLE_DATA_RISK`)](#/DUP/DUP_ENGINE?id=ejemplo-4-requisito-de-cuestionario-m%c3%a9dico-si-hay-deporte-federado-v1-paso-validation_variable_data_risk)
+
+```
+{
+  "ruleId": "CUESTIONARIO_MEDICO_DEPORTE",
+  "ruleConditions": [
+    { "factor": "insured.federatedSports", "operator": "GT", "value": "0" },
+    { "factor": "questionnaires.42", "operator": "NEX" }
+  ],
+  "ruleActions": [
+    { "type": "Requisito", "requirement": "42" }
+  ]
+}
+```
+
+> `insured.federatedSports` ← `NUM_DEPORTE_COMPETICION` en `OPlyAtcCT` del riesgo.
+
+---
+
+#### [Ejemplo 5 — Asignación mediante función del RTE (FUNCTION, paso `PREVIOUS_VARIABLE_COVERAGE`)](#/DUP/DUP_ENGINE?id=ejemplo-5-asignaci%c3%b3n-mediante-funci%c3%b3n-del-rte-function-paso-previous_variable_coverage)
+
+```
+{
+  "ruleId": "CALCULO_DURACION_PAGO",
+  "processField": "ANIO_DURACION_PAGO_PRIMAS",
+  "condition": "return true;",
+  "ruleActions": [
+    {
+      "type": "Asignacion",
+      "value": "ProcessAttributes.calcYearDuration",
+      "valueCalculationType": "FUNCTION",
+      "data": "ANIO_DURACION_PAGO_PRIMAS_410",
+      "jumpLevel": 6,
+      "coverage": 410,
+      "dataType": "String"
+    }
+  ]
+}
+```
+
+> DUP devuelve la acción, el orquestador (`FunctionCalculationService`) llama al RTE con el método indicado, y el resultado se escribe de vuelta en `fldValVal` del atributo `ANIO_DURACION_PAGO_PRIMAS` del polizón.
+
+---
+
+#### [Resumen visual: ciclo completo de una regla](#/DUP/DUP_ENGINE?id=resumen-visual-ciclo-completo-de-una-regla)
+
+```
+  OPlyPlyCDto (polizón)
+         │
+         │  RiskSelectionMapper
+         ▼
+  RiskSelectionRequest  ──POST /risk-selection──►  DUP (EasyRules)
+                                                         │
+                                              evalúa condiciones
+                                              sobre facts:
+                                              - fixedValues.*
+                                              - variableData.*
+                                              - coverages.*
+                                              - insured.*
+                                              - participants.*
+                                              - questionnaires.*
+                                              - documents.*
+                                              - accumulations.*
+                                              - constants.*
+                                              - prev.fixedValues.*    ← póliza anterior
+                                              - prev.variableData.*   ← póliza anterior
+                                              - prev.insured.*        ← póliza anterior
+                                              - prev.coverages.*      ← póliza anterior
+                                              - prev.participants.*   ← póliza anterior
+                                                         │
+                                              devuelve appliedRules[]
+                                                         │
+  ◄────────────────────────────────────────────────────────
+         │
+         │  DupServiceImpl.applyAssignment()
+         ▼
+  OPlyPlyCDto actualizado
+  (fldValVal del atributo modificado o OPlyUtcPT añadido)
+```

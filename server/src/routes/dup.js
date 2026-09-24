@@ -5,17 +5,266 @@ import { requireEditPermission } from '../middleware/auth.js';
 
 const router = Router();
 
-// GET /api/dup/products
+// Generic Cache for Unified Products Catalog
+let catalogCache = null;
+let lastCacheTime = 0;
+const CATALOG_CACHE_TTL_MS = 30000; // 30 seconds TTL
+
+// Definitive dictionaries for display enrichment
+const VIDA_COVERAGE_NAMES = {
+  4001: 'Morte Acidental',
+  4003: 'Morte Básica (Qualquer Causa)',
+  4005: 'Invalidez Permanente Total/Parcial por Acidente (IPA)',
+  4006: 'Invalidez Funcional Permanente Total por Doença (IFPD)',
+  4007: 'Despesas Médicas, Hospitalares e Odontológicas (DMHO)',
+  4008: 'Diária por Incapacidade Temporária (DIT)',
+  4014: 'Assistência Funeral Individual',
+  4015: 'Assistência Funeral Familiar',
+  4016: 'Cesta Básica',
+  4017: 'Morte Acidental Especial',
+  4018: 'Morte Acidental em Transporte Coletivo',
+  4019: 'Adiantamento por Doença Terminal',
+  4020: 'Rescisão Trabalhista',
+  4021: 'Indenização Especial por Morte Acidental',
+  4022: 'Auxílio Funeral Pais',
+  4025: 'Despesas com Deslocamento',
+  4026: 'Diária de Internação Hospitalar (DIH)',
+  4027: 'Diária de Internação Hospitalar em UTI',
+  4029: 'Doenças Graves',
+  4030: 'Segunda Opinião Médica Internacional',
+  4031: 'Telemedicina e Orientação Saúde',
+  4032: 'Assistência Residencial',
+  4033: 'Assistência Nutricional',
+  4034: 'Assistência Pet',
+  4035: 'Auxílio Medicamento',
+  4050: 'Fratura Óssea',
+  4052: 'Invalidez Laborativa Permanente Total por Doença (ILPD)',
+  4053: 'Morte do Cônjuge',
+  4054: 'Morte dos Filhos',
+  4055: 'Invalidez Permanente do Cônjuge',
+  4056: 'Invalidez Permanente dos Filhos',
+  4057: 'Assistência Funeral Cônjuge e Filhos',
+  4060: 'Assistência Psicológica',
+  4061: 'Despesas Odontológicas',
+  4062: 'Despesas Farmacêuticas',
+  4063: 'Cirurgias Especiais',
+  4070: 'Sorteio Mensal de Capitalização',
+  4071: 'Assistência a Vítima de Crime'
+};
+
+const KNOWN_PRODUCT_NAMES = {
+  42101: 'MULTIFLEX TRADICIONAL',
+  42102: 'BILHETE IDADE',
+  42103: 'BILHETE PLANOS',
+  42104: 'BILHETE EMPRESAS',
+  42111: 'MULTIFLEX TRADICIONAL',
+  421011: 'MULTIFLEX TRADICIONAL INDIVIDUAL',
+  421022: 'BILHETE IDADE MODALIDADE 2',
+  421033: 'BILHETE PLANOS MODALIDADE 3',
+  40099: 'VIDA INDIVIDUAL GERAL',
+  40700: 'VIDA COLETIVO EMPRESARIAL',
+  23101: 'AUTO INDIVIDUAL CONVENCIONAL',
+  23102: 'AUTO MAIS CONVENCIONAL'
+};
+
+const KNOWN_BRANCH_NAMES = {
+  231: 'AUTOMOVEL',
+  421: 'PLURIANUAL RENOVÁVEL (VIDA)',
+  400: 'VIDA INDIVIDUAL',
+  407: 'VIDA COLETIVO',
+  410: 'VIDA EM GRUPO',
+  118: 'PATRIMONIAL',
+  140: 'TRANSPORTES',
+  160: 'AGROPECUÁRIO',
+  690: 'RISCOS FINANCEIROS',
+  700: 'GARANTIA',
+  980: 'PREVIDÊNCIA'
+};
+
+const KNOWN_COMPANY_NAMES = {
+  1: 'MAPFRE SEGUROS GERAIS',
+  5: 'MAPFRE ESPAÑA',
+  15: 'MAPFRE BRASIL',
+  50: 'MAPFRE GLOBAL RISKS',
+  155: 'MAPFRE VIDA S.A.'
+};
+
+// GET /api/dup/products (Generic Auto-Discovery Engine)
 router.get('/products', async (req, res) => {
   try {
-    const db = getDupDb();
-    const { country, branch } = req.query;
-    const filter = {};
-    if (country) filter.countryCode = country;
-    if (branch) filter.branchCode = Number(branch);
+    const { country, branch, company } = req.query;
+    const now = Date.now();
 
-    const products = await db.collection('PRODUCTS').find(filter).toArray();
-    res.json(products);
+    let unifiedProducts;
+
+    if (catalogCache && (now - lastCacheTime < CATALOG_CACHE_TTL_MS)) {
+      unifiedProducts = catalogCache;
+    } else {
+      const dupDb = getDupDb();
+      const rteDb = getRteDb();
+
+      // 1. Fetch base products from MongoDB PRODUCTS (read-only)
+      const baseProducts = await dupDb.collection('PRODUCTS').find({}).toArray();
+
+      // 2. Discover all active products and their coverages from COVERAGE-PACKAGE-DEFINITION (RTE)
+      const rtePackageAgg = await rteDb.collection('COVERAGE-PACKAGE-DEFINITION').aggregate([
+        { $unwind: '$coverages' },
+        {
+          $group: {
+            _id: { product: '$product', coverageId: '$coverages.coverageId' },
+            companyId: { $first: '$companyId' },
+            branchId: { $first: '$branchId' }
+          }
+        },
+        {
+          $group: {
+            _id: '$_id.product',
+            companyId: { $first: '$companyId' },
+            branchId: { $first: '$branchId' },
+            coverages: { $addToSet: '$_id.coverageId' }
+          }
+        }
+      ]).toArray();
+
+      const rteProductMap = new Map();
+      rtePackageAgg.forEach(p => {
+        if (p._id && p._id > 0 && p._id !== 99999) {
+          rteProductMap.set(Number(p._id), {
+            productCode: Number(p._id),
+            companyId: Number(p.companyId) || 15,
+            branchId: Number(p.branchId) || 421,
+            coverageIds: (p.coverages || []).sort((a, b) => a - b)
+          });
+        }
+      });
+
+      // 3. Process & enrich base products
+      const processedProductCodes = new Set();
+      const enrichedBaseProducts = baseProducts.map(p => {
+        const prodCode = Number(p.productCode);
+        processedProductCodes.add(prodCode);
+
+        // Normalize legacy concatenated branch/company codes if detected
+        let branchCode = p.branchCode;
+        let legacyBranchCode = undefined;
+        if (branchCode === 42111 || (branchCode > 1000 && String(branchCode).startsWith('421'))) {
+          legacyBranchCode = branchCode;
+          branchCode = 421;
+        }
+
+        let companyCode = p.companyCode;
+        let legacyCompanyCode = undefined;
+        if (companyCode === 151 || (companyCode > 100 && String(companyCode).startsWith('15'))) {
+          legacyCompanyCode = companyCode;
+          companyCode = 15;
+        }
+
+        // Branch and company names
+        const branchName = (branchCode === 421) ? 'PLURIANUAL RENOVÁVEL (VIDA)' : (p.branchName || KNOWN_BRANCH_NAMES[branchCode] || 'GERAL');
+        const companyName = (companyCode === 15) ? 'MAPFRE BRASIL' : (p.companyName || KNOWN_COMPANY_NAMES[companyCode] || 'MAPFRE SEGUROS');
+
+        // Check if RTE packages have active coverages for this product
+        let coverages = Array.isArray(p.coverages) ? [...p.coverages] : [];
+        const rteInfo = rteProductMap.get(prodCode);
+
+        if (rteInfo && rteInfo.coverageIds.length > 0) {
+          // If product in PRODUCTS has fewer coverages than RTE (e.g. 42101 had only 1), enrich with all RTE coverages
+          if (coverages.length < rteInfo.coverageIds.length || prodCode === 42101) {
+            const existingCoverageMap = new Map(coverages.map(c => [c.coverageCode, c.coverageName]));
+            coverages = rteInfo.coverageIds.map(cid => ({
+              coverageCode: cid,
+              coverageName: existingCoverageMap.get(cid) || VIDA_COVERAGE_NAMES[cid] || `Cobertura ${cid}`
+            }));
+          }
+        }
+
+        return {
+          ...p,
+          branchCode,
+          branchName,
+          companyCode,
+          companyName,
+          legacyBranchCode: legacyBranchCode || p.legacyBranchCode,
+          legacyCompanyCode: legacyCompanyCode || p.legacyCompanyCode,
+          coverages,
+          source: (rteInfo || prodCode === 42101) ? 'ACDC_OPERATIONAL' : (p.source || 'CATALOG')
+        };
+      });
+
+      // 4. Dynamically synthesize any product from RTE that does NOT exist in PRODUCTS
+      const synthesizedProducts = [];
+      for (const [prodCode, rteInfo] of rteProductMap.entries()) {
+        if (!processedProductCodes.has(prodCode)) {
+          // Only synthesize valid operational products
+          const branchCode = (rteInfo.branchId === 400 && prodCode >= 42100 && prodCode < 43000) ? 421 : rteInfo.branchId;
+          const companyCode = (rteInfo.companyId === 155 || rteInfo.companyId === 151) ? 15 : rteInfo.companyId;
+
+          const branchName = KNOWN_BRANCH_NAMES[branchCode] || `RAMO ${branchCode}`;
+          const companyName = KNOWN_COMPANY_NAMES[companyCode] || `MAPFRE (${companyCode})`;
+          const productName = KNOWN_PRODUCT_NAMES[prodCode] || `PRODUTO ${prodCode}`;
+
+          const coverages = rteInfo.coverageIds.map(cid => ({
+            coverageCode: cid,
+            coverageName: VIDA_COVERAGE_NAMES[cid] || `Cobertura ${cid}`
+          }));
+
+          synthesizedProducts.push({
+            _id: `BRA-${companyCode}-${branchCode}-${prodCode}`,
+            countryCode: 'BRA',
+            companyCode,
+            companyName,
+            branchCode,
+            branchName,
+            productCode: prodCode,
+            productName,
+            riskPrimeCalc: true,
+            source: 'ACDC_OPERATIONAL',
+            coverages,
+            _class: 'com.mapfre.tron.rating.core.model.peca.ProductCatalog'
+          });
+        }
+      }
+
+      unifiedProducts = [...enrichedBaseProducts, ...synthesizedProducts];
+
+      // Sort stably by branchCode, then productCode
+      unifiedProducts.sort((a, b) => {
+        if (a.branchCode !== b.branchCode) return (a.branchCode || 0) - (b.branchCode || 0);
+        return (a.productCode || 0) - (b.productCode || 0);
+      });
+
+      // Store in memory cache
+      catalogCache = unifiedProducts;
+      lastCacheTime = now;
+    }
+
+    // 5. Apply query filters dynamically
+    let filtered = unifiedProducts;
+
+    if (country) {
+      const cUpper = String(country).toUpperCase();
+      filtered = filtered.filter(p => p.countryCode === cUpper);
+    }
+
+    if (branch !== undefined && branch !== null && branch !== '') {
+      const bNum = Number(branch);
+      filtered = filtered.filter(p =>
+        p.branchCode === bNum ||
+        p.legacyBranchCode === bNum ||
+        (bNum === 421 && (p.branchCode === 42111 || p.legacyBranchCode === 42111))
+      );
+    }
+
+    if (company !== undefined && company !== null && company !== '') {
+      const cNum = Number(company);
+      filtered = filtered.filter(p =>
+        p.companyCode === cNum ||
+        p.legacyCompanyCode === cNum ||
+        (cNum === 15 && (p.companyCode === 151 || p.legacyCompanyCode === 151))
+      );
+    }
+
+    res.json(filtered);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -572,4 +821,105 @@ router.get('/policies', async (req, res) => {
   }
 });
 
+// GET /api/dup/rules-actions-conditions (DUP Master Rules Engine - 101k+ rules)
+router.get('/rules-actions-conditions', async (req, res) => {
+  try {
+    const db = getDupDb();
+    const page = Math.max(1, parseInt(req.query.page) || 1);
+    const limit = Math.min(100, Math.max(1, parseInt(req.query.limit) || 20));
+    const { step, actionType, search, product, branch } = req.query;
+
+    const filter = {};
+    if (step !== undefined && step !== '' && step !== 'ALL') {
+      filter.process_step = Number(step);
+    }
+    if (actionType && actionType !== 'ALL') {
+      filter['actions.type'] = actionType;
+    }
+    if (product) {
+      filter.product = Number(product);
+    }
+    if (branch) {
+      filter.branch = Number(branch);
+    }
+
+    if (search) {
+      if (!isNaN(search)) {
+        filter.$or = [
+          { rule_id: Number(search) },
+          { rule_name: { $regex: search, $options: 'i' } }
+        ];
+      } else {
+        filter.$or = [
+          { rule_name: { $regex: search, $options: 'i' } },
+          { 'conditions.factor': { $regex: search, $options: 'i' } },
+          { 'actions.message': { $regex: search, $options: 'i' } }
+        ];
+      }
+    }
+
+    const total = await db.collection('RS-RULES-ACTIONS-CONDITIONS').countDocuments(filter);
+    const rules = await db.collection('RS-RULES-ACTIONS-CONDITIONS')
+      .find(filter)
+      .skip((page - 1) * limit)
+      .limit(limit)
+      .toArray();
+
+    // Map friendly names for process steps
+    const stepLabels = {
+      0: 'Dados Gerais / Raiz',
+      1: 'FIXED_DATA (Dados Fixos)',
+      2: 'VARIABLE_DATA_POLICY (Variáveis de Política)',
+      3: 'BENEFICIARY (Beneficiários & Tomador)',
+      4: 'VARIABLE_DATA_RISK (Variáveis do Risco)',
+      5: 'OBJETO_ASEGURADO (Objeto Segurado)',
+      6: 'COVERAGE (Coberturas & Capitais)',
+      8: 'CONTROLS (Controles Técnicos Finais)',
+      9: 'DOCUMENTOS (Validação de Documentos)',
+      11: 'RISK_SELECTION_FORM (Questionários de Saúde)'
+    };
+
+    const enriched = rules.map(r => ({
+      ...r,
+      stepLabel: stepLabels[r.process_step] || `Passo ${r.process_step}`,
+      conditionsCount: Array.isArray(r.conditions) ? r.conditions.length : 0,
+      actionsCount: Array.isArray(r.actions) ? r.actions.length : 0
+    }));
+
+    res.json({
+      page,
+      limit,
+      total,
+      totalPages: Math.ceil(total / limit),
+      rules: enriched
+    });
+  } catch (err) {
+    console.error('Error fetching RS-RULES-ACTIONS-CONDITIONS:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// GET /api/dup/rules-actions-conditions/:id (Detail single rule)
+router.get('/rules-actions-conditions/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const db = getDupDb();
+
+    let query = { _id: id };
+    if (ObjectId.isValid(id)) {
+      query = { $or: [{ _id: id }, { _id: new ObjectId(id) }] };
+    }
+
+    const rule = await db.collection('RS-RULES-ACTIONS-CONDITIONS').findOne(query);
+    if (!rule) {
+      return res.status(404).json({ error: 'Regra DUP não encontrada.' });
+    }
+
+    res.json(rule);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 export default router;
+

@@ -1,0 +1,309 @@
+creo que tienes que que aceptar con el micrófono y la cámara
+para que no supongáis
+nadie se opone ¿no?
+ya que no puedes irme opongo entonces tenemos que decirte Salti
+es que como te muté ahí te quité la cámara o sea que te da opción
+vale compañeros entonces no va a ir a pa eso vale no ah bueno después pa decirte
+que cortes ¿como que corte? para cortar
+ah no me quedo me quedo bueno como queráis me digo no quédate quédate
+me interesa reporto es muy técnico es muy técnico
+lo más sencillo posible vale si tengo mi polisa vale en mi polisa tengo los datos
+fijos datos variables de la polisa cualquier cosa que no entendamos de aquí
+me dicen
+compañeros vale Freddy Vinnie si de acuerdo
+polisa y entro de la polisa yo aquí voy a tener mi riesgo
+y entro del riesgo pues que tengo que los asegurados
+los beneficiarios vale y tengo datos variables del riesgo
+vale y obviamente las coberturas todo esto ya lo sabemos vale
+si yo aquí le pongo que el riesgo es el uno
+vale y aquí tengo
+va a ser el ejemplo con este que está acá
+no
+vida
+vida Brasil Brasil
+quien tiene multirriés con dolencias graves? 20 igual
+vei? vei, sí, vale
+creo que es este el pdf
+no este no es el pdf, no este no es
+es
+creo que es este
+esta la parte de técnico
+esta la presentación
+debe ser esta así es esta
+vale esta es la hoja que quería
+recorte
+muevo
+vale
+y ahora chico, esta historia paura en la pequeñita
+vale ah venga aquí falta Rita sabía que faltaba
+también
+no está aquí Javier
+por favor pueden invitar a Javier? si meto o le invito, si lo invito a el tirón
+entonces aquí tengo aquí tengo el asegurado no en este caso es el
+asegurado principal
+que se llama Pepito vale puedo tener beneficiarios y los que se
+definan aquí no entrar todavía y tengo datos del riesgo en vida yo tengo una
+marca que me dice quien es él cierto ese es el principal en este caso
+si saben qué dato es en la 20.060
+si relaja si relaja eso es si relaja
+vale de yo defino ahí el tipo de relación vale
+como he hecho esta historia aquí vale y en datos del riesgo pues tengo la fecha
+en nacimiento la fecha en nacimiento el sexo
+profesión
+vale y de las coberturas pues tengo la cobertura 1 la cobertura 2 la cobertura
+3 la cobertura 4 me vale con eso vale
+ahora va a ser con los tres riesgos que va a comenzar me vale vale
+es el riesgo dos el riesgo dos también tiene el asegurado pero ya no es el
+principal ya es no sé cómo le llaman aquí el conjube entonces el conjube
+y aquí el riesgo número 3 es
+filio el hijo
+el hijo vale solo lo hago con tres pero esto da igual vale qué pasa
+este es la cobertura este pero para el riesgo 2 solo va a ofrecer esta y para el
+riesgo 3 solo está 2 vale
+hasta aquí estamos no
+ahora nos vamos con los centros que nos pasó aquí en mi amigo
+David y en lo siguiente tengo el chat
+vale aquí nos pasaron lo siguiente
+esta partecita voy a coger esta partecita
+va a pegar esta partecita por aquí y lo otro que voy a hacer
+esto que fue lo que nos pasó vale que aquí se mete el riesgo vale
+al este ejemplo me viene bien creo que nos pasó mano
+a poner por aquí vale y el otro ejemplo que nos viene bien
+vale
+ahora me voy para Brasil
+correcto
+creo que no me va a dejar me luego me pueden pasar las conexiones por favor que
+no sé por qué no las no las tengo vini
+el dupe a no eso no es tú esto es no vas a ver en uno de estos vale pero quería
+tener la la de Brasil vale
+bien
+vini me me pasa luego la de brasil porfa si
+vale se va a poner esta
+si ahorita no con esto me vale entonces cómo vamos a hacer esta historia qué significa esto que yo
+voy a crear vale aquí tengo la prueba crear la la la oferta comercial
+de billete
+es va a poner un código la poner la oferta comercial a número 10 vale la oferta comercial es 10 vale
+solo que la oferta comercial 10 va a estar preparada bastante bien 3 o sea la oferta comercial es una
+es billete pero tendré una oferta comercial billete para para el principal
+una oferta comercial billete para el con yugue
+con yugue y una oferta comercial
+para el hijo
+vale entonces este es este es juanito anito
+y esta es
+maría vale qué diferencia va a haber vale que cada uno
+cada uno tengo que configurarle
+qué propiedad
+para poder lo intificar quién es quién yo aquí en estas de rules
+por cada oferta comercial en rules tendré que identificarlo
+con el dato que me pueda decir quién es quién
+vale en este caso pa este ejemplo
+esto se ve mal ahora te corto mejor esto
+bueno
+cuál va a ser el dato que me va a identificar estoy creando sólo una oferta comercial porque es
+billete vale billete esta que estará social a mi mamá lidá ok compañeras
+si te sigo vale bien he creado 10 pero en en la parte de de configuración aquí en el pa
+aquí creé sólo la 10 pero aquí tengo tres definiciones una pal papa otra pal con yuguesa
+cuál va a ser el dato que voy a mí o lo que hubo uno de los datos que va a meter con en rules
+pues el que me intifique quién es el papá
+vale cuál dato usamos
+compañero es para ustedes eso el relaj bien el regalo puedo usar si
+sugerencia tengan un dato variable que le diga la relación
+la relación
+que va a ser a parte del dato fijo que ya se tiene el interponente es tener otro dato variable
+si o sea lo cogen de aquí lo tiran pa acá vale ok ese ese relación entonces ustedes van a
+meter aquí ese dato o sea esto va a ser este de forma porque porque este ya lo interpreta más
+naturalmente vale o sea este lo ponen acá
+es automático no se deja modificar y viene del dato que salga de aquí
+vale
+entonces con ese dato yo ya le estoy diciendo que voy a coger esta configuración y le voy
+a decir la relación no es tipo aportación es ésta va a ser el valor que esté aquí si aquí la
+relación si aquí el valor es el tiruela es 15 pues aquí es 15 y aquí lo que va a hacer que la
+relación 2.15 en la regla que está ahí vale entonces cuando el sistema vaya módulos va a
+coger y va a aplicar esto qué configuración pues de estas coberturas es decir esta primera parte
+vale
+hasta ahí estamos no y lo mismo y ya entonces se vuelve esto para aquí
+esto para acá
+y aquí copio lo mismo
+entonces aquí la relación del conjugue es la 20 pues lo mismo aquí es 20
+yo no sé si esto ya lo hicieron vale pero lo explico para que nos quede ataúdo 20
+20 y lo mismo para el riesgo bueno ya hacerlo para los de da igual vale
+hacen lo mismo para acá ya que metí tres rigos pues los dejo tal cual
+y si elijo de la relación 30 pues
+pueden meter más condiciones y allá se lo dejo pero ya le están diciendo al módulo que una
+de las reglas para seleccionar este módulo de la misma moda de la misma oferta comercial
+es este dato que viene de aquí vale
+y ustedes configuran éste para esta cobertura el conjugue va a tener estas coberturas de la
+misma moda de billete pero con estas coberturas aquí
+poner aquí un colorcito
+verde
+verde
+y verde o sea con esto que quiere decir que yo no creé tres ofertas comerciales crea una
+sola y que he configurado dependiendo de alguna característica que me identifique quién es quién
+cada uno de estos componentes vale hasta aquí estamos preguntas
+hasta ahí te sí lo ofreí si yo también pero tengo una duda freí acá o sea no sé si vas a
+llegar ahí pero nosotros tenemos como que una una validación que igual tenemos que hacer dentro
+de los módulos pero por edades por ejemplo si el conjugue tiene no sé me estoy inventando 45
+años me despliega cuatro coberturas si el conjugue tiene 50 años me despliega dos coberturas
+como meteríamos esta validación vale pues entonces se está ampliando las condiciones aquí estoy
+colocando una condición ustedes tienen que ver cuántas condiciones de configuración hay que
+hacer aquí estoy mostrando tres una dos tres si aparte de eso por conjugue tienen que meter
+otra condición dentro de conjugue pues tienen que crear otro o sea tendrán que crear aquí otra
+línea del conjugue insertar insertar tendría que crear todo esto
+es aquí tienen la edad no entonces aquí edad edad entre puede ser un bitwin no
+entre 18 y 50 obviamente que quiere decir esto que yo aquí tengo un dato llamado edad
+40 un ejemplo y aquí meten otro que es con 15 pero con la edad de
+51 a 65 y aquí tienen la edad si yo le entro si yo le entro aquí con una edad de 52 pues el
+vací es 15 vale pero está cumpliendo esta entonces está la quita y me muestra la configuración que
+tenga con ésta y la oferta sigue siendo la misma 10
+vale hasta ahí estamos sí hay lo mismo pre disculpa estos rangos estos posibles
+rangos de edad es debemos tenerlos almacenados en el mongo aquí ya no se configura en estos
+rangos en pdl como así en el mongo en estas condiciones en rules en rule tu la pones tú
+dices oye la aquí es cuando la relación sea 15 y la edad sea 51 no sé de dónde viene este
+dato viene de la información del riesgo a las puntes la dejamos aquí fijas en en el en la
+regla que creemos en las reglas que por cada rola podemos tener podemos tener diferentes
+combinaciones por modalidad por tipo de riesgo por cobertura puede cambiar el rango de edad que se va
+a utilizar no entiendo bueno mira freddy te trato de explicar mejor en el producto nos piden que
+manejemos si la cobertura se va a presentar o no dependiendo de la modalidad dependiendo del tipo
+de riesgo sea el tipo relacionamiento que es el que estamos viendo aquí y obviamente la cobertura
+y un rango ya predefinido lo que estamos viendo ejemplo muerte se va a mostrar para el conjugue
+si está entre 18 y 40 años vale que es eso que está acá exacto pero eso para la modalidad tradicional
+pero para la modalidad de billete sólo se va a mostrar si el conjugue está entre 25 y 50 un ejemplo
+cada una de esas son una regla o sea tienen que hacer esos grupos para saber cómo como presentan el
+grupo de coberturas ustedes tienen que hacer por grupo de coberturas o sea este es un grupo este es
+otro cuáles reglas aplican no sé cuánta les van a salir una 10 20 no sé vale básicamente es es
+casi que una regla aquí por cada registro que nosotros teníamos anteriormente en los pacotes
+sí pero ya agrupando todas estas coberturas aquí ya tú tú aquí cada una de las reglas tú le vas a
+decir vale si me cumple estas reglas yo te presento estas coberturas con estas características
+si es otra regla pues tienes que meter todo este esto es un solo registro vale el concepto en
+mongo esto es un solo registro sólo que esto pues eso no hace tanto descentralizar esto es un
+solo registro entonces es una regla que es otra pues mete otro registro contra regla para que el motor
+cuando vaya a evaluar aplique alguna de esas reglas que está aquí el el debe en la regla aplica
+sobre todo este contexto y la operación en caso de móvulos es que devuelve este contexto
+ya te comprendo gracias
+sigo desde ahí tienen que meterlo por reglas vale y lo mismo lo hacen aquí acá vale con
+eso van a configurar cada uno estos bloques que nos falta nos falta este pedacito
+cuando yo estoy creando este ya lo tengo
+que hice el otro me perdió
+cuando yo estoy creando
+las reglas en cada uno de estos bloques yo tengo que especificar cuando es cruzada es decir
+por ejemplo voy a poner el ejemplo del hijo el hijo que es el que yo al hijo le voy a decir lo
+siguiente en este paquete en este módulo hay una condición nueva que es rix si ves rix
+que está metida dentro de la definición es decir aquí dentro de la cobertura acá dentro dentro de
+lo que es la información de la cobertura hay una nueva línea que se llama rix si ven si ven que
+aquí está cover asidí data vale y dentro de data hay un grupo dentro de data hay un componente
+que va a ser nuevo que se llama rix o sea dentro de este componente está rix que por aquí manumisa
+favor de pegarme una una imagen esta copiar imagen esta si ven que está rix vale qué es ese rix
+pues simplemente lo que hicimos fue vale está estas condiciones que aplican en este módulo
+en este caso es del hijo que es el 30 yo configura eso pero dentro de cada una de las coberturas tiene
+un comportamiento cual comportamiento me está diciendo que es el 100 por ciento del titular
+en esta garantía vale entonces ustedes tienen que hacer esta la garantía familiar familiar completo
+vale entonces en este caso para la cobertura familiar completo
+le estamos diciendo para la cobertura familiar completo dos puntos es el 100 por 100 del titular
+vale qué significa eso que aquí en rix cuando venga rix yo tengo que poder identificar el
+dato único en la polisa tiene que ser único que me identifique quién es el titular porque yo no lo
+puedo hacer por riesgo yo no le puedo decir que el titular es el riesgo 1 el riesgo 2 porque puede
+ser el titular el riesgo 30 y no entonces cómo se hace eso pues en toda parte de rix
+me dice rix vale entonces yo lo voy a decir quién es el dato que me va a identificar el
+titular quién me identifica el titular en este ejemplo que yo estoy colocando acá
+la redazo exacto entonces el titular le va a decir que es el dato que viene con relación con qué
+valor 15 en este campo que está aquí yo le estoy después en varios vale 1 2 pero en este caso
+yo en este punto de rix le voy a decir que para esta cobertura de este modo de esta parte que es para
+cuando es juanito sea que la relación cuando ese aquí es juanito es 30 que va a buscar esto me
+muestra las coberturas pero en la cobertura para la quitar esto y va a poner aquí bajito
+para la cobertura familiar del hijo sea de ésta tengo que ser entonces ustedes van a decirle
+aquí que el valor por defecto es el 100% de la cobertura el titular pero yo no sé quién es el
+titular entonces yo tengo que informarle aquí cómo el sistema va a identificar quién es el titular
+entonces si yo le pongo aquí con datos variables por eso lo de los datos variables él va a buscar
+este dato variable dentro del conjunto de entrada que vino en el polizón y decir a vale quién es el
+que viene qué riesgo es el que viene con este dato 15 entonces va es el uno es el 12 es el 30 no es
+este el riesgo en este caso es el 1 vale y el que hace ya identificó el riesgo entonces el 100% del
+valor del titular va a ser lo va a contrastar ya no contra el valor de definición de ésta asociada
+aquí sino contra la definición que se haya puesto en previamente en el riesgo en este caso
+el titular qué implicaciones tiene esto que esto tiene un orden es decir yo no puedo pedir de primeras
+el hijo y de terceras el papá porque él va a buscar este dato y si todavía yo no he grabado el papá
+no me encontrará ningún capital entonces no va a hacer ninguna validación vale es el orden es
+fundamental vale es si el orden para eso dependiendo de cómo nos nos piden esto también nosotros
+vamos a organizarnos en el producto vale entonces esa información de esta manera el sistema ya
+me va a cruzar que la definición que yo esté colocando en esta cobertura y aplica a cualquiera
+estos componentes del capital el valor por default es depende de en este caso del dato del riesgo
+que esté asociado a este dato y este dato tiene la restricción de que es único o sea no puede
+haber otro 15 porque sino el sistema no va a saber dónde está o fin de la historia fácil
+listo probar a la de freddy ya va no puede tener otro 15 eso que es que dijiste es la
+relación el tipo de la relación si y si es hijo pero por ejemplo en el dedo en esas graves freddy
+hasta 10 hijos si pero dependen de el papá no de cada uno de no el hermano mayor ni el hermano menor
+claro pero digo este así se pueden repetir pues así tú puedes aquí colocar el el hijo tiene dos
+hijos pues que va a encontrar que cuando metan el otro tercero en este caso imagina que tiene
+otro hijo pues esto se va a repetir o sea él va a crearte otro riesgo porque eso es lo que hace en
+este caso el riesgo 4 cierto pero ya es ya no es juanito sino epita y dice a vale tal y la
+relación es 30 porque sigue siendo hijo y esta regla cual va a encontrar pues va a encontrar esta
+la misma de acá y va a decirle a la cobertura fallecimiento del riesgo 4 depende de la relación
+del 15 quien del papa vale freddy te comprendo pero bueno ya ahí ya con esta distribución me
+quedó poco más claro pero si me tengo la duda de cómo controlaríamos nosotros dependencias
+entre coberturas ejemplo en el titular si me contratan la cobertura 1 no puedo permitir que
+me contraten la 4 pero eso sí está eso se hace saca cuando venga en un ejemplo en la 21 no era la
+21 y el ramo 407 no 400 no verdades a 21 400 21 400 21 con eso aquí está todo esto mira aquí
+está esa relación por ejemplo la 7 por ejemplo la 7 no la siguiente la siguiente son
+esto lo puede ser mira esta cobertura la 40 28 tiene diferentes escenarios
+por la 9 es la 40 19 20 21 que son las enfermedades graves que son excluyentes entre sí por
+ejemplo ahí estamos en la 21 con la 19 con la 19 ni con la 20 ni con la tiene que ser menor
+igual a la 40 a 0 3 aquí están los escenarios vale a vale freddy vale perfecto esa era la duda
+si dentro de aquí está aquí está los datos mira la 40 21 tiene un valor por defecto entre
+tanto y tanto esta no depende nada todo esto se configura por cada uno y aquí están los
+diferentes escenarios los escenarios tiene más formas de hacer esto es un ejemplo vale si tenía
+la duda es aquí de cuando yo ya ingreso la agrupación de cobertura si a cada cobertura
+internamente yo le podía poner muchas más reglas veo que sí completamente dinámico vale ya me
+puedo tomar este ejemplo y para montar las dependencias de su fiero de su fiero que levante
+las dudas y alineas con jordanis para que te diga mira está usa este ejemplo está usa este
+ejemplo para que te explique esto que yo estoy haciendo acá dale y estoy a configuración ya
+no tienes que desarrollar o ponerte esto está ahí no ya es configuración así hay inclusión hay
+excluyentes o ahí hay hasta cumulos ahí vale vale pero esto ya es dentro de la definición de aquí
+esto ya está metido aquí o sea va aquí en este grupito ya está metido allá conforme se comporte
+cada obviamente tú tienes que hacer un análisis de cada uno que te sugieron que primero hagas uno
+estándar montes esto para un año y después lo replicas para el resto de los años
+lo coordinan con vinita ok y si tiene ejemplos porque ustedes van a estar muchos ejemplos de
+los que hemos implementado para para uruguayo panamá pre le preguntan a jordanis oye tenemos
+esta configuración y yo así como me dijo ahorita así es están en ya se sabe hasta los códigos de
+todo esto porque la juertura si todos los documentos de menores para que no pierdan
+la confianza ejemplo ésta creo que es excluyente en este escenario creo que es excluyente no la cual la
+dos por ejemplo a la dos la dos creo que es fallecimiento no la dos con este fallecimiento
+occidental no que está esta por ejemplo para contratar la 40 01 es obligatorio haber contratado
+la 40 03 claro pero esa es obligatoria pero hay una creo que hay una es de invalidez y exoneración
+esas son esa no esa no baja la 4 aja puede ser esa con la 40 87 que debe ser así mira aquí le está
+diciendo que la si para contratar ésta tuvo que haber contratado ésta y ésta esto que se me no
+acuerdo que se me no me acuerda esto hay un documento vale te lo va que sepas que es cada una estos datos
+vale si si me leo el documento se viendo que la s es para la dependencia la x para la exclusión
+por cobertura si quedamos con la duda con la m la revisión es la documentación vale bueno
+tres compañeros esto está implementado lo vamos a certificar si sale sin si sale en incidencia los
+vemos con david previamente lo revisamos aquí es que necesitamos ahora porque vamos a se fue david
+pero vale la idea cuál es ir incrementando el conocimiento en el activo desde brasil vale
+una parte es configuración como lo que estoy explicando yo ahora dentro del componente de
+mongo a partes esto lo estamos haciendo ahora sí porque no tenemos el taller de productos vale
+una vez tengamos el taller de productos el taller me va a poder configurar todo esto y me lo va a
+grabar aquí en el catálogo no tengo que hacerlo esta pedal vale pero viene bien que entendamos
+esto por abajo desde para que ustedes vayan sabiendo dónde está el problema la idea inicial es que
+ustedes primero hagan una un primer filtro donde puede estar el problema vale el problema puede ser
+la configuración el problema es tal cosa un primer filtro que no logramos ajustar que no
+identificamos por qué entonces ya lo trasladan aquí en la sesión del mediodía vale para ver el
+problema y ahí se ve y se trata de mapear y si el problema es realmente de del activo ahí si
+hacemos un gira con alba para llevar una una trazabilidad de los incidencias pero primero
+necesito que ustedes desde brasil hagan un primer filtro vale agreed acuerdo y al mediodía pues
+tratamos la incidencia a ver si se mantiene y si no pues y si ya la la la vamos gestionando con alba
+eso es creamos en su tarea y tenemos que ver así en el país al origen de la incidencia y listo
+de grabar ya si algo más compañeros dudas aquí
+con eso le queda claro
+una duda no hay formación sobre el tema de tener una primer filtro en brasil
+hay el correo que chila se ha enviado cerca de alex sobre alex que puede ayudar alex está con
+nosotros está con nosotros aquí y nos gustaría saber cómo podemos empezar los trabajos para que
+alex se puede ayudar y el equipo vale la primera manera es entender el comportamiento
+funciona lo sea estas estas cosas que yo estoy explicando acá cómo funciona cómo están
+configurados dónde está y ahí sí tiene más conocimiento de lo que se ha hecho con vini o
+con da con fernando para explicar que se ha hecho dónde está cuáles son los componentes que tiene
+explicarle ustedes pueden explicar que tenemos el activo digital usados dos dos bases de datos
+hacer explicarles los conceptos cómo se configuran para que entienda todo esto que estamos hablando
+acá vale como un sin esa base es mandarlo al agua y si ahora entonces para que para que entendamos
+cómo está funcionando el producto cómo se fue como tras traza e atributos contra el activo
+controles técnicos contra activo cálculo contra el activo esto contra el activo bajo esa base ya
+ahí sí ya entender el concepto en línea generales para ir a la a las tripas del activo es más fácil
+más más comprensible vale perfecto la ola puede hacer ustedes desde allá perfecto y te comentamos
+cuando cuando esté listo vale eso es cuando tengan esto implementado no lo muestran que
+me gustaría verlo perfecto listo vale listo listo al bar así corta gracias esto era no este

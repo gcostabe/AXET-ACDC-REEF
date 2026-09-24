@@ -1,0 +1,1861 @@
+Por eso te pregunto, pero si es que lo tienes, también.
+Vale. Bien, entonces retomando un poquito.
+Yo lo que definí.
+¿Por qué no lo compro?
+Vamos a mostrar acá. Entonces, vuelvo a compartir, vuelvo a grabar, porque soy que grabar.
+Pero los axons, los axons estoy viendo aquí que tenemos.
+Va a explicar, eso es lo funcionales y no funcionales, que hay de bloquear.
+Este documento estará, ¿no?
+Este documento, Manuel es muy cuisioso, el otro Manuel.
+Y cada vez que hace una actualización sobre los funcionales activos digital, lo va colocando y lo va actualizando este documento.
+Entonces este documento es técnico y funcional.
+Está explicando cada una de las propiedades que tiene el activo digital de cargos.
+Pero esto va a quedar en ese coño.
+Que no sea nada, es que me puede ni girar poco, lo controlo, pero lo pone.
+Obviamente se ha publicado, porque esto me imaginó que se va a subir a la plaza.
+Con todo esto que estamos hablando.
+Entonces aquí viene explicado cada una de las funcionales.
+Mirad, entonces tenemos datos variables, datos fijos, costantes cuestionarios, documentos, coberturas, asegurados, participantes.
+El tipo de filtrado que lo que estamos hablando.
+Está parte mucho más técnica que la forma en que el motor, de lo que está a dos, de la cese de trabajo.
+Pero, pero, pero no hay que, no hay que, para acá.
+Ahí dicen datos fijos en los, en el ámbito.
+Sí.
+Es el ámbito, ¿no?
+Sí, yo vi lo que puedo hacer.
+Cuando decimos, datos fijos en lo que explicaba Jack Fenns.
+En el botón de siguiente, la propiedad está en contra el técnico.
+Entonces es para variar.
+Ya sea como un rechazo o como un contra el técnico.
+No se lo sé, ¿no?
+No puedo modificar datos fijos.
+Por ahora no hemos llegado allá.
+Eso lo van a hacer el resto.
+Yo ya voy a pegar la bandera y ahí palan que quieras.
+Más no al implementar eso.
+Ah, nada.
+No, pero.
+Por eso no lo implemento, pues que lo hagan.
+La idea es que la base es esta y obviamente no pasa mucho más cosas,
+pero pues está bien sustentada, ¿vale?
+Es aquí se está explicando un poco más al detalle las referencias
+para que tengan información del proceso de lo que es el orquestador,
+del motor, del activo digital.
+Vamos a ir viendo conforme trabajemos ahí los detalles.
+¿Qué procesos tiene?
+¿Cómo los trabaja?
+¿Cómo lo guía?
+Entonces este documento lo vamos a compartir,
+pero que sepa que lo tenemos porque así me están preguntando
+dónde está la definición de los niveles,
+dónde está la definición de los niveles.
+Bien.
+Entonces como ven esta regla está operativa.
+¿Qué pasa?
+Esto vuelvo y digo porque aquí había un error,
+que ya no está a este.
+Esto está dentro de la colección, ¿no?
+Pero ese dato no aplica aquí porque el tipo no es asignación,
+el tipo es de asignación, o sea poner un valor.
+Si fuera un control técnico sí, ¿vale?
+Pero como no es un control técnico ese dato está más.
+¿Por qué lo ponemos?
+Porque estamos metiendo la mano directamente a la base de altos.
+Esto lo va a controlar el proceso dentro del tarjet de productos.
+Entonces yo dependiendo de la categoría que estemos viendo acá,
+que si el tipo de tipo dato fijo, actualidades, coberturas,
+controles, etcétera,
+esto va a estar parametrizado dentro del salier, ¿vale?
+Esto va a pedir codificación.
+Ah, no.
+Otra cosa es que ustedes tienen que empezar a trajos también, ¿vale?
+¿Cuándo no lo va a meter, ¿no?
+Es que ya no ustedes empezarán a apagar.
+Sí, está ahí, sí está, ¿no?
+No.
+Yo diría que no, vamos.
+Igual que el TMD, algo se desplegó, luego se apagó.
+No sé el estado en el que...
+Porque, claro, nosotros ya estamos enganchando y potenciando esto
+porque ya sin estas herramientas el ritmo va.
+Y que están produciendo ese modo, no villado pedanto.
+No están... Aquí hay compañeros de TMD, ¿no?
+Está, Gaby.
+Nosotros con Gaby hemos...
+No sé, se han dado varios negocios, de negocio, de trabajo,
+para poder hacer toda esta parametrización acá,
+porque la que tenemos actualmente, es la básica.
+El dato general es, vuelvo y digo, que aquí ya vamos entendiendo mucho más
+su relación.
+Luego tenemos las condiciones.
+Esto es lo que mayor, igual y menor, ¿vale?
+Y las acciones.
+Entonces, aquí, aquí es donde van a ver ustedes esto, ¿sí bien?
+Aquí va a hacer de auditoría un control técnico, un rechazo cuestionario,
+tarifa, documentación, de observación, ¿vale?
+Y el que más prima en todo es este.
+Si yo defino uno de tipo rechazo y aplica el rechazo hasta ahí para...
+Si el motor dice, me detengo y tome la información.
+No va a hacer nada más, ¿OK?
+Si el rechazo el detiene toda la operación.
+Entonces, Reggie, todo lo que informe en el taller de productos en esa pantalla,
+se va a ir a Mongo a la tabla RS Rules Actión.
+Sí.
+Y esto se lo vamos a entregar a los usuarios, ¿en eso?
+Sí, claro, sí, pero por eso, que es para ver la conexión, ¿no?
+Y, Reggie, ¿hay algún tipo de implantación?
+Sí, y por eso queremos aquí invitar a nuestra amiguita
+a que nos ayude a hacer la gestión.
+¿Qué va a pasar? Obviamente, ahorita esto es manual.
+¿Vale? O sea, con las reglas, la parametriz, si voy una.
+Ya están preparando también lo de las carnes de reglas de Excel.
+Hoy parametrizando, ¿como?
+Las cargas y los tubos del sistema.
+¿Qué pasa?
+¿Cómo sabemos que una regla no es eso la página de densidad, eso es la página de reglas?
+No, o que una regla está diciendo un valor y luego hay otra que hace que lo cambre.
+Sí, o, totalmente, ese tipo de cosas pues a pedal no las podemos controlar,
+porque en España ya van más de mil retas.
+Brasil no sé cuantos van a salir, ¿vale?
+En Panamá, ¿cuántas teníamos de selección?
+¿En Panamá te lo sé?
+No, estaba una versión pequeñita.
+Exacto, todo lo que es control técnico.
+Como en 8000, 8000.
+¿Esas dan 17000 reglas se subieron en la final?
+No, no, se la pudimos que poner por fe.
+Pero acuérdate que eso con los operadores nuevos, esas 20 y tantas mil se hubiesen reducido muchísimo más.
+O sea, ¿qué pasa?
+Obviamente son un montón de reglas y que uno no es para gestionar,
+entonces por eso que la reunión es este viernes a protesto.
+Se va a trabajar con Parabitman para incorporar una gente de día que nos ayude a hacer la gestión.
+Para que tengamos el control, que oye, si yo que estoy haciendo una regla y le valúes y esas reglas ya existen,
+o se solapa, o sí, en la gestión, pero listame todas las reglas.
+Yo por ahí veía una gente de día en el Mongo, ¿no?
+No lo pueden mostrar porque la idea es la parte de la operación que queremos incorporar.
+Pero es igual no, o sea, está perfecto, pero igual nos libramos de que el usuario mente a una regla que...
+Pues la idea es que podremos dar el control, o sea, le vamos a dar el control total de esas reglas a los usuarios.
+No, ya no vamos a gobernar, eso es peor. Poderle un policía o...
+Claro.
+Es aquí yo...
+En Panamá hay 58.000.
+58.000.
+No, pero de vez en que no se han borrado la...
+Esto es para las curis.
+Ah, bueno, que no hay para...
+De vez en que no se han borrado las 20.000.
+Si, ya tenemos...
+1, 2, 3, 4, asigné esto.
+Y si hay otra regla que diga, así mismo, todo algo viene con 2, asigné esto.
+Ahí están aplicando las dos reglas y hoy tienen dos valores diferentes para asignar.
+Esa sería el problema, es una parcia.
+Pues miren, ahí...
+Es un ejemplo, no pueden usar un IN y el otro compañero.
+Esto es por las que Manu también...
+Ya no le puede decir con el agente...
+Cosas.
+Pues pocas dos.
+Espera, espera.
+¿Dónde quedas?
+No, hay un montón. 9.000...
+¡Vamos a hablar con la compañía!
+Vale, por la compañía.
+Puede ser que haya...
+Nadie igual son 1.900.
+Y debe ser que en Panamá se quedaron...
+O el archivo yo lo tengo con un fichero.
+Seguramente tengo un fichero.
+¿Y esto no debería estar así?
+¿Esto no debería estar así?
+Sí, sí, sí.
+Lo que pasa es que para tener los escuplos y que eso pueda servir de guía,
+hemos hecho una importación de todo lo que todos los...
+La de Corea.
+Entonces, esos agentes,
+eso que está ahí es lo que queremos incorporar...
+A la comunidad.
+En la selección, no sé, sin modos también.
+Pero que nos desayuda, ¿vale?
+Para que sea a través de poder gestionar las reglas.
+Vale, pero la idea es...
+Lo que comentaba Alfonso...
+No estamos aplicando esquemas.
+Entonces ahora mismo tiene el esquema flexible.
+O sea, se puede fijar esquemas.
+Porque sin esquema previamente definido,
+ahí nos bate con validad,
+que no hay contra que valida.
+No sé.
+A la gente que se monte acá, hay que decirle,
+su base es un polizón.
+¿Y qué es un polizón?
+Hay que enseñarle qué es un polizón.
+Polizón, que esas características, esas propias.
+Aparte de eso, hay que informarle qué es el producto.
+El producto de esta información,
+estos atributos, estas coberturas,
+la combinación de todo eso,
+ahí si yo puedo,
+con esa base de conocimiento, decirle a la idea,
+empecemos a arquestar cosas.
+Y a día de hoy, estamos con esquemas de manco,
+que se puede poner claro.
+Claro, no, es para tenerle una base,
+para que el sepa lo que decir.
+No, es como todo, esto es la larga desprogramación también.
+Pero lo que estamos pensando es,
+yo tengo una base, ¿cuál es la base del producto?
+Entonces, al ámbito del producto.
+Otra de los puntos también son las constantes,
+porque esto también me involucra constantes.
+Esa tabla de CN, C, que por ahí tenemos,
+todo eso también está ahí.
+Entonces se le alimenta eso.
+Más, el polizón.
+Se le alimenta un polizón.
+Ya tenés esa base, ¿oye?
+Empieza a construir reglas,
+o validarlas, opciónarlas.
+Y eso es lo que queremos,
+no sé si así, pues,
+ella no lo sé.
+Si va a ser de con entrada,
+pero sí que sea,
+es importante que nos ayude a accionar,
+porque si hay 90,000 reglas,
+100,000 millones que tenían,
+es imposible llevarlas a cabo a pedazo.
+Bien.
+Entonces,
+en base a esa información,
+voy a volver a compartir.
+Entonces nosotros tenemos esto,
+vamos a hacer
+los diferentes puntos que tenemos,
+vamos a pasar a la siguiente categoría,
+que sería a nivel de riesgo.
+Y a nivel de riesgo podemos hacer eso.
+Ahorita de controles técnicos,
+¿reparemos un CT?
+Un control técnico, ya tengo un pre,
+pero no sé, tengo un error que no me avanza,
+para que tenga un error en la regla del pre.
+Un pre de...
+De actores de riesgo.
+Pobremos esto.
+Un control técnico en el final.
+Un 4-0-10.
+Ya tenemos un pre de riesgo.
+Un control técnico en el final, ¿de polisí no salta?
+Un pre del dato variante de polisí.
+Pero no habríamos de hacer un banque.
+También tenemos un ban, ya.
+Pero de riesgo o de polisí?
+De polisí.
+Pero está para lo de nano.
+Para ahí todo.
+Tú eres un alumno adelantado.
+Ya te he configurado los modos.
+Y no lo hemos explicado todavía.
+No lo he hecho.
+No, está bien.
+Entonces.
+Vamos a...
+2, 4, 5.
+Tenemos aquí 6 reglas.
+Es que ya dan un ratio.
+Y vamos a decirle
+que es de validación.
+Entonces, aquí lo voy a decir que es
+20.
+20.
+Ah, eso hizo lo uno.
+Y aquí aparece eso lo uno.
+Y la acción, la condición es que
+No llegue.
+Esto es n, el valor de este dato.
+Y la acción
+es 3.
+Si no tienen
+más conexión a la acción.
+Bueno, es el mismo ban.
+O sea, lo que pasa es que si lo modifican el pre,
+volví a colocar el 3.
+O sea, el pre es de los primeros 3.
+Si yo le pongo el 4, el valor volví a poner 3.
+Pero eso no es un ejemplo real.
+Eso no es un ejemplo real.
+Vamos a desplegar
+el fix en Brasil, ¿vale?
+¿Ya?
+Sí.
+Vale.
+¿Le coloco el valor?
+No, pero es que para lidiar
+no asignamos valores.
+Sí, sí, pues.
+Pero no deberíamos.
+Lo puede con un valor
+sino un valor, un dato variable.
+Eso no es el tercer.
+Es lo que yo ya te voy a entrar ahora.
+Es un control técnico
+porque no sé cómo generar un mensaje.
+No.
+No puedo desplegar.
+Acústalo.
+Acústalo de validación
+para que llegue la validación.
+Pero no asignan un valor.
+Que valida que es una variación.
+Bueno, pero cómo lo valida
+si no hay un mensaje que gormeca?
+Eso es lo que queramos te escuchen a ver.
+Vamos a buscar
+400.
+400.
+Y buscamos un 20.
+Vamos a hacer un pelín.
+20. 30.
+Acción.
+Vale, esta es una validación.
+¿Vale?
+Esta condición está diciendo que
+si este dato fijo
+que es el número de contrato
+es igual a 18.
+Y el tipo de manipulamiento que X que es
+existe a nulo.
+Entonces va a dar
+de tipo rechazo y va a dar este CT.
+Cuando este CT
+¿Qué estamos haciendo con los controles que son?
+Están, ¿vale?
+Definir un control de tipo polisa
+o a nivel que sea de rechazo.
+Para que no estemos creando
+n controles técnicos de rechazo
+para la definición como tal
+de por qué tanto es este.
+Pero se puede poner de rechazo
+si quieren dejarlo en los niveles donde quieren controlar.
+Entonces,
+cuando se lance sale este
+que es de rechazo
+el mensaje que va a salir es este.
+¿Vale?
+Y como les decía
+el tab de rechazo
+para toda la generación.
+Entonces,
+si quieres copiate uno de rechazo
+¿Vale?
+Ahora me entro...
+Lo que va a hacer es que te va a lanzar un CT.
+¿No?
+Va a lanzar el mensaje de rechazo.
+Va a detener la operación.
+¿Qué diferencia entre un CT
+y no es una validación?
+Es distinto una validación
+de un CT?
+Sí, la de rechazo
+cuando el rechazo detiene la operación.
+Yo creo que hay una pregunta pregura.
+La pregunta pregura
+es...
+volviendo a nuestro esquema original.
+Yo en un
+un bar de un dato variable
+pone una validación
+que me paró el proceso y me salió el mensaje
+y luego
+las controlas técnicas que hacen otro tipo de evaluaciones
+como otro tipo de lógica.
+Aquí
+en que cuando agregamos
+una validación y cuando agregamos un control de rechazo
+porque ahora cambia.
+El rechazo te va a detener el proceso.
+En los dos casos.
+Un control técnico de rechazo no te deja seguir.
+En los dos casos la validación tampoco.
+Y el rechazo te lo detiene.
+Entonces aquí en este momento del tipo de rechazo
+tú lo puedes tener aquí
+el proceso no va a continuar.
+Vale, no sigue.
+Se detiene.
+Ya si quieres un control técnico
+pues ya lo es de rechazo.
+Ya la acción es de rechazo, es de auditoría.
+Entonces se va a generar un CT
+de auditoría.
+Por eso, cuando voy a hacer una validación
+y cuando un control técnico de rechazo
+ahora con este nuevo modelo.
+De rechazo tú lo defines así.
+Eso es una validación.
+Es una validación
+que hace el mismo control técnico.
+Pero no es lo mismo
+porque el control técnico tiene que ser autorizado.
+Una validación.
+Vamos a definir
+una validación.
+Es de un dato X
+de tipo rechazo.
+Con este mensaje.
+Este código es el simil que se generaría
+si fuera forto donde tuviera la vida.
+Y una condición.
+Cuando el sistema, cuando se depone
+en el activo digital de acción
+rechazo y cumple la regla
+va a mostrar este mensaje
+de salida y se va a poder visualizar.
+Estoy en READ
+el mensaje que salió
+y de qué dato salió.
+Siento que salió de este mensaje.
+No te deja continuar.
+Por más del que le deciguiente volver
+a lanzar eso, le tiene el proceso.
+Pero no hay diferencia
+entre una validación y un control técnico.
+De este caso no.
+Con este rechazo es lo mismo.
+De la ejecución.
+Si tienes uno de auditoría
+en contra del ACM
+de tipo de auditoría se genera
+y ya se lo pasa, pero ya continúa el problema.
+Es un bar que acabamos de hacer.
+No, no.
+Es un 2-0-0.
+Es 15.
+15.
+4-21.
+¿Qué programas?
+Un number.
+Dato variado.
+El técnico.
+4-21.
+Hay un.
+¿Y qué condición tienes?
+Si el día pago es nulo.
+Tiene un
+rechazo.
+Este que llegara a ser un día pago.
+Este código ya lo tiene reflexionado abajo.
+Está nada.
+Es el control técnico.
+¿Y el control técnico?
+Un level igual no vale.
+En este caso,
+sí porque está devolviendo.
+Es que para nosotros este es el control técnico.
+Sí.
+¿Tiene un level que hace?
+Está asociado al CT que está acá.
+¿Visión de salta?
+Sí.
+Pero al final no tenemos el nivel de salta.
+En el ámbito.
+Sí, pero igual.
+Esa es la referencia que tengo aquí con este código.
+¿Por qué el otro sí no lo ha quedado aquí?
+En el de asignación.
+Porque es un asignación.
+Es un previo.
+Dependiendo del tipo.
+No, no.
+Es el rechazo.
+Para el de asignación,
+no tiene nada que ver con el control técnico.
+Sí.
+Por si arriba ya tenemos el nivel de salta.
+Va a estar asociado porque está colocando el ámbito.
+Vale.
+Puede ser por la definición del control técnico.
+Sí.
+¿Dice a qué nivel?
+Aquí tenemos esta variación.
+Si entran allá, ¿quién entra?
+Pero vale aceptar.
+Porque creo que lo tienes en editar.
+No, cancelarla, cancelarla.
+Entonces, ¿entra?
+¿Quién entra?
+A mí mismo.
+¿Para entender?
+Igual, ¿dónde al final el control técnico en vez?
+La referencia, sí.
+El control técnico...
+El código, sí.
+Lo que va a hacer ya es tú gestionar.
+No, el control técnico, una valida.
+Porque hay que tener una integridad.
+Esto es más por mantener la integridad contra el RIS.
+Pero, ¿en este punto el control técnico?
+Sí.
+Si es de rechazo.
+No, imagínate que esto en los bandas es un temele.
+Es decir, oye, la observación salió el 42-20
+y salió el mensaje.
+Verse el código 42-20
+es una variación que realmente generó
+para mantener la integridad contra el RIS.
+42-20.
+RIS, tú vas a buscar ese test.
+El 42-20.
+Listo.
+Lo mismo que te va a aparecer, ¿cuándo son las editorías?
+Son las configuraciones.
+¿Puedo tener un programa o nada?
+Son las reglas que dos días...
+Claro, por definición, ¿vale?
+No.
+¿Morio?
+Como se ha puesto el control técnico,
+tenemos que poner el día del plan.
+La ventanita.
+Ya ha habido mucho tiempo en el país,
+la una y la otra.
+¿Han ido a la otra?
+¿A la otra?
+¿A la otra?
+Esto era un control técnico, ¿vale?
+¿Cómo me eres?
+No.
+Si yo acá...
+Esto está en uno, ¿cierto?
+¿Cuál está acá?
+Exacto.
+Aquí había lanzado el error, ¿no?
+No, que se le pasen el siguiente.
+Bueno, es que copié el Tegal tuyse, claro.
+Popió con el error, sí, todo.
+Claro.
+Así me dijo mi hijo, no, porque salió mal en el santo.
+Me dijo que él se había copiado, pero a culpa de la otra.
+Está perfecto.
+Lo que parece es...
+A ver, que será la otra.
+No, no, no, espera.
+No me vas a explicar.
+Es que...
+De esta forma es...
+Esa.
+No, pero tengo...
+Tiene el sinler.
+Aquí.
+Un control técnico.
+¿Cómo se lo hace?
+¿Cómo se lo hace?
+Es 1, 0, 0 a nivel de polícia, ¿vale?
+No, pero es que se fixe los datos fríos.
+Vamos a firmar el riesgo,
+los datos variables y el riesgo.
+Sí, pero es el control donde lo pusiste.
+En los datos variables.
+No, es un dato variable.
+Donde lo hemos puesto en el número de días de pago,
+es un dato variable.
+Ah, es una vez la validación.
+2, 0, 20.
+Claro, esa es mi duda.
+2, 0, 20.
+Es una validación, lo que hizo aquí.
+También fue una validación.
+Debe haber salido en el repotó.
+¿Ha hecho una validación?
+Sí.
+¿David?
+Te voy a cambiar el texto, no es un control técnico.
+Vamos a cambiar.
+Ah, sí, sí, sí.
+Yo creo que me va a dar un control técnico o una validación.
+Ay.
+Esa es la cosa que...
+Yo estoy aquí.
+Opa.
+Es que ayer vimos un detalle
+con el tema del riesgo,
+pero bueno, ahorita aparece.
+Este...
+Estamos lanzando esta validación
+de este dato variable.
+Vale.
+Espera, calcula, había algo mal.
+¿Dónde está el campo?
+El campo está mal.
+Entonces, sí.
+Compañero.
+Dejemos una razón.
+Vale, como ya ha pasado,
+el netete para acá.
+Ya lo pongo.
+Si no hay procesfil, muchas veces no lo va a obtener.
+Sí, sí, no.
+Creo que aquí fue el problema
+el interfaz entre las siguientes clases.
+La culpa es de España que me copió.
+¿Y el rule ID?
+Es igual también.
+Sí.
+¿Es qué?
+El rule ID.
+El rule ID.
+Esta también tiene que cambiar, ¿no?
+Mejor que cambie si se podría hacer un lío.
+Cuando esté bien, me avisas y lo coge.
+Listo.
+Gracias, y eso.
+Un día pago.
+Tal.
+Y la acción.
+Vale, vuelvo a probar.
+Vamos a probar esto.
+No te salgas del todo.
+No, no, yo estoy aquí todo el rato.
+Cuando se me menciona...
+Apareces como alguien...
+Aparezco, sí, sí.
+Estoy aquí, estoy aquí.
+No, que no salga, vamos a probar.
+Vete arriba.
+Arriba, arriba, arriba.
+No tienes que salir del río.
+¿Será?
+No se ha metido dentro de la...
+Pero si le das la derecha y podés ir a los ratofiles.
+¿De dónde?
+Dale ahí a la flecha.
+A la flecha que tienes a la derecha.
+Colapsador del menú laterales.
+Y de la información en adelante deberían lanzarte todo ya.
+Nada.
+Ah, no, pero cuando llegas a corto.
+No estoy nada en serio.
+Cuando llegas a corto.
+Te vas a ir modificando.
+Te vas a modificar la anterior.
+No.
+Perdona que sea tan pesado.
+Aquí estamos, es una variación, un dato variante.
+Ese código que aparece ahí no es un código control técnico.
+Está asociado.
+Está asociado.
+Lo definimos así.
+O sea, tienes que tener una cometa de rechazo.
+Es una variación.
+Yo creo que...
+Eso pudiera ser como tú dices una variación.
+Yo te quería que ahora, honesto,
+tú puedes colocar la variación.
+Los controles técnicos de rechazo
+lo vamos a utilizar más
+cuando tengas que evaluar
+más de un campo.
+Sabes, en la combinatoria.
+Sí, ya lo sé.
+Pero en la definición ahí en Mon.
+Es el 4, 2, 90.
+¿Qué significa?
+Es un trazado contra la G2210,
+2, 11.
+Es un código que está ya atado
+como rechazo.
+Si tú lo dejas definido ahí como rechazo.
+Error.
+O sea, un error.
+Los controles tenidos por evaluar
+tienen un código de error.
+No tenemos control técnico
+que no le tenemos un código de error
+del que está generando.
+Para este tipo de variaciones
+todos pueden apuntar a alguien.
+Si, si, si.
+Hay el C4.
+Se supone que al afletar
+hay que desaltar.
+Ahora es siguiente.
+Vamos a buscar y lo que existe.
+¿Y si utilizamos la misma regla
+que tiene el otro para descartar
+que no sea la condición?
+Es un código que copia el control técnico.
+El código de error sale
+y que sale.
+¿Puede ser perfecta?
+Si no, ha dado siguiente y no está salido nada.
+A mi no.
+A nivel de la auditoría.
+¿Te lanza?
+Si lo lanza.
+Pero por dicho que esto iba a ser una validación
+ahora, ¿no?
+Es una validación.
+Es una validación.
+¿Y la variación?
+Ahorita las cuadras.
+Si yo puedo poner, pero viene el video.
+Es una variación que estamos haciendo.
+Es variación, pero ahora les asalto a un control técnico.
+No, no, no.
+No, es ese.
+No, no.
+David, podemos seguir así.
+Esa regla, ese dato se cumple.
+En lugar del EQ 0,
+que había poner EQ string vacío.
+Mis comillas.
+Ya mismo.
+Lo voy a dar y me pongo string.
+Esto está jugando con el tipo de dato.
+David.
+Si.
+A ver,
+cuando el igual anulo,
+cuando nosotros montamos los factores,
+me parece que un anulo
+no lo puede tratar.
+Lo convertimos a string vacío.
+En caso de que no venga.
+Eso en las condiciones.
+Condiciones.
+Aquí, entonces.
+Me trae tu caso a string.
+¿Dónde saca los ejemplos, David?
+Es que voy a cortarte las manos.
+A string.
+Ah, si.
+No lo puedo refrescar.
+Acabo de darle.
+Vale, presenta otra vez.
+¿Qué pasa?
+Lanza el toro.
+Yo voy a hacer acá.
+Un movimiento.
+Eso.
+No va.
+Lo que hice fue copiarme uno de los que gané.
+A nivel de poli se le cambié el ámbito.
+Es un ámbito que la teníamos.
+A nivel de variación
+y de pre, le cambié el ámbito.
+A nivel de variación y de pre, le cambié el ámbito.
+A nivel de variación y de pre, le cambié el ámbito.
+A nivel de variación y de pre, le cambié el ámbito.
+Un día apago.
+¿Cuál es el valor ahí?
+Un día apago.
+Y cuál es el dato?
+Día apago por mes que no venga nulo.
+O sea que el testeño esté vacío.
+Esto es a nivel poli, ¿sabes?
+Como esto es un número.
+Pero no sé si...
+Está bien.
+¿El operador es el cual cuando es nulo?
+O qué operador es David?
+Es igual a vacío.
+Cuando es nulo,
+tendría que ser el equal
+con estringuación.
+Pero voy a mirar a ver si hay otra opción.
+Porque puede ser.
+Eso es todo, 0-0-20.
+No un día apago.
+No tiene más fiencia tampoco esto.
+¿Y si no el NX?
+Él no te existe.
+N-E-X.
+Sí.
+Déjame entonces.
+¿Pero tú qué puedes hacer?
+Mira, ¿por qué no hace más?
+Estoy intentando conectarme
+de Brasil
+para ver la audición
+y ver qué sale ahí.
+¿Vale?
+Con eso ayudará.
+Si el NX ya no hace falta,
+se puede quedar vacío.
+Simplemente no lo mira.
+David, por si sirve.
+Había un detalle
+que vimos allí con mano del riesgo.
+¿Ahora sí sale?
+No, debe seleccionar el día de apago.
+Debe seleccionar el día de apago.
+Esa es la validación.
+David, estos detalles hay que informárselos
+a Ravi
+para cuando estén parametrizando los...
+Sí, conoce todas las operaciones.
+En principio
+ya hablamos con él
+y le pasamos toda la documentación
+que teníamos de selección de riesgos
+con las operaciones,
+las acciones y todo.
+Lo digo porque
+claro, si va a colocar
+como en este caso, pues es que
+si es para evaluar un campo
+que no puede quedar nulo,
+el operador es ese,
+para no confundir, ¿vale?
+Es tu detalle.
+¿Ahora sí?
+¿Un CT?
+Sí.
+Un CT es...
+Oscar, entonces un 12.
+Acá.
+Un CT...
+No tengo nivel de polisacra
+en esta base.
+Oscar, uno de los niveles de riesgo
+lo pasa al otro ámbito.
+Aquí sí, ahí vea.
+¿Cómo así te clones?
+¿Ya los tenías?
+No busqué
+un nivel de riesgo que sea control técnico de rierto
+porque no hay control técnico de polisacra, ¿verdad?
+A nivel de polisacra no hay.
+Y te la acompañe a España.
+Púscate uno de...
+No, he estado buscando en toda la compañía.
+O sea, esto es junto a las maas.
+Aquí
+va a buscar uno de riesgo.
+Aquí tengo uno de riesgo.
+Esa.
+Entonces
+voy a clonarme este.
+No sé de dónde sacas tú.
+Lo que pasa es que hay controles
+los de España
+y toca tomar los que tengan las últimas
+versiones porque los primeros
+tienen errores de configuración.
+Es por eso no están pasando detalles
+que no deberían de pasar.
+Entonces, cuando filtes
+por el de España, toma los últimos
+por los de Febrero para acá.
+Listo, ¿vale?
+2-0-0.
+Entonces, ¿qué hace?
+15-4-21, 2-0-0.
+Este es el Cusion Type.
+Tiene 2 elecciones de riesgos.
+Lo localizo el número X.
+Y después cuadramos esto con una nominajadura.
+Es franco.
+¿Qué control técnico vas a hacer?
+Un control técnico que valide
+que no sé que la comisión
+no sea mayor a 10.
+Ahora no hay rechazas con la auditoría.
+Auditoría lista.
+Entonces, lo que colocó aquí es auditoría tal cual.
+Este digo...
+1-2-2.
+Tiene el desacto de 2.
+1-2-3-4.
+Las tiles las coge.
+¿Debería?
+Hablo con la prueba
+con carácter especial de intent.
+Bien, bien.
+En principio, si lo coge
+plasma ese mensaje
+y lo devuelve a la CEC
+y la CEC lo devuelve.
+Así que sí.
+No hace nada con el control técnico.
+¿Cómo lo escriben?
+Auditoría.
+Y a ver.
+Entonces, el control técnico
+va por los otros parámetros
+y dependiendo de si pones ahí
+auditoría o rechazo
+se lo considera de una forma o otra.
+Esa es de las fórmulas más.
+Esa ya es otro nivel
+de configuración, de fórmulas que hay más.
+Vale, con otra condición.
+Está muy compleja para yo.
+Es una pila, excepto una rail.
+Con una condición del campo
+que tenías en variable data
+igual a tanto el que...
+Pesadoro.
+Esto sería...
+Teníamos acá el texto.
+Voy a tomar un ejemplo.
+Ponle un diapago, variable data en un diapago.
+Partor, operador y...
+Vale.
+Partor es lo que está.
+Esto es sensible, ¿vale?
+Que allí nos dieron dos horas buscando
+ese error y eran porque la variable data
+de la UV era más lúscula.
+Y luego
+en condition es conditions.
+Con S, ¿vale?
+En la cuarenta y cinco.
+Conditions.
+Pero plural.
+Yo lo insertaría, miré a otra copia
+o el bloque.
+Si no, eso nos da error.
+Grábalo y lo modificas.
+No, porque tengo un error.
+Con comillas ahí en variable data.
+Con comillas en la cuarenta y cinco, ahí ya está.
+Y al helicóptero.
+Para este y para tomar.
+De acá.
+En la cuarenta y cinco ya tenía.
+No sé, lo sé.
+No sé, lo sé, lo sé, lo sé.
+No sé.
+Variable data.
+Variable data en este caso, digamos
+VST comisión, ¿cierto?
+VST.
+Digamos que quiero decir que no sea mayor
+al diez por ciento.
+Comisión.
+Así que no sea mayor al...
+LT.
+LT.
+LT.
+10.
+No.
+Eso si es menor, se cumple.
+Tienes que ser que no pueda ser mayor, ¿no?
+O sea, GT entonces.
+Dice.
+Pero habías puesto ya como
+ese parámetro en la terrenia ya definido
+por el trabajo.
+Pero no está bloqueado.
+Yo lo estoy diciendo, que a este atuario
+no sea mayor al diez por ciento.
+Igual, ponle, creo que G.
+E.
+E.
+No, G.
+No, G.
+No, G.
+¿Qué quieres que sea mayor o igual que diez?
+O menor o igual que diez.
+Y generar error cuando sea mayor o igual a diez.
+Y generar error cuando sea mayor o igual a diez.
+Primero control técnico.
+Vale.
+La condición.
+¿Qué dices?
+No lo he guardado, ¿cierto?
+No lo he guardado.
+No lo he guardado.
+Ahí está.
+Y la acción lo que lo vas a hacer es
+generar a nivel a todos.
+A nivel a todos.
+Julián me acaba de decir algo
+que tiene razón.
+En la 47 tiene valúes
+y es en singular valúe.
+Si no, no macha.
+Es posible que el error
+del equal string vacío
+antes no macheara por esto.
+Pero voy a cortar aquí
+los de algún amigo que está ahí
+al de los guerras.
+Perdiendo.
+Sí, por favor.
+Para que ya los va
+estructurando bien de la descripción
+de la regla, ¿vale?
+Porque en el momento todo eso se va a listar
+las reglas y todo eso.
+Entonces, eso también es importante.
+Por más leves,
+hay que colocar control técnico
+y una descripción.
+Entonces, ahí tú vas a poner control técnico,
+validación, de...
+Comunición, la mayoración, tal cosa.
+En los que hemos hecho entre
+el control técnico le ponemos el número
+de la regla, ¿no? También.
+Es para que ya cuando lo veamos...
+Porque esto se va a listar, ¿vale?
+Ahí ya la hay que...
+Cuando vemos él en la consulta
+sabemos que regla disparos.
+Y en el campo no hay que poner nada.
+El campo que está ahí.
+El campo que está ahí.
+Ahí va.
+Eso es lo que dice Martín.
+Le ponemos el corche en el principio.
+Ya, cierto. Aquí ya el proceso.
+Cuando salte por ahí, tú nada más buscas
+el Rula Ibi específicamente aquí.
+Ya sabes.
+Y el mensaje que quiero.
+Ahí tengo control técnico.
+Vamos a probar.
+Espera, ¿es process step?
+No, no.
+Cuando funcione explico,
+tú es un protocolo.
+Vamos a ver.
+Es...
+25.
+25.
+Así está.
+Eso ya es un día para...
+Bueno, que me agregó la dirección anterior.
+Si ves que está pendiente el sistema.
+Me está a la dios.
+Quiere saltar control técnico.
+Ahí tiene que saltar.
+No.
+Vamos.
+No, mirad qué le falta.
+Eso es...
+Opción número set.
+Opción número cero.
+Tipo...
+Bueno, esto ya no.
+Process step.
+Process step.
+Process step es...
+Pero pusiste tú.
+Process step es 2.
+2, 0, 0, 0, 0.
+Ahí está, miradmos qué se hace a configuración de 2, 0, 0.
+Que...
+Que estoy tratando de hacer la equivalencia
+entre la tablita afectando la transformación
+con eso.
+Yo creo que es...
+Porque es step led.
+Eso es prosos step, ¿no?
+Tiene que ser control...
+Qué dice...
+Dato variable.
+Técnic control fixen data 1, 0, 0.
+No, pero datos fixos, ¿no?
+Otros tenemos datos variables.
+Lo datos variable después le damos en el 2, ¿no?
+Sí, pero en este caso...
+¿Cuánto es el 2?
+1, 0 en la tabla.
+1, 0, 0, 0, 1, 0, 0.
+Pero es porque el dato fijo.
+Si es un dato variable, seguramente estamos...
+No, no, este ya...
+El control está sobre el botón siguiente.
+Está gobernando toda la pantalla.
+¿Cuánto es el 1?
+1, 0, 0, 0.
+¿Cuánto es el 1?
+1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.
+Está como maldefiniente.
+Ha explicado para nosotros...
+Con el cardón.
+Pero para nosotros...
+Sí, pareciera que...
+Bueno, ahorita que termina...
+¿Puse no?
+Va a cambiarlo, va a ejecutar.
+David, ¿me puedes hacer un favor?
+¿El motor ahí cuál evalúa? 1 o 2.
+Es que la del genicionista...
+Está haciendo consulta del 2
+lo que estoy mirando.
+Ahora mismo estoy mirando
+el audit, ¿vale?
+La audición.
+Entonces, a ver qué sale ahí.
+Probad y vuelvo a lanzar.
+Porque está aquí en la tabla.
+A ver, más o menos mira en la que me mando.
+Puedo probarte una pantalla un momento.
+Puedes ver si tú estás viendo lo mismo que yo.
+Cuando andan rodando.
+Mira.
+Yo estoy viendo esto, compañero.
+Estamos todos viendo esto.
+Vamos a otra cosa.
+Sí.
+Es aquí, ¿no?
+Entonces, aquí me dice...
+¿Pero te falta?
+Policistai, estoy ahí en el paso 1, ¿no?
+Aquí yo tengo paso 1 y paso 2.
+Entonces...
+Si debería hacer 1 o 0 o 0.
+Aquí...
+Vale, los datos fijos de la...
+Vale, estés mirando los datos fijos de la policía.
+Sí, David.
+Es que la combinación de lo que es la opción...
+La 0 o 0, son lo acerque.
+Entonces, cuál lanza...
+David, en ese punto.
+El botón siguiente es la primera pantalla.
+O sea, ¿está haciendo más?
+Le encuentro...
+Ahora es que estoy viendo la...
+La 2, 0, 10. Yo estoy viendo la 2, 0, 10.
+Eso es para Polizagrupo.
+Vale.
+David.
+2, 0, 10.
+1 al servicio del activo digital.
+1 o 2, porque ese es el...
+2, 2.
+Varios datos, polis.
+No, en la entrada.
+No, pues 2.
+Claro, el step level.
+Claro, el step level que llega es 2.
+Le llega 2.
+Y luego en la opción, le llega 0.
+Y en la opción, menú, número 0.
+Y en la opción, número 6.
+No, 0, 10.
+0 en el step menu.
+Y 10 en el step opción.
+Claro.
+En el menú es el 0.
+Pero están tirando un dato.
+Tiene que estar en el botón siguiente.
+Entonces, este...
+2.
+2, 0, 0.
+2, 0, 0.
+Ah, vale.
+Le están llegando 2, 0, 0, 0.
+A ver, en la valía.
+A ver, a ver.
+A ver, a ver.
+A ver, entonces, 2, 0, 0.
+El process time?
+99.
+Pero estaba nulo, ¿no?
+No.
+¿Y cuál era el que habíamos dejado al nulo?
+El nombre de...
+El file.
+El dato variable, el dato variable, el dato del control.
+Y la solución type sí que está como seleccionado.
+¿Qué le pusiste presente ahí?
+¿Presenta tu dato?
+¿Due?
+Selección, sí.
+¿Qué más tiene sí?
+99.
+2, 0, 0.
+Está correcto.
+No he ido bien negando los datos.
+Los datos, sí.
+Y...
+Ah, es que sabe lo que pasa.
+¿Que te vuelva a cambiar?
+Sector.
+Por 3 de porcentaje.
+Entonces, yo creo que nunca salta
+del control técnico porque siempre va a 3.
+El nuevo yopite se va al.
+¿Le quitaste el van?
+Sí.
+Cuando veamos que va a volar esta reña.
+Porque siempre te vuelve a poner
+en el van el 3.
+La configuración y la entrada
+están correctas.
+¿Por qué no estás haciendo match?
+Es que yo no lo he quitado.
+Claro.
+Que no me avisas de todos los pasos.
+Siempre lo estoy diciendo que me te avisas
+de todos los pasos.
+El repite se va al porque...
+Tengo por el problema.
+¿Qué va a dar el problema?
+Cuando hacemos...
+O sea, las que estoy viendo
+hay datos técnicos.
+O sea, controles técnicos.
+Hay una llamada de controles técnicos
+y otra llamada de validación.
+¿Qué es eso? La ST.
+La que queremos ver...
+La de controles técnicos...
+Policidata ST lo que acaba haciendo
+es llamar a selección
+de riesgos con los campos.
+1.0.0
+Eso sí es 1.0.0
+Los controles técnicos.
+Llaman 1.0.0
+y con 2.0.0.
+No, no.
+Los controles técnicos
+para el control técnico
+y los controles técnicos
+para el control técnico
+porque tenemos controles técnicos.
+¿Y el 2.0.0 no te está llegando?
+No, no. 2.0.0.0.
+Es que cuando se hace...
+cuando se pincha en el botón
+no gobernamos eso
+desde la CDF.
+Entonces, se me hace complicado, ¿vale?
+Entonces, yo lo que estoy viendo es
+1.0.0.0.
+y 1.0.0.0.
+Cuando se llama
+al servicio de controles técnicos
+y hay una orquestación, hay una definición.
+El botón no único lo está diciendo
+que estoy en la pantalla de datos técnicos
+porque había un enumerado investigado
+y para estos datos físicos tienes que invocar
+a, en este caso, a seleccionar riesgos
+con el 10 y con el 20.
+¿Puedo mostrar una cosa?
+Es lo que hay aquí.
+Aquí lo estoy viendo, lo que soy del soldadier
+de Felix, entonces él dice que ahí en el botón
+siguiente
+sale la invocación de controles técnicos
+en el desalto 1 y 2
+que es información general
+y atributos a nivel de policía.
+Pero lo que está diciendo es que solo...
+1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.
+Pero por qué no hace más, David?
+Sí, igual estamos pasando...
+Acabamos de cambiar a 1.0.0.0.0.
+¿Deberían hacer más?
+Hagamos solo una prueba si puede aislar
+porque yo veo muchas llamadas repetidas, que solo una persona haga una llamada,
+veremos todas las llamadas que hay, y a partir de ahí buscamos.
+Lo tengo listo para hacer una llamada.
+Dentro, si quieres borra, caché o borra esto para aquello.
+El hipóter val y estoy pendiente acá para el siguiente.
+Dale, dale ya.
+hay con uno cero cero se preguen y ejecutó pero no mostró el control técnico.
+Se colima el sistema de tabs.
+4 por centavos, 42.
+Si, el 42 es 10.
+Si, yo creo que el 42 es 10, es para todo lo que es Polis y el 42 no es para todo lo que es de los.
+Si, me da ahí.
+Yo ahí tengo ahora mismo dos llamadas.
+Tengo la primera, que es Validaciones de atributos a nivel de Polifa.
+Si, el control técnico tiene que ser mayor aún importante.
+Vale, que esa de ahí es la llamada con el...
+Con el 2, 0, 20.
+Si, este está correcto, vale.
+Y luego tenemos los controles técnicos, que el control técnico es con el 1, 0, 0.
+Para el 1, 0, 0.
+Para el 1, 0, 0.
+Pero es correcto.
+Ya te pones el error de nosotros, acá ya.
+El comisión, Valval 35, lo estrellas.
+El... el...
+El proces file es nulo.
+Si, si.
+Es lo nulo.
+Lo tengo con...
+Si, lo mejor es nulo.
+Si, si.
+Necesitaría proces file, ¿no?
+No, no debe, no tiene que necesitarlo.
+No, no.
+No, voy a escribirte.
+A la semana.
+A la semana.
+Sí.
+Sí.
+Sí.
+Sí.
+No, no.
+Val val de comisión, tú tienes ahí.
+El comisión 35, no, fantástico.
+¿Quién es el pinfamora global?
+Vale, voy investigando, ¿vale?
+Porque yo creo que es el tipo de...
+Pásame el... el...
+Vale, el Rula ID.
+Que lo iré mirando a la par.
+¿Qué son los dos peticiones que hay?
+El Rula ID, vamos poniendo un número...
+Sí.
+Sí, Rube, sí, Rube.
+O sea, es para obtener solo ese.
+¿Y vos?
+Ya que son los originales, ¿eh?
+35, 35, sí, sí.
+Si fan, que están estos dos.
+Son los dos llamados.
+Gracias.
+¿No fue lo que han hecho?
+Sí.
+La respuesta.
+Entonces la suferencia a David,
+para que los vayamos con esas buenas prácticas,
+que acabamos de seguir,
+que ordánees queden con el SAG,
+al principio ven el Rula ID,
+para saber de dónde está saltando esa cosa.
+Asumo que deben tener miles de reglas, miles de bares,
+si saltan algo, no saben cómo ubicarlo.
+Ahora tienen que fijarlo lo más.
+En el mensaje.
+El Rula ID y el Rula ID.
+Con eso ya lo buscamos, solo por ese.
+David presenta la pantalla.
+Para no dormirnos.
+Claro.
+Tenéis dos Rula ID iguales.
+En principio...
+Ah, pero ya está.
+Vamos a seguir con tantas manos.
+No debería afectar, ¿vale?
+Pero bueno, lo cambiamos.
+La compañía 15, lo todo está igual.
+Sí, compañía 15, lo que uno es el Ramo 421
+y el otro el 400.
+Ah, porque la suferencia está copiando.
+Ya estoy copiando.
+Vale, bueno.
+Pero eso no lo cambiamos.
+No debería afectar.
+Vale.
+Ahora mismo los cambio, ¿vale?
+Ya hemos lo copio después que funciona.
+A ver, compañía 15 Ramo.
+Ya estoy ayudando en las pruebas.
+Voy a cambiarlo.
+Esta es la llamada, digamos,
+que hace interna, ¿vale?
+Eso.
+Usa los cintros por aquí, el 999, selección.
+Pues está ahí el PID 99, está bien.
+Y el STP1.
+A ver.
+Ajá.
+Este P1, 00 y el POSESFIL, el nulo.
+Este P1, 00 y el POSESFIL, el nulo.
+Como no hay POSESFIL aquí, debería cogerlos todos.
+Y al fixar data nos da igual.
+Vale.
+FCT comisión, mayor que 10.
+Variable data está bien escrito,
+que llenamos con las paredes con eso.
+El variable data es variable data, está...
+Está bien.
+Entiendo que sí, que está ok.
+A ver.
+Variable data está ok.
+FCT comisión es mayor que 10.
+Debería cumplir, sí.
+Operator, valúe.
+Es valúe, ¿no?
+Sí, sí, es valúe.
+Está bien, está bien.
+Médico, valúe.
+Es por eso, será por eso lo que dice Raúl?
+No, da igual.
+Da igual?
+Yo creo que sí, da igual.
+Da igual.
+Lo miro aquí.
+Comparadores nusitos con un strings.
+Compara, compara.
+Puede con todo, en principio.
+A ver.
+Mira.
+Mira si es numérico, ¿no?
+Ponle un numérico.
+Vamos a ver, lo que pasa es que el debería que hacerlo igual.
+¿Por qué? Un doble.
+O sea, sí, por lo como dabel.
+Aunque debería que hacerlo igual, ¿eh?
+Porque lo convierte igual.
+¿Listo? Ahí los cambié.
+Vale, pues, a probar otra vez.
+Ya solo por control técnico, ¿vamos a echar el malo?
+Bien, bien.
+Sí, depurando yo a ver qué saco, ¿vale?
+Y comparte vosotros y voy mirando la par.
+Comparte, pobre.
+Ya cambia los id, ¿eh?
+Ya no escutamos.
+Ya cambia todos mis id.
+¿Ya qué vamos a hacer?
+No, no, no.
+¿Toma el control técnico? No, no.
+No está haciendo más.
+Pero tú lo cambiaste en el nómulo.
+¿Totito?
+Pero si ya saca, si ya saca, si ya saca.
+¿Qué?
+Dice que si se cumple el seteo, o sea, en la serie 1.
+No, no, no, no.
+No, sí, sí, que la vemos, pero no hay que, no se cumple.
+Ah, no se cumple la seteo.
+No, no, no, no, no, no hay ningún área de la dompa.
+Vale.
+Exacto.
+Si te hagas a cincen de riesgos, también está quito el editor.
+Pero no devuelve, ¿no?
+Vale.
+Gracias.
+¿Qué selección de riesgo se está devolviendo?
+Que se han recuperado reglas, pero no se ha aplicado ninguna.
+Sí, exacto.
+No es tan nada de que inicias de la regla.
+Debe ser, no, debe ser por el entero, este que hablábamos.
+Sigo mirando, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0.0, ¿vale?
+Tacón 1.0.0.0, ¿vale?
+Tacón 1.0.0.0, ¿vale?
+Tacón 1.0.0.0, ¿vale?
+Tacón 1.0.0.0, ¿vale?
+Tacón 1.0.0.0, ¿vale?
+Tacón 1.0.0.0, ¿vale?
+Tacón 1.0.0.0, ¿vale?
+Tacón 1.0.0.0, ¿vale?
+Tacón 1.0.0.0, ¿vale?
+Tacón 1.0.0.0, ¿vale?
+Tacón 1.0.0.0, ¿vale?
+Tacón 1.0.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+Tacón 1.0.0, ¿vale?
+No sé si... Yo creo que no ha habido ningún cambio de versión de Drup.
+Así que voy a mirar, a ver qué puede estar cambiando.
+Y es por el IDE, hemos dicho que ya no está duplicado, ¿no?
+El Rula ID.
+Vale.
+¿Y la Cache?
+Ah, mira, cambié el tipo de...
+En 32 está el valor del 10, está con 64.
+Y el de Values es en 32.
+Ya está modificado.
+Ya está modificado, ¿vamos?
+Sí, que es la mejor opción.
+De que aquí el colegio...
+Vale, ahí está.
+La condición que da igual a 10.
+Vale, vuelve a probar y comparando con el anterior, este dice Values.
+A mí me resuelve bien con el 10, en string.
+Espera que creo que ya... A ver si no se punta, a ver si no funciona.
+Porque otra vez son datos ahí en el momento de...
+¿Y ese es Values o Values?
+Yo lo acabo de cambiar ahorita a Values.
+No, es Values.
+Es la S.
+No, no podemos estar tocando todo lo raro.
+Yo estaba tocando ahorita esa.
+No, no tocas nada.
+¿Le puedo pedir a Manuel que limpie la Cache?
+Yo no tengo el...
+Yo la tengo.
+Vale, pues...
+Podemos dar ahí, por si acaso, porque es raro que a mí el local sí que me esté funcionando.
+Sí que me esté recuperando esa regla.
+Provo otra vez con el bag.
+Ya lo estoy haciendo.
+Acá vamos.
+¿Pero ahora está todo en string?
+String?
+Sí, sí.
+¿Qué es eso? ¿Qué es eso? ¿Qué es eso?
+No. No se puede. No se puede hacer.
+Lo que han hecho.
+En la condición está con...
+Sí, para ver si.
+No sale nada, ¿no?
+Está del activo, no hice nada.
+Sí, el activo no devuelve nada.
+Cómo que no aplica ningún control técnico.
+No.
+Es lo que lo entiendo.
+Ayer Manu nos pasó la consulta de Mongo, ¿no?
+¿Qué hace? ¿Qué hace?
+Sí.
+Cuando ejecutas esa consulta en Mongo sí devuelve esa regla.
+Ah, pero es que no cumple la condición.
+Claro. O sea, recupera la regla.
+Pero cuando evalúa las condiciones no la cumple.
+Bueno, la última opción.
+Le ponemos la misma condición de la otra regla que sí se cumple.
+La que dice nx, ¿no?
+La que tiene nx.
+Copia la n, un día pago.
+Esa.
+Exacto.
+Tres, dos, un par, cierto, dos, veinte.
+Voy acá.
+Un día pago, qué pregunta.
+Un día pago.
+La condición es esta.
+Lo que voy a hacer es copiarme esto y voy a dejar esta otra vaina.
+La transición.
+Os paso la query de Mongo por aquí.
+Es exactamente esta.
+¿Vas a dejar esto por la vez de 26?
+Si te quita los queries desde los campos hasta donde cumple,
+¿cuál es el que falla?
+No, es que me cumplen todos.
+Lo que lo voy a hacer es mirar en...
+Miró en integración, pero vamos, están cumpliendo todos.
+Lo que hay que hacer es simplificar.
+¿Cómo es Values?
+Es de un día.
+Sí, porque se nos está bailando.
+¿Cómo es Values?
+No sé cuál es.
+Es Values.
+Values.
+Ya.
+Igual es que no bajas así.
+Esto.
+Pero déjalo. La otra se está cumpliendo.
+Pero ya la quité de la compañía.
+No salte.
+Pero se está cumpliendo igual con Values.
+Bueno.
+Sí, porque ya no salto a Values.
+Values si no pide.
+Y si no existe.
+Vale, vamos.
+Si ponéis la condición que os he pasado por el chat
+y la lanzáis directamente en Mongo,
+sí trae un registro, ¿vale?
+Entonces ahí es donde hay que mirar.
+Pero ese registro, el que está recuperando,
+no es el que estábamos mirando.
+Es el de Nundi a Pao.
+Sí, ahorita Javier lo acaba.
+Javier lo acaba.
+Vale, vale, vale.
+En otra cuestión.
+Vamos a hablar con la misma, con la una y otra fecha.
+No, porque es más larga el cambio de la condición.
+¿Qué reglas están ejecutando ahorita?
+Que estábamos a la validación del Nundi a Pao
+para que no salguen esa validación.
+La pasé a otras compañías
+con la condición de esa validación
+que se ha pasado a otra compañía
+y la metió en el control técnico.
+Pero el preesto si se está quedando.
+Sí, en ese sector.
+En este sector, no nos informamos.
+No nos deberíamos molestar.
+Esto la quieren un día a Pao, está Nullo.
+La nos falta la validación porque la quité
+y aquí deja el control técnico.
+Ni nos falta.
+Es la base de datos de Mongo.
+¿Cuál validación sí te ha funcionado?
+La validación funcionaba en la validación.
+La paramos por ejemplo el control técnico
+y la condición.
+Me salgo cinco minutos.
+Tengo que mirar algo en cor.
+No, el técnico puede funcionar.
+Esa lana va a haber funcionado.
+Esa lana que le cumplía ahorita en el Pao
+no funcionó.
+¿Qué la anterior?
+La fecha para el estado.
+La anterior era abrir.
+La convención era abrir al 10 o después igual al 10.
+Sí, lo entiendo.
+O sea, lo que quiere decir es que esta condición
+preferirá cambiar el Pao.
+No te pasa.
+Siempre para que la verdadera diga que no exista.
+Cuando el Nullo paga, no exista.
+Ni que la va al Pao, no irá al Pao.
+Yo tengo aquí la comparación del estado
+de las que quieren.
+La va a comprar con el segundo.
+Eso sí, está bien.
+Es igual.
+Está bien.
+Es igual.
+Supuestamente entiendo yo que cuando el operador
+no valúa valor.
+Es igual.
+Creo que no le...
+Las cuatro.
+A ver, no se que no exista.
+Es igual o igual.
+Singular.
+Singular.
+Es igual.
+No, para las pruebas el término de Nullo
+va en negro.
+Ah bueno, ¿no?
+Este no existe.
+O sea, eso lo ayuda cuando lo ponen sur.
+Las definiciones, perdón.
+Enticinando, pero...
+Este no es un día plano, pero parece que no es necesaria.
+Me parece que eso da como puede.
+Eso lo veo muy...
+Con todo el miedo que yo no me creería.
+La empresa.
+Trabajan.
+Hay mucha gente trabajando.
+Sí.
+Está bien.
+Las monta.
+Buena idea.
+Para el que se acoja.
+Para el que se acoja tiene una...
+O sea, entiendo.
+Está sumando.
+Está sumando la verdad.
+Buena, no es verdad.
+Nos hemos quemado...
+Detengan la grabación, ¿por qué?
+Que no quede prueba esta vez.
+Ponme la suma.
+Ay, se quemaron.
+No te vienes de la cama.
+No te vienes de la cama.
+No te vienes de la cama.

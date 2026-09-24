@@ -1,0 +1,113 @@
+# REEF-ACDC — Documentación
+
+REEF-ACDC — Documentación
+
+
+
+
+# [REEF-ACDC Backend](https://reef.acdc-dev.es.emea.aws.mapfre.net/acdc/docs-portal/index.html)
+
+* **Inicio**
+  + [Documentación general](#/README "Documentación general")* **ACDC — Módulo principal**
+    + [Endpoints Online](#/ACDC/ENDPOINTS_ONLINE "Endpoints Online")+ [Orquestador Batch](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR "Orquestador Batch")+ [Cotizaciones](#/ACDC/COTIZACIONES "Cotizaciones")+ [Clientes externos](#/ACDC/EXTERNAL_CLIENTS "Clientes externos")+ [Auditoría](#/ACDC/AUDIT "Auditoría")+ [Seguridad](#/ACDC/SECURITY "Seguridad")* **DUP — Motor de reglas**
+      + [DUP Engine](#/DUP/DUP_ENGINE "DUP Engine")+ [Módulo DUP](#/DUP/README_DUP_MODULE "Módulo DUP")* **Módulos**
+        + [Cálculo de Módulos](#/MODULOS/MODULES_SERVICE "Cálculo de Módulos")* **RTE — Tarificación**
+          + [Configuración de tarifas](#/RTE/RTE_TARIFF_CONFIGURATION "Configuración de tarifas")
+
+# [REEF-ACDC — Índice de documentación](#/?id=reef-acdc-%c3%8dndice-de-documentaci%c3%b3n)
+
+> **Spring Boot 3 · Java 21 · WebFlux WebClient · MongoDB**  
+> Context path: `/acdc`
+
+---
+
+## [📁 Estructura de la documentación](#/?id=%f0%9f%93%81-estructura-de-la-documentaci%c3%b3n)
+
+```
+docs/
+├── ACDC/        → Endpoints, orquestación, auditoría y seguridad del módulo principal
+├── DUP/         → Motor de reglas DUP y módulo reef-acdc-dup
+├── MODULOS/     → Cálculo de módulos y paquetes de coberturas
+└── RTE/         → Tarificación externa (RTE)
+```
+
+---
+
+## [🔷 ACDC — Módulo principal](#/?id=%f0%9f%94%b7-acdc-m%c3%b3dulo-principal)
+
+| Documento | Descripción |
+| --- | --- |
+| [ENDPOINT\_BATCH\_ORCHESTATOR.md](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR) | Endpoint del orquestador batch, flujo E2E y validación de entrada |
+| [COTIZACIONES.md](#/ACDC/COTIZACIONES) | Persistencia de cotizaciones y simulaciones: `quotationId`, versionado y consulta |
+| [ENDPOINTS\_ONLINE.md](#/ACDC/ENDPOINTS_ONLINE) | Endpoints online granulares: atributos, controles técnicos, paquetes, tarificación, formularios y bases técnicas |
+| [EXTERNAL\_CLIENTS.md](#/ACDC/EXTERNAL_CLIENTS) | Clientes WebClient externos: configuración, endpoints y autenticación |
+| [AUDIT.md](#/ACDC/AUDIT) | Sistema de auditoría asíncrona: estrategias, modelo MongoDB y Circuit Breaker |
+| [SECURITY.md](#/ACDC/SECURITY) | ⚠️ Seguridad — pendiente de completar por Alberto Rodrigo y Santiago Conde |
+
+---
+
+## [🔷 DUP — Motor de reglas y módulo dup](#/?id=%f0%9f%94%b7-dup-motor-de-reglas-y-m%c3%b3dulo-dup)
+
+| Documento | Descripción |
+| --- | --- |
+| [DUP\_ENGINE.md](#/DUP/DUP_ENGINE) | Motor de reglas DUP: pasos, operaciones, mapeo `OPlyPlyCDto → RiskSelectionRequest` y guía de datos fijos `fixedValues.*` para selección de riesgos |
+| [README\_DUP\_MODULE.md](#/DUP/README_DUP_MODULE) | Descripción del módulo `reef-acdc-dup`: entidades, servicios, configuración y uso desde `reef-acdc-back` |
+
+---
+
+## [🔷 MODULOS — Cálculo de módulos y coberturas](#/?id=%f0%9f%94%b7-modulos-c%c3%a1lculo-de-m%c3%b3dulos-y-coberturas)
+
+| Documento | Descripción |
+| --- | --- |
+| [MODULES\_SERVICE.md](#/MODULOS/MODULES_SERVICE) | Cálculo de módulos/paquetes y parámetros utilizables en `COVERAGE-PACKAGE-DEFINITION.rules[]` |
+
+---
+
+## [🔷 RTE — Tarificación](#/?id=%f0%9f%94%b7-rte-tarificaci%c3%b3n)
+
+| Documento | Descripción |
+| --- | --- |
+| [RTE\_TARIFF\_CONFIGURATION.md](#/RTE/RTE_TARIFF_CONFIGURATION) | Configuración de conceptos de desglose, fórmulas, tipos de cálculo y bases técnicas |
+| [EXTERNAL\_CLIENTS.md](#/ACDC/EXTERNAL_CLIENTS?id=5-rteexternalservice--tarificaci%c3%b3n) | Integración con RTE (cliente, endpoint y payload principal) |
+
+---
+
+## [Arquitectura en una línea](#/?id=arquitectura-en-una-l%c3%adnea)
+
+```
+POST /acdc/orchestrator/policies/execute
+        │
+        ▼
+OrchestratorController  →  ExecuteOrchestratorUsecase
+        │
+        ├── DupService  →  SelectRiskService  (motor de reglas)         → docs/DUP/
+        ├── ModulesService  →  CalculatePackagesService  (paquetes)     → docs/MODULOS/
+        ├── RteService  →  RteExternalService  (tarificación)           → docs/RTE/
+        └── PaymentPlanService  →  PaymentPlansService  (planes de pago)
+                                          ↕
+                                   AuditFilter + WebClientAuditInterceptor  → docs/ACDC/AUDIT.md
+                                          ↕
+                                      MongoDB (audit-request)
+```
+
+---
+
+## [Estructura de paquetes](#/?id=estructura-de-paquetes)
+
+```
+com.mapfre.reef.acdc.backend
+├── audit/          → Auditoría asíncrona (→ ACDC/AUDIT.md)
+├── config/         → Configuración Spring (Security, WebClient, CircuitBreaker)
+├── controller/     → Endpoints REST (→ ACDC/ENDPOINT_BATCH_ORCHESTATOR.md, ACDC/ENDPOINTS_ONLINE.md)
+├── exception/      → AcdcException, PlyValException
+├── external/       → Clientes WebClient (→ ACDC/EXTERNAL_CLIENTS.md)
+├── mapper/         → MapStruct mappers
+├── model/          → DTOs y entidades
+├── security/       → Configuración OAuth2 (→ ACDC/SECURITY.md)
+├── service/
+│   ├── dup/        → Integración con módulo DUP (→ DUP/DUP_ENGINE.md)
+│   ├── modules/    → Cálculo de módulos (→ MODULOS/MODULES_SERVICE.md)
+│   ├── rte/        → Tarificación (→ RTE/)
+│   └── payment/    → Planes de pago
+└── usecase/        → Casos de uso de orquestación
+```

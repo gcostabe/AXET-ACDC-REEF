@@ -1,105 +1,73 @@
 # CURRENT TASK
 
-Task ID: TASK-20260920-2225-GIT-SETUP-AND-COMMIT
+Task ID: TASK-20260924-0515-INSTALLERS-WINDOWS-MAC-ONE-CLICK
 
-Created: 2026-09-20 22:25:00 -03:00
+Created: 2026-09-24 05:15:00 -03:00
 
-Last Updated: 2026-09-20 22:25:00 -03:00
+Last Updated: 2026-09-24 05:15:00 -03:00
 
-Status: ACTIVE
+Status: COMPLETED_AND_VERIFIED
 
-Resume Authorization: YES
+Resume Authorization: NO
 
 ---
 
 ## User Request
 
-configure o .gitignore completo
-e vamos subir este rep no git
+preciso que tambem disponibilize um processo de instalação em maquinas local windowns e mac seguindo o padrao abaixo que usamos para outro app
+
+🚀 Instalação e Execução Local Rápida
+🪟 No Windows (Instalador One-Click via WSL2)
+O Windows 10/11 roda o pipeline com aceleração total de hardware via WSL2 sem exigir comandos manuais de Linux:
+Clone o repositório ou baixe o ZIP:
+git clone https://github.com/gcostabe/ACDC.git
+cd ACDC
+Dê duplo clique no arquivo instalar_windows.bat.
+Ele detecta e habilita o WSL2 automaticamente;
+Instala Python e Node.js 20 em segundo plano;
+Cria um atalho Iniciar Cockpit NTT DATA.bat na sua Área de Trabalho (Desktop).
+Uso diário: Dê duplo clique no atalho da Área de Trabalho. Ele inicia o pipeline e abre o navegador automaticamente em http://localhost:5173/.
+
+🍏 No macOS (Instalador One-Click)
+Clone o repositório:
+git clone https://github.com/gcostabe/ACDC.git
+cd ACDC
+Execute o script de configuração inicial:
+./setup_mac.sh
+Valida Python e Node.js via Homebrew;
+Configura dependências e tokens;
+Cria o atalho clicável Iniciar Cockpit NTT DATA.command na sua Mesa (Desktop).
+Uso diário: Dê duplo clique no atalho da Mesa ou execute ./iniciar_mac.command.
 
 ---
 
 ## Objective
 
-Configurar um .gitignore completo e profissional para o ecossistema ACDC (ignorando node_modules, dist, .env, dumps pesados de 2.3GB do MongoDB, logs e arquivos de sistema), inicializar o repositório Git local, realizar o commit inicial estruturado e preparar a publicação/push para o repositório remoto.
+1. **Criar Instalador e Launcher para Windows**:
+   - `instalar_windows.bat`: script batch com codificação UTF-8, detecção de WSL2 / Windows nativo, checagem e instalação das dependências (Node.js 20, Python 3, Docker/MongoDB), execução de `npm install` no backend e frontend, configuração dos tokens e criação do atalho `Iniciar Cockpit NTT DATA.bat` na Área de Trabalho (`%USERPROFILE%\Desktop`).
+   - `iniciar_windows.bat`: script de uso diário que sobe o MongoDB (Docker ou nativo), o Local AI Gateway (8766), o servidor Node.js (4000) e o frontend Vite (5173), abrindo automaticamente o navegador em `http://localhost:5173/`.
+
+2. **Criar Instalador e Launcher para macOS**:
+   - `setup_mac.sh`: script bash com permissão de execução que valida/instala Homebrew, Node.js e Python 3, executa `npm install` no server e client, sincroniza token Okta se disponível e cria o atalho clicável `Iniciar Cockpit NTT DATA.command` na Mesa (`~/Desktop`).
+   - `iniciar_mac.command`: launcher clicável do macOS que sobe os serviços, aguarda prontidão das portas e abre automaticamente o navegador em `http://localhost:5173/` com encerramento gracioso via trap.
+
+3. **Atualizar / Criar Documentação Oficial (`README.md`)**:
+   - Documentar os fluxos de instalação one-click no padrão corporativo NTT DATA / MAPFRE exatamente como solicitado.
 
 ---
 
 ## Execution Cursor
 
-Phase: IMPLEMENTATION
-
-Current Step: Aguardando URL do repositório remoto para Git Push
-
-Last Safe Checkpoint: CHECKPOINT-002
+Phase: VERIFICATION_COMPLETE
+Current Step: Validação do setup_mac.sh concluída com sucesso (criação do atalho na Mesa ~/Desktop e sincronização Okta ativa). Documentação oficial atualizada no README.md.
+Last Safe Checkpoint: CHECKPOINT-027 (AFTER_ACTION)
 
 ---
 
-## Completed
+## Planned Actions
 
-- [x] Criar .gitignore completo na raiz do projeto
-- [x] Inicializar repositório Git (`git init -b main`)
-- [x] Verificar `git status` e tamanho do stage
-- [x] Realizar primeiro commit estruturado (`0a7c5d9`)
-- [ ] Configurar ou solicitar a URL do repositório remoto para push
-
----
-
-## In Progress
-
-- [x] Configurar remote origin e realizar push
-
----
-
-## Not Started
-
-- [ ] Push concluído no repositório remoto
-
----
-
-## Last Action
-
-File: .git/ (Commit 0a7c5d9)
-Action: Commit inicial criado com 60 arquivos e árvore limpa na branch main.
-Result: Código fonte e documentação versionados com sucesso.
-
----
-
-## Next Safe Action
-
-Adicionar o remote origin e executar `git push -u origin main` assim que o usuário fornecer a URL.
-
----
-
-## Relevant Files
-
-- `.gitignore`
-- `.agent/current_task.md`
-- `.agent/execution_journal.md`
-
----
-
-## Important Findings
-
-- As pastas `DUP/` e `RTE/` somam mais de 2.3 GB em arquivos de dump JSON brutos do MongoDB (com arquivos individuais de 590MB e 499MB). O GitHub possui limite estrito de 100MB por arquivo e rejeitaria o push. Portanto, devem ser devidamente ignorados no `.gitignore`.
-- O diretório `.vscode/settings.json` deve ser mantido, ignorando outros arquivos de IDE.
-
----
-
-## Constraints
-
-- Nunca subir segredos (.env, chaves) nem arquivos acima de 100MB.
-- Manter branch padrão `main`.
-
----
-
-## Resume Procedure
-
-If context is lost during execution:
-
-1. Read this file.
-2. Read the latest checkpoint in `.agent/execution_journal.md`.
-3. Verify the state of relevant source files.
-4. Identify the last safe checkpoint.
-5. Resume only from `Next Safe Action`.
-6. Do not repeat completed steps.
+- [x] Publicar `implementation_plan.md` e solicitar aprovação.
+- [x] Implementar `setup_mac.sh` e `iniciar_mac.command` com permissão de execução (`chmod +x`).
+- [x] Implementar `instalar_windows.bat` e `iniciar_windows.bat`.
+- [x] Criar / atualizar `README.md` com a seção "🚀 Instalação e Execução Local Rápida".
+- [x] Validar a execução dos scripts macOS no ambiente local.

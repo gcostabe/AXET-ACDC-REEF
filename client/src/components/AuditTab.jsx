@@ -27,6 +27,15 @@ export default function AuditTab() {
 
   const isAdmin = user?.role === 'ADMIN';
 
+  const formatDate = (val) => {
+    if (!val) return 'N/A';
+    try {
+      return new Date(val).toLocaleString('pt-BR');
+    } catch {
+      return String(val);
+    }
+  };
+
   const fetchChangelogs = (p = 1, s = '') => {
     if (!isAdmin) return;
     setLoadingChange(true);
@@ -393,28 +402,11 @@ export default function AuditTab() {
 
       {/* DETAILED MODAL DIFF WHEN ROW IS CLICKED */}
       {selectedLog && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            backdropFilter: 'blur(8px)',
-            zIndex: 100,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '1rem'
-          }}
-          onClick={() => setSelectedLog(null)}
-        >
+        <div className="modal-overlay" onClick={() => setSelectedLog(null)}>
           <div
-            className="card"
+            className="modal-content card"
             style={{
-              width: '100%',
-              maxWidth: '750px',
-              background: '#0c1220',
-              border: '1px solid var(--border-card)',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 102, 255, 0.2)',
+              maxWidth: '780px',
               maxHeight: '90vh',
               overflowY: 'auto'
             }}
@@ -434,58 +426,54 @@ export default function AuditTab() {
                     </span>
                   )}
                 </div>
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.3rem', color: '#fff' }}>
+                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.3rem', color: 'var(--text-main)', fontWeight: 700 }}>
                   {selectedLog.formulaName || selectedLog.productName || selectedLog.ruleName || selectedLog.entityId}
                 </h3>
               </div>
 
               <button
+                type="button"
+                className="icon-btn"
                 onClick={() => setSelectedLog(null)}
-                style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
               >
                 <X size={20} />
               </button>
             </div>
 
-            {/* Operator & Timestamp Card */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.75rem', background: '#070b14', padding: '0.85rem 1rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-card)', marginBottom: '1.25rem' }}>
-              <div>
-                <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block' }}>Operador Responsável</span>
-                <strong style={{ color: 'var(--text-main)', fontSize: '0.88rem' }}>{selectedLog.userName}</strong>
-                <span style={{ fontSize: '0.75rem', color: 'var(--accent-cyan)', display: 'block' }}>{selectedLog.userEmail}</span>
+            {/* Modal Body */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              {/* Metadata strip */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.75rem', background: 'var(--bg-surface)', padding: '0.85rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
+                <div>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>Usuário / Agente:</span>
+                  <strong style={{ fontSize: '0.88rem', color: 'var(--text-main)' }}>{selectedLog.user || 'Sistema'}</strong>
+                </div>
+                <div>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>Data & Hora:</span>
+                  <strong style={{ fontSize: '0.88rem', color: 'var(--text-main)' }}>{formatDate(selectedLog.timestamp)}</strong>
+                </div>
+                <div>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block' }}>Justificativa:</span>
+                  <span style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>{selectedLog.justification || 'Alteração técnica'}</span>
+                </div>
               </div>
-              <div>
-                <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block' }}>Data e Hora</span>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-                  {selectedLog.timestamp ? new Date(selectedLog.timestamp).toLocaleString('pt-BR') : 'N/A'}
-                </span>
-              </div>
-              <div>
-                <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block' }}>Endereço IP</span>
-                <span style={{ fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}>
-                  {selectedLog.userIp}
-                </span>
-              </div>
-            </div>
 
-            {/* Visual Diff: Values Comparison */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.25rem' }}>
               {/* Title / Name Change */}
               {selectedLog.changes?.title && (
                 <div>
                   <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
-                    Título / Nome:
+                    Título / Descrição:
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-                    <div style={{ background: 'rgba(244, 63, 94, 0.08)', border: '1px solid rgba(244, 63, 94, 0.25)', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
-                      <span style={{ fontSize: '0.72rem', color: 'var(--accent-rose)', display: 'block', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.2rem' }}>Valor Antigo:</span>
-                      <span style={{ color: '#fca5a5', textDecoration: 'line-through', fontSize: '0.88rem' }}>
+                    <div style={{ background: '#fff1f2', border: '1px solid #fecdd3', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
+                      <span style={{ fontSize: '0.72rem', color: '#be123c', display: 'block', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.2rem' }}>Valor Antigo:</span>
+                      <span style={{ color: '#be123c', textDecoration: 'line-through', fontSize: '0.88rem' }}>
                         {selectedLog.changes.title.old || '(Vazio)'}
                       </span>
                     </div>
-                    <div style={{ background: 'rgba(0, 229, 153, 0.08)', border: '1px solid rgba(0, 229, 153, 0.25)', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
-                      <span style={{ fontSize: '0.72rem', color: 'var(--accent-emerald)', display: 'block', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.2rem' }}>Valor Novo:</span>
-                      <span style={{ color: '#00e599', fontWeight: 600, fontSize: '0.88rem' }}>
+                    <div style={{ background: '#ecfdf5', border: '1px solid #a7f3d0', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
+                      <span style={{ fontSize: '0.72rem', color: '#047857', display: 'block', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.2rem' }}>Valor Novo:</span>
+                      <span style={{ color: '#047857', fontWeight: 600, fontSize: '0.88rem' }}>
                         {selectedLog.changes.title.new}
                       </span>
                     </div>
@@ -500,15 +488,15 @@ export default function AuditTab() {
                     Expressão Matemática de Cálculo:
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-                    <div style={{ background: 'rgba(244, 63, 94, 0.08)', border: '1px solid rgba(244, 63, 94, 0.25)', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
-                      <span style={{ fontSize: '0.72rem', color: 'var(--accent-rose)', display: 'block', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.2rem' }}>Expressão Anterior:</span>
-                      <code style={{ fontFamily: 'var(--font-mono)', color: '#fca5a5', fontSize: '0.85rem', wordBreak: 'break-all' }}>
+                    <div style={{ background: '#fff1f2', border: '1px solid #fecdd3', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
+                      <span style={{ fontSize: '0.72rem', color: '#be123c', display: 'block', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.2rem' }}>Expressão Anterior:</span>
+                      <code style={{ fontFamily: 'var(--font-mono)', color: '#be123c', fontSize: '0.85rem', wordBreak: 'break-all' }}>
                         {selectedLog.changes.expression.old || '(Vazio)'}
                       </code>
                     </div>
-                    <div style={{ background: 'rgba(0, 229, 153, 0.08)', border: '1px solid rgba(0, 229, 153, 0.25)', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
-                      <span style={{ fontSize: '0.72rem', color: 'var(--accent-emerald)', display: 'block', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.2rem' }}>Nova Expressão:</span>
-                      <code style={{ fontFamily: 'var(--font-mono)', color: '#00e599', fontWeight: 600, fontSize: '0.85rem', wordBreak: 'break-all' }}>
+                    <div style={{ background: '#ecfdf5', border: '1px solid #a7f3d0', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
+                      <span style={{ fontSize: '0.72rem', color: '#047857', display: 'block', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.2rem' }}>Nova Expressão:</span>
+                      <code style={{ fontFamily: 'var(--font-mono)', color: '#047857', fontWeight: 600, fontSize: '0.85rem', wordBreak: 'break-all' }}>
                         {selectedLog.changes.expression.new}
                       </code>
                     </div>
@@ -523,15 +511,15 @@ export default function AuditTab() {
                     Campo: {k}
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-                    <div style={{ background: 'rgba(244, 63, 94, 0.08)', border: '1px solid rgba(244, 63, 94, 0.25)', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
-                      <span style={{ fontSize: '0.72rem', color: 'var(--accent-rose)', display: 'block', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.2rem' }}>Anterior:</span>
-                      <pre style={{ color: '#fca5a5', fontSize: '0.82rem', fontFamily: 'var(--font-mono)', whiteSpace: 'pre-wrap' }}>
+                    <div style={{ background: '#fff1f2', border: '1px solid #fecdd3', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
+                      <span style={{ fontSize: '0.72rem', color: '#be123c', display: 'block', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.2rem' }}>Anterior:</span>
+                      <pre style={{ color: '#be123c', fontSize: '0.82rem', fontFamily: 'var(--font-mono)', whiteSpace: 'pre-wrap' }}>
                         {typeof val?.old === 'object' ? JSON.stringify(val.old, null, 2) : String(val?.old ?? 'N/A')}
                       </pre>
                     </div>
-                    <div style={{ background: 'rgba(0, 229, 153, 0.08)', border: '1px solid rgba(0, 229, 153, 0.25)', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
-                      <span style={{ fontSize: '0.72rem', color: 'var(--accent-emerald)', display: 'block', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.2rem' }}>Novo:</span>
-                      <pre style={{ color: '#00e599', fontSize: '0.82rem', fontFamily: 'var(--font-mono)', whiteSpace: 'pre-wrap' }}>
+                    <div style={{ background: '#ecfdf5', border: '1px solid #a7f3d0', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
+                      <span style={{ fontSize: '0.72rem', color: '#047857', display: 'block', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.2rem' }}>Novo:</span>
+                      <pre style={{ color: '#047857', fontSize: '0.82rem', fontFamily: 'var(--font-mono)', whiteSpace: 'pre-wrap' }}>
                         {typeof val?.new === 'object' ? JSON.stringify(val.new, null, 2) : String(val?.new ?? 'N/A')}
                       </pre>
                     </div>
@@ -554,7 +542,7 @@ export default function AuditTab() {
 
             {/* AI Validation explanation */}
             {selectedLog.aiValidation && (
-              <div style={{ background: '#070b14', border: '1px solid var(--border-card)', borderRadius: 'var(--radius-sm)', padding: '0.85rem', marginBottom: '1.25rem' }}>
+              <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-sm)', padding: '0.85rem', marginBottom: '1.25rem' }}>
                 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'block', marginBottom: '0.35rem', fontWeight: 600 }}>
                   Parecer do Modelo IA ({selectedLog.aiValidation.modelUsed}):
                 </span>

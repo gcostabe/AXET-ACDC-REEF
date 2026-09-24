@@ -1,0 +1,1727 @@
+--- [PÁGINA 1 DE 50] ---
+
+Documentación Completa del Motor de Rating - Core RTE Service 
+Versión: 1.0.454-SNAPSHOT 
+Fecha: 24 de Marzo de 2026 
+Autor: Equipo ACDC - MAPFRE TRON 
+ 
+Tabla de Contenidos 
+PARTE I: MOTOR DE RATING - RTE 
+1. Introducción al Motor de Rating 
+2. Arquitectura General 
+3. API REST - RatingController 
+4. Flujo Principal de Cálculo 
+5. Configuración de Ramos, Coberturas y Conceptos 
+PARTE II: FLUJO DE SUSCRIPCIONES 
+1. Introducción a Suscripciones 
+2. SUPPLEMENT-OPERATION-RULES 
+3. Métodos de PlyService 
+4. Búsqueda de Bases Técnicas 
+5. Operaciones de Suscripción 
+PARTE III: MAPEOS DE DATOS 
+1. Arquitectura de Mapeos 
+2. Mapeo de Entrada - PlyRequestMapper 
+3. Mapeo de Salida - PlyResponseMapper 
+4. Mapeo de Campos Fijos y Parámetros 
+5. Transformaciones Especiales 
+PARTE IV: MOTOR DE REGLAS 
+1. Introducción a JEasy Rules 
+2. Estructura de una Regla 
+3. Facts - Datos Disponibles
+
+
+--- [PÁGINA 2 DE 50] ---
+
+4. Reglas de Cobertura 
+5. Reglas de Breakdown Concept 
+6. Reglas de Anulación y Temporalidad 
+PARTE V: MOTOR DE FÓRMULAS 
+1. Introducción al Motor de Fórmulas 
+2. Tipos de Fórmulas - FORMULA y FORMULA_ACDC 
+3. Sintaxis y Variables 
+4. Constantes Parametrizadas 
+5. Funciones Personalizadas 
+PARTE VI: MÓDULO COVERAGE PACKAGES 
+1. Introducción a Coverage Packages 
+2. Reglas de Selección de Preferencias 
+ 
+PARTE I: MOTOR DE RATING - RTE 
+1. Introducción al Motor de Rating 
+El proyecto core-engine es el motor de cálculo de rating (tarificación) del sistema TRON. Su 
+responsabilidad principal es calcular las primas de seguros basándose en: 
+● Configuraciones de ramo 
+● Configuraciones de coberturas 
+● Configuraciones de conceptos de desglose 
+● Reglas de negocio parametrizables 
+● Fórmulas y programas personalizados 
+Funcionalidades Principales 
+● Cálculo de primas: Cálculo automático de primas según configuración 
+● Conceptos de desglose: Gestión de recargos, impuestos, descuentos 
+● Suscripciones: Manejo de coberturas con ajustes de suscripción 
+● Fórmulas parametrizadas: Cálculos complejos mediante fórmulas configurables 
+● Motor de reglas: Lógica de negocio flexible y mantenible
+
+
+--- [PÁGINA 3 DE 50] ---
+
+● Anulaciones y modificaciones: Cálculo de devoluciones y ajustes 
+ 
+2. Arquitectura General 
+┌─────────────────────────────────────────────────────────────┐  
+│                     RatingController                         │  
+│  - /api/1.00/calculate-rating                               │  
+│  - /api/1.00/calculate-rating-ply                           │  
+└────────────────────┬────────────────────────────────────────┘  
+                     │  
+                     ▼  
+┌─────────────────────────────────────────────────────────────┐  
+│               PlyRatingUsecase (Caso de Uso)                │  
+│  - Extracción y validación de datos de entrada              │  
+│  - Recuperación y validación de configuración de ramo       │  
+│  - Identificación de operaciones de suscripción             │  
+│  - Mapeo de estructuras Ply a Rating Request                │  
+└────────────────────┬────────────────────────────────────────┘  
+                     │  
+                     ▼  
+┌─────────────────────────────────────────────────────────────┐  
+│                  Mappers (Transformadores)                   │  
+│  - PlyRequestMapper: OPlyPlyCDto → RatingRequest            │  
+│  - PlyResponseMapper: RatingResponse → OPlyPlyCDto          │  
+└────────────────────┬────────────────────────────────────────┘  
+                     │  
+                     ▼  
+┌─────────────────────────────────────────────────────────────┐  
+│                  RatingService (Motor)                       │  
+│  1. Enriquecimiento de configuración                        │  
+│  2. Ejecución de reglas de negocio                          │  
+│  3. Construcción de respuesta                               │  
+└────────────────────┬────────────────────────────────────────┘  
+                     │  
+                     ▼  
+┌─────────────────────────────────────────────────────────────┐  
+│              Motor de Reglas (JEasy Rules)                   │  
+│  - Reglas de cobertura                                      │  
+│  - Reglas de conceptos de desglose                          │  
+│  - Reglas de anulación                                      │  
+│  - Reglas de rehabilitación                                 │  
+│  - Reglas de suplementos especiales                         │  
+└─────────────────────────────────────────────────────────────┘ 
+Componentes Principales
+
+
+--- [PÁGINA 4 DE 50] ---
+
+Componente Responsabilidad 
+RatingController API REST, recepción de requests 
+PlyRatingUsecase Orquestación del proceso completo 
+Mappers Transformación de estructuras de datos 
+RatingService Motor principal de cálculo 
+JEasy Rules Engine Ejecución de reglas de negocio 
+FormulaUtilService Evaluación de fórmulas parametrizadas 
+TechnicalBasisService Búsqueda de bases técnicas 
+CalculateSupplementService Gestión de operaciones de suscripción 
+ 
+3. API REST - RatingController 
+Ubicación: com.mapfre.tron.rating.core.engine.controller.RatingController 
+Endpoint 1: Calculate Rating (Request Estándar) 
+URL: POST /api/1.00/calculate-rating 
+Descripción: Calcula el rating a partir de un objeto RatingRequest estándar. 
+Autenticación: Requiere roles GAZU_ROLRTEMGR o GAZU_ROLRTEADM 
+Request Body: RatingRequest 
+{ 
+  "countryId": "ES", 
+  "companyId": 1, 
+  "branchId": 100, 
+  "operationDate": "2026-03-18", 
+  "operationNumber": "123456", 
+  "fixedValues": { 
+    "supplementCode": "0", 
+    "policyNumber": "POL123456"
+
+
+--- [PÁGINA 5 DE 50] ---
+
+}, 
+  "parameters": { 
+    "campo1": "valor1" 
+  }, 
+  "newSupplement": { 
+    "risks": [...] 
+  } 
+} 
+Response: RatingResponse 
+{ 
+  "companyId": 1, 
+  "branchId": 100, 
+  "newSupplement": { 
+    "risks": [ 
+      { 
+        "risk": 1, 
+        "periods": [ 
+          { 
+            "period": 1, 
+            "coverages": [ 
+              { 
+                "coverageId": 1, 
+                "purePremium": 100.50, 
+                "breakdownConcepts": [ 
+                  { 
+                    "breakdownConceptId": 1, 
+                    "annualAmount": 100.50, 
+                    "supplementAmount": 100.50 
+                  } 
+                ] 
+              } 
+            ] 
+          } 
+        ] 
+      } 
+    ] 
+  } 
+} 
+Endpoint 2: Calculate Rating Ply (Request desde Póliza) 
+URL: POST /api/1.00/calculate-rating-ply 
+Descripción: Mapea los campos principales de la póliza y calcula el rating. Utiliza la 
+estructura de datos OPlyPlyCDto (estructura de póliza TRON).
+
+
+--- [PÁGINA 6 DE 50] ---
+
+Request Body: RatingPlyRequest 
+{ 
+  "requestInfo": { 
+    "countryId": "ES", 
+    "operationNumber": 123456, 
+    "operationDate": 1710777600000, 
+    "riskVal": 1 
+  }, 
+  "newSupplement": { 
+    "oPlyPlyC": { 
+      "oPlyGniP": {...}, 
+      "oPlyRkcCT": [...] 
+    } 
+  }, 
+  "currentPolicy": { 
+    "oPlyPlyC": {...} 
+  } 
+} 
+Response: OPlyPlyCDto (estructura de póliza con campos calculados) 
+ 
+4. Flujo Principal de Cálculo 
+Caso de Uso - PlyRatingUsecase 
+Ubicación: com.mapfre.tron.rating.core.engine.service.usecase.PlyRatingUsecase 
+Responsabilidad: Orquestar el proceso completo de cálculo desde una póliza TRON 
+(OPlyPlyCDto) hasta obtener la póliza calculada con conceptos de desglose. 
+Secuencia del Flujo 
+┌────────────────────────────────────────────────────────────────┐  
+│ 1. EXTRACCIÓN DE DATOS DEL REQUEST                            │  
+│    - RequestInfo (país, operación, fecha, riesgo)              │  
+│    - OPlyPlyCDto (póliza nueva)                                │  
+│    - OPlyPlyCDto Previous (póliza anterior, si existe)         │  
+└────────────────────────────┬───────────────────────────────────┘  
+                             │  
+                             ▼  
+┌────────────────────────────────────────────────────────────────┐  
+│ 2. VALIDACIÓN Y CARGA DE CONFIGURACIÓN DE RAMO                │  
+│    - Validar que exista configuración para:                   │
+
+
+--- [PÁGINA 7 DE 50] ---
+
+│      • País + Compañía + Ramo                                  │  
+│    - Lanzar excepción si no existe                             │  
+│    - Cargar coverageRatingConfigs incluidas                    │  
+└────────────────────────────┬───────────────────────────────────┘  
+                             │  
+                             ▼  
+┌────────────────────────────────────────────────────────────────┐  
+│ 3. IDENTIFICACIÓN DE OPERACIONES DE SUSCRIPCIÓN               │  
+│    - Crear mapa de operaciones vacío por riesgo/cobertura     │  
+│    - Para cada cobertura:                                      │  
+│      • Verificar si es cobertura de suscripción                │  
+│        (mcaAjusteSuscripcion == "S")                           │  
+│      • Si es suscripción: calcular operaciones                 │  
+│        (alta, baja, modificación capital)                      │  
+└────────────────────────────┬───────────────────────────────────┘  
+                             │  
+                             ▼  
+┌────────────────────────────────────────────────────────────────┐  
+│ 4. OPERACIONES PREVIAS (Si hay coberturas de suscripción)     │  
+│    - Ejecutar PlyService.previousOperations()                 │  
+│    - Calcular campos adicionales previos al rating             │  
+└────────────────────────────┬───────────────────────────────────┘  
+                             │  
+                             ▼  
+┌────────────────────────────────────────────────────────────────┐  
+│ 5. EXTRACCIÓN DE COTIZACIONES (QUOTES)                        │  
+│    - Extraer atributo de cotización de cada riesgo            │  
+│    - Crear mapa: riskVal -> quoteId                            │  
+└────────────────────────────┬───────────────────────────────────┘  
+                             │  
+                             ▼  
+┌────────────────────────────────────────────────────────────────┐  
+│ 6. MAPEO A RATING REQUEST                                     │  
+│    - Utilizar PlyRequestMapper                                 │  
+│    - Incluir: branchRatingConfig, supplementOperations        │  
+└────────────────────────────┬───────────────────────────────────┘  
+                             │  
+                             ▼  
+┌────────────────────────────────────────────────────────────────┐  
+│ 7. EJECUCIÓN DEL MOTOR DE CÁLCULO                             │  
+│    - Llamar a RatingService.calculate()                        │  
+│    - Obtener RatingResponse                                    │  
+└────────────────────────────┬───────────────────────────────────┘  
+                             │  
+                             ▼  
+┌────────────────────────────────────────────────────────────────┐  
+│ 8. MAPEO A PLY RESPONSE                                       │  
+│    - Utilizar PlyResponseMapper                                │  
+│    - Actualizar breakdown concepts en OPlyPlyCDto             │  
+│    - Devolver póliza calculada                                 │  
+└────────────────────────────────────────────────────────────────┘
+
+
+--- [PÁGINA 8 DE 50] ---
+
+RatingService - Motor de Cálculo 
+Ubicación: com.mapfre.tron.rating.core.engine.service.RatingService 
+Fases del Cálculo 
+┌──────────────────────────────────────────────────────────────┐  
+│ FASE 1: ENRIQUECIMIENTO                                      │  
+│ - Carga de configuración de ramo (BranchRatingConfig)       │  
+│ - Carga de configuración de coberturas                      │  
+│ - Carga de configuración de conceptos de desglose           │  
+│ - Carga de cotizaciones multivariable (si aplica)           │  
+└──────────────────────────────────────────────────────────────┘  
+                           │  
+                           ▼  
+┌──────────────────────────────────────────────────────────────┐  
+│ FASE 2: EJECUCIÓN DE REGLAS                                  │  
+│ - Iteración por cada riesgo                                  │  
+│   - Iteración por cada periodo                               │  
+│     - Iteración por cada cobertura                           │  
+│       - Reglas de cobertura (Pure Premium)                   │  
+│       - Iteración por cada concepto de desglose              │  
+│         - Reglas de concepto de desglose (Cálculo)           │  
+│         - Reglas de temporalidad                             │  
+│         - Reglas de acumulación                              │  
+└──────────────────────────────────────────────────────────────┘  
+                           │  
+                           ▼  
+┌──────────────────────────────────────────────────────────────┐  
+│ FASE 3: CONSTRUCCIÓN DE RESPUESTA                            │  
+│ - Mapeo de resultados a RatingResponse                      │  
+│ - Publicación de eventos (opcional)                         │  
+│ - Persistencia de trazas de ejecución                       │  
+└──────────────────────────────────────────────────────────────┘ 
+ 
+5. Configuración de Ramos, Coberturas y Conceptos 
+BranchRatingConfig - Configuración de Ramos 
+Colección MongoDB: branches 
+Campos Principales:
+
+
+--- [PÁGINA 9 DE 50] ---
+
+Campo Tipo Descripción 
+country String País 
+company int Código de compañía 
+branch int Código de ramo 
+nameBranch String Nombre del ramo 
+cancellationAsAT boolean Trata anulaciones como AT 
+days365 boolean Usa 365 días para cálculos 
+manualRate boolean Permite tasa manual 
+multiperiod boolean Admite multiperiodo 
+coverageRatingConfigs List Configuraciones de coberturas 
+CoverageRatingConfig - Configuración de Coberturas 
+Campos Principales: 
+Campo Tipo Descripción 
+subBranch Integer Modalidad/Sub-ramo 
+coverage int Código de cobertura 
+name String Nombre de cobertura 
+fields List<CoverageField> Configuraciones vigentes 
+CoverageField
+
+
+--- [PÁGINA 10 DE 50] ---
+
+Campo Tipo Descripción 
+calculationType CoverageCalculationType Tipo de cálculo 
+calculationRate BigDecimal Tasa de cálculo 
+calculationAmount BigDecimal Importe fijo 
+calculationCustomServiceName String Programa de cálculo 
+codFormula String Código de fórmula 
+mcaAjusteSuscripcion String Marca ajuste suscripción 
+("S"/"N") 
+validityDate LocalDate Fecha de validez 
+breakdownConceptRatingConfigs List Conceptos de desglose 
+Tipos de Cálculo de Cobertura 
+Valor Nombre Descripción 
+1 PERCENTAGE Porcentaje sobre capital 
+2 SO_MUCH_PER_THOUSAND Tanto por mil 
+3 FIXED_AMOUNT Importe fijo 
+4 FIXED_AMOUNT_PER_UNIT Importe fijo por unidad 
+6 OBJECT Programa personalizado 
+9 FORMULA Fórmula 
+10 FORMULA_ACDC Fórmula ACDC 
+11 MULTIPLICATIVE_RATE Tasa multivariable
+
+
+--- [PÁGINA 11 DE 50] ---
+
+BreakdownConceptRatingConfig - Conceptos de Desglose 
+Colección MongoDB: breakdownConcepts 
+Campos Principales: 
+Campo Tipo Descripción 
+country String País 
+company int Compañía 
+branch Integer Ramo (null = entidad) 
+coverage Integer Cobertura (opcional) 
+breakdownConcept int ID del concepto 
+name String Nombre 
+scopeType ScopeType Ámbito de aplicación 
+fields List Configuraciones vigentes 
+BreakdownConceptField 
+Campo Tipo Descripción 
+operationalScope OperationalScope Ámbito operacional 
+calculationBaseType BreakdownConceptCalculationBaseType Tipo de base 
+calculationType BreakdownConceptCalculationType Tipo de cálculo 
+calculationRate BigDecimal Tasa de cálculo 
+calculationAmount BigDecimal Importe fijo 
+codFormula String Código de fórmula
+
+
+--- [PÁGINA 12 DE 50] ---
+
+Campo Tipo Descripción 
+applyTemporality boolean Aplica prorrata 
+automaticCalculation boolean Cálculo automático 
+numOfDecimals Integer Decimales de redondeo 
+economicConceptId String ID concepto económico 
+Tipos de Base de Cálculo 
+Valor Nombre Descripción 
+CAPITAL Capital Utiliza el capital de la cobertura 
+PREMIUM Prima Utiliza la prima pura calculada 
+AGGREGATOR Agregador Suma de conceptos especificados 
+Tipos de Cálculo de Concepto 
+Valor Nombre Descripción 
+1 PERCENTAGE Porcentaje sobre base 
+2 SO_MUCH_PER_THOUSAND Tanto por mil 
+3 FIXED_AMOUNT Importe fijo 
+5 OBJECT Programa personalizado 
+6 FORMULA Fórmula 
+7 FORMULA_ACDC Fórmula ACDC 
+ 
+PARTE II: FLUJO DE SUSCRIPCIONES
+
+
+--- [PÁGINA 13 DE 50] ---
+
+6. Introducción a Suscripciones 
+El Motor de Suscripciones es un componente especializado del sistema de rating que 
+maneja coberturas que requieren ajustes de suscripción a lo largo de su vigencia. Este motor 
+permite gestionar operaciones como altas, bajas, modificaciones, suspensiones y rescates de 
+suscripciones dentro de una póliza. 
+¿Qué es una Cobertura de Suscripción? 
+Una cobertura de suscripción es aquella que permite gestionar múltiples ajustes o 
+suscripciones individuales dentro de la misma cobertura. Cada suscripción puede tener: 
+● Estado (sbnStsVal): AC (Activa), SP (Suspendida), CA (Cancelada) 
+● Capital asegurado (cplAmn) 
+● Prima anual (preAnm) 
+● Número de suplemento (enrSqn) 
+● Fecha de efecto y vencimiento 
+Ejemplo: Seguro de vida colectivo donde cada empleado es una suscripción independiente 
+dentro de la misma cobertura de la póliza colectiva. 
+Cuándo se Utiliza 
+El motor de suscripciones se activa cuando: 
+● Una cobertura está marcada con mcaAjusteSuscripcion == "S" en la configuración 
+● Se detectan cambios en las suscripciones entre el suplemento actual y el anterior 
+● Se necesita calcular primas y capitales basados en ajustes de suscripción 
+ 
+7. SUPPLEMENT-OPERATION-RULES 
+Colección MongoDB: SUPPLEMENT-OPERATION-RULES 
+Esta colección almacena las reglas que determinan qué operación de suscripción se debe 
+ejecutar basándose en las condiciones de la póliza actual y anterior. 
+Estructura de Documento
+
+
+--- [PÁGINA 14 DE 50] ---
+
+{ 
+  "_id": "rule_001", 
+  "name": "Alta de Suscripción", 
+  "country": "ES", 
+  "company": "1", 
+  "branch": "100", 
+  "product": "01", 
+  "implementation": "plyServiceCustomES", 
+  "conditions": [ 
+    { 
+      "currentFactor": "oPlyPlyCvcC.oPlyPlyCvrP.oPlyPlyCvrS.[cvc=1].cvrSlc", 
+      "operator": "EQ", 
+      "value": "*", 
+      "previousFactor": null 
+    } 
+  ], 
+  "values": { 
+    "GENERACION": "S", 
+    "SUSPENSION": "N", 
+    "MODIFICACION": "N", 
+    "RESCATE": "N", 
+    "BONOS": "N", 
+    "TIPO_MODIF.": "TD", 
+    "MOTIVO": "", 
+    "TIPO_OPERACION": "IN" 
+  } 
+} 
+Campos Principales 
+Campo Tipo Descripción 
+country String País (ES, MX, etc.) 
+company String Código de compañía (1, 2, 99 para defecto) 
+branch String Código de ramo (100, 99 para defecto) 
+product String Código de producto/modalidad (01, 99 para defecto) 
+implementation String Nombre del servicio Spring que implementa PlyService 
+conditions Array Condiciones que deben cumplirse para aplicar la regla
+
+
+--- [PÁGINA 15 DE 50] ---
+
+Campo Tipo Descripción 
+values Object Valores de configuración de la operación 
+Jerarquía de Búsqueda 
+El sistema aplica una estrategia jerárquica para encontrar las reglas más específicas: 
+1. Nivel 1 (Más específico): country + company + branch + product 
+2. Nivel 2: country + company + branch + product="99" 
+3. Nivel 3: country + company + branch="99" + product="99" 
+4. Nivel 4 (Más genérico): country + company="99" + branch="99" + product="99" 
+Conditions (Condiciones) 
+Las condiciones determinan cuándo aplicar una regla. 
+Operadores Soportados: 
+Operador Descripción Ejemplo 
+EQ Igual a currentFactor == value 
+NEQ Diferente de currentFactor != value 
+GT Mayor que currentFactor > previousFactor 
+GTE Mayor o igual que currentFactor >= value 
+LT Menor que currentFactor < previousFactor 
+LTE Menor o igual que currentFactor <= value 
+Sintaxis de Factor: 
+Token Descripción Ejemplo 
+[rsk] Riesgo actual oPlyRskP.oPlyRskS.[rsk].rskVal
+
+
+--- [PÁGINA 16 DE 50] ---
+
+Token Descripción Ejemplo 
+[cvc] Cobertura actual oPlyPlyCvrP.oPlyPlyCvrS.[cvc].cplAmn 
+[brw] Breakdown concept actual oPlyBrwS.[brw].enrAmn 
+Values (Valores de Configuración) 
+Campo Valores Descripción 
+GENERACION S/N Indica si es alta de suscripción 
+SUSPENSION S/N Indica si es suspensión 
+MODIFICACION S/N Indica si es modificación 
+RESCATE S/N Indica si es rescate 
+BONOS S/N Indica si es bono 
+TIPO_MODIF. TD, CRE, REC, OT Tipo de modificación 
+MOTIVO String Motivo de la operación 
+TIPO_OPERACION IN, EX, etc. Tipo de operación de suscripción 
+Combinaciones de Operaciones 
+Combinación Código Método Ejecutado 
+S + N + N SNN create() - Alta nueva 
+N + N + S NNS modify() - Modificación 
+N + S + S NSS modifySuspended() - Modif. suspendida 
+N + S + N NSN suspension() - Suspensión
+
+
+--- [PÁGINA 17 DE 50] ---
+
+Combinación Código Método Ejecutado 
+N + N + N NNN compensate() o emptyOperation() 
+S + S + N SSN createSupended() - Alta suspendida 
+S + S + S SSS createSupendedModify() - Alta susp. con modif. 
+* + * + * + RESCATE=S - rescue() - Rescate 
+* + * + * + BONOS=S - bonus() - Bono 
+Merge de Operaciones 
+Cuando múltiples reglas se cumplen, el sistema realiza un merge de operaciones: 
+Algoritmo: 
+1. Se ordenan las operaciones por cantidad de valores "S" en las acciones principales 
+(GENERACION, SUSPENSION, MODIFICACION, RESCATE, BONOS) 
+2. La primera operación (mayor prioridad) establece la base 
+3. Las siguientes sobrescriben sus valores si tienen "S" 
+4. Se usa la implementación de la primera operación 
+Ejemplo: 
+Operación 1 (3 "S"): GENERACION=S, SUSPENSION=S, MODIFICACION=S, RESCATE=N, BONOS=N 
+Operación 2 (1 "S"): GENERACION=N, SUSPENSION=N, MODIFICACION=N, RESCATE=S, BONOS=N 
+Resultado: Se ejecuta Operación 1 (más "S") 
+ 
+8. Métodos de PlyService 
+Interface: PlyService 
+Esta interfaz define todos los métodos disponibles para operaciones de suscripción. Cada país 
+o producto puede tener su propia implementación. 
+Métodos del Ciclo de Vida
+
+
+--- [PÁGINA 18 DE 50] ---
+
+1. previousOperations() 
+Firma: 
+void previousOperations(OPlyPlyCDto currentPly,  
+                       OPlyPlyCDto newSupplement,  
+                       List<PlySubscriptionOperation> plySubscriptionOperation
+s) 
+Propósito: Ejecutar operaciones previas al cálculo de rating. Se ejecuta una única vez antes 
+del mapeo a RatingRequest. 
+Cuándo se ejecuta: 
+● Solo si existen coberturas de suscripción 
+● Antes de iniciar el proceso de cálculo de rating 
+● A nivel de póliza, no por cobertura 
+Uso típico: 
+● Inicializar estructuras de datos 
+● Validar datos de entrada 
+● Cargar información adicional necesaria 
+2. preCalculation() 
+Firma: 
+HashMap<String, Object> preCalculation(OPlyPlyCDto currentPly,  
+                                       OPlyPlyCDto newSupplement,  
+                                       Integer rsk,  
+                                       Integer cvc,  
+                                       HashMap<String, Object> operationValues
+) 
+Propósito: Realizar cálculos preliminares específicos para una cobertura antes de ejecutar la 
+operación. 
+Cuándo se ejecuta: 
+● Para cada cobertura de suscripción que requiera cálculo 
+● Después de determinar el tipo de operación 
+● Antes de ejecutar el método de operación específico
+
+
+--- [PÁGINA 19 DE 50] ---
+
+Retorno: HashMap con datos precalculados que se pasarán a la operación 
+Uso típico: 
+● Búsqueda de bases técnicas mediante getTechnicalBasis() 
+● Cálculo de factores de edad, antigüedad, etc. 
+● Determinación de tasas aplicables 
+3. emptyOperation() 
+Firma: 
+OPlyPlyCDto emptyOperation(OPlyPlyCDto currentPly,  
+                          OPlyPlyCDto newSupplement,  
+                          Integer rsk,  
+                          Integer cvc,  
+                          HashMap<String, Object> preCalculation,  
+                          HashMap<String, Object> operationValues) 
+Propósito: Operación por defecto cuando no se identifica ninguna operación específica o 
+cuando ninguna regla aplica. 
+Cuándo se ejecuta: 
+● Cuando no se encuentra ninguna SUPPLEMENT-OPERATION-RULE aplicable 
+● Cuando el OperationRule resultante es null 
+● Como fallback para casos no contemplados 
+Retorno: OPlyPlyCDto (por defecto retorna newSupplement sin cambios) 
+Métodos de Operaciones Específicas 
+4. create() - Alta de Suscripción 
+Combinación: GENERACION=S + SUSPENSION=N + MODIFICACION=N 
+Propósito: Crear una nueva suscripción dentro de la cobertura. 
+5. modify() - Modificación de Suscripción 
+Combinación: GENERACION=N + SUSPENSION=N + MODIFICACION=S 
+Propósito: Modificar una suscripción existente activa.
+
+
+--- [PÁGINA 20 DE 50] ---
+
+6. modifySuspended() - Modificación de Suscripción Suspendida 
+Combinación: GENERACION=N + SUSPENSION=S + MODIFICACION=S 
+Propósito: Modificar una suscripción que está suspendida. 
+7. suspension() - Suspensión de Suscripción 
+Combinación: GENERACION=N + SUSPENSION=S + MODIFICACION=N 
+Propósito: Suspender una suscripción activa. 
+8. rescue() - Rescate 
+Condición: RESCATE=S (independiente de otros valores) 
+Propósito: Ejecutar un rescate de la suscripción. 
+9. bonus() - Bonos 
+Condición: BONOS=S (independiente de otros valores) 
+Propósito: Aplicar bonificaciones o bonos a la suscripción. 
+10. getTechnicalBasis() - Búsqueda de Base Técnica 
+Firma: 
+TechnicalBasisDto getTechnicalBasis(String codBt,  
+                                   LocalDate date, 
+                                   OPlyPlyCDto currentPly, 
+                                   OPlyPlyCDto newSupplement, 
+                                   Integer rsk, 
+                                   Integer cvc) 
+Propósito: Buscar y retornar la base técnica aplicable para el cálculo de primas de 
+suscripción. 
+ 
+9. Búsqueda de Bases Técnicas 
+TechnicalBasisService
+
+
+--- [PÁGINA 21 DE 50] ---
+
+El servicio TechnicalBasisService es responsable de buscar y retornar las bases técnicas 
+configuradas para el cálculo de primas de suscripción. 
+Colección MongoDB: TECHNICAL-BASIS 
+{ 
+  "_id": "bt_001", 
+  "codBt": "4481", 
+  "country": "ES", 
+  "company": 1, 
+  "branch": 100, 
+  "product": "01", 
+  "validityDate": "2024-01-01", 
+  "rate": 0.05, 
+  "minimumPremium": 10.00, 
+  "maximumPremium": 1000.00, 
+  "factors": [ 
+    { 
+      "name": "AGE", 
+      "type": "RANGE", 
+      "ranges": [ 
+        { "min": 18, "max": 30, "factor": 0.8 }, 
+        { "min": 31, "max": 50, "factor": 1.0 }, 
+        { "min": 51, "max": 65, "factor": 1.5 } 
+      ] 
+    } 
+  ] 
+} 
+Jerarquía de Búsqueda 
+1. Nivel 1: country + company + branch + product + validityDate 
+2. Nivel 2: country + company + branch + validityDate 
+3. Nivel 3: country + company + validityDate 
+4. Nivel 4: country + validityDate 
+Campos Extraíbles 
+Campo Tipo Descripción 
+rate BigDecimal Tasa base de prima 
+minimumPremium BigDecimal Prima mínima aplicable
+
+
+--- [PÁGINA 22 DE 50] ---
+
+Campo Tipo Descripción 
+maximumPremium BigDecimal Prima máxima aplicable 
+minimumCapital BigDecimal Capital mínimo asegurable 
+maximumCapital BigDecimal Capital máximo asegurable 
+factors List Factores de ajuste (edad, sexo, etc.) 
+ 
+10. Operaciones de Suscripción 
+Estructura de Suscripción: OPlySbnP 
+OPlySbnP { 
+    OPlySbnS { 
+        BigDecimal sbnVal;        // Número de suscripción 
+        String sbnStsVal;         // Estado: AC, SP, CA 
+        BigDecimal cplAmn;        // Capital asegurado 
+        BigDecimal preAnm;        // Prima anual 
+        BigDecimal enrSqn;        // Número de suplemento 
+        Date efcDat;              // Fecha de efecto 
+        Date expDat;              // Fecha de vencimiento 
+    } 
+} 
+Estados de Suscripción 
+Estado Código Descripción Incluye en Capital Incluye en Prima 
+Activa AC Suscripción activa Sí Sí 
+Suspendida SP Temporalmente suspendida Sí No 
+Cancelada CA Cancelada definitivamente No No 
+Cálculo de Primas y Capitales 
+Prima Anual:
+
+
+--- [PÁGINA 23 DE 50] ---
+
+primaAnual = Σ (preAnm de ajustes con sbnStsVal == 'AC') 
+Prima de Suplemento: 
+primaSuplemento = Σ (preAnm de ajustes con sbnStsVal == 'AC'   
+                     AND enrSqn == suplementoActual) 
+Capital Total: 
+capitalTotal = Σ (cplAmn de ajustes con sbnStsVal IN ('AC', 'SP')) 
+Ejemplo Completo: Alta de Suscripción 
+Implementación de preCalculation(): 
+@Override 
+public HashMap<String, Object> preCalculation(...) { 
+    HashMap<String, Object> preCalc = new HashMap<>(); 
+     
+    // 1. Extraer edad del asegurado 
+    BigDecimal age = extractAgeFromAttributes(newSupplement, rsk); 
+    preCalc.put("age", age); 
+     
+    // 2. Buscar base técnica 
+    LocalDate effectiveDate = extractEffectiveDate(newSupplement); 
+    TechnicalBasisDto technicalBasis = getTechnicalBasis( 
+        "4481", effectiveDate, currentPly, newSupplement, rsk, cvc 
+    ); 
+     
+    // 3. Obtener factor de edad 
+    BigDecimal ageFactor = technicalBasis.getFactorByAge(age); 
+    preCalc.put("ageFactor", ageFactor); 
+     
+    return preCalc; 
+} 
+Implementación de create(): 
+@Override 
+public OPlyPlyCDto create(...) { 
+    // 1. Localizar la cobertura 
+    OPlyCvcC coverage = findCoverage(newSupplement, rsk, cvc);
+
+
+--- [PÁGINA 24 DE 50] ---
+
+// 2. Obtener capital solicitado 
+    BigDecimal capital = coverage.getOPlyCvrP() 
+        .getOPlyCvrS() 
+        .getCplAmn(); 
+     
+    // 3. Calcular prima con tasa ajustada 
+    BigDecimal adjustedRate = (BigDecimal) preCalculation.get("adjustedRate"); 
+    BigDecimal premium = capital 
+        .multiply(adjustedRate) 
+        .divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP); 
+     
+    // 4. Crear nuevo ajuste de suscripción 
+    OPlySbnP newSubscription = new OPlySbnP(); 
+    OPlySbnS sbnS = new OPlySbnS(); 
+    sbnS.setSbnVal(getNextSubscriptionNumber(coverage)); 
+    sbnS.setSbnStsVal("AC");  // Activa 
+    sbnS.setCplAmn(capital); 
+    sbnS.setPreAnm(premium); 
+    sbnS.setEnrSqn(newSupplement.getOPlyGniP().getOPlyGniS().getEnrSqn()); 
+    newSubscription.setOPlySbnS(sbnS); 
+     
+    // 5. Añadir a la lista de suscripciones 
+    coverage.getOPlySbnPT().add(newSubscription); 
+     
+    return newSupplement; 
+} 
+ 
+PARTE III: MAPEOS DE DATOS 
+11. Arquitectura de Mapeos 
+El sistema de Data Mappings es responsable de transformar estructuras de datos entre 
+diferentes representaciones: 
+● OPlyPlyCDto → RatingRequest (entrada al motor de rating) 
+● RatingResponse → OPlyPlyCDto (salida del motor de rating) 
+┌─────────────────────────────────────────────────────────────┐  
+│                    API REST Request                          │  
+│                  (RatingPlyRequest)                          │  
+└────────────────────┬────────────────────────────────────────┘  
+                     │  
+                     ▼  
+┌─────────────────────────────────────────────────────────────┐  
+│                  PlyRequestMapper                            │
+
+
+--- [PÁGINA 25 DE 50] ---
+
+│  - extractFixedValues()                                      │  
+│  - extractParameters()                                       │  
+│  - mapRisks()                                                │  
+│  - mapCoverages()                                            │  
+└────────────────────┬────────────────────────────────────────┘  
+                     │  
+                     ▼  
+┌─────────────────────────────────────────────────────────────┐  
+│                  RatingService                               │  
+│                (Proceso de Cálculo)                          │  
+└────────────────────┬────────────────────────────────────────┘  
+                     │  
+                     ▼  
+┌─────────────────────────────────────────────────────────────┐  
+│                  PlyResponseMapper                           │  
+│  - mapBreakdownConcepts()                                    │  
+│  - updateCoverages()                                         │  
+└─────────────────────────────────────────────────────────────┘ 
+ 
+12. Mapeo de Entrada - PlyRequestMapper 
+Ubicación: com.mapfre.tron.rating.core.engine.mapper.PlyRequestMapper 
+Propósito: Transformar una póliza TRON (OPlyPlyCDto) en un objeto RatingRequest. 
+Método Principal 
+public static RatingRequest toRatingRequest( 
+    RatingPlyRequest.RequestInfo requestInfo, 
+    OPlyPlyCDto plyRequest, 
+    OPlyPlyCDto oPlyPlyCPrev, 
+    BranchRatingConfig branchRatingConfig, 
+    Map<PlyCoverageOperationKey, PlyCoverageOperation> supplementOperations, 
+    BigDecimal riskVal, 
+    Map<BigDecimal, Integer> quotes 
+) 
+Flujo de Mapeo 
+1. Extracción de datos generales  
+   │  
+   ▼  
+2. Construcción de FixedValues  
+   ├─> Campos de la póliza (número, fechas, moneda)
+
+
+--- [PÁGINA 26 DE 50] ---
+
+├─> Datos comerciales (nivel1, nivel2, nivel3)  
+   └─> Tipo de suplemento y código  
+   │  
+   ▼  
+3. Construcción de Parameters  
+   ├─> Todos los atributos de la póliza  
+   ├─> Campos calculados  
+   └─> Datos específicos del riesgo  
+   │  
+   ▼  
+4. Mapeo de Riesgos  
+   ├─> Filtrado por riskVal (si aplica)  
+   ├─> Mapeo de coberturas por riesgo  
+   └─> Asignación de operaciones de suscripción  
+   │  
+   ▼  
+5. Construcción de RatingRequest final 
+ 
+13. Mapeo de Salida - PlyResponseMapper 
+Ubicación: com.mapfre.tron.rating.core.engine.mapper.PlyResponseMapper 
+Propósito: Actualizar la póliza TRON con los resultados del cálculo. 
+Método Principal 
+public static OPlyPlyCDto toPlyResponse( 
+    RatingResponse ratingResponse, 
+    OPlyPlyCDto originalPly 
+) 
+Flujo de Mapeo 
+1. Localizar póliza original  
+   │  
+   ▼  
+2. Para cada riesgo en la respuesta:  
+   ├─> Localizar riesgo correspondiente en póliza  
+   │  
+   ▼  
+3. Para cada cobertura:  
+   ├─> Actualizar prima pura (purePremium)  
+   │  
+   ▼
+
+
+--- [PÁGINA 27 DE 50] ---
+
+4. Para cada breakdown concept:  
+   ├─> Crear/actualizar OPlyBrwP en la cobertura  
+   ├─> Mapear campos calculados:  
+   │   ├─> ecmBrwCncVal (ID concepto)  
+   │   ├─> anlAmn (Importe anual)  
+   │   ├─> enrAmn (Importe suplemento)  
+   │   ├─> anlAgrAmn (Importe anual acumulado)  
+   │   └─> nonCnmAmn (Importe no consumido)  
+   │  
+   ▼  
+5. Retornar póliza actualizada 
+ 
+14. Mapeo de Campos Fijos y Parámetros 
+FixedValues - Campos Fijos 
+Los FixedValues son campos constantes de la póliza extraídos principalmente de OPlyGniS. 
+Tabla de Mapeo: 
+Campo Origen Ruta Campo Destino Obligatorio 
+plyVal oPlyGniP.oPlyGniS.plyVal policyNumber Sí 
+enrVal oPlyGniP.oPlyGniS.enrVal supplementCode Sí 
+plyEfcDat oPlyGniP.oPlyGniS.plyEfcDat policyEffectiveDate Sí 
+plyExpDat oPlyGniP.oPlyGniS.plyExpDat policyExpirationDate Sí 
+crnVal oPlyGniP.oPlyGniS.crnVal currency Sí 
+cmpVal oPlyGniP.oPlyGniS.cmpVal companyId Sí 
+lobVal oPlyGniP.oPlyGniS.lobVal branchId Sí 
+thpVal oPlyGniP.oPlyGniS.thpVal thirdPartyCode No 
+frsLvlVal oPlyGniP.oPlyGniS.frsLvlVal level1 No
+
+
+--- [PÁGINA 28 DE 50] ---
+
+Parameters - Parámetros 
+Los Parameters son todos los atributos y campos adicionales de la póliza. 
+Fuentes: 
+1. Atributos de póliza (OPlyAtcCT) 
+2. Atributos de riesgo (prefijo risk_[rskVal]_) 
+3. Atributos de cobertura (prefijo coverage_[cvcVal]_) 
+4. Campos calculados 
+Extracción de Atributos: 
+private static void extractAttributesAsParameters( 
+    OPlyPlyCDto plyRequest, 
+    Map<String, Object> parameters 
+) { 
+    if (plyRequest.getOPlyAtcCT() == null) return; 
+     
+    for (OPlyAtcPC atcPC : plyRequest.getOPlyAtcCT()) { 
+        OPlyAtrS atrS = atcPC.getOPlyAtcC() 
+            .getOPlyAtrP() 
+            .getOPlyAtrS(); 
+         
+        String attrName = atrS.getAtrNam(); 
+        String attrValue = atrS.getAtrVal(); 
+         
+        if (attrName != null && attrValue != null) { 
+            parameters.put(attrName, attrValue); 
+        } 
+    } 
+} 
+Mapeo de Breakdown Concepts 
+Mapeo Individual: 
+private static OPlyBrwP mapSingleBreakdown( 
+    RatingBreakdownConcept ratingBreakdown, 
+    Integer risk, 
+    Integer coverage, 
+    Integer period 
+) { 
+    OPlyBrwP brwP = new OPlyBrwP(); 
+    OPlyBrwS brwS = new OPlyBrwS();
+
+
+--- [PÁGINA 29 DE 50] ---
+
+// IDs de referencia 
+    brwS.setEcmBrwCncVal(BigDecimal.valueOf( 
+        ratingBreakdown.getBreakdownConceptId())); 
+    brwS.setRskVal(BigDecimal.valueOf(risk)); 
+    brwS.setCvrVal(BigDecimal.valueOf(coverage)); 
+     
+    // Importes calculados 
+    brwS.setAnlAmn(ratingBreakdown.getAnnualAmount()); 
+    brwS.setEnrAmn(ratingBreakdown.getSupplementAmount()); 
+    brwS.setAnlAgrAmn(ratingBreakdown.getAnnualAccumulatedAmount()); 
+    brwS.setNonCnmAmn(ratingBreakdown.getNonConsumedAmount()); 
+     
+    brwP.setOPlyBrwS(brwS); 
+    return brwP; 
+} 
+ 
+15. Transformaciones Especiales 
+Conversión de Fechas 
+// Date to Long (milisegundos desde epoch) 
+private static Long dateToLong(Date date) { 
+    return date != null ? date.getTime() : null; 
+} 
+ 
+// Date to LocalDate 
+private static LocalDate dateToLocalDate(Date date) { 
+    return date != null  
+        ? date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate() 
+        : null; 
+} 
+Extracción de SubBranch 
+private static Integer extractSubBranch(Object mdtVal) { 
+    if (mdtVal == null) return null; 
+     
+    if (mdtVal instanceof BigDecimal) { 
+        return ((BigDecimal) mdtVal).intValue(); 
+    } 
+     
+    if (mdtVal instanceof Integer) { 
+        return (Integer) mdtVal;
+
+
+--- [PÁGINA 30 DE 50] ---
+
+} 
+     
+    if (mdtVal instanceof String) { 
+        try { 
+            return Integer.parseInt((String) mdtVal); 
+        } catch (NumberFormatException e) { 
+            return null; 
+        } 
+    } 
+     
+    return null; 
+} 
+Saturación de BigDecimal 
+private static BigDecimal saturateDecimal(BigDecimal value) { 
+    if (value == null) return null; 
+     
+    final int MAX_SCALE = 30; 
+     
+    if (value.scale() > MAX_SCALE) { 
+        return value.setScale(MAX_SCALE, RoundingMode.HALF_UP); 
+    } 
+     
+    return value; 
+} 
+Mapeo con Prefijo "prev." 
+Para la póliza anterior, se añade prefijo a los parameters: 
+Map<String, Object> prevParameters = extractParametersWithPrefix( 
+    oPlyPlyCPrev,  
+    "prev." 
+); 
+ 
+PARTE IV: MOTOR DE REGLAS 
+16. Introducción a JEasy Rules 
+El Motor de Reglas utiliza JEasy Rules como framework base para ejecutar reglas de 
+negocio de forma flexible y mantenible.
+
+
+--- [PÁGINA 31 DE 50] ---
+
+¿Por qué un Motor de Reglas? 
+● Separación de lógica de negocio 
+● Mantenibilidad: Fácil añadir, modificar o eliminar reglas 
+● Trazabilidad: Cada regla ejecutada queda registrada 
+● Flexibilidad: Soporte para múltiples tipos de cálculo 
+● Extensibilidad: Fácil crear nuevas reglas personalizadas 
+Características de JEasy Rules 
+● Reglas basadas en POJOs 
+● Anotaciones declarativas: @Rule, @Condition, @Action 
+● Ejecución ordenada según prioridad 
+● Inyección de hechos (Facts) 
+Documentación: https://github.com/j-easy/easy-rules 
+ 
+17. Estructura de una Regla 
+@Rule(name = "Nombre de la Regla", description = "Descripción detallada")  
+public class MiRegla { 
+     
+    private final int priority; 
+    private final RuleEngineStats ruleEngineStats; 
+    private final RuleContext ruleContext; 
+     
+    public MiRegla(int priority, RuleEngineStats stats, RuleContext context) { 
+        this.priority = priority; 
+        this.ruleEngineStats = stats; 
+        this.ruleContext = context; 
+    } 
+     
+    @Priority 
+    public int getPriority() { 
+        return priority; 
+    } 
+     
+    @Condition 
+    public boolean when(@Fact("factName") Object fact) { 
+        // Evaluar si la regla debe ejecutarse 
+        return conditionIsMet; 
+    }
+
+
+--- [PÁGINA 32 DE 50] ---
+
+@Action 
+    public void then(@Fact("factName") Object fact) throws Exception { 
+        // Ejecutar lógica de negocio 
+        // Actualizar datos 
+        // Registrar ejecución 
+    } 
+} 
+Anotaciones 
+Anotación Propósito Ubicación 
+@Rule Define metadatos de la regla Clase 
+@Priority Define orden de ejecución Método getter 
+@Condition Define cuándo se ejecuta Método booleano 
+@Action Define qué hace la regla Método void 
+@Fact Inyecta un fact en el método Parámetro 
+ 
+18. Facts - Datos Disponibles 
+Los Facts son los datos disponibles para todas las reglas durante su ejecución. 
+Tabla de Facts 
+Fact Name Tipo Disponible en Descripción 
+company Company Todas las reglas Datos de compañía 
+ratingRequest RatingRequest Todas las reglas Request completo 
+supplement Supplement Todas las reglas Suplemento actual 
+risk SupplementRisk Reglas de riesgo Riesgo actual
+
+
+--- [PÁGINA 33 DE 50] ---
+
+Fact Name Tipo Disponible en Descripción 
+period SupplementPeriod Reglas de periodo Periodo actual 
+coverage SupplementCoverage Reglas de cobertura Cobertura actual 
+breakdownConcept SupplementBreakdownConcept Reglas de breakdown Concepto actual 
+ruleEngineStats RuleEngineStats Todas las reglas Estadísticas 
+Ejemplo de Uso 
+@Condition 
+public boolean when( 
+    @Fact("coverage") SupplementCoverage coverage, 
+    @Fact("ratingRequest") RatingRequest request 
+) { 
+    CoverageField config = coverage.getCoverageField(); 
+    Map<String, Object> parameters = request.getParameters(); 
+     
+    return config.getCalculationType() == CoverageCalculationType.PERCENTAGE; 
+} 
+ 
+19. Reglas de Cobertura 
+Las reglas de cobertura calculan la prima pura de una cobertura. 
+Flujo de Ejecución 
+1. CoveragePurePremiumManualRule (Prioridad 1)  
+   └─> Si existe prima manual → Usa valor manual y termina  
+  
+2. CoveragePurePremiumPercentageRule (Prioridad 10)  
+   └─> purePremium = capital * rate / 100  
+  
+3. CoveragePurePremiumSoMuchPerThousandRule (Prioridad 11)  
+   └─> purePremium = capital * rate / 1000  
+  
+4. CoveragePurePremiumFixedAmountRule (Prioridad 12)  
+   └─> purePremium = amount
+
+
+--- [PÁGINA 34 DE 50] ---
+
+5. CoveragePurePremiumFormulaRule (Prioridad 15)  
+   └─> purePremium = evaluar fórmula  
+  
+6. CoveragePurePremiumFormulaAcdcRule (Prioridad 16)  
+   └─> purePremium = evaluar fórmula ACDC  
+  
+7. CoveragePurePremiumMultivariateRule (Prioridad 17)  
+   └─> purePremium = calcular con factores multivariable  
+  
+8. CoverageCapitalChangeRateRule (Prioridad 100)  
+   └─> Aplica tipo de cambio si existe 
+Ejemplo: CoveragePurePremiumPercentageRule 
+@Rule( 
+    name = "Coverage Pure Premium Percentage Rule", 
+    description = "Calculates pure premium as percentage of capital" 
+) 
+public class CoveragePurePremiumPercentageRule { 
+     
+    private final int priority; 
+    private final RuleEngineStats ruleEngineStats; 
+     
+    @Priority 
+    public int getPriority() { 
+        return priority; 
+    } 
+     
+    @Condition 
+    public boolean when(@Fact("coverage") SupplementCoverage coverage) { 
+        CoverageField config = coverage.getCoverageField(); 
+         
+        return config.getCalculationType() == CoverageCalculationType.PERCENTA
+GE 
+            && coverage.getPurePremium() == null; 
+    } 
+     
+    @Action 
+    public void then(@Fact("coverage") SupplementCoverage coverage) { 
+        CoverageField config = coverage.getCoverageField(); 
+         
+        BigDecimal capital = coverage.getCapital(); 
+        BigDecimal rate = config.getCalculationRate(); 
+         
+        BigDecimal purePremium = capital 
+            .multiply(rate)
+
+
+--- [PÁGINA 35 DE 50] ---
+
+.divide(BigDecimal.valueOf(100), 6, RoundingMode.HALF_UP); 
+         
+        coverage.setPurePremium(purePremium); 
+         
+        ruleEngineStats.registerRuleExecution( 
+            this.getClass().getSimpleName(), 
+            "Coverage: " + coverage.getCoverageId() 
+        ); 
+    } 
+} 
+ 
+20. Reglas de Breakdown Concept 
+Las reglas de breakdown concept calculan los conceptos de desglose. 
+Flujo de Ejecución 
+1. Determinación de Base de Cálculo  
+   ├─> BreakdownConceptCalculationBaseCapitalRule  
+   │   └─> calculationBase = capital  
+   ├─> BreakdownConceptCalculationBasePurePremiumRule  
+   │   └─> calculationBase = purePremium  
+   └─> BreakdownConceptCalculationBaseAggregatorRule  
+       └─> calculationBase = acumulador[nombre]  
+  
+2. Cálculo del Importe Anual  
+   ├─> BreakdownConceptCalculationPercentageRule  
+   │   └─> annualAmount = calculationBase * rate / 100  
+   ├─> BreakdownConceptCalculationFixedAmountRule  
+   │   └─> annualAmount = amount  
+   └─> BreakdownConceptCalculationFormulaRule  
+       └─> annualAmount = fórmula()  
+  
+3. Aplicación de Prima Mínima  
+   └─> BreakdownConceptMinimumPremiumFixedRateRule  
+  
+4. Temporalidad (Prorrata)  
+   ├─> BreakdownConceptTemporallyRule  
+   │   └─> supplementAmount = annualAmount * prorate  
+   └─> BreakdownConceptNoTemporallyRule  
+       └─> supplementAmount = annualAmount  
+  
+5. Redondeo  
+   └─> BreakdownConceptNumDecimalsRule
+
+
+--- [PÁGINA 36 DE 50] ---
+
+6. Acumulación  
+   └─> BreakdownConceptAccumulatorRule 
+Ejemplo: BreakdownConceptCalculationPercentageRule 
+@Rule( 
+    name = "Breakdown Concept Calculation Percentage Rule", 
+    description = "Calculates as percentage of calculation base" 
+) 
+public class BreakdownConceptCalculationPercentageRule { 
+     
+    @Priority 
+    public int getPriority() { 
+        return priority; 
+    } 
+     
+    @Condition 
+    public boolean when( 
+        @Fact("breakdownConcept") SupplementBreakdownConcept breakdownConcept 
+    ) { 
+        BreakdownConceptField config = breakdownConcept.getBreakdownConceptFie
+ld(); 
+         
+        return config.getCalculationType() ==  
+                   BreakdownConceptCalculationType.PERCENTAGE 
+            && breakdownConcept.getAnnualAmount() == null 
+            && breakdownConcept.getCalculationBase() != null; 
+    } 
+     
+    @Action 
+    public void then( 
+        @Fact("breakdownConcept") SupplementBreakdownConcept breakdownConcept 
+    ) { 
+        BreakdownConceptField config = breakdownConcept.getBreakdownConceptFie
+ld(); 
+         
+        BigDecimal calculationBase = breakdownConcept.getCalculationBase(); 
+        BigDecimal rate = config.getCalculationRate(); 
+         
+        BigDecimal annualAmount = calculationBase 
+            .multiply(rate) 
+            .divide(BigDecimal.valueOf(100), 6, RoundingMode.HALF_UP); 
+         
+        breakdownConcept.setAnnualAmount(annualAmount); 
+    } 
+}
+
+
+--- [PÁGINA 37 DE 50] ---
+
+21. Reglas de Anulación y Temporalidad 
+Reglas de Anulación 
+1. PolicyBreakdownConceptAnnualValidityRule  
+   └─> Calcula importe anual de póliza anterior  
+  
+2. Determinación de Coeficiente  
+   ├─> AnnulationCoefficientCompleteRule  
+   │   └─> coefficient = 1 (anulación total)  
+   ├─> AnnulationCoefficientProgramRule  
+   │   └─> coefficient = programa()  
+   └─> AnnulationCoefficientApplyProrateRule  
+       └─> coefficient = (diasRestantes / diasTotales)  
+  
+3. Cálculo Final  
+   └─> annulationAmount = annualAmount * coefficient 
+Reglas de Temporalidad 
+BreakdownConceptTemporallyRule: 
+@Condition 
+public boolean when( 
+    @Fact("breakdownConcept") SupplementBreakdownConcept breakdownConcept 
+) { 
+    BreakdownConceptField config = breakdownConcept.getBreakdownConceptField()
+; 
+     
+    return Boolean.TRUE.equals(config.getApplyTemporality()) 
+        && breakdownConcept.getAnnualAmount() != null 
+        && breakdownConcept.getSupplementAmount() == null; 
+} 
+ 
+@Action 
+public void then( 
+    @Fact("breakdownConcept") SupplementBreakdownConcept breakdownConcept, 
+    @Fact("period") SupplementPeriod period 
+) { 
+    BigDecimal annualAmount = breakdownConcept.getAnnualAmount(); 
+    BigDecimal prorate = calculateProrate(period); 
+     
+    BigDecimal supplementAmount = annualAmount 
+        .multiply(prorate)
+
+
+--- [PÁGINA 38 DE 50] ---
+
+.setScale(6, RoundingMode.HALF_UP); 
+     
+    breakdownConcept.setSupplementAmount(supplementAmount); 
+} 
+Prioridades y Orden de Ejecución 
+Rango Propósito 
+1-9 Reglas preliminares 
+10-49 Cálculos principales 
+50-99 Post-procesamiento 
+100-149 Temporalidad y ajustes 
+150-199 Redondeo y formateo 
+200+ Acumulación y finalización 
+ 
+PARTE V: MOTOR DE FÓRMULAS 
+22. Introducción al Motor de Fórmulas 
+El Motor de Fórmulas permite calcular primas y conceptos de desglose utilizando fórmulas 
+parametrizadas almacenadas en MongoDB. 
+Ventajas 
+● Flexibilidad: Cambiar cálculos sin desplegar código 
+● Reutilización: Una fórmula puede usarse en múltiples coberturas 
+● Mantenibilidad: Fórmulas centralizadas 
+● Versionado: Control de vigencia por fechas 
+● Constantes dinámicas: Valores parametrizados 
+● Auditoría: Trazabilidad completa
+
+
+--- [PÁGINA 39 DE 50] ---
+
+23. Tipos de Fórmulas - FORMULA y FORMULA_ACDC 
+FORMULA (Estándar) 
+Fórmulas simples con variables del request y constantes parametrizadas. 
+Características: 
+● Variables: [VARIABLE] 
+● Constantes: MMATH.f_cte('NOMBRE') 
+● Evaluación con MxParser 
+FORMULA_ACDC (Advanced) 
+Fórmulas avanzadas con funcionalidades adicionales. 
+Características adicionales: 
+● Funciones personalizadas: FUNC_XXX() 
+● Procesamiento avanzado de parámetros 
+● Auditoría completa 
+Diferencias 
+Característica FORMULA FORMULA_ACDC 
+Variables de request Soportado Soportado 
+Constantes MMATH.f_cte() Soportado Soportado 
+Funciones FUNC_XXX No Sí 
+Auditoría Básica Completa 
+Casos de uso Cálculos simples Cálculos complejos 
+ 
+24. Sintaxis y Variables 
+Estructura de FormulaDefinition
+
+
+--- [PÁGINA 40 DE 50] ---
+
+Colección MongoDB: FORMULA-DEFINITION 
+{ 
+  "cnyVal": "ES", 
+  "cmpVal": 1, 
+  "brgKeyFomVal": "FORM_RECARGO_001", 
+  "fomNam": "Fórmula de Recargo Estándar", 
+  "vldDat": 1710777600000, 
+  "dsbRow": "[BASE_CALCULO] * MMATH.f_cte('TASA_RECARGO') / 100" 
+} 
+Variables de Request 
+Las variables se referencian entre corchetes: [NOMBRE_VARIABLE] 
+Ejemplo: 
+[BASE_CALCULO] * [TASA] / 100 
+Variables disponibles: 
+● fixedValues: [policyNumber], [currency], etc. 
+● parameters: [EDAD], [SEXO], [PROFESION], etc. 
+● Variables especiales: [COVERAGE_ID], [SUB_BRANCH], [BASE_CALCULO] 
+Operadores Matemáticos 
+Operador Descripción Ejemplo 
++ Suma [A] + [B] 
+- Resta [A] - [B] 
+* Multiplicación [A] * [B] 
+/ División [A] / [B] 
+^ Potencia [A] ^ 2 
+() Paréntesis ([A] + [B]) * [C]
+
+
+--- [PÁGINA 41 DE 50] ---
+
+Funciones Matemáticas 
+Función Descripción Ejemplo 
+sqrt(x) Raíz cuadrada sqrt([CAPITAL]) 
+abs(x) Valor absoluto abs([DIFERENCIA]) 
+max(x,y) Máximo max([A], [B]) 
+min(x,y) Mínimo min([A], [B]) 
+round(x) Redondeo round([VALOR]) 
+ 
+25. Constantes Parametrizadas 
+Las constantes se referencian con: MMATH.f_cte('NOMBRE_CONSTANTE') 
+Estructura de ConstantDefinition 
+Colección MongoDB: CONSTANT-DEFINITION 
+{ 
+  "cnyVal": "ES", 
+  "cmpVal": 1, 
+  "lobVal": 100, 
+  "vldDat": 1710777600000, 
+  "definicionesConstantes": [ 
+    { 
+      "vrbNam": "TASA_RECARGO", 
+      "vrbNamVal": "15.5" 
+    } 
+  ] 
+} 
+Funcionamiento 
+1. El motor busca la constante en CONSTANT-DEFINITION 
+2. Filtra por país, compañía, ramo, fecha de vigencia 
+3. Reemplaza MMATH.f_cte('NOMBRE') por el valor encontrado
+
+
+--- [PÁGINA 42 DE 50] ---
+
+Ejemplo de Uso 
+Fórmula: 
+[BASE_CALCULO] * MMATH.f_cte('TASA_RECARGO') / 100 
+Si TASA_RECARGO = 15.5 y BASE_CALCULO = 1000: 
+1000 * 15.5 / 100 = 155 
+Jerarquía de Búsqueda 
+1. País + Compañía + Ramo + Fecha 
+2. País + Compañía + Fecha 
+3. País + Fecha 
+ 
+26. Funciones Personalizadas 
+Solo disponibles en FORMULA_ACDC 
+Sintaxis 
+FUNC_NOMBRE_FUNCION(arg1, arg2, ...) 
+Ejemplo 
+Fórmula: 
+[BASE] + FUNC_CALC_MAX(x, y, z) 
+Implementación: 
+@Component("FUNC_CALC_MAX") 
+public class CalcMaxFunction implements ExecutableFormula { 
+     
+    @Override 
+    public BigDecimal execute(Map<String, Object> parameters) { 
+        BigDecimal x = getBigDecimal(parameters, "x"); 
+        BigDecimal y = getBigDecimal(parameters, "y");
+
+
+--- [PÁGINA 43 DE 50] ---
+
+BigDecimal z = getBigDecimal(parameters, "z"); 
+         
+        return x.max(y).max(z); 
+    } 
+} 
+Ejemplo Completo 
+Fórmula en MongoDB: 
+( [BASE_CALCULO] / (1 - [COMISION]/100 - [412] - [413] - MMATH.f_cte('PCT_RE_1
+40') + MMATH.f_cte('PCT_FC_140')) ) * [413] 
+Con valores: 
+● BASE_CALCULO = 1000 
+● COMISION = 10 
+● 412 = 0.05 
+● 413 = 0.03 
+● PCT_RE_140 = 0.02 
+● PCT_FC_140 = 0.01 
+Evaluación: 
+(1000 / (1 - 0.1 - 0.05 - 0.03 - 0.02 + 0.01)) * 0.03  
+= (1000 / 0.81) * 0.03  
+= 37.04 
+Configuración 
+Paso 1: Crear FormulaDefinition en MongoDB 
+Paso 2: Crear ConstantDefinition (si usa constantes) 
+Paso 3: Configurar Coverage o BreakdownConcept: 
+{ 
+  "calculationType": "FORMULA_ACDC", 
+  "codFormula": "FORM_MI_FORMULA", 
+  "validityDate": "2024-01-01" 
+}
+
+
+--- [PÁGINA 44 DE 50] ---
+
+Paso 4: Incluir variables en el request 
+Auditoría 
+El sistema registra: 
+● Variables utilizadas y sus valores 
+● Constantes consultadas y sus valores 
+● Fórmula procesada 
+● Resultado final 
+● Timestamp de ejecución 
+Ejemplo de log: 
+Formula Execution Trace:  
+  Formula Code: FORM_RECARGO_140  
+  Variables Used:  
+    - BASE_CALCULO: 1000  
+    - COMISION: 10  
+  Constants Used:  
+    - PCT_RE_140: 0.02  
+  Result: 37.04 
+ 
+PARTE VI: MÓDULO COVERAGE PACKAGES 
+27. Introducción a Coverage Packages 
+El módulo coverage-packages gestiona paquetes de coberturas predefinidos (preferencias). 
+Una preferencia es un conjunto de coberturas que se pueden contratar como unidad. 
+Funcionalidad principal: 
+● Calcular qué coberturas aplican según preferencia solicitada 
+● Buscar preferencias que contengan coberturas específicas 
+● Aplicar reglas de obligatoriedad y capitales según contexto 
+API REST 
+Ubicación: com.mapfre.tron.rating.coverage.packages.controller.PackagesController 
+Endpoint: Calcular Preferencias
+
+
+--- [PÁGINA 45 DE 50] ---
+
+URL: POST /api/1.00/calculate-packages 
+Request: 
+{ 
+  "countryId": "ES", 
+  "companyId": 1, 
+  "branchId": 100, 
+  "risks": [{"riskId": 1, "riskType": "PERSON"}], 
+  "preferences": [{"preferenceId": 1}] 
+} 
+Response: 
+{ 
+  "risks": { 
+    "1": { 
+      "preferences": [ 
+        { 
+          "preferenceId": 1, 
+          "preferenceName": "Paquete Básico", 
+          "coverages": [ 
+            {"coverageId": 1, "capital": 100000, "status": "MANDATORY"} 
+          ] 
+        } 
+      ] 
+    } 
+  } 
+} 
+ 
+28. Reglas de Selección de Preferencias 
+Caso 1: Selección Directa (preferenceId > 0) 
+Cuando se solicita una preferencia específica: 
+{ 
+  "preferences": [{"preferenceId": 1}] 
+} 
+Proceso: 
+1. Busca la definición de la preferencia en MongoDB
+
+
+--- [PÁGINA 46 DE 50] ---
+
+2. Carga coberturas configuradas 
+3. Aplica reglas de negocio según contexto 
+4. Retorna la preferencia con coberturas calculadas 
+Caso 2: Búsqueda Inversa (preferenceId = 0) 
+Buscar preferencias que contengan coberturas específicas: 
+{ 
+  "preferences": [ 
+    { 
+      "preferenceId": 0, 
+      "coverages": [1, 3, 5] 
+    } 
+  ] 
+} 
+Proceso: 
+1. Obtiene TODAS las preferencias del ramo 
+2. Filtra: verifica si contiene al menos una de las coberturas [1, 3, 5] 
+3. Proyección: solo incluye las coberturas solicitadas 
+4. Retorno: lista de preferencias coincidentes 
+Ejemplo: 
+Si existe: 
+● Preferencia 1: coberturas [1, 2, 3, 4] 
+● Preferencia 2: coberturas [3, 5, 6] 
+● Preferencia 3: coberturas [7, 8, 9] 
+Buscando [1, 3, 5]: 
+● Preferencia 1: mostrará solo [1, 3] 
+● Preferencia 2: mostrará solo [3, 5] 
+● Preferencia 3: NO se incluye 
+Algoritmo de Selección 
+SI preferenceId == 0 Y existe lista de coverages:  
+    Buscar TODAS las preferencias del ramo  
+    Para cada preferencia:
+
+
+--- [PÁGINA 47 DE 50] ---
+
+Calcular intersección con coverages solicitadas  
+        SI intersección NO está vacía:  
+            Añadir preferencia con coberturas coincidentes  
+    Retornar lista  
+  
+SI preferenceId > 0:  
+    Buscar preferencia específica  
+    SI existe lista de coverages:  
+        Filtrar solo esas coberturas  
+    SINO:  
+        Incluir todas las coberturas  
+    Retornar preferencia  
+  
+SI NO existe preferences:  
+    Retornar catálogo completo 
+Configuración en MongoDB 
+COVERAGE-PACKAGE-DEFINITION: 
+{ 
+  "country": "ES", 
+  "companyId": 1, 
+  "branchId": 100, 
+  "preferenceId": 1, 
+  "coverages": [ 
+    { 
+      "coverageId": 1, 
+      "status": "MANDATORY", 
+      "minCapital": 10000, 
+      "maxCapital": 500000, 
+      "defaultCapital": 100000 
+    } 
+  ] 
+} 
+COVERAGE-PACKAGE-NAME: 
+{ 
+  "country": "ES", 
+  "companyId": 1, 
+  "branchId": 100, 
+  "preferenceId": 1, 
+  "name": "Paquete Básico", 
+  "description": "Coberturas mínimas" 
+}
+
+
+--- [PÁGINA 48 DE 50] ---
+
+Reglas de Negocio 
+El módulo aplica reglas dinámicas usando JEasy Rules: 
+1. Reglas de Capital: 
+// Reducir capital máximo por edad 
+when: age > 60 
+then: maxCapital = 200000 
+2. Reglas de Disponibilidad: 
+// Bloquear cobertura por profesión de riesgo 
+when: profession == "HIGH_RISK" && coverageId == 5 
+then: blocked = true 
+3. Reglas de Obligatoriedad: 
+// Cobertura obligatoria por edad 
+when: age < 55 && coverageId == 2 
+then: status = "MANDATORY" 
+ 
+GLOSARIO DE TÉRMINOS 
+Término Descripción 
+Rating Proceso de cálculo de prima (tarificación) 
+Pure Premium Prima pura, prima base antes de recargos 
+Breakdown Concept Concepto de desglose (prima pura, recargos, impuestos) 
+Coverage Cobertura de seguro 
+Risk Riesgo asegurado 
+Supplement Suplemento de póliza 
+Temporality Prorrata temporal
+
+
+--- [PÁGINA 49 DE 50] ---
+
+Término Descripción 
+Subscription Suscripción individual dentro de una cobertura 
+Technical Basis Bases técnicas para cálculo de primas 
+FixedValues Campos fijos mapeados de la póliza 
+Parameters Parámetros dinámicos mapeados de la póliza 
+JEasy Rules Framework de motor de reglas 
+Facts Datos disponibles para reglas 
+Formula Fórmula matemática parametrizada 
+MMATH.f_cte() Función para referenciar constantes en fórmulas 
+FUNC_XXX Patrón de funciones personalizadas 
+ 
+COLECCIONES MONGODB 
+Colección Propósito 
+branches Configuración de ramos 
+breakdownConcepts Conceptos de desglose 
+economicConcepts Conceptos económicos 
+quotes Cotizaciones multivariable 
+FORMULA-DEFINITION Definiciones de fórmulas 
+CONSTANT-DEFINITION Constantes para fórmulas 
+SUPPLEMENT-OPERATION-RULES Reglas de operaciones de suscripción
+
+
+--- [PÁGINA 50 DE 50] ---
+
+Colección Propósito 
+TECHNICAL-BASIS Bases técnicas 
+COVERAGE-PACKAGE-DEFINITION Definición de paquetes 
+COVERAGE-PACKAGE-NAME Nombres de paquetes 
+ 
+ENLACES Y REFERENCIAS 
+● JEasy Rules GitHub: https://github.com/j-easy/easy-rules 
+● MxParser Documentation: http://mathparser.org/ 
+ 
+Fin del documento 
+Versión: 1.0.454-SNAPSHOT 
+Fecha: 24 de Marzo de 2026 
+Autor: Equipo ACDC - MAPFRE TRON

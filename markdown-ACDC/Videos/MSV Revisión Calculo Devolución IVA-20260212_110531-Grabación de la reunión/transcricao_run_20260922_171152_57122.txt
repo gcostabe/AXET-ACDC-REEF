@@ -1,0 +1,291 @@
+total el estatus de inicial del recibo es cobrado cuando se lanza el suplemento de
+anulación lo que normalmente hace rifa es que calcula estos valores el negativo correspondiente
+de la prima no de vengada y del IVA cierto y bueno estos 1051 que es lo que correspondía
+al IVA de la vigencia utilizada de la poliza del laberiz nosotros no no haríamos nada en este
+momento solo calcularías el IVA negativo solamente esto acá si que es el comportamiento natural de
+rifa correcto que correcto y lo mismo si el recibo está está epe o está re correcto se sigue
+calculando acá el negativo ok perfecto ya me quedó claro vamos para el segundo escenario
+donde tenemos la poliza mensual de plan de pago mensual 12 cuotas y el primer escenario es donde
+anulamos cuando tenemos los 90 días los 90 días inicialmente tenemos 5 recibo pagos o sea que
+tenemos vigencia paga hasta el primero de junio pero se lanza se lanza la anulación el primero de
+abril o sea acá si lo que te entiendo Diego es que ahí sí se calcularía un concepto de IVA devolver
+por estos dos recibos o sea 11.70 y acá de los recibos epe esto también se devolvería o se el
+epe tendría que que devolverlo que al final esos recibos epe van a quedar efectos 0 cierto
+pero como están si están epe entonces el sistema generaría dos recibo adicionales con
+los conceptos negativos si el generaría estos recibo con los negativos correspondientes a de cada
+recibo de 45 y de 5.85 deiga para cada uno para netearlo y a ver Daniel para ver pausa de la
+terminología homogénea nuevamente no dale si quieres ahí en vez de ponerle recibo ponerle
+cuota vale para saber que estamos hablando de la cuota 1 2 3 4 no entonces aquí el comportamiento
+de riff es por todos estos recibos que están epe a partir de hace esta cuota el va a generar un
+movimiento interno con usando el mismo número recibo que al final es lo que dice Diego que va a ser un
+efecto 0 vale entonces esos recibos quedan neteados ok y luego va a generar dos recibos nuevos dos
+números de recibo que van a ir alineados a la cuota 4 y la cuota 5 que están ct y ahí se van a ser
+recibos negativos correcto salvo que la fecha de pago del recibo supere los 90 días ahí si haría el
+ajuste del concepto de iba es correcto pero eso en este escenario no lo tenemos uno uno uno más
+abajo Daniel con eso para ver cómo es que lo vamos a calcular este acá este se va con recibo
+remesados y esta es anulación parcial podemos poner otro con esto para ver si yo acá no sé no han
+nulo el primero sino que anulo el cinco ahí ya serían 94 días que pasa que lo que pasa que
+ahí dale lo que pasa que ahí tiene que contar los días porque claro son 94 días pago de la
+cuota 4 pero de la cuota 5 podría ser menos cierto si exacto entonces tú vas a calcular cuota cuota
+el número de días cuota cuota para saber si hace el ajuste del iba o no lo hace o mantiene el
+comportamiento natural cierto vale pero ahí me perdió un poco Diego por ejemplo aquí la
+cancelación lo lance para la cuota 4 o sea voy a mirar es de aquí en adelante cierto si no han
+pasado los 90 días del pago la cuota 3 esto igual no lo miro porque no entra dentro del periodo de
+vigencia el suplemento anulación correcto claro está para poner en para poner en este ejemplo
+esta polisa tiene vigencia uno del uno del 20 25 al uno del uno del 20 26 si tienes pago hasta la
+cuota 5 que refleja que ver enero febrero marzo abril mayo o sea tienes pago hasta el 31 de mayo
+si sí vale ahora está solicitando la anulación la anulación el día el día 5 de abril de abril
+a qué fecha de efecto lo vas a anular cuál sería la fecha de efecto del suplemento de anulación
+pusimos el uno que decía originalmente dany primero de abril el 1 de abril entonces aquí
+sería una abril que estoy aquí haciendo claro porque que pasa tiene tiene que ver la fecha tanto
+la fecha de efecto del suplemento de anulación como la fecha real en que está ejecutando el
+cambio que está ejecutando el suplemento cierto como sería hoy es 12 de febrero pues
+alguna anulación al primero de febrero ten en cuenta el primero de febrero o el 12 de febrero el 12
+de febrero tiene la fecha la fecha la fecha de emisión es la que yo tengo en cuenta para
+calcular los días de correcto la fecha en que está haciendo el suplemento la fecha real
+de acuerdo comprendo hasta si el efecto no sea la misma o sea no trae poca no tengo en cuenta esa
+porción la fecha de efecto digamos que te va a servir para saber qué recibo va a afectar qué cuota
+va a afectar pero no para el cálculo del ajuste de iva o no para el cálculo del ajuste de iva
+es la fecha en que estoy haciendo el suplemento sí vale sí sí sí
+que aquí está entrando otro elemento en juego que es la fecha así que la fecha contable contablemente
+pero no es la fecha no es la fecha de proceso que puede ir retrasada en la fecha actual que
+estoy haciendo el día de un sisteis básicamente y no actualiza la fecha contable de emisión todos
+los días o son fines de mes si ahí lo hacen todos los días porque el cierre diario pero sí que
+podría ser una fecha contable adelantada o una fecha sí sí no lo que pasa es que el criterio
+contable como cambió es a la la contabilización de las primas toma en cuenta es la fecha mayor
+entre la fecha de efecto del suplemento y la fecha de proceso es decir que las pólizas que son
+retroactivas lo contabilizamos hoy las pólizas que son anticipadas a futuro se contabiliza en
+el momento que inicie el efecto del suplemento de emisión entonces va a ser un problema tomar
+la fecha contable porque puede pasar esto que va a comentar Diego es que aquí tenemos que esa parte
+les quedó claro entonces imagínate aquí es que pongamos es que tenemos que poner la fecha de
+cobro del recibo ahí dania en ese en ese y la fecha de ejecución de la anulación sea fecha de
+efecto de la anulación y fecha no tocas diario en redas más chamó
+fecha del diario tiene tiene razón o sea ya lo que parecía simple realmente se está
+volviendo bien complejo si para caer y eso son varios criterios de la comidad ahí digamos y
+solo muta la fecha de efecto con la fecha del recibo es valida eso por ahí tenemos que tener
+en cuenta si la fecha del día no la fecha del suplemento yo lo hago para el 3 de marzo lo
+estoy haciendo hoy o si lo hago para el primero de enero pero lo está haciendo hoy cambia que
+si lo dió en di que no aparte de eso si te ven cuenta la fecha de efecto de recibo
+pues una copa no puedo pagar tres recibes anticipados a puedo pagar en la cuota 1 cuota 2 cuota 3 el
+primer día es toda la fecha de efecto no es la misma que la fecha en la cual yo los pague
+y cambia y cambiaría que los paco los tres primeros el primero de enero salto no fecha
+del recibo a o al 4 de abril tomaría en cuenta los 90 días pero si los paco así enero febrero
+marzo abril mayo claro lo de febrero y marzo entran que son menos de 90 días a la fecha del
+4 de abril déjame déjame un segundo dame dame un minuto voy a voy a hablar con el con el usuario
+ver si se puede unir porque es que es que siento que ya lo redamos mucho y no estamos haciendo bola
+si pero me te va a robar la pantalla dani perdona aleman mientras Diego está hablando hoy vamos a
+vamos a ver el escenario entonces aquí este es el otro no esta la vigencia la polisa que va que
+va así que no estoy viendo lo no estoy viendo entonces tenemos estos recibos estos son las
+cuotas vale 12 cuotas entonces aquí el escenario que tú habías pintado ahí dani era cuando
+hacía la anulación el efecto el efecto el efecto sería el primero de abril primero abril
+aquí estamos estamos anulándolo aquí y entonces yo puedo estar ejecutando
+espérate espérate lucha o sea yo estoy la fecha anulación es esta pero yo puedo anularlo por
+aquí verdad yo voy a ejecutarlo en julio que el tipo no pago más si vamos por cáncer por
+esa cáncelación por falta pago se ejecutarían en esa época exacto pero claro el nada es que
+eso no no no un buen ejemplo lucha porque la agarra y cancelas a la fecha del primer recibo
+pendiente justo para no estar con estos temas de evolución pero puede darse que el pago hasta el
+mes cuatro mano y el mes cinco él diga no no quiero tener más la poliza cancelenela en el mes cinco
+cancelamos aquí cancelamos ahí y ahí todavía no ha sobrepasado los 90 días
+te cancela y te dice cancela me la nos llamaron en abril en mayo perdón habíamos puesto vamos a
+poner un 15 va aquí para hacer que sea diferente y lo cancela con qué efecto la fecha de la anulación
+se puede hacer por rata y lo puede anular para febrero marzo incluso
+para que sea para que entren los días tendríamos que poner como el pasado no
+porque el ejemplo que tiene cada día los que está pago hasta el hasta la cuota cinco
+hasta la cuota cinco está pago y vamos a decir que lo cobró que va a mes a mes por domiciliación
+van todos los primeros le cobran al tipo acabó de acabó de hablar con marvin marvin es el
+encargado de cobros y quien lleva la parte de prácticamente del del iba ante el miniserio de
+hacienda si no el iba contable decirlo así y me acaba de decir que en efecto era como se había
+planteado al principio que tenía que ver el el estado de recibo y me dice que cuando es prima
+no de vengada que es como el primer ejemplo recuerde el primer ejemplo que hicimos los tres
+líneas verdes que está ahí si ya él pago el todo recibo completo pues no se le devuelve iba
+o sea si recibo esta ct no se le devuelve iba no se le devuelve iba o sea el iba es que se devuelve
+cuando es el anulado de cobro nada más cuando no no que algo la tiene que ser siempre el ajuste
+negativo del iba que está no importa la fecha no importa la fecha sin importar la fecha simplemente
+no devuelve iba que creo que simplifica mucho ya el nivel de complejidad que lo llevábamos creo
+que esto lo simplifica mucho en este caso no le presto atención a la fecha de cobro ni la
+fecha de nada sino que veo recibo está cobrado no devuelve exacto exacto hace el ajuste negativo
+el ajuste del iba para que llegue a efecto 0 para que lo mete todos los residuos que estén cobrados
+sea la fecha que sea no le devuelve el iba de eso lo consume se lo triunfa no se lo debe quedar el
+sistema es correcto si así es digo es que no me parece no me parece es que punto de vista fiscal
+imagínate que tú cobraste el recibo hoy y el tipo mañana te llama porque vendió el carro lo va a
+cancelar va a cancelar la polisa tu llama tu mandas diario claro que facturación electrónica
+está en línea es en línea sí sí sí o sea es al momento el tipo pagó se jodió no devuelve el
+iba sí sí sí o sea lo que podría hacer en ese caso lo que pudiera hacer en ese caso es solicitar
+la cancelación completa de la polisa de toda la vigencia para que yo le ahí sí le devuelvo el
+cien por ciento pero claro no tuvo ni un día de vigencia pero igual al sí tenemos la inicio
+de vigencia los residuos están pagos entonces toca poner un criterio para que cuando se inicia
+vigencia si devuelva no porque lo que lo que voy a solicitar es el anulado de cobro entonces el
+recibo estaría pero claro eso lo tiene que hacer el el emisor eso lo tiene que hacer el emisor o sea
+seleccionar el bueno decirle a cobro que haga el descubro ahí entra muchos criterios que habíamos
+dicho que que solicita el descobro era por eso para que pudiera devolverse el iba entonces pero la
+regla es general o sea todo recibo que está sete no debería calcular no debería devolver iba
+si el pago ayer el recibo quinto digamos lo pago ayer y hoy día que va a cancelar la polisa
+se da la fecha que sea que la quiera cancelar ese iba del quito recibo que igual pasa un día no
+hayla se le que se quedó enríe se quedó más ese iba se lo que va haciendo de hecho y un caso
+y un caso Diego donde el tipo viene nos reclama dice joder pero ustedes me pasaron la domiciliación
+de este recibo yo les dije a ustedes que no me lo cobraran y me lo cobraron anulamos el suplemento
+de anulamos el suplemento a té hacemos el descubro de recibo y luego hacemos la devolución
+perdón luego hacemos el dos del suplemento a té de nuevo
+está viendo que este proceso operativo estamos complicando bastante la empresa no
+pero bueno sea así en donde en donde entra en juego en donde entra en juego los 90 días donde
+entra en juego los 90 días no es una regla fiscal no entra en juego los 90 días de la
+eterna con que se maneja con la hacienda acá del lado de los cálculos de reef no impactaría
+lo que te entiende el lado técnico no impactaría eso es lo que sí es correcto ahora déjame porque
+este tema ha causado mucho revuelo y el negocio está dálidale con los 90 días pero hablando con
+Marvin me dicen no es que los 90 días es por hacienda pero técnicamente no debería de o sea
+todos recibo ct no lleva devolución de iba pero déjame escribir un correo donde ponga esas
+reglas los copia ustedes y copió el negocio para que el negocio sea el que confirma final
+y se hace un documento de funcional de esto Diego en vez de un correo pero es que en teoría en
+teoría este este punto lo estamos abordando en el terre del del de los transversales cierto
+Jorge Mario me comentaste o no estoy confundiendo que no tenemos un error
+este documento de definición que mostré ahorita en pantalla mano lo que es ese documento que se
+refiere Diego no había un terre un terre formal ya con estructura reef o no Jorge Mario o sea lo
+estamos elaborando no existe no existe es planificado si es planificado para sólo faltar
+sales pero no existe por eso ese documento no existe pero si se ha planificado el tener ese
+documento si no me equivoco no sé si me estoy equivocando que puede ser de que con dónde está
+esta grúper aquí está la épica con los filtros rápidos dale show filter rap show
+quick filter dale arriba abajo abajo hasta abajo hasta abajo ahí ves emisión con la que emisión
+producto bloqueo uno o productos creo que necesitan dale no quitar el type quitar el el el type
+dale y ahí ve productos
+donde está la parte de los desarrolló transversales de emisión
+no donde cuál es el número de tira pano ya te lo manto yo creo que lo tengo por acá
+sabe cuál es el problema Diego que ya jugó a programar un montón de vergas sabes y nos está
+costando plata esto lo digo para el futuro para el futuro y dale dale no lo sé
+ahora sí que es cierto que deberían está mostrante está mostrante lo sé pero siento que
+deberían de primero aprobar el terrente que nos pongamos a programar precisamente por eso es que
+esto no tenemos terrestro esta parte de la evolución del IV es un tira que está aquí
+escrito lo que está ahí vamos a tener que cambiar métodos chamón entonces vamos a tener que
+primero escribir esto bien aunque ya está escrito y que alguien lo lo diga y ya está claro porque
+que esto fue el correo que tu mandaste echamos si pero claro yo lo mandé por la reunión que tuve
+con ellos a esto lo que lo que yo he mandado ha sido que el usuario le ha colocado o sea yo le he
+tratado de dar una forma un poco más técnico para que sea un poco más entendible que al final
+igual la lia más pero pero prácticamente es es es todo lo que se ha recopilado de los usuarios
+todos los que salen esas reuniones que estamos con con lucho con jorge mario con alguien y que alguien
+dice y miren y esto no tomaron en cuenta y pues no está por ningún lado la documentación pues
+posteriormente hacemos una reunión para entender de qué trata lo documentamos y lo enviamos para
+que se analice básicamente es en la es en la dinámica la vida está bien entonces lo que
+pasa es que aquí danes y queremos mostrar tuyo que está más bonito es para ver entonces cómo
+vamos a hacer nosotros este cálculo porque de aquí lo que yo lo que yo lo que estamos debatiendo
+nosotros es que cuando yo anulo verdad no entremos en los restos suplementos y munición de prima
+que son a naciones parciales y a eso lo vemos ahorita cuando yo anulo total la poliza verdad
+yo calculo los desgloses entonces calculó mi prima no de vengade calculó mi iba como desglosa de
+la cobertura y ya después se distribuye entre los planes de pago verdad entonces aquí el tema es
+que yo tengo que hacer la ajuste del iba recibo por recibo no no el total o te sirve el total
+no sé si me expliqué bien
+no se me explique algo
+no llamo la verdad no te entendí pítelo porfa si te lo entendí es mano sería acá en este
+ejemplo que tenemos de estos dos recibo sete y que se tendrán que volver estos once de iba como
+el suplemento tendrá una vigencia de estos nueve meses estos once dólares que calculó acá los va
+a repartir en es en 11 cuotas de suplemento mira visualmente que aquí conseguí conseguí el
+documento te voy a borrar la pantalla mira vamos a sacar entonces de de la ecuación a fechas vamos
+a ver sólo el estado de recibo correcto entonces aquí es culpa de manos que aquí juan me está
+haciendo que haré encontrar algo en las pruebas que se hicieron vimos que la té sin importar el número
+o el plan de pago que tenga va a generar solamente una un recibo al final eso está malos tenemos que
+arreglando vale o sea eso no puede ser yo lo vi de hecho el m lo preguntó porque está pasando
+en el salvador y en y en guatemala porque debería generar un recibo de acuerdo al plan de pago como
+se ha emplacido vale vale eso tenemos que regresarlo pero entonces aquí y digo no
+dale plan de pago 12 cuotas tengo estos recibos cobrados y estos pendientes verdad entonces
+esta es la prima y el y el impuesto del iba de cada recibo vale que al final se acumula aquí
+en mi desclose estos son los descloses correcto el desclose de prima y este es el desclose de iba ok
+y luego él viene y distribuye esto en el plan de pago sí entonces aquí estamos anulando
+a esta fecha abril ok entonces aquí que pasa que yo calculo mi prima no devengada que son 900
+ponte y este es el iba de esta prima ok esto después se distribuyen el plan de pago que ahorita
+lo que dice dani es que esta cena un solo recibo por este menos 900 menos 108 vale eso tenemos que
+realizarlo pero lo traes lo lo lo el comportamiento normal es que él va a agarrar y va a generarte
+los recibos negativos por cada uno de ellos volviendo al preescolar de rift por estos recibos como
+me coincide la fecha y el estatus va a generar con el mismo número y generar el detalle y por
+esto que están acá se te va a generar nuevos que son negativos ok entonces que pasa que nosotros aquí
+tenemos que hacer este juego para hacer el ajuste del iba ahora con esta nueva regla tendría que
+hacer ajuste del iba sólo en estos tres casos en esto sería una 12 positiva pero sí
+por el nuevo concepto generaríamos el positivo para que se para que se netea y aquí no haría
+ningún ajuste entonces este estos recibo va a coincidir entonces sí vamos a estar en una suma
+entonces aquí estos coinciden positivo y negativo se corre el proceso de de cobro recibo con
+importe cero rojo y negro y la verga no el de cobro por importe cero y ya se netearían es todo
+esto no hay problema problema son que harían ct con cero esto que haría eso que generaría tres
+recibos o debería generar tres recibos de menos y en cada uno entendría bueno eso es el primer
+este es el dilema porque el comportamiento tradicional de rif es que yo voy a calcular imagínate que
+busquemos la manera de calcular este desglose de ajuste iba entonces este 36 y lo va a distribuir
+entre todas las cuotas o sea el tema es que primero calcula el desglose y luego lo reparte
+entre el número de cuotas entonces como calcular al revés ese ese es el que me entiendo el dilema
+es que le traemos que meta este concepto económico que recibo y solo a los tres a los recibo que
+aplique solo estos tres no a todos recibo que estén ct pero esto es así así es la pregunta así como
+lo mencionaste si y esto es como tú lo mandan la facturación electrónica
+eso recibo de 100 de menos 100 ya no los mando la facturación electrónica realmente no me
+estoy deduciendo nada con eso claro cuando tú veas el concepto de estos cuando cobran este
+recibo
+bueno a cobrar los tres vas en honor de pago y solo van a volver cliente correcto eso como no tienen
+el concepto concepto económico no para eso o cómo lo es el concepto sí sí concepto
+más por código no si tenemos un problema y tengo una duda principal de los tres cuando
+los cobraron inicialmente en la en los normales los están arriba los mandan hacienda a todos
+salván de lo siento 12 o solo mandan el 12 de iba todo todo todo si mandan la primera manda yo
+si claro después de tener que reportar la hacienda los menos 100 de cada uno eso no se le reporta
+porque es por por un concepto de devolución de prima no de vengada no no lo reportamos hacienda
+como factura vale bueno esto aquí nos queda nosotros la tarea que ya oliver está al tanto
+porque en guatemala pasa lo mismo lo que pasa es que en guatemala si toman en cuenta una fecha
+de cobro de hecho ellos toman en cuenta la fecha de emisión de la factura fiscal vale para ver si
+cuando se se emite a la factura fiscal y si han pasado 60 días creo que son allá no devuelve
+Manuel te comento también y este es un tema que en el en la en la visita que que hicieron el año
+pasado salió mucho mucho el tema este y es que este ahora actualmente que pasa tron hace eso no
+calcula los degloces y luego lo reparte en el en el número de cuotas que se en el plan de pago
+y acumula los residuos de los decimales en la última cuota cierto si vale entonces qué es lo
+que pasa puede ser que el IVA acumule negativamente decimales negativos y que la prima acumule
+decimales positivos cierto aproximación de decimales entonces qué pasa qué pasa en el
+último recibo puede ser que no sea el 13 % nuestro IVA el 13 % puede hacer que difiere el 13 %
+por centavos por 3 centavos no debería no debería porque nosotros cambiamos el IVA que se calcula
+en la ficticia antes antes pasaba porque el IVA iba en cada cobertura entonces como se calcula
+ahí sí empezaba el tema de los de los decimales claro pero no debería pasar porque si o sea cuando
+tú tengas uno este último aquí con decimales cuando tú multiplicas el 13 % a la prima debería
+darte el monto que es vale debería qué es lo que está pasando ahora mismo entrón ahora mismo
+entrón que está pasando el último recibo hay un tema se lo rechaza hacienda porque hacienda sólo
+permite un más menos uno de variación entre la prima y el 13 % que es el impuesto entonces qué
+pasa si eso excede los dos centavos o el centavo es más de centavo hacienda no te lo recibe y eso
+da variación porque nos toca enviarlo manual y quitarle el centavo manualmente entonces al final
+va a diferir lo que tenemos contablemente versus lo que se envió hacienda y nos quiere nos genera un
+problema fiscal a la hora de presentar la presentación de los libros vamos a estar atentos
+aquí en las pruebas nuestras y se lo comentaron a José Antonio Pesero se le comentaron a marco
+marco marco de tesorías o sea se le comentó a todo mundo entonces claro ellos dijeron que si estaba
+controlado ya explicaron que lo iban a hacer el cálculo para que cuadrara con el 13 por ciento
+de recibo como tal etcétera entonces la gente se quedó muy conforme pero hay que tener hay que
+tener que estar pendiente de eso si entonces es un problema muy similar al que tenemos ahora el que
+hemos construido ahora con la devolución vamos a probarlo y vamos a garantizar que eso no pase
+ok ok de acuerdo el peor aquí es que es esto el problema aquí que vamos a ver cómo lo hacemos
+vale que va cuota vale este me gustaría a manuel que hiciéramos ese ester porque es el bombe el
+o sea es la forma en como podemos garantizar que no se va a salir con otra regla adicional
+las que ya se salió y hacer más que un té más que un té rediego porque como estos son
+dos son requerimientos específicos que son todos los que tenemos aquí en esta épica vamos a hacer
+una especie de diseño funcional vale de cada de cada requerimiento más que un terro entonces
+cada uno de estos debería tener escrito esto mismo que tiene aquí en el puesto de giro al final
+esto esto mismo un formato como esto ok pero un documento claro y ya y ha analizado la viabilidad
+técnica propiamente rif no o sea porque eso claro se colocó esa esa esa información digamos que
+fue lo que enviamos en el documento pero sin tener el análisis previo sin tener un análisis de
+debilidad en rif que cómo podría hacer en rif entonces ya que ese documento funcional incluía
+la propuesta más bien la propuesta que la propuesta funcional si porque tal cual el terro es un documento
+toma requisitos vale no es no no dice cómo se van a hacer las cosas vale bueno entonces quedamos
+atentos que a tu nos mande esto mejor redactado o digo y piensa y piensa en estos escenarios primero
+no anulaciones vale y distintos planes de pago anual trimestral mensual distintas fechas de
+los casos de uso los tenía bien mapeado danie no sé si danie me pudiera compartir ese ese documento
+es excel que tenía porque me pareció que estaba muy bien diseñado y en base a eso tenemos una bueno
+yo tengo una reunión con el usuario para explicarles los casos que vimos ahora o sea claro con un
+tema más funcional y práctico no pero no tan no tan técnico pero para que sean ellos los que me
+indiquen o sea los que gratifiquen lo que dijimos en esa reunión será que me lo pasa y lo veo
+con el usuario dejámoslo de nuevo danie para ver si están todos allí hay que completar con otro
+más trimestrales que mencionas y ya ven ahí sí sí lo vemos vemos el anual que ya quedó claro
+tenemos el mensual con con ct si tenemos el anulación total mensual con remesados
+ok anulación parcial con recibos cobrados anulación parcial con recibos remesados aquí
+faltaría entonces incluir algunos casos con planes de pago diferentes puede ser trimestral
+aunque con el anulación parcial sí eso está bien si yo lo veo bien pero la cosa de la anulación
+parcial Diego es diminución de cosas que se disminuy eso no son anulaciones de polisas sino que es
+un suplemento para bajar no sé cualquier cosa la suma asegurada que hace que te devuelve prima
+500 a bajar 200 con el con el suplemento con la anulación parcial claro claro cuando cuando
+ya migue en manuel explicó lo de los para hablar uniformemente termina terminología uniforme me
+quedó claro sí sí bien vale de acuerdo perfecto entonces así tal cual te lo comparto Diego para
+que lo revises ok de acuerdo perfecto gracias equipo gracias Diego no me gustan estas reuniones
+porque me gusta cerrar cosas me siento que no se cerró que queda abierto entonces cerremos lo
+Diego por favor yo yo intento cerrar ahora y entonces que juan o que juan ponga bloquea bloquea este
+bloquea este gira juan y ponés en la no sé quién es responsable de éste que vi que le pusieron
+un responsable a cada uno de los de los giras lucho bloquea el gira y pone la nota de que
+estamos a la espera de la de la información de la definición definición final por favor
+de su madre ponle eso pero que exalga bloquea vale bueno
+listo gracias entonces
+bueno Diego ahí te dejamos también el encargo de prepararnos nuestra bienvenida que ya vamos ya
+tenemos los boletos sí sí ya me dijeron ya me mandaron pechas venga bueno pues gracias

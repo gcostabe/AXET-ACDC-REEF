@@ -1,0 +1,62 @@
+--- [PÁGINA 1 DE 3] ---
+
+Guía para la Carga de
+ Producto en RTE
+ Repositorio RTE_BK · SQL Developer · MongoDB · Swagger
+Paso 1
+Preparación de los scripts y generación de CSV
+En el repositorio RTE_BK, dentro de la carpeta extractor-tron, se encuentran:
+ Los scripts SQL que extraen la información necesaria.
+ Un archivo .bat que automatiza la ejecución.
+ El fichero ejecuta.sql, que puede ejecutarse manualmente desde SQL Developer.
+Antes de lanzar el proceso, es imprescindible modificar las variables:
+compania
+ramo
+Estas variables determinan qué configuraciones del producto se extraerán.
+
+
+--- [PÁGINA 2 DE 3] ---
+
+Paso 2
+Ejecución del proceso de extracción
+Puedes elegir entre dos métodos:
+ Ejecutar el .bat directamente desde el repositorio.
+ Ejecutar manualmente ejecuta.sql desde SQL Developer.
+Ambos métodos generarán los ficheros CSV correspondientes a las configuraciones del producto.
+■
+Revisión obligatoria: Verifica que los CSV generados no contengan líneas vacías, ya
+que pueden provocar errores en la carga posterior.
+Paso 3
+Creación del fichero adicional requerido
+Además de los CSV generados automáticamente, es necesario crear manualmente en el mismo
+repositorio un fichero llamado:
+ GENERIC_FACTORS.csv
+Este fichero debe estar vacío.
+
+
+--- [PÁGINA 3 DE 3] ---
+
+Paso 4
+Compresión y carga mediante Swagger
+Una vez tengas todos los CSV (incluyendo GENERIC_FACTORS.csv):
+1
+Comprime todos los ficheros en un único archivo ZIP.
+2
+Accede a Swagger:
+https://rating.int.azure.mapfre.net/api-backoffice/swagger-ui/index.html?configUrl=/api-back
+office/v3/api-docs/swagger-config
+3
+Utiliza el endpoint complete-load.
+4
+Sube el archivo ZIP como parámetro de entrada.
+Este endpoint se encarga de procesar el ZIP y cargar la información en el sistema.
+Paso 5
+Verificación de la carga en MongoDB
+Una vez completada la carga:
+ El producto habrá sido insertado en MongoDB.
+ Revisa las colecciones correspondientes para confirmar que:
+    – Todas las configuraciones se han creado.
+    – No faltan documentos.
+    – No hay errores de estructura o datos incompletos.
+RTE · Guía de Carga de Producto
+ Versión 1.0

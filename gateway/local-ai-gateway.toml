@@ -1,0 +1,43 @@
+[server]
+host = "0.0.0.0"
+port = 8766
+
+[paths]
+# macOS/Linux: prefira manter o tokens.json dentro do repo (ele já está no .gitignore)
+tokens_file = "gateway/tokens.json"
+# OBS: este caminho é usado só pelo fluxo Codex; Claude Code não depende dele.
+codex_env_file = "~/.codex/.env"
+
+[timeouts]
+upstream_read_seconds = 150
+upstream_non_streaming_read_seconds = 280
+upstream_queue_seconds = 90
+stream_retry_delay_seconds = 1
+token_refresh_buffer_seconds = 300
+
+[limits]
+upstream_max_concurrent_requests = 4
+main_request_min_bytes = 102400
+stream_ping_interval_seconds = 15
+stream_max_attempts = 2
+
+[authentication]
+okta_token_url = "https://onentt.okta.com/oauth2/ausf3mzucjRGKYWLy417/v1/token"
+okta_client_id = "0oafbxnffaeuydB7l417"
+
+[providers.axet.claude]
+# Sonnet 5 (config original do repo)
+model_url = "https://axet.nttdata.com/api/llm-enabler/v3/aws-anthropic/model/eu.anthropic.claude-sonnet-5/invoke-with-response-stream"
+project_id = "f8de6928-9f95-43f1-a1bd-410971ec1221"
+# project_ids = ["<fallback-project-id-1>", "<fallback-project-id-2>"]
+asset_id = "f4f99f6a-6b56-4c9b-9caf-055304bb22e1"
+user_id = "0db9142f-5059-4bf5-84ec-2216ab1ad5d5"
+model_id = "eu.anthropic.claude-sonnet-5"
+plugin_version = "2.8.0"
+
+[providers.axet.codex]
+base_url = "https://axet.nttdata.com/api/llm-enabler/v2/openai/ntt/f8de6928-9f95-43f1-a1bd-410971ec1221/v1"
+# base_url_template = "https://axet.nttdata.com/api/llm-enabler/v2/openai/ntt/{project_id}/v1"
+project_id = "f8de6928-9f95-43f1-a1bd-410971ec1221"
+# project_ids = ["<fallback-project-id-1>", "<fallback-project-id-2>"]
+asset_id = "90a0d375-5456-468c-9f8c-1aebe084e32d"

@@ -1,0 +1,251 @@
+# Clientes externos
+
+Clientes externos
+
+
+
+
+# [REEF-ACDC Backend](https://reef.acdc-dev.es.emea.aws.mapfre.net/acdc/docs-portal/index.html)
+
+* **Inicio**
+  + [Documentación general](#/README "Documentación general")* **ACDC — Módulo principal**
+    + [Endpoints Online](#/ACDC/ENDPOINTS_ONLINE "Endpoints Online")+ [Orquestador Batch](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR "Orquestador Batch")+ [Cotizaciones](#/ACDC/COTIZACIONES "Cotizaciones")+ [Clientes externos](#/ACDC/EXTERNAL_CLIENTS "Clientes externos")
+            - [Índice](#/ACDC/EXTERNAL_CLIENTS?id=%c3%8dndice "Índice")- [1. Patrón común](#/ACDC/EXTERNAL_CLIENTS?id=_1-patr%c3%b3n-com%c3%ban "1. Patrón común")- [2. Configuración de autenticación](#/ACDC/EXTERNAL_CLIENTS?id=_2-configuraci%c3%b3n-de-autenticaci%c3%b3n "2. Configuración de autenticación")- [3. Tabla de clientes](#/ACDC/EXTERNAL_CLIENTS?id=_3-tabla-de-clientes "3. Tabla de clientes")- [4. `SelectRiskService` — Motor de reglas DUP](#/ACDC/EXTERNAL_CLIENTS?id=_4-selectriskservice-motor-de-reglas-dup "4. SelectRiskService — Motor de reglas DUP")- [5. `RteExternalService` — Tarificación](#/ACDC/EXTERNAL_CLIENTS?id=_5-rteexternalservice-tarificaci%c3%b3n "5. RteExternalService — Tarificación")- [6. `CalculatePackagesService` — Paquetes de coberturas](#/ACDC/EXTERNAL_CLIENTS?id=_6-calculatepackagesservice-paquetes-de-coberturas "6. CalculatePackagesService — Paquetes de coberturas")- [7. `PaymentPlansService` — Planes de pago](#/ACDC/EXTERNAL_CLIENTS?id=_7-paymentplansservice-planes-de-pago "7. PaymentPlansService — Planes de pago")- [9. Integración con la auditoría](#/ACDC/EXTERNAL_CLIENTS?id=_9-integraci%c3%b3n-con-la-auditor%c3%ada "9. Integración con la auditoría")+ [Auditoría](#/ACDC/AUDIT "Auditoría")+ [Seguridad](#/ACDC/SECURITY "Seguridad")* **DUP — Motor de reglas**
+      + [DUP Engine](#/DUP/DUP_ENGINE "DUP Engine")+ [Módulo DUP](#/DUP/README_DUP_MODULE "Módulo DUP")* **Módulos**
+        + [Cálculo de Módulos](#/MODULOS/MODULES_SERVICE "Cálculo de Módulos")* **RTE — Tarificación**
+          + [Configuración de tarifas](#/RTE/RTE_TARIFF_CONFIGURATION "Configuración de tarifas")
+
+# [Clientes externos (WebClient)](#/ACDC/EXTERNAL_CLIENTS?id=clientes-externos-webclient)
+
+> 📚 Parte de la documentación de `REEF-ACDC` · [← Índice general](#/../README)
+
+**Relacionado con:** [DUP\_ENGINE.md](#/../DUP/DUP_ENGINE) · [AUDIT.md](#/AUDIT)
+
+---
+
+## [Índice](#/ACDC/EXTERNAL_CLIENTS?id=%c3%8dndice)
+
+1. [Patrón común](#/ACDC/EXTERNAL_CLIENTS?id=1-patr%c3%b3n-com%c3%ban)- [Configuración de autenticación](#/ACDC/EXTERNAL_CLIENTS?id=2-configuraci%c3%b3n-de-autenticaci%c3%b3n)- [Tabla de clientes](#/ACDC/EXTERNAL_CLIENTS?id=3-tabla-de-clientes)- [SelectRiskService — Motor de reglas DUP](#/ACDC/EXTERNAL_CLIENTS?id=4-selectriskservice--motor-de-reglas-dup)- [RteExternalService — Tarificación](#/ACDC/EXTERNAL_CLIENTS?id=5-rteexternalservice--tarificaci%c3%b3n)- [CalculatePackagesService — Paquetes de coberturas](#/ACDC/EXTERNAL_CLIENTS?id=6-calculatepackagesservice--paquetes-de-coberturas)- [PaymentPlansService — Planes de pago](#/ACDC/EXTERNAL_CLIENTS?id=7-paymentplansservice--planes-de-pago)- [TechnicalsBasisService — Bases técnicas](#/ACDC/EXTERNAL_CLIENTS?id=8-technicalssbasisservice--bases-t%c3%a9cnicas)- [Integración con la auditoría](#/ACDC/EXTERNAL_CLIENTS?id=9-integraci%c3%b3n-con-la-auditor%c3%ada)
+
+---
+
+## [1. Patrón común](#/ACDC/EXTERNAL_CLIENTS?id=_1-patr%c3%b3n-com%c3%ban)
+
+Todos los clientes externos siguen el mismo patrón de implementación:
+
+```
+1. Serializar el payload a JSON (para auditoría)
+2. webClient.post().uri(url + "/endpoint")
+3.   .headers(AuthHeaderUtil::applyAuthHeader)
+4.   .bodyValue(payload)
+5.   .retrieve()
+6.   .onStatus(422, parsear AcdcError y lanzar AcdcException)
+7.   .bodyToMono / bodyToFlux
+8.   .contextWrite(ctx -> ctx.put("auditRequestBody", requestBody))  ← para auditoría
+9.   .block()
+```
+
+**Puntos clave:**
+
+* Todos usan **WebFlux `WebClient`** en modo bloqueante (`.block()`).* El manejo de **HTTP 422** es uniforme: se parsea el body como `AcdcError` y se lanza `AcdcException`.* El `requestBody` serializado se inyecta en el contexto reactor para que `WebClientAuditInterceptor` lo capture. Ver [AUDIT.md](#/AUDIT).* Las credenciales se leen de propiedades con valor por defecto vacío, por lo que **si no se configuran, no se añade cabecera de auth**.
+
+---
+
+## [2. Configuración de autenticación](#/ACDC/EXTERNAL_CLIENTS?id=_2-configuraci%c3%b3n-de-autenticaci%c3%b3n)
+
+**Fichero:** `util/AuthHeaderUtil.java`
+
+El tipo de autenticación se configura por cliente con la propiedad `auth.type`:
+
+| Valor de `auth.type` | Cabecera generada |
+| --- | --- |
+| `Basic` | `Authorization: Basic Base64(username:password)` |
+| `Bearer` | `Authorization: Bearer <password>` (el campo `password` contiene el token) |
+| vacío / cualquier otro | Sin cabecera de autenticación |
+
+**Ejemplo de configuración en `application-dev.yml`:**
+
+```
+external:
+  services:
+    select-risk:
+      url: http://dup-service:8080
+      auth:
+        type: Basic
+        username: user
+        password: secret
+    rte:
+      url: http://rte-service:8080
+      auth:
+        type: Bearer
+        password: eyJhbGciOiJSUzI1NiJ9...
+    coverage-packages:
+      url: http://packages-service:8080
+      auth:
+        type:          # sin autenticación
+    payment-plans:
+      url: http://payment-service:8080
+      auth:
+        type: Basic
+        username: app
+        password: pass
+```
+
+---
+
+## [3. Tabla de clientes](#/ACDC/EXTERNAL_CLIENTS?id=_3-tabla-de-clientes)
+
+| Cliente | Servicio externo | Endpoints | Propiedad de configuración |
+| --- | --- | --- | --- |
+| `SelectRiskService` | Motor de reglas DUP | `POST /risk-selection` | `external.services.select-risk.*` |
+| `RteExternalService` | Motor de tarificación RTE | `POST /calculate-rating-ply` · `POST /function-dup` | `external.services.rte.*` |
+| `CalculatePackagesService` | Servicio de paquetes | `POST /calculate-packages` · `POST /calculate-preferencesId` | `external.services.coverage-packages.*` |
+| `PaymentPlansService` | Planes de pago | `POST /calculate` | `external.services.payment-plans.*` |
+
+---
+
+## [4. `SelectRiskService` — Motor de reglas DUP](#/ACDC/EXTERNAL_CLIENTS?id=_4-selectriskservice-motor-de-reglas-dup)
+
+**Fichero:** `external/client/SelectRiskService.java`  
+**Endpoint:** `POST {select-risk.url}/risk-selection`
+
+Es el cliente más importante del sistema. Lo llama `DupServiceImpl` en **cada paso** del orquestador (PREVIOUS, VALIDATION y CT).
+
+**Request:** `RiskSelectionRequest` — ver [DUP\_ENGINE.md §8](#/../DUP/DUP_ENGINE?id=8-mapeo-completo-oplyzplyczdto--riskselectionrequest) para el detalle completo del mapeo.
+
+**Response:** `RiskSelectionResponse`
+
+```
+{
+  "appliedRules": [
+    {
+      "ruleId": "RULE_001",
+      "actions": [
+        { "type": "ASIGNACION", "field": "MCA_SEXO", "value": "1" }
+      ]
+    }
+  ]
+}
+```
+
+**Comportamiento ante errores:**
+
+* **HTTP 422** → parsea `AcdcError` del body y lanza `AcdcException` (error de negocio del motor de reglas).* **Otros errores HTTP** → propaga la excepción de WebClient.
+
+---
+
+## [5. `RteExternalService` — Tarificación](#/ACDC/EXTERNAL_CLIENTS?id=_5-rteexternalservice-tarificaci%c3%b3n)
+
+**Fichero:** `external/client/RteExternalService.java`
+
+Expone dos endpoints:
+
+### [`callRte()` — Tarificación de póliza](#/ACDC/EXTERNAL_CLIENTS?id=callrte-tarificaci%c3%b3n-de-p%c3%b3liza)
+
+**Endpoint:** `POST {rte.url}/calculate-rating-ply`
+
+Se llama desde `RteServiceImpl.sendToRteService()` durante el flujo de orquestación (dos veces por módulo: `RTE Flow #1` y `RTE Flow #2`).
+
+**Payload construido en `RteServiceImpl.buildPayload()`:**
+
+```
+{
+  "requestInfo": { ... },
+  "currentPolicy": {
+    "oPlyPlyC": { /* OPlyPlyCDto póliza actual/previa */ }
+  },
+  "newSupplement": {
+    "oPlyPlyC": { /* OPlyPlyCDto nuevo suplemento */ }
+  }
+}
+```
+
+* `currentPolicy` → `oPlyPlyCPrev` de la request (póliza previa, para suplementos). Puede ser `null`.* `newSupplement` → `oPlyPlyC` con las coberturas calculadas.
+
+**Response:** `OPlyPlyCDto` — la póliza con primas calculadas y atributos actualizados por RTE.
+
+### [`callRteFunctionCalculation()` — Cálculo de funciones](#/ACDC/EXTERNAL_CLIENTS?id=callrtefunctioncalculation-c%c3%a1lculo-de-funciones)
+
+**Endpoint:** `POST {rte.url}/function-dup`
+
+Utilizado desde `FunctionCalculationService` (no desde el orquestador batch) para cálculos puntuales de funciones DUP individuales.
+
+**Request:** `CalculationDupRteFunctionRequest`  
+**Response:** `CalculationDupRteFunctionResponse`
+
+---
+
+## [6. `CalculatePackagesService` — Paquetes de coberturas](#/ACDC/EXTERNAL_CLIENTS?id=_6-calculatepackagesservice-paquetes-de-coberturas)
+
+**Fichero:** `external/client/CalculatePackagesService.java`
+
+### [`callCalculatePackages()` — Cálculo de módulos](#/ACDC/EXTERNAL_CLIENTS?id=callcalculatepackages-c%c3%a1lculo-de-m%c3%b3dulos)
+
+**Endpoint:** `POST {coverage-packages.url}/calculate-packages`
+
+Usado por `ModulesServiceImpl` para calcular qué coberturas corresponden a cada paquete.
+
+**Request:** `PackagesRequest`  
+**Response:** `PackagesResponse`
+
+```
+{
+  "risks": {
+    "1": {
+      "risk": 1,
+      "preferences": {
+        "101": { "coverages": [ ... ] },
+        "102": { "coverages": [ ... ] }
+      }
+    }
+  }
+}
+```
+
+**Comportamiento ante HTTP 422** → `AcdcException`.
+
+### [`callObtainPackages()` — Obtener preferencias](#/ACDC/EXTERNAL_CLIENTS?id=callobtainpackages-obtener-preferencias)
+
+**Endpoint:** `POST {coverage-packages.url}/calculate-preferencesId`
+
+Devuelve la lista de preferencias disponibles sin calcular coberturas concretas. Usado por `CoveragePackagesController`.
+
+**Request:** `PackagesRequest`  
+**Response:** `List<ResponsePreferences>` (usando `.bodyToFlux().collectList()`)
+
+---
+
+## [7. `PaymentPlansService` — Planes de pago](#/ACDC/EXTERNAL_CLIENTS?id=_7-paymentplansservice-planes-de-pago)
+
+**Fichero:** `external/client/PaymentPlansService.java`  
+**Endpoint:** `POST {payment-plans.url}/calculate`
+
+Solo se invoca si `executionType == "7"` (cotización). Un fallo en este cliente **no interrumpe** el flujo principal — la excepción se captura en el orquestador y se devuelve `paymentPlans: []`.
+
+**Request:** `PricingPlyRequest` (construido por `PaymentPlanService` con los planes `["001", "002"]`)  
+**Response:** `List<PaymentPlan>` (usando `.bodyToFlux().collectList()`)
+> No maneja HTTP 422 explícitamente — cualquier error se captura en el orquestador con `catch (PlyValException e)`.
+
+---
+
+Usado por `TechnicalBasisController` y sus casos de uso para obtener la configuración de bases técnicas del producto (no forma parte del flujo del orquestador batch).
+
+**Request:** `TechnicalBasisQuery`  
+**Response:** `List<TechnicalBasisResponse>` (usando `.bodyToFlux().collectList()`)
+> No maneja HTTP 422 explícitamente.
+
+---
+
+## [9. Integración con la auditoría](#/ACDC/EXTERNAL_CLIENTS?id=_9-integraci%c3%b3n-con-la-auditor%c3%ada)
+
+Todos los clientes inyectan el body serializado en el contexto reactor antes del `.block()`:
+
+```
+.contextWrite(ctx -> ctx.put("auditRequestBody", requestBody))
+```
+
+El `WebClientAuditInterceptor` (registrado como `ExchangeFilterFunction` en `WebClientConfig`) intercepta cada llamada y:
+
+1. Lee `auditRequestBody` del contexto reactor.- Captura la respuesta (o el error).- Construye un `WebClientCallInfo` con URL, método, bodies, status y duración.- Lo registra en el `AuditContext` del hilo actual.
+
+Ver [AUDIT.md](#/AUDIT) para el detalle completo del sistema de auditoría.

@@ -1,0 +1,534 @@
+# Endpoints Online
+
+Endpoints Online
+
+
+
+
+# [REEF-ACDC Backend](https://reef.acdc-dev.es.emea.aws.mapfre.net/acdc/docs-portal/index.html)
+
+* **Inicio**
+  + [Documentación general](#/README "Documentación general")* **ACDC — Módulo principal**
+    + [Endpoints Online](#/ACDC/ENDPOINTS_ONLINE "Endpoints Online")
+      - [Contexto](#/ACDC/ENDPOINTS_ONLINE?id=contexto "Contexto")- [Índice de endpoints](#/ACDC/ENDPOINTS_ONLINE?id=%c3%8dndice-de-endpoints "Índice de endpoints")- [1. `AttributesController`](#/ACDC/ENDPOINTS_ONLINE?id=_1-attributescontroller "1. AttributesController")- [2. `RiskSelectionController` — Technical Control](#/ACDC/ENDPOINTS_ONLINE?id=_2-riskselectioncontroller-technical-control "2. RiskSelectionController — Technical Control")- [3. `CoveragePackagesController`](#/ACDC/ENDPOINTS_ONLINE?id=_3-coveragepackagescontroller "3. CoveragePackagesController")- [4. `RatingController`](#/ACDC/ENDPOINTS_ONLINE?id=_4-ratingcontroller "4. RatingController")- [5. `FormController`](#/ACDC/ENDPOINTS_ONLINE?id=_5-formcontroller "5. FormController")- [6. `GeneralDataController`](#/ACDC/ENDPOINTS_ONLINE?id=_6-generaldatacontroller "6. GeneralDataController")- [Módulos subyacentes por endpoint](#/ACDC/ENDPOINTS_ONLINE?id=m%c3%b3dulos-subyacentes-por-endpoint "Módulos subyacentes por endpoint")+ [Orquestador Batch](#/ACDC/ENDPOINT_BATCH_ORCHESTATOR "Orquestador Batch")+ [Cotizaciones](#/ACDC/COTIZACIONES "Cotizaciones")+ [Clientes externos](#/ACDC/EXTERNAL_CLIENTS "Clientes externos")+ [Auditoría](#/ACDC/AUDIT "Auditoría")+ [Seguridad](#/ACDC/SECURITY "Seguridad")* **DUP — Motor de reglas**
+      + [DUP Engine](#/DUP/DUP_ENGINE "DUP Engine")+ [Módulo DUP](#/DUP/README_DUP_MODULE "Módulo DUP")* **Módulos**
+        + [Cálculo de Módulos](#/MODULOS/MODULES_SERVICE "Cálculo de Módulos")* **RTE — Tarificación**
+          + [Configuración de tarifas](#/RTE/RTE_TARIFF_CONFIGURATION "Configuración de tarifas")
+
+# [Endpoints Online — API de REEF-ACDC](#/ACDC/ENDPOINTS_ONLINE?id=endpoints-online-api-de-reef-acdc)
+
+> 📚 Parte de la documentación de `REEF-ACDC` · [← Índice general](#/../README)
+
+**Relacionado con:** [DUP\_ENGINE.md](#/../DUP/DUP_ENGINE) · [MODULES\_SERVICE.md](#/../MODULOS/MODULES_SERVICE) · [EXTERNAL\_CLIENTS.md](#/EXTERNAL_CLIENTS)
+
+---
+
+## [Contexto](#/ACDC/ENDPOINTS_ONLINE?id=contexto)
+
+A diferencia del [orquestador batch](#/ENDPOINT_BATCH_ORCHESTATOR) que ejecuta el ciclo completo de una póliza de principio a fin, estos endpoints **exponen operaciones granulares** pensadas para ser invocadas desde frontales o BFF que necesitan ejecutar pasos concretos del proceso de contratación de forma individual y bajo demanda.
+
+Todos los endpoints comparten:
+
+* **Base path:** `/acdc`* **Autenticación:** OAuth2 JWT (Spring Security Resource Server)* **Formato:** `application/json`* **Sistema fuente:** `SourceSystemEnum.ONLINE` (frente al `BATCH` del orquestador)
+
+### [Selección de paso DUP en contrato online](#/ACDC/ENDPOINTS_ONLINE?id=selecci%c3%b3n-de-paso-dup-en-contrato-online)
+
+En los endpoints online que ejecutan DUP, el contrato público usa `operationInfo.onlineStage` (`StageEnum`). No se deben informar `processStep`, `processStepMenuOption` ni `processStepOption` desde el consumidor online: el backend los deriva internamente a partir del stage y los valores de `DupStepEnum`.
+
+Ejemplo:
+
+```
+"operationInfo": {
+  "requestId": "uuid-v4",
+  "countryId": "ES",
+  "productId": 1234,
+  "processTypeId": 1,
+  "executionType": "7",
+  "onlineStage": "POLICY_PREVIOUS"
+}
+```
+
+`processTypeId` es `Integer` en el modelo Java; si la documentación histórica mostraba valores string como `"ALT"`, debe entenderse como desactualizada para este campo.
+
+### [Póliza anterior (`prevOPlyPlyC`) y facts `prev.*`](#/ACDC/ENDPOINTS_ONLINE?id=p%c3%b3liza-anterior-prevoplyplyc-y-facts-prev)
+
+Los endpoints DUP online aceptan póliza anterior mediante `prevOPlyPlyC` cuando el DTO lo expone. Si se informa, el mapper genera facts con prefijo `prev.` al inicio: `prev.fixedValues.*`, `prev.variableData.*`, `prev.insured.*`, `prev.coverages.*` y `prev.participants.*`. Esto permite reglas de comparación entre póliza actual y anterior.
+
+### [Contrato `cmlObj` para endpoints DUP online](#/ACDC/ENDPOINTS_ONLINE?id=contrato-cmlobj-para-endpoints-dup-online)
+
+En los endpoints online que invocan DUP (`/attributes/*` y `/technical-control/execution`), el campo `cmlObj` se usa para publicar acumulaciones en facts evaluables por reglas.
+
+```
+"cmlObj": [
+  {
+    "thpDcmTypVal": "DNI",
+    "thpDcmVal": "12345678A",
+    "agrCvrT": [
+      { "cvrVal": 100, "mxmAgrPreVal": 1500, "mxmAgrCplVal": 300000 }
+    ]
+  }
+]
+```
+
+* Facts de tomador: `participants.policyHolder.accumulations.{cvrVal}.*`* Facts de asegurado: `insured.accumulations.{cvrVal}.*`* Campos derivados: `accumulationWithCapital` y `accumulationWithPremium` (solo si existe la cobertura `coverages.{cvrVal}` en el contexto).* Tambien se puede usar wildcard `*` con `ANY_MATCH` sobre mapas de coberturas/acumulaciones, por ejemplo `coverages.*.name` o `insured.accumulations.*.accumulationWithCapital`.
+
+```
+{
+  "factor": "coverages.*.name",
+  "operator": "ANY_MATCH",
+  "value": "VIDA"
+}
+```
+
+> Si no hay match documental (`thpDcmTypVal` + `thpDcmVal`) con tomador/asegurado, no se generan facts de acumulaciones.
+>
+> Guia completa de autoria en [DUP\_ENGINE.md §11.9](#/../DUP/DUP_ENGINE?id=119-accumulations--desde-cmlobj).
+
+---
+
+## [Índice de endpoints](#/ACDC/ENDPOINTS_ONLINE?id=%c3%8dndice-de-endpoints)
+
+| Controller | Ruta base | Descripción |
+| --- | --- | --- |
+| [AttributesController](#/ACDC/ENDPOINTS_ONLINE?id=1-attributescontroller) | `/attributes` | Pre-cálculo y validación de atributos de póliza/riesgo/cobertura |
+| [RiskSelectionController](#/ACDC/ENDPOINTS_ONLINE?id=2-riskselectioncontroller--technical-control) | `/technical-control` | Ejecución de controles técnicos DUP en un paso concreto |
+| [CoveragePackagesController](#/ACDC/ENDPOINTS_ONLINE?id=3-coveragepackagescontroller) | `/coverage-packages` | Cálculo y consulta de paquetes/módulos de coberturas |
+| [RatingController](#/ACDC/ENDPOINTS_ONLINE?id=4-ratingcontroller) | `/rating` | Tarificación de una póliza o suplemento |
+| [FormController](#/ACDC/ENDPOINTS_ONLINE?id=5-formcontroller) | `/form` | Definición, pre-cálculo y validación de formularios |
+| [GeneralDataController](#/ACDC/ENDPOINTS_ONLINE?id=7-generaldatacontroller) | `/general-data` | Validación de datos generales de la póliza |
+
+---
+
+## [1. `AttributesController`](#/ACDC/ENDPOINTS_ONLINE?id=_1-attributescontroller)
+
+**Fichero:** `controller/AttributesController.java`  
+**Casos de uso:** `PrevalidateAttributesUsecase` · `ValidateAttributesUsecase`  
+**Roles requeridos:** `GAZU-ROLPSYADM`, `GAZU-ROLPSYCTR` o `ROL_ACDC_ATR`
+
+Gestiona los **atributos variables** de una póliza (nivel póliza, riesgo o cobertura). Equivale a los pasos `PREVIOUS` y `VALIDATION` del DUP en modo online, pero ejecutados de forma independiente para un nivel concreto.
+
+### [`POST /acdc/attributes/previous`](#/ACDC/ENDPOINTS_ONLINE?id=post-acdcattributesprevious)
+
+Pre-calcula los valores por defecto y asignaciones automáticas para un conjunto de atributos.
+
+|  |  |
+| --- | --- |
+| **Cuándo usarlo** | Antes de mostrar un formulario al usuario, para rellenar valores por defecto o propagar datos de niveles superiores |
+| **Equivalente en batch** | Pasos `PREVIOUS_VARIABLE_DATA_POLICY`, `PREVIOUS_VARIABLE_DATA_RISK`, `PREVIOUS_VARIABLE_COVERAGE` |
+| **Llama a** | `DupService.precalculateByStep()` → `SelectRiskService` (POST `/risk-selection`) |
+
+**Request:** `PrevalidationRequestDto`
+
+```
+{
+  "operationInfo": { "requestId": "...", "productId": 1234, "processTypeId": 1, "executionType": "7", "onlineStage": "POLICY_PREVIOUS", ... },
+  "oPlyPlyC":  { },     // polizón actual
+  "prevOPlyPlyC": { },   // póliza anterior opcional; genera facts prev.*
+  "level":     "2",     // "1"=póliza, "2"=riesgo, "3"=cobertura
+  "subLevel":  null,
+  "riskVal":   1,
+  "coverageVal": null,
+  "cmlObj":    [ ]
+}
+```
+
+**Response:** `List<OPlyAtcPC>` — lista de atributos con sus valores actualizados tras aplicar las reglas DUP de pre-cálculo.
+
+---
+
+### [`POST /acdc/attributes/validation`](#/ACDC/ENDPOINTS_ONLINE?id=post-acdcattributesvalidation)
+
+Valida los atributos introducidos por el usuario. Si las reglas DUP detectan inconsistencias, devuelve `422` con la lista de errores.
+
+|  |  |
+| --- | --- |
+| **Cuándo usarlo** | Al hacer submit de un formulario, antes de avanzar al siguiente paso del proceso |
+| **Equivalente en batch** | Pasos `VALIDATION_VARIABLE_DATA_POLICY`, `VALIDATION_VARIABLE_DATA_RISK`, `VALIDATION_VARIABLE_COVERAGE` |
+| **Llama a** | Actualmente `ValidateAttributesUsecase` invoca `DupService.precalculateByStep()` aunque funcionalmente el endpoint se denomina `validation`; no cambiar el contrato sin revisar código. |
+
+**Request:** igual que `/previous`, cambiando `operationInfo.onlineStage` al stage de validación (`POLICY_DATA_VALIDATION`, `RISK_DATA_VALIDATION`, `COVERAGE_DATA_VALIDATION` o stages `GRP_PLY_*`).  
+**Response:** `List<OPlyAtcPC>` con los atributos validados, o `422 AcdcError` con los errores de validación.
+
+### [Validaciones de póliza grupo por endpoints online](#/ACDC/ENDPOINTS_ONLINE?id=validaciones-de-p%c3%b3liza-grupo-por-endpoints-online)
+
+Para datos de póliza grupo se usa el mismo contrato de `/attributes/previous` y `/attributes/validation`, informando `operationInfo.onlineStage`:
+
+| Stage online | Step DUP derivado | Uso |
+| --- | --- | --- |
+| `GRP_PLY_FIXED_DATA_VALIDATION` | `VALIDATION_FIXED_DATA_PLY_GRP` `[1-30-20]` | Validación de datos fijos de grupo |
+| `GRP_PLY_VARIABLE_DATA_PREVIOUS` | `PREVIOUS_VARIABLE_DATA_PLY_GRP` `[2-30-10]` | Pre-cálculo de variables de grupo |
+| `GRP_PLY_VARIABLE_DATA_VALIDATION` | `VALIDATION_VARIABLE_DATA_PLY_GRP` `[2-30-20]` | Validación de variables de grupo |
+
+El dato de póliza grupo viaja en `OPlyGniS.gppVal` y se publica como `fixedValues.groupPolicyNumber` para selección/evaluación de reglas.
+
+---
+
+## [2. `RiskSelectionController` — Technical Control](#/ACDC/ENDPOINTS_ONLINE?id=_2-riskselectioncontroller-technical-control)
+
+**Fichero:** `controller/RiskSelectionController.java`  
+**Caso de uso:** `TechnicalControlUsecase`  
+**Roles requeridos:** `GAZU-ROLPSYADM`, `GAZU-ROLPSYCTR` o `ROL_ACDC_TECH_CONTROL`
+
+Ejecuta un **bloque de controles técnicos** DUP para un paso concreto, devolviendo los `OPlyUtcP` resultantes (controles técnicos que el sistema aplica: reaseguro, cláusulas, impresión, etc.).
+
+### [`POST /acdc/technical-control/execution`](#/ACDC/ENDPOINTS_ONLINE?id=post-acdctechnical-controlexecution)
+
+|  |  |
+| --- | --- |
+| **Cuándo usarlo** | Cuando el frontal necesita ejecutar un CT concreto de forma aislada (p. ej. `COVERAGE_CONTROL` o `CLAUSES_CONTROL`) |
+| **Equivalente en batch** | Cualquier paso `TECHNICAL_CONTROL` del orquestador |
+| **Llama a** | `DupService.processTCByStep()` → `SelectRiskService` (POST `/risk-selection`) |
+
+**Request:** `TechnicalControlRequestDto`
+
+```
+{
+  "operationInfo":  { "requestId": "...", "productId": 1234, "processTypeId": 1, "onlineStage": "COVERAGE_DATA_CONTROL", ... },
+  "oPlyPlyC":       { },
+  "prevOPlyPlyC":   { },
+  "riskVal":        1,
+  "coverageVal":    100,
+  "dataFormMap":    [ ],
+  "documents":      [ ],
+  "cmlObj":         [ ]
+}
+```
+
+**Response:** `List<OPlyUtcP>` — controles técnicos resultantes de la ejecución del paso DUP indicado.
+> El paso DUP a ejecutar se determina a partir de `operationInfo.onlineStage`. Ver matriz completa `StageEnum -> DupStepEnum` en [DUP\_ENGINE.md §5](#/../DUP/DUP_ENGINE?id=5-agrupaciones-de-pasos-stageenum).
+>
+> Si el paso corresponde a `BENEFICIARY_RISK_TYPE` (`[3-0-0]`), consulta el catálogo de tipos de interviniente `bnfTypVal` en [ENDPOINT\_BATCH\_ORCHESTATOR.md](#/ENDPOINT_BATCH_ORCHESTATOR?id=cat%c3%a1logo-de-tipos-de-interviniente-bnftypval).
+
+---
+
+## [3. `CoveragePackagesController`](#/ACDC/ENDPOINTS_ONLINE?id=_3-coveragepackagescontroller)
+
+**Fichero:** `controller/CoveragePackagesController.java`  
+**Casos de uso:** `CalculateCoveragePackagesUsecase` · `ObtainCoveragePackagesUsecase` · `PreviousCoveragePackagesUsecase`  
+**Roles requeridos:** `GAZU_ROLRTEMGR`, `GAZU_ROLRTEADM` o `ROL_ACDC_CVR_PACK`
+
+Gestiona los **paquetes/módulos de coberturas** disponibles para un riesgo. Ver detalle del cálculo en [MODULES\_SERVICE.md](#/../MODULOS/MODULES_SERVICE).
+
+### [`POST /acdc/coverage-packages/calculation`](#/ACDC/ENDPOINTS_ONLINE?id=post-acdccoverage-packagescalculation)
+
+Calcula las coberturas concretas que corresponden al paquete elegido para un riesgo específico.
+
+|  |  |
+| --- | --- |
+| **Cuándo usarlo** | Cuando el usuario ya seleccionó un paquete (`NUM_SIMULACION` informado) y necesita materializar las coberturas en el polizón |
+| **Equivalente en batch** | `ModulesService.calculateModules()` con simulación |
+| **Llama a** | `ModulesService.getModules()` → `CalculatePackagesService` (POST `/calculate-packages`) |
+
+**Request:** `CalculatePackagesRequestDto`
+
+```
+{
+  "requestId":  "uuid-v4",
+  "countryId":  "ES",
+  "riskVal":    1,
+  "oPlyPlyC":   { }
+}
+```
+
+**Response:** `List<OPlyCvcPC>` — coberturas calculadas para el riesgo indicado.
+
+---
+
+### [`POST /acdc/coverage-packages/preferences`](#/ACDC/ENDPOINTS_ONLINE?id=post-acdccoverage-packagespreferences)
+
+Obtiene todas las **opciones de paquetes disponibles** para un riesgo, sin materializar coberturas concretas. Devuelve la lista de preferencias para que el usuario elija.
+
+|  |  |
+| --- | --- |
+| **Cuándo usarlo** | Para mostrar al usuario los paquetes disponibles (selector de módulos) |
+| **Equivalente en batch** | `ModulesService.obtainModules()` |
+| **Llama a** | `ModulesService.getPreferences()` → `CalculatePackagesService` (POST `/calculate-preferencesId`) |
+
+**Request:** igual que `/calculation`  
+**Response:** `List<ResponsePreferences>` — lista de paquetes disponibles con sus identificadores y descripción.
+
+---
+
+### [`POST /acdc/coverage-packages/previous`](#/ACDC/ENDPOINTS_ONLINE?id=post-acdccoverage-packagesprevious)
+
+Devuelve todas las coberturas para el módulo/preferencia seleccionada (`NUM_SIMULACION`), conservando coberturas independientes ya informadas y completando las restantes con valores por defecto. Las coberturas obligatorias no informadas se marcan como seleccionadas (`cvrSlc = "*"`).
+
+Después de completar la lista, recalcula los capitales del mismo riesgo que tengan `coverageRef + validPcts`, tomando como base el `cplAmn` resuelto de la cobertura referenciada (el valor del polizón si el usuario lo envió, o el valor por defecto del módulo si se rellenó automáticamente). La resolución la realiza un método privado recursivo (`resolveSameRiskAmount` en `ModulesServiceImpl`, con guarda de ciclos `visitedCoverageIds`) que conserva el importe informado por el usuario si ya coincide con alguno de los `validPcts` de la base resuelta, o aplica el primer `validPct` en caso contrario. Los ciclos, las referencias irresolubles (base sin capital, referencia fuera del catálogo) y las reglas con `data.risk` o `maxPct` se conservan sin cambios, sin que el endpoint devuelva error de validación.
+
+|  |  |
+| --- | --- |
+| **Cuándo usarlo** | Después de elegir un paquete/preferencia y antes de mostrar/editar las coberturas calculadas |
+| **Requisitos** | `riskVal` y `NUM_SIMULACION` en el polizón |
+| **Llama a** | `PreviousCoveragePackagesUsecase.getPreviousCoverages()` |
+
+**Request:** igual que `/calculation`  
+**Response:** `List<OPlyCvcPC>` — lista completa de coberturas para el módulo seleccionado.
+
+---
+
+## [4. `RatingController`](#/ACDC/ENDPOINTS_ONLINE?id=_4-ratingcontroller)
+
+**Fichero:** `controller/RatingController.java`  
+**Caso de uso:** `RatingUsecase`  
+**Roles requeridos:** `GAZU_ROLRTEMGR`, `GAZU_ROLRTEADM` o `ROL_ACDC_RATING`
+
+Ejecuta la **tarificación** de una póliza o suplemento, devolviendo las coberturas con sus primas calculadas.
+
+### [`POST /acdc/rating/calculation`](#/ACDC/ENDPOINTS_ONLINE?id=post-acdcratingcalculation)
+
+|  |  |
+| --- | --- |
+| **Cuándo usarlo** | Para calcular o recalcular las primas de un riesgo concreto, típicamente antes de mostrar el resumen de cotización al usuario |
+| **Equivalente en batch** | `RteService.sendToRteService()` → `RTE Flow #1` / `RTE Flow #2` del orquestador |
+| **Llama a** | `RteService.calculationRisk()` → `RteExternalService` (POST `/calculate-rating-ply`) |
+
+**Request:** `RatingPlyRequestDto`
+
+```
+{
+  "requestInfo":    { "requestId": "...", "countryId": "ES", "riskVal": 1, "operationDate": "...", "operationNumber": null },
+  "currentPolicy":  { "oPlyPlyC": { } },   // póliza actual/vigente — nullable (primera emisión)
+  "newSupplement":  { "oPlyPlyC": { } }    // póliza con los nuevos datos a tarificar
+}
+```
+
+**Response:** `List<OPlyCvcPC>` — coberturas del riesgo indicado (`riskVal`) con las primas calculadas por RTE.
+> La diferencia entre `currentPolicy` y `newSupplement` permite a RTE calcular **diferenciales de prima** en suplementos. Para cotizaciones nuevas, `currentPolicy` es `null`.
+
+#### [Coberturas de póliza (riesgo 0)](#/ACDC/ENDPOINTS_ONLINE?id=coberturas-de-p%c3%b3liza-riesgo-0)
+
+Cuando `riskVal = 0`, antes de llamar a RTE se consulta el catálogo de paquetes con `coverageLevel=POLICY` y `product=99999` (valor genérico para coberturas ficticias) para inyectar las coberturas de póliza en `oPlyCvcCT`.
+> `riskVal` es obligatorio en este endpoint (la validación rechaza null).
+
+---
+
+### [`POST /acdc/rating/calculation-risks`](#/ACDC/ENDPOINTS_ONLINE?id=post-acdcratingcalculation-risks)
+
+Calcula tarifa y devuelve uno o más riesgos (`List<OPlyRkcPC>`) en lugar de una lista plana de coberturas.
+
+|  |  |
+| --- | --- |
+| **Cuándo usarlo** | Cuando el consumidor necesita recibir la estructura de riesgos resultante tras tarificación |
+| **Comportamiento de `riskVal`** | `0` devuelve coberturas a nivel póliza envueltas como riesgo sintético; valor concreto devuelve ese riesgo; `null` devuelve todos los riesgos |
+| **Llama a** | `RatingUsecase.calculateRatingRisks()` |
+
+**Request:** `RatingPlyRequestDto` igual que `/rating/calculation`.  
+**Response:** `List<OPlyRkcPC>`.
+
+#### [Coberturas de póliza (riesgo 0)](#/ACDC/ENDPOINTS_ONLINE?id=coberturas-de-p%c3%b3liza-riesgo-0-1)
+
+Las coberturas de póliza se inyectan desde el catálogo (`coverageLevel=POLICY`) en dos casos:
+
+* **`riskVal = 0`**: se piden solo las coberturas de póliza.* **`riskVal = null`**: se piden todos los riesgos. El riesgo 0 sintético se incluye en la respuesta con las coberturas de póliza inyectadas.
+
+En ambos casos, `calculatePolicyCoverages()` consulta el catálogo y sobrescribe `oPlyCvcCT` antes de la llamada a RTE. Si el catálogo no tiene documentos con `coverageLevel: "POLICY"`, el riesgo 0 se devuelve sin coberturas.
+> Para riesgos concretos (`riskVal = 1, 2, 3...`) no se consulta el catálogo de coberturas de póliza.
+
+---
+
+## [5. `FormController`](#/ACDC/ENDPOINTS_ONLINE?id=_5-formcontroller)
+
+**Fichero:** `controller/FormController.java`  
+**Casos de uso:** `FormDefinitionUsecase` · `PreCalculateFormUsecase` · `ValidateFormUsecase`  
+**Roles requeridos:** `GAZU_ROLRTEMGR`, `GAZU_ROLRTEADM` o `ROL_ACDC_FORM`
+
+Gestiona el ciclo de vida de los **formularios de producto** (cuestionarios, datos adicionales) que el sistema puede requerir en distintos pasos del proceso.
+
+### [Contrato común de entrada](#/ACDC/ENDPOINTS_ONLINE?id=contrato-com%c3%ban-de-entrada)
+
+Los tres endpoints comparten `FormDefinitionRequestDto`, pero cada uno consume un subconjunto distinto:
+
+| Campo | Uso principal |
+| --- | --- |
+| `operationInfo` | Contexto de ejecución obligatorio: operación, `onlineStage`, `requestId`, idioma, `executionType`, `processTypeId`, `productId`. Si faltan `requestId`, `executionType` o `processTypeId`, el backend aplica valores por defecto. |
+| `oPlyPlyC` | Póliza actual. Se usa en la resolución DUP y en la precalificación/validación de formularios. |
+| `prevOPlyPlyC` | Póliza anterior. Solo es relevante en `/validation` para comparar estado actual vs. anterior. |
+| `riskVal` | Riesgo objetivo del formulario. Permite acotar la búsqueda en DUP. |
+| `coverageVal` | Cobertura objetivo del formulario. Se usa cuando el formulario depende de una cobertura concreta. |
+| `dataFormMap` | Contexto adicional para la resolución de definiciones. Es el mapa que se traslada al criterio DUP en `/definition`. |
+| `dataForms` | Lista de atributos/formularios ya construidos. Es la entrada que se pre-calcula o valida en `/previous` y `/validation`. |
+| `documents` | Documentos aportados por el usuario; el motor DUP los usa en reglas de documentación. |
+| `cmlObj` | Acumulaciones y datos CML que también se pasan al motor DUP. |
+
+Los `onlineStage` más habituales para formularios son:
+
+* `PRE_RATING_FORMULARY_DEFINITION` → `PRE_FORM_VALIDATION_DEFINITION` [11-10-10]* `POST_RATING_FORMULARY_DEFINITION` → `POST_FORM_VALIDATION_DEFINITION` [11-10-20]
+
+### [`POST /acdc/form/definition`](#/ACDC/ENDPOINTS_ONLINE?id=post-acdcformdefinition)
+
+Obtiene la **definición de los formularios** que el proceso requiere para un paso concreto.
+
+|  |  |
+| --- | --- |
+| **Cuándo usarlo** | Para saber qué formularios hay que mostrar al usuario en un paso dado |
+| **Llama a** | `FormDefinitionUsecase.requestFormDefinitions()` |
+
+**Request:** `FormDefinitionRequestDto` (principalmente `operationInfo`, `riskVal`, `coverageVal`, `oPlyPlyC`, `dataFormMap`, `documents`, `cmlObj`)  
+**Response:** `List<FormDefinition>` — definición de formularios con sus campos y metadatos.
+
+En la implementación actual, la salida se construye filtrando las acciones `type = CUESTIONARIO` devueltas por DUP y mapeando el campo `frlVal` a `FormDefinition.frlVal`. El resto de campos del DTO (`cmpVal`, `mdtVal`, `frlNam`, `frlShrNam`, `btcPrcVal`, `obsGrpMxnPonVal`, `atzErrVal`, `prrFrlPrdNam`, `plcFrlRqs`) permanecen nulos salvo que se amplíe el mapeo en el futuro.
+
+**Casos cubiertos por el endpoint:**
+
+* si no hay reglas aplicables, devuelve una lista vacía;* si una acción `CUESTIONARIO` no trae `frlVal` válido, se ignora y se registra un warning;* si varias reglas devuelven cuestionarios, la respuesta incluye un elemento por cada acción encontrada;* si faltan datos obligatorios, la validación devuelve `RS_MISSING_DATA`.
+
+---
+
+### [`POST /acdc/form/previous`](#/ACDC/ENDPOINTS_ONLINE?id=post-acdcformprevious)
+
+Pre-calcula los atributos de un formulario aplicando las reglas DUP de tipo formulario (`PRE_FORM_VALIDATION_DEFINITION`).
+
+|  |  |
+| --- | --- |
+| **Cuándo usarlo** | Antes de mostrar el formulario, para rellenar valores por defecto en sus campos |
+| **Equivalente en batch** | Paso `PRE_FORM_VALIDATION_DEFINITION` [11-10-10] |
+| **Llama a** | `DupService.precalculateByStep(PRE_FORM_VALIDATION_DEFINITION)` → `SelectRiskService` |
+
+**Request:** `FormDefinitionRequestDto` (usa `operationInfo`, `riskVal`, `coverageVal`, `oPlyPlyC`, `dataForms`)  
+**Response:** `List<OPlyAtcPC>` — atributos del formulario con sus valores pre-calculados.
+
+**Qué hace realmente:**
+
+* ejecuta el motor DUP sobre la póliza y el contexto indicado;* aplica acciones de tipo `Asignacion` sobre los campos del formulario;* devuelve los atributos ya enriquecidos con sus valores y, si procede, con modificadores UI (`RQR`, `INV`, `BLK`).
+
+**Casos de uso típicos:**
+
+* precargar valores por defecto antes de mostrar la pantalla;* derivar un campo a partir de otro dato de la póliza o de una constante;* bloquear o hacer visible/invisible un campo según condiciones DUP.
+
+---
+
+### [`POST /acdc/form/validation`](#/ACDC/ENDPOINTS_ONLINE?id=post-acdcformvalidation)
+
+Valida los datos introducidos en un formulario aplicando las reglas DUP de validación de formulario.
+
+|  |  |
+| --- | --- |
+| **Cuándo usarlo** | Al hacer submit del formulario, antes de avanzar al siguiente paso |
+| **Equivalente en batch** | Paso `POST_FORM_VALIDATION_DEFINITION` [11-10-20] |
+| **Llama a** | `DupService.validationByStep(POST_FORM_VALIDATION_DEFINITION)` → `SelectRiskService` |
+
+**Request:** `FormDefinitionRequestDto` (usa `operationInfo`, `riskVal`, `coverageVal`, `oPlyPlyC`, `prevOPlyPlyC`, `dataForms`)  
+**Response:** `List<OPlyAtcPC>` con los atributos validados, o `422 AcdcError` si hay errores en los datos del formulario.
+
+**Qué hace realmente:**
+
+* ejecuta las reglas DUP sobre el formulario ya cumplimentado;* compara, si existe, la póliza actual contra `prevOPlyPlyC`;* devuelve errores de negocio cuando aparecen acciones `DOCUMENTATION`, `CUESTIONARIO`, `REJECTION` o `AUDIT`;* mantiene los atributos para que la capa cliente pueda continuar con el flujo o mostrar los mensajes.
+
+**Casos de uso típicos:**
+
+* comprobar que se ha completado un cuestionario obligatorio;* validar que un documento o requisito ya está aportado;* impedir el avance cuando una regla técnica devuelve rechazo o auditoría.
+
+### [Cómo crear reglas Mongo para formularios DUP](#/ACDC/ENDPOINTS_ONLINE?id=c%c3%b3mo-crear-reglas-mongo-para-formularios-dup)
+
+Las reglas de formularios viven en la colección `RS-RULES-ACTIONS-CONDITIONS` y deben seguir la misma lógica que el resto de reglas DUP. Para que el endpoint `/acdc/form/definition` funcione, la regla debe devolver al menos una acción de tipo `CUESTIONARIO`.
+
+#### [Campos mínimos recomendados](#/ACDC/ENDPOINTS_ONLINE?id=campos-m%c3%adnimos-recomendados)
+
+| Campo Mongo | Uso |
+| --- | --- |
+| `rule_id` / `rule_name` | Identificador funcional de la regla. |
+| `company`, `branch`, `product` | Ámbito comercial. `product` puede usar wildcard `99999`. |
+| `execution_type`, `process_type` | Segmentación por tipo de ejecución y proceso. |
+| `process_step` | Paso DUP al que pertenece la regla. Para formularios, lo habitual es `11-10-10` o `11-10-20`. |
+| `option_menu_number`, `option_number` | Opciones del flujo DUP asociadas al paso. |
+| `process_field` | Campo de proceso que activa la regla. |
+| `coverage` | Cobertura objetivo o `null` si la regla no depende de cobertura. |
+| `active`, `expiry_date` | Estado y vigencia de la regla. |
+| `conditions` / `condition` | Condiciones V1 o V2. |
+| `actions` | Acciones a ejecutar cuando la regla aplica. |
+
+#### [Cómo modelar una regla de formulario](#/ACDC/ENDPOINTS_ONLINE?id=c%c3%b3mo-modelar-una-regla-de-formulario)
+
+Para formularios, la parte importante es la acción:
+
+* `type: "CUESTIONARIO"` para que el motor la considere formulario;* `questionnaire`: texto o mensaje funcional del requisito/cuestionario;* `value`: código del cuestionario o requisito que se usa en validación;* `frlVal`: identificador del formulario que devolverá `/acdc/form/definition`.
+
+> `frlVal` debe ser convertible a número, porque el use case actual lo transforma a `BigDecimal`.
+
+#### [Ejemplo de regla Mongo para un formulario](#/ACDC/ENDPOINTS_ONLINE?id=ejemplo-de-regla-mongo-para-un-formulario)
+
+```
+{
+  "rule_id": "CUESTIONARIO_MEDICO_DEPORTE",
+  "rule_name": "Cuestionario médico por deporte federado",
+  "company": "MAPFRE",
+  "branch": "ACDC",
+  "product": "123",
+  "execution_type": "7",
+  "process_type": 99,
+  "process_step": 11,
+  "option_menu_number": 10,
+  "option_number": 10,
+  "process_field": "QUESTIONNAIRE_MEDICO",
+  "active": "Y",
+  "expiry_date": "2099-12-31",
+  "conditions": [
+    { "factor": "insured.federatedSports", "operator": "GT", "value": "0" },
+    { "factor": "questionnaires.42", "operator": "NEX" }
+  ],
+  "actions": [
+    {
+      "type": "CUESTIONARIO",
+      "questionnaire": "Debe responder el cuestionario médico por deporte federado",
+      "value": "42",
+      "frlVal": "1001"
+    }
+  ]
+}
+```
+
+#### [Casos que conviene contemplar](#/ACDC/ENDPOINTS_ONLINE?id=casos-que-conviene-contemplar)
+
+* **Un solo formulario aplicable**: el endpoint devuelve una lista con un único `FormDefinition`.* **Varios cuestionarios aplicables**: devuelve una entrada por cada acción `CUESTIONARIO` encontrada.* **Regla sin `frlVal` o con `frlVal` inválido**: la acción se ignora y no aparece en la respuesta.* **Formulario ya contestado**: si la validación encuentra el cuestionario en `dataForms`, no genera error de requisito.* **Sin reglas aplicables**: respuesta vacía, sin error funcional.
+
+#### [Recomendaciones de configuración](#/ACDC/ENDPOINTS_ONLINE?id=recomendaciones-de-configuraci%c3%b3n)
+
+1. Alinea siempre `process_step`, `option_menu_number` y `option_number` con el flujo DUP que consumirá el formulario.- Usa `process_field` para diferenciar formularios similares dentro del mismo paso.- Mantén `frlVal` único por formulario si quieres que el cliente pueda identificarlo sin ambigüedad.- Evita duplicar reglas equivalentes con la misma combinación de contexto, porque el endpoint devuelve una entrada por cada acción encontrada.
+
+---
+
+## [6. `GeneralDataController`](#/ACDC/ENDPOINTS_ONLINE?id=_6-generaldatacontroller)
+
+**Fichero:** `controller/GeneralDataController.java`  
+**Caso de uso:** `GeneralDataAttributesUsecase`  
+**Roles requeridos:** `GAZU-ROLPSYADM`, `GAZU-ROLPSYCTR` o `ROL_ACDC_GNI_DATA`
+
+Valida los **datos generales de la póliza** (`OPlyGniP`) aplicando las reglas DUP de datos fijos y variables a nivel de cabecera de póliza.
+
+### [`POST /acdc/general-data/validation`](#/ACDC/ENDPOINTS_ONLINE?id=post-acdcgeneral-datavalidation)
+
+|  |  |
+| --- | --- |
+| **Cuándo usarlo** | Para validar los datos de cabecera de la póliza (compañía, ramo, producto, fechas, divisa…) antes de iniciar el proceso de cotización |
+| **Equivalente en batch** | Pasos `FIXED_DATA_DUP` [1-0-0] y `VARIABLE_DATA_POLICY` [2-0-0] del orquestador |
+| **Llama a** | `DupService` (múltiples pasos) → `SelectRiskService` (POST `/risk-selection`) |
+
+**Request:** `GeneralDataValidationRequestDto`
+
+```
+{
+  "operationInfo": { "requestId": "...", "productId": 1234, ... },
+  "oPlyPlyC":      { }
+}
+```
+
+**Response:** `OPlyGniP` — datos generales de la póliza con los valores actualizados y validados.
+
+---
+
+## [Módulos subyacentes por endpoint](#/ACDC/ENDPOINTS_ONLINE?id=m%c3%b3dulos-subyacentes-por-endpoint)
+
+```
+/attributes/previous          → DupService (PREVIOUS)    → SelectRiskService
+/attributes/validation        → DupService (precalculateByStep; endpoint funcionalmente VALIDATION) → SelectRiskService
+/technical-control/execution  → DupService (CT)          → SelectRiskService
+/coverage-packages/calculation→ ModulesService           → CalculatePackagesService
+/coverage-packages/preferences→ ModulesService           → CalculatePackagesService
+/coverage-packages/previous   → PreviousCoveragePackages → CalculatePackagesService/catálogo
+/rating/calculation           → RteService               → RteExternalService
+/rating/calculation-risks     → RteService               → RteExternalService
+/form/definition              → FormDefinitionUsecase    → SelectRiskService
+/form/previous                → DupService (PREVIOUS)    → SelectRiskService
+/form/validation              → DupService (VALIDATION)  → SelectRiskService
+/general-data/validation      → DupService (CT)          → SelectRiskService
+```

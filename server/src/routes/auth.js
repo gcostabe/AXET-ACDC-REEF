@@ -26,7 +26,7 @@ export async function seedAdminUser() {
         status: 'APPROVED',
         department: 'Tecnologia & Atuária',
         permissions: {
-          allowedTabs: ['overview', 'products', 'rules', 'rating', 'audit', 'explorer', 'users'],
+          allowedTabs: ['overview', 'products', 'packages', 'rules', 'rating', 'audit', 'explorer', 'users'],
           canEdit: { rating: true, rules: true, products: true, explorer: true }
         },
         createdAt: new Date(),
@@ -81,7 +81,7 @@ router.post('/login', async (req, res) => {
       name: user.name,
       role: user.role,
       permissions: user.permissions || {
-        allowedTabs: ['overview', 'products', 'rules', 'rating', 'explorer'],
+        allowedTabs: ['overview', 'products', 'packages', 'rules', 'rating', 'explorer'],
         canEdit: { rating: false, rules: false, products: false }
       }
     };
@@ -123,7 +123,7 @@ router.post('/register', async (req, res) => {
       role: 'ATUARIO',
       status: 'PENDING',
       permissions: {
-        allowedTabs: ['overview', 'products', 'rules', 'rating', 'explorer'],
+        allowedTabs: ['overview', 'products', 'packages', 'rules', 'rating', 'explorer'],
         canEdit: { rating: false, rules: false, products: false }
       },
       createdAt: new Date()
@@ -198,7 +198,7 @@ router.put('/users/:id/approve', requireAdmin, async (req, res) => {
     if (role) updateFields.role = role;
     if (allowedTabs || canEdit) {
       updateFields.permissions = {
-        allowedTabs: allowedTabs || ['overview', 'products', 'rules', 'rating', 'explorer'],
+        allowedTabs: allowedTabs || ['overview', 'products', 'packages', 'rules', 'rating', 'explorer'],
         canEdit: canEdit || { rating: false, rules: false, products: false }
       };
     }
@@ -285,7 +285,7 @@ router.put('/users/:id/profile', requireAdmin, async (req, res) => {
     if (department !== undefined) updateFields.department = department;
     if (allowedTabs || canEdit) {
       updateFields.permissions = {
-        allowedTabs: allowedTabs || targetUser.permissions?.allowedTabs || ['overview', 'products', 'rules', 'rating', 'explorer'],
+        allowedTabs: allowedTabs || targetUser.permissions?.allowedTabs || ['overview', 'products', 'packages', 'rules', 'rating', 'explorer'],
         canEdit: canEdit || targetUser.permissions?.canEdit || { rating: false, rules: false, products: false }
       };
     }

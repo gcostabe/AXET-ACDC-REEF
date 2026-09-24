@@ -1,0 +1,886 @@
+un más que vean aquí. Ideal para hacer un análisis primario opcucionado, después
+un análisis técnico de uno de los requisitos que fue solicitado por Chini, o ideal de poder
+utilizar esa estrategia para todas las historias que vamos a ver. Primero, antes de poner un
+desenvolvimiento para hacer un análisis opcucionado, lo que fue solicitado, entender y después ya
+vamos a ver un sistema como eso va a ficar, va a ser configurado y desenvolvido. Teniendo aquí
+en la tela, un distribuidor que va a ser el lugar del agenciamiento y corretario. Precisamente
+era un item que estaba parando Antonio hace poco tiempo. Voy solicitado para el producto de Viva
+Multiplex. Si les han dos conceitos de comisiones, un conceito de corretario, que es un conceito que
+ya tiene un sistema hace mucho tiempo, que es un porcentaje de comisión pagado por el todo. Y
+ahora tenemos un conceito de agenciamiento, cuando tenemos un agenciador en un medio. Entonces,
+no hubo entre las pasapas para los productos de vida, no hubo pas tres años para los que fue
+implementado. Son como un sistema electrónico y no tenían ese conceito antes. A gente utiliza un
+conceito que ya no pasado si tiene un sistema que es un asesor, tiene un corretor y un asesor. Entonces,
+toda la información del agenciador, de un lado, de un turrific, va a ficar como si fuese un asesor.
+Entonces, vamos a tener un código de asesor y un porcentaje de asesor. Vamos a ver eso por
+un nivel técnico. Aquí, en esa primera distribución proporcionada, es un comportamiento natural
+del sistema. Vamos a suportar un pagamento mensal para una polícia de humano. O sea,
+ya vamos a tener 12 parcelas. El sistema ya hace la distribución proporcionada tanto
+del premio como las comisores. Entonces, ficaría desejando hoy. Tenemos el premio,
+desglosando las 12 parcelas, misma cosa a corretar, misma cosa al agenciamiento. Y eso
+somos valores que aplicarían para cada una de las parcelas. ¿Cuál es la diferencia de corretar
+el agenciamiento de eso? La corretar es definida a través de un percentual de aquella parcela,
+que va a recibir un percentual de toda la vigencia del contrato en todos los parcelas.
+Digamos que tiene 20% de comisión de corretar. Al agenciamiento, el corretor recibe
+la parcela o, en el concejo que están trazando, puede ser hasta una parcela y medio como remuneración.
+Y el agenciamiento puede ser pago tanto para un corretor como para un agenciador,
+como una persona física que apoye la comercialización del seguro. Creo que éstas son las principales
+diferencias. El corretar sigue el valor pago generalmente para el corretor del seguro.
+El agenciador puede ser una otra persona que también apoye esa negocia. Oye el proceso. Si nos
+tomamos, por ejemplo, que va a tener un corretor de 10% de corretar y 100% de agenciamiento,
+un sistema faz distribución de ese jeito. ¿Por qué asoma el agenciamiento de 100? Porque cuando
+falamos de porcentaje de agenciamiento, 100% dice que para un agenciador vamos a pagar un 100%
+de un valor de una parcela. En ese caso, el 100% del agenciador debería sumar en total 100
+reais que un valor de una parcela. Por eso aquí el quebra proporcionalmente y, al final,
+la suma sería 100. ¿Y siempre poter agenciamiento? No siempre y no en todos los productos. Corretar
+agenci. ¿Corretar agenciamiento? No, agenciamiento es una solicitación específica a dos productos
+de vida aquí en el Brasil. Y puede decir 0 también aumentó mi sal, no pagar el agenciamiento.
+Puede ser en el caso de un ejemplo que tenemos acá 100%, puede ser 0, puede ser 200, que es el
+límite que tenemos, oye. Entonces, ese es el distribución normal de tu sistema, más porque está
+siendo solicitado, oye, para los productos de vida, es que el sistema faz una redistribución y
+de prioridad yo pagamento de agenciamiento, echando acumulado un pagamento de corretalle. Eso quiere
+decir que para los ejemplos que vemos aquí, esta es el comportamiento normal de un sistema o que
+fue pidido por área de negocio, es esa distribución al mercado. O sea, que hay que un teño de
+agenciamiento para pagarme esa poliza, teño que pagar él es la primera parcela. Pero tenemos
+una regla que si por encima de 100% uno puede ultrapasar el valor de un premio que puedo recibir
+en la parcela. Pero en ese caso, un límite ese, no puedo pagar o ser. Ok, hay este agenciamiento,
+pero no puedo pagar en esa parcela corretalle. Corretalle, para irse pagando en ese escenario,
+en la segunda parcela. Y de ahí para frente acumula para segunda parcela y de ahí para
+frente las parcelas continúan proporcionalmente sin mudanza. Es obligatorio que acumula segunda
+parcela, o podría acumularse en la tercera o en la cuarta. Dependiendo del escenario, porque ahí
+siguen los centros. Por ejemplo, la redistribución de 200% de agenciamiento, que dice que voy a precisar
+pagar 200 reais para el agenciador. Entonces ese valor va a ultrapasar el valor de la primera
+parcela que voy a recibir. Entonces voy a tener que quebrar el pagamento del agenciamiento en las
+dos primeras parcelas que vemos allí. O sea, un corretalle, no puedo poder pagar en esas
+dos primeras parcelas y voy a acumular el para tercera para tercera parcela. Esa pregunta,
+podría acumular por ejemplo, en la sexta parcela, por ejemplo, pagar 10 ahí y en la sexta pagar 30?
+No, siempre en la próxima. Esa regla que puede solicitar. Por eso que aquí tienen las dos primeras
+parcelas, no pago. Sena primera, sena segunda, hasta ahí para frente, no pago más agenciamiento.
+Un corretalle, tengo cero, las dos primeras, 30 en la tercera, yo ya pagué los tres meses de
+agenciar la pórrisa y ahí para frente, continuo pagando los 10 reais que corresponde de corretalle
+a esa parcela. Y otro escenario, cuando tiver 150%, que también pase un mismo distribución a la
+primera parcela, como estoy ultrapasando el valor del premio, no puedo pagar corretalle,
+mas fiquen pendiente pasar 50 reais en la segunda parcela. Como fiquen pendiente o voy a recibir 100,
+ainda tengo 50 reais mas para jugar. Eso es necesario, da para pagar los dos conceptos,
+tanto agenciamiento como corretalle, porque no estoy ultrapasando el valor del premio que voy a
+recibir, ahí da. Esa lógica, ¿ella está en algún lugar o a gente va a tener que
+desenvolver? Va a tener que desenvolver. Este aquí es un consejo funcional de comportamiento de corretalle
+en el agenciamiento cuando tiver que lo que fue solicitado fue la unidad de negocio. Yo no sé
+que se va a desenvolver eso. ¿La respuesta a localizar el cor es eso? No, yo creo que va a
+desenvolver eso. A gente tiene respuesta, yo creo. A gente sabe que se está leyendo.
+En esta parte de configuración, ¿a gente va a colocar eso ahí? También, para configurar
+esa información encima de alguna variable. Ah, de esa variable, llegando a eso, en general.
+¿Alguna dúvida? ¿Pica claro el concepto funcional? Ya entendiendo el concepto
+funcional que o qué precisamos, que los temas facas, ya vamos a ver el comportamiento técnico.
+Que o qué vamos a precisar para hacer un sistema para conseguir ese comportamiento.
+Y eso aquí, o qué, un sistema normalmente va a impigirnos de los fixos de emisión que
+a primera tela que vemos, vamos a esperar un código de corrector y un cuadro de comisión
+del corrector. Normalmente, un cuadro de comisión del corrector, para dar de porcentaje en
+que va a ser pago por el corrector, ¿vale? Más en ese producto, y aquí en Brasil como
+a cuantidad de correctores es mucho grande y al endiso para metrizar, sé la, 30 cuadros
+de comisión para cada uno de esos correctores de mucho esfuerzo, a gente querido un concepto
+de exceso de comisión, de exceso de comisión. Entonces, es por eso que aquí el sistema
+de ese producto va a ficar siempre con cuadro de comisión cero.
+Amor, cuándo es cero.
+Entonces, ese es el comportamiento normal, pero a gente va a entender qué va a ser ese
+comportamiento aquí, que es bueno y detaljado. Y lo que os falé, vamos a precisar un código
+de asesor que sería un código de agenciador para que va a ser pago, que va a ser porcentaje,
+y el porcentaje que va a ser informado. Ese es el comportamiento normal, pero para atender
+la necesidad de funcionar, que fue solicitada por la unidad del negocio, vamos a tener
+que hacer todo esto aquí, o que es lo que os falé, la excepción de comisión es, vamos
+a tener que informar siempre el código del corrector, y su cuadro de comisión, la primera
+tela de condición, es comercial, y va a ser siempre cero, va a ir cerrado, y va a tener
+que informar el código de tu asesor, tu agenciador. Y eso es una primera tela de dados fixados,
+porque porcentaje tu corrector, porcentaje, precisamente que va a pagar, va a tener que
+informar a él en un nivel de dados variables de la Policía. Vamos a tener que crear de
+fato un producto que ya tiene dos dados variables, no para informar un porcentaje de corrector,
+y un otro para informar el porcentaje de tu agenciador. Libertad, Libertad, va a quedar
+esos, esos dados informados. Y la lista era que sea una lista y ahora
+ya te fez la, con todos los valores, o a dejar un campo libre para, para, para un caso
+pudiese ser una lista de valores, porque de facto para o agencamento, tenemos una historia
+que fala cuáles valores podemos permitir para acá, 0, 50, 100, 100, 50 y 200. Entonces,
+en ese dado variable, debería permitir apenas esas cinco opciones. Podía ser una lista,
+porque fue uno de los compregulares. Y en aquella tela que hicimos con los dados,
+estamos hablando de esta parte de la tela aquí. Eso es. Porque solo para ustedes entendermos,
+que hicimos esto, lo hicieron que la tela lo tomó. Incluso en los posicionamientos y tal,
+por eso estoy, estoy, me llamo... Y esas, y esas informaciones, no tengo ninguna otra tabela,
+no tendría que ser aquella tabla, tabla de tabla. Eso es, pues es un camino, porque esas, esas opciones que
+Chini escribió en la historia, 50, 100, 100, 50, no tenemos, no existen ahora en un producto,
+ni en un sistema. Tenemos que configurarlas, en alguna tabela, en algún registro para,
+no dado variable, dejar esa lista y apreciar en un frontal. Y eso veo que
+usted veis para también la cobertura de Yaris. Ese es un camino. Após hizo,
+esa sería un nivel de configuración. Daí para frente, pues eso sería un nivel de
+desenvolvimiento. Porque hasta ellos, simplemente, crié las variades y recibí la información.
+Pero ahora es preciso hacer que con esa información aplicar todas las redes y negocios,
+la redistribución, que mi monarquía no era bueno. Para que la excepción de comisiones
+funcione, que no calcule con el cuadro de comisión cero, que informe en el inicio. Y sí,
+calcule con lo que fue informado, no dado variable. El sistema tiene una tabela que
+ha tabelado a dos treinta desde el treinta y cincuenta y uno. Y ahí, ok, ok, ya metió el peor ahí abajo. Y eso ahí? O sea, ahí,
+si a gente usaba nuestro ejercicio, es un procedimiento de validación y porcentaje de asesor.
+Eso es lo mismo. Entonces, ¿por qué? Porque esa tabla tiene que ser popular en un momento
+que usted está haciendo emisión. Es una tabela que, inclusive, fica registrada con un número
+de apólice que estoy emitiendo en un momento. La fiscal, el código de UGAMO, el número
+de apólice, el porcentaje en director, el porcentaje en duellenciador y, después de
+tener esa tabela popular, ya un sistema entiende que tiene que dar prioridad en lo que fue informado
+en esa tabela y no calcular con un cuadro del comisión cero.
+No interrumpo, o sea, ajega, si es distribuizada, comisado, espeita y es definida en el momento de emisado.
+Tiene una ajega, ya no han podido ir a dos para que sea un concajeador, sino que es más lógica
+que define ajega, que después, en estas tablas iniciáis y después va a aplicar ajega para distribuizada
+con un comisión en las pelas finales. Y eso ahí. Entonces, un molde pa luego apuntar. Aquí tenemos un balo en APROCHI
+donde va a interesar popular esa tabela ahí, a los 30 de 1751.
+Es ahí una pregunta. ¿Cómo tiene que ser un nómedo Pacochi que va a interrumpirse esa proceducia?
+¿Policía generales, papá? ¿Pero es la partida del campo de comisión que tiene que hacer?
+No.
+No.
+Aquí.
+Olha eso. Yo tengo una proquia que va a lidar con todo el baño de agua.
+Dado baño de agua aquí.
+Si yo tengo que crear una proquia, ¿por qué es la tabela ahí?
+Esa proquia va a lidar con todo el baño de agua y no existe. Esa proquia aquí, ¿dónde debe ficar?
+Ahí va a crear esa tabela.
+Esa tabela es de excepción de comisión.
+P.
+Sí.
+P.
+L.
+L.
+P.
+P.
+P.
+P.
+P.
+No.
+P.
+P.
+P.
+Pero lo que sucede es que esta es una funcionalidad que no es sólo para el producto de la vida.
+Esa es la respuesta.
+Eso es lo que sucede.
+Eso puede ser solicitado. La vida global.
+No te crees.
+Entonces, eso va a revolver una funcionalidad transversal.
+Eso sería difícil.
+Entonces, ideales no dejar esa lógica sonmente en un pacote de producto 421.
+En el 420 se va a servir la vida global.
+Vamos a tener que comprar, pegar y utilizar el código.
+Pero eso es nuestra acción.
+Y va a ser mucho de achismo, de filo.
+Y creo que va a ser usado para todos los productos.
+Porque creo que es el mismo concepto que tiene en el tronweb.
+En el tronweb utilizamos esta misma funcionalidad para dos o tres años de vida.
+Entonces, la idea es que todos los productos que estamos pensando en el comisión, el agenciamiento,
+vamos a dejar arriba de los productos.
+Eso es todo lo que vamos a identificar.
+Que una funcionalidad transversal que a futuro no solamente va a utilizar el producto de vida 421
+puede dejarlo en un pacote transversal del país.
+Y así, cuando un otro producto llegue, solamente va a ser el llamado de ese pacote transversal, pues chau.
+Pero no tiene salón para gente de la transversal.
+Pero está lo dado.
+Esta es la forma en que deberíamos volver al nuevo momento.
+¿Este es el pacote transversal?
+Eso es.
+¿Ahora lembra como el monumento está todo en el pacote transversal?
+O...
+¿Crees que esto es corporativo?
+No.
+¿999?
+¿No?
+¿999?
+¿Eso es ahí?
+¿Más como es de comisores?
+¿Cómo sería su fixo?
+No.
+Siempre...
+Siempre...
+Siempre...
+Siempre...
+Adiante, no está ahí.
+No está ahí.
+No está ahí.
+No está ahí.
+No está bien.
+Pega las familias a la hora.
+Pega las familias a la hora.
+¿Pero que sería que se pegue?
+No.
+¿Esos son dos glóces?
+Esa es una de las glóces.
+No, es una de las glóces.
+No, es una de las glóces.
+¿Sería que ser CMS, comisado?
+Es un caso.
+¿Pero que es el caso?
+Porque mismo,
+va a ser llamado desde el Pacote de atributos
+y que el camino más a funcionalidad corresponde a comisores.
+Tenía que ser un Pacote transversal de comisores mismos.
+Podemos llamar no solamente para esos que son de comisores,
+pero por lo que vamos a pensar en la tarea,
+que hace levantamiento, que ficou en esa tabela.
+Sigue a pujar de ese Pacote sin problemas.
+¿Pero que es el caso?
+Bueno.
+Mi pregunta.
+Yo necesito configurar en alguna tabela este programa
+para poder inserir la A23, la A1751, ¿certo?
+No.
+No.
+En ese caso, por eso que está aquí,
+el PROCY de Validación y el PC3 de Agenciador.
+Porque en ese PROCY de Validación,
+después de eu informar, en ese caso,
+voy a hacer un llamado al PROCY que crea este Pacote
+y que va en cada tabela.
+¿Pero hay que colocar este PROCY en algún lugar?
+¿Pero que se llama este PROCY?
+No, es una conversa en la tabela de...
+en un PROCY que está hablando.
+Este Pacote de Validación,
+va a ir a la A2220,
+un Pevau de esa edad variable.
+¿Te lembra de un PROCY que fue llamado a otra?
+Sí.
+Yo voy a hacer un llamado a la tabela de él.
+Lá, nosotros nos llamamos,
+nosotros volvamos al nombre de la procedente,
+no de Técnic.
+No.
+En la A2220,
+configuramos el nombre completo,
+el nombre del Pacote
+y el nombre de PROCY que va a ir a cortar.
+Y dentro de esa PROCY,
+que en este caso de un Pevau de PCTA,
+va a ser un llamado a un PROCY
+tu triple 9 CMS.
+Tu 999 CMS.
+O sea, llamar a este J.
+¿Pero que haría un llamado
+dentro de ese PROCY Pevau?
+Se va a llamar...
+se la TGP.
+TGP.mk99 CMS.
+Y vamos a supor
+que un nombre de PROCY que vamos a criar
+para popularar esta tabela de 2.3017.51
+va a llamar a este INCERTA.
+INCERTA 2.3017.51.
+Vamos, Cache.
+Cache.
+Cache.
+De este jeito,
+vos está llamando dentro
+de un Pevau a un PROCY
+que fa su cadastro de tabela
+de sus comisores.
+Entonces, ahí vos se garante
+que información que vos
+precisa para que se haya calculado
+tanto un correctado adhesión.
+Ya va a ficar la tabela.
+Ahí podés continuar con
+nosotros dados variables
+en el final
+el sistema que hace
+que haya información en esta tabela
+y ejecutar un poco en control.
+Voy a jugar aquí.
+La TGP 2020.
+¿Para la TGP 2020?
+La TGP 2020 es lo que nosotros vimos.
+La TGP de diaria, por ejemplo.
+¿Este configuraría?
+¿Tiene un programa?
+No, el PRK.
+Exactamente.
+Aquí visualizamos
+el llamado de
+la TGP.
+Entonces, tengo que colocar la TGP
+con un PRK
+y un punto.
+Aquí, en esta columna,
+visualizamos el llamado
+para el PRK
+que hace la validación
+de los dados variables.
+La TGP de diaria
+está en esta columna.
+En una línea solo.
+Aquí lo colocaría...
+Aquí lo colocaría
+este...
+¿Este aquí?
+No, ahí...
+¿Este aquí?
+No, todo.
+No, sería acá.
+TGP,
+TL, TL, punto
+y un nombre de un pacote
+que tiene los dados variables.
+MK421,
+ATR,
+punto
+y ese aquí
+es su llamado somente
+o PRK.
+Ah, en cuanto se vende un momento,
+el Kalki y el Xiaomi
+y eso ahí.
+Ya dentro de esta PRK
+y
+seleccionado, ahí está su llamado
+a ese otro PRK.
+Más la
+lógica dentro de esta PRK.
+¿Está bien?
+Esto ahí.
+Exactamente.
+Ahí, usted ya
+configuró los dados variables,
+recibe las informaciones
+y ya vio ellas para tabela
+decepción de comisores.
+Entonces, estamos ahí.
+¿Continúa?
+Continúa con la emisión.
+Continúa con la emisión.
+Un ejemplo.
+Cágalo.
+Está bien.
+Vamos a hablar con Douglas.
+En un buen caso,
+con el que podría ser el primer.
+Podríamos pegar, por ejemplo, data de nacimiento,
+sexo y la edad real
+para pujar ahí el modelo de tercero.
+Y por eso estamos directamente en la tela.
+Que es esta misma locha que está hablando.
+¿Verdad?
+¿No va a ser informado?
+No, porque ahí va a pegar, el tercero ya existe.
+Por ejemplo, él está haciendo conmigo
+el tercero, conmigo el tercero.
+Ahí, usted va a prensar la mano.
+Ya, que yo creo que son dos lógicas.
+Sí, son dos lógicas.
+Tiene configurado para poder existir y ya prensa directamente.
+Si yo te tiro con el símbolo, es el mismo.
+Es el mismo.
+Cuando usted va a introducir
+un segurado y él no existe.
+¿Ah, la cortaza?
+Cuando usted va a introducir
+un segurado y él no existe.
+¿Verdad?
+¿No es el mismo?
+No es el mismo.
+Yo creo que es el mismo.
+Está bien.
+Entonces, voy a hablar con el doctor.
+Esa sería un caso más simple
+para hacermos esta lógica.
+Voy a hablar para comenzar.
+Por esta.
+Boa, está bien.
+¿Esto es lo que hicimos ahora? ¿No fue esta o no?
+No.
+Es un colector.
+Entonces, creo que usted puede escribir.
+¿Puedo escribir?
+Están muy bien.
+Sí, creo que sí.
+Incluso, Daniel dice que ya existe
+esta validación.
+Ya existe una consulta
+para hacer un llamado
+para las informaciones de la tercera y el tercer.
+¿Tiene algún ejemplo?
+Tiene algún ejemplo para ver
+lo que estoy haciendo.
+Es lo que...
+Está Bernardo,
+ahí, en el instante.
+Está bien.
+Entonces, hasta aquí,
+el sistema
+paz o lo mismo que
+normalmente,
+con las condiciones comerciales,
+suma chique por un otro camino.
+Más fácil.
+Es el camino más difícil.
+Aquí el proceso
+pasa la misma cosa.
+Porque yo aún no
+mudé la distribución
+de los valores en las parcelas.
+Eso tiene que ser feito
+en una otra prox.
+Que ya es a un nivel
+dupliano de pagamento.
+Aquí, persona,
+no sé, alguna dúvida?
+¿Capitulamos la información?
+¿Configuramos el dado variable?
+¿Entendemos a la exagina eclosión?
+Dentro del dado variable.
+Sólo una pregunta.
+¿Qué es eso?
+¿Qué es eso?
+¿Qué es eso?
+¿Qué es eso?
+Sólo.
+¿Qué es eso?
+¿Qué es eso?
+¿Qué es eso?
+¿Qué es eso?
+¿Qué es eso?
+¿Qué es eso?
+¿Qué vamos a hacer?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+¿Cuáles son los campos?
+Bueno, entonces aquí vamos a precisar, calcular nuevamente la tacha de comisión, tú, en caso de este aquí, agenciador.
+Entonces, con una idea, tú no me da poquito hacer pecal, PCT, así, el asesor.
+Pero ya existe un objeto en ese mismo, ese mismo porque tenía, estaba lidando con el agoreado.
+¿No?
+¿Sí?
+¿Ese mismo no?
+No, no, no.
+Aquí está dentro del pacote NK-421.
+Y es Pebal, Pebal, PCT-A.
+Y aquí vamos a ver, Peu, Pecal.
+Que va a calcular a nueva tacha que va a aplicar a cada una de las parcelas.
+Ese programa va a precisar estar en todas esas parcelas.
+Y entonces, ¿qué va a hacer esa Pro-Key?
+Va a mudar la distribución que precisamos.
+En el caso aquí, tu ejemplo.
+Vamos a precisar, oh, sí.
+Vamos a precisar que debleche el 100% de la comisión, la agenciadora, la primera parcela.
+Y hasta otras, este con cero.
+¿Siempre va a ser así?
+No.
+Si por 100%.
+Ah, es el segundo padre.
+Eso ahí.
+Ah, y si por 200%, precisaría que paguen.
+A mitad de la primera, a mitad de la segunda y es de más.
+Si.
+Debe ser así.
+Y para el caso, tu corretor principal que va a recibir un cálculo de corretaje.
+Entonces, hubo también una Pro-Key que va a validar la misión
+¿apóles a tener agencamentos? Sí, entonces va a estar la distribución dependiendo del porcentaje de agencamento en las parcelas.
+En el caso de tu ejemplo que tenemos acá, que vamos a pagar el agencamiento en las dos, en las más parcelas.
+Entonces, el valor de esas dos va a tener que acumular para la tercera parcela.
+Como aquí, la tercera parcela ficaría con 25%, aproximadamente.
+Aquí pagaría cero, y aquí pagaría cero.
+Y hasta más parcelas, él va a continuar pagando un valor proporcionado sin problema.
+Y aquí también necesitaríamos informar un Pro-Key.
+Entonces, aquí sería PCT, por, por, por el corredor.
+Más del lado del sistema, ¿cómo es que ha informado un porcentaje de corretor?
+PCT, ¿qué?
+Por.
+¿Cómo que ya se llama?
+Estábamos en la primera parte. Es el PCT-AGT.
+¿Qué es la columna que presentó un porcentaje de corretor en la tabela?
+Para el PCT-AGT, el PCT-AC.
+A mí no me gusta saber.
+Es un Pro-Key, por ser una idea de su nombre.
+A tabela, para ese plano de pagamento, ficaría de ese jeito.
+Pero aquí es un ejemplo para apalidad, o que un Pro-Key va a retornar.
+Porque en realidad, como un a tabela ya tiene un Pro-Key.
+Un Pro-Key ya informa un porcentaje y no necesita ser populado de aquí.
+Es un ejemplo para ver qué un Pro-Key va a calcular cada una de las parcelas.
+Ah, por eso he acabado de preguntar si he estado caserado.
+Sí.
+La tabela está caserada, porque la Pro-Key va a exaltar variantes para popular valor.
+No, esa tabela está caserada porque el plano de pagamento ya tiene una distribución proporcionada de correo.
+Está basado en que el Pro-Key va a calcular cada una de las parcelas.
+Puedes calcular 50, 50, y eso va a ser de abajo.
+Eso es, si el sistema no hacía el registro en esa tabela,
+lo que va a hacer es hacer la distribución de ese modo, proporcionar.
+Entonces, el primero va a ser el más 40.
+Eso es.
+Eso es lo que quería saber cuando no es 0.
+Cuando es 0 es el padrón de 183.
+Bueno, el segundo se va a tener que calcular hasta 100.
+Por ejemplo, ahí, como ejemplo de parametriz de la tabela,
+fizemos ese escenario ahí.
+Pagamos al yencemento en las dos primeras, y por centaje en acumulado tu corretaje,
+va para la tercera.
+Exactamente, es lo que nosotros hacemos aquí.
+Con ese, contendo esa parametriz,
+la Pro-Key, que dentro de la Pro-Key ya ole a 100%, 100%,
+entonces pagan la primera, pagan la segunda,
+y eso ya, pues, el sistema entiende,
+y ya paro frente, y le vas a redistribucionar las tabelas de comisores.
+Y todo eso aquí, que hay en She-Face,
+pican a tabela a 2.251, y a tabela...
+A 50, no queda por cobertura.
+Ah, y por actuación.
+Las comisiones, por culpa de la...
+300 solo.
+¿Por qué hay en She-Face?
+Es un trato.
+A tabela aquí es...
+Comisiones...
+Polisar...
+y este aquí, 2.501, son comisiones...
+por cobertura.
+Y también podemos validar, o que por calculador,
+para cada una de las coberturas.
+Y eso ahora, una dúvida.
+Por entrar...
+¿Con vosotros?
+Según la pregunta, ¿verdad?
+Está grabando.
+Perfecto.
+Ese es el concepto de análisis funcional,
+y después de la implementación técnica,
+tomar funcionalidad de una historia.
+¿Crees que no está grabando?
+No, ¿por qué no está grabando?
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
+No sé.
+¿Por qué no está grabando?
